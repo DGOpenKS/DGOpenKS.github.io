@@ -3,31 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北师大版高中数学 · 学前预备知识体系（详细版）</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<script>
-MathJax = {
-  tex: { inlineMath:[['$','$'],['\\(','\\)']], displayMath:[['$$','$$'],['\\[','\\]']] },
-  options: { skipHtmlTags:['script','noscript','style','textarea','pre'] }
-};
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<title>开放知识空间 · OpenKnowledgeSpace</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <style>
-:root{
-  --bg:#f0f4ff; --card:#fff; --navy:#0f2057; --blue:#1d4ed8; --blue-mid:#3b82f6;
-  --cyan:#06b6d4; --accent:#f59e0b; --green:#10b981; --red:#ef4444;
-  --text:#0f172a; --muted:#64748b; --border:#dbeafe; --formula-bg:#eff6ff;
-  --shadow:0 4px 24px rgba(29,78,216,.10); --shadow-lg:0 8px 40px rgba(29,78,216,.16);
-  --radius:14px; --font-body:'Noto Sans SC',sans-serif;
-  --font-display:'ZCOOL XiaoWei',serif; --font-mono:'JetBrains Mono',monospace;
+/* ══════════════════════════════════════════════════
+   DESIGN SYSTEM (Consistent with chapter files)
+══════════════════════════════════════════════════ */
+:root {
+  --bg:#f8fafc;
+  --text:#1e293b;
+  --navy:#0f172a;
+  --blue:#1d4ed8;
+  --blue-mid:#3b82f6;
+  --cyan:#0891b2;
+  --green:#059669;
+  --purple:#7c3aed;
+  --accent:#6366f1;
+  --muted:#64748b;
+  --border:#cbd5e1;
+  --card:#ffffff;
+  --formula-bg:#eef2ff;
+  --radius:14px;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 30px rgba(0,0,0,.12);
+  --font-display:'Noto Serif SC','Source Han Serif CN',serif;
+  --font-body:'Noto Sans SC','Source Han Sans CN',-apple-system,BlinkMacSystemFont,sans-serif;
 }
+
 @media(prefers-color-scheme:dark){
-  :root{ --bg:#080f2a; --card:#111827; --navy:#93c5fd; --blue:#60a5fa;
-    --blue-mid:#93c5fd; --text:#e2e8f0; --muted:#94a3b8;
-    --border:#1e3a8a; --formula-bg:#0f1f4a; --shadow:0 4px 24px rgba(0,0,0,.4); }
+  :root {
+    --bg:#0f172a;
+    --text:#e2e8f0;
+    --navy:#f8fafc;
+    --blue:#60a5fa;
+    --blue-mid:#3b82f6;
+    --cyan:#22d3ee;
+    --muted:#94a3b8;
+    --border:#334155;
+    --card:#1e293b;
+    --formula-bg:#1e293b;
+    --shadow:0 2px 12px rgba(0,0,0,.4);
+    --shadow-lg:0 8px 30px rgba(0,0,0,.6);
+  }
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.85;overflow-x:hidden}
@@ -42,1546 +63,299 @@ nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.85);backdrop-
 .nav-link:hover{background:var(--formula-bg);color:var(--blue)}
 
 /* HERO */
-.hero{max-width:1200px;margin:0 auto;padding:60px 24px 40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.hero{max-width:1200px;margin:0 auto;padding:60px 24px 40px;text-align:center}
 .hero-badge{display:inline-block;background:linear-gradient(135deg,#dbeafe,#ede9fe);color:var(--blue);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
-.hero h1{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.8rem);line-height:1.3;color:var(--navy);margin-bottom:12px}
-.hero p{font-size:.98rem;color:var(--muted);max-width:500px}
-.hero-stats{display:flex;gap:24px;margin-top:22px}
-.stat{text-align:center}
-.stat-n{font-family:var(--font-display);font-size:1.8rem;color:var(--blue);display:block;line-height:1}
-.stat-l{font-size:.72rem;color:var(--muted)}
-@media(max-width:680px){.hero{grid-template-columns:1fr}.hero-visual{display:none}}
+.hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);line-height:1.3;color:var(--navy);margin-bottom:12px}
+.hero p{font-size:1rem;color:var(--muted);max-width:600px;margin:0 auto 24px}
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap}
+.stat{text-align:center;min-width:100px}
+.stat-n{font-family:var(--font-display);font-size:2.2rem;color:var(--blue);display:block;line-height:1}
+.stat-l{font-size:.75rem;color:var(--muted);margin-top:6px}
+
+/* INTRO */
+.intro-box{max-width:1200px;margin:0 auto;padding:0 24px 40px}
+.intro-card{background:linear-gradient(135deg,#dbeafe,#ede9fe);border-radius:var(--radius);padding:32px;border:1px solid var(--border);margin-bottom:24px}
+@media(prefers-color-scheme:dark){.intro-card{background:linear-gradient(135deg,#1e293b,#334155);border:1px solid #475569}}
+.intro-card h2{font-family:var(--font-display);font-size:1.3rem;color:#0f172a;margin-bottom:16px}
+@media(prefers-color-scheme:dark){.intro-card h2{color:#f8fafc}}
+.intro-card p{font-size:.95rem;color:#1e293b;line-height:1.9;margin-bottom:12px}
+@media(prefers-color-scheme:dark){.intro-card p{color:#e2e8f0}}
+.intro-card ul{padding-left:20px;margin-top:12px}
+.intro-card li{font-size:.92rem;color:#1e293b;margin-bottom:8px;line-height:1.7}
+@media(prefers-color-scheme:dark){.intro-card li{color:#e2e8f0}}
 
 /* MAIN */
 main{max-width:1200px;margin:0 auto;padding:0 24px 80px}
 
-/* SECTION HEADER */
-.section-header{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+/* SECTION */
+.section-header{display:flex;align-items:center;gap:14px;margin:48px 0 28px}
 .section-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(29,78,216,.3)}
-.section-header h2{font-family:var(--font-display);font-size:1.5rem;color:var(--navy)}
-.section-tag{margin-left:auto;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--formula-bg);color:var(--blue);letter-spacing:.04em;flex-shrink:0}
+.section-header h2{font-family:var(--font-display);font-size:1.6rem;color:var(--navy)}
 
-/* CARDS */
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px 28px;margin-bottom:18px;transition:box-shadow .25s,transform .25s}
-.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
-.card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--navy);margin-bottom:12px}
-.card h4{font-size:.9rem;font-weight:700;color:var(--blue);margin:14px 0 8px}
-.card p{font-size:.92rem;margin-bottom:8px}
-.card ul,.card ol{padding-left:18px}
-.card li{font-size:.92rem;margin-bottom:6px}
+/* CHAPTER GRID */
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:24px}
 
-/* FORMULA BOX */
-.formula-box{background:var(--formula-bg);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 20px;margin:12px 0;overflow-x:auto}
-.formula-box .label{font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px}
-.formula-item{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px}
-.formula-item .fi-label{font-size:.7rem;color:var(--muted);margin-bottom:6px;font-weight:600}
+.chapter-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.chapter-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:var(--blue)}
+.chapter-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(135deg,var(--blue),var(--cyan));opacity:0;transition:opacity .3s}
+.chapter-card:hover::before{opacity:1}
 
-/* HIGHLIGHT BOXES */
-.highlight{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #fbbf24}
-.highlight p{color:#78350f;font-size:.88rem;margin:0}
-.info-box{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #6ee7b7}
-.info-box p{color:#064e3b;font-size:.88rem;margin:0}
-.warn-box{background:linear-gradient(135deg,#fef2f2,#fee2e2);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #fca5a5}
-.warn-box p{color:#7f1d1d;font-size:.88rem;margin:0}
-.key-box{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #a5b4fc}
-.key-box p{color:#312e81;font-size:.88rem;margin:0}
+.chapter-num{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-weight:700;font-size:.85rem;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.chapter-title{font-family:var(--font-display);font-size:1.15rem;color:var(--navy);margin-bottom:8px;font-weight:600}
+.chapter-desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.chapter-tag{font-size:.7rem;color:var(--blue);padding:3px 10px;background:var(--formula-bg);border-radius:12px;font-weight:600;display:inline-block}
+.chapter-link{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
 
-/* GRID */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:680px){.two-col,.three-col{grid-template-columns:1fr}}
-
-/* ===== EXAMPLE PROBLEM COMPONENT ===== */
-.example{border:1.5px solid var(--blue-mid);border-radius:12px;margin:16px 0;overflow:hidden}
-.example-header{background:linear-gradient(135deg,#1d4ed8,#2563eb);color:#fff;padding:9px 18px;display:flex;align-items:center;gap:10px}
-.example-badge{font-weight:700;font-size:.82rem;background:rgba(255,255,255,.2);border-radius:6px;padding:2px 10px;flex-shrink:0}
-.example-title{font-size:.82rem;opacity:.9}
-.example-body{padding:18px 20px}
-.example-q{font-size:.92rem;margin-bottom:14px;line-height:1.9}
-.example-q strong{color:var(--blue)}
-.sol-btn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:7px 18px;cursor:pointer;font-size:.82rem;font-family:var(--font-body);font-weight:600;transition:background .2s;display:flex;align-items:center;gap:6px}
-.sol-btn:hover{background:#1e40af}
-.sol-btn .arrow{transition:transform .25s;display:inline-block}
-.sol-btn.open .arrow{transform:rotate(90deg)}
-.solution{display:none;background:var(--formula-bg);border-radius:10px;padding:16px 20px;margin-top:14px}
-.solution.show{display:block}
-.sol-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:.9rem;line-height:1.8}
-.sol-step:last-child{margin-bottom:0}
-.step-num{min-width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
-.sol-ans{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:8px;padding:10px 16px;margin-top:12px;border:1px solid #6ee7b7}
-.sol-ans p{color:#064e3b;font-size:.9rem;margin:0;font-weight:600}
-.sol-note{background:var(--formula-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:8px 14px;margin-top:10px}
-.sol-note p{font-size:.82rem;color:var(--muted);margin:0}
-
-/* METHOD CARD */
-.method-card{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
-.method-card h4{font-size:.88rem;font-weight:700;color:var(--blue);margin-bottom:8px}
-.method-card p{font-size:.85rem;color:var(--muted);margin:0}
-
-/* TABLE */
-table{width:100%;border-collapse:collapse;font-size:.86rem;margin:12px 0}
-th{background:var(--blue);color:#fff;padding:9px 13px;text-align:left;font-weight:600}
-td{padding:8px 13px;border-bottom:1px solid var(--border)}
-tr:hover td{background:var(--formula-bg)}
-td.center{text-align:center}
-
-/* STEP FLOW */
-.step-flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}
-.step-box{background:var(--blue);color:#fff;border-radius:8px;padding:7px 14px;font-size:.82rem;font-weight:600;flex-shrink:0}
-.step-arrow{color:var(--blue-mid);font-size:1.1rem;flex-shrink:0}
-
-/* TAGS */
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.tag{padding:3px 11px;border-radius:20px;font-size:.75rem;font-weight:600;background:var(--formula-bg);border:1px solid var(--border);color:var(--blue)}
-
-/* GRAPH CARD */
-.graph-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:22px;margin-bottom:18px;display:flex;flex-direction:column;align-items:center}
-.graph-card h3{font-family:var(--font-display);font-size:1rem;color:var(--navy);margin-bottom:16px;align-self:flex-start}
-.graph-caption{font-size:.8rem;color:var(--muted);margin-top:10px;text-align:center}
-
-/* COMPARISON TABLE */
-.cmp-table td:first-child{font-weight:600;color:var(--blue);width:28%}
-.cmp-table tr:nth-child(even) td{background:var(--formula-bg)}
-
-/* DIVIDER */
-.section-divider{height:1px;background:var(--border);margin:10px 0 18px}
+/* FEATURE BOXES */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.feature-box{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:22px;text-align:center;transition:all .3s}
+.feature-box:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.feature-icon{font-size:2.5rem;margin-bottom:12px}
+.feature-title{font-size:1rem;color:var(--navy);font-weight:600;margin-bottom:8px}
+.feature-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
 
 /* FOOTER */
-footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+footer{text-align:center;padding:48px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;margin-top:40px}
+footer a{color:var(--blue);text-decoration:none;font-weight:500}
+footer a:hover{text-decoration:underline}
 
 /* ANIM */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.section-header{animation:fadeUp .45s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero{animation:fadeUp .5s ease both}
+.chapter-card{animation:fadeUp .6s ease both}
+.chapter-card:nth-child(1){animation-delay:.05s}
+.chapter-card:nth-child(2){animation-delay:.1s}
+.chapter-card:nth-child(3){animation-delay:.15s}
+.chapter-card:nth-child(4){animation-delay:.2s}
+.chapter-card:nth-child(5){animation-delay:.25s}
+.chapter-card:nth-child(6){animation-delay:.3s}
+.chapter-card:nth-child(7){animation-delay:.35s}
+.chapter-card:nth-child(8){animation-delay:.4s}
+.chapter-card:nth-child(9){animation-delay:.45s}
+.chapter-card:nth-child(10){animation-delay:.5s}
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-logo">📐 北师大数学</span>
-    <a class="nav-link" href="#sec1">初高中对比</a>
-    <a class="nav-link" href="#sec2">实数运算</a>
-    <a class="nav-link" href="#sec3">整式因式</a>
-    <a class="nav-link" href="#sec4">分式根式</a>
-    <a class="nav-link" href="#sec5">一元二次</a>
-    <a class="nav-link" href="#sec6">函数思想</a>
-    <a class="nav-link" href="#sec7">坐标系</a>
-    <a class="nav-link" href="#sec8">几何勾股</a>
-    <a class="nav-link" href="#sec9">三角函数</a>
-    <a class="nav-link" href="#sec10">集合初步</a>
+    <div class="nav-logo">📚 OpenKnowledgeSpace</div>
+    <a href="#chapters" class="nav-link">章节目录</a>
+    <a href="#features" class="nav-link">特色亮点</a>
+    <a href="#about" class="nav-link">关于项目</a>
+    <a href="https://github.com/DGOpenKS/DGOpenKS.github.io" class="nav-link" target="_blank">GitHub</a>
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO SECTION -->
 <section class="hero">
-  <div>
-    <div class="hero-badge">北师大版 · 高中数学 · 详细版</div>
-    <h1>学前预备<br>知识体系</h1>
-    <p>系统梳理十大核心模块，每节含精讲内容与例题解析，帮你打牢初高中衔接基础。</p>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-n">10</span><span class="stat-l">知识模块</span></div>
-      <div class="stat"><span class="stat-n">30+</span><span class="stat-l">例题精讲</span></div>
-      <div class="stat"><span class="stat-n">MathJax</span><span class="stat-l">公式渲染</span></div>
+  <div class="hero-badge">开放知识空间 · Open Knowledge</div>
+  <h1>OpenKnowledgeSpace</h1>
+  <p>全面整理初中到高中的数学知识点，深入剖析概念本质，建立系统的知识体系，帮助学习者真正理解数学而非死记硬背。</p>
+  
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-n">10</span>
+      <span class="stat-l">独立章节</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">50+</span>
+      <span class="stat-l">核心知识点</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">100+</span>
+      <span class="stat-l">例题详解</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">开源</span>
+      <span class="stat-l">免费学习</span>
     </div>
   </div>
-  <svg class="hero-visual" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-    <circle cx="120" cy="120" r="110" fill="#dbeafe" opacity=".5"/>
-    <line x1="20" y1="120" x2="220" y2="120" stroke="#1d4ed8" stroke-width="1.5"/>
-    <line x1="120" y1="220" x2="120" y2="20" stroke="#1d4ed8" stroke-width="1.5"/>
-    <path d="M55,195 Q120,35 185,195" fill="none" stroke="#06b6d4" stroke-width="2.5"/>
-    <line x1="45" y1="195" x2="195" y2="45" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
-    <circle cx="120" cy="120" r="52" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,3" opacity=".8"/>
-    <text x="60" y="72" font-size="10" fill="#06b6d4" font-family="serif">y=x²</text>
-    <text x="158" y="55" font-size="10" fill="#f59e0b" font-family="serif">y=x</text>
-    <circle cx="120" cy="120" r="3" fill="#1d4ed8"/>
-  </svg>
 </section>
 
+<!-- INTRODUCTION -->
+<div class="intro-box">
+  <div class="intro-card">
+    <h2>🎯 OpenKnowledgeSpace 是什么?</h2>
+    <p>OpenKnowledgeSpace（开放知识空间）是一个<strong>面向初中到高中的数学知识点整理项目</strong>，致力于系统地整理知识点、深入剖析概念本质、建立知识之间的联系，帮助学习者真正理解数学而非死记硬背。</p>
+    <p>本项目涵盖<strong>初中到高中数学的完整知识体系</strong>，从基础概念到核心原理，从知识点整理到深度理解，让学习者不仅知道「是什么」，更理解「为什么」，建立扎实的数学基础和深刻的数学思维。</p>
+    <ul>
+      <li><strong>知识整理</strong>：系统梳理初中到高中的所有知识点，建立完整的知识体系</li>
+      <li><strong>深度理解</strong>：深入剖析概念本质，理解知识之间的联系和推导过程</li>
+      <li><strong>直观呈现</strong>：通过图形可视化、例题解析，让抽象概念变得直观可感</li>
+      <li><strong>思维培养</strong>：培养数学思维方法，从「知道是什么」到「理解为什么」</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
 <main>
 
-<!-- ══════════════════════════════════════════════════
-     SECTION 1: 初高中对比
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec1">
-  <div class="section-num">1</div>
-  <h2>高中数学与初中数学的区别</h2>
-  <span class="section-tag">思维跨越</span>
+<!-- CHAPTERS SECTION -->
+<div class="section-header" id="chapters">
+  <div class="section-num">📚</div>
+  <h2>章节目录</h2>
 </div>
 
-<div class="card">
-  <h3>思维方式的根本转变</h3>
-  <p>很多同学进入高中后成绩下降，并不是因为不够努力，而是<strong>还在用初中的思维方式学高中数学</strong>。理解这个差异，是高中学好数学的第一步。</p>
-  <table class="cmp-table" style="margin-top:16px">
-    <tr><th>对比维度</th><th>初中数学</th><th>高中数学</th></tr>
-    <tr><td>研究对象</td><td>具体数字和图形</td><td>变量之间的规律与关系</td></tr>
-    <tr><td>核心工具</td><td>方程（求某个值）</td><td>函数（描述整个变化过程）</td></tr>
-    <tr><td>思维层次</td><td>算术思维、几何直觉</td><td>抽象思维、符号推理</td></tr>
-    <tr><td>典型问题</td><td>$x^2=4$ 解为多少？</td><td>$f(x)=x^2$ 有哪些性质？</td></tr>
-    <tr><td>图形作用</td><td>辅助计算</td><td>与代数等价，数形结合</td></tr>
-    <tr><td>难点来源</td><td>计算繁琐</td><td>概念抽象、逻辑严密</td></tr>
-  </table>
+<div class="chapter-grid">
+  
+  <!-- Chapter 01 -->
+  <div class="chapter-card">
+    <a href="chapter_01_初高中数学思维衔接/" class="chapter-link"></a>
+    <div class="chapter-num">01</div>
+    <div class="chapter-title">初高中数学思维衔接</div>
+    <div class="chapter-desc">理解高中数学的思维本质：函数思想、数形结合、分类讨论，避免思维障碍。</div>
+    <span class="chapter-tag">思维跨越</span>
+  </div>
+
+  <!-- Chapter 02 -->
+  <div class="chapter-card">
+    <a href="chapter_02_实数与运算基础/" class="chapter-link"></a>
+    <div class="chapter-num">02</div>
+    <div class="chapter-title">实数与运算基础</div>
+    <div class="chapter-desc">实数分类、绝对值本质、指数运算法则，高中运算的基石。</div>
+    <span class="chapter-tag">数的世界</span>
+  </div>
+
+  <!-- Chapter 03 -->
+  <div class="chapter-card">
+    <a href="chapter_03_整式与因式分解/" class="chapter-link"></a>
+    <div class="chapter-num">03</div>
+    <div class="chapter-title">整式与因式分解</div>
+    <div class="chapter-desc">完全平方、平方差公式、十字相乘法，高中代数的核心工具。</div>
+    <span class="chapter-tag">代数基础</span>
+  </div>
+
+  <!-- Chapter 04 -->
+  <div class="chapter-card">
+    <a href="chapter_04_分式与根式/" class="chapter-link"></a>
+    <div class="chapter-num">04</div>
+    <div class="chapter-title">分式与根式</div>
+    <div class="chapter-desc">分式化简、根式有理化、嵌套根号处理，函数运算的基础。</div>
+    <span class="chapter-tag">有理化</span>
+  </div>
+
+  <!-- Chapter 05 -->
+  <div class="chapter-card">
+    <a href="chapter_05_一元二次方程/" class="chapter-link"></a>
+    <div class="chapter-num">05</div>
+    <div class="chapter-title">一元二次方程</div>
+    <div class="chapter-desc">求根公式、判别式、韦达定理，高中方程理论的核心。</div>
+    <span class="chapter-tag">高中核心衔接</span>
+  </div>
+
+  <!-- Chapter 06 -->
+  <div class="chapter-card">
+    <a href="chapter_06_函数思想基础/" class="chapter-link"></a>
+    <div class="chapter-num">06</div>
+    <div class="chapter-title">函数思想基础</div>
+    <div class="chapter-desc">定义域、值域、单调性、奇偶性，高中数学的灵魂概念。</div>
+    <span class="chapter-tag">⭐ 高中数学之魂</span>
+  </div>
+
+  <!-- Chapter 07 -->
+  <div class="chapter-card">
+    <a href="chapter_07_平面直角坐标系/" class="chapter-link"></a>
+    <div class="chapter-num">07</div>
+    <div class="chapter-title">平面直角坐标系</div>
+    <div class="chapter-desc">距离公式、中点公式、斜率概念，解析几何的基础。</div>
+    <span class="chapter-tag">解析几何基础</span>
+  </div>
+
+  <!-- Chapter 08 -->
+  <div class="chapter-card">
+    <a href="chapter_08_几何与勾股定理/" class="chapter-link"></a>
+    <div class="chapter-num">08</div>
+    <div class="chapter-title">几何与勾股定理</div>
+    <div class="chapter-desc">勾股数组、相似三角形、几何证明，三角函数的前置知识。</div>
+    <span class="chapter-tag">三角函数的源头</span>
+  </div>
+
+  <!-- Chapter 09 -->
+  <div class="chapter-card">
+    <a href="chapter_09_三角函数预备/" class="chapter-link"></a>
+    <div class="chapter-num">09</div>
+    <div class="chapter-title">三角函数预备</div>
+    <div class="chapter-desc">特殊角、单位圆定义、三角恒等式，高中三角函数的起点。</div>
+    <span class="chapter-tag">单位圆</span>
+  </div>
+
+  <!-- Chapter 10 -->
+  <div class="chapter-card">
+    <a href="chapter_10_集合与逻辑初步/" class="chapter-link"></a>
+    <div class="chapter-num">10</div>
+    <div class="chapter-title">集合与逻辑初步</div>
+    <div class="chapter-desc">集合运算、韦恩图、逻辑推理，高中数学第一章的内容。</div>
+    <span class="chapter-tag">高中第一章</span>
+  </div>
+
 </div>
 
-<div class="two-col">
-  <div class="card">
-    <h3>初中思维：「解题得到答案」</h3>
-    <p><strong>解方程 $x^2 - 4 = 0$</strong></p>
-    <p>初中做法：移项→开方，得 $x = \pm 2$，问题结束。</p>
-    <div class="highlight">
-      <p>💡 初中关注的是「这道题的答案是多少」，目标是一个具体数字。</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>高中思维：「研究整个规律」</h3>
-    <p><strong>研究 $f(x) = x^2 - 4$</strong></p>
-    <p>高中要问：定义域？值域？单调区间？图像形状？零点位置？最小值？奇偶性？</p>
-    <div class="info-box">
-      <p>✅ 高中关注的是「这个函数的全貌」，同一个式子能挖掘出几十个问题。</p>
-    </div>
-  </div>
+<!-- FEATURES SECTION -->
+<div class="section-header" id="features">
+  <div class="section-num" style="background:linear-gradient(135deg,#10b981,#06b6d4)">✨</div>
+  <h2>特色亮点</h2>
 </div>
 
-<div class="card">
-  <h3>高中数学的三大核心思想</h3>
-  <div class="three-col">
-    <div class="method-card">
-      <h4>① 函数思想</h4>
-      <p>用 $y=f(x)$ 描述两个量的对应关系，研究变化趋势。高中80%的内容本质上都是在研究函数。</p>
-    </div>
-    <div class="method-card">
-      <h4>② 数形结合</h4>
-      <p>代数问题转化为几何图形来直观理解，几何结论用代数式精确表达。两种语言互相翻译。</p>
-    </div>
-    <div class="method-card">
-      <h4>③ 分类讨论</h4>
-      <p>当出现字母参数、绝对值、根号等情况时，需要针对不同情形分别讨论，不能一刀切。</p>
-    </div>
+<div class="feature-grid">
+  <div class="feature-box">
+    <div class="feature-icon">📖</div>
+    <div class="feature-title">知识开源</div>
+    <div class="feature-desc">所有内容开源免费，GitHub托管，欢迎贡献。</div>
   </div>
-</div>
-
-<!-- 例题 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 1.1</span>
-    <span class="example-title">感受初高中思维差异</span>
+  
+  <div class="feature-box">
+    <div class="feature-icon">🎨</div>
+    <div class="feature-title">视觉呈现</div>
+    <div class="feature-desc">SVG图形、函数图像，让抽象概念可视化。</div>
   </div>
-  <div class="example-body">
-    <div class="example-q">
-      <strong>【初中问题】</strong>已知一个矩形的长比宽多 $3$，面积为 $28$，求长和宽。<br>
-      <strong>【高中问题】</strong>若矩形的宽为 $x$，面积为 $f(x) = x(x+3)$，求使面积超过 $28$ 的宽的范围。
-    </div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看分析</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        <strong>初中解法：</strong>设宽为 $x$，则长为 $x+3$，面积方程：$x(x+3)=28$，即 $x^2+3x-28=0$，解得 $x=4$（舍负），长 $=7$。问题结束。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>高中分析：</strong>要研究 $f(x)=x(x+3)>28$，即 $x^2+3x-28>0$，即 $(x-4)(x+7)>0$，因为宽 $x>0$，所以解集为 $x>4$。
-      </div></div>
-      <div class="sol-ans"><p>高中问题的答案是一个「范围」，而不是一个数。这正是函数思想——关注变量变化的整个区间。</p></div>
-    </div>
+  
+  <div class="feature-box">
+    <div class="feature-icon">🧠</div>
+    <div class="feature-title">思维导向</div>
+    <div class="feature-desc">强调理解而非记忆，培养数学思维方法。</div>
   </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 2: 实数运算
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec2">
-  <div class="section-num">2</div>
-  <h2>实数与运算基础</h2>
-  <span class="section-tag">数的世界</span>
-</div>
-
-<div class="card">
-  <h3>实数的分类体系</h3>
-  <svg viewBox="0 0 580 195" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:220px;display:block">
-    <rect x="4" y="4" width="572" height="187" rx="14" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.8"/>
-    <text x="18" y="26" font-size="13" font-weight="bold" fill="#1d4ed8" font-family="serif">实数 ℝ（所有数）</text>
-    <rect x="20" y="33" width="370" height="145" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
-    <text x="34" y="52" font-size="12" font-weight="bold" fill="#7c3aed" font-family="serif">有理数 ℚ（有限或无限循环小数）</text>
-    <rect x="36" y="60" width="210" height="105" rx="8" fill="#dcfce7" stroke="#059669" stroke-width="1.4"/>
-    <text x="48" y="77" font-size="11" font-weight="bold" fill="#059669" font-family="serif">整数 ℤ</text>
-    <rect x="50" y="84" width="110" height="68" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.3"/>
-    <text x="62" y="101" font-size="10" font-weight="bold" fill="#d97706">自然数 ℕ</text>
-    <text x="62" y="116" font-size="8.5" fill="#92400e">0, 1, 2, 3, 4…</text>
-    <text x="62" y="128" font-size="8.5" fill="#92400e">（含0，正整数）</text>
-    <text x="62" y="140" font-size="8.5" fill="#92400e">整除、完全平方数</text>
-    <text x="174" y="110" font-size="8.5" fill="#064e3b">负整数</text>
-    <text x="174" y="122" font-size="8.5" fill="#064e3b">-1,-2,-3…</text>
-    <text x="262" y="110" font-size="8.5" fill="#3b0764">分数/有限小数</text>
-    <text x="262" y="122" font-size="8.5" fill="#3b0764">½, 0.3, -¾</text>
-    <text x="262" y="134" font-size="8.5" fill="#3b0764">0.333…（循环）</text>
-    <text x="408" y="110" font-size="11" font-weight="bold" fill="#1e3a8a" font-family="serif">无理数</text>
-    <text x="406" y="124" font-size="8.5" fill="#1e3a8a">√2, √3, π, e</text>
-    <text x="406" y="136" font-size="8.5" fill="#1e3a8a">无限不循环小数</text>
-    <text x="406" y="148" font-size="8.5" fill="#1e3a8a">不能写成分数形式</text>
-  </svg>
-  <div class="warn-box" style="margin-top:14px">
-    <p>⚠️ 常见误区：$0$ 是整数、也是自然数、也是有理数，<strong>但不是正整数，也不是负整数</strong>。$0$ 既不是正数也不是负数。</p>
-  </div>
-</div>
-
-<div class="card">
-  <h3>绝对值的本质</h3>
-  <p>绝对值描述的是数轴上某点到原点的<strong>距离</strong>，距离永远非负。</p>
-  <div class="formula-box">
-    <div class="label">绝对值定义</div>
-    $$|a| = \begin{cases} a & \text{当 } a \geq 0 \\ -a & \text{当 } a < 0 \end{cases}
-    \qquad \text{几何意义：} |a-b| \text{ 表示数轴上 } a \text{ 与 } b \text{ 的距离}$$
-  </div>
-  <div class="formula-grid">
-    <div class="formula-item"><div class="fi-label">非负性</div>$|a| \geq 0$，且 $|a|=0 \Leftrightarrow a=0$</div>
-    <div class="formula-item"><div class="fi-label">对称性</div>$|-a|=|a|$</div>
-    <div class="formula-item"><div class="fi-label">绝对值与平方根</div>$\sqrt{a^2}=|a|$（非常重要！）</div>
-    <div class="formula-item"><div class="fi-label">三角不等式</div>$|a+b| \leq |a|+|b|$</div>
-    <div class="formula-item"><div class="fi-label">乘法</div>$|ab|=|a||b|$</div>
-    <div class="formula-item"><div class="fi-label">距离</div>$|a-b|$ = $a$、$b$ 之间的距离</div>
+  
+  <div class="feature-box">
+    <div class="feature-icon">🖱️</div>
+    <div class="feature-title">可交互</div>
+    <div class="feature-desc">可展开的解题步骤、动态图形演示，主动学习。</div>
   </div>
 </div>
 
-<!-- 例题 2.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 2.1</span>
-    <span class="example-title">绝对值方程</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">解方程 $|2x - 3| = 5$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        绝对值方程 $|A| = c$（$c \geq 0$）等价于 $A = c$ 或 $A = -c$，分两种情况讨论：
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>情况一：</strong>$2x - 3 = 5$，解得 $2x = 8$，$x = 4$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        <strong>情况二：</strong>$2x - 3 = -5$，解得 $2x = -2$，$x = -1$
-      </div></div>
-      <div class="sol-ans"><p>解为 $x = 4$ 或 $x = -1$。</p></div>
-      <div class="sol-note"><p>🔍 几何理解：$|2x-3|=5$ 等价于 $2x$ 与 $3$ 的距离为 $5$，即 $2x=8$ 或 $2x=-2$。</p></div>
-    </div>
-  </div>
+<!-- ABOUT SECTION -->
+<div class="section-header" id="about">
+  <div class="section-num" style="background:linear-gradient(135deg,#7c3aed,#6366f1)">ℹ️</div>
+  <h2>关于项目</h2>
 </div>
 
-<!-- 例题 2.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 2.2</span>
-    <span class="example-title">根式化简（含绝对值）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">化简 $\sqrt{a^2 - 2a + 1}$，当 $a < 1$ 时。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        首先识别被开方数的结构：$a^2 - 2a + 1 = (a-1)^2$（完全平方式）
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        因此 $\sqrt{a^2-2a+1} = \sqrt{(a-1)^2} = |a-1|$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        当 $a < 1$ 时，$a - 1 < 0$，所以 $|a-1| = -(a-1) = 1 - a$
-      </div></div>
-      <div class="sol-ans"><p>当 $a < 1$ 时，$\sqrt{a^2-2a+1} = 1-a$。</p></div>
-      <div class="sol-note"><p>⚠️ 最常见错误：直接写 $\sqrt{(a-1)^2}=a-1$，忽视了 $a<1$ 导致 $a-1<0$，结果应取绝对值。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 2.3 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 2.3</span>
-    <span class="example-title">指数运算综合</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">计算 $\dfrac{(2^3 \times 2^{-1})^2}{2^4 \div 2^2}$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        <strong>处理分子：</strong>括号内 $2^3 \times 2^{-1} = 2^{3+(-1)} = 2^2$，再平方 $(2^2)^2 = 2^4$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>处理分母：</strong>$2^4 \div 2^2 = 2^{4-2} = 2^2 = 4$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        <strong>整体：</strong>$\dfrac{2^4}{2^2} = 2^{4-2} = 2^2 = 4$
-      </div></div>
-      <div class="sol-ans"><p>结果为 $4$。</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>指数六大法则（高中指数函数的基础）</h3>
-  <div class="formula-grid">
-    <div class="formula-item"><div class="fi-label">同底相乘（指数相加）</div>$a^m \cdot a^n = a^{m+n}$</div>
-    <div class="formula-item"><div class="fi-label">同底相除（指数相减）</div>$\dfrac{a^m}{a^n} = a^{m-n}$</div>
-    <div class="formula-item"><div class="fi-label">幂的乘方（指数相乘）</div>$(a^m)^n = a^{mn}$</div>
-    <div class="formula-item"><div class="fi-label">积的乘方</div>$(ab)^n = a^n b^n$</div>
-    <div class="formula-item"><div class="fi-label">零次幂</div>$a^0 = 1 \quad (a \neq 0)$</div>
-    <div class="formula-item"><div class="fi-label">负整数次幂</div>$a^{-n} = \dfrac{1}{a^n} \quad (a \neq 0)$</div>
-  </div>
-  <div class="info-box" style="margin-top:14px">
-    <p>✅ 高中还会学到：$a^{1/n} = \sqrt[n]{a}$（分数次幂），这六条法则同样适用，理解这里的规律对高中指数函数至关重要。</p>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 3: 整式与因式分解
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec3">
-  <div class="section-num">3</div>
-  <h2>整式与因式分解</h2>
-  <span class="section-tag">代数基础</span>
-</div>
-
-<div class="card">
-  <h3>必须烂熟于心的公式</h3>
-  <div class="formula-grid">
-    <div class="formula-item"><div class="fi-label">完全平方（和）</div>$(a+b)^2 = a^2 + 2ab + b^2$</div>
-    <div class="formula-item"><div class="fi-label">完全平方（差）</div>$(a-b)^2 = a^2 - 2ab + b^2$</div>
-    <div class="formula-item"><div class="fi-label">平方差</div>$(a+b)(a-b) = a^2 - b^2$</div>
-    <div class="formula-item"><div class="fi-label">立方和</div>$a^3+b^3=(a+b)(a^2-ab+b^2)$</div>
-    <div class="formula-item"><div class="fi-label">立方差</div>$a^3-b^3=(a-b)(a^2+ab+b^2)$</div>
-    <div class="formula-item"><div class="fi-label">三项展开</div>$(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>因式分解的三种主要方法</h3>
-  <div class="three-col">
-    <div class="method-card">
-      <h4>① 提公因式法</h4>
-      <p>找出各项的公共因子，整体提出。<br>例：$6x^2+9x = 3x(2x+3)$</p>
-    </div>
-    <div class="method-card">
-      <h4>② 公式法</h4>
-      <p>利用完全平方、平方差等公式。<br>例：$x^2-9=(x+3)(x-3)$</p>
-    </div>
-    <div class="method-card">
-      <h4>③ 十字相乘法</h4>
-      <p>适用于 $ax^2+bx+c$，找两数之积为 $ac$、和为 $b$。</p>
-    </div>
-  </div>
-  <div class="highlight" style="margin-top:14px">
-    <p>🔗 <strong>为什么因式分解这么重要？</strong>高中中，解二次方程靠因式分解；化简三角函数表达式靠因式分解；求函数零点靠因式分解；导数运算中提取公因子也靠因式分解。</p>
-  </div>
-</div>
-
-<!-- 例题 3.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 3.1</span>
-    <span class="example-title">十字相乘法详解</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">分解因式：$2x^2 + 7x + 3$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        对于 $ax^2+bx+c$，需要找两个数 $p, q$，使得 $p \cdot q = a \cdot c = 2 \times 3 = 6$，且 $p + q = b = 7$。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        列举积为 $6$ 的正整数对：$(1,6),(2,3)$。检验和：$1+6=7$ ✓（找到了）
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        拆中间项：$2x^2 + 7x + 3 = 2x^2 + x + 6x + 3$
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        分组提取公因子：$= x(2x+1) + 3(2x+1) = (2x+1)(x+3)$
-      </div></div>
-      <div class="sol-ans"><p>$2x^2+7x+3 = (2x+1)(x+3)$</p></div>
-      <div class="sol-note"><p>🔍 验证：$(2x+1)(x+3) = 2x^2+6x+x+3 = 2x^2+7x+3$ ✓</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 3.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 3.2</span>
-    <span class="example-title">综合运用（换元法）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">分解因式：$(x^2+x)^2 - 8(x^2+x) + 12$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        观察到 $x^2+x$ 反复出现，令 $t = x^2+x$，原式变为：$t^2 - 8t + 12$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        对 $t^2-8t+12$ 分解：找积为 $12$、和为 $-8$ 的两数：$(-2) \times (-6) = 12$，$(-2)+(-6)=-8$ ✓
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        $t^2-8t+12 = (t-2)(t-6)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        回代 $t = x^2+x$：$(x^2+x-2)(x^2+x-6)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">5</span><div>
-        继续分解：$x^2+x-2=(x+2)(x-1)$，$x^2+x-6=(x+3)(x-2)$
-      </div></div>
-      <div class="sol-ans"><p>$(x+2)(x-1)(x+3)(x-2)$</p></div>
-      <div class="sol-note"><p>📌 换元法是高中数学的重要解题策略，在三角函数、数列等章节中频繁使用。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 3.3 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 3.3</span>
-    <span class="example-title">完全平方式的配凑</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">判断 $x^2 + 6x + 10$ 能否分解为整系数因式之积，并配成完全平方形式。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        尝试十字相乘：找积为 $10$、和为 $6$ 的两整数，$(2,5)$：$2+5=7≠6$，$(1,10)$：$1+10=11≠6$，均不满足。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>结论：</strong>不能在整数范围内分解。用配方法改写：
-        $$x^2+6x+10 = (x^2+6x+9)+1 = (x+3)^2+1$$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        由于 $(x+3)^2 \geq 0$，所以 $(x+3)^2+1 \geq 1 > 0$，说明该二次式对所有实数 $x$ 恒大于零，即方程 $x^2+6x+10=0$ 无实数解（判别式 $\Delta=36-40=-4 < 0$）。
-      </div></div>
-      <div class="sol-ans"><p>$x^2+6x+10=(x+3)^2+1$，在实数范围内不可分解。最小值为 $1$（当 $x=-3$ 时取得）。</p></div>
-      <div class="sol-note"><p>📌 配方法是高中求二次函数最值的核心方法，也是顶点坐标公式的来源。</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 4: 分式与根式
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec4">
-  <div class="section-num">4</div>
-  <h2>分式与根式</h2>
-  <span class="section-tag">有理化</span>
-</div>
-
-<div class="two-col">
-  <div class="card">
-    <h3>分式的核心原则</h3>
-    <p>分式 $\dfrac{A}{B}$ 有意义的前提：$B \neq 0$。</p>
-    <div class="formula-box">
-      <div class="label">分式基本性质</div>
-      $$\frac{A}{B} = \frac{A \cdot C}{B \cdot C} \quad (C \neq 0)$$
-    </div>
-    <div class="formula-box">
-      <div class="label">运算法则</div>
-      $$\frac{a}{b} \pm \frac{c}{d} = \frac{ad \pm bc}{bd}, \quad \frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}$$
-    </div>
-    <div class="warn-box">
-      <p>⚠️ 分母不能为零，这在高中求函数<strong>定义域</strong>时是第一个要检查的条件。</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>根式运算与有理化</h3>
-    <div class="formula-box">
-      <div class="label">根式基本运算</div>
-      $$\sqrt{a} \cdot \sqrt{b} = \sqrt{ab}, \quad \frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}} \quad (a,b \geq 0)$$
-    </div>
-    <div class="formula-box">
-      <div class="label">有理化分母</div>
-      $$\frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}, \quad \frac{1}{\sqrt{a}-\sqrt{b}} = \frac{\sqrt{a}+\sqrt{b}}{a-b}$$
-    </div>
-    <div class="key-box">
-      <p>📌 有理化的目的：将分母中的根号消去，使表达式更简洁，便于计算。</p>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 4.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 4.1</span>
-    <span class="example-title">化简分式（先因式分解）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">化简：$\dfrac{x^2 - 4}{x^2 - x - 2}$，并指出其无意义的条件。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        分解分子：$x^2-4 = (x+2)(x-2)$（平方差公式）
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        分解分母：$x^2-x-2$，找积为 $-2$、和为 $-1$ 的两数：$-2$ 和 $1$，故 $x^2-x-2=(x-2)(x+1)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        约分：$\dfrac{(x+2)(x-2)}{(x-2)(x+1)} = \dfrac{x+2}{x+1}$（其中 $x \neq 2$）
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        分母无意义的条件：分母 $x^2-x-2=0$ 时，即 $x=2$ 或 $x=-1$ 时，分式无意义。
-      </div></div>
-      <div class="sol-ans"><p>化简结果为 $\dfrac{x+2}{x+1}$，其中 $x \neq 2$ 且 $x \neq -1$。</p></div>
-      <div class="sol-note"><p>⚠️ 约分后 $x \neq 2$ 的限制不能丢失，即使结果中分母不含 $(x-2)$，也必须注明。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 4.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 4.2</span>
-    <span class="example-title">分母有理化</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">化简：$\dfrac{3}{\sqrt{5} - \sqrt{2}}$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        分母为 $\sqrt{5}-\sqrt{2}$，其有理化因子为 $\sqrt{5}+\sqrt{2}$（共轭根式）。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        分子分母同乘 $(\sqrt{5}+\sqrt{2})$：
-        $$\frac{3}{\sqrt{5}-\sqrt{2}} \times \frac{\sqrt{5}+\sqrt{2}}{\sqrt{5}+\sqrt{2}} = \frac{3(\sqrt{5}+\sqrt{2})}{(\sqrt{5})^2-(\sqrt{2})^2}$$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        分母：$5 - 2 = 3$，整理得：$\dfrac{3(\sqrt{5}+\sqrt{2})}{3} = \sqrt{5}+\sqrt{2}$
-      </div></div>
-      <div class="sol-ans"><p>$\dfrac{3}{\sqrt{5}-\sqrt{2}} = \sqrt{5}+\sqrt{2}$</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 4.3 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 4.3</span>
-    <span class="example-title">化简根式（嵌套根号）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">化简 $\sqrt{3 - 2\sqrt{2}}$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        观察被开方数：$3 - 2\sqrt{2}$，尝试凑成完全平方形式 $(a-b)^2 = a^2 - 2ab + b^2$。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $3 - 2\sqrt{2} = 2 - 2\sqrt{2} + 1 = (\sqrt{2})^2 - 2 \cdot \sqrt{2} \cdot 1 + 1^2 = (\sqrt{2}-1)^2$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        $\sqrt{3-2\sqrt{2}} = \sqrt{(\sqrt{2}-1)^2} = |\sqrt{2}-1| = \sqrt{2}-1$（因为 $\sqrt{2} > 1$）
-      </div></div>
-      <div class="sol-ans"><p>$\sqrt{3-2\sqrt{2}} = \sqrt{2}-1$</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 5: 一元二次方程
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec5">
-  <div class="section-num">5</div>
-  <h2>一元二次方程</h2>
-  <span class="section-tag">高中核心衔接</span>
-</div>
-
-<div class="card">
-  <h3>三种解法对比</h3>
-  <p>以 $x^2 - 5x + 6 = 0$ 为例，展示三种解法的思路差异：</p>
-  <div class="three-col" style="margin-top:12px">
-    <div class="method-card">
-      <h4>① 因式分解法</h4>
-      <p>$x^2-5x+6=(x-2)(x-3)=0$</p>
-      <p>$\Rightarrow x=2$ 或 $x=3$</p>
-      <p style="margin-top:8px;font-size:.8rem;color:var(--green)">✅ 最快，适合能直接分解的情况</p>
-    </div>
-    <div class="method-card">
-      <h4>② 配方法</h4>
-      <p>$x^2-5x+\frac{25}{4}=6-\frac{1}{4}$</p>
-      <p>$(x-\frac{5}{2})^2=\frac{1}{4}$</p>
-      <p>$x=\frac{5}{2}\pm\frac{1}{2}$</p>
-    </div>
-    <div class="method-card">
-      <h4>③ 求根公式</h4>
-      <p>$a=1,b=-5,c=6$</p>
-      <p>$\Delta=25-24=1$</p>
-      <p>$x=\dfrac{5\pm1}{2}$</p>
-    </div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>求根公式与判别式</h3>
-  <div class="formula-box">
-    <div class="label">求根公式（万能方法）</div>
-    $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \quad (a \neq 0)$$
-  </div>
-  <div class="formula-box">
-    <div class="label">判别式 Δ 决定根的个数</div>
-    $$\Delta = b^2 - 4ac$$
-  </div>
-  <table>
-    <tr><th>判别式</th><th>根的情况</th><th>图像与 $x$ 轴关系</th><th>举例</th></tr>
-    <tr><td>$\Delta > 0$</td><td>两个不等实根</td><td>两个交点</td><td>$x^2-5x+6=0$</td></tr>
-    <tr><td>$\Delta = 0$</td><td>两个相等实根（重根）</td><td>一个切点（相切）</td><td>$x^2-2x+1=0$</td></tr>
-    <tr><td>$\Delta < 0$</td><td>无实数根</td><td>不相交</td><td>$x^2+x+1=0$</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <h3>韦达定理（根与系数关系）</h3>
-  <p>设 $ax^2+bx+c=0$（$a\neq0$）的两根为 $x_1, x_2$，则：</p>
-  <div class="formula-box">
-    $$x_1 + x_2 = -\frac{b}{a} \qquad x_1 \cdot x_2 = \frac{c}{a}$$
-  </div>
-  <div class="key-box">
-    <p>📌 韦达定理让你在<strong>不解出方程</strong>的情况下，直接得到两根之和与积，在高中数列、解析几何中大量使用。</p>
-  </div>
-</div>
-
-<!-- 例题 5.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 5.1</span>
-    <span class="example-title">配方法完整演示</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">用配方法解方程 $2x^2 - 4x - 1 = 0$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        两边除以 $2$（使 $x^2$ 系数为 $1$）：$x^2 - 2x - \dfrac{1}{2} = 0$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        移项：$x^2 - 2x = \dfrac{1}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        两边加上 $\left(\dfrac{-2}{2}\right)^2 = 1$（配成完全平方）：$x^2 - 2x + 1 = \dfrac{1}{2} + 1 = \dfrac{3}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        左边变成完全平方：$(x-1)^2 = \dfrac{3}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">5</span><div>
-        两边开方：$x - 1 = \pm\sqrt{\dfrac{3}{2}} = \pm\dfrac{\sqrt{6}}{2}$，得 $x = 1 \pm \dfrac{\sqrt{6}}{2}$
-      </div></div>
-      <div class="sol-ans"><p>$x_1 = 1 + \dfrac{\sqrt{6}}{2}$，$x_2 = 1 - \dfrac{\sqrt{6}}{2}$</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 5.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 5.2</span>
-    <span class="example-title">韦达定理应用</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知方程 $x^2 - 3x + k = 0$ 的两根之差为 $1$，求 $k$ 的值。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        设两根为 $x_1, x_2$。由韦达定理：$x_1+x_2=3$，$x_1 x_2 = k$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        已知 $|x_1-x_2|=1$，即 $(x_1-x_2)^2=1$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        展开：$(x_1-x_2)^2 = (x_1+x_2)^2 - 4x_1 x_2 = 9 - 4k = 1$
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        解得 $4k = 8$，$k = 2$
-      </div></div>
-      <div class="sol-step"><span class="step-num">5</span><div>
-        验证：方程 $x^2-3x+2=0$，即 $(x-1)(x-2)=0$，两根 $1$ 和 $2$，差确实为 $1$ ✓
-      </div></div>
-      <div class="sol-ans"><p>$k = 2$</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 5.3 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 5.3</span>
-    <span class="example-title">判别式的应用</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知方程 $x^2 + mx + m + 3 = 0$ 有两个实数根，求 $m$ 的取值范围。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        方程有实数根的条件：判别式 $\Delta \geq 0$。这里 $a=1, b=m, c=m+3$。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $\Delta = m^2 - 4(m+3) \geq 0$，即 $m^2 - 4m - 12 \geq 0$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        分解：$(m-6)(m+2) \geq 0$，解得 $m \leq -2$ 或 $m \geq 6$
-      </div></div>
-      <div class="sol-ans"><p>$m$ 的取值范围为 $m \leq -2$ 或 $m \geq 6$，即 $(-\infty,-2] \cup [6,+\infty)$</p></div>
-      <div class="sol-note"><p>📌 这类含参数的判别式问题在高中极为常见，是高考必考知识点。</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 6: 函数思想
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec6">
-  <div class="section-num">6</div>
-  <h2>函数思想（最核心）</h2>
-  <span class="section-tag">⭐ 高中数学之魂</span>
-</div>
-
-<div class="card">
-  <h3>函数的三要素</h3>
-  <div class="three-col">
-    <div class="method-card">
-      <h4>① 定义域</h4>
-      <p>自变量 $x$ 的所有合法取值集合。求定义域就是找「$x$ 能取哪些值」。</p>
-    </div>
-    <div class="method-card">
-      <h4>② 值域</h4>
-      <p>函数所有可能输出的 $y$ 值的集合。往往比定义域更难求。</p>
-    </div>
-    <div class="method-card">
-      <h4>③ 对应法则</h4>
-      <p>从 $x$ 到 $y$ 的计算规则。同一 $x$ 只能对应<strong>唯一</strong>的 $y$（竖线测试）。</p>
-    </div>
-  </div>
-  <div class="formula-box" style="margin-top:14px">
-    <div class="label">求定义域的常见限制</div>
-    $$\text{分母} \neq 0; \quad \text{偶次根号内} \geq 0; \quad \log \text{ 内} > 0; \quad \text{指数函数无限制}$$
-  </div>
-</div>
-
-<div class="card">
-  <h3>函数的单调性、奇偶性</h3>
-  <div class="two-col">
-    <div>
-      <div class="formula-box">
-        <div class="label">单调递增</div>
-        $$x_1 < x_2 \Rightarrow f(x_1) < f(x_2)$$
-      </div>
-      <div class="formula-box">
-        <div class="label">单调递减</div>
-        $$x_1 < x_2 \Rightarrow f(x_1) > f(x_2)$$
-      </div>
-    </div>
-    <div>
-      <div class="formula-box">
-        <div class="label">奇函数（原点对称）</div>
-        $$f(-x) = -f(x), \quad \text{且定义域关于原点对称}$$
-      </div>
-      <div class="formula-box">
-        <div class="label">偶函数（$y$ 轴对称）</div>
-        $$f(-x) = f(x), \quad \text{且定义域关于原点对称}$$
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Function graph SVG -->
-<div class="graph-card">
-  <h3>常见函数图像对比</h3>
-  <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:300px">
-    <defs>
-      <marker id="g1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#475569"/></marker>
-      <marker id="g2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L6,6 L3,0 z" fill="#475569"/></marker>
-    </defs>
-    <!-- ── Graph 1: y = x (linear) ── -->
-    <text x="10" y="16" font-size="11" fill="#1d4ed8" font-weight="bold">y = x（一次函数）</text>
-    <line x1="10" y1="130" x2="165" y2="130" stroke="#475569" stroke-width="1.2" marker-end="url(#g1)"/>
-    <line x1="87" y1="240" x2="87" y2="25" stroke="#475569" stroke-width="1.2" marker-end="url(#g2)"/>
-    <line x1="10" y1="207" x2="165" y2="53" stroke="#f59e0b" stroke-width="2.5"/>
-    <text x="138" y="62" font-size="9" fill="#f59e0b">y=x</text>
-    <circle cx="87" cy="130" r="3" fill="#f59e0b"/>
-    <text x="91" y="140" font-size="8" fill="#475569">O</text>
-
-    <!-- ── Graph 2: y = x^2 (quadratic) ── -->
-    <text x="188" y="16" font-size="11" fill="#1d4ed8" font-weight="bold">y = x²（二次函数）</text>
-    <line x1="185" y1="130" x2="345" y2="130" stroke="#475569" stroke-width="1.2" marker-end="url(#g1)"/>
-    <line x1="263" y1="240" x2="263" y2="25" stroke="#475569" stroke-width="1.2" marker-end="url(#g2)"/>
-    <path d="M 203,230 Q 263,30 323,230" fill="none" stroke="#06b6d4" stroke-width="2.5"/>
-    <text x="316" y="185" font-size="9" fill="#06b6d4">y=x²</text>
-    <circle cx="263" cy="130" r="3.5" fill="#06b6d4"/>
-    <text x="267" y="140" font-size="8" fill="#475569">O</text>
-    <text x="268" y="133" font-size="7" fill="#06b6d4">顶点(0,0)</text>
-
-    <!-- ── Graph 3: y = 1/x (rational) ── -->
-    <text x="362" y="16" font-size="11" fill="#1d4ed8" font-weight="bold">y = 1/x（反比例函数）</text>
-    <line x1="357" y1="130" x2="520" y2="130" stroke="#475569" stroke-width="1.2" marker-end="url(#g1)"/>
-    <line x1="435" y1="240" x2="435" y2="25" stroke="#475569" stroke-width="1.2" marker-end="url(#g2)"/>
-    <!-- Hyperbola Q1 -->
-    <path d="M 448,35 Q 460,75 490,105 S 520,120 525,125" fill="none" stroke="#10b981" stroke-width="2.2"/>
-    <!-- Hyperbola Q3 -->
-    <path d="M 345,135 Q 355,140 380,155 S 415,185 422,225" fill="none" stroke="#10b981" stroke-width="2.2"/>
-    <text x="488" y="100" font-size="9" fill="#10b981">y=1/x</text>
-    <text x="362" y="188" font-size="9" fill="#10b981">(奇函数)</text>
-    <text x="441" y="138" font-size="8" fill="#475569">O</text>
-
-    <!-- ── Graph 4: y = |x| (absolute) ── -->
-    <text x="540" y="16" font-size="11" fill="#1d4ed8" font-weight="bold">y = |x|（绝对值）</text>
-    <line x1="535" y1="130" x2="680" y2="130" stroke="#475569" stroke-width="1.2" marker-end="url(#g1)"/>
-    <line x1="610" y1="240" x2="610" y2="25" stroke="#475569" stroke-width="1.2" marker-end="url(#g2)"/>
-    <polyline points="540,240 610,130 680,240" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linejoin="round"/>
-    <text x="660" y="200" font-size="9" fill="#ef4444">y=|x|</text>
-    <circle cx="610" cy="130" r="3.5" fill="#ef4444"/>
-    <text x="614" y="142" font-size="7" fill="#ef4444">最小值(0,0)</text>
-    <text x="618" y="140" font-size="8" fill="#475569">O</text>
-  </svg>
-  <p class="graph-caption">
-    <span style="color:#f59e0b">■</span> 一次函数（单调） &nbsp;
-    <span style="color:#06b6d4">■</span> 二次函数（有顶点、轴对称） &nbsp;
-    <span style="color:#10b981">■</span> 反比例（奇函数、双曲线） &nbsp;
-    <span style="color:#ef4444">■</span> 绝对值（偶函数、V形）
+<div class="card" style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:28px;margin-bottom:24px">
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--navy);margin-bottom:16px">OpenKnowledgeSpace 是什么?</h3>
+  <p style="font-size:.92rem;color:var(--text);line-height:1.9;margin-bottom:12px">
+    OpenKnowledgeSpace（开放知识空间）是一个<strong>开源的数学知识分享项目</strong>，致力于通过系统化的知识组织、直观的可视化呈现、深入的例题解析，帮助学习者建立扎实的数学基础和深刻的数学理解。
   </p>
-</div>
-
-<!-- 例题 6.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 6.1</span>
-    <span class="example-title">求函数定义域</span>
+  <p>本项目持续建设中，未来将逐步覆盖初中到高中的完整数学知识体系，让每个知识点都有清晰的整理和深刻的解读。</p>
+  
+  <div class="formula-box" style="background:var(--formula-bg);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 20px;margin:16px 0">
+    <div class="label" style="font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">项目愿景</div>
+    <p style="font-size:.88rem;margin:0">让数学知识系统化、可视化、深刻化，帮助每一个学习者建立扎实的数学基础和深刻的数学理解。</p>
   </div>
-  <div class="example-body">
-    <div class="example-q">求函数 $f(x) = \dfrac{\sqrt{x-1}}{x-3}$ 的定义域。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        <strong>根号内要 ≥ 0：</strong>$x-1 \geq 0$，得 $x \geq 1$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>分母不为零：</strong>$x-3 \neq 0$，得 $x \neq 3$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        取交集：$x \geq 1$ 且 $x \neq 3$
-      </div></div>
-      <div class="sol-ans"><p>定义域为 $[1, 3) \cup (3, +\infty)$</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 6.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 6.2</span>
-    <span class="example-title">判断奇偶性</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">判断 $f(x) = x^3 - x$ 的奇偶性，并说明理由。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        <strong>第一步：判断定义域是否关于原点对称。</strong>$f(x)$ 的定义域为 $\mathbb{R}$（全体实数），关于原点对称 ✓
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>第二步：计算 $f(-x)$：</strong>$f(-x) = (-x)^3 - (-x) = -x^3 + x = -(x^3 - x) = -f(x)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        由于 $f(-x) = -f(x)$ 对所有 $x \in \mathbb{R}$ 成立，且定义域关于原点对称，故 $f(x)$ 为<strong>奇函数</strong>。
-      </div></div>
-      <div class="sol-ans"><p>$f(x) = x^3 - x$ 是奇函数，图像关于原点对称。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 6.3 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 6.3</span>
-    <span class="example-title">求二次函数的值域（利用配方）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">求 $f(x) = x^2 - 4x + 3$，$x \in [0, 5]$ 的值域。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        配方：$f(x) = (x-2)^2 - 1$，顶点为 $(2, -1)$，开口向上。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        顶点 $x=2 \in [0,5]$，故函数在 $[0,2]$ 上单调递减，在 $[2,5]$ 上单调递增。
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        计算端点值和顶点值：
-        <ul style="margin-top:6px">
-          <li>$f(0) = 0-0+3 = 3$</li>
-          <li>$f(2) = 4-8+3 = -1$（最小值）</li>
-          <li>$f(5) = 25-20+3 = 8$（最大值）</li>
-        </ul>
-      </div></div>
-      <div class="sol-ans"><p>值域为 $[-1, 8]$，最小值 $-1$（$x=2$ 时取得），最大值 $8$（$x=5$ 时取得）。</p></div>
-      <div class="sol-note"><p>📌 求闭区间上二次函数的值域，关键是：先配方找顶点，再判断顶点是否在区间内，最后比较端点值。</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 7: 平面直角坐标系
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec7">
-  <div class="section-num">7</div>
-  <h2>平面直角坐标系</h2>
-  <span class="section-tag">解析几何基础</span>
-</div>
-
-<div class="two-col">
-  <div class="graph-card">
-    <h3>四象限与坐标示意</h3>
-    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:280px">
-      <defs>
-        <marker id="ca1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1d4ed8"/></marker>
-        <marker id="ca2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L6,6 L3,0 z" fill="#1d4ed8"/></marker>
-      </defs>
-      <rect x="130" y="10" width="120" height="120" fill="#dbeafe" opacity=".4" rx="3"/>
-      <rect x="10" y="10" width="120" height="120" fill="#fce7f3" opacity=".4" rx="3"/>
-      <rect x="10" y="130" width="120" height="120" fill="#dcfce7" opacity=".4" rx="3"/>
-      <rect x="130" y="130" width="120" height="120" fill="#fef3c7" opacity=".4" rx="3"/>
-      <text x="178" y="64" font-size="12" fill="#1d4ed8" font-weight="bold" text-anchor="middle">第一象限</text>
-      <text x="178" y="78" font-size="9" fill="#1d4ed8" text-anchor="middle">(x&gt;0, y&gt;0)</text>
-      <text x="72" y="64" font-size="12" fill="#db2777" font-weight="bold" text-anchor="middle">第二象限</text>
-      <text x="72" y="78" font-size="9" fill="#db2777" text-anchor="middle">(x&lt;0, y&gt;0)</text>
-      <text x="72" y="184" font-size="12" fill="#059669" font-weight="bold" text-anchor="middle">第三象限</text>
-      <text x="72" y="198" font-size="9" fill="#059669" text-anchor="middle">(x&lt;0, y&lt;0)</text>
-      <text x="178" y="184" font-size="12" fill="#d97706" font-weight="bold" text-anchor="middle">第四象限</text>
-      <text x="178" y="198" font-size="9" fill="#d97706" text-anchor="middle">(x&gt;0, y&lt;0)</text>
-      <line x1="10" y1="130" x2="250" y2="130" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ca1)"/>
-      <line x1="130" y1="250" x2="130" y2="10" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ca2)"/>
-      <text x="247" y="125" font-size="11" fill="#1d4ed8" font-family="serif">x</text>
-      <text x="134" y="8" font-size="11" fill="#1d4ed8" font-family="serif">y</text>
-      <circle cx="130" cy="130" r="3" fill="#1d4ed8"/>
-      <text x="133" y="143" font-size="9" fill="#334155">O</text>
-      <!-- Sample points -->
-      <circle cx="192" cy="72" r="5" fill="#ef4444"/>
-      <text x="196" y="70" font-size="8.5" fill="#ef4444">A(3,3)</text>
-      <circle cx="68" cy="192" r="5" fill="#059669"/>
-      <text x="30" y="192" font-size="8.5" fill="#059669">B(−3,−3)</text>
-      <!-- Dotted lines for A -->
-      <line x1="192" y1="72" x2="192" y2="130" stroke="#ef4444" stroke-dasharray="3,2" stroke-width="1"/>
-      <line x1="130" y1="72" x2="192" y2="72" stroke="#ef4444" stroke-dasharray="3,2" stroke-width="1"/>
-    </svg>
-  </div>
-  <div class="card" style="align-self:start">
-    <h3>核心公式汇总</h3>
-    <div class="formula-box">
-      <div class="label">两点间距离</div>
-      $$|P_1P_2|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$$
-    </div>
-    <div class="formula-box">
-      <div class="label">线段中点坐标</div>
-      $$M=\left(\frac{x_1+x_2}{2},\ \frac{y_1+y_2}{2}\right)$$
-    </div>
-    <div class="formula-box">
-      <div class="label">直线斜率（倾斜角 $\alpha$）</div>
-      $$k=\frac{y_2-y_1}{x_2-x_1}=\tan\alpha \quad (x_1 \neq x_2)$$
-    </div>
-    <div class="formula-box">
-      <div class="label">平行与垂直</div>
-      $$l_1 \parallel l_2 \Leftrightarrow k_1=k_2 \quad l_1 \perp l_2 \Leftrightarrow k_1 k_2=-1$$
-    </div>
-  </div>
-</div>
-
-<!-- 例题 7.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 7.1</span>
-    <span class="example-title">距离与中点综合</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知 $A(1, 2)$，$B(5, -2)$。求 $|AB|$、$AB$ 的中点 $M$，以及直线 $AB$ 的斜率。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        <strong>距离：</strong>$|AB| = \sqrt{(5-1)^2+(-2-2)^2} = \sqrt{16+16} = \sqrt{32} = 4\sqrt{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>中点：</strong>$M = \left(\dfrac{1+5}{2}, \dfrac{2+(-2)}{2}\right) = (3,\ 0)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        <strong>斜率：</strong>$k = \dfrac{-2-2}{5-1} = \dfrac{-4}{4} = -1$
-      </div></div>
-      <div class="sol-ans"><p>$|AB|=4\sqrt{2}$，中点 $M(3,0)$，斜率 $k=-1$。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 7.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 7.2</span>
-    <span class="example-title">直线方程的建立</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知直线过点 $A(2, 1)$ 且与直线 $y = 2x - 3$ 垂直，求该直线方程。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        已知直线的斜率 $k_1 = 2$，垂直条件：$k_1 \cdot k_2 = -1$，故 $k_2 = -\dfrac{1}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        过点 $A(2,1)$，斜率 $-\dfrac{1}{2}$，用点斜式：$y - 1 = -\dfrac{1}{2}(x-2)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        整理：$y = -\dfrac{1}{2}x + 1 + 1 = -\dfrac{1}{2}x + 2$
-      </div></div>
-      <div class="sol-ans"><p>所求直线方程为 $y = -\dfrac{1}{2}x + 2$（即 $x + 2y - 4 = 0$）</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 8: 几何与勾股定理
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec8">
-  <div class="section-num">8</div>
-  <h2>几何与勾股定理</h2>
-  <span class="section-tag">三角函数的源头</span>
-</div>
-
-<div class="two-col">
-  <div class="graph-card">
-    <h3>勾股定理图示</h3>
-    <svg viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:260px">
-      <!-- Main right triangle -->
-      <polygon points="40,210 230,210 230,70" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
-      <!-- Right angle -->
-      <rect x="210" y="190" width="20" height="20" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
-      <!-- Side labels -->
-      <text x="130" y="228" font-size="13" fill="#059669" text-anchor="middle" font-family="serif" font-weight="bold">a（底）</text>
-      <text x="248" y="145" font-size="13" fill="#7c3aed" text-anchor="middle" font-family="serif" font-weight="bold">b（直角边）</text>
-      <text x="120" y="128" font-size="13" fill="#1d4ed8" text-anchor="middle" font-family="serif" font-weight="bold">c（斜边）</text>
-      <!-- Vertices -->
-      <text x="28" y="215" font-size="11" fill="#334155">A</text>
-      <text x="233" y="215" font-size="11" fill="#334155">C</text>
-      <text x="233" y="68" font-size="11" fill="#334155">B</text>
-      <!-- Angle theta at A -->
-      <path d="M 72,210 A 28,28 0 0 1 83,195" fill="none" stroke="#f59e0b" stroke-width="2"/>
-      <text x="75" y="200" font-size="11" fill="#f59e0b" font-family="serif">θ</text>
-      <!-- Square proofs (small) -->
-      <rect x="40" y="210" width="20" height="20" fill="#dcfce7" stroke="#059669" stroke-width="1" opacity=".6"/>
-      <rect x="210" y="210" width="20" height="20" fill="#ede9fe" stroke="#7c3aed" stroke-width="1" opacity=".6"/>
-    </svg>
-    <div class="formula-box" style="margin-top:8px;width:100%">
-      <div class="label">勾股定理</div>$$a^2 + b^2 = c^2$$
-    </div>
-  </div>
-  <div class="card">
-    <h3>常见勾股数组（需记忆）</h3>
-    <table>
-      <tr><th>$a$</th><th>$b$</th><th>$c$（斜边）</th></tr>
-      <tr><td>3</td><td>4</td><td>5</td></tr>
-      <tr><td>5</td><td>12</td><td>13</td></tr>
-      <tr><td>8</td><td>15</td><td>17</td></tr>
-      <tr><td>7</td><td>24</td><td>25</td></tr>
-      <tr><td>$3k$</td><td>$4k$</td><td>$5k$（等比放大）</td></tr>
-    </table>
-    <div class="info-box" style="margin-top:12px">
-      <p>✅ 认出勾股数组能大大加快计算速度。看到直角三角形的两边是 $6, 8$，立刻知道斜边是 $10$（$3:4:5$ 的两倍）。</p>
-    </div>
-    <h4>判断直角三角形</h4>
-    <p>三边 $a, b, c$（最长边为 $c$），若 $a^2+b^2=c^2$ 则为直角三角形；若 $a^2+b^2 > c^2$ 则为锐角三角形；若 $a^2+b^2 < c^2$ 则为钝角三角形。</p>
-  </div>
-</div>
-
-<!-- 例题 8.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 8.1</span>
-    <span class="example-title">勾股定理应用</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">等腰三角形底边长为 $10$，腰长为 $13$，求三角形的高和面积。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        等腰三角形的高将底边平分，每半底边为 $5$，腰为 $13$，高为所求 $h$。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        由勾股定理（认识到这是 $5:12:13$ 的勾股数组）：$h^2 + 5^2 = 13^2$，即 $h^2 = 169 - 25 = 144$，$h = 12$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        面积 $= \dfrac{1}{2} \times 底 \times 高 = \dfrac{1}{2} \times 10 \times 12 = 60$
-      </div></div>
-      <div class="sol-ans"><p>高为 $12$，面积为 $60$。</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 8.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 8.2</span>
-    <span class="example-title">相似三角形求边长</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">$\triangle ABC \sim \triangle DEF$，相似比为 $3:2$。若 $AB=9, BC=12$，求 $DE, EF$。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        相似三角形对应边之比等于相似比，即 $\dfrac{AB}{DE} = \dfrac{BC}{EF} = \dfrac{3}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $DE = AB \times \dfrac{2}{3} = 9 \times \dfrac{2}{3} = 6$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        $EF = BC \times \dfrac{2}{3} = 12 \times \dfrac{2}{3} = 8$
-      </div></div>
-      <div class="sol-ans"><p>$DE = 6$，$EF = 8$。</p></div>
-      <div class="sol-note"><p>📌 面积之比 = 相似比的平方 = $9:4$。这是高中中很常用的结论。</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 9: 三角函数预备
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec9">
-  <div class="section-num">9</div>
-  <h2>三角函数预备知识</h2>
-  <span class="section-tag">单位圆</span>
-</div>
-
-<div class="card">
-  <h3>三角函数的定义（直角三角形）</h3>
-  <div class="formula-box">
-    $$\sin\theta = \frac{\text{对边}}{斜边}, \quad \cos\theta = \frac{\text{邻边}}{斜边}, \quad \tan\theta = \frac{\text{对边}}{\text{邻边}} = \frac{\sin\theta}{\cos\theta}$$
-  </div>
-  <div class="highlight">
-    <p>🧠 <strong>记忆口诀：</strong>"正弦对斜，余弦邻斜，正切对邻"。英文：SOH-CAH-TOA（Sine=Opposite/Hypotenuse 等）</p>
-  </div>
-</div>
-
-<div class="card">
-  <h3>特殊角三角函数值（必须背熟）</h3>
-  <table>
-    <tr><th>角度</th><th>弧度</th><th>$\sin$</th><th>$\cos$</th><th>$\tan$</th></tr>
-    <tr><td>$0°$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr>
-    <tr><td>$30°$</td><td>$\dfrac{\pi}{6}$</td><td>$\dfrac{1}{2}$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{\sqrt{3}}{3}$</td></tr>
-    <tr><td>$45°$</td><td>$\dfrac{\pi}{4}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$1$</td></tr>
-    <tr><td>$60°$</td><td>$\dfrac{\pi}{3}$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{1}{2}$</td><td>$\sqrt{3}$</td></tr>
-    <tr><td>$90°$</td><td>$\dfrac{\pi}{2}$</td><td>$1$</td><td>$0$</td><td>不存在</td></tr>
-    <tr><td>$180°$</td><td>$\pi$</td><td>$0$</td><td>$-1$</td><td>$0$</td></tr>
-  </table>
-  <div class="key-box" style="margin-top:12px">
-    <p>📌 记忆技巧：$\sin$ 值 $0° \to 90°$ 依次为 $0, \dfrac{1}{2}, \dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{3}}{2}, 1$，即 $\dfrac{\sqrt{0}}{2}, \dfrac{\sqrt{1}}{2}, \dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{3}}{2}, \dfrac{\sqrt{4}}{2}$。$\cos$ 反过来。</p>
-  </div>
-</div>
-
-<div class="two-col">
-  <div class="graph-card">
-    <h3>单位圆：三角函数的几何定义</h3>
-    <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:300px">
-      <defs>
-        <marker id="ua1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#475569"/></marker>
-        <marker id="ua2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L6,6 L3,0 z" fill="#475569"/></marker>
-      </defs>
-      <circle cx="140" cy="140" r="100" fill="#f0f7ff" stroke="#1d4ed8" stroke-width="2"/>
-      <line x1="22" y1="140" x2="262" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#ua1)"/>
-      <line x1="140" y1="262" x2="140" y2="22" stroke="#475569" stroke-width="1.5" marker-end="url(#ua2)"/>
-      <text x="263" y="144" font-size="10" fill="#475569">x</text>
-      <text x="144" y="20" font-size="10" fill="#475569">y</text>
-      <text x="143" y="152" font-size="9" fill="#475569">O</text>
-      <!-- Angle 60 degrees: cos60=0.5, sin60=√3/2≈0.866 -->
-      <!-- Point P at (140+100*0.5, 140-100*0.866) = (190, 53.4) -->
-      <line x1="140" y1="140" x2="190" y2="54" stroke="#1d4ed8" stroke-width="2"/>
-      <path d="M 165,140 A 25,25 0 0 0 152,118" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
-      <text x="167" y="134" font-size="10" fill="#f59e0b" font-family="serif">60°</text>
-      <circle cx="190" cy="54" r="5" fill="#1d4ed8"/>
-      <text x="194" y="50" font-size="9" fill="#1d4ed8">P(cos60°, sin60°)</text>
-      <!-- sinθ vertical -->
-      <line x1="190" y1="54" x2="190" y2="140" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
-      <text x="196" y="100" font-size="10" fill="#ef4444" font-weight="bold">sin60°</text>
-      <text x="196" y="112" font-size="9" fill="#ef4444">=√3/2</text>
-      <!-- cosθ horizontal -->
-      <line x1="140" y1="140" x2="190" y2="140" stroke="#10b981" stroke-width="2.5"/>
-      <text x="150" y="155" font-size="9" fill="#10b981" font-weight="bold">cos60°=½</text>
-      <!-- Points on axes -->
-      <circle cx="240" cy="140" r="3" fill="#334155"/><text x="241" y="134" font-size="8" fill="#334155">1</text>
-      <circle cx="40" cy="140" r="3" fill="#334155"/><text x="28" y="134" font-size="8" fill="#334155">−1</text>
-      <circle cx="140" cy="40" r="3" fill="#334155"/><text x="144" y="38" font-size="8" fill="#334155">1</text>
-      <circle cx="140" cy="240" r="3" fill="#334155"/><text x="144" y="248" font-size="8" fill="#334155">−1</text>
-      <text x="30" y="272" font-size="10" fill="#334155" font-family="serif">sin²θ + cos²θ = 1</text>
-    </svg>
-  </div>
-  <div class="card">
-    <h3>基本三角恒等式</h3>
-    <div class="formula-box">
-      <div class="label">勾股恒等式（最重要）</div>
-      $$\sin^2\theta + \cos^2\theta = 1$$
-    </div>
-    <div class="formula-box">
-      <div class="label">由此推出</div>
-      $$\sin^2\theta = 1 - \cos^2\theta$$
-      $$1 + \tan^2\theta = \frac{1}{\cos^2\theta} \quad (\cos\theta \neq 0)$$
-    </div>
-    <h4>弧度与角度互换</h4>
-    <div class="formula-box">
-      $$\text{弧度} = \text{角度} \times \frac{\pi}{180°}, \quad \text{角度} = \text{弧度} \times \frac{180°}{\pi}$$
-    </div>
-    <div class="info-box">
-      <p>✅ 高中三角函数全部用弧度制。理解弧度：$\pi$ 弧度 $= 180°$，$2\pi$ 弧度 $= 360°$（一圈）。</p>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 9.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 9.1</span>
-    <span class="example-title">利用恒等式化简</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知 $\sin\theta = \dfrac{3}{5}$，且 $\theta$ 是第二象限角，求 $\cos\theta$ 和 $\tan\theta$。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        由 $\sin^2\theta + \cos^2\theta = 1$：$\cos^2\theta = 1 - \left(\dfrac{3}{5}\right)^2 = 1 - \dfrac{9}{25} = \dfrac{16}{25}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $\theta$ 在第二象限，$\cos\theta < 0$，故 $\cos\theta = -\dfrac{4}{5}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        $\tan\theta = \dfrac{\sin\theta}{\cos\theta} = \dfrac{3/5}{-4/5} = -\dfrac{3}{4}$
-      </div></div>
-      <div class="sol-ans"><p>$\cos\theta = -\dfrac{4}{5}$，$\tan\theta = -\dfrac{3}{4}$</p></div>
-      <div class="sol-note"><p>📌 各象限符号规律：第一象限三者均正；第二 $\sin$ 正；第三 $\tan$ 正；第四 $\cos$ 正。口诀：「一全正，二正弦，三正切，四余弦」</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 9.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 9.2</span>
-    <span class="example-title">特殊角计算</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">计算：$\sin 30° \cdot \cos 60° + \cos 30° \cdot \sin 60°$</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        代入特殊值：$\sin 30° = \dfrac{1}{2}$，$\cos 60° = \dfrac{1}{2}$，$\cos 30° = \dfrac{\sqrt{3}}{2}$，$\sin 60° = \dfrac{\sqrt{3}}{2}$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $= \dfrac{1}{2} \times \dfrac{1}{2} + \dfrac{\sqrt{3}}{2} \times \dfrac{\sqrt{3}}{2} = \dfrac{1}{4} + \dfrac{3}{4} = 1$
-      </div></div>
-      <div class="sol-ans"><p>结果为 $1$</p></div>
-      <div class="sol-note"><p>📌 该式其实正是高中的<strong>正弦和角公式</strong>：$\sin(A+B)=\sin A\cos B+\cos A\sin B$，即 $\sin(30°+60°)=\sin 90°=1$。你已经在预习高中内容了！</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 10: 集合初步
-══════════════════════════════════════════════════ -->
-<div class="section-header" id="sec10">
-  <div class="section-num">10</div>
-  <h2>集合初步</h2>
-  <span class="section-tag">高中第一章</span>
-</div>
-
-<div class="card">
-  <h3>集合的基本概念与符号</h3>
-  <div class="formula-grid">
-    <div class="formula-item"><div class="fi-label">属于</div>$3 \in \{1,2,3\}$（$3$ 是集合的元素）</div>
-    <div class="formula-item"><div class="fi-label">不属于</div>$4 \notin \{1,2,3\}$</div>
-    <div class="formula-item"><div class="fi-label">子集</div>$A \subseteq B$（$A$ 的每个元素都在 $B$ 中）</div>
-    <div class="formula-item"><div class="fi-label">真子集</div>$A \subsetneq B$（$A \subseteq B$ 且 $A \neq B$）</div>
-    <div class="formula-item"><div class="fi-label">空集</div>$\emptyset$（不含任何元素，是任意集合的子集）</div>
-    <div class="formula-item"><div class="fi-label">全集</div>$U$（研究范围内的所有元素之集合）</div>
-  </div>
-  <div class="formula-box" style="margin-top:12px">
-    <div class="label">集合的两种表示法</div>
-    $$A = \{1, 2, 3, 4, 5\} \quad \text{（列举法）}$$
-    $$B = \{x \mid x^2 \leq 4,\ x \in \mathbb{Z}\} = \{-2,-1,0,1,2\} \quad \text{（描述法）}$$
-  </div>
-</div>
-
-<div class="card">
-  <h3>集合的三大运算</h3>
-  <div class="three-col">
-    <div class="method-card">
-      <h4>交集 $A \cap B$</h4>
-      <p>同时属于 $A$ 和 $B$ 的元素组成的集合（公共部分）。</p>
-      <p style="margin-top:8px">$\{1,2,3\}\cap\{2,3,4\}=\{2,3\}$</p>
-    </div>
-    <div class="method-card">
-      <h4>并集 $A \cup B$</h4>
-      <p>属于 $A$ 或属于 $B$ 的所有元素（不重复计数）。</p>
-      <p style="margin-top:8px">$\{1,2,3\}\cup\{2,3,4\}=\{1,2,3,4\}$</p>
-    </div>
-    <div class="method-card">
-      <h4>补集 $\complement_U A$</h4>
-      <p>在全集 $U$ 中，不属于 $A$ 的所有元素。</p>
-      <p style="margin-top:8px">若 $U=\{1,2,3,4,5\}$，$A=\{1,2\}$，则 $\complement_U A=\{3,4,5\}$</p>
-    </div>
-  </div>
-</div>
-
-<!-- Venn diagram SVG -->
-<div class="graph-card">
-  <h3>韦恩图可视化</h3>
-  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:220px">
-    <!-- Intersection A∩B -->
-    <text x="80" y="18" font-size="11" fill="#334155" text-anchor="middle" font-weight="bold">交集 A∩B</text>
-    <circle cx="58" cy="105" r="55" fill="#dbeafe" fill-opacity=".8" stroke="#1d4ed8" stroke-width="1.8"/>
-    <circle cx="102" cy="105" r="55" fill="#ede9fe" fill-opacity=".8" stroke="#7c3aed" stroke-width="1.8"/>
-    <clipPath id="clip1"><circle cx="58" cy="105" r="55"/></clipPath>
-    <circle cx="102" cy="105" r="55" fill="#818cf8" fill-opacity=".7" stroke="none" clip-path="url(#clip1)"/>
-    <text x="38" y="108" font-size="12" fill="#1d4ed8" font-weight="bold">A</text>
-    <text x="108" y="108" font-size="12" fill="#7c3aed" font-weight="bold">B</text>
-    <text x="80" y="108" font-size="9" fill="#1e1b4b" text-anchor="middle">A∩B</text>
-
-    <!-- Union A∪B -->
-    <text x="280" y="18" font-size="11" fill="#334155" text-anchor="middle" font-weight="bold">并集 A∪B</text>
-    <circle cx="256" cy="105" r="55" fill="#fce7f3" fill-opacity=".9" stroke="#db2777" stroke-width="1.8"/>
-    <circle cx="304" cy="105" r="55" fill="#fce7f3" fill-opacity=".9" stroke="#db2777" stroke-width="1.8"/>
-    <text x="232" y="108" font-size="12" fill="#db2777" font-weight="bold">A</text>
-    <text x="312" y="108" font-size="12" fill="#db2777" font-weight="bold">B</text>
-    <text x="280" y="190" font-size="9" fill="#db2777" text-anchor="middle">两圆覆盖的全部区域</text>
-
-    <!-- Complement -->
-    <text x="460" y="18" font-size="11" fill="#334155" text-anchor="middle" font-weight="bold">补集 $\complement_U A$</text>
-    <rect x="398" y="28" width="124" height="150" rx="10" fill="#fef3c7" fill-opacity=".8" stroke="#d97706" stroke-width="1.8"/>
-    <circle cx="453" cy="105" r="50" fill="#dbeafe" fill-opacity=".95" stroke="#1d4ed8" stroke-width="1.8"/>
-    <text x="435" y="108" font-size="11" fill="#1d4ed8" font-weight="bold">A</text>
-    <text x="404" y="48" font-size="10" fill="#92400e">U（全集）</text>
-    <text x="495" y="148" font-size="9" fill="#92400e" text-anchor="middle">∁ᵤA</text>
-    <text x="405" y="148" font-size="9" fill="#92400e">∁ᵤA</text>
-  </svg>
-</div>
-
-<!-- 例题 10.1 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 10.1</span>
-    <span class="example-title">集合运算（含不等式）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知全集 $U = \mathbb{R}$，$A = \{x \mid -1 \leq x < 3\}$，$B = \{x \mid x < 1\}$，求 $A \cap B$，$A \cup B$，$\complement_U A$。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        在数轴上标出：$A = [-1, 3)$，$B = (-\infty, 1)$
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        <strong>交集</strong>（公共区间）：两段区间的重叠部分为 $[-1, 1)$
-        $$A \cap B = \{x \mid -1 \leq x < 1\} = [-1, 1)$$
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        <strong>并集</strong>（合并覆盖）：将两区间合并（不重叠部分 $B$ 还包含 $(-\infty,-1)$）
-        $$A \cup B = \{x \mid x < 3\} = (-\infty, 3)$$
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        <strong>补集</strong>（$A$ 之外的实数）：$A=[-1,3)$，其补集为两侧
-        $$\complement_U A = \{x \mid x < -1 \text{ 或 } x \geq 3\} = (-\infty, -1) \cup [3, +\infty)$$
-      </div></div>
-      <div class="sol-ans"><p>$A \cap B = [-1, 1)$，$A \cup B = (-\infty, 3)$，$\complement_U A = (-\infty,-1)\cup[3,+\infty)$</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- 例题 10.2 -->
-<div class="example">
-  <div class="example-header">
-    <span class="example-badge">例题 10.2</span>
-    <span class="example-title">含参数的集合（高考常考）</span>
-  </div>
-  <div class="example-body">
-    <div class="example-q">已知 $A = \{1, 2, a\}$，$B = \{2, a^2\}$，且 $B \subseteq A$，求实数 $a$ 的值。</div>
-    <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
-    <div class="solution">
-      <div class="sol-step"><span class="step-num">1</span><div>
-        $B \subseteq A$ 意味着 $B$ 中每个元素都必须在 $A$ 中，已知 $2 \in A$ ✓，所以只需 $a^2 \in A$。
-      </div></div>
-      <div class="sol-step"><span class="step-num">2</span><div>
-        $A$ 中的元素为 $1, 2, a$，所以 $a^2$ 必须等于 $1$、$2$ 或 $a$ 之一。
-      </div></div>
-      <div class="sol-step"><span class="step-num">3</span><div>
-        <strong>情况一：</strong>$a^2 = 1$，则 $a = 1$ 或 $a = -1$。
-        若 $a=1$：$A=\{1,2,1\}$ 有重复元素，集合中元素互异，<strong>矛盾</strong>，舍去。
-        若 $a=-1$：$A=\{1,2,-1\}$，$B=\{2,1\}$，检查 $B \subseteq A$：$2\in A$ ✓，$1\in A$ ✓，成立 ✓
-      </div></div>
-      <div class="sol-step"><span class="step-num">4</span><div>
-        <strong>情况二：</strong>$a^2 = 2$，则 $a = \pm\sqrt{2}$。
-        若 $a=\sqrt{2}$：$A=\{1,2,\sqrt{2}\}$，$B=\{2,2\}$ 有重复，矛盾，舍去。
-        若 $a=-\sqrt{2}$：$A=\{1,2,-\sqrt{2}\}$，$B=\{2,2\}$ 有重复，矛盾，舍去。
-      </div></div>
-      <div class="sol-step"><span class="step-num">5</span><div>
-        <strong>情况三：</strong>$a^2 = a$，则 $a(a-1)=0$，$a=0$ 或 $a=1$。
-        若 $a=0$：$A=\{1,2,0\}$，$B=\{2,0\}$，$B\subseteq A$ ✓
-        若 $a=1$：重复，已舍。
-      </div></div>
-      <div class="sol-ans"><p>$a = -1$ 或 $a = 0$</p></div>
-      <div class="sol-note"><p>📌 含参数集合题的关键：① 考虑所有情况；② 每种情况都要验证「元素互异」；③ 检查题目条件是否满足。</p></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     SUMMARY
-══════════════════════════════════════════════════ -->
-<div class="section-header">
-  <div class="section-num" style="background:linear-gradient(135deg,#10b981,#06b6d4)">✓</div>
-  <h2>学习路线与复习建议</h2>
-</div>
-
-<div class="card">
-  <h3>知识衔接路线图</h3>
-  <div class="step-flow">
-    <div class="step-box" style="background:#059669">实数·运算</div>
-    <span class="step-arrow">→</span>
-    <div class="step-box" style="background:#7c3aed">整式·因式</div>
-    <span class="step-arrow">→</span>
-    <div class="step-box" style="background:#0891b2">分式·根式</div>
-    <span class="step-arrow">→</span>
-    <div class="step-box" style="background:#d97706">一元二次</div>
-    <span class="step-arrow">→</span>
-    <div class="step-box" style="background:#1d4ed8">函数思想</div>
-    <span class="step-arrow">→</span>
-    <div class="step-box" style="background:#dc2626">高中正课</div>
-  </div>
-  <div class="three-col" style="margin-top:18px">
-    <div class="method-card">
-      <h4>📌 最优先掌握</h4>
-      <p>因式分解、配方法、绝对值、函数定义域——这四项在高中每章都用到。</p>
-    </div>
-    <div class="method-card">
-      <h4>📐 图形感知</h4>
-      <p>练习手绘四种基本函数图像，培养「看方程想图形」的数形结合习惯。</p>
-    </div>
-    <div class="method-card">
-      <h4>🧮 计算准确性</h4>
-      <p>指数法则、根式化简、分式通分——做到快速准确，减少高中计算失误。</p>
-    </div>
-  </div>
-</div>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  <p>北师大版高中数学 · 学前预备知识体系（详细版）</p>
-  <p style="margin-top:6px;opacity:.7">数学公式由 MathJax 渲染 · 图形由 SVG 绘制 · 例题解析可点击展开</p>
+  <p>OpenKnowledgeSpace · 开放知识空间</p>
+  <p style="margin-top:8px">
+    <a href="https://github.com/DGOpenKS/DGOpenKS.github.io" target="_blank">GitHub</a> · 
+    <a href="https://DGOpenKS.github.io" target="_blank">在线阅读</a> · 
+    开源免费 · 欢迎贡献
+  </p>
+  <p style="margin-top:6px;opacity:.7;font-size:.8rem">
+    数学公式由 KaTeX 渲染 · 图形由 SVG 绘制 · 设计风格一致 · 主题自适应
+  </p>
 </footer>
 
-<script>
-function toggle(btn) {
-  const sol = btn.nextElementSibling;
-  const isOpen = sol.classList.contains('show');
-  sol.classList.toggle('show', !isOpen);
-  btn.classList.toggle('open', !isOpen);
-  btn.querySelector('.arrow').textContent = isOpen ? '▶' : '▼';
-}
-</script>
 </body>
 </html>

@@ -154,6 +154,104 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 /* ANIM */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .section-header{animation:fadeUp .45s ease both}
+
+/* ===== INTERACTIVE COMPONENTS ===== */
+.comparison-tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:2px solid var(--border);padding-bottom:8px}
+.comparison-btn{background:transparent;border:none;padding:8px 16px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s}
+.comparison-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.comparison-content{display:none}
+.comparison-content.active{display:block}
+.comparison-box{background:linear-gradient(135deg,#dbeafe,#ede9fe);border-radius:10px;padding:18px 20px;border-left:4px solid var(--blue);margin-bottom:12px}
+.comparison-box.secondary{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left-color:#f59e0b}
+
+.slider-box{background:var(--formula-bg);border-radius:10px;padding:20px;margin:16px 0}
+.slider-label{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:12px}
+.slider-group{margin-bottom:16px}
+.slider-group:last-child{margin-bottom:0}
+.slider-container{display:flex;align-items:center;gap:12px}
+.slider-input{flex:1;height:6px;border-radius:3px;background:var(--border);outline:none;-webkit-appearance:none;appearance:none}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;box-shadow:0 2px 8px rgba(29,78,216,.3)}
+.slider-input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(29,78,216,.3)}
+.slider-value{min-width:60px;font-weight:600;color:var(--blue);font-size:.95rem}
+
+.graph-container{display:flex;justify-content:center;margin:20px 0;position:relative}
+.graph-canvas{border:1px solid var(--border);border-radius:10px;background:#fff;padding:10px;cursor:crosshair}
+@media(prefers-color-scheme:dark){.graph-canvas{background:#1e293b}}
+.graph-info{position:absolute;bottom:10px;right:10px;background:var(--card);padding:8px 12px;border-radius:6px;font-size:.8rem;color:var(--muted);border:1px solid var(--border);pointer-events:none}
+
+.calc-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--formula-bg);border-radius:10px;padding:16px;margin:16px 0}
+.calc-input-group{display:flex;align-items:center;gap:8px}
+.calc-input-group input{flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:.9rem;font-family:var(--font-mono)}
+.calc-input-group label{min-width:40px;font-weight:600;color:var(--navy)}
+.calc-result{background:var(--card);border-radius:6px;padding:12px;border-left:3px solid var(--blue);font-size:.9rem}
+.calc-result .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;font-weight:600}
+.calc-result .value{font-size:1.2rem;color:var(--blue);font-weight:700;margin-top:4px}
+
+.function-family{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.family-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center;font-size:.85rem}
+.family-item strong{display:block;color:var(--navy);margin-bottom:6px}
+.family-item .formula{color:var(--blue);font-family:var(--font-mono);margin:6px 0}
+.family-item .description{color:var(--muted);font-size:.8rem}
+
+.quiz-box{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;padding:18px 20px;border-left:4px solid var(--green);margin:16px 0}
+.quiz-question{font-weight:600;color:#064e3b;margin-bottom:12px;font-size:.95rem}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-btn{background:#fff;border:2px solid #6ee7b7;color:#064e3b;padding:10px;border-radius:6px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s}
+.quiz-btn:hover{background:#d1fae5;border-color:#10b981}
+.quiz-btn.selected{background:var(--green);color:#fff;border-color:var(--green)}
+.quiz-btn.correct{background:#10b981;border-color:#10b981;color:#fff}
+.quiz-btn.wrong{background:#ef4444;border-color:#ef4444;color:#fff}
+.quiz-feedback{margin-top:12px;padding:10px 12px;border-radius:6px;font-size:.85rem}
+.quiz-feedback.correct{background:#d1fae5;color:#064e3b;border:1px solid #6ee7b7}
+.quiz-feedback.wrong{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5}
+
+.range-selector{background:var(--formula-bg);border-radius:10px;padding:16px;margin:16px 0}
+.range-label{font-weight:600;color:var(--navy);margin-bottom:12px;display:block}
+.range-display{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin:12px 0;text-align:center;font-family:var(--font-mono)}
+.range-display .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;font-weight:600}
+.range-display .value{font-size:1rem;color:var(--blue);margin-top:4px}
+
+.animation-box{background:linear-gradient(135deg,#ede9fe,#dbeafe);border-radius:12px;padding:24px;margin:16px 0;border-left:4px solid #7c3aed;box-shadow:0 4px 12px rgba(124,58,237,.08)}
+.animation-controls{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.anim-btn{background:#7c3aed;color:#fff;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;font-family:var(--font-body)}
+.anim-btn:hover{background:#6d28d9;transform:translateY(-2px);box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.anim-btn:active{transform:translateY(0)}
+.anim-btn.pause{background:#f59e0b}
+.anim-btn.pause:hover{background:#d97706}
+.anim-canvas{border:2px solid #7c3aed;border-radius:12px;background:#fff;width:100%;height:360px;display:block;box-shadow:0 4px 12px rgba(124,58,237,.1)}
+@media(prefers-color-scheme:dark){.anim-canvas{background:#1e293b;border-color:#a78bfa}}
+.animation-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.anim-info-item{background:var(--card);padding:12px 14px;border-radius:8px;border-left:3px solid #7c3aed;font-size:.85rem}
+.anim-info-label{color:var(--muted);font-size:.7rem;text-transform:uppercase;font-weight:700;margin-bottom:6px;letter-spacing:.06em}
+.anim-info-value{color:#7c3aed;font-size:.95rem;font-weight:600;font-family:var(--font-mono)}
+.animation-step-bar{background:var(--border);height:5px;border-radius:3px;margin-top:12px;overflow:hidden}
+.animation-step-fill{background:linear-gradient(90deg,#7c3aed,#6366f1);height:100%;border-radius:3px;transition:width .1s linear}
+.animation-step-text{text-align:center;margin-top:10px;color:var(--muted);font-size:.8rem;font-weight:500}
+
+.properties-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:12px 0}
+.properties-table th{background:var(--blue);color:#fff;padding:10px;text-align:left;font-weight:600}
+.properties-table td{padding:10px;border-bottom:1px solid var(--border)}
+.properties-table tr:hover td{background:var(--formula-bg)}
+
+.interactive-exercise{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;padding:18px 20px;border-left:4px solid var(--green);margin:16px 0}
+.exercise-prompt{font-size:.92rem;color:#064e3b;margin-bottom:12px;font-weight:500}
+.exercise-input{width:100%;padding:8px 12px;border:1px solid #6ee7b7;border-radius:6px;font-size:.9rem;font-family:var(--font-mono);margin-bottom:8px}
+.exercise-btn{background:var(--green);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;transition:background .2s}
+.exercise-btn:hover{background:#059669}
+.exercise-feedback{font-size:.85rem;margin-top:10px;padding:8px 12px;border-radius:6px;display:none}
+.exercise-feedback.show{display:block}
+.feedback-correct{background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#064e3b;border:1px solid #6ee7b7}
+.feedback-hint{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;border:1px solid #fbbf24}
+
+.thinking-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin:16px 0;padding:16px;background:var(--formula-bg);border-radius:10px}
+.thinking-step{background:var(--card);padding:12px 16px;border-radius:8px;border-left:3px solid var(--blue);font-size:.88rem}
+.thinking-step.secondary{border-left-color:var(--accent)}
+.thinking-arrow{text-align:center;font-size:1.2rem;color:var(--blue);font-weight:700}
+
+.insight-box{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border-radius:10px;padding:14px 18px;margin:12px 0;border-left:4px solid #6366f1}
+.insight-box p{color:#312e81;font-size:.88rem;margin:0}
+.insight-box strong{color:#4f46e5}
+
 </style>
 </head>
 <body>
@@ -240,40 +338,212 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 </div>
 
 <div class="card">
-<h3>课本拓展内容</h3>
-<p>本章节在原有基础上增加了更系统的知识结构，包括：</p>
-<ul>
-<li>核心概念的定义与来源</li>
-<li>知识点之间的联系</li>
-<li>典型例题与易错点分析</li>
-<li>高中阶段的应用方向</li>
-<li>课后思考与训练建议</li>
-</ul>
+<h3>🎛️ 多参数函数探索：$f(x) = a(x-h)^2 + k$</h3>
+<p>这是一个完整的交互体验。下面有三个滑块，分别控制函数的三个参数。拖动它们，看看函数图像如何变化，以及性质如何改变：</p>
 
-<div class="formula-box">
-<div class="label">学习建议</div>
-<p>建议按照「概念理解 → 公式推导 → 基础练习 → 综合应用」的顺序学习，并结合图像与实际问题建立直观理解。</p>
+<div class="slider-box">
+<div class="slider-group">
+<div class="slider-label">参数 $a$（控制开口方向和宽度）</div>
+<div class="slider-container">
+<input type="range" min="-2" max="2" step="0.1" value="1" class="slider-input" id="paramA" oninput="updateFullGraph()">
+<span class="slider-value" id="aValue">a = 1</span>
+</div>
 </div>
 
-<div class="info-box">
+<div class="slider-group">
+<div class="slider-label">参数 $h$（控制水平位置 - 对称轴）</div>
+<div class="slider-container">
+<input type="range" min="-3" max="3" step="0.2" value="0" class="slider-input" id="paramH" oninput="updateFullGraph()">
+<span class="slider-value" id="hValue">h = 0</span>
+</div>
+</div>
+
+<div class="slider-group">
+<div class="slider-label">参数 $k$（控制竖直位置 - 顶点高度）</div>
+<div class="slider-container">
+<input type="range" min="-3" max="3" step="0.2" value="0" class="slider-input" id="paramK" oninput="updateFullGraph()">
+<span class="slider-value" id="kValue">k = 0</span>
+</div>
+</div>
+</div>
+
+<div class="graph-container">
+<canvas id="functionGraphFull" class="graph-canvas" width="500" height="350"></canvas>
+<div id="graphInfo" class="graph-info"></div>
+</div>
+
+<div class="calc-panel">
+<div class="calc-input-group">
+<label for="xInput">x =</label>
+<input type="number" id="xInput" placeholder="输入x值" value="0" oninput="updateCalcResult()">
+</div>
+<div class="calc-result">
+<div class="label">对应的 y 值</div>
+<div class="value" id="yOutput">0</div>
+</div>
+</div>
+
+<div class="properties-table">
+<table style="width:100%">
+<tr>
+<th>函数性质</th>
+<th id="propValue" style="text-align:right;">当前值</th>
+</tr>
+<tr>
+<td>函数公式</td>
+<td id="formulaDisplay" style="text-align:right;font-family:monospace;">f(x) = (x)² + 0</td>
+</tr>
+<tr>
+<td>对称轴</td>
+<td id="axisDisplay" style="text-align:right;">x = 0</td>
+</tr>
+<tr>
+<td>顶点坐标</td>
+<td id="vertexDisplay" style="text-align:right;">(0, 0)</td>
+</tr>
+<tr>
+<td>开口方向</td>
+<td id="openDisplay" style="text-align:right;">向上</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td id="minDisplay" style="text-align:right;">0</td>
+</tr>
+</table>
+</div>
+
+<div class="insight-box">
+<p><strong>💡 你发现了什么？</strong> 改变参数 $a, h, k$，函数的所有性质都在改变。这就是高中思维——不只关注某个点，而是理解 <strong>参数如何系统地控制整个函数</strong>。</p>
 </div>
 </div>
 
 <div class="card">
-<h3>知识拓展与思考</h3>
-<p>高中数学与初中最大的不同，在于更加强调：</p>
-<div class="three-col">
-<div class="method-card">
-<h4>抽象化</h4>
-<p>从具体数字过渡到变量与函数关系。</p>
+<h3>📊 函数族对比：同一个参数改变，不同的结果</h3>
+<p>看看这三个函数，它们只有参数不同，但图像完全不一样：</p>
+
+<div class="function-family">
+<div class="family-item">
+<strong>初始函数</strong>
+<div class="formula">$f(x) = x^2$</div>
+<div class="description">标准抛物线</div>
 </div>
-<div class="method-card">
-<h4>逻辑化</h4>
-<p>强调推理链条与证明过程。</p>
+<div class="family-item">
+<strong>水平移动</strong>
+<div class="formula">$f(x) = (x-2)^2$</div>
+<div class="description">向右移动2个单位</div>
 </div>
-<div class="method-card">
-<h4>模型化</h4>
-<p>通过数学模型解决现实问题。</p>
+<div class="family-item">
+<strong>竖直移动</strong>
+<div class="formula">$f(x) = x^2 + 3$</div>
+<div class="description">向上移动3个单位</div>
+</div>
+</div>
+
+<div class="graph-container">
+<canvas id="familyGraph" class="graph-canvas" width="500" height="300"></canvas>
+</div>
+
+<div class="insight-box">
+<p><strong>初中 vs 高中的区别：</strong> 初中可能只会问"这三个函数分别经过哪些点"，但高中关心的是"改变参数后，函数的整体性质如何变化"。</p>
+</div>
+</div>
+
+<div class="card">
+<h3>🎮 思维判断游戏：你用的是初中思维还是高中思维？</h3>
+<p>下面有5道题，看看你的思维方式现在是什么阶段：</p>
+
+<div id="quizContainer"></div>
+
+<div class="insight-box" id="quizResult" style="display:none;margin-top:16px">
+<p id="quizResultText"></p>
+</div>
+</div>
+
+<div class="card">
+<h3>📈 区间选择体验：研究函数在某个范围内的性质</h3>
+<p>这是高中的一个重要思维：不只研究整个函数，还要研究函数在某个特定区间上的性质。拖动下面的滑块选择一个区间：</p>
+
+<div class="range-selector">
+<span class="range-label">选择 x 的范围</span>
+<div class="slider-group">
+<div class="slider-label">x 的最小值</div>
+<div class="slider-container">
+<input type="range" min="-5" max="5" step="0.5" value="-2" class="slider-input" id="rangeMin" oninput="updateRangeDisplay()">
+<span class="slider-value" id="minLabel">min = -2</span>
+</div>
+</div>
+<div class="slider-group">
+<div class="slider-label">x 的最大值</div>
+<div class="slider-container">
+<input type="range" min="-5" max="5" step="0.5" value="2" class="slider-input" id="rangeMax" oninput="updateRangeDisplay()">
+<span class="slider-value" id="maxLabel">max = 2</span>
+</div>
+</div>
+
+<div class="graph-container">
+<canvas id="rangeGraph" class="graph-canvas" width="500" height="300"></canvas>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+<div class="range-display">
+<div class="label">在这个区间上，y 的最大值</div>
+<div class="value" id="rangeYMax">-</div>
+</div>
+<div class="range-display">
+<div class="label">在这个区间上，y 的最小值</div>
+<div class="value" id="rangeYMin">-</div>
+</div>
+</div>
+</div>
+
+<div class="insight-box">
+<p><strong>这是高中思维：</strong> 同一个函数，在不同的区间上可能有不同的最大最小值。这就是为什么高中数学这么强调"区间"这个概念。</p>
+</div>
+</div>
+
+<div class="card">
+<h3>✨ 动画演示：参数变化的过程</h3>
+<p>高中数学最重要的思想就是看到"参数如何一步步改变函数"。下面的动画展示了从 $y=x^2$ 逐步变化到 $f(x)=(x-1)^2+2$ 的完整过程。点击「开始动画」观看：</p>
+
+<div class="animation-box">
+<div class="animation-controls">
+<button class="anim-btn" onclick="startAnimation()">▶ 开始动画</button>
+<button class="anim-btn pause" onclick="pauseAnimation()">⏸ 暂停</button>
+<button class="anim-btn" onclick="resetAnimation()">🔄 重置</button>
+</div>
+
+<canvas id="animationCanvas" class="anim-canvas"></canvas>
+
+<div class="animation-info">
+<div class="anim-info-item">
+<div class="anim-info-label">当前公式</div>
+<div class="anim-info-value" id="currentFormula">f(x) = x²</div>
+</div>
+<div class="anim-info-item">
+<div class="anim-info-label">对称轴位置</div>
+<div class="anim-info-value" id="currentAxis">x = 0</div>
+</div>
+<div class="anim-info-item">
+<div class="anim-info-label">顶点坐标</div>
+<div class="anim-info-value" id="currentVertex">(0, 0)</div>
+</div>
+</div>
+
+<div class="animation-step-bar">
+<div class="animation-step-fill" id="progressBar" style="width:0%"></div>
+</div>
+<div class="animation-step-text" id="stepCounter">第 1 / 50 步</div>
+</div>
+
+<div class="insight-box" style="margin-top:16px">
+<p><strong>👀 看这个动画时注意：</strong></p>
+<ul style="margin:8px 0;padding-left:18px;font-size:.85rem">
+<li>参数 $h$ 从 0 逐步变到 1（抛物线向右移动）</li>
+<li>参数 $k$ 从 0 逐步变到 2（抛物线向上移动）</li>
+<li>对称轴从 $x=0$ 逐步变到 $x=1$</li>
+<li>顶点从 $(0,0)$ 逐步移动到 $(1,2)$</li>
+</ul>
+<p style="margin-top:12px">这就是<strong>参数化思维</strong>——用参数 $a, h, k$ 来系统地描述所有可能的二次函数。这是高中数学的核心思想！</p>
 </div>
 </div>
 </div>
@@ -285,11 +555,702 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 </footer>
 
 <script>
+// ===== 基础函数 =====
 function toggle(btn){
   const sol = btn.nextElementSibling;
   sol.classList.toggle('show');
   btn.classList.toggle('open');
 }
+
+function switchTab(tab) {
+  document.querySelectorAll('.comparison-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.comparison-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ===== 多参数函数交互 =====
+function updateFullGraph() {
+  const a = parseFloat(document.getElementById('paramA').value);
+  const h = parseFloat(document.getElementById('paramH').value);
+  const k = parseFloat(document.getElementById('paramK').value);
+
+  document.getElementById('aValue').textContent = `a = ${a.toFixed(1)}`;
+  document.getElementById('hValue').textContent = `h = ${h.toFixed(1)}`;
+  document.getElementById('kValue').textContent = `k = ${k.toFixed(1)}`;
+
+  drawFullParabola(a, h, k);
+  updatePropertiesTable(a, h, k);
+}
+
+function drawFullParabola(a, h, k) {
+  const canvas = document.getElementById('functionGraphFull');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 30;
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+
+  // 绘制坐标轴网格
+  ctx.strokeStyle = '#e5e7eb';
+  ctx.lineWidth = 0.5;
+  for (let i = -6; i <= 6; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  // 绘制坐标轴
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.stroke();
+
+  // 绘制抛物线
+  if (Math.abs(a) > 0.01) {
+    ctx.strokeStyle = '#1d4ed8';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    let firstPoint = true;
+    for (let x = -6; x <= 6; x += 0.05) {
+      const y = a * (x - h) * (x - h) + k;
+      const canvasX = centerX + x * scale;
+      const canvasY = centerY - y * scale;
+      if (canvasY >= 0 && canvasY <= height) {
+        if (firstPoint) {
+          ctx.moveTo(canvasX, canvasY);
+          firstPoint = false;
+        } else {
+          ctx.lineTo(canvasX, canvasY);
+        }
+      }
+    }
+    ctx.stroke();
+
+    // 标记对称轴和顶点
+    ctx.strokeStyle = '#f59e0b';
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1.5;
+    const axisX = centerX + h * scale;
+    ctx.beginPath();
+    ctx.moveTo(axisX, 0);
+    ctx.lineTo(axisX, height);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath();
+    const vertexY = centerY - k * scale;
+    ctx.arc(axisX, vertexY, 5, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  // 标签
+  ctx.fillStyle = '#666';
+  ctx.font = '12px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('x', width - 15, centerY - 10);
+  ctx.fillText('y', centerX + 10, 15);
+}
+
+function updateCalcResult() {
+  const x = parseFloat(document.getElementById('xInput').value) || 0;
+  const a = parseFloat(document.getElementById('paramA').value);
+  const h = parseFloat(document.getElementById('paramH').value);
+  const k = parseFloat(document.getElementById('paramK').value);
+
+  const y = a * (x - h) * (x - h) + k;
+  document.getElementById('yOutput').textContent = y.toFixed(2);
+}
+
+function updatePropertiesTable(a, h, k) {
+  const formula = a === 0 ? '0' :
+    `${a.toFixed(1)}(x${h >= 0 ? '-' + h.toFixed(1) : '+' + (-h).toFixed(1)})² ${k >= 0 ? '+' + k.toFixed(1) : k.toFixed(1)}`;
+
+  document.getElementById('formulaDisplay').textContent = 'f(x) = ' + formula;
+  document.getElementById('axisDisplay').textContent = `x = ${h.toFixed(1)}`;
+  document.getElementById('vertexDisplay').textContent = `(${h.toFixed(1)}, ${k.toFixed(1)})`;
+  document.getElementById('openDisplay').textContent = a > 0 ? '向上' : a < 0 ? '向下' : '退化';
+  document.getElementById('minDisplay').textContent = a > 0 ? `${k.toFixed(1)} (最小值)` : a < 0 ? '无' : '无';
+}
+
+// ===== 函数族对比 =====
+function drawFamilyGraph() {
+  const canvas = document.getElementById('familyGraph');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 30;
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+
+  // 网格
+  ctx.strokeStyle = '#e5e7eb';
+  ctx.lineWidth = 0.5;
+  for (let i = -5; i <= 5; i++) {
+    const x = centerX + i * scale;
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  // 坐标轴
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.stroke();
+
+  // 三条曲线
+  const functions = [
+    { name: 'f₁(x)=x²', color: '#1d4ed8', fn: x => x * x },
+    { name: 'f₂(x)=(x-2)²', color: '#10b981', fn: x => (x - 2) * (x - 2) },
+    { name: 'f₃(x)=x²+3', color: '#f59e0b', fn: x => x * x + 3 }
+  ];
+
+  functions.forEach(f => {
+    ctx.strokeStyle = f.color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    let firstPoint = true;
+    for (let x = -5; x <= 5; x += 0.05) {
+      const y = f.fn(x);
+      const canvasX = centerX + x * scale;
+      const canvasY = centerY - y * scale;
+      if (canvasY >= -10 && canvasY <= height + 10) {
+        if (firstPoint) {
+          ctx.moveTo(canvasX, canvasY);
+          firstPoint = false;
+        } else {
+          ctx.lineTo(canvasX, canvasY);
+        }
+      }
+    }
+    ctx.stroke();
+  });
+
+  ctx.fillStyle = '#666';
+  ctx.font = '12px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('x', width - 15, centerY - 10);
+  ctx.fillText('y', centerX + 10, 15);
+}
+
+// ===== 思维判断游戏 =====
+function initQuiz() {
+  const quizzes = [
+    {
+      q: "已知 $f(x) = 2x + 1$，求 $f(3)$ 的值。这是在用什么思维？",
+      options: ['初中思维：求一个具体的值', '高中思维：研究整个函数'],
+      correct: 0
+    },
+    {
+      q: "问：函数 $f(x) = x^2$ 的对称轴是什么？这是在用什么思维？",
+      options: ['初中思维：求某个点', '高中思维：分析函数的性质'],
+      correct: 1
+    },
+    {
+      q: "给定参数 $a$，研究函数 $f(x) = ax^2$ 的开口方向。这是在用什么思维？",
+      options: ['初中思维：代入计算', '高中思维：参数分析'],
+      correct: 1
+    },
+    {
+      q: "在区间 $[0, 2]$ 上，求 $f(x) = x^2$ 的最大值和最小值。这是在用什么思维？",
+      options: ['初中思维：只求一个值', '高中思维：分析区间上的性质'],
+      correct: 1
+    },
+    {
+      q: "求解方程 $x^2 = 4$。这是在用什么思维？",
+      options: ['初中思维：求某些具体的值', '高中思维：研究函数的零点'],
+      correct: 0
+    }
+  ];
+
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  let correctCount = 0;
+
+  quizzes.forEach((quiz, idx) => {
+    const quizDiv = document.createElement('div');
+    quizDiv.className = 'quiz-box';
+    quizDiv.style.marginBottom = '16px';
+
+    const q = document.createElement('div');
+    q.className = 'quiz-question';
+    q.textContent = `第 ${idx + 1} 题：${quiz.q.replace(/\$/g, '')}`;
+    quizDiv.appendChild(q);
+
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'quiz-options';
+
+    quiz.options.forEach((opt, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-btn';
+      btn.textContent = opt;
+      btn.onclick = function() {
+        if (optIdx === quiz.correct) {
+          btn.classList.add('correct');
+          correctCount++;
+          showQuizResult(correctCount, quizzes.length);
+        } else {
+          btn.classList.add('wrong');
+          quiz.options.forEach((_, i) => {
+            if (i === quiz.correct) {
+              optionsDiv.children[i].classList.add('correct');
+            }
+          });
+        }
+        Array.from(optionsDiv.children).forEach(b => b.disabled = true);
+      };
+      optionsDiv.appendChild(btn);
+    });
+
+    quizDiv.appendChild(optionsDiv);
+    container.appendChild(quizDiv);
+  });
+}
+
+function showQuizResult(correct, total) {
+  const result = document.getElementById('quizResult');
+  const resultText = document.getElementById('quizResultText');
+  const percentage = (correct / total * 100).toFixed(0);
+
+  if (correct >= 4) {
+    resultText.innerHTML = `<strong>🎉 优秀！</strong> 你答对了 ${correct}/${total} 题。你的高中思维已经在萌芽了！`;
+  } else if (correct >= 3) {
+    resultText.innerHTML = `<strong>✓ 不错！</strong> 你答对了 ${correct}/${total} 题。继续加油，逐步适应高中思维。`;
+  } else {
+    resultText.innerHTML = `<strong>💡 提示：</strong> 你答对了 ${correct}/${total} 题。高中思维需要时间适应，不要急！`;
+  }
+  result.style.display = 'block';
+}
+
+// ===== 区间选择 =====
+function updateRangeDisplay() {
+  const min = parseFloat(document.getElementById('rangeMin').value);
+  const max = parseFloat(document.getElementById('rangeMax').value);
+
+  document.getElementById('minLabel').textContent = `min = ${min.toFixed(1)}`;
+  document.getElementById('maxLabel').textContent = `max = ${max.toFixed(1)}`;
+
+  drawRangeGraph(min, max);
+
+  // 计算y的范围
+  const values = [];
+  for (let x = min; x <= max; x += 0.1) {
+    values.push(x * x);
+  }
+  const yMin = Math.min(...values);
+  const yMax = Math.max(...values);
+
+  document.getElementById('rangeYMin').textContent = yMin.toFixed(2);
+  document.getElementById('rangeYMax').textContent = yMax.toFixed(2);
+}
+
+function drawRangeGraph(min, max) {
+  const canvas = document.getElementById('rangeGraph');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 30;
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+
+  // 网格
+  ctx.strokeStyle = '#e5e7eb';
+  ctx.lineWidth = 0.5;
+  for (let i = -5; i <= 5; i++) {
+    ctx.beginPath();
+    ctx.moveTo(centerX + i * scale, 0);
+    ctx.lineTo(centerX + i * scale, height);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, centerY - i * scale);
+    ctx.lineTo(width, centerY - i * scale);
+    ctx.stroke();
+  }
+
+  // 坐标轴
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.stroke();
+
+  // 完整曲线（浅色）
+  ctx.strokeStyle = '#ccc';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let x = -5; x <= 5; x += 0.05) {
+    const y = x * x;
+    const canvasX = centerX + x * scale;
+    const canvasY = centerY - y * scale;
+    if (x === -5) ctx.moveTo(canvasX, canvasY);
+    else ctx.lineTo(canvasX, canvasY);
+  }
+  ctx.stroke();
+
+  // 选中范围内的曲线（彩色）
+  ctx.strokeStyle = '#1d4ed8';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  for (let x = min; x <= max; x += 0.05) {
+    const y = x * x;
+    const canvasX = centerX + x * scale;
+    const canvasY = centerY - y * scale;
+    if (x === min) ctx.moveTo(canvasX, canvasY);
+    else ctx.lineTo(canvasX, canvasY);
+  }
+  ctx.stroke();
+
+  // 标记端点
+  ctx.fillStyle = '#10b981';
+  for (let pt of [min, max]) {
+    ctx.beginPath();
+    ctx.arc(centerX + pt * scale, centerY - pt * pt * scale, 4, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+}
+
+// ===== 动画演示 =====
+let animationRunning = false;
+let animationStep = 0;
+const animationTotalSteps = 50;
+
+function startAnimation() {
+  animationRunning = true;
+  animationStep = 0;
+  animateTransformation();
+}
+
+function pauseAnimation() {
+  animationRunning = false;
+}
+
+function resetAnimation() {
+  animationRunning = false;
+  animationStep = 0;
+  updateAnimationDisplay(0);
+}
+
+function animateTransformation() {
+  if (!animationRunning) return;
+
+  updateAnimationDisplay(animationStep);
+  animationStep++;
+
+  if (animationStep < animationTotalSteps) {
+    setTimeout(animateTransformation, 80);
+  } else {
+    animationRunning = false;
+  }
+}
+
+function updateAnimationDisplay(step) {
+  const t = step / animationTotalSteps;
+  const currentH = t * 2;  // 改为0到2（变化更大）
+  const currentK = t * 3;  // 改为0到3（变化更大）
+
+  drawAnimationCanvas(currentH, currentK);
+
+  // 更新信息显示
+  if (currentH < 0.01 && currentK < 0.01) {
+    document.getElementById('currentFormula').textContent = 'f(x) = x²';
+  } else if (currentK < 0.01) {
+    document.getElementById('currentFormula').textContent = `f(x) = (x-${currentH.toFixed(2)})²`;
+  } else if (currentH < 0.01) {
+    document.getElementById('currentFormula').textContent = `f(x) = x² + ${currentK.toFixed(2)}`;
+  } else {
+    document.getElementById('currentFormula').textContent = `f(x) = (x-${currentH.toFixed(2)})² + ${currentK.toFixed(2)}`;
+  }
+
+  document.getElementById('currentAxis').textContent = `x = ${currentH.toFixed(2)}`;
+  document.getElementById('currentVertex').textContent = `(${currentH.toFixed(2)}, ${currentK.toFixed(2)})`;
+  document.getElementById('stepCounter').textContent = `第 ${step + 1} / ${animationTotalSteps} 步`;
+  document.getElementById('progressBar').style.width = ((step + 1) / animationTotalSteps * 100) + '%';
+}
+
+function drawAnimationCanvas(h, k) {
+  const canvas = document.getElementById('animationCanvas');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 70;  // 改大缩放比例，让坐标轴范围更小，显示更大
+
+  // 清除画布
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+
+  // 绘制细网格
+  ctx.strokeStyle = '#f0f0f0';
+  ctx.lineWidth = 0.5;
+  for (let i = -4; i <= 4; i++) {
+    const x = centerX + i * scale;
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  // 绘制主网格（1单位）
+  ctx.strokeStyle = '#e0e0e0';
+  ctx.lineWidth = 1;
+  for (let i = -4; i <= 4; i++) {
+    const x = centerX + i * scale;
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  // 绘制坐标轴
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.stroke();
+
+  // 绘制坐标轴箭头
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(centerX + 6, 10);
+  ctx.lineTo(centerX - 3, 18);
+  ctx.lineTo(centerX + 3, 18);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(width - 10, centerY - 6);
+  ctx.lineTo(width - 18, centerY - 3);
+  ctx.lineTo(width - 18, centerY + 3);
+  ctx.fill();
+
+  // 绘制坐标标签和刻度
+  ctx.fillStyle = '#333';
+  ctx.font = '14px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  for (let i = -4; i <= 4; i++) {
+    if (i !== 0) {
+      // y轴标签
+      ctx.fillText(i, centerX - 12, centerY - i * scale - 7);
+
+      // y轴刻度线
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(centerX - 3, centerY);
+      ctx.lineTo(centerX + 3, centerY);
+      ctx.stroke();
+    }
+  }
+
+  // x轴标签
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = -4; i <= 4; i++) {
+    if (i !== 0) {
+      ctx.fillText(i, centerX + i * scale, centerY + 12);
+
+      // x轴刻度线
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY - 3);
+      ctx.lineTo(centerX, centerY + 3);
+      ctx.stroke();
+    }
+  }
+
+  // 轴标题
+  ctx.font = 'bold 16px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('x', width - 15, centerY - 15);
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('y', centerX - 20, 20);
+
+  // 绘制原始函数（浅色）- 让变化更明显
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  let firstPoint = true;
+  for (let x = -4; x <= 4; x += 0.04) {
+    const y = x * x;
+    const canvasX = centerX + x * scale;
+    const canvasY = centerY - y * scale;
+
+    if (canvasY >= -30 && canvasY <= height + 30) {
+      if (firstPoint) {
+        ctx.moveTo(canvasX, canvasY);
+        firstPoint = false;
+      } else {
+        ctx.lineTo(canvasX, canvasY);
+      }
+    }
+  }
+  ctx.stroke();
+
+  // 绘制当前抛物线（蓝色，更粗）
+  ctx.strokeStyle = '#2563eb';
+  ctx.lineWidth = 3.5;
+  ctx.beginPath();
+  firstPoint = true;
+
+  for (let x = -4; x <= 4; x += 0.03) {
+    const y = (x - h) * (x - h) + k;
+    const canvasX = centerX + x * scale;
+    const canvasY = centerY - y * scale;
+
+    if (canvasY >= -80 && canvasY <= height + 80) {
+      if (firstPoint) {
+        ctx.moveTo(canvasX, canvasY);
+        firstPoint = false;
+      } else {
+        ctx.lineTo(canvasX, canvasY);
+      }
+    }
+  }
+  ctx.stroke();
+
+  // 绘制对称轴（虚线）
+  ctx.strokeStyle = '#f59e0b';
+  ctx.setLineDash([6, 4]);
+  ctx.lineWidth = 2.5;
+  const axisX = centerX + h * scale;
+  ctx.beginPath();
+  ctx.moveTo(axisX, -50);
+  ctx.lineTo(axisX, height + 50);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // 绘制顶点圆点
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath();
+  const vertexY = centerY - k * scale;
+  ctx.arc(axisX, vertexY, 8, 0, 2 * Math.PI);
+  ctx.fill();
+
+  // 绘制顶点到轴的辅助线
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(axisX, vertexY);
+  ctx.lineTo(axisX, centerY);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(axisX, vertexY);
+  ctx.lineTo(centerX, vertexY);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // 绘制顶点坐标标签（带背景框）
+  ctx.fillStyle = '#fff';
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 1.5;
+  const labelX = axisX + 15;
+  const labelY = vertexY - 18;
+  const labelText = `(${h.toFixed(1)}, ${k.toFixed(1)})`;
+  ctx.font = '13px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'left';
+  const textMetrics = ctx.measureText(labelText);
+  const labelWidth = textMetrics.width + 10;
+  const labelHeight = 22;
+
+  // 背景框
+  ctx.fillRect(labelX - 2, labelY - labelHeight + 4, labelWidth, labelHeight);
+  ctx.strokeRect(labelX - 2, labelY - labelHeight + 4, labelWidth, labelHeight);
+
+  // 文字
+  ctx.fillStyle = '#ef4444';
+  ctx.fillText(labelText, labelX + 3, labelY - labelHeight + 10);
+
+  // 图例说明
+  ctx.font = '12px "Noto Sans SC", sans-serif';
+  ctx.fillStyle = '#999';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText('灰色 = 原始函数 f(x)=x²', 15, 25);
+  ctx.fillStyle = '#2563eb';
+  ctx.fillText('蓝色 = 当前函数 f(x)=(x-h)²+k', 15, 45);
+}
+
+// ===== 页面初始化 =====
+document.addEventListener('DOMContentLoaded', function() {
+  updateFullGraph();
+  drawFamilyGraph();
+  initQuiz();
+  updateRangeDisplay();
+  updateAnimationDisplay(0);
+  updateCalcResult();
+
+  // 监听深色模式
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+      updateFullGraph();
+      drawFamilyGraph();
+      updateRangeDisplay();
+      updateAnimationDisplay(animationStep);
+    });
+  }
+});
 </script>
 
 </body>

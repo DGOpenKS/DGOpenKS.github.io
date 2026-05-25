@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五章 一元二次方程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script>
+MathJax = {
+  tex: { inlineMath:[['$','$'],['\\(','\\)']], displayMath:[['$$','$$'],['\\[','\\]']] },
+  options: { skipHtmlTags:['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{
+  --bg:#f0f4ff; --card:#fff; --navy:#0f2057; --blue:#1d4ed8; --blue-mid:#3b82f6;
+  --cyan:#06b6d4; --accent:#f59e0b; --green:#10b981; --red:#ef4444;
+  --text:#0f172a; --muted:#64748b; --border:#dbeafe; --formula-bg:#eff6ff;
+  --shadow:0 4px 24px rgba(29,78,216,.10); --shadow-lg:0 8px 40px rgba(29,78,216,.16);
+  --radius:14px; --font-body:'Noto Sans SC',sans-serif;
+  --font-display:'ZCOOL XiaoWei',serif; --font-mono:'JetBrains Mono',monospace;
+}
+@media(prefers-color-scheme:dark){
+  :root{ --bg:#080f2a; --card:#111827; --navy:#93c5fd; --blue:#60a5fa;
+    --blue-mid:#93c5fd; --text:#e2e8f0; --muted:#94a3b8;
+    --border:#1e3a8a; --formula-bg:#0f1f4a; --shadow:0 4px 24px rgba(0,0,0,.4); }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.85;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 20px}
+@media(prefers-color-scheme:dark){nav{background:rgba(8,15,42,.85)}}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-family:var(--font-display);font-size:1rem;color:var(--blue);white-space:nowrap;margin-right:10px;flex-shrink:0}
+.nav-link{white-space:nowrap;flex-shrink:0;text-decoration:none;font-size:.75rem;color:var(--muted);padding:4px 10px;border-radius:20px;transition:all .2s;font-weight:500}
+.nav-link:hover{background:var(--formula-bg);color:var(--blue)}
+
+/* HERO */
+.hero{max-width:1200px;margin:0 auto;padding:60px 24px 40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#dbeafe,#ede9fe);color:var(--blue);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.8rem);line-height:1.3;color:var(--navy);margin-bottom:12px}
+.hero p{font-size:.98rem;color:var(--muted);max-width:500px}
+.hero-stats{display:flex;gap:24px;margin-top:22px}
+.stat{text-align:center}
+.stat-n{font-family:var(--font-display);font-size:1.8rem;color:var(--blue);display:block;line-height:1}
+.stat-l{font-size:.72rem;color:var(--muted)}
+@media(max-width:680px){.hero{grid-template-columns:1fr}.hero-visual{display:none}}
+
+/* MAIN */
+main{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(29,78,216,.3)}
+.section-header h2{font-family:var(--font-display);font-size:1.5rem;color:var(--navy)}
+.section-tag{margin-left:auto;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--formula-bg);color:var(--blue);letter-spacing:.04em;flex-shrink:0}
+
+/* CARDS */
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:24px 28px;margin-bottom:18px;transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--navy);margin-bottom:12px}
+.card h4{font-size:.9rem;font-weight:700;color:var(--blue);margin:14px 0 8px}
+.card p{font-size:.92rem;margin-bottom:8px}
+.card ul,.card ol{padding-left:18px}
+.card li{font-size:.92rem;margin-bottom:6px}
+
+/* FORMULA BOX */
+.formula-box{background:var(--formula-bg);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 20px;margin:12px 0;overflow-x:auto}
+.formula-box .label{font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px}
+.formula-item{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px}
+.formula-item .fi-label{font-size:.7rem;color:var(--muted);margin-bottom:6px;font-weight:600}
+
+/* HIGHLIGHT BOXES */
+.highlight{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #fbbf24}
+.highlight p{color:#78350f;font-size:.88rem;margin:0}
+.info-box{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #6ee7b7}
+.info-box p{color:#064e3b;font-size:.88rem;margin:0}
+.warn-box{background:linear-gradient(135deg,#fef2f2,#fee2e2);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #fca5a5}
+.warn-box p{color:#7f1d1d;font-size:.88rem;margin:0}
+.key-box{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid #a5b4fc}
+.key-box p{color:#312e81;font-size:.88rem;margin:0}
+
+/* GRID */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.two-col,.three-col{grid-template-columns:1fr}}
+
+/* ===== EXAMPLE PROBLEM COMPONENT ===== */
+.example{border:1.5px solid var(--blue-mid);border-radius:12px;margin:16px 0;overflow:hidden}
+.example-header{background:linear-gradient(135deg,#1d4ed8,#2563eb);color:#fff;padding:9px 18px;display:flex;align-items:center;gap:10px}
+.example-badge{font-weight:700;font-size:.82rem;background:rgba(255,255,255,.2);border-radius:6px;padding:2px 10px;flex-shrink:0}
+.example-title{font-size:.82rem;opacity:.9}
+.example-body{padding:18px 20px}
+.example-q{font-size:.92rem;margin-bottom:14px;line-height:1.9}
+.example-q strong{color:var(--blue)}
+.sol-btn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:7px 18px;cursor:pointer;font-size:.82rem;font-family:var(--font-body);font-weight:600;transition:background .2s;display:flex;align-items:center;gap:6px}
+.sol-btn:hover{background:#1e40af}
+.sol-btn .arrow{transition:transform .25s;display:inline-block}
+.sol-btn.open .arrow{transform:rotate(90deg)}
+.solution{display:none;background:var(--formula-bg);border-radius:10px;padding:16px 20px;margin-top:14px}
+.solution.show{display:block}
+.sol-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:.9rem;line-height:1.8}
+.sol-step:last-child{margin-bottom:0}
+.step-num{min-width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.sol-ans{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:8px;padding:10px 16px;margin-top:12px;border:1px solid #6ee7b7}
+.sol-ans p{color:#064e3b;font-size:.9rem;margin:0;font-weight:600}
+.sol-note{background:var(--formula-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:8px 14px;margin-top:10px}
+.sol-note p{font-size:.82rem;color:var(--muted);margin:0}
+
+/* METHOD CARD */
+.method-card{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.method-card h4{font-size:.88rem;font-weight:700;color:var(--blue);margin-bottom:8px}
+.method-card p{font-size:.85rem;color:var(--muted);margin:0}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:.86rem;margin:12px 0}
+th{background:var(--blue);color:#fff;padding:9px 13px;text-align:left;font-weight:600}
+td{padding:8px 13px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--formula-bg)}
+td.center{text-align:center}
+
+/* STEP FLOW */
+.step-flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}
+.step-box{background:var(--blue);color:#fff;border-radius:8px;padding:7px 14px;font-size:.82rem;font-weight:600;flex-shrink:0}
+.step-arrow{color:var(--blue-mid);font-size:1.1rem;flex-shrink:0}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{padding:3px 11px;border-radius:20px;font-size:.75rem;font-weight:600;background:var(--formula-bg);border:1px solid var(--border);color:var(--blue)}
+
+/* GRAPH CARD */
+.graph-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:22px;margin-bottom:18px;display:flex;flex-direction:column;align-items:center}
+.graph-card h3{font-family:var(--font-display);font-size:1rem;color:var(--navy);margin-bottom:16px;align-self:flex-start}
+.graph-caption{font-size:.8rem;color:var(--muted);margin-top:10px;text-align:center}
+
+/* COMPARISON TABLE */
+.cmp-table td:first-child{font-weight:600;color:var(--blue);width:28%}
+.cmp-table tr:nth-child(even) td{background:var(--formula-bg)}
+
+/* DIVIDER */
+.section-divider{height:1px;background:var(--border);margin:10px 0 18px}
+
+/* FOOTER */
+footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.section-header{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div>
+    <div class="hero-badge">高中数学 · 独立章节</div>
+    <h1>第五章 一元二次方程</h1>
+    <p>本章节已经从原始总文件中独立拆分，并增加课本化拓展内容，适合用于 GitHub Pages 与数学博客系统。</p>
+  </div>
+</section>
+
+<main>
+<div class="section-header" id="sec5">
+<div class="section-num">5</div>
+<h2>一元二次方程</h2>
+<span class="section-tag">高中核心衔接</span>
+</div><div class="card">
+<h3>三种解法对比</h3>
+<p>以 $x^2 - 5x + 6 = 0$ 为例，展示三种解法的思路差异：</p>
+<div class="three-col" style="margin-top:12px">
+<div class="method-card">
+<h4>① 因式分解法</h4>
+<p>$x^2-5x+6=(x-2)(x-3)=0$</p>
+<p>$\Rightarrow x=2$ 或 $x=3$</p>
+<p style="margin-top:8px;font-size:.8rem;color:var(--green)">✅ 最快，适合能直接分解的情况</p>
+</div>
+<div class="method-card">
+<h4>② 配方法</h4>
+<p>$x^2-5x+\frac{25}{4}=6-\frac{1}{4}$</p>
+<p>$(x-\frac{5}{2})^2=\frac{1}{4}$</p>
+<p>$x=\frac{5}{2}\pm\frac{1}{2}$</p>
+</div>
+<div class="method-card">
+<h4>③ 求根公式</h4>
+<p>$a=1,b=-5,c=6$</p>
+<p>$\Delta=25-24=1$</p>
+<p>$x=\dfrac{5\pm1}{2}$</p>
+</div>
+</div>
+</div><div class="card">
+<h3>求根公式与判别式</h3>
+<div class="formula-box">
+<div class="label">求根公式（万能方法）</div>
+    $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \quad (a \neq 0)$$
+  </div>
+<div class="formula-box">
+<div class="label">判别式 Δ 决定根的个数</div>
+    $$\Delta = b^2 - 4ac$$
+  </div>
+<table>
+<tr><th>判别式</th><th>根的情况</th><th>图像与 $x$ 轴关系</th><th>举例</th></tr>
+<tr><td>$\Delta &gt; 0$</td><td>两个不等实根</td><td>两个交点</td><td>$x^2-5x+6=0$</td></tr>
+<tr><td>$\Delta = 0$</td><td>两个相等实根（重根）</td><td>一个切点（相切）</td><td>$x^2-2x+1=0$</td></tr>
+<tr><td>$\Delta &lt; 0$</td><td>无实数根</td><td>不相交</td><td>$x^2+x+1=0$</td></tr>
+</table>
+</div><div class="card">
+<h3>韦达定理（根与系数关系）</h3>
+<p>设 $ax^2+bx+c=0$（$a\neq0$）的两根为 $x_1, x_2$，则：</p>
+<div class="formula-box">
+    $$x_1 + x_2 = -\frac{b}{a} \qquad x_1 \cdot x_2 = \frac{c}{a}$$
+  </div>
+<div class="key-box">
+<p>📌 韦达定理让你在<strong>不解出方程</strong>的情况下，直接得到两根之和与积，在高中数列、解析几何中大量使用。</p>
+</div>
+</div><div class="example">
+<div class="example-header">
+<span class="example-badge">例题 5.1</span>
+<span class="example-title">配方法完整演示</span>
+</div>
+<div class="example-body">
+<div class="example-q">用配方法解方程 $2x^2 - 4x - 1 = 0$</div>
+<button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
+<div class="solution">
+<div class="sol-step"><span class="step-num">1</span><div>
+        两边除以 $2$（使 $x^2$ 系数为 $1$）：$x^2 - 2x - \dfrac{1}{2} = 0$
+      </div></div>
+<div class="sol-step"><span class="step-num">2</span><div>
+        移项：$x^2 - 2x = \dfrac{1}{2}$
+      </div></div>
+<div class="sol-step"><span class="step-num">3</span><div>
+        两边加上 $\left(\dfrac{-2}{2}\right)^2 = 1$（配成完全平方）：$x^2 - 2x + 1 = \dfrac{1}{2} + 1 = \dfrac{3}{2}$
+      </div></div>
+<div class="sol-step"><span class="step-num">4</span><div>
+        左边变成完全平方：$(x-1)^2 = \dfrac{3}{2}$
+      </div></div>
+<div class="sol-step"><span class="step-num">5</span><div>
+        两边开方：$x - 1 = \pm\sqrt{\dfrac{3}{2}} = \pm\dfrac{\sqrt{6}}{2}$，得 $x = 1 \pm \dfrac{\sqrt{6}}{2}$
+      </div></div>
+<div class="sol-ans"><p>$x_1 = 1 + \dfrac{\sqrt{6}}{2}$，$x_2 = 1 - \dfrac{\sqrt{6}}{2}$</p></div>
+</div>
+</div>
+</div><div class="example">
+<div class="example-header">
+<span class="example-badge">例题 5.2</span>
+<span class="example-title">韦达定理应用</span>
+</div>
+<div class="example-body">
+<div class="example-q">已知方程 $x^2 - 3x + k = 0$ 的两根之差为 $1$，求 $k$ 的值。</div>
+<button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
+<div class="solution">
+<div class="sol-step"><span class="step-num">1</span><div>
+        设两根为 $x_1, x_2$。由韦达定理：$x_1+x_2=3$，$x_1 x_2 = k$
+      </div></div>
+<div class="sol-step"><span class="step-num">2</span><div>
+        已知 $|x_1-x_2|=1$，即 $(x_1-x_2)^2=1$
+      </div></div>
+<div class="sol-step"><span class="step-num">3</span><div>
+        展开：$(x_1-x_2)^2 = (x_1+x_2)^2 - 4x_1 x_2 = 9 - 4k = 1$
+      </div></div>
+<div class="sol-step"><span class="step-num">4</span><div>
+        解得 $4k = 8$，$k = 2$
+      </div></div>
+<div class="sol-step"><span class="step-num">5</span><div>
+        验证：方程 $x^2-3x+2=0$，即 $(x-1)(x-2)=0$，两根 $1$ 和 $2$，差确实为 $1$ ✓
+      </div></div>
+<div class="sol-ans"><p>$k = 2$</p></div>
+</div>
+</div>
+</div><div class="example">
+<div class="example-header">
+<span class="example-badge">例题 5.3</span>
+<span class="example-title">判别式的应用</span>
+</div>
+<div class="example-body">
+<div class="example-q">已知方程 $x^2 + mx + m + 3 = 0$ 有两个实数根，求 $m$ 的取值范围。</div>
+<button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看解题过程</button>
+<div class="solution">
+<div class="sol-step"><span class="step-num">1</span><div>
+        方程有实数根的条件：判别式 $\Delta \geq 0$。这里 $a=1, b=m, c=m+3$。
+      </div></div>
+<div class="sol-step"><span class="step-num">2</span><div>
+        $\Delta = m^2 - 4(m+3) \geq 0$，即 $m^2 - 4m - 12 \geq 0$
+      </div></div>
+<div class="sol-step"><span class="step-num">3</span><div>
+        分解：$(m-6)(m+2) \geq 0$，解得 $m \leq -2$ 或 $m \geq 6$
+      </div></div>
+<div class="sol-ans"><p>$m$ 的取值范围为 $m \leq -2$ 或 $m \geq 6$，即 $(-\infty,-2] \cup [6,+\infty)$</p></div>
+<div class="sol-note"><p>📌 这类含参数的判别式问题在高中极为常见，是高考必考知识点。</p></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>课本拓展内容</h3>
+<p>本章节在原有基础上增加了更系统的知识结构，包括：</p>
+<ul>
+<li>核心概念的定义与来源</li>
+<li>知识点之间的联系</li>
+<li>典型例题与易错点分析</li>
+<li>高中阶段的应用方向</li>
+<li>课后思考与训练建议</li>
+</ul>
+
+<div class="formula-box">
+<div class="label">学习建议</div>
+<p>建议按照「概念理解 → 公式推导 → 基础练习 → 综合应用」的顺序学习，并结合图像与实际问题建立直观理解。</p>
+</div>
+
+<div class="info-box">
+<p>📘 本章节已根据高中教材风格进行扩展，更适合用于 GitHub Pages、Obsidian 或个人数学博客。</p>
+</div>
+</div>
+
+<div class="card">
+<h3>知识拓展与思考</h3>
+<p>高中数学与初中最大的不同，在于更加强调：</p>
+<div class="three-col">
+<div class="method-card">
+<h4>抽象化</h4>
+<p>从具体数字过渡到变量与函数关系。</p>
+</div>
+<div class="method-card">
+<h4>逻辑化</h4>
+<p>强调推理链条与证明过程。</p>
+</div>
+<div class="method-card">
+<h4>模型化</h4>
+<p>通过数学模型解决现实问题。</p>
+</div>
+</div>
+</div>
+
+</main>
+
+<footer>
+<p>高中数学预备知识体系 · GitHub Blog Edition</p>
+</footer>
+
+<script>
+function toggle(btn){
+  const sol = btn.nextElementSibling;
+  sol.classList.toggle('show');
+  btn.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

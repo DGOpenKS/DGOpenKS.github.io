@@ -204,6 +204,13 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 .quiz-feedback{margin-top:12px;padding:10px 12px;border-radius:6px;font-size:.85rem}
 .quiz-feedback.correct{background:#d1fae5;color:#064e3b;border:1px solid #6ee7b7}
 .quiz-feedback.wrong{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5}
+.quiz-feedback p{margin:0 0 6px}
+.quiz-feedback p:last-child{margin-bottom:0}
+.quiz-meta{font-size:.78rem;color:#047857;margin-bottom:8px;font-weight:600}
+.quiz-actions{display:flex;justify-content:flex-end;margin:12px 0 4px}
+.quiz-refresh{background:var(--green);color:#fff;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:.85rem;font-weight:700;font-family:var(--font-body)}
+.quiz-refresh:hover{background:#059669}
+@media(max-width:680px){.quiz-options{grid-template-columns:1fr}.quiz-actions{justify-content:stretch}.quiz-refresh{width:100%}}
 
 .range-selector{background:var(--formula-bg);border-radius:10px;padding:16px;margin:16px 0}
 .range-label{font-weight:600;color:var(--navy);margin-bottom:12px;display:block}
@@ -211,21 +218,24 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 .range-display .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;font-weight:600}
 .range-display .value{font-size:1rem;color:var(--blue);margin-top:4px}
 
-.animation-box{background:linear-gradient(135deg,#ede9fe,#dbeafe);border-radius:12px;padding:24px;margin:16px 0;border-left:4px solid #7c3aed;box-shadow:0 4px 12px rgba(124,58,237,.08)}
+.animation-box{background:linear-gradient(135deg,#f8fafc,#eef2ff);border-radius:12px;padding:24px;margin:16px 0;border:1px solid #c7d2fe;border-left:4px solid #7c3aed;box-shadow:0 4px 12px rgba(124,58,237,.08)}
+@media(prefers-color-scheme:dark){.animation-box{background:linear-gradient(135deg,#111827,#172554);border-color:#4338ca}}
 .animation-controls{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
 .anim-btn{background:#7c3aed;color:#fff;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;font-family:var(--font-body)}
 .anim-btn:hover{background:#6d28d9;transform:translateY(-2px);box-shadow:0 4px 12px rgba(124,58,237,.3)}
 .anim-btn:active{transform:translateY(0)}
 .anim-btn.pause{background:#f59e0b}
 .anim-btn.pause:hover{background:#d97706}
-.anim-canvas{border:2px solid #7c3aed;border-radius:12px;background:#fff;width:100%;height:360px;display:block;box-shadow:0 4px 12px rgba(124,58,237,.1)}
+.anim-canvas{border:1px solid #a5b4fc;border-radius:12px;background:#fff;width:100%;height:clamp(280px,52vw,420px);display:block;box-shadow:0 4px 12px rgba(124,58,237,.1)}
 @media(prefers-color-scheme:dark){.anim-canvas{background:#1e293b;border-color:#a78bfa}}
-.animation-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.animation-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
 .anim-info-item{background:var(--card);padding:12px 14px;border-radius:8px;border-left:3px solid #7c3aed;font-size:.85rem}
 .anim-info-label{color:var(--muted);font-size:.7rem;text-transform:uppercase;font-weight:700;margin-bottom:6px;letter-spacing:.06em}
 .anim-info-value{color:#7c3aed;font-size:.95rem;font-weight:600;font-family:var(--font-mono)}
+.anim-stage{border-left-color:#2563eb}
+.anim-stage .anim-info-value{color:#2563eb;font-family:var(--font-body)}
 .animation-step-bar{background:var(--border);height:5px;border-radius:3px;margin-top:12px;overflow:hidden}
-.animation-step-fill{background:linear-gradient(90deg,#7c3aed,#6366f1);height:100%;border-radius:3px;transition:width .1s linear}
+.animation-step-fill{background:linear-gradient(90deg,#2563eb,#7c3aed);height:100%;border-radius:3px;transition:width .08s linear}
 .animation-step-text{text-align:center;margin-top:10px;color:var(--muted);font-size:.8rem;font-weight:500}
 
 .properties-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:12px 0}
@@ -450,7 +460,11 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 
 <div class="card">
 <h3>🎮 思维判断游戏：你用的是初中思维还是高中思维？</h3>
-<p>下面有5道题，看看你的思维方式现在是什么阶段：</p>
+<p>下面会随机生成 5 道判断题。关键不是猜对标签，而是说清楚依据：是在求一个具体答案，还是在研究变量、性质、参数或区间。</p>
+
+<div class="quiz-actions">
+<button class="quiz-refresh" type="button" onclick="initQuiz()">重新生成题目</button>
+</div>
 
 <div id="quizContainer"></div>
 
@@ -503,7 +517,7 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 
 <div class="card">
 <h3>✨ 动画演示：参数变化的过程</h3>
-<p>高中数学最重要的思想就是看到"参数如何一步步改变函数"。下面的动画展示了从 $y=x^2$ 逐步变化到 $f(x)=(x-1)^2+2$ 的完整过程。点击「开始动画」观看：</p>
+<p>高中数学最重要的思想之一，是看懂"参数如何改变函数图像"。下面把 $y=x^2$ 变成 $f(x)=(x-1)^2+2$ 的过程拆成两步：先由 $h$ 控制水平移动，再由 $k$ 控制竖直移动。</p>
 
 <div class="animation-box">
 <div class="animation-controls">
@@ -515,6 +529,10 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 <canvas id="animationCanvas" class="anim-canvas"></canvas>
 
 <div class="animation-info">
+<div class="anim-info-item anim-stage">
+<div class="anim-info-label">当前阶段</div>
+<div class="anim-info-value" id="currentStage">准备开始</div>
+</div>
 <div class="anim-info-item">
 <div class="anim-info-label">当前公式</div>
 <div class="anim-info-value" id="currentFormula">f(x) = x²</div>
@@ -532,16 +550,15 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 <div class="animation-step-bar">
 <div class="animation-step-fill" id="progressBar" style="width:0%"></div>
 </div>
-<div class="animation-step-text" id="stepCounter">第 1 / 50 步</div>
+<div class="animation-step-text" id="stepCounter">准备开始</div>
 </div>
 
 <div class="insight-box" style="margin-top:16px">
 <p><strong>👀 看这个动画时注意：</strong></p>
 <ul style="margin:8px 0;padding-left:18px;font-size:.85rem">
-<li>参数 $h$ 从 0 逐步变到 1（抛物线向右移动）</li>
-<li>参数 $k$ 从 0 逐步变到 2（抛物线向上移动）</li>
-<li>对称轴从 $x=0$ 逐步变到 $x=1$</li>
-<li>顶点从 $(0,0)$ 逐步移动到 $(1,2)$</li>
+<li>第一阶段：$h$ 从 0 变到 1，整条抛物线向右移动，对称轴从 $x=0$ 到 $x=1$。</li>
+<li>第二阶段：$k$ 从 0 变到 2，整条抛物线向上移动，顶点从 $(1,0)$ 到 $(1,2)$。</li>
+<li>顶点的运动轨迹比曲线本身更关键：它直接告诉你图像发生了什么变换。</li>
 </ul>
 <p style="margin-top:12px">这就是<strong>参数化思维</strong>——用参数 $a, h, k$ 来系统地描述所有可能的二次函数。这是高中数学的核心思想！</p>
 </div>
@@ -769,38 +786,187 @@ function drawFamilyGraph() {
 }
 
 // ===== 思维判断游戏 =====
-function initQuiz() {
-  const quizzes = [
+let quizAnsweredCount = 0;
+let quizCorrectCount = 0;
+let currentQuizTotal = 0;
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function shuffleArray(arr) {
+  return arr
+    .map(item => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+function makeValueQuestion() {
+  const a = pickRandom([2, 3, -1, -2, 4]);
+  const b = pickRandom([-5, -2, 1, 3, 6]);
+  const x = pickRandom([-2, -1, 2, 3, 4]);
+  const bTerm = b > 0 ? `+${b}` : `-${Math.abs(b)}`;
+  return {
+    q: `已知 $f(x)=${a}x${bTerm}$，求 $f(${x})$。这是在用什么思维？`,
+    basis: '判定依据：题目给定一个具体的 x，只要求算出一个具体函数值，关注的是“算出答案”。',
+    options: [
+      {
+        text: '初中思维：代入具体数值，求一个确定答案',
+        correct: true,
+        reason: `把 $x=${x}$ 代入式子即可得到一个数，任务结束，所以这是具体计算型思维。`
+      },
+      {
+        text: '高中思维：研究函数的整体性质',
+        correct: false,
+        reason: '本题没有研究定义域、单调性、图像、零点等整体性质，只是在算某一点的值。'
+      }
+    ]
+  };
+}
+
+function makeEquationQuestion() {
+  const root = pickRandom([2, 3, 4, 5]);
+  return {
+    q: `求解方程 $x^2=${root * root}$。这是在用什么思维？`,
+    basis: '判定依据：题目目标是找出满足方程的具体 x 值，而不是研究 $y=x^2$ 这个函数的整体结构。',
+    options: [
+      {
+        text: '初中思维：解方程，求具体的未知数取值',
+        correct: true,
+        reason: `方程的答案是 $x=\\pm ${root}$，它要求的是具体解。`
+      },
+      {
+        text: '高中思维：研究函数的图像与零点分布',
+        correct: false,
+        reason: '如果题目问 $y=x^2-${root * root}$ 的零点、图像与 x 轴交点关系，才更接近函数整体研究。'
+      }
+    ]
+  };
+}
+
+function makePropertyQuestion() {
+  const functions = [
+    { f: 'x^2', property: '对称轴', answer: '$x=0$' },
+    { f: '(x-2)^2+1', property: '顶点坐标', answer: '$(2,1)$' },
+    { f: '-x^2+3', property: '开口方向', answer: '向下' },
+    { f: '2x+1', property: '单调性', answer: '单调递增' }
+  ];
+  const item = pickRandom(functions);
+  return {
+    q: `判断函数 $f(x)=${item.f}$ 的${item.property}。这是在用什么思维？`,
+    basis: `判定依据：题目关心的是函数的“${item.property}”，也就是对象本身的性质，而不只是某一步计算。`,
+    options: [
+      {
+        text: '初中思维：把数字代进去算结果',
+        correct: false,
+        reason: `本题没有指定某个 x 去代入，而是在判断函数的${item.property}。`
+      },
+      {
+        text: '高中思维：分析函数性质',
+        correct: true,
+        reason: `例如这里要得到${item.answer}，需要从函数表达式看图像或性质。`
+      }
+    ]
+  };
+}
+
+function makeParameterQuestion() {
+  const templates = [
     {
-      q: "已知 $f(x) = 2x + 1$，求 $f(3)$ 的值。这是在用什么思维？",
-      options: ['初中思维：求一个具体的值', '高中思维：研究整个函数'],
-      correct: 0
+      q: '给定参数 $a$，研究 $f(x)=ax^2$ 在 $a>0$ 与 $a<0$ 时的开口方向。这是在用什么思维？',
+      basis: '判定依据：题目没有给 a 一个固定数，而是讨论参数不同取值带来的整体变化。',
+      reason: '要分 $a>0$、$a<0$ 讨论图像开口方向，这是典型参数分析。'
     },
     {
-      q: "问：函数 $f(x) = x^2$ 的对称轴是什么？这是在用什么思维？",
-      options: ['初中思维：求某个点', '高中思维：分析函数的性质'],
-      correct: 1
+      q: '研究 $f(x)=(x-h)^2$ 中 $h$ 改变时，图像如何左右移动。这是在用什么思维？',
+      basis: '判定依据：题目把 h 看成可变化的参数，关注参数改变导致的图像变化规律。',
+      reason: '$h$ 不是某个具体数，而是控制平移的参数，所以重点是规律。'
     },
     {
-      q: "给定参数 $a$，研究函数 $f(x) = ax^2$ 的开口方向。这是在用什么思维？",
-      options: ['初中思维：代入计算', '高中思维：参数分析'],
-      correct: 1
-    },
-    {
-      q: "在区间 $[0, 2]$ 上，求 $f(x) = x^2$ 的最大值和最小值。这是在用什么思维？",
-      options: ['初中思维：只求一个值', '高中思维：分析区间上的性质'],
-      correct: 1
-    },
-    {
-      q: "求解方程 $x^2 = 4$。这是在用什么思维？",
-      options: ['初中思维：求某些具体的值', '高中思维：研究函数的零点'],
-      correct: 0
+      q: '讨论 $mx+2=0$ 在 $m=0$ 与 $m\\neq0$ 时解的情况。这是在用什么思维？',
+      basis: '判定依据：题目要求根据参数 m 的不同情况分类讨论。',
+      reason: '当 $m=0$ 与 $m\\neq0$ 时方程性质不同，必须分类。'
     }
   ];
+  const item = pickRandom(templates);
+  return {
+    q: item.q,
+    basis: item.basis,
+    options: [
+      {
+        text: '初中思维：直接代入一个数计算',
+        correct: false,
+        reason: '题目没有给出唯一的参数值，不能只代一个数就结束。'
+      },
+      {
+        text: '高中思维：参数分析或分类讨论',
+        correct: true,
+        reason: item.reason
+      }
+    ]
+  };
+}
+
+function makeIntervalQuestion() {
+  const intervals = ['[0,2]', '[-1,3]', '[1,4]', '[-3,-1]'];
+  const interval = pickRandom(intervals);
+  return {
+    q: `在区间 $${interval}$ 上，研究 $f(x)=x^2$ 的最大值和最小值。这是在用什么思维？`,
+    basis: '判定依据：题目强调“在某个区间上”，答案会随区间变化，关注的是函数在范围内的性质。',
+    options: [
+      {
+        text: '初中思维：只求某一个固定数值',
+        correct: false,
+        reason: '本题不是求 $f(某个数)$，而是研究一整个区间里的最大最小。'
+      },
+      {
+        text: '高中思维：研究函数在区间上的性质',
+        correct: true,
+        reason: `同一个 $x^2$ 在不同区间上的最大最小可能不同，必须结合区间 $${interval}$ 分析。`
+      }
+    ]
+  };
+}
+
+function makeGraphQuestion() {
+  const functions = ['x^2-4', '(x-1)^2-3', '-x^2+2'];
+  const f = pickRandom(functions);
+  return {
+    q: `把 $f(x)=${f}$ 的图像画出来，并观察它与 x 轴的交点。这是在用什么思维？`,
+    basis: '判定依据：题目把代数式转化为图像，用图形理解函数与方程的关系。',
+    options: [
+      {
+        text: '初中思维：只按步骤算出一个答案',
+        correct: false,
+        reason: '题目要求借助图像观察关系，不只是机械计算。'
+      },
+      {
+        text: '高中思维：数形结合，研究函数图像',
+        correct: true,
+        reason: '把表达式、图像、交点联系起来，是高中数学常用的数形结合。'
+      }
+    ]
+  };
+}
+
+function initQuiz() {
+  const generators = [
+    makeValueQuestion,
+    makeEquationQuestion,
+    makePropertyQuestion,
+    makeParameterQuestion,
+    makeIntervalQuestion,
+    makeGraphQuestion
+  ];
+  const quizzes = shuffleArray(generators).slice(0, 5).map(makeQuiz => makeQuiz());
 
   const container = document.getElementById('quizContainer');
   container.innerHTML = '';
-  let correctCount = 0;
+  const result = document.getElementById('quizResult');
+  result.style.display = 'none';
+  quizAnsweredCount = 0;
+  quizCorrectCount = 0;
+  currentQuizTotal = quizzes.length;
 
   quizzes.forEach((quiz, idx) => {
     const quizDiv = document.createElement('div');
@@ -812,27 +978,44 @@ function initQuiz() {
     q.textContent = `第 ${idx + 1} 题：${quiz.q.replace(/\$/g, '')}`;
     quizDiv.appendChild(q);
 
+    const meta = document.createElement('div');
+    meta.className = 'quiz-meta';
+    meta.textContent = '请选择判断，并查看每个选项背后的依据。';
+    quizDiv.appendChild(meta);
+
     const optionsDiv = document.createElement('div');
     optionsDiv.className = 'quiz-options';
 
-    quiz.options.forEach((opt, optIdx) => {
+    const shuffledOptions = shuffleArray(quiz.options);
+    shuffledOptions.forEach((opt) => {
       const btn = document.createElement('button');
       btn.className = 'quiz-btn';
-      btn.textContent = opt;
+      btn.textContent = opt.text;
       btn.onclick = function() {
-        if (optIdx === quiz.correct) {
-          btn.classList.add('correct');
-          correctCount++;
-          showQuizResult(correctCount, quizzes.length);
+        const feedback = document.createElement('div');
+        const correctOption = shuffledOptions.find(option => option.correct);
+
+        if (opt.correct) {
+          quizCorrectCount++;
+          feedback.className = 'quiz-feedback correct';
         } else {
-          btn.classList.add('wrong');
-          quiz.options.forEach((_, i) => {
-            if (i === quiz.correct) {
-              optionsDiv.children[i].classList.add('correct');
-            }
-          });
+          feedback.className = 'quiz-feedback wrong';
         }
+
+        quizAnsweredCount++;
+        btn.classList.add(opt.correct ? 'correct' : 'wrong');
         Array.from(optionsDiv.children).forEach(b => b.disabled = true);
+        shuffledOptions.forEach((option, optionIdx) => {
+          if (option.correct) optionsDiv.children[optionIdx].classList.add('correct');
+        });
+
+        feedback.innerHTML = `
+          <p><strong>${opt.correct ? '判断正确。' : '这个判断不准确。'}</strong>${opt.reason}</p>
+          <p><strong>正确依据：</strong>${correctOption.reason}</p>
+          <p><strong>本题标准：</strong>${quiz.basis}</p>
+        `;
+        quizDiv.appendChild(feedback);
+        showQuizResult();
       };
       optionsDiv.appendChild(btn);
     });
@@ -842,17 +1025,19 @@ function initQuiz() {
   });
 }
 
-function showQuizResult(correct, total) {
+function showQuizResult() {
   const result = document.getElementById('quizResult');
   const resultText = document.getElementById('quizResultText');
-  const percentage = (correct / total * 100).toFixed(0);
+  const pending = currentQuizTotal - quizAnsweredCount;
 
-  if (correct >= 4) {
-    resultText.innerHTML = `<strong>🎉 优秀！</strong> 你答对了 ${correct}/${total} 题。你的高中思维已经在萌芽了！`;
-  } else if (correct >= 3) {
-    resultText.innerHTML = `<strong>✓ 不错！</strong> 你答对了 ${correct}/${total} 题。继续加油，逐步适应高中思维。`;
+  if (pending > 0) {
+    resultText.innerHTML = `<strong>当前进度：</strong>已完成 ${quizAnsweredCount}/${currentQuizTotal} 题，答对 ${quizCorrectCount} 题。还剩 ${pending} 题。`;
+  } else if (quizCorrectCount >= 4) {
+    resultText.innerHTML = `<strong>🎉 优秀！</strong>你答对了 ${quizCorrectCount}/${currentQuizTotal} 题。更重要的是，你已经开始用“依据”区分计算、性质、参数、区间和图像了。`;
+  } else if (quizCorrectCount >= 3) {
+    resultText.innerHTML = `<strong>✓ 不错！</strong>你答对了 ${quizCorrectCount}/${currentQuizTotal} 题。继续练习时，先问自己：这是求一个答案，还是研究一类变化？`;
   } else {
-    resultText.innerHTML = `<strong>💡 提示：</strong> 你答对了 ${correct}/${total} 题。高中思维需要时间适应，不要急！`;
+    resultText.innerHTML = `<strong>💡 提示：</strong>你答对了 ${quizCorrectCount}/${currentQuizTotal} 题。判断时抓关键词：具体值、方程解偏初中；性质、参数、区间、图像偏高中。`;
   }
   result.style.display = 'block';
 }
@@ -954,44 +1139,83 @@ function drawRangeGraph(min, max) {
 
 // ===== 动画演示 =====
 let animationRunning = false;
-let animationStep = 0;
-const animationTotalSteps = 50;
+let animationProgress = 0;
+let animationFrameId = null;
+let animationLastTime = 0;
+const animationDuration = 5200;
+const animationTargetH = 1;
+const animationTargetK = 2;
 
 function startAnimation() {
+  if (animationProgress >= 1) animationProgress = 0;
   animationRunning = true;
-  animationStep = 0;
-  animateTransformation();
+  animationLastTime = 0;
+  cancelAnimationFrame(animationFrameId);
+  animationFrameId = requestAnimationFrame(animateTransformation);
 }
 
 function pauseAnimation() {
   animationRunning = false;
+  cancelAnimationFrame(animationFrameId);
 }
 
 function resetAnimation() {
   animationRunning = false;
-  animationStep = 0;
+  cancelAnimationFrame(animationFrameId);
+  animationProgress = 0;
   updateAnimationDisplay(0);
 }
 
-function animateTransformation() {
+function animateTransformation(timestamp) {
   if (!animationRunning) return;
 
-  updateAnimationDisplay(animationStep);
-  animationStep++;
+  if (!animationLastTime) animationLastTime = timestamp;
+  const delta = timestamp - animationLastTime;
+  animationLastTime = timestamp;
+  animationProgress = Math.min(1, animationProgress + delta / animationDuration);
+  updateAnimationDisplay(animationProgress);
 
-  if (animationStep < animationTotalSteps) {
-    setTimeout(animateTransformation, 80);
+  if (animationProgress < 1) {
+    animationFrameId = requestAnimationFrame(animateTransformation);
   } else {
     animationRunning = false;
   }
 }
 
-function updateAnimationDisplay(step) {
-  const t = step / animationTotalSteps;
-  const currentH = t * 2;  // 改为0到2（变化更大）
-  const currentK = t * 3;  // 改为0到3（变化更大）
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
 
-  drawAnimationCanvas(currentH, currentK);
+function getAnimationState(progress) {
+  if (progress <= 0.5) {
+    const phaseT = easeInOutCubic(progress / 0.5);
+    return {
+      h: animationTargetH * phaseT,
+      k: 0,
+      stage: '第一阶段：h 控制右移',
+      phase: 1
+    };
+  }
+
+  const phaseT = easeInOutCubic((progress - 0.5) / 0.5);
+  return {
+    h: animationTargetH,
+    k: animationTargetK * phaseT,
+    stage: '第二阶段：k 控制上移',
+    phase: 2
+  };
+}
+
+function formatSigned(value) {
+  return value >= 0 ? `+ ${value.toFixed(2)}` : `- ${Math.abs(value).toFixed(2)}`;
+}
+
+function updateAnimationDisplay(progress) {
+  const state = getAnimationState(progress);
+  const currentH = state.h;
+  const currentK = state.k;
+
+  drawAnimationCanvas(currentH, currentK, state.phase);
 
   // 更新信息显示
   if (currentH < 0.01 && currentK < 0.01) {
@@ -1001,16 +1225,17 @@ function updateAnimationDisplay(step) {
   } else if (currentH < 0.01) {
     document.getElementById('currentFormula').textContent = `f(x) = x² + ${currentK.toFixed(2)}`;
   } else {
-    document.getElementById('currentFormula').textContent = `f(x) = (x-${currentH.toFixed(2)})² + ${currentK.toFixed(2)}`;
+    document.getElementById('currentFormula').textContent = `f(x) = (x-${currentH.toFixed(2)})² ${formatSigned(currentK)}`;
   }
 
+  document.getElementById('currentStage').textContent = progress >= 1 ? '完成：得到目标函数' : state.stage;
   document.getElementById('currentAxis').textContent = `x = ${currentH.toFixed(2)}`;
   document.getElementById('currentVertex').textContent = `(${currentH.toFixed(2)}, ${currentK.toFixed(2)})`;
-  document.getElementById('stepCounter').textContent = `第 ${step + 1} / ${animationTotalSteps} 步`;
-  document.getElementById('progressBar').style.width = ((step + 1) / animationTotalSteps * 100) + '%';
+  document.getElementById('stepCounter').textContent = `进度 ${Math.round(progress * 100)}%`;
+  document.getElementById('progressBar').style.width = (progress * 100) + '%';
 }
 
-function drawAnimationCanvas(h, k) {
+function drawAnimationCanvasLegacy(h, k) {
   const canvas = document.getElementById('animationCanvas');
   const ctx = canvas.getContext('2d');
   const width = canvas.width;
@@ -1232,6 +1457,181 @@ function drawAnimationCanvas(h, k) {
   ctx.fillText('蓝色 = 当前函数 f(x)=(x-h)²+k', 15, 45);
 }
 
+function drawAnimationCanvas(h, k, phase = 1) {
+  const canvas = document.getElementById('animationCanvas');
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  const width = Math.max(320, Math.round(rect.width));
+  const height = Math.max(260, Math.round(rect.height));
+
+  if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+  }
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const colors = {
+    bg: isDark ? '#1e293b' : '#ffffff',
+    grid: isDark ? '#334155' : '#e5e7eb',
+    axis: isDark ? '#cbd5e1' : '#1f2937',
+    text: isDark ? '#cbd5e1' : '#334155',
+    original: isDark ? '#64748b' : '#cbd5e1',
+    moved: '#2563eb',
+    stage: phase === 1 ? '#2563eb' : '#7c3aed',
+    vertex: '#ef4444',
+    helper: '#f59e0b'
+  };
+
+  const padding = Math.min(56, Math.max(34, width * 0.08));
+  const xMin = -2.5;
+  const xMax = 3.5;
+  const yMin = -1;
+  const yMax = 4.6;
+  const plotW = width - padding * 2;
+  const plotH = height - padding * 2;
+  const toCanvasX = x => padding + (x - xMin) / (xMax - xMin) * plotW;
+  const toCanvasY = y => height - padding - (y - yMin) / (yMax - yMin) * plotH;
+  const originX = toCanvasX(0);
+  const originY = toCanvasY(0);
+
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = colors.bg;
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.strokeStyle = colors.grid;
+  ctx.lineWidth = 1;
+  for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
+    const x = toCanvasX(i);
+    ctx.beginPath();
+    ctx.moveTo(x, padding);
+    ctx.lineTo(x, height - padding);
+    ctx.stroke();
+  }
+  for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
+    const y = toCanvasY(i);
+    ctx.beginPath();
+    ctx.moveTo(padding, y);
+    ctx.lineTo(width - padding, y);
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = colors.axis;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(originX, padding);
+  ctx.lineTo(originX, height - padding);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(padding, originY);
+  ctx.lineTo(width - padding, originY);
+  ctx.stroke();
+
+  ctx.fillStyle = colors.text;
+  ctx.font = '12px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
+    if (i !== 0) ctx.fillText(i, toCanvasX(i), originY + 8);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
+    if (i !== 0) ctx.fillText(i, originX - 8, toCanvasY(i));
+  }
+
+  function drawCurve(fn, stroke, lineWidth) {
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = lineWidth;
+    ctx.beginPath();
+    let started = false;
+    for (let x = xMin; x <= xMax; x += 0.025) {
+      const y = fn(x);
+      const cx = toCanvasX(x);
+      const cy = toCanvasY(y);
+      if (!started) {
+        ctx.moveTo(cx, cy);
+        started = true;
+      } else {
+        ctx.lineTo(cx, cy);
+      }
+    }
+    ctx.stroke();
+  }
+
+  drawCurve(x => x * x, colors.original, 2.5);
+  drawCurve(x => (x - h) * (x - h) + k, colors.moved, 3.5);
+
+  ctx.strokeStyle = colors.stage;
+  ctx.lineWidth = 2.5;
+  ctx.setLineDash([7, 5]);
+  ctx.beginPath();
+  ctx.moveTo(toCanvasX(0), toCanvasY(0));
+  ctx.lineTo(toCanvasX(animationTargetH), toCanvasY(0));
+  if (phase === 2 || k > 0.01) {
+    ctx.lineTo(toCanvasX(animationTargetH), toCanvasY(animationTargetK));
+  }
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const axisX = toCanvasX(h);
+  ctx.strokeStyle = colors.helper;
+  ctx.setLineDash([6, 4]);
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(axisX, padding);
+  ctx.lineTo(axisX, height - padding);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const vertexX = toCanvasX(h);
+  const vertexY = toCanvasY(k);
+  ctx.fillStyle = colors.vertex;
+  ctx.beginPath();
+  ctx.arc(vertexX, vertexY, 7, 0, 2 * Math.PI);
+  ctx.fill();
+
+  ctx.strokeStyle = colors.vertex;
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(vertexX, vertexY);
+  ctx.lineTo(vertexX, originY);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(vertexX, vertexY);
+  ctx.lineTo(originX, vertexY);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const labelText = `(${h.toFixed(1)}, ${k.toFixed(1)})`;
+  const labelX = Math.min(vertexX + 12, width - 92);
+  const labelY = Math.max(vertexY - 30, padding + 4);
+  ctx.font = '13px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  const labelWidth = ctx.measureText(labelText).width + 14;
+  ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
+  ctx.strokeStyle = colors.vertex;
+  ctx.lineWidth = 1;
+  ctx.fillRect(labelX, labelY, labelWidth, 24);
+  ctx.strokeRect(labelX, labelY, labelWidth, 24);
+  ctx.fillStyle = colors.vertex;
+  ctx.fillText(labelText, labelX + 7, labelY + 5);
+
+  ctx.font = '12px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillStyle = colors.text;
+  ctx.fillText('灰色：原始函数 y=x²', padding, 16);
+  ctx.fillStyle = colors.moved;
+  ctx.fillText('蓝色：当前函数 f(x)=(x-h)²+k', padding, 34);
+  ctx.fillStyle = colors.stage;
+  ctx.fillText(phase === 1 ? '虚线：顶点向右移动' : '虚线：顶点继续向上移动', padding, 52);
+}
+
 // ===== 页面初始化 =====
 document.addEventListener('DOMContentLoaded', function() {
   updateFullGraph();
@@ -1243,11 +1643,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 监听深色模式
   if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       updateFullGraph();
       drawFamilyGraph();
       updateRangeDisplay();
-      updateAnimationDisplay(animationStep);
+      updateAnimationDisplay(animationProgress);
     });
   }
 });

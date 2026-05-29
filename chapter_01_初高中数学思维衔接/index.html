@@ -105,6 +105,9 @@ main{max-width:1200px;margin:0 auto;padding:0 24px 80px}
 .sol-btn:hover{background:#1e40af}
 .sol-btn .arrow{transition:transform .25s;display:inline-block}
 .sol-btn.open .arrow{transform:rotate(90deg)}
+.example-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.random-btn{background:var(--green)}
+.random-btn:hover{background:#047857}
 .solution{display:none;background:var(--formula-bg);border-radius:10px;padding:16px 20px;margin-top:14px}
 .solution.show{display:block}
 .sol-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:.9rem;line-height:1.8}
@@ -330,12 +333,15 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 <span class="example-title">感受初高中思维差异</span>
 </div>
 <div class="example-body">
-<div class="example-q">
+<div class="example-q" id="example11Question">
 <strong>【初中问题】</strong>已知一个矩形的长比宽多 $3$，面积为 $28$，求长和宽。<br/>
 <strong>【高中问题】</strong>若矩形的宽为 $x$，面积为 $f(x) = x(x+3)$，求使面积超过 $28$ 的宽的范围。
     </div>
+<div class="example-actions">
 <button class="sol-btn" onclick="toggle(this)"><span class="arrow">▶</span> 查看分析</button>
-<div class="solution">
+<button class="sol-btn random-btn" type="button" onclick="generateExample11()">随机出题</button>
+</div>
+<div class="solution" id="example11Solution">
 <div class="sol-step"><span class="step-num">1</span><div>
 <strong>初中解法：</strong>设宽为 $x$，则长为 $x+3$，面积方程：$x(x+3)=28$，即 $x^2+3x-28=0$，解得 $x=4$（舍负），长 $=7$。问题结束。
       </div></div>
@@ -424,6 +430,71 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 
 <div class="insight-box">
 <p><strong>💡 你发现了什么？</strong> 改变参数 $a, h, k$，函数的所有性质都在改变。这就是高中思维——不只关注某个点，而是理解 <strong>参数如何系统地控制整个函数</strong>。</p>
+</div>
+</div>
+
+<div class="card">
+<h3>🧮 标准式探索：$f(x)=ax^2+bx+c$</h3>
+<p>顶点式更直观地显示平移，标准式更常见于方程与计算。拖动下面三个系数，观察二次项系数、一次项系数和常数项如何共同决定图像。</p>
+
+<div class="slider-box">
+<div class="slider-group">
+<div class="slider-label">二次项系数 $a$</div>
+<div class="slider-container">
+<input type="range" min="-2" max="2" step="0.1" value="1" class="slider-input" id="stdA" oninput="updateStandardGraph()">
+<span class="slider-value" id="stdAValue">a = 1</span>
+</div>
+</div>
+
+<div class="slider-group">
+<div class="slider-label">一次项系数 $b$</div>
+<div class="slider-container">
+<input type="range" min="-6" max="6" step="0.2" value="0" class="slider-input" id="stdB" oninput="updateStandardGraph()">
+<span class="slider-value" id="stdBValue">b = 0</span>
+</div>
+</div>
+
+<div class="slider-group">
+<div class="slider-label">常数项 $c$</div>
+<div class="slider-container">
+<input type="range" min="-6" max="6" step="0.2" value="0" class="slider-input" id="stdC" oninput="updateStandardGraph()">
+<span class="slider-value" id="stdCValue">c = 0</span>
+</div>
+</div>
+</div>
+
+<div class="graph-container">
+<canvas id="standardGraph" class="graph-canvas" width="500" height="350"></canvas>
+<div id="standardGraphInfo" class="graph-info"></div>
+</div>
+
+<div class="properties-table">
+<table style="width:100%">
+<tr>
+<th>标准式性质</th>
+<th style="text-align:right;">当前值</th>
+</tr>
+<tr>
+<td>函数公式</td>
+<td id="stdFormulaDisplay" style="text-align:right;font-family:monospace;">f(x)=x²</td>
+</tr>
+<tr>
+<td>对称轴</td>
+<td id="stdAxisDisplay" style="text-align:right;">x = 0</td>
+</tr>
+<tr>
+<td>顶点坐标</td>
+<td id="stdVertexDisplay" style="text-align:right;">(0, 0)</td>
+</tr>
+<tr>
+<td>与 y 轴交点</td>
+<td id="stdYInterceptDisplay" style="text-align:right;">(0, 0)</td>
+</tr>
+</table>
+</div>
+
+<div class="insight-box">
+<p><strong>标准式和顶点式的联系：</strong> 当 $a\neq0$ 时，$f(x)=ax^2+bx+c$ 的对称轴是 $x=-\dfrac{b}{2a}$。也就是说，$b$ 不只是“中间那一项”，它会影响抛物线左右移动的位置。</p>
 </div>
 </div>
 
@@ -574,9 +645,53 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
 <script>
 // ===== 基础函数 =====
 function toggle(btn){
-  const sol = btn.nextElementSibling;
+  const box = btn.closest('.example-body');
+  const sol = box ? box.querySelector('.solution') : btn.nextElementSibling;
+  if (!sol) return;
   sol.classList.toggle('show');
   btn.classList.toggle('open');
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function buildExample11Case() {
+  const width = randomInt(3, 9);
+  const diff = randomInt(2, 7);
+  const length = width + diff;
+  const area = width * length;
+  return {
+    question: `
+      <strong>【初中问题】</strong>已知一个矩形的长比宽多 $${diff}$，面积为 $${area}$，求长和宽。<br/>
+      <strong>【高中问题】</strong>若矩形的宽为 $x$，面积为 $f(x)=x(x+${diff})$，求使面积超过 $${area}$ 的宽的范围。
+    `,
+    solution: `
+      <div class="sol-step"><span class="step-num">1</span><div>
+        <strong>初中解法：</strong>设宽为 $x$，则长为 $x+${diff}$，面积方程为 $x(x+${diff})=${area}$，
+        即 $x^2+${diff}x-${area}=0$。因为 $${width}(${width}+${diff})=${area}$，所以 $x=${width}$（舍去负根），长为 $${length}$。
+      </div></div>
+      <div class="sol-step"><span class="step-num">2</span><div>
+        <strong>高中分析：</strong>要研究 $f(x)=x(x+${diff})>${area}$，
+        即 $x^2+${diff}x-${area}>0$，也就是 $(x-${width})(x+${length})>0$。
+        因为矩形宽 $x>0$，所以只需要 $x>${width}$。
+      </div></div>
+      <div class="sol-ans"><p>初中问题得到一个具体矩形：宽 $${width}$，长 $${length}$。高中问题得到一个范围：宽 $x>${width}$。</p></div>
+    `
+  };
+}
+
+function generateExample11() {
+  const problem = buildExample11Case();
+  const question = document.getElementById('example11Question');
+  const solution = document.getElementById('example11Solution');
+  question.innerHTML = problem.question;
+  solution.innerHTML = problem.solution;
+  solution.classList.remove('show');
+
+  const toggleBtn = question.parentElement.querySelector('.sol-btn:not(.random-btn)');
+  if (toggleBtn) toggleBtn.classList.remove('open');
+  if (typeof typesetMath === 'function') typesetMath(question.parentElement);
 }
 
 function switchTab(tab) {
@@ -641,6 +756,55 @@ function drawFullParabola(a, h, k) {
   ctx.lineTo(width, centerY);
   ctx.stroke();
 
+  // 标准平面直角坐标系：箭头、整数刻度、原点
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(width - 8, centerY);
+  ctx.lineTo(width - 18, centerY - 5);
+  ctx.lineTo(width - 18, centerY + 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(centerX, 8);
+  ctx.lineTo(centerX - 5, 18);
+  ctx.lineTo(centerX + 5, 18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = '#334155';
+  ctx.font = '11px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = -6; i <= 6; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, centerY - 4);
+    ctx.lineTo(x, centerY + 4);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, x, centerY + 8);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = -5; i <= 5; i++) {
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(centerX - 4, y);
+    ctx.lineTo(centerX + 4, y);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, centerX - 8, y);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  ctx.fillText('O', centerX - 6, centerY + 6);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('x', width - 14, centerY - 12);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('y', centerX + 12, 16);
+
   // 绘制抛物线
   if (Math.abs(a) > 0.01) {
     ctx.strokeStyle = '#1d4ed8';
@@ -679,13 +843,6 @@ function drawFullParabola(a, h, k) {
     ctx.arc(axisX, vertexY, 5, 0, 2 * Math.PI);
     ctx.fill();
   }
-
-  // 标签
-  ctx.fillStyle = '#666';
-  ctx.font = '12px sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('x', width - 15, centerY - 10);
-  ctx.fillText('y', centerX + 10, 15);
 }
 
 function updateCalcResult() {
@@ -707,6 +864,194 @@ function updatePropertiesTable(a, h, k) {
   document.getElementById('vertexDisplay').textContent = `(${h.toFixed(1)}, ${k.toFixed(1)})`;
   document.getElementById('openDisplay').textContent = a > 0 ? '向上' : a < 0 ? '向下' : '退化';
   document.getElementById('minDisplay').textContent = a > 0 ? `${k.toFixed(1)} (最小值)` : a < 0 ? '无' : '无';
+}
+
+function formatCoeff(value, variable, first = false) {
+  if (Math.abs(value) < 0.001) return '';
+  const sign = value < 0 ? '-' : first ? '' : '+';
+  const abs = Math.abs(value);
+  const coeff = Math.abs(abs - 1) < 0.001 && variable ? '' : abs.toFixed(1).replace(/\.0$/, '');
+  return `${sign}${coeff}${variable}`;
+}
+
+function formatStandardFormula(a, b, c) {
+  const parts = [
+    formatCoeff(a, 'x²', true),
+    formatCoeff(b, 'x'),
+    Math.abs(c) < 0.001 ? '' : `${c < 0 ? '-' : partsHasLeading(a, b) ? '+' : ''}${Math.abs(c).toFixed(1).replace(/\.0$/, '')}`
+  ].filter(Boolean);
+  return parts.length ? parts.join('') : '0';
+}
+
+function partsHasLeading(a, b) {
+  return Math.abs(a) >= 0.001 || Math.abs(b) >= 0.001;
+}
+
+function updateStandardGraph() {
+  const a = parseFloat(document.getElementById('stdA').value);
+  const b = parseFloat(document.getElementById('stdB').value);
+  const c = parseFloat(document.getElementById('stdC').value);
+
+  document.getElementById('stdAValue').textContent = `a = ${a.toFixed(1)}`;
+  document.getElementById('stdBValue').textContent = `b = ${b.toFixed(1)}`;
+  document.getElementById('stdCValue').textContent = `c = ${c.toFixed(1)}`;
+
+  drawStandardQuadratic(a, b, c);
+
+  const formula = formatStandardFormula(a, b, c);
+  document.getElementById('stdFormulaDisplay').textContent = `f(x) = ${formula}`;
+  document.getElementById('stdYInterceptDisplay').textContent = `(0, ${c.toFixed(1)})`;
+
+  if (Math.abs(a) < 0.001) {
+    document.getElementById('stdAxisDisplay').textContent = '不是二次函数';
+    document.getElementById('stdVertexDisplay').textContent = '无顶点';
+    return;
+  }
+
+  const vertexX = -b / (2 * a);
+  const vertexY = a * vertexX * vertexX + b * vertexX + c;
+  document.getElementById('stdAxisDisplay').textContent = `x = ${vertexX.toFixed(2)}`;
+  document.getElementById('stdVertexDisplay').textContent = `(${vertexX.toFixed(2)}, ${vertexY.toFixed(2)})`;
+}
+
+function drawStandardQuadratic(a, b, c) {
+  const canvas = document.getElementById('standardGraph');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = 30;
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.strokeStyle = '#e5e7eb';
+  ctx.lineWidth = 0.5;
+  for (let i = -6; i <= 6; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.stroke();
+
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(width - 8, centerY);
+  ctx.lineTo(width - 18, centerY - 5);
+  ctx.lineTo(width - 18, centerY + 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(centerX, 8);
+  ctx.lineTo(centerX - 5, 18);
+  ctx.lineTo(centerX + 5, 18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = '#334155';
+  ctx.font = '11px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = -6; i <= 6; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, centerY - 4);
+    ctx.lineTo(x, centerY + 4);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, x, centerY + 8);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = -5; i <= 5; i++) {
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(centerX - 4, y);
+    ctx.lineTo(centerX + 4, y);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, centerX - 8, y);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  ctx.fillText('O', centerX - 6, centerY + 6);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('x', width - 14, centerY - 12);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('y', centerX + 12, 16);
+
+  ctx.strokeStyle = Math.abs(a) < 0.001 ? '#10b981' : '#1d4ed8';
+  ctx.lineWidth = 2.8;
+  ctx.beginPath();
+  let firstPoint = true;
+  for (let x = -6; x <= 6; x += 0.04) {
+    const y = a * x * x + b * x + c;
+    const canvasX = centerX + x * scale;
+    const canvasY = centerY - y * scale;
+    if (canvasY >= -60 && canvasY <= height + 60) {
+      if (firstPoint) {
+        ctx.moveTo(canvasX, canvasY);
+        firstPoint = false;
+      } else {
+        ctx.lineTo(canvasX, canvasY);
+      }
+    }
+  }
+  ctx.stroke();
+
+  const yIntercept = centerY - c * scale;
+  if (yIntercept >= 0 && yIntercept <= height) {
+    ctx.fillStyle = '#10b981';
+    ctx.beginPath();
+    ctx.arc(centerX, yIntercept, 5, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  if (Math.abs(a) >= 0.001) {
+    const vertexX = -b / (2 * a);
+    const vertexY = a * vertexX * vertexX + b * vertexX + c;
+    const vx = centerX + vertexX * scale;
+    const vy = centerY - vertexY * scale;
+
+    ctx.strokeStyle = '#f59e0b';
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(vx, 0);
+    ctx.lineTo(vx, height);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    if (vx >= -20 && vx <= width + 20 && vy >= -20 && vy <= height + 20) {
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.arc(vx, vy, 6, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  }
+
+  document.getElementById('standardGraphInfo').textContent = `f(x) = ${formatStandardFormula(a, b, c)}`;
 }
 
 // ===== 函数族对比 =====
@@ -750,6 +1095,55 @@ function drawFamilyGraph() {
   ctx.lineTo(width, centerY);
   ctx.stroke();
 
+  // 标准平面直角坐标系：箭头、整数刻度、原点
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(width - 8, centerY);
+  ctx.lineTo(width - 18, centerY - 5);
+  ctx.lineTo(width - 18, centerY + 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(centerX, 8);
+  ctx.lineTo(centerX - 5, 18);
+  ctx.lineTo(centerX + 5, 18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = '#334155';
+  ctx.font = '11px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = -5; i <= 5; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, centerY - 4);
+    ctx.lineTo(x, centerY + 4);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, x, centerY + 8);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = -4; i <= 4; i++) {
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(centerX - 4, y);
+    ctx.lineTo(centerX + 4, y);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, centerX - 8, y);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  ctx.fillText('O', centerX - 6, centerY + 6);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('x', width - 14, centerY - 12);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('y', centerX + 12, 16);
+
   // 三条曲线
   const functions = [
     { name: 'f₁(x)=x²', color: '#1d4ed8', fn: x => x * x },
@@ -777,12 +1171,6 @@ function drawFamilyGraph() {
     }
     ctx.stroke();
   });
-
-  ctx.fillStyle = '#666';
-  ctx.font = '12px sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('x', width - 15, centerY - 10);
-  ctx.fillText('y', centerX + 10, 15);
 }
 
 // ===== 思维判断游戏 =====
@@ -799,6 +1187,17 @@ function shuffleArray(arr) {
     .map(item => ({ item, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ item }) => item);
+}
+
+function typesetMath(root, retry = 0) {
+  if (window.MathJax && MathJax.typesetPromise) {
+    if (MathJax.typesetClear) MathJax.typesetClear([root]);
+    MathJax.typesetPromise([root]).catch(err => {
+      console.log('MathJax typeset failed: ' + err.message);
+    });
+  } else if (retry < 12) {
+    setTimeout(() => typesetMath(root, retry + 1), 250);
+  }
 }
 
 function makeValueQuestion() {
@@ -838,7 +1237,7 @@ function makeEquationQuestion() {
       {
         text: '高中思维：研究函数的图像与零点分布',
         correct: false,
-        reason: '如果题目问 $y=x^2-${root * root}$ 的零点、图像与 x 轴交点关系，才更接近函数整体研究。'
+        reason: `如果题目问 $y=x^2-${root * root}$ 的零点、图像与 x 轴交点关系，才更接近函数整体研究。`
       }
     ]
   };
@@ -975,7 +1374,7 @@ function initQuiz() {
 
     const q = document.createElement('div');
     q.className = 'quiz-question';
-    q.textContent = `第 ${idx + 1} 题：${quiz.q.replace(/\$/g, '')}`;
+    q.innerHTML = `第 ${idx + 1} 题：${quiz.q}`;
     quizDiv.appendChild(q);
 
     const meta = document.createElement('div');
@@ -987,34 +1386,39 @@ function initQuiz() {
     optionsDiv.className = 'quiz-options';
 
     const shuffledOptions = shuffleArray(quiz.options);
+    let answered = false;
+    const feedback = document.createElement('div');
+
     shuffledOptions.forEach((opt) => {
       const btn = document.createElement('button');
       btn.className = 'quiz-btn';
       btn.textContent = opt.text;
       btn.onclick = function() {
-        const feedback = document.createElement('div');
         const correctOption = shuffledOptions.find(option => option.correct);
 
-        if (opt.correct) {
-          quizCorrectCount++;
-          feedback.className = 'quiz-feedback correct';
-        } else {
-          feedback.className = 'quiz-feedback wrong';
+        if (!answered) {
+          quizAnsweredCount++;
+          if (opt.correct) quizCorrectCount++;
+          answered = true;
         }
 
-        quizAnsweredCount++;
-        btn.classList.add(opt.correct ? 'correct' : 'wrong');
-        Array.from(optionsDiv.children).forEach(b => b.disabled = true);
+        Array.from(optionsDiv.children).forEach(b => {
+          b.classList.remove('selected', 'wrong', 'correct');
+        });
+        btn.classList.add('selected', opt.correct ? 'correct' : 'wrong');
         shuffledOptions.forEach((option, optionIdx) => {
           if (option.correct) optionsDiv.children[optionIdx].classList.add('correct');
         });
 
+        feedback.className = opt.correct ? 'quiz-feedback correct' : 'quiz-feedback wrong';
         feedback.innerHTML = `
-          <p><strong>${opt.correct ? '判断正确。' : '这个判断不准确。'}</strong>${opt.reason}</p>
+          <p><strong>${opt.correct ? '这个选项有依据。' : '这个选项依据不足。'}</strong>${opt.reason}</p>
           <p><strong>正确依据：</strong>${correctOption.reason}</p>
           <p><strong>本题标准：</strong>${quiz.basis}</p>
+          <p><strong>计分说明：</strong>只记录你第一次点击的判断；之后仍可点击另一个选项比较依据。</p>
         `;
-        quizDiv.appendChild(feedback);
+        if (!feedback.parentNode) quizDiv.appendChild(feedback);
+        typesetMath(feedback);
         showQuizResult();
       };
       optionsDiv.appendChild(btn);
@@ -1023,6 +1427,8 @@ function initQuiz() {
     quizDiv.appendChild(optionsDiv);
     container.appendChild(quizDiv);
   });
+
+  typesetMath(container);
 }
 
 function showQuizResult() {
@@ -1101,6 +1507,55 @@ function drawRangeGraph(min, max) {
   ctx.moveTo(0, centerY);
   ctx.lineTo(width, centerY);
   ctx.stroke();
+
+  // 标准平面直角坐标系：箭头、整数刻度、原点
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(width - 8, centerY);
+  ctx.lineTo(width - 18, centerY - 5);
+  ctx.lineTo(width - 18, centerY + 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(centerX, 8);
+  ctx.lineTo(centerX - 5, 18);
+  ctx.lineTo(centerX + 5, 18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = '#334155';
+  ctx.font = '11px "Noto Sans SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = -5; i <= 5; i++) {
+    const x = centerX + i * scale;
+    ctx.beginPath();
+    ctx.moveTo(x, centerY - 4);
+    ctx.lineTo(x, centerY + 4);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, x, centerY + 8);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = -4; i <= 4; i++) {
+    const y = centerY - i * scale;
+    ctx.beginPath();
+    ctx.moveTo(centerX - 4, y);
+    ctx.lineTo(centerX + 4, y);
+    ctx.stroke();
+    if (i !== 0) ctx.fillText(i, centerX - 8, y);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  ctx.fillText('O', centerX - 6, centerY + 6);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('x', width - 14, centerY - 12);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('y', centerX + 12, 16);
 
   // 完整曲线（浅色）
   ctx.strokeStyle = '#ccc';
@@ -1485,17 +1940,17 @@ function drawAnimationCanvas(h, k, phase = 1) {
     helper: '#f59e0b'
   };
 
-  const padding = Math.min(56, Math.max(34, width * 0.08));
-  const xMin = -2.5;
-  const xMax = 3.5;
-  const yMin = -1;
-  const yMax = 4.6;
-  const plotW = width - padding * 2;
-  const plotH = height - padding * 2;
-  const toCanvasX = x => padding + (x - xMin) / (xMax - xMin) * plotW;
-  const toCanvasY = y => height - padding - (y - yMin) / (yMax - yMin) * plotH;
-  const originX = toCanvasX(0);
-  const originY = toCanvasY(0);
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = Math.min(width / 14, height / 10);
+  const xMin = -6;
+  const xMax = 6;
+  const yMin = -4;
+  const yMax = 5;
+  const toCanvasX = x => centerX + x * scale;
+  const toCanvasY = y => centerY - y * scale;
+  const originX = centerX;
+  const originY = centerY;
 
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = colors.bg;
@@ -1503,44 +1958,86 @@ function drawAnimationCanvas(h, k, phase = 1) {
 
   ctx.strokeStyle = colors.grid;
   ctx.lineWidth = 1;
-  for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
-    const x = toCanvasX(i);
+  for (let i = xMin; i <= xMax; i++) {
+    const x = centerX + i * scale;
     ctx.beginPath();
-    ctx.moveTo(x, padding);
-    ctx.lineTo(x, height - padding);
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
     ctx.stroke();
   }
-  for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
-    const y = toCanvasY(i);
+  for (let i = yMin; i <= yMax; i++) {
+    const y = centerY - i * scale;
     ctx.beginPath();
-    ctx.moveTo(padding, y);
-    ctx.lineTo(width - padding, y);
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
     ctx.stroke();
   }
 
   ctx.strokeStyle = colors.axis;
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(originX, padding);
-  ctx.lineTo(originX, height - padding);
+  ctx.moveTo(originX, 0);
+  ctx.lineTo(originX, height);
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(padding, originY);
-  ctx.lineTo(width - padding, originY);
+  ctx.moveTo(0, originY);
+  ctx.lineTo(width, originY);
   ctx.stroke();
+
+  // 标准平面直角坐标系：箭头、刻度线、原点标记
+  ctx.fillStyle = colors.axis;
+  ctx.beginPath();
+  ctx.moveTo(width - 8, originY);
+  ctx.lineTo(width - 18, originY - 5);
+  ctx.lineTo(width - 18, originY + 5);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(originX, 8);
+  ctx.lineTo(originX - 5, 18);
+  ctx.lineTo(originX + 5, 18);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = colors.axis;
+  ctx.lineWidth = 1.5;
+  for (let i = xMin; i <= xMax; i++) {
+    const x = toCanvasX(i);
+    ctx.beginPath();
+    ctx.moveTo(x, originY - 4);
+    ctx.lineTo(x, originY + 4);
+    ctx.stroke();
+  }
+  for (let i = yMin; i <= yMax; i++) {
+    const y = toCanvasY(i);
+    ctx.beginPath();
+    ctx.moveTo(originX - 4, y);
+    ctx.lineTo(originX + 4, y);
+    ctx.stroke();
+  }
 
   ctx.fillStyle = colors.text;
   ctx.font = '12px "Noto Sans SC", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
-  for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
+  for (let i = xMin; i <= xMax; i++) {
     if (i !== 0) ctx.fillText(i, toCanvasX(i), originY + 8);
   }
   ctx.textAlign = 'right';
   ctx.textBaseline = 'middle';
-  for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
+  for (let i = yMin; i <= yMax; i++) {
     if (i !== 0) ctx.fillText(i, originX - 8, toCanvasY(i));
   }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'top';
+  ctx.fillText('O', originX - 6, originY + 6);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('x', width - 14, originY - 12);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('y', originX + 12, 16);
 
   function drawCurve(fn, stroke, lineWidth) {
     ctx.strokeStyle = stroke;
@@ -1581,8 +2078,8 @@ function drawAnimationCanvas(h, k, phase = 1) {
   ctx.setLineDash([6, 4]);
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(axisX, padding);
-  ctx.lineTo(axisX, height - padding);
+  ctx.moveTo(axisX, 0);
+  ctx.lineTo(axisX, height);
   ctx.stroke();
   ctx.setLineDash([]);
 
@@ -1608,7 +2105,7 @@ function drawAnimationCanvas(h, k, phase = 1) {
 
   const labelText = `(${h.toFixed(1)}, ${k.toFixed(1)})`;
   const labelX = Math.min(vertexX + 12, width - 92);
-  const labelY = Math.max(vertexY - 30, padding + 4);
+  const labelY = Math.max(vertexY - 30, 4);
   ctx.font = '13px "Noto Sans SC", sans-serif';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
@@ -1625,16 +2122,17 @@ function drawAnimationCanvas(h, k, phase = 1) {
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
   ctx.fillStyle = colors.text;
-  ctx.fillText('灰色：原始函数 y=x²', padding, 16);
+  ctx.fillText('灰色：原始函数 y=x²', 16, 16);
   ctx.fillStyle = colors.moved;
-  ctx.fillText('蓝色：当前函数 f(x)=(x-h)²+k', padding, 34);
+  ctx.fillText('蓝色：当前函数 f(x)=(x-h)²+k', 16, 34);
   ctx.fillStyle = colors.stage;
-  ctx.fillText(phase === 1 ? '虚线：顶点向右移动' : '虚线：顶点继续向上移动', padding, 52);
+  ctx.fillText(phase === 1 ? '虚线：顶点向右移动' : '虚线：顶点继续向上移动', 16, 52);
 }
 
 // ===== 页面初始化 =====
 document.addEventListener('DOMContentLoaded', function() {
   updateFullGraph();
+  updateStandardGraph();
   drawFamilyGraph();
   initQuiz();
   updateRangeDisplay();

@@ -126,11 +126,6 @@ p{margin:0 0 12px}
 .transfer-card .mini-formula{font-family:var(--mono);font-size:1rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px;margin:10px 0}
 .transfer-card strong{color:var(--object)}
 .canvas-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:16px}
-.canvas-panel.stage-lab{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(420px,1.18fr);gap:18px;align-items:start}
-.canvas-panel.stage-lab .canvas-head{grid-column:1;grid-row:1}
-.canvas-panel.stage-lab canvas{grid-column:2;grid-row:1 / span 8;position:sticky;top:74px;min-height:420px}
-.canvas-panel.stage-lab .question-strip,.canvas-panel.stage-lab .mode-tabs,.canvas-panel.stage-lab .control-panel,.canvas-panel.stage-lab .timeline,.canvas-panel.stage-lab .stat-grid,.canvas-panel.stage-lab .callout{grid-column:1}
-.canvas-panel.stage-lab .question-strip,.canvas-panel.stage-lab .stat-grid,.canvas-panel.stage-lab .control-grid{grid-template-columns:1fr}
 .canvas-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}
 .canvas-title{font-weight:900}
 .legend{display:flex;gap:9px;flex-wrap:wrap;color:var(--muted);font-size:.78rem;font-weight:700}
@@ -138,8 +133,6 @@ p{margin:0 0 12px}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--object);display:inline-block}
 .dot.input{background:var(--input)}.dot.output{background:var(--output)}.dot.parameter{background:var(--parameter)}.dot.move{background:var(--movement)}.dot.ok{background:var(--conclusion)}.dot.ref{background:var(--reference)}
 canvas{display:block;width:100%;height:clamp(320px,48vw,500px);border-radius:14px;background:var(--surface-2);border:1px solid var(--line);touch-action:none}
-canvas.direct-manipulation{cursor:grab}
-canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .object-canvas{height:clamp(360px,52vw,540px)}
 .control-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
 .control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}
@@ -164,10 +157,6 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .compare-card.old h3{color:var(--reference)}
 .compare-card.new{border-color:color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--object) 5%,var(--surface))}
 .compare-card.new h3{color:var(--object)}
-.compare-switch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 0}
-.pair-index{color:var(--muted);font-weight:900;font-size:.86rem}
-.thinking-shift{border:1px solid color-mix(in srgb,var(--conclusion) 30%,var(--line));background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:14px 16px;margin-top:14px}
-.thinking-shift strong{color:var(--conclusion)}
 .timeline{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:14px}
 .scrub{width:100%;accent-color:var(--movement)}
 .reflection{background:radial-gradient(circle at 18% 0%,color-mix(in srgb,var(--object) 16%,transparent),transparent 34%),radial-gradient(circle at 88% 15%,color-mix(in srgb,var(--movement) 13%,transparent),transparent 30%),var(--surface);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:32px}
@@ -183,8 +172,6 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .reveal.in{opacity:1;transform:translateY(0)}
 @media(max-width:900px){
   .hero,.stage,.grid-2,.compare,.reflection-grid{grid-template-columns:1fr}
-  .canvas-panel.stage-lab{display:block}
-  .canvas-panel.stage-lab canvas{position:static;min-height:0;margin:14px 0}
   .stage-marker{position:static;display:flex;align-items:center;gap:10px}
   .stage-marker span{margin-bottom:0}
   .thinking-switch{grid-template-columns:1fr}
@@ -292,7 +279,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <p>答案不再只是两个数，而是图像、符号、区间和变化共同讲出的结构。</p>
         </div>
       </div>
-      <div class="canvas-panel stage-lab">
+      <div class="canvas-panel">
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="objectTitle">$y = x^2 - 4x + 3$</div>
@@ -351,20 +338,15 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
       </div>
       <div class="compare">
         <div class="compare-card old">
-          <h3>初中问题 / answer view</h3>
-          <p id="pairOld">解方程 $x^2 - 4x + 3 = 0$，求 $x$。</p>
-          <p class="subtle" id="pairOldNote">目标是得到两个具体答案。</p>
+          <h3>旧问题：求答案</h3>
+          <p>“令 $y=0$，解出 $x$。”</p>
+          <p class="subtle">这会得到 $x=1,3$，很重要，但只是曲线与 x 轴相交的两个瞬间。</p>
         </div>
         <div class="compare-card new">
-          <h3>高中问题 / object view</h3>
-          <p id="pairNew">研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？最小值在哪里？</p>
-          <p class="subtle" id="pairNewNote">同一个式子变成整条函数对象。</p>
+          <h3>新问题：研究对象</h3>
+          <p>“这条曲线在哪里上升？在哪里下降？最小值是什么？哪些 x 让 y 为正？”</p>
+          <p class="subtle">高中数学把一个式子当成一个整体来研究。</p>
         </div>
-      </div>
-      <div class="thinking-shift" id="pairShift"><p><strong>思维变化：</strong>从“求两个答案”变成“研究整个函数对象”。</p></div>
-      <div class="compare-switch">
-        <span class="pair-index" id="pairIndex">1 / 5</span>
-        <button class="btn" type="button" id="nextPairBtn">换一组问题</button>
       </div>
       <div class="callout">
         <p><strong>关键转变：</strong>答案仍然重要，但它不再是终点。它是理解对象结构的一扇门。</p>
@@ -377,7 +359,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
     <div class="stage-body reveal">
       <div class="stage-kicker">参数不是数字，是控制器</div>
       <h2>参数控制的不是一道题，而是一整个函数家族。</h2>
-      <div class="canvas-panel stage-lab">
+      <div class="canvas-panel">
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="familyTitle">$y = a(x-h)^2 + k$</div>
@@ -390,7 +372,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             <span><i class="dot move"></i>移动轨迹</span>
           </div>
         </div>
-        <canvas id="familyCanvas" class="direct-manipulation" aria-label="参数家族图像，可拖动顶点"></canvas>
+        <canvas id="familyCanvas" aria-label="参数家族图像，可拖动顶点"></canvas>
         <div class="mode-tabs" aria-label="参数表达方式">
           <button class="mode-tab active" type="button" data-family-mode="vertex">直观控制：a,h,k</button>
           <button class="mode-tab" type="button" data-family-mode="standard">常见写法：a,b,c</button>
@@ -449,7 +431,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
     <div class="stage-body reveal">
       <div class="stage-kicker">定义域和值域</div>
       <h2>函数不是只有公式，还要说清楚“研究哪一段”。</h2>
-      <div class="canvas-panel stage-lab">
+      <div class="canvas-panel">
         <div class="canvas-head">
           <div>
             <div class="canvas-title">$y = x^2 - 4x + 3$，但只研究一段 x</div>
@@ -549,68 +531,22 @@ const colors = {
 };
 
 const problemCases = [
-  { label:'标准式，两个整数根', a:1, b:-4, c:3, roots:[1,3], rootLabels:['1','3'] },
-  { label:'标准式，首项系数不是 1', a:2, b:-5, c:2, roots:[0.5,2], rootLabels:['0.5','2'] },
-  { label:'向下开口，根不必心算', a:-1, b:3, c:2, roots:[-0.56,3.56], rootLabels:['约 -0.56','约 3.56'] },
-  { label:'0.5 倍的顶点式', a:0.5, b:-2, c:1, roots:[0.59,3.41], rootLabels:['约 0.59','约 3.41'], vertex:'0.5(x-2)^2-1' },
-  { label:'向下开口的顶点式', a:-2, b:-4, c:1, roots:[-2.22,0.22], rootLabels:['约 -2.22','约 0.22'], vertex:'-2(x+1)^2+3' },
-  { label:'负首项系数', a:-1, b:4, c:-1, roots:[0.27,3.73], rootLabels:['约 0.27','约 3.73'] },
-  { label:'重根结构', a:1, b:-4, c:4, roots:[2], rootLabels:['2（重根）'] },
-  { label:'没有实数零点', a:1, b:2, c:3, roots:[], rootLabels:['没有实数解'] }
+  { r1: 1, r2: 3 },
+  { r1: 2, r2: 3 },
+  { r1: 2, r2: 5 },
+  { r1: -1, r2: 3 },
+  { r1: -2, r2: 4 },
+  { r1: 1, r2: 5 }
 ];
 const problemState = { index: 0, ...problemCases[0] };
-const relationPairs = [
-  {
-    caseIndex:0,
-    old:'解方程 $x^2 - 4x + 3 = 0$，求 $x$。',
-    oldNote:'目标是得到两个具体答案。',
-    next:'研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？最小值在哪里？',
-    nextNote:'同一个式子变成整条函数对象。',
-    shift:'从“求两个答案”变成“研究整个函数对象”。'
-  },
-  {
-    caseIndex:0,
-    old:'当 $x=2$ 时，求 $y=x^2-4x+3$ 的值。',
-    oldNote:'目标是算出一个点的输出值。',
-    next:'当 $x$ 不断变化时，$y$ 如何变化？图像告诉我们什么？',
-    nextNote:'一个点扩展为输入和输出之间的一整条关系。',
-    shift:'从“算一个点”变成“观察一整条关系”。'
-  },
-  {
-    caseIndex:3,
-    old:'把 $y=x^2$ 的图像向右平移 2 个单位，再向下平移 1 个单位，写出解析式。',
-    oldNote:'目标是完成一次图像变换。',
-    next:'研究 $y=a(x-h)^2+k$：参数 $a,h,k$ 分别如何控制一类函数？',
-    nextNote:'参数不只是数字，而是控制一个函数家族的旋钮。',
-    shift:'从“完成一次变换”变成“理解参数如何控制一类对象”。'
-  },
-  {
-    caseIndex:1,
-    old:'判断 $x=1$ 是否满足方程 $2x^2-5x+2=0$。',
-    oldNote:'目标是验证一个给定数字。',
-    next:'给定一个区间，研究函数在这个区间上的最大值、最小值、单调性和取值范围。',
-    nextNote:'条件限制会改变我们正在研究的对象。',
-    shift:'从“验证一个数”变成“研究对象在条件限制下的性质”。'
-  },
-  {
-    caseIndex:5,
-    old:'求抛物线 $y=-x^2+4x-1$ 与 x 轴的交点。',
-    oldNote:'目标是找图上的两个点。',
-    next:'研究交点、正负区间、顶点和对称轴之间的关系。',
-    nextNote:'点、区间、顶点和对称轴共同组成图像结构。',
-    shift:'从“找图上的点”变成“理解图像结构中的关系”。'
-  }
-];
-const pairState = { index: 0 };
 const objectState = { question: 'zeros', probe: 2.6, raf: 0 };
-const familyState = { mode: 'vertex', a: 1, h: 1, k: -1, stdA: 1, stdB: -4, stdC: 3, scrub: 1, playing: false, drag: false, hover: false, raf: 0 };
+const familyState = { mode: 'vertex', a: 1, h: 1, k: -1, stdA: 1, stdB: -4, stdC: 3, scrub: 1, playing: false, drag: false, raf: 0 };
 const domainState = { min: -1, max: 4, raf: 0 };
 const canvases = {};
 
-function problemA(){ return problemState.a; }
-function problemB(){ return problemState.b; }
-function problemC(){ return problemState.c; }
-function fBase(x){ return problemA()*x*x + problemB()*x + problemC(); }
+function problemB(){ return -(problemState.r1 + problemState.r2); }
+function problemC(){ return problemState.r1 * problemState.r2; }
+function fBase(x){ return x*x + problemB()*x + problemC(); }
 function fFamily(x, a, h, k){ return a * (x - h) * (x - h) + k; }
 function fStandard(x, a, b, c){ return a*x*x + b*x + c; }
 function clamp(value, min, max){ return Math.max(min, Math.min(max, value)); }
@@ -618,23 +554,8 @@ function lerp(a, b, t){ return a + (b - a) * t; }
 function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
 function pretty(value){ return Number(value).toFixed(2).replace(/\.00$/,'').replace(/(\.\d)0$/,'$1'); }
 function signed(value){ return value >= 0 ? `+ ${pretty(value)}` : `- ${pretty(Math.abs(value))}`; }
-function coeff(value, variable, first=false){
-  if(Math.abs(value) < .001) return '';
-  const sign = value < 0 ? '-' : first ? '' : '+';
-  const abs = Math.abs(value);
-  const body = Math.abs(abs - 1) < .001 && variable ? variable : `${pretty(abs)}${variable}`;
-  return `${sign}${body}`;
-}
-function quadraticExpression(){
-  const parts = [
-    coeff(problemA(),'x^2',true),
-    coeff(problemB(),'x'),
-    Math.abs(problemC()) < .001 ? '' : `${problemC() < 0 ? '-' : '+'}${pretty(Math.abs(problemC()))}`
-  ].filter(Boolean);
-  return parts.join(' ') || '0';
-}
-function problemEquation(){ return `${quadraticExpression()} = 0`; }
-function problemFunction(){ return `y = ${quadraticExpression()}`; }
+function problemEquation(){ return `x^2 ${signed(problemB())}x ${signed(problemC())} = 0`; }
+function problemFunction(){ return `y = x^2 ${signed(problemB())}x ${signed(problemC())}`; }
 
 function setupCanvas(id){
   const canvas = document.getElementById(id);
@@ -664,23 +585,13 @@ function graph(item, xMin=-4, xMax=6, yMin=-5, yMax=8){
   const sx = (item.w - pad.l - pad.r) / (xMax - xMin);
   const sy = (item.h - pad.t - pad.b) / (yMax - yMin);
   return {
-    xMin,xMax,yMin,yMax,pad,tickX:niceStep(xMax-xMin),tickY:niceStep(yMax-yMin),
+    xMin,xMax,yMin,yMax,pad,
     X:x => pad.l + (x - xMin) * sx,
     Y:y => item.h - pad.b - (y - yMin) * sy,
     x:px => xMin + (px - pad.l) / sx,
     y:py => yMin + (item.h - pad.b - py) / sy
   };
 }
-
-function niceStep(range){
-  const raw = range / 8;
-  const pow = Math.pow(10, Math.floor(Math.log10(raw)));
-  const unit = raw / pow;
-  const nice = unit <= 1 ? 1 : unit <= 2 ? 2 : unit <= 5 ? 5 : 10;
-  return nice * pow;
-}
-
-function firstTick(min, step){ return Math.ceil(min / step) * step; }
 
 function clear(item){
   item.ctx.clearRect(0,0,item.w,item.h);
@@ -694,10 +605,10 @@ function drawAxes(item, g){
   ctx.save();
   ctx.lineWidth = 1;
   ctx.strokeStyle = colors.grid();
-  for(let x = firstTick(g.xMin, g.tickX); x <= g.xMax + .0001; x += g.tickX){
+  for(let x = Math.ceil(g.xMin); x <= Math.floor(g.xMax); x++){
     ctx.beginPath(); ctx.moveTo(g.X(x), g.Y(g.yMin)); ctx.lineTo(g.X(x), g.Y(g.yMax)); ctx.stroke();
   }
-  for(let y = firstTick(g.yMin, g.tickY); y <= g.yMax + .0001; y += g.tickY){
+  for(let y = Math.ceil(g.yMin); y <= Math.floor(g.yMax); y++){
     ctx.beginPath(); ctx.moveTo(g.X(g.xMin), g.Y(y)); ctx.lineTo(g.X(g.xMax), g.Y(y)); ctx.stroke();
   }
   ctx.strokeStyle = colors.axis();
@@ -708,13 +619,13 @@ function drawAxes(item, g){
   ctx.font = '12px "Noto Sans SC", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
-  for(let x = firstTick(g.xMin, g.tickX); x <= g.xMax + .0001; x += g.tickX){
-    if(Math.abs(x) > .001) ctx.fillText(pretty(x), g.X(x), g.Y(0)+8);
+  for(let x = Math.ceil(g.xMin); x <= Math.floor(g.xMax); x++){
+    if(x !== 0) ctx.fillText(x, g.X(x), g.Y(0)+8);
   }
   ctx.textAlign = 'right';
   ctx.textBaseline = 'middle';
-  for(let y = firstTick(g.yMin, g.tickY); y <= g.yMax + .0001; y += g.tickY){
-    if(Math.abs(y) > .001) ctx.fillText(pretty(y), g.X(0)-8, g.Y(y));
+  for(let y = Math.ceil(g.yMin); y <= Math.floor(g.yMax); y++){
+    if(y !== 0) ctx.fillText(y, g.X(0)-8, g.Y(y));
   }
   ctx.textAlign = 'left'; ctx.fillText('x', g.X(g.xMax)-12, g.Y(0)-14);
   ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillText('y', g.X(0)+12, g.Y(g.yMax)+4);
@@ -779,28 +690,21 @@ function schedule(draw, state){
 function drawObject(){
   resizeCanvas('objectCanvas');
   const item = canvases.objectCanvas;
-  const a = problemA();
   const b = problemB();
-  const vx = Math.abs(a) < .001 ? 0 : -b / (2*a);
+  const vx = -b / 2;
   const vy = fBase(vx);
   const g = graph(item, -4, 7, Math.min(-3, vy - 2), Math.max(8, fBase(-4), fBase(7)));
   drawAxes(item,g);
   drawCurve(item,g,fBase,colors.object(),3.2);
 
   if(objectState.question === 'zeros'){
-    problemState.roots.forEach((root, index) => drawPoint(item,g,root,0,colors.conclusion(),`x=${problemState.rootLabels[index] || pretty(root)}`));
-    if(problemState.roots.length === 0){
-      const ctx = item.ctx;
-      ctx.save();
-      ctx.fillStyle = colors.conclusion();
-      ctx.font = '700 14px "Noto Sans SC", sans-serif';
-      ctx.fillText('没有与 x 轴相交：没有实数零点', g.X(-3.4), g.Y(Math.min(g.yMax - 1, vy + 2)));
-      ctx.restore();
-    }
+    drawPoint(item,g,problemState.r1,0,colors.conclusion(),`x=${problemState.r1}`);
+    drawPoint(item,g,problemState.r2,0,colors.conclusion(),`x=${problemState.r2}`);
   }
   if(objectState.question === 'positive' || objectState.question === 'negative'){
-    const wantPositive = objectState.question === 'positive';
-    const ranges = signRanges(g.xMin, g.xMax, wantPositive);
+    const left = Math.min(problemState.r1, problemState.r2);
+    const right = Math.max(problemState.r1, problemState.r2);
+    const ranges = objectState.question === 'positive' ? [[g.xMin,left],[right,g.xMax]] : [[left,right]];
     ranges.forEach(r => drawCurve(item,g,fBase,objectState.question === 'positive' ? colors.conclusion() : colors.warning(),6,.34,r));
   }
   if(objectState.question === 'minimum'){
@@ -819,49 +723,18 @@ function drawObject(){
   }
 }
 
-function signRanges(xMin, xMax, wantPositive){
-  const roots = problemState.roots.slice().sort((a,b) => a-b);
-  const cuts = [xMin, ...roots.filter(r => r > xMin && r < xMax), xMax];
-  const ranges = [];
-  for(let i = 0; i < cuts.length - 1; i++){
-    const left = cuts[i], right = cuts[i+1];
-    if(right - left < .02) continue;
-    const mid = (left + right) / 2;
-    const positive = fBase(mid) > 0;
-    if(positive === wantPositive) ranges.push([left,right]);
-  }
-  return ranges;
-}
-
-function intervalText(wantPositive){
-  const roots = problemState.roots.slice().sort((a,b) => a-b);
-  if(roots.length === 0) return fBase(0) > 0 === wantPositive ? '所有实数' : '没有这样的 x';
-  if(roots.length === 1){
-    const r = problemState.rootLabels[0] || pretty(roots[0]);
-    if(Math.sign(problemA()) > 0) return wantPositive ? `x≠${r}` : '没有这样的 x';
-    return wantPositive ? '没有这样的 x' : `x≠${r}`;
-  }
-  const [l,r] = roots;
-  const [lt,rt] = [problemState.rootLabels[0] || pretty(l), problemState.rootLabels[1] || pretty(r)];
-  const midPositive = fBase((l+r)/2) > 0;
-  if(midPositive === wantPositive) return `${lt}<x<${rt}`;
-  return `x<${lt} 或 x>${rt}`;
-}
-
 function setQuestion(q){
   objectState.question = q;
   objectState.probe = -1.2;
   document.querySelectorAll('.question-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.question === q));
-  const roots = problemState.roots.slice().sort((a,b) => a-b);
-  const vx = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
+  const left = Math.min(problemState.r1, problemState.r2);
+  const right = Math.max(problemState.r1, problemState.r2);
+  const vx = -problemB() / 2;
   const vy = fBase(vx);
-  const rootText = problemState.rootLabels.join('，');
-  const positiveText = intervalText(true);
-  const negativeText = intervalText(false);
   const text = {
-    zeros:['求零点',rootText,'答案是曲线与 x 轴的交点'],
-    positive:['判断正值区间',positiveText,'图像在 x 轴上方'],
-    negative:['判断负值区间',negativeText,'图像在 x 轴下方'],
+    zeros:['求零点',`x=${left},${right}`,'答案是曲线与 x 轴的交点'],
+    positive:['判断正值区间',`x<${left} 或 x>${right}`,'图像在 x 轴上方'],
+    negative:['判断负值区间',`${left}<x<${right}`,'图像在 x 轴下方'],
     minimum:['寻找最小值',`顶点 (${pretty(vx)},${pretty(vy)})`,'性质来自整个对象'],
     change:['观察变化','点沿曲线移动','x 与 y 是一组关系']
   }[q];
@@ -876,7 +749,7 @@ function updateProblemUI(){
   document.getElementById('seniorFunction').innerHTML = `$${problemFunction()}$`;
   document.getElementById('objectTitle').innerHTML = `$${problemFunction()}$`;
   document.getElementById('answerChip').hidden = true;
-  document.getElementById('answerChip').innerHTML = problemState.roots.length ? problemState.rootLabels.map(label => `$x=${label}$`).join(' 或 ') : '没有实数解';
+  document.getElementById('answerChip').innerHTML = `$x=${Math.min(problemState.r1, problemState.r2)}$ 或 $x=${Math.max(problemState.r1, problemState.r2)}$`;
   document.getElementById('juniorPrompt').textContent = '你可能会很自然地想：分解因式，找到两个答案，然后结束。';
   document.getElementById('seniorPrompt').textContent = '高中会把同一个式子继续追问：它在哪里为正？哪里为负？最低点在哪里？如果只研究一段 x，结论会不会变？';
   setQuestion(objectState.question);
@@ -888,27 +761,6 @@ function randomizeProblem(){
   problemState.index = (problemState.index + 1 + Math.floor(Math.random() * (problemCases.length - 1))) % problemCases.length;
   Object.assign(problemState, problemCases[problemState.index]);
   updateProblemUI();
-}
-
-function updateRelationPair(syncGraph = true){
-  const pair = relationPairs[pairState.index];
-  document.getElementById('pairOld').innerHTML = pair.old;
-  document.getElementById('pairOldNote').textContent = pair.oldNote;
-  document.getElementById('pairNew').innerHTML = pair.next;
-  document.getElementById('pairNewNote').textContent = pair.nextNote;
-  document.getElementById('pairShift').innerHTML = `<p><strong>思维变化：</strong>${pair.shift}</p>`;
-  document.getElementById('pairIndex').textContent = `${pairState.index + 1} / ${relationPairs.length}`;
-  if(syncGraph && typeof pair.caseIndex === 'number'){
-    problemState.index = pair.caseIndex;
-    Object.assign(problemState, problemCases[pair.caseIndex]);
-    updateProblemUI();
-  }
-  if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('stage3')]);
-}
-
-function nextRelationPair(){
-  pairState.index = (pairState.index + 1) % relationPairs.length;
-  updateRelationPair(true);
 }
 
 function familyFromScrub(){
@@ -950,18 +802,7 @@ function drawFamily(){
     dashedLine(item,g.X(0),g.Y(0),g.X(current.h),g.Y(0),colors.movement());
     dashedLine(item,g.X(current.h),g.Y(0),g.X(current.h),g.Y(current.k),colors.movement());
     dashedLine(item,g.X(current.h),g.Y(g.yMin),g.X(current.h),g.Y(g.yMax),colors.parameter());
-    if(familyState.hover || familyState.drag){
-      const ctx = item.ctx;
-      ctx.save();
-      ctx.strokeStyle = colors.parameter();
-      ctx.globalAlpha = .28;
-      ctx.lineWidth = 12;
-      ctx.beginPath();
-      ctx.arc(g.X(current.h), g.Y(current.k), 13, 0, Math.PI*2);
-      ctx.stroke();
-      ctx.restore();
-    }
-    drawPoint(item,g,current.h,current.k,colors.parameter(),familyState.drag ? '正在移动对象' : '拖动顶点',familyState.hover || familyState.drag ? 9 : 8);
+    drawPoint(item,g,current.h,current.k,colors.parameter(),'拖动顶点',8);
   }
 }
 
@@ -1027,22 +868,10 @@ function familyPointer(e){
   return { x: clamp(x,-4,4), y: clamp(y,-4,4) };
 }
 
-function isNearVertex(e){
-  if(familyState.mode !== 'vertex') return false;
-  const item = canvases.familyCanvas;
-  const g = graph(item, -5, 5, -5, 7);
-  const rect = item.canvas.getBoundingClientRect();
-  const px = e.clientX - rect.left;
-  const py = e.clientY - rect.top;
-  const dx = px - g.X(familyState.h);
-  const dy = py - g.Y(familyState.k);
-  return Math.hypot(dx, dy) <= 22;
-}
-
 function drawDomain(){
   resizeCanvas('domainCanvas');
   const item = canvases.domainCanvas;
-  const vxBase = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
+  const vxBase = -problemB() / 2;
   const g = graph(item, -4, 7, Math.min(-3, fBase(vxBase) - 2), Math.max(9, fBase(-4), fBase(7)));
   drawAxes(item,g);
   const valid = domainState.min <= domainState.max;
@@ -1093,7 +922,7 @@ function updateDomainUI(){
     document.getElementById('domainMaxY').textContent = '-';
     document.getElementById('domainConclusion').textContent = '先修正定义域';
   } else {
-    const vxBase = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
+    const vxBase = -problemB() / 2;
     const candidates = [min,max];
     if(min <= vxBase && max >= vxBase) candidates.push(vxBase);
     const ys = candidates.map(fBase);
@@ -1109,7 +938,6 @@ function init(){
   setupCanvas('familyCanvas');
   setupCanvas('domainCanvas');
   updateProblemUI();
-  updateRelationPair(false);
   setQuestion('zeros');
   updateFamilyUI();
   updateDomainUI();
@@ -1119,7 +947,6 @@ function init(){
     if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('answerChip')]);
   });
   document.getElementById('randomProblemBtn').addEventListener('click', randomizeProblem);
-  document.getElementById('nextPairBtn').addEventListener('click', nextRelationPair);
   document.querySelectorAll('.question-btn').forEach(btn => btn.addEventListener('click', () => setQuestion(btn.dataset.question)));
   ['A','H','K'].forEach(letter => {
     document.getElementById('param' + letter).addEventListener('input', e => {
@@ -1150,42 +977,20 @@ function init(){
   const familyCanvas = document.getElementById('familyCanvas');
   familyCanvas.addEventListener('pointerdown', e => {
     if(familyState.mode !== 'vertex') return;
-    if(!isNearVertex(e)) return;
     familyState.drag = true;
-    familyCanvas.classList.add('is-dragging');
     familyCanvas.setPointerCapture(e.pointerId);
     const p = familyPointer(e);
     familyState.h = p.x; familyState.k = p.y; familyState.scrub = 1;
     updateFamilyUI();
   });
   familyCanvas.addEventListener('pointermove', e => {
-    const hovering = isNearVertex(e);
-    if(hovering !== familyState.hover){
-      familyState.hover = hovering;
-      schedule(drawFamily, familyState);
-    }
-    familyCanvas.style.cursor = familyState.mode === 'vertex' ? (familyState.drag ? 'grabbing' : hovering ? 'grab' : 'crosshair') : 'default';
     if(!familyState.drag || familyState.mode !== 'vertex') return;
     const p = familyPointer(e);
     familyState.h = p.x; familyState.k = p.y; familyState.scrub = 1;
     updateFamilyUI();
   });
-  familyCanvas.addEventListener('pointerleave', () => {
-    if(familyState.drag) return;
-    familyState.hover = false;
-    familyCanvas.style.cursor = 'grab';
-    schedule(drawFamily, familyState);
-  });
-  familyCanvas.addEventListener('pointerup', () => {
-    familyState.drag = false;
-    familyCanvas.classList.remove('is-dragging');
-    schedule(drawFamily, familyState);
-  });
-  familyCanvas.addEventListener('pointercancel', () => {
-    familyState.drag = false;
-    familyCanvas.classList.remove('is-dragging');
-    schedule(drawFamily, familyState);
-  });
+  familyCanvas.addEventListener('pointerup', () => familyState.drag = false);
+  familyCanvas.addEventListener('pointercancel', () => familyState.drag = false);
 
   document.getElementById('domainMin').addEventListener('input', e => {
     domainState.min = parseFloat(e.target.value);

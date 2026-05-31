@@ -485,6 +485,17 @@
         started: false,
       }));
     }
+    async function preloadAllAudio() {
+      loadbar.textContent = "预加载音频…";
+      await Promise.all(audios.map((a) => {
+        return new Promise((resolve) => {
+          if (a.el.readyState >= 4) return resolve();
+          a.el.addEventListener("canplaythrough", resolve, { once: true });
+          a.el.addEventListener("error", resolve, { once: true });
+          a.el.load();
+        });
+      }));
+    }
     function syncAudio(t) {
       for (const a of audios) {
         const inWin = t >= a.start && t < a.end;
@@ -949,6 +960,7 @@
         return;
       }
       setupAudio();
+      await preloadAllAudio();
       const s6 = scenes.find((s) => s.id === "scene-06-domain");
       if (s6) setupDomainTicks(s6);
       const s3 = scenes.find((s) => s.id === "scene-03-ask");

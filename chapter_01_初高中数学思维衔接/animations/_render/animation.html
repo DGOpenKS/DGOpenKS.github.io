@@ -483,55 +483,55 @@
         end: parseFloat(el.dataset.start) + parseFloat(el.dataset.duration),
         volume: parseFloat(el.dataset.volume),
         started: false,
+        buffer: null,
+        source: null,
+        gainNode: null,
       }));
     }
+    let audioCtx = null;
     async function preloadAllAudio() {
       loadbar.textContent = "预加载音频…";
-      await Promise.all(audios.map((a) => {
-        return new Promise((resolve) => {
-          if (a.el.readyState >= 4) return resolve();
-          a.el.addEventListener("canplaythrough", resolve, { once: true });
-          a.el.addEventListener("error", resolve, { once: true });
-          a.el.load();
-        });
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      let done = 0;
+      await Promise.all(audios.map(async (a) => {
+        try {
+          const resp = await fetch(a.el.src);
+          const arrayBuf = await resp.arrayBuffer();
+          a.buffer = await audioCtx.decodeAudioData(arrayBuf);
+        } catch (e) {}
+        done++;
+        loadbar.textContent = "预加载音频… " + done + " / " + audios.length;
       }));
     }
     function syncAudio(t) {
       for (const a of audios) {
         const inWin = t >= a.start && t < a.end;
-        const target = t - a.start;          // 该段内应播到的位置
-        if (inWin && playing) {
-          a.el.volume = muted ? 0 : a.volume;
+        if (inWin && playing && a.buffer) {
           if (!a.started) {
             a.started = true;
-            a.correcting = true;
-            const seekAndPlay = () => {
-              try { a.el.currentTime = Math.max(0, target); } catch (e) {}
-              a.el.play().catch(() => {});
-            };
-            seekAndPlay();
-            // 起播后再校正一次（HTTP MP3 的 currentTime 设置可能异步未即时生效）
-            a.el.addEventListener("seeked", function onSeeked() {
-              a.el.removeEventListener("seeked", onSeeked);
-              a.correcting = false;
-            }, { once: true });
-            setTimeout(() => { a.correcting = false; }, 500);
-          } else if (!a.correcting && !a.el.seeking &&
-                     Math.abs(a.el.currentTime - target) > 0.6) {
-            // 长视频漂移纠正（带冷却，避免反复重设卡住）
-            a.correcting = true;
-            try { a.el.currentTime = Math.max(0, target); } catch (e) {}
-            setTimeout(() => { a.correcting = false; }, 500);
+            const offset = t - a.start;
+            a.source = audioCtx.createBufferSource();
+            a.source.buffer = a.buffer;
+            a.gainNode = audioCtx.createGain();
+            a.gainNode.gain.value = muted ? 0 : a.volume;
+            a.source.connect(a.gainNode).connect(audioCtx.destination);
+            a.source.start(0, offset);
+            a.source.onended = () => { a.started = false; a.source = null; };
+          } else if (a.gainNode) {
+            a.gainNode.gain.value = muted ? 0 : a.volume;
           }
-        } else if (a.started || !a.el.paused) {
-          a.el.pause();
+        } else if (a.started && a.source) {
+          try { a.source.stop(); } catch (e) {}
+          a.source = null;
           a.started = false;
-          a.correcting = false;
         }
       }
     }
     function stopAllAudio() {
-      for (const a of audios) { a.el.pause(); a.started = false; }
+      for (const a of audios) {
+        if (a.source) { try { a.source.stop(); } catch (e) {} a.source = null; }
+        a.started = false;
+      }
     }
 
     // ===== 把时间投影到所有 scene + 显隐 + 音频 + UI =====
@@ -976,9 +976,7 @@
 
       // 解锁音频（用户手势内）+ 开始
       cover.addEventListener("click", async () => {
-        await Promise.all(audios.map((a) =>
-          a.el.play().then(() => { a.el.pause(); a.el.currentTime = 0; }).catch(() => {})
-        ));
+        if (audioCtx && audioCtx.state === "suspended") await audioCtx.resume();
         cover.style.display = "none";
         showControlsBriefly();
         seekTo(0);

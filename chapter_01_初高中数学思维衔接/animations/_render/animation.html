@@ -510,13 +510,14 @@
           if (!a.started) {
             a.started = true;
             const offset = t - a.start;
-            a.source = audioCtx.createBufferSource();
-            a.source.buffer = a.buffer;
+            const src = audioCtx.createBufferSource();
+            a.source = src;
+            src.buffer = a.buffer;
             a.gainNode = audioCtx.createGain();
             a.gainNode.gain.value = muted ? 0 : a.volume;
-            a.source.connect(a.gainNode).connect(audioCtx.destination);
-            a.source.start(0, offset);
-            a.source.onended = () => { a.started = false; a.source = null; };
+            src.connect(a.gainNode).connect(audioCtx.destination);
+            src.start(0, offset);
+            src.onended = () => { if (a.source === src) { a.started = false; a.source = null; } };
           } else if (a.gainNode) {
             a.gainNode.gain.value = muted ? 0 : a.volume;
           }
@@ -591,6 +592,7 @@
       if (playing) return;
       playing = true;
       startTimestamp = performance.now();
+      if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
       btnPlay.textContent = "⏸";
     }
     function pause() {
@@ -598,6 +600,7 @@
       pausedAt = currentTime;
       playing = false;
       stopAllAudio();
+      if (audioCtx) audioCtx.suspend();
       btnPlay.textContent = "▶";
     }
     function togglePlay() { playing ? pause() : play(); }
@@ -617,7 +620,9 @@
     function toggleMute() {
       muted = !muted;
       btnMute.textContent = muted ? "🔇" : "🔊";
-      for (const a of audios) a.el.volume = muted ? 0 : a.volume;
+      for (const a of audios) {
+        if (a.gainNode) a.gainNode.gain.value = muted ? 0 : a.volume;
+      }
     }
 
     // ===== UI =====

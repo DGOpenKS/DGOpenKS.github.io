@@ -1,0 +1,199 @@
+<template id="scene-03-ask-template">
+  <div
+    data-composition-id="scene-03-ask"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div class="panel">
+      <div class="corner tl"><div class="tile t-blue"></div></div>
+      <div class="corner br"><div class="tile t-pink"></div></div>
+
+      <div class="middle">
+        <div class="badge">高 中 追 问</div>
+
+        <svg class="graph" viewBox="0 0 600 520" width="600" height="520">
+          <!-- 坐标轴 -->
+          <line class="ax" x1="80" y1="330.4" x2="572" y2="330.4" stroke="#1a1a1a" stroke-width="5" />
+          <polygon class="ax" points="572,330.4 556,322 556,338.8" fill="#1a1a1a" />
+          <line class="ax" x1="80" y1="40" x2="80" y2="458" stroke="#1a1a1a" stroke-width="5" />
+          <polygon class="ax" points="80,40 72,56 88,56" fill="#1a1a1a" />
+          <!-- 坐标轴说明 -->
+          <text class="ax" x="566" y="372" text-anchor="middle" font-family="Fredoka" font-size="46" font-style="italic" font-weight="700" fill="#1a1a1a">x</text>
+          <text class="ax" x="104" y="60" text-anchor="start" font-family="Fredoka" font-size="52" font-style="italic" font-weight="700" fill="#1a1a1a">y</text>
+          <!-- y 轴刻度 0 / 1 / -1 -->
+          <g class="ax">
+            <line x1="80" y1="245.0" x2="94" y2="245.0" stroke="#1a1a1a" stroke-width="4" />
+            <text x="58" y="259" text-anchor="end" font-family="Fredoka" font-size="38" font-weight="700" fill="#1a1a1a">1</text>
+            <text x="58" y="344" text-anchor="end" font-family="Fredoka" font-size="38" font-weight="700" fill="#1a1a1a">0</text>
+            <line x1="80" y1="415.8" x2="94" y2="415.8" stroke="#1a1a1a" stroke-width="4" />
+            <text x="54" y="430" text-anchor="end" font-family="Fredoka" font-size="38" font-weight="700" fill="#1a1a1a">&#8722;1</text>
+          </g>
+          <!-- 根标注 -->
+          <text class="ax" x="200" y="382" text-anchor="middle" font-family="Fredoka" font-size="48" font-weight="700" fill="#1a1a1a">1</text>
+          <text class="ax" x="440" y="382" text-anchor="middle" font-family="Fredoka" font-size="48" font-weight="700" fill="#1a1a1a">3</text>
+
+          <!-- 灰色完整曲线打底 -->
+          <path class="curve-base"
+            d="M 80.0 74.2 L 92.0 107.5 L 104.0 139.1 L 116.0 169.0 L 128.0 197.2 L 140.0 223.6 L 152.0 248.4 L 164.0 271.5 L 176.0 292.8 L 188.0 312.5 L 200.0 330.4 L 212.0 346.6 L 224.0 361.2 L 236.0 374.0 L 248.0 385.1 L 260.0 394.5 L 272.0 402.2 L 284.0 408.1 L 296.0 412.4 L 308.0 415.0 L 320.0 415.8 L 332.0 415.0 L 344.0 412.4 L 356.0 408.1 L 368.0 402.2 L 380.0 394.5 L 392.0 385.1 L 404.0 374.0 L 416.0 361.2 L 428.0 346.6 L 440.0 330.4 L 452.0 312.5 L 464.0 292.8 L 476.0 271.5 L 488.0 248.4 L 500.0 223.6 L 512.0 197.2 L 524.0 169.0 L 536.0 139.1 L 548.0 107.5 L 560.0 74.2"
+            fill="none" stroke="#9b8b6a" stroke-width="6" stroke-linecap="round" />
+
+          <!-- 正区间(绿) 左 0..1 + 右 3..4 -->
+          <path class="seg seg-pos-l"
+            d="M 80.0 74.2 L 86.0 91.0 L 92.0 107.5 L 98.0 123.5 L 104.0 139.1 L 110.0 154.2 L 116.0 169.0 L 122.0 183.3 L 128.0 197.2 L 134.0 210.6 L 140.0 223.6 L 146.0 236.2 L 152.0 248.4 L 158.0 260.2 L 164.0 271.5 L 170.0 282.4 L 176.0 292.8 L 182.0 302.9 L 188.0 312.5 L 194.0 321.7 L 200.0 330.4"
+            fill="none" stroke="#009b77" stroke-width="9" stroke-linecap="round" />
+          <path class="seg seg-pos-r"
+            d="M 440.0 330.4 L 446.0 321.7 L 452.0 312.5 L 458.0 302.9 L 464.0 292.8 L 470.0 282.4 L 476.0 271.5 L 482.0 260.2 L 488.0 248.4 L 494.0 236.2 L 500.0 223.6 L 506.0 210.6 L 512.0 197.2 L 518.0 183.3 L 524.0 169.0 L 530.0 154.2 L 536.0 139.1 L 542.0 123.5 L 548.0 107.5 L 554.0 91.0 L 560.0 74.2"
+            fill="none" stroke="#009b77" stroke-width="9" stroke-linecap="round" />
+
+          <!-- 负区间(粉) 1..3 -->
+          <path class="seg seg-neg"
+            d="M 200.0 330.4 L 212.0 346.6 L 224.0 361.2 L 236.0 374.0 L 248.0 385.1 L 260.0 394.5 L 272.0 402.2 L 284.0 408.1 L 296.0 412.4 L 308.0 415.0 L 320.0 415.8 L 332.0 415.0 L 344.0 412.4 L 356.0 408.1 L 368.0 402.2 L 380.0 394.5 L 392.0 385.1 L 404.0 374.0 L 416.0 361.2 L 428.0 346.6 L 440.0 330.4"
+            fill="none" stroke="#ff1493" stroke-width="9" stroke-linecap="round" />
+
+          <!-- 最小值点(蓝)：起点在曲线右上, 动画沿曲线滑到顶点(320,415.8) -->
+          <g class="vtx">
+            <circle cx="0" cy="0" r="17" fill="#0047ab" stroke="#fff" stroke-width="5" />
+          </g>
+        </svg>
+
+        <!-- 三个追问 chip -->
+        <div class="asks">
+          <div class="ask a-pos">何时为正？</div>
+          <div class="ask a-neg">何时为负？</div>
+          <div class="ask a-min">何处最小？</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-03-ask"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1080px; height: 1920px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-03-ask"] .panel {
+        position: absolute; top: 480px; left: 0; right: 0; height: 960px;
+        background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-03-ask"] .corner { position: absolute; opacity: 0; }
+      [data-composition-id="scene-03-ask"] .corner.tl { top: 40px; left: 44px; }
+      [data-composition-id="scene-03-ask"] .corner.br { bottom: 40px; right: 44px; }
+      [data-composition-id="scene-03-ask"] .tile {
+        width: 60px; height: 60px; border-radius: 50%; position: relative;
+      }
+      [data-composition-id="scene-03-ask"] .tile::after {
+        content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--ink);
+      }
+      [data-composition-id="scene-03-ask"] .tile.t-blue { background: var(--blue); }
+      [data-composition-id="scene-03-ask"] .tile.t-pink { background: var(--pink); }
+
+      [data-composition-id="scene-03-ask"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        gap: 26px; padding: 50px 60px 60px;
+      }
+      [data-composition-id="scene-03-ask"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 80px; color: var(--paper);
+        background: var(--blue); padding: 16px 50px;
+        border-radius: 30px; border: 5px solid var(--ink);
+        letter-spacing: 0.16em; opacity: 0;
+      }
+
+      [data-composition-id="scene-03-ask"] .graph { opacity: 0; flex-shrink: 0; }
+      [data-composition-id="scene-03-ask"] .seg { opacity: 0; }
+      [data-composition-id="scene-03-ask"] .vtx { opacity: 0; }
+
+      [data-composition-id="scene-03-ask"] .asks {
+        display: flex; gap: 22px; justify-content: center; flex-wrap: nowrap;
+      }
+      [data-composition-id="scene-03-ask"] .ask {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 52px; color: var(--paper);
+        padding: 16px 28px; border-radius: 22px;
+        border: 5px solid var(--ink);
+        box-shadow: 8px 8px 0 0 var(--ink);
+        white-space: nowrap; opacity: 0;
+      }
+      [data-composition-id="scene-03-ask"] .a-pos { background: var(--green); }
+      [data-composition-id="scene-03-ask"] .a-neg { background: var(--pink); }
+      [data-composition-id="scene-03-ask"] .a-min { background: var(--blue); }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.to(".corner", { opacity: 1, duration: 0.3, stagger: 0.08, ease: "power2.out" }, 0.2);
+
+        tl.fromTo(".badge",
+          { y: -40, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(2)" },
+          0.4
+        );
+
+        // 抛物线打底
+        tl.fromTo(".graph",
+          { y: 30, scale: 0.92, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          1.3
+        );
+
+        // 正 (配音"结果为正"约 4.2s)
+        tl.fromTo(".seg-pos-l, .seg-pos-r",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: "power2.out" },
+          4.0
+        );
+        tl.fromTo(".a-pos",
+          { y: 26, scale: 0.7, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" },
+          4.0
+        );
+
+        // 负 (配音"结果为负"约 6.5s)
+        tl.fromTo(".seg-neg",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: "power2.out" },
+          6.3
+        );
+        tl.fromTo(".a-neg",
+          { y: 26, scale: 0.7, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" },
+          6.3
+        );
+
+        // 最小值 (配音"取到最小值"约 8.8s)：点从 x=3 处沿曲线滑到顶点
+        tl.set(".vtx", { x: 440, y: 330.4, opacity: 0 }, 8.4);
+        tl.to(".vtx", { opacity: 1, duration: 0.3, ease: "power2.out" }, 8.5);
+        // 沿曲线下滑 (3 -> 2 采样点) 到顶点
+        tl.to(".vtx", {
+          keyframes: {
+            x: [440, 416, 392, 368, 344, 320],
+            y: [330.4, 361.2, 385.1, 402.2, 412.4, 415.8],
+            easeEach: "none"
+          },
+          duration: 1.1, ease: "power1.in"
+        }, 8.6);
+        tl.fromTo(".a-min",
+          { y: 26, scale: 0.7, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" },
+          8.6
+        );
+        // 到顶点后闪烁强调
+        tl.to(".vtx", { scale: 1.4, transformOrigin: "50% 50%", duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 9.9);
+
+        tl.to({}, { duration: 0.01 }, 11.99);
+
+        window.__timelines["scene-03-ask"] = tl;
+      })();
+    </script>
+  </div>
+</template>

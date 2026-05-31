@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>第一章 · 初高中数学思维衔接 · 动画讲解</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@700;900&family=ZCOOL+KuaiLe&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%;
+      background: #fff7e8; overflow: hidden;
+      font-family: "Nunito", "Noto Sans SC", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* 视口容器（居中由 JS 用 margin 处理，不用 flex 以免与 transform 冲突） */
+    /* 视口：只显示画布中间的内容带（裁掉上下空白黑边） */
+    #viewport {
+      position: fixed; inset: 0; overflow: hidden; background: #fff7e8;
+    }
+    /* 固定 1080x1920 舞台（内部画布不变），靠 JS 等比缩放并把"中间内容带"对准视口 */
+    #stage {
+      position: absolute; top: 0; left: 0;
+      width: 1080px; height: 1920px;
+      transform-origin: top left;
+    }
+    #root {
+      position: absolute; inset: 0;
+      width: 1080px; height: 1920px;
+      overflow: hidden; background: #fff7e8;
+    }
+    .scene-host {
+      position: absolute; inset: 0;
+      width: 1080px; height: 1920px;
+      visibility: hidden;
+    }
+    .scene-host iframe {
+      position: absolute; inset: 0;
+      width: 1080px; height: 1920px;
+      border: 0; background: transparent;
+    }
+
+    /* ===== 封面 ===== */
+    #cover {
+      position: absolute; inset: 0; z-index: 30;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff7e8; cursor: pointer; overflow: hidden;
+      font-family: "Nunito", "Noto Sans SC", sans-serif;
+    }
+    #cover .cover-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 45%, #fff7e8 0%, #ffe9c2 60%, #f6c97a 100%);
+    }
+    #cover .cover-card {
+      position: relative; z-index: 1;
+      background: #fff; border: 4px solid #1a1a1a; border-radius: 24px;
+      box-shadow: 12px 12px 0 0 #1a1a1a;
+      padding: 36px 48px; display: flex; flex-direction: column;
+      align-items: center; gap: 20px; max-width: 88%;
+    }
+    #cover .cover-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 24px; background: #0047ab; color: #ffe000;
+      border-radius: 9999px; border: 3px solid #1a1a1a;
+      font-family: "Fredoka", sans-serif; font-weight: 700;
+      font-size: 16px; letter-spacing: .14em;
+    }
+    #cover .cover-badge .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #ff1493; border: 2px solid #1a1a1a;
+    }
+    #cover .cover-title {
+      font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+      font-size: 42px; color: #1a1a1a; text-align: center;
+      line-height: 1.15; margin: 0;
+    }
+    #cover .cover-title .ap { color: #ff1493; }
+    #cover .cover-title .ab { color: #0047ab; }
+    #cover .cover-title .ag { color: #009b77; }
+    #cover .cover-stroke {
+      width: 120px; height: 6px; background: #ffe000;
+      border-radius: 3px; border: 2px solid #1a1a1a;
+    }
+    #cover .cover-chips {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    }
+    #cover .cover-chip {
+      font-family: "Fredoka", sans-serif; font-weight: 700;
+      font-size: 14px; padding: 8px 16px; border-radius: 12px;
+      border: 3px solid #1a1a1a; box-shadow: 4px 4px 0 0 #1a1a1a;
+    }
+    #cover .cover-chip.c1 { background: #ff1493; color: #fff; }
+    #cover .cover-chip.c2 { background: #ffe000; color: #1a1a1a; }
+    #cover .cover-chip.c3 { background: #009b77; color: #fff; }
+    #cover .play-big {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #ff1493; border: 5px solid #1a1a1a;
+      box-shadow: 8px 8px 0 0 #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .15s ease; margin-top: 4px;
+    }
+    #cover:hover .play-big { transform: scale(1.08); }
+    #cover .play-big::after {
+      content: ""; margin-left: 6px;
+      border-style: solid; border-width: 16px 0 16px 28px;
+      border-color: transparent transparent transparent #fff;
+    }
+    #cover .hint { font-size: 13px; color: #1a1a1a; opacity: .6; }
+    #loadbar { font-size: 13px; color: #1a1a1a; opacity: .7; min-height: 18px; }
+    #cover .corner-deco {
+      position: absolute; display: flex; gap: 8px;
+    }
+    #cover .corner-deco.tl { top: 16px; left: 16px; }
+    #cover .corner-deco.tr { top: 16px; right: 16px; flex-direction: row-reverse; }
+    #cover .corner-deco.bl { bottom: 16px; left: 16px; }
+    #cover .corner-deco.br { bottom: 16px; right: 16px; flex-direction: row-reverse; }
+    #cover .cdot {
+      width: 20px; height: 20px; border-radius: 50%;
+    }
+    #cover .cdot.dp { background: #ff1493; }
+    #cover .cdot.db { background: #0047ab; }
+    #cover .cdot.dy { background: #ffe000; }
+    #cover .cdot.dg { background: #009b77; }
+
+    /* ===== 控件条 ===== */
+    #controls {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 20;
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 12px 8px;
+      background: linear-gradient(to top, rgba(26,26,26,.7) 0%, rgba(26,26,26,.25) 70%, transparent 100%);
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
+    }
+    #controls.show { opacity: 1; pointer-events: auto; }
+    #controls button {
+      flex: none; width: 28px; height: 28px; border-radius: 50%;
+      border: none; background: rgba(255,255,255,.15);
+      color: #fff; font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s ease, transform .1s ease;
+    }
+    #controls button:active { transform: scale(.9); }
+    #controls button:hover { background: rgba(255,255,255,.35); }
+    #controls button#btnPlay {
+      width: 32px; height: 32px; font-size: 15px;
+      background: #ff1493;
+    }
+    #controls button#btnPlay:hover { background: #ff3da8; }
+    #seek {
+      flex: 1; height: 4px; cursor: pointer; accent-color: #ff1493;
+      border-radius: 2px; appearance: none; -webkit-appearance: none;
+      background: rgba(255,255,255,.22); outline: none;
+    }
+    #seek::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+      background: #ff1493; border: 1.5px solid #fff; cursor: pointer; margin-top: -4px;
+    }
+    #seek::-webkit-slider-runnable-track {
+      height: 4px; border-radius: 2px;
+    }
+    #time { flex: none; color: rgba(255,255,255,.85); font-size: 11px; font-weight: 700;
+      font-variant-numeric: tabular-nums; min-width: 70px; text-align: right; }
+
+    /* ===== 曲线交互提示 ===== */
+    #curvehint {
+      position: absolute; right: 8px; top: 50%; z-index: 15;
+      transform: translateY(-50%) translateX(calc(100% + 16px));
+      writing-mode: vertical-rl; text-orientation: mixed;
+      background: rgba(255,20,147,.85); color: #fff; font-weight: 800; font-size: 13px;
+      padding: 12px 6px; border-radius: 8px; letter-spacing: .15em;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1), visibility 0s .4s;
+    }
+    #curvehint.show { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); transition-delay: 0s; }
+
+    /* ===== 高中追问坐标提示 ===== */
+    #askHint {
+      position: absolute; right: 8px; top: 50%; z-index: 15;
+      transform: translateY(-50%) translateX(calc(100% + 16px));
+      writing-mode: vertical-rl; text-orientation: mixed;
+      background: rgba(255,20,147,.85); color: #fff; font-weight: 800; font-size: 13px;
+      padding: 12px 6px; border-radius: 8px; letter-spacing: .15em;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1), visibility 0s .4s;
+    }
+    #askHint.show { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); transition-delay: 0s; }
+
+    /* ===== 式子计算器 ===== */
+    #exprCalc {
+      position: absolute; right: 8px; top: 50%; z-index: 15;
+      transform: translateY(-50%) translateX(calc(100% + 16px));
+      background: rgba(26,26,26,.82); color: #fff;
+      border-radius: 10px; padding: 10px 8px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-family: "Fredoka", "Nunito", sans-serif; font-size: 12px; font-weight: 700;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1), visibility 0s .4s;
+    }
+    #exprCalc.show {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateY(-50%) translateX(0);
+      transition-delay: 0s;
+    }
+    #exprCalc .ec-label { color: #ffe000; font-size: 11px; white-space: nowrap; }
+    #exprCalc .ec-row { display: flex; align-items: center; gap: 4px; }
+    #exprCalc .ec-row span { font-size: 13px; color: #ff1493; font-style: italic; }
+    #exprCalc input {
+      width: 42px; padding: 3px 4px; border: 1.5px solid rgba(255,255,255,.25);
+      border-radius: 6px; background: rgba(255,255,255,.1); color: #fff;
+      font-size: 13px; font-family: "Fredoka", sans-serif; text-align: center; outline: none;
+    }
+    #exprCalc input:focus { border-color: #ff1493; }
+    #exprCalc .ec-btn {
+      border: none; background: #ff1493; color: #fff; font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      transition: background .15s ease;
+    }
+    #exprCalc .ec-btn:hover { background: #ff3da8; }
+    #exprCalc .ec-result {
+      font-size: 14px; color: #ffe000; min-height: 18px; font-variant-numeric: tabular-nums;
+      transition: opacity .2s;
+    }
+
+    /* ===== 值域计算器 ===== */
+    #rangeCalc {
+      position: absolute; right: 8px; top: 50%; z-index: 15;
+      transform: translateY(-50%) translateX(calc(100% + 16px));
+      background: rgba(26,26,26,.82); color: #fff;
+      border-radius: 10px; padding: 10px 8px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-family: "Fredoka", "Nunito", sans-serif; font-size: 12px; font-weight: 700;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1), visibility 0s .4s;
+    }
+    #rangeCalc.show {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateY(-50%) translateX(0);
+      transition-delay: 0s;
+    }
+    #rangeCalc .rc-label { color: #ffe000; font-size: 11px; white-space: nowrap; }
+    #rangeCalc .rc-row { display: flex; align-items: center; gap: 3px; }
+    #rangeCalc .rc-row span { font-size: 12px; color: rgba(255,255,255,.7); }
+    #rangeCalc input {
+      width: 36px; padding: 3px 2px; border: 1.5px solid rgba(255,255,255,.25);
+      border-radius: 6px; background: rgba(255,255,255,.1); color: #fff;
+      font-size: 12px; font-family: "Fredoka", sans-serif; text-align: center; outline: none;
+    }
+    #rangeCalc input:focus { border-color: #0047ab; }
+    #rangeCalc .rc-btn {
+      border: none; background: #0047ab; color: #fff; font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      transition: background .15s ease;
+    }
+    #rangeCalc .rc-btn:hover { background: #0060e0; }
+    #rangeCalc .rc-result {
+      font-size: 13px; color: #ffe000; min-height: 16px; font-variant-numeric: tabular-nums;
+      text-align: center; transition: opacity .2s;
+    }
+
+    #fallback {
+      position: absolute; inset: 0; z-index: 40; display: none;
+      align-items: center; justify-content: center; padding: 80px;
+      background: #1a1a1a; color: #fff; font-size: 40px; text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <div id="stage">
+      <div id="root" data-composition-id="root" data-width="1080" data-height="1920">
+
+        <!-- ===== 8 个场景宿主（数据照搬 _render/index.html，只读引用 compositions/） ===== -->
+        <div class="scene-host" data-composition-id="scene-00-title"   data-composition-src="compositions/scene-00-title.html"   data-start="0"   data-duration="3"></div>
+        <div class="scene-host" data-composition-id="scene-01-expr"    data-composition-src="compositions/scene-01-expr.html"    data-start="3"   data-duration="13"></div>
+        <div class="scene-host" data-composition-id="scene-02-junior"  data-composition-src="compositions/scene-02-junior.html"  data-start="16"  data-duration="11"></div>
+        <div class="scene-host" data-composition-id="scene-03-ask"     data-composition-src="compositions/scene-03-ask.html"     data-start="27"  data-duration="12"></div>
+        <div class="scene-host" data-composition-id="scene-04-param"   data-composition-src="compositions/scene-04-param.html"   data-start="39"  data-duration="22"></div>
+        <div class="scene-host" data-composition-id="scene-05-shape"   data-composition-src="compositions/scene-05-shape.html"   data-start="61"  data-duration="37"></div>
+        <div class="scene-host" data-composition-id="scene-06-domain"  data-composition-src="compositions/scene-06-domain.html"  data-start="98"  data-duration="30"></div>
+        <div class="scene-host" data-composition-id="scene-07-summary" data-composition-src="compositions/scene-07-summary.html" data-start="128" data-duration="19.5"></div>
+
+        <!-- ===== 配音（照搬 _render/index.html，src 相对 assets/） ===== -->
+        <audio preload="auto" data-start="0"     data-duration="3"    data-volume="1" src="assets/s0-title.mp3"></audio>
+        <audio preload="auto" data-start="3"     data-duration="13"   data-volume="1" src="assets/s1-expr.mp3"></audio>
+        <audio preload="auto" data-start="16"    data-duration="11"   data-volume="1" src="assets/s2-junior.mp3"></audio>
+        <audio preload="auto" data-start="27"    data-duration="12"   data-volume="1" src="assets/s3-ask.mp3"></audio>
+        <audio preload="auto" data-start="39"    data-duration="22"   data-volume="1" src="assets/s4-param.mp3"></audio>
+        <audio preload="auto" data-start="61"    data-duration="7"    data-volume="1" src="assets/s5a-open.mp3"></audio>
+        <audio preload="auto" data-start="68"    data-duration="5.5"  data-volume="1" src="assets/s5b-curve.mp3"></audio>
+        <audio preload="auto" data-start="73.5"  data-duration="10"   data-volume="1" src="assets/s5c-axis.mp3"></audio>
+        <audio preload="auto" data-start="83.5"  data-duration="14.5" data-volume="1" src="assets/s5d-roots.mp3"></audio>
+        <audio preload="auto" data-start="98"    data-duration="30"   data-volume="1" src="assets/s6-domain.mp3"></audio>
+        <audio preload="auto" data-start="128"   data-duration="19.5" data-volume="1" src="assets/s7-summary.mp3"></audio>
+        <audio preload="auto" data-start="0"     data-duration="144"  data-volume="0.07" src="assets/bgm.mp3"></audio>
+
+      </div>
+    </div>
+
+    <!-- ===== UI 浮层：放在裁切区(#stage)之外，不随画布裁切 ===== -->
+    <!-- 曲线交互提示 -->
+    <div id="curvehint">暂停，查看曲线坐标的点</div>
+    <div id="askHint">暂停，点击曲线查看坐标</div>
+
+    <!-- 值域计算器 -->
+    <div id="rangeCalc">
+      <div class="rc-label">值域计算器</div>
+      <div class="rc-row"><span>x ∈ [</span><input type="number" id="rcLeft" step="any" value="0" /><span>,</span><input type="number" id="rcRight" step="any" value="4" /><span>]</span></div>
+      <button class="rc-btn" id="rcBtn">计算值域</button>
+      <div class="rc-result" id="rcResult"></div>
+    </div>
+
+    <!-- 式子计算器 -->
+    <div id="exprCalc">
+      <div class="ec-label">试一试</div>
+      <div class="ec-row"><span>x =</span><input type="number" id="ecInput" step="any" /></div>
+      <button class="ec-btn" id="ecBtn">计算 y</button>
+      <div class="ec-result" id="ecResult"></div>
+    </div>
+
+    <!-- 控件条 -->
+    <div id="controls">
+      <button id="btnPlay" title="播放/暂停">▶</button>
+      <input id="seek" type="range" min="0" max="147.5" step="0.05" value="0" />
+      <span id="time">0:00 / 2:27</span>
+      <button id="btnReplay" title="重播">⟳</button>
+      <button id="btnMute" title="静音">🔊</button>
+    </div>
+
+    <!-- 封面 -->
+    <div id="cover">
+      <div class="cover-bg"></div>
+      <div class="corner-deco tl"><span class="cdot dp"></span><span class="cdot dy"></span></div>
+      <div class="corner-deco tr"><span class="cdot db"></span><span class="cdot dg"></span></div>
+      <div class="corner-deco bl"><span class="cdot dg"></span><span class="cdot dp"></span></div>
+      <div class="corner-deco br"><span class="cdot dy"></span><span class="cdot db"></span></div>
+      <div class="cover-card">
+        <div class="cover-badge"><span class="dot"></span><span>CHAPTER · 01</span><span class="dot"></span></div>
+        <h1 class="cover-title"><span class="ap">什</span>么<span class="ab">是</span>高<span class="ag">中</span><br/><span class="ag">数</span>学<span class="ap">思</span>维<span class="ab">？</span></h1>
+        <div class="cover-stroke"></div>
+        <div class="cover-chips">
+          <span class="cover-chip c1">函数</span>
+          <span class="cover-chip c2">对象</span>
+          <span class="cover-chip c3">性质</span>
+        </div>
+        <div class="play-big"></div>
+        <div class="hint">点击开始（含语音讲解）</div>
+        <div id="loadbar"></div>
+      </div>
+    </div>
+
+    <div id="fallback">
+      ⚠️ 无法加载动画资源。<br/>
+      请通过 GitHub Pages 或本地服务器打开本页，<br/>
+      不要直接双击 HTML 文件（浏览器会拦截本地读取）。
+    </div>
+
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+    const TOTAL = 147.5;
+
+    // ---- DOM ----
+    const stage    = document.getElementById("stage");
+    const viewport = document.getElementById("viewport");
+    const cover    = document.getElementById("cover");
+    const loadbar  = document.getElementById("loadbar");
+    const controls = document.getElementById("controls");
+    const btnPlay  = document.getElementById("btnPlay");
+    const btnReplay= document.getElementById("btnReplay");
+    const btnMute  = document.getElementById("btnMute");
+    const seek     = document.getElementById("seek");
+    const timeEl   = document.getElementById("time");
+    const curvehint= document.getElementById("curvehint");
+    const fallback = document.getElementById("fallback");
+
+    // ---- 状态 ----
+    let scenes = [];   // {id, host, iframe, win, start, dur, end}
+    let audios = [];   // {el, start, dur, end, volume, started}
+    let playing = false;
+    let muted = false;
+    let pausedAt = 0;          // 已播放秒数基准
+    let startTimestamp = 0;    // performance.now() 基准
+    let currentTime = 0;
+    let seeking = false;
+
+    // ===== 舞台缩放：只把"中间内容带"对准视口，裁掉大部分上下黑边，留少量缓冲给浮层 =====
+    const BAND_TOP = 480, BAND_H = 960;   // 8 幕内容均在此带内
+    const PAD = 0;                        // 上下各留缓冲，避免内容贴边/给控件留位
+    function fitStage() {
+      const visH = BAND_H + PAD * 2;       // 可视高度 = 内容带 + 上下缓冲
+      const s = Math.min(window.innerWidth / 1080, window.innerHeight / visH);
+      const tx = (window.innerWidth - 1080 * s) / 2;
+      const ty = (window.innerHeight - visH * s) / 2 - (BAND_TOP - PAD) * s;
+      stage.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + s + ")";
+    }
+    window.addEventListener("resize", fitStage);
+    fitStage();
+
+    // ===== 取出 <template> 内部内容 =====
+    function extractTemplateInner(html) {
+      const open = html.indexOf("<template");
+      const gt = html.indexOf(">", open);
+      const close = html.lastIndexOf("</template>");
+      if (open === -1 || gt === -1 || close === -1) return html;
+      return html.slice(gt + 1, close);
+    }
+
+    // ===== 构建单个 scene 的 iframe 文档（隔离 JS 选择器，复刻 runtime） =====
+    function buildSceneDoc(innerHtml) {
+      return '<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8">'
+        + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+        + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+        + '<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">'
+        + '<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"><\/script>'
+        + '<style>*{margin:0;padding:0;box-sizing:border-box}'
+        + 'html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}<\/style>'
+        + '</head><body>' + innerHtml + '</body></html>';
+    }
+
+    // ===== 加载 8 个 scene =====
+    async function loadScenes() {
+      const hosts = [...document.querySelectorAll(".scene-host")];
+      let done = 0;
+      for (const host of hosts) {
+        const id = host.dataset.compositionId;
+        const start = parseFloat(host.dataset.start);
+        const dur = parseFloat(host.dataset.duration);
+        const src = host.dataset.compositionSrc;
+
+        let html;
+        if (window.__SCENE_HTML && window.__SCENE_HTML[id]) {
+          html = window.__SCENE_HTML[id];          // 内联离线版：免 fetch，可 file:// 双击
+        } else {
+          try {
+            const res = await fetch(src);
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            html = await res.text();
+          } catch (e) {
+            throw new Error("fetch-failed:" + src);
+          }
+        }
+
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("scrolling", "no");
+        iframe.srcdoc = buildSceneDoc(extractTemplateInner(html));
+        host.appendChild(iframe);
+        await new Promise((res) => iframe.addEventListener("load", res, { once: true }));
+
+        scenes.push({
+          id, host, iframe, win: iframe.contentWindow,
+          start, dur, end: start + dur,
+        });
+        try {
+          iframe.contentDocument.addEventListener('mousemove', function() {
+            if (cover.style.display === 'none') showControlsBriefly();
+          });
+          iframe.contentDocument.addEventListener('mouseenter', function() {
+            if (cover.style.display === 'none') showControlsBriefly();
+          });
+        } catch(e) {}
+        done++;
+        loadbar.textContent = "加载中… " + done + " / " + hosts.length;
+      }
+    }
+
+    // ===== 配音 =====
+    function setupAudio() {
+      audios = [...document.querySelectorAll("audio")].map((el) => ({
+        el,
+        start: parseFloat(el.dataset.start),
+        dur: parseFloat(el.dataset.duration),
+        end: parseFloat(el.dataset.start) + parseFloat(el.dataset.duration),
+        volume: parseFloat(el.dataset.volume),
+        started: false,
+      }));
+    }
+    function syncAudio(t) {
+      for (const a of audios) {
+        const inWin = t >= a.start && t < a.end;
+        const target = t - a.start;          // 该段内应播到的位置
+        if (inWin && playing) {
+          a.el.volume = muted ? 0 : a.volume;
+          if (!a.started) {
+            a.started = true;
+            a.correcting = true;
+            const seekAndPlay = () => {
+              try { a.el.currentTime = Math.max(0, target); } catch (e) {}
+              a.el.play().catch(() => {});
+            };
+            seekAndPlay();
+            // 起播后再校正一次（HTTP MP3 的 currentTime 设置可能异步未即时生效）
+            a.el.addEventListener("seeked", function onSeeked() {
+              a.el.removeEventListener("seeked", onSeeked);
+              a.correcting = false;
+            }, { once: true });
+            setTimeout(() => { a.correcting = false; }, 500);
+          } else if (!a.correcting && !a.el.seeking &&
+                     Math.abs(a.el.currentTime - target) > 0.6) {
+            // 长视频漂移纠正（带冷却，避免反复重设卡住）
+            a.correcting = true;
+            try { a.el.currentTime = Math.max(0, target); } catch (e) {}
+            setTimeout(() => { a.correcting = false; }, 500);
+          }
+        } else if (a.started || !a.el.paused) {
+          a.el.pause();
+          a.started = false;
+          a.correcting = false;
+        }
+      }
+    }
+    function stopAllAudio() {
+      for (const a of audios) { a.el.pause(); a.started = false; }
+    }
+
+    // ===== 把时间投影到所有 scene + 显隐 + 音频 + UI =====
+    function applyTime(t) {
+      currentTime = t;
+      for (const s of scenes) {
+        const local = t - s.start;
+        const inWin = local >= 0 && local <= s.dur;
+        s.host.style.visibility = inWin ? "visible" : "hidden";
+        const tl = s.win && s.win.__timelines && s.win.__timelines[s.id];
+        if (!tl) continue;
+        if (inWin) tl.seek(local);
+        else if (local < 0) tl.seek(0);
+        else tl.seek(s.dur);
+      }
+      syncAudio(t);
+      updateUI(t);
+      updateCurveHint(t);
+      updateAskHint(t);
+      updateExprCalc(t);
+      updateRangeCalc(t);
+    }
+
+    // ===== 主时钟 =====
+    function tick(now) {
+      if (playing) {
+        const t = pausedAt + (now - startTimestamp) / 1000;
+        if (t >= TOTAL) { applyTime(TOTAL); onEnded(); }
+        else applyTime(t);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ===== 控件自动隐藏：鼠标移动时显示，2秒无操作后隐藏 =====
+    let hideTimer = null;
+    function showControlsBriefly() {
+      controls.classList.add('show');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => controls.classList.remove('show'), 2000);
+    }
+    document.addEventListener('mousemove', () => {
+      if (cover.style.display === 'none') showControlsBriefly();
+    });
+    document.addEventListener('mouseenter', () => {
+      if (cover.style.display === 'none') showControlsBriefly();
+    });
+    document.addEventListener('touchstart', () => {
+      if (cover.style.display === 'none') showControlsBriefly();
+    }, { passive: true });
+    controls.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+    controls.addEventListener('mouseleave', () => {
+      hideTimer = setTimeout(() => controls.classList.remove('show'), 1500);
+    });
+
+    // ===== 控制 =====
+    function play() {
+      if (playing) return;
+      playing = true;
+      startTimestamp = performance.now();
+      btnPlay.textContent = "⏸";
+    }
+    function pause() {
+      if (!playing) return;
+      pausedAt = currentTime;
+      playing = false;
+      stopAllAudio();
+      btnPlay.textContent = "▶";
+    }
+    function togglePlay() { playing ? pause() : play(); }
+    function seekTo(t) {
+      t = Math.max(0, Math.min(TOTAL, t));
+      pausedAt = t;
+      startTimestamp = performance.now();
+      stopAllAudio();
+      applyTime(t);
+    }
+    function replay() { seekTo(0); if (!playing) play(); }
+    function onEnded() {
+      pausedAt = TOTAL; playing = false;
+      stopAllAudio();
+      btnPlay.textContent = "▶";
+    }
+    function toggleMute() {
+      muted = !muted;
+      btnMute.textContent = muted ? "🔇" : "🔊";
+      for (const a of audios) a.el.volume = muted ? 0 : a.volume;
+    }
+
+    // ===== UI =====
+    function fmt(s) {
+      s = Math.max(0, Math.round(s));
+      const m = Math.floor(s / 60);
+      const ss = String(s % 60).padStart(2, "0");
+      return m + ":" + ss;
+    }
+    function updateUI(t) {
+      if (!seeking) seek.value = t;
+      timeEl.textContent = fmt(t) + " / " + fmt(TOTAL);
+    }
+
+    btnPlay.addEventListener("click", togglePlay);
+    btnReplay.addEventListener("click", replay);
+    btnMute.addEventListener("click", toggleMute);
+    seek.addEventListener("input", () => { seeking = true; applyTime(parseFloat(seek.value)); });
+    seek.addEventListener("change", () => { seeking = false; seekTo(parseFloat(seek.value)); });
+
+    // ===== 曲线交互（scene-05，点击看坐标） =====
+    const NS = "http://www.w3.org/2000/svg";
+    function setupCurveInteraction(scene, sceneId) {
+      const doc = scene.iframe.contentDocument;
+      const svg = doc.querySelector('[data-composition-id="' + sceneId + '"] svg.graph');
+      if (!svg) return;
+
+      let layer = svg.querySelector(".pick-layer");
+      if (!layer) {
+        layer = doc.createElementNS(NS, "g");
+        layer.setAttribute("class", "pick-layer");
+        svg.appendChild(layer);
+      }
+
+      function pick(clientX, clientY) {
+        const rect = svg.getBoundingClientRect();
+        const vb = svg.viewBox.baseVal;
+        const sx = vb.width / rect.width;
+        const sy = vb.height / rect.height;
+        const svgX = (clientX - rect.left) * sx + vb.x;
+        const svgY = (clientY - rect.top) * sy + vb.y;
+        const xm = (svgX - 80) / 120;
+        if (xm < 0 || xm > 4) return;
+        const ym = xm * xm - 4 * xm + 3;
+        const px = 80 + xm * 120;
+        const py = 330.4 - ym * 85.4;
+        drawMarker(doc, layer, px, py, xm, ym);
+      }
+      svg.style.cursor = "crosshair";
+      svg.style.overflow = "visible";
+      svg.addEventListener("pointerdown", (e) => { pick(e.clientX, e.clientY); });
+    }
+    function drawMarker(doc, layer, px, py, xm, ym) {
+      while (layer.firstChild) layer.removeChild(layer.firstChild);
+      const dot = doc.createElementNS(NS, "circle");
+      dot.setAttribute("cx", px); dot.setAttribute("cy", py);
+      dot.setAttribute("r", "13");
+      dot.setAttribute("fill", "#ff1493");
+      dot.setAttribute("stroke", "#1a1a1a");
+      dot.setAttribute("stroke-width", "5");
+      layer.appendChild(dot);
+
+      const up = py > 120;
+      const labelY = up ? py - 34 : py + 52;
+      const bg = doc.createElementNS(NS, "rect");
+      const sx = (Math.round(xm * 10) / 10 + 0).toFixed(1);
+      const sy = (Math.round(ym * 10) / 10 + 0).toFixed(1);
+      const txt = "(" + sx + ", " + sy + ")";
+      var cw = 0;
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt[i];
+        if (ch === ' ') cw += 8;
+        else if (ch === '.' || ch === ',' || ch === '-') cw += 12;
+        else if (ch === '(' || ch === ')') cw += 14;
+        else cw += 20;
+      }
+      const w = cw + 28;
+      var lx = px - w / 2;
+      if (lx + w > 590) lx = 590 - w;
+      if (lx < 10) lx = 10;
+      bg.setAttribute("x", lx); bg.setAttribute("y", labelY - 38);
+      bg.setAttribute("width", w); bg.setAttribute("height", "52");
+      bg.setAttribute("rx", "14");
+      bg.setAttribute("fill", "#1a1a1a");
+      layer.appendChild(bg);
+
+      const label = doc.createElementNS(NS, "text");
+      label.setAttribute("x", lx + w / 2); label.setAttribute("y", labelY);
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("font-family", "Fredoka, Nunito, sans-serif");
+      label.setAttribute("font-size", "38");
+      label.setAttribute("font-weight", "700");
+      label.setAttribute("fill", "#ffffff");
+      label.textContent = txt;
+      layer.appendChild(label);
+    }
+    function updateCurveHint(t) {
+      const inS5 = t >= 70.9 && t <= 98;
+      if (inS5 && !curvehint.classList.contains("show")) {
+        curvehint.classList.add("show");
+      } else if (!inS5 && curvehint.classList.contains("show")) {
+        curvehint.classList.remove("show");
+      }
+    }
+
+    // ===== 高中追问坐标提示 =====
+    const askHint = document.getElementById("askHint");
+    function updateAskHint(t) {
+      var inS3 = t >= 28.3 && t <= 39;
+      if (inS3 && !askHint.classList.contains("show")) {
+        askHint.classList.add("show");
+      } else if (!inS3 && askHint.classList.contains("show")) {
+        askHint.classList.remove("show");
+      }
+    }
+
+    // ===== 值域计算器 =====
+    const rangeCalc = document.getElementById("rangeCalc");
+    const rcLeft = document.getElementById("rcLeft");
+    const rcRight = document.getElementById("rcRight");
+    const rcBtn = document.getElementById("rcBtn");
+    const rcResult = document.getElementById("rcResult");
+
+    function updateRangeCalc(t) {
+      var inS6 = t >= 104.4 && t <= 128;
+      if (inS6 && !rangeCalc.classList.contains("show")) {
+        rangeCalc.classList.add("show");
+      } else if (!inS6 && rangeCalc.classList.contains("show")) {
+        rangeCalc.classList.remove("show");
+      }
+    }
+
+    function calcRange(a, b) {
+      var fa = a*a - 4*a + 3;
+      var fb = b*b - 4*b + 3;
+      var vx = 2;
+      var minY, maxY;
+      if (vx >= a && vx <= b) {
+        var fv = -1;
+        minY = Math.min(fa, fb, fv);
+        maxY = Math.max(fa, fb, fv);
+      } else {
+        minY = Math.min(fa, fb);
+        maxY = Math.max(fa, fb);
+      }
+      return [Math.round(minY * 100) / 100, Math.round(maxY * 100) / 100];
+    }
+
+    rcBtn.addEventListener("click", function() {
+      var a = parseFloat(rcLeft.value);
+      var b = parseFloat(rcRight.value);
+      if (isNaN(a) || isNaN(b)) return;
+      if (a > b) { var t = a; a = b; b = t; }
+      var r = calcRange(a, b);
+      rcResult.textContent = "y ∈ [" + r[0] + ", " + r[1] + "]";
+      rcResult.style.opacity = "0";
+      setTimeout(function(){ rcResult.style.opacity = "1"; }, 50);
+      drawRangeOnGraph(a, b, r[0], r[1]);
+    });
+    rcLeft.addEventListener("keydown", function(e) { if (e.key === "Enter") rcBtn.click(); });
+    rcRight.addEventListener("keydown", function(e) { if (e.key === "Enter") rcBtn.click(); });
+
+    // ===== 定义域图上标注 =====
+    function setupDomainTicks(scene) {
+      var doc = scene.iframe.contentDocument;
+      var svg = doc.querySelector('[data-composition-id="scene-06-domain"] svg.graph');
+      if (!svg) return;
+      var NS2 = "http://www.w3.org/2000/svg";
+      var tg = doc.createElementNS(NS2, "g");
+      tg.setAttribute("class", "ticks");
+      // x-axis ticks: 1,2,3
+      for (var i = 1; i <= 3; i++) {
+        var tx = 80 + i * 120;
+        var line = doc.createElementNS(NS2, "line");
+        line.setAttribute("x1", tx); line.setAttribute("y1", 325);
+        line.setAttribute("x2", tx); line.setAttribute("y2", 336);
+        line.setAttribute("stroke", "#1a1a1a"); line.setAttribute("stroke-width", "3");
+        tg.appendChild(line);
+        var txt = doc.createElementNS(NS2, "text");
+        txt.setAttribute("x", tx); txt.setAttribute("y", 362);
+        txt.setAttribute("text-anchor", "middle");
+        txt.setAttribute("font-family", "Fredoka"); txt.setAttribute("font-size", "32");
+        txt.setAttribute("font-weight", "700"); txt.setAttribute("fill", "#1a1a1a");
+        txt.textContent = i;
+        tg.appendChild(txt);
+      }
+      // y-axis ticks: -1, 0, 1, 2, 3
+      for (var j = -1; j <= 3; j++) {
+        var ty = 330.4 - j * 85.4;
+        var yl = doc.createElementNS(NS2, "line");
+        yl.setAttribute("x1", 75); yl.setAttribute("y1", ty);
+        yl.setAttribute("x2", 85); yl.setAttribute("y2", ty);
+        yl.setAttribute("stroke", "#1a1a1a"); yl.setAttribute("stroke-width", "3");
+        tg.appendChild(yl);
+        if (j !== 0) {
+          var yt = doc.createElementNS(NS2, "text");
+          yt.setAttribute("x", 68); yt.setAttribute("y", ty + 10);
+          yt.setAttribute("text-anchor", "end");
+          yt.setAttribute("font-family", "Fredoka"); yt.setAttribute("font-size", "30");
+          yt.setAttribute("font-weight", "700"); yt.setAttribute("fill", "#1a1a1a");
+          yt.textContent = j;
+          tg.appendChild(yt);
+        }
+      }
+      svg.appendChild(tg);
+    }
+
+    function drawRangeOnGraph(xMin, xMax, yMin, yMax) {
+      var s6 = scenes.find(function(s) { return s.id === "scene-06-domain"; });
+      if (!s6 || !s6.iframe || !s6.iframe.contentDocument) return;
+      var doc = s6.iframe.contentDocument;
+      var svg = doc.querySelector('[data-composition-id="scene-06-domain"] svg.graph');
+      if (!svg) return;
+      var NS2 = "http://www.w3.org/2000/svg";
+      svg.style.overflow = "visible";
+
+      var old = svg.querySelector(".range-overlay");
+      if (old) old.remove();
+      var g = doc.createElementNS(NS2, "g");
+      g.setAttribute("class", "range-overlay");
+
+      // Highlight curve segment
+      var segs = "";
+      var step = (xMax - xMin) / 80;
+      for (var i = 0; i <= 80; i++) {
+        var xm = xMin + i * step;
+        var ym = xm * xm - 4 * xm + 3;
+        var px = 80 + xm * 120;
+        var py = 330.4 - ym * 85.4;
+        segs += (i === 0 ? "M " : " L ") + px.toFixed(1) + " " + py.toFixed(1);
+      }
+      // Glow layer
+      var glow = doc.createElementNS(NS2, "path");
+      glow.setAttribute("d", segs);
+      glow.setAttribute("fill", "none");
+      glow.setAttribute("stroke", "#00e6a0");
+      glow.setAttribute("stroke-width", "12");
+      glow.setAttribute("stroke-linecap", "round");
+      glow.setAttribute("opacity", "0.35");
+      g.appendChild(glow);
+      // Main highlight
+      var seg = doc.createElementNS(NS2, "path");
+      seg.setAttribute("d", segs);
+      seg.setAttribute("fill", "none");
+      seg.setAttribute("stroke", "#00e6a0");
+      seg.setAttribute("stroke-width", "5");
+      seg.setAttribute("stroke-linecap", "round");
+      seg.setAttribute("opacity", "1");
+      g.appendChild(seg);
+
+      // Domain markers on x-axis
+      var x1 = 80 + xMin * 120;
+      var x2 = 80 + xMax * 120;
+      var domLine = doc.createElementNS(NS2, "line");
+      domLine.setAttribute("x1", x1); domLine.setAttribute("y1", 330.4);
+      domLine.setAttribute("x2", x2); domLine.setAttribute("y2", 330.4);
+      domLine.setAttribute("stroke", "#0047ab"); domLine.setAttribute("stroke-width", "8");
+      domLine.setAttribute("opacity", "0.5");
+      g.appendChild(domLine);
+
+      // Range markers on y-axis
+      var y1 = 330.4 - yMin * 85.4;
+      var y2 = 330.4 - yMax * 85.4;
+      var ranLine = doc.createElementNS(NS2, "line");
+      ranLine.setAttribute("x1", 80); ranLine.setAttribute("y1", y1);
+      ranLine.setAttribute("x2", 80); ranLine.setAttribute("y2", y2);
+      ranLine.setAttribute("stroke", "#009b77"); ranLine.setAttribute("stroke-width", "8");
+      ranLine.setAttribute("opacity", "0.5");
+      g.appendChild(ranLine);
+
+      // y-min and y-max dashed lines
+      var dashMin = doc.createElementNS(NS2, "line");
+      dashMin.setAttribute("x1", 80); dashMin.setAttribute("y1", y1);
+      dashMin.setAttribute("x2", x1 > x2 ? x1 : x2); dashMin.setAttribute("y2", y1);
+      dashMin.setAttribute("stroke", "#009b77"); dashMin.setAttribute("stroke-width", "2");
+      dashMin.setAttribute("stroke-dasharray", "6 4"); dashMin.setAttribute("opacity", "0.6");
+      g.appendChild(dashMin);
+
+      var dashMax = doc.createElementNS(NS2, "line");
+      dashMax.setAttribute("x1", 80); dashMax.setAttribute("y1", y2);
+      dashMax.setAttribute("x2", x1 > x2 ? x1 : x2); dashMax.setAttribute("y2", y2);
+      dashMax.setAttribute("stroke", "#009b77"); dashMax.setAttribute("stroke-width", "2");
+      dashMax.setAttribute("stroke-dasharray", "6 4"); dashMax.setAttribute("opacity", "0.6");
+      g.appendChild(dashMax);
+
+      // Highlight matching y-axis tick labels green
+      var ticks = svg.querySelectorAll(".ticks text");
+      for (var ti = 0; ti < ticks.length; ti++) {
+        var tv = parseFloat(ticks[ti].textContent);
+        if (tv === yMin || tv === yMax) {
+          ticks[ti].setAttribute("fill", "#009b77");
+          ticks[ti].setAttribute("font-size", "34");
+        } else {
+          ticks[ti].setAttribute("fill", "#1a1a1a");
+          ticks[ti].setAttribute("font-size", "30");
+        }
+      }
+
+      var firstChild = svg.firstChild;
+      svg.insertBefore(g, firstChild);
+      // Move overlay to front after a frame so it renders on top
+      requestAnimationFrame(function() { svg.appendChild(g); });
+    }
+
+    // ===== 式子计算器 =====
+    const exprCalc = document.getElementById("exprCalc");
+    const ecInput = document.getElementById("ecInput");
+    const ecBtn = document.getElementById("ecBtn");
+    const ecResult = document.getElementById("ecResult");
+
+    function updateExprCalc(t) {
+      var inS1 = t >= 7 && t <= 16;
+      if (inS1 && !exprCalc.classList.contains("show")) {
+        exprCalc.classList.add("show");
+      } else if (!inS1 && exprCalc.classList.contains("show")) {
+        exprCalc.classList.remove("show");
+      }
+    }
+
+    ecBtn.addEventListener("click", function() {
+      var x = parseFloat(ecInput.value);
+      if (isNaN(x)) return;
+      var y = x * x - 4 * x + 3;
+      var ys = Number.isInteger(y) ? y.toString() : (Math.round(y * 1000) / 1000).toString();
+      ecResult.textContent = "y = " + ys;
+      ecResult.style.opacity = "0";
+      setTimeout(function(){ ecResult.style.opacity = "1"; }, 50);
+    });
+    ecInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") ecBtn.click();
+    });
+
+        // ===== 启动 =====
+    async function start() {
+      try {
+        await loadScenes();
+      } catch (e) {
+        cover.style.display = "none";
+        fallback.style.display = "flex";
+        return;
+      }
+      setupAudio();
+      const s6 = scenes.find((s) => s.id === "scene-06-domain");
+      if (s6) setupDomainTicks(s6);
+      const s3 = scenes.find((s) => s.id === "scene-03-ask");
+      if (s3) setupCurveInteraction(s3, "scene-03-ask");
+      const s5 = scenes.find((s) => s.id === "scene-05-shape");
+      if (s5) setupCurveInteraction(s5, "scene-05-shape");
+
+      // 等字体就绪，避免首帧文字尺寸跳动
+      if (document.fonts && document.fonts.ready) {
+        try { await document.fonts.ready; } catch (e) {}
+      }
+      applyTime(0);
+
+      // 解锁音频（用户手势内）+ 开始
+      cover.addEventListener("click", async () => {
+        await Promise.all(audios.map((a) =>
+          a.el.play().then(() => { a.el.pause(); a.el.currentTime = 0; }).catch(() => {})
+        ));
+        cover.style.display = "none";
+        showControlsBriefly();
+        seekTo(0);
+        play();
+      }, { once: true });
+
+      loadbar.textContent = "";
+    }
+
+
+    requestAnimationFrame(tick);
+    start();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<template id="scene-05-shape-template">
+  <div data-composition-id="scene-05-shape" data-width="1080" data-height="1920">
+    <div class="panel">
+      <div class="corner tl"><div class="tile t-yellow"></div></div>
+      <div class="corner br"><div class="tile t-blue"></div></div>
+
+      <div class="middle">
+        <div class="badge">开 口 · 对 称 轴</div>
+
+        <!-- 开口方向小对照 -->
+        <div class="opens">
+          <div class="open up">
+            <svg viewBox="0 0 120 90" width="120" height="90">
+              <path d="M 15 15 Q 60 110 105 15" fill="none" stroke="#009b77" stroke-width="9" stroke-linecap="round" />
+            </svg>
+            <div class="o-label">a &gt; 0 朝上</div>
+          </div>
+          <div class="open down">
+            <svg viewBox="0 0 120 90" width="120" height="90">
+              <path d="M 15 75 Q 60 -20 105 75" fill="none" stroke="#ff1493" stroke-width="9" stroke-linecap="round" />
+            </svg>
+            <div class="o-label">a &lt; 0 朝下</div>
+          </div>
+        </div>
+
+        <!-- 曲线区：左侧式子+a=1, 右侧抛物线 -->
+        <div class="graphrow">
+          <div class="leftcol">
+            <div class="eqcard">y = x<span class="eqsup">2</span> &minus; 4x + 3</div>
+            <div class="acard">a = 1</div>
+          </div>
+
+        <svg class="graph" data-layout-allow-overflow="" viewBox="0 0 600 520" width="430" height="373">
+          <!-- 坐标轴 -->
+          <line class="ax" x1="80" y1="330.4" x2="572" y2="330.4" stroke="#1a1a1a" stroke-width="5" />
+          <polygon class="ax" points="572,330.4 556,322 556,338.8" fill="#1a1a1a" />
+          <line class="ax" x1="80" y1="40" x2="80" y2="458" stroke="#1a1a1a" stroke-width="5" />
+          <polygon class="ax" points="80,40 72,56 88,56" fill="#1a1a1a" />
+          <!-- 坐标轴说明 -->
+          <text class="ax" x="566" y="372" text-anchor="middle" font-family="Fredoka" font-size="46" font-style="italic" font-weight="700" fill="#1a1a1a">x</text>
+          <text class="ax" x="104" y="60" text-anchor="start" font-family="Fredoka" font-size="52" font-style="italic" font-weight="700" fill="#1a1a1a">y</text>
+
+          <!-- 抛物线 -->
+          <path class="curve" d="M 80.0 74.2 L 92.0 107.5 L 104.0 139.1 L 116.0 169.0 L 128.0 197.2 L 140.0 223.6 L 152.0 248.4 L 164.0 271.5 L 176.0 292.8 L 188.0 312.5 L 200.0 330.4 L 212.0 346.6 L 224.0 361.2 L 236.0 374.0 L 248.0 385.1 L 260.0 394.5 L 272.0 402.2 L 284.0 408.1 L 296.0 412.4 L 308.0 415.0 L 320.0 415.8 L 332.0 415.0 L 344.0 412.4 L 356.0 408.1 L 368.0 402.2 L 380.0 394.5 L 392.0 385.1 L 404.0 374.0 L 416.0 361.2 L 428.0 346.6 L 440.0 330.4 L 452.0 312.5 L 464.0 292.8 L 476.0 271.5 L 488.0 248.4 L 500.0 223.6 L 512.0 197.2 L 524.0 169.0 L 536.0 139.1 L 548.0 107.5 L 560.0 74.2" fill="none" stroke="#0047ab" stroke-width="8" stroke-linecap="round" />
+
+          <!-- 对称轴 x=2 竖虚线 -->
+          <line class="symaxis" x1="320" y1="60" x2="320" y2="450" stroke="#ff1493" stroke-width="5" stroke-dasharray="12 8" />
+          <text class="symlabel" x="320" y="36" text-anchor="middle" font-family="Fredoka" font-size="48" font-weight="700" fill="#ff1493">x = 2</text>
+
+          <!-- 等高虚线连接两根 (y=0) -->
+          <line class="eqline" x1="200" y1="330.4" x2="440" y2="330.4" stroke="#009b77" stroke-width="4" stroke-dasharray="9 7" />
+
+          <!-- 两根点 -->
+          <g class="pt p1">
+            <circle cx="200" cy="330.4" r="14" fill="#009b77" stroke="#1a1a1a" stroke-width="5" />
+            <text x="200" y="384" text-anchor="middle" font-family="Fredoka" font-size="48" font-weight="700" fill="#1a1a1a">1</text>
+          </g>
+          <g class="pt p3">
+            <circle cx="440" cy="330.4" r="14" fill="#009b77" stroke="#1a1a1a" stroke-width="5" />
+            <text x="440" y="384" text-anchor="middle" font-family="Fredoka" font-size="48" font-weight="700" fill="#1a1a1a">3</text>
+          </g>
+
+          <!-- 等距双箭头：1->2 和 2->3 -->
+          <g class="dist d-left">
+            <line x1="206" y1="300" x2="314" y2="300" stroke="#ff1493" stroke-width="4" />
+            <polygon points="206,300 220,293 220,307" fill="#ff1493" />
+            <polygon points="314,300 300,293 300,307" fill="#ff1493" />
+          </g>
+          <g class="dist d-right">
+            <line x1="326" y1="300" x2="434" y2="300" stroke="#ff1493" stroke-width="4" />
+            <polygon points="326,300 340,293 340,307" fill="#ff1493" />
+            <polygon points="434,300 420,293 420,307" fill="#ff1493" />
+          </g>
+        </svg>
+        </div>
+
+        <!-- 对称轴公式卡片 -->
+        <div class="formula">
+          <span class="f-main">x = −b / 2a</span>
+          <span class="f-tail"><span class="f-eq">=</span> <span class="f-val">2</span></span>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-05-shape"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1080px; height: 1920px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-05-shape"] .panel {
+        position: absolute; top: 480px; left: 0; right: 0; height: 960px;
+        background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-05-shape"] .corner { position: absolute; opacity: 0; }
+      [data-composition-id="scene-05-shape"] .corner.tl { top: 40px; left: 44px; }
+      [data-composition-id="scene-05-shape"] .corner.br { bottom: 40px; right: 44px; }
+      [data-composition-id="scene-05-shape"] .tile {
+        width: 60px; height: 60px; border-radius: 50%; position: relative;
+      }
+      [data-composition-id="scene-05-shape"] .tile::after {
+        content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--ink);
+      }
+      [data-composition-id="scene-05-shape"] .tile.t-yellow { background: var(--yellow); }
+      [data-composition-id="scene-05-shape"] .tile.t-blue { background: var(--blue); }
+
+      [data-composition-id="scene-05-shape"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        gap: 16px; padding: 44px 60px 50px;
+      }
+      [data-composition-id="scene-05-shape"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 76px; color: var(--paper);
+        background: var(--blue); padding: 14px 46px;
+        border-radius: 28px; border: 5px solid var(--ink);
+        letter-spacing: 0.1em; opacity: 0;
+      }
+
+      [data-composition-id="scene-05-shape"] .opens {
+        display: flex; gap: 40px;
+      }
+      [data-composition-id="scene-05-shape"] .open {
+        display: flex; flex-direction: column; align-items: center; gap: 6px;
+        background: var(--paper);
+        border: 5px solid var(--ink); border-radius: 22px;
+        box-shadow: 8px 8px 0 0 var(--ink);
+        padding: 16px 28px; opacity: 0;
+      }
+      [data-composition-id="scene-05-shape"] .o-label {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 38px; color: var(--ink);
+      }
+      [data-composition-id="scene-05-shape"] .open.up .o-label { color: var(--green); }
+      [data-composition-id="scene-05-shape"] .open.down .o-label { color: var(--pink); }
+
+      [data-composition-id="scene-05-shape"] .graph { opacity: 0; flex-shrink: 0; }
+      [data-composition-id="scene-05-shape"] .graphrow {
+        display: flex; align-items: center; gap: 12px;
+      }
+      [data-composition-id="scene-05-shape"] .leftcol {
+        display: flex; flex-direction: column; align-items: center; gap: 22px;
+        width: 360px; flex-shrink: 0;
+      }
+      [data-composition-id="scene-05-shape"] .eqcard {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 50px; color: var(--ink);
+        background: var(--paper);
+        border: 5px solid var(--ink); border-radius: 20px;
+        box-shadow: 7px 7px 0 0 var(--ink);
+        padding: 14px 24px; white-space: nowrap; opacity: 0;
+      }
+      [data-composition-id="scene-05-shape"] .eqsup {
+        font-size: 30px; vertical-align: super;
+      }
+      [data-composition-id="scene-05-shape"] .acard {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 56px; color: var(--paper);
+        background: var(--green);
+        border: 5px solid var(--ink); border-radius: 20px;
+        box-shadow: 7px 7px 0 0 var(--ink);
+        padding: 10px 40px; opacity: 0;
+      }      [data-composition-id="scene-05-shape"] .symaxis { opacity: 0; }
+      [data-composition-id="scene-05-shape"] .symlabel { opacity: 0; }
+      [data-composition-id="scene-05-shape"] .eqline { opacity: 0; }
+      [data-composition-id="scene-05-shape"] .pt { opacity: 0; }
+      [data-composition-id="scene-05-shape"] .dist { opacity: 0; }
+
+      [data-composition-id="scene-05-shape"] .formula {
+        display: flex; align-items: center; gap: 18px;
+        background: var(--paper);
+        border: 6px solid var(--ink); border-radius: 26px;
+        box-shadow: 12px 12px 0 0 var(--ink);
+        padding: 18px 44px; opacity: 0;
+      }
+      [data-composition-id="scene-05-shape"] .f-main {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 54px; color: var(--ink);
+      }
+      [data-composition-id="scene-05-shape"] .f-eq {
+        font-family: "Fredoka", sans-serif; font-weight: 700;
+        font-size: 54px; color: var(--ink);
+      }
+      [data-composition-id="scene-05-shape"] .f-tail {
+        display: inline-block; opacity: 0;
+      }
+      [data-composition-id="scene-05-shape"] .f-val {
+        font-family: "Fredoka", sans-serif; font-weight: 700;
+        font-size: 60px; color: var(--pink);
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.to(".corner", { opacity: 1, duration: 0.3, stagger: 0.08, ease: "power2.out" }, 0.2);
+
+        tl.fromTo(".badge",
+          { y: -40, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(2)" },
+          0.4
+        );
+
+        // ===== s5a 段(0~6.72): 开口方向 =====
+        // "a 是正数，开口朝上"(段内1.8s) 显示朝上
+        tl.fromTo(".open.up",
+          { x: -60, scale: 0.8, opacity: 0 },
+          { x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" },
+          1.8
+        );
+        // "a 是负数，开口朝下"(段内4.0s) 显示朝下
+        tl.fromTo(".open.down",
+          { x: 60, scale: 0.8, opacity: 0 },
+          { x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" },
+          4.0
+        );
+
+        // ===== s5b 段(7.0~11.94): a=1开口朝上 =====
+        // 念"对于原先的式子"(段起 7.0s) 左栏式子出现
+        tl.fromTo(".eqcard",
+          { x: -30, scale: 0.85, opacity: 0 },
+          { x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.9)" },
+          7.0
+        );
+        // 念"a 等于 1"(段内1.8s = 8.8s) 式子下方 a=1 出现
+        tl.fromTo(".acard",
+          { y: 20, scale: 0.7, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" },
+          8.8
+        );
+        // 念"所以开口"(段内2.86s = 9.9s) 右侧画出抛物线
+        tl.fromTo(".graph",
+          { y: 30, scale: 0.92, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.6)" },
+          9.9
+        );
+
+        // ===== s5c 段(12.5~22.05): 对称轴公式(带背景卡, 不在曲线画竖线) =====
+        // 念"对称轴是在 x 等于负 b 除以 2a 处"(段起 12.8s) 显示公式卡 x=-b/2a
+        tl.fromTo(".formula",
+          { y: 30, scale: 0.85, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.8)" },
+          12.8
+        );
+
+        // ===== s5d 段(22.5~36.8): a=1,b=-4,对称轴=2,两根 =====
+        // 念"对称轴在 x 等于 2 处"(段内约5.8s = 28.3s): 公式补"=2" + 曲线画对称轴竖线
+        tl.fromTo(".f-tail",
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, ease: "back.out(2)" },
+          28.3
+        );
+        tl.fromTo(".symaxis",
+          { opacity: 0, scaleY: 0, transformOrigin: "320px 250px" },
+          { opacity: 1, scaleY: 1, duration: 0.6, ease: "power3.out" },
+          28.3
+        );
+        tl.to(".symlabel", { opacity: 1, duration: 0.4 }, 28.8);
+        // 两根点 + 等距箭头 + 等高线 (段内"所以x=1和x=3一样远" 段内7.2s → 29.7s)
+        tl.fromTo(".pt.p1",
+          { opacity: 0, scale: 0.3, transformOrigin: "200px 330.4px" },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.4)" },
+          29.7
+        );
+        tl.fromTo(".pt.p3",
+          { opacity: 0, scale: 0.3, transformOrigin: "440px 330.4px" },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.4)" },
+          30.0
+        );
+        tl.fromTo(".d-left, .d-right",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: "power2.out" },
+          30.9
+        );
+        tl.fromTo(".eqline",
+          { opacity: 0, scaleX: 0, transformOrigin: "320px 330.4px" },
+          { opacity: 1, scaleX: 1, duration: 0.6, ease: "power3.out" },
+          32.4
+        );
+
+        tl.to({}, { duration: 0.01 }, 36.99);
+
+        window.__timelines["scene-05-shape"] = tl;
+      })();
+    </script>
+  </div>
+</template>

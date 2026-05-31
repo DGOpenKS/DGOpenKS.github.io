@@ -1,0 +1,241 @@
+<template id="scene-01-expr-template">
+  <div
+    data-composition-id="scene-01-expr"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div class="panel">
+      <div class="corner tl"><div class="tile t-pink"></div></div>
+      <div class="corner tr"><div class="tile t-blue"></div></div>
+      <div class="corner bl"><div class="tile t-green"></div></div>
+      <div class="corner br"><div class="tile t-yellow"></div></div>
+
+      <div class="middle">
+        <div class="badge">式 子 登 场</div>
+
+        <div class="card">
+          <div class="expr">
+            <span class="yeq">
+              <span class="tk accent-pink" data-k="0">y</span>
+              <span class="tk op" data-k="1">=</span>
+            </span><span class="tk" data-k="2">x</span><span class="tk sup" data-k="3">2</span>
+            <span class="tk op" data-k="4">&minus;</span>
+            <span class="tk accent-blue" data-k="5">4x</span>
+            <span class="tk op" data-k="6">+</span>
+            <span class="tk accent-green" data-k="7">3</span>
+          </div>
+          <div class="stroke"></div>
+        </div>
+
+        <div class="hint">把式子的值记作 <span class="hy">y</span></div>
+
+        <!-- 两次代入演示 -->
+        <div class="plugs">
+          <div class="plug p1">
+            <span class="pin">x = 0</span>
+            <span class="parr">&rarr;</span>
+            <span class="pout">y = 3</span>
+          </div>
+          <div class="plug p2">
+            <span class="pin">x = 4</span>
+            <span class="parr">&rarr;</span>
+            <span class="pout">y = 3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-01-expr"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1080px; height: 1920px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-01-expr"] .panel {
+        position: absolute; top: 480px; left: 0; right: 0; height: 960px;
+        background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-01-expr"] .corner { position: absolute; opacity: 0; }
+      [data-composition-id="scene-01-expr"] .corner.tl { top: 40px; left: 44px; }
+      [data-composition-id="scene-01-expr"] .corner.tr { top: 40px; right: 44px; }
+      [data-composition-id="scene-01-expr"] .corner.bl { bottom: 40px; left: 44px; }
+      [data-composition-id="scene-01-expr"] .corner.br { bottom: 40px; right: 44px; }
+      [data-composition-id="scene-01-expr"] .tile {
+        width: 60px; height: 60px; border-radius: 50%; position: relative;
+      }
+      [data-composition-id="scene-01-expr"] .tile::after {
+        content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--ink);
+      }
+      [data-composition-id="scene-01-expr"] .tile.t-pink { background: var(--pink); }
+      [data-composition-id="scene-01-expr"] .tile.t-blue { background: var(--blue); }
+      [data-composition-id="scene-01-expr"] .tile.t-green { background: var(--green); }
+      [data-composition-id="scene-01-expr"] .tile.t-yellow { background: var(--yellow); }
+
+      [data-composition-id="scene-01-expr"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        gap: 40px; padding: 50px 60px 60px;
+      }
+      [data-composition-id="scene-01-expr"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 80px; color: var(--paper);
+        background: var(--blue); padding: 16px 50px;
+        border-radius: 30px; border: 5px solid var(--ink);
+        letter-spacing: 0.16em; opacity: 0;
+      }
+
+      [data-composition-id="scene-01-expr"] .card {
+        position: relative;
+        background: var(--paper);
+        border: 6px solid var(--ink); border-radius: 36px;
+        box-shadow: 16px 16px 0 0 var(--ink);
+        padding: 56px 80px 70px;
+        opacity: 0;
+      }
+      [data-composition-id="scene-01-expr"] .expr {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 72px; line-height: 1;
+        color: var(--ink); white-space: nowrap;
+      }
+      [data-composition-id="scene-01-expr"] .tk {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px) scale(0.6);
+      }
+      [data-composition-id="scene-01-expr"] .tk.sup {
+        font-size: 40px; vertical-align: super; margin-left: 4px;
+      }
+      [data-composition-id="scene-01-expr"] .tk.op { color: var(--ink); margin: 0 18px; }
+      [data-composition-id="scene-01-expr"] .yeq {
+        display: inline-block; opacity: 0;
+      }
+      [data-composition-id="scene-01-expr"] .accent-blue { color: var(--blue); }
+      [data-composition-id="scene-01-expr"] .accent-green { color: var(--green); }
+
+      [data-composition-id="scene-01-expr"] .stroke {
+        position: absolute;
+        left: 80px; right: 80px; bottom: 44px;
+        height: 16px; background: var(--yellow);
+        border: 4px solid var(--ink); border-radius: 8px;
+        transform-origin: left center; transform: scaleX(0);
+      }
+
+      [data-composition-id="scene-01-expr"] .hint {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 50px; color: var(--ink);
+        background: var(--yellow);
+        padding: 10px 32px; border-radius: 18px;
+        border: 4px solid var(--ink);
+        opacity: 0;
+      }
+      [data-composition-id="scene-01-expr"] .hint .hy {
+        color: var(--pink); font-family: "Fredoka", sans-serif; font-weight: 700;
+      }
+
+      [data-composition-id="scene-01-expr"] .plugs {
+        display: flex; flex-direction: column; gap: 24px;
+      }
+      [data-composition-id="scene-01-expr"] .plug {
+        display: flex; align-items: center; gap: 26px;
+        background: var(--paper);
+        border: 5px solid var(--ink); border-radius: 26px;
+        box-shadow: 10px 10px 0 0 var(--ink);
+        padding: 20px 44px; opacity: 0;
+      }
+      [data-composition-id="scene-01-expr"] .pin {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 58px; color: var(--blue);
+      }
+      [data-composition-id="scene-01-expr"] .parr {
+        font-family: "Fredoka", sans-serif; font-weight: 700;
+        font-size: 54px; color: var(--ink);
+      }
+      [data-composition-id="scene-01-expr"] .pout {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 58px; color: var(--green);
+        display: inline-block; opacity: 0;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.to(".corner", { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power2.out" }, 0.2);
+
+        tl.fromTo(".badge",
+          { y: -40, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(2)" },
+          0.4
+        );
+
+        // 公式卡片弹入 (配音"我们先从一个式子说起" 约 0~2.5s)
+        tl.fromTo(".card",
+          { y: 50, scale: 0.85, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          0.9
+        );
+        // 开场只显示 x²-4x+3 (k2~k7), y= 暂不出现
+        tl.to('.expr [data-k="2"], .expr [data-k="3"], .expr [data-k="4"], .expr [data-k="5"], .expr [data-k="6"], .expr [data-k="7"]',
+          { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.12, ease: "back.out(2.2)" },
+          1.5
+        );
+        // 黄色下划线扫过
+        tl.to(".stroke", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 2.7);
+
+        // "值记作 y" 提示 (配音"我们把这个式子的值记作" 约 4.1~5.9s)
+        tl.fromTo(".hint",
+          { y: 26, scale: 0.8, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" },
+          4.2
+        );
+        // 念到"记作 y"的 y 时(约 5.3s), y = 滑入到式子前面
+        tl.set('.yeq [data-k="0"], .yeq [data-k="1"]', { opacity: 1, y: 0, scale: 1 }, 5.3);
+        tl.fromTo(".yeq",
+          { opacity: 0, x: -40, scale: 0.6 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(2.2)" },
+          5.3
+        );
+
+        // 代入1: 念到"x 等于 0"的 x 时(约 7.3s)卡片滑入
+        tl.fromTo(".plug.p1",
+          { x: -60, scale: 0.85, opacity: 0 },
+          { x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" },
+          7.3
+        );
+        // 念到"y 就是 3"的 y 时(约 8.3s), y=3 弹入并放大强调
+        tl.fromTo(".plug.p1 .pout",
+          { opacity: 0, scale: 0.3 },
+          { opacity: 1, scale: 1.25, duration: 0.4, ease: "back.out(2.6)" },
+          8.3
+        );
+        tl.to(".plug.p1 .pout", { scale: 1, duration: 0.25, ease: "sine.inOut" }, 8.7);
+
+        // 代入2: 念到"x 等于 4"的 x 时(约 9.3s)卡片滑入
+        tl.fromTo(".plug.p2",
+          { x: 60, scale: 0.85, opacity: 0 },
+          { x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" },
+          9.3
+        );
+        // 念到"y 还是 3"的 y 时(约 10.9s), y=3 弹入并放大强调
+        tl.fromTo(".plug.p2 .pout",
+          { opacity: 0, scale: 0.3 },
+          { opacity: 1, scale: 1.25, duration: 0.4, ease: "back.out(2.6)" },
+          10.9
+        );
+        tl.to(".plug.p2 .pout", { scale: 1, duration: 0.25, ease: "sine.inOut" }, 11.3);
+
+        tl.to({}, { duration: 0.01 }, 12.99);
+
+        window.__timelines["scene-01-expr"] = tl;
+      })();
+    </script>
+  </div>
+</template>

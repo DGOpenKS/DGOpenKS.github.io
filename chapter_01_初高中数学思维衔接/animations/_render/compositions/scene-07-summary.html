@@ -1,0 +1,199 @@
+<template id="scene-07-summary-template">
+  <div
+    data-composition-id="scene-07-summary"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div class="panel">
+      <div class="corner tl"><div class="tile t-pink"></div></div>
+      <div class="corner tr"><div class="tile t-blue"></div></div>
+      <div class="corner bl"><div class="tile t-yellow"></div></div>
+      <div class="corner br"><div class="tile t-green"></div></div>
+
+      <div class="middle">
+        <div class="head">初中 vs 高中</div>
+        <div class="stroke"></div>
+
+        <div class="table">
+          <div class="row r-head">
+            <div class="cell c-key">问的是</div>
+            <div class="cell c-jr">初中</div>
+            <div class="cell c-sr">高中</div>
+          </div>
+          <div class="row r1">
+            <div class="cell c-key">核心问题</div>
+            <div class="cell c-jr">怎样得答案</div>
+            <div class="cell c-sr">研究什么对象</div>
+          </div>
+          <div class="row r2">
+            <div class="cell c-key">关注点</div>
+            <div class="cell c-jr">求出解</div>
+            <div class="cell c-sr">对象的性质</div>
+          </div>
+        </div>
+
+        <div class="conclusion">
+          <span class="from">算答案</span>
+          <span class="arrow">&rlarr;</span>
+          <span class="to">研究对象</span>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-07-summary"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1080px; height: 1920px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-07-summary"] .panel {
+        position: absolute; top: 480px; left: 0; right: 0; height: 960px;
+        background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-07-summary"] .corner { position: absolute; opacity: 0; }
+      [data-composition-id="scene-07-summary"] .corner.tl { top: 40px; left: 44px; }
+      [data-composition-id="scene-07-summary"] .corner.tr { top: 40px; right: 44px; }
+      [data-composition-id="scene-07-summary"] .corner.bl { bottom: 40px; left: 44px; }
+      [data-composition-id="scene-07-summary"] .corner.br { bottom: 40px; right: 44px; }
+      [data-composition-id="scene-07-summary"] .tile {
+        width: 60px; height: 60px; border-radius: 50%; position: relative;
+      }
+      [data-composition-id="scene-07-summary"] .tile::after {
+        content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--ink);
+      }
+      [data-composition-id="scene-07-summary"] .tile.t-pink { background: var(--pink); }
+      [data-composition-id="scene-07-summary"] .tile.t-blue { background: var(--blue); }
+      [data-composition-id="scene-07-summary"] .tile.t-green { background: var(--green); }
+      [data-composition-id="scene-07-summary"] .tile.t-yellow { background: var(--yellow); }
+
+      [data-composition-id="scene-07-summary"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        gap: 30px; padding: 50px 60px 60px;
+      }
+      [data-composition-id="scene-07-summary"] .head {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 92px; color: var(--ink); opacity: 0;
+      }
+      [data-composition-id="scene-07-summary"] .stroke {
+        width: 360px; height: 16px;
+        background: var(--yellow);
+        border: 4px solid var(--ink); border-radius: 8px;
+        transform-origin: left center; transform: scaleX(0);
+      }
+
+      [data-composition-id="scene-07-summary"] .table {
+        background: var(--paper);
+        border: 5px solid var(--ink); border-radius: 24px;
+        box-shadow: 12px 12px 0 0 var(--ink);
+        padding: 18px 26px; width: 880px;
+        display: flex; flex-direction: column; gap: 4px;
+        opacity: 0;
+      }
+      [data-composition-id="scene-07-summary"] .row {
+        display: grid;
+        grid-template-columns: 220px 1fr 1fr;
+        align-items: center; gap: 10px; padding: 14px 0;
+      }
+      [data-composition-id="scene-07-summary"] .row + .row {
+        border-top: 3px dashed rgba(0,0,0,0.18);
+      }
+      [data-composition-id="scene-07-summary"] .cell {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 46px; text-align: center;
+      }
+      [data-composition-id="scene-07-summary"] .r-head .cell {
+        font-size: 38px; color: var(--ink); opacity: 0.7;
+      }
+      [data-composition-id="scene-07-summary"] .r-head .c-jr { color: var(--blue); opacity: 1; }
+      [data-composition-id="scene-07-summary"] .r-head .c-sr { color: var(--pink); opacity: 1; }
+      /* 数据行的维度列+初中列+高中列分阶段显示, 初始隐藏 */
+      [data-composition-id="scene-07-summary"] .row:not(.r-head) .c-key,
+      [data-composition-id="scene-07-summary"] .row:not(.r-head) .c-jr,
+      [data-composition-id="scene-07-summary"] .row:not(.r-head) .c-sr { opacity: 0; }
+      [data-composition-id="scene-07-summary"] .c-key { color: var(--ink); font-weight: 700; }
+      [data-composition-id="scene-07-summary"] .c-jr { color: var(--blue); }
+      [data-composition-id="scene-07-summary"] .c-sr { color: var(--pink); font-weight: 700; }
+
+      [data-composition-id="scene-07-summary"] .conclusion {
+        display: flex; align-items: center; gap: 24px;
+        margin-top: 8px; opacity: 0;
+      }
+      [data-composition-id="scene-07-summary"] .from {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 58px; color: var(--paper);
+        background: var(--blue);
+        padding: 10px 32px; border-radius: 18px; border: 5px solid var(--ink);
+      }
+      [data-composition-id="scene-07-summary"] .arrow {
+        font-family: "Fredoka", sans-serif; font-weight: 700;
+        font-size: 56px; color: var(--ink);
+      }
+      [data-composition-id="scene-07-summary"] .to {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 58px; color: var(--paper);
+        background: var(--pink);
+        padding: 10px 32px; border-radius: 18px; border: 5px solid var(--ink);
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.to(".corner", { opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out" }, 0.2);
+
+        tl.fromTo(".head",
+          { y: -30, scale: 0.7, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.8)" },
+          0.4
+        );
+        tl.to(".stroke", { scaleX: 1, duration: 0.45, ease: "power3.out" }, 0.9);
+
+        tl.fromTo(".table",
+          { y: 60, scale: 0.9, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          3.4
+        );
+
+        // 维度列 + 初中列 (配音"初中问——我怎样得到答案" 约 5.6s)
+        tl.fromTo(".row:not(.r-head) .c-key",
+          { x: -40, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, stagger: 0.12, ease: "back.out(1.6)" },
+          5.6
+        );
+        tl.fromTo(".row:not(.r-head) .c-jr",
+          { x: -40, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, stagger: 0.12, ease: "back.out(1.6)" },
+          5.9
+        );
+
+        // 高中列 (配音"高中问——我正在研究什么对象,它有什么性质" 约 8.7s)
+        tl.fromTo(".row:not(.r-head) .c-sr",
+          { x: 40, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, stagger: 0.18, ease: "back.out(1.8)" },
+          8.7
+        );
+
+        // 结论 (配音"站在它之上,登上更高一层的视角"约 12.4s)
+        tl.fromTo(".conclusion",
+          { y: 40, scale: 0.85, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.8)" },
+          12.4
+        );
+        tl.to(".to", { scale: 1.08, duration: 0.22, yoyo: true, repeat: 1, ease: "sine.inOut" }, 13.3);
+
+        tl.to({}, { duration: 0.01 }, 18.69);
+
+        window.__timelines["scene-07-summary"] = tl;
+      })();
+    </script>
+  </div>
+</template>

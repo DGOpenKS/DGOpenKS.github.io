@@ -107,6 +107,8 @@ p{margin:0 0 12px}
 .subtle{color:var(--muted)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:22px}
+.anim-embed{position:relative;width:100%;max-width:800px;margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-soft);background:#000}
+.anim-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .panel.tight{padding:16px}
 .equation-card{border-radius:18px;padding:22px;background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--line)}
 .big-formula{font-family:var(--mono);font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.2;margin:16px 0;color:var(--ink)}
@@ -223,6 +225,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
     <p class="lead">这一章不是为了教会你一个新的二次函数技巧，而是让你感受到高中数学真正的变化：同一个式子，可以从一道题，变成一个值得研究的数学对象。</p>
     <div class="hero-actions">
       <a class="btn primary" href="#stage1">开始体验</a>
+      <a class="btn" href="animations/_render/animation.html">▶ 观看动画讲解</a>
       <a class="btn" href="../index.html">返回目录</a>
     </div>
   </div>
@@ -244,6 +247,22 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 </header>
 
 <main>
+  <section class="stage" id="stage0">
+    <aside class="stage-marker"><span>▶</span>Animated Intro</aside>
+    <div class="stage-body reveal">
+      <div class="stage-kicker">动画讲解</div>
+      <h2>先用一段动画，看懂这一章。</h2>
+      <p class="subtle" style="margin:0 0 18px">下面是带语音讲解的动画版本。播放到“开口·对称轴”时，可以点击抛物线上的点查看坐标。</p>
+      <div class="anim-embed">
+        <iframe src="animations/_render/animation.html"
+                title="第一章动画讲解"
+                loading="lazy"
+                allow="autoplay"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
   <section class="stage" id="stage1">
     <aside class="stage-marker"><span>1</span>Familiar Ground</aside>
     <div class="stage-body reveal">
@@ -427,7 +446,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             </div>
           </div>
           <div class="callout">
-            <p><strong>一般式的新视角：</strong>$b$ 不只是“中间那一项”。当 $a\\neq0$ 时，它会和 $a$ 一起决定对称轴 $x=-\\frac{b}{2a}$；$c$ 是图像与 y 轴的交点。</p>
+            <p><strong>一般式的新视角：</strong>$b$ 不只是“中间那一项”。当 $a\neq0$ 时，它会和 $a$ 一起决定对称轴 $x=-\frac{b}{2a}$；$c$ 是图像与 y 轴的交点。</p>
           </div>
         </div>
         <div class="timeline">
@@ -965,6 +984,7 @@ function drawFamily(){
   }
 }
 
+var _lastFamilyMode = null;
 function updateFamilyUI(){
   ['a','h','k'].forEach(key => {
     document.getElementById(key + 'Read').textContent = pretty(familyState[key]);
@@ -981,8 +1001,11 @@ function updateFamilyUI(){
   document.getElementById('vertexControls').classList.toggle('active', familyState.mode === 'vertex');
   document.getElementById('standardControls').classList.toggle('active', familyState.mode === 'standard');
   if(familyState.mode === 'standard'){
-    document.getElementById('familyTitle').innerHTML = '$y = ax^2 + bx + c$';
-    document.getElementById('familyPrompt').textContent = '再看一般式：a 影响开口，c 是 y 轴交点，b 会和 a 一起决定对称轴。';
+    if(_lastFamilyMode !== 'standard'){
+      document.getElementById('familyTitle').innerHTML = '$y = ax^2 + bx + c$';
+      document.getElementById('familyPrompt').innerHTML = '再看一般式：$a$ 影响开口，$c$ 是 y 轴交点，$b$ 会和 $a$ 一起决定对称轴 $x=-\\frac{b}{2a}$。';
+      if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
+    }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.stdA)}x² ${signed(familyState.stdB)}x ${signed(familyState.stdC)}`;
     if(Math.abs(familyState.stdA) > .001){
       const vx = -familyState.stdB / (2 * familyState.stdA);
@@ -993,12 +1016,16 @@ function updateFamilyUI(){
     }
     document.getElementById('openStat').textContent = familyState.stdA > 0 ? '向上' : familyState.stdA < 0 ? '向下' : '退化';
   } else {
-    document.getElementById('familyTitle').innerHTML = '$y = a(x-h)^2 + k$';
-    document.getElementById('familyPrompt').textContent = '先用顶点式理解：a 控制开口，h,k 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。';
+    if(_lastFamilyMode !== 'vertex'){
+      document.getElementById('familyTitle').innerHTML = '$y = a(x-h)^2 + k$';
+      document.getElementById('familyPrompt').innerHTML = '先用顶点式理解：$a$ 控制开口，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。';
+      if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
+    }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.a)}(x${familyState.h >= 0 ? '-' : '+'}${pretty(Math.abs(familyState.h))})²${familyState.k >= 0 ? '+' : '-'}${pretty(Math.abs(familyState.k))}`;
     document.getElementById('vertexStat').textContent = `(${pretty(familyState.h)},${pretty(familyState.k)})`;
     document.getElementById('openStat').textContent = familyState.a > 0 ? '向上' : familyState.a < 0 ? '向下' : '退化';
   }
+  _lastFamilyMode = familyState.mode;
   schedule(drawFamily, familyState);
 }
 
@@ -1114,7 +1141,7 @@ function init(){
   updateFamilyUI();
   updateDomainUI();
 
-  document.getElementById('solveBtn').addEventListener('click', () => {
+    document.getElementById('solveBtn').addEventListener('click', () => {
     document.getElementById('answerChip').hidden = false;
     if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('answerChip')]);
   });

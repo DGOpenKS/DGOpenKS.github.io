@@ -1,0 +1,192 @@
+<template id="scene-04-param-template">
+  <div
+    data-composition-id="scene-04-param"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div class="panel">
+      <div class="corner tl"><div class="tile t-pink"></div></div>
+      <div class="corner tr"><div class="tile t-green"></div></div>
+      <div class="corner bl"><div class="tile t-blue"></div></div>
+      <div class="corner br"><div class="tile t-yellow"></div></div>
+
+      <div class="middle">
+        <div class="badge">参 数</div>
+
+        <div class="q">其它类似的式子，也有这样的性质吗？</div>
+
+        <!-- 具体 -> 一般式 -->
+        <div class="morph">
+          <div class="mcard concrete">
+            <div class="mtag t-concrete">具体</div>
+            <div class="expr">x<span class="sup">2</span> &minus; <span class="num n4">4</span>x + <span class="num n3">3</span></div>
+          </div>
+
+          <div class="m-arrow">&darr;</div>
+
+          <div class="mcard general">
+            <div class="mtag t-general">一般式</div>
+            <div class="expr"><span class="letter la">a</span>x<span class="sup">2</span> + <span class="letter lb">b</span>x + <span class="letter lc">c</span></div>
+          </div>
+        </div>
+
+        <div class="note">字母代替数字 —— 一次研究，处处适用</div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-04-param"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1080px; height: 1920px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-04-param"] .panel {
+        position: absolute; top: 480px; left: 0; right: 0; height: 960px;
+        background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-04-param"] .corner { position: absolute; opacity: 0; }
+      [data-composition-id="scene-04-param"] .corner.tl { top: 40px; left: 44px; }
+      [data-composition-id="scene-04-param"] .corner.tr { top: 40px; right: 44px; }
+      [data-composition-id="scene-04-param"] .corner.bl { bottom: 40px; left: 44px; }
+      [data-composition-id="scene-04-param"] .corner.br { bottom: 40px; right: 44px; }
+      [data-composition-id="scene-04-param"] .tile {
+        width: 60px; height: 60px; border-radius: 50%; position: relative;
+      }
+      [data-composition-id="scene-04-param"] .tile::after {
+        content: ""; position: absolute; inset: 16px; border-radius: 50%; background: var(--ink);
+      }
+      [data-composition-id="scene-04-param"] .tile.t-pink { background: var(--pink); }
+      [data-composition-id="scene-04-param"] .tile.t-blue { background: var(--blue); }
+      [data-composition-id="scene-04-param"] .tile.t-green { background: var(--green); }
+      [data-composition-id="scene-04-param"] .tile.t-yellow { background: var(--yellow); }
+
+      [data-composition-id="scene-04-param"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        gap: 36px; padding: 50px 60px 60px;
+      }
+      [data-composition-id="scene-04-param"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 80px; color: var(--paper);
+        background: var(--pink); padding: 16px 54px;
+        border-radius: 30px; border: 5px solid var(--ink);
+        letter-spacing: 0.2em; opacity: 0;
+      }
+      [data-composition-id="scene-04-param"] .q {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 54px; color: var(--ink); text-align: center;
+        max-width: 860px; opacity: 0;
+      }
+
+      [data-composition-id="scene-04-param"] .morph {
+        display: flex; flex-direction: column; align-items: center; gap: 22px;
+      }
+      [data-composition-id="scene-04-param"] .mcard {
+        position: relative;
+        background: var(--paper);
+        border: 6px solid var(--ink); border-radius: 30px;
+        box-shadow: 14px 14px 0 0 var(--ink);
+        padding: 38px 70px 32px; opacity: 0;
+      }
+      [data-composition-id="scene-04-param"] .mtag {
+        position: absolute; top: -28px; left: 40px;
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 40px; color: var(--paper);
+        padding: 6px 24px; border-radius: 16px; border: 4px solid var(--ink);
+      }
+      [data-composition-id="scene-04-param"] .t-concrete { background: var(--blue); }
+      [data-composition-id="scene-04-param"] .t-general { background: var(--green); }
+      [data-composition-id="scene-04-param"] .expr {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 70px; color: var(--ink); white-space: nowrap;
+      }
+      [data-composition-id="scene-04-param"] .sup { font-size: 38px; vertical-align: super; }
+      [data-composition-id="scene-04-param"] .num { color: var(--pink); display: inline-block; }
+      [data-composition-id="scene-04-param"] .letter { color: var(--green); display: inline-block; }
+      [data-composition-id="scene-04-param"] .m-arrow {
+        font-family: "Fredoka", sans-serif; font-weight: 700;
+        font-size: 48px; color: var(--blue); opacity: 0;
+      }
+
+      [data-composition-id="scene-04-param"] .note {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 50px; color: var(--ink);
+        background: var(--yellow);
+        padding: 10px 30px; border-radius: 18px;
+        border: 4px solid var(--ink); opacity: 0;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.to(".corner", { opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out" }, 0.2);
+
+        tl.fromTo(".badge",
+          { y: -40, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(2)" },
+          0.4
+        );
+
+        // 提问 (配音"是不是也有这样的性质" 约 5.3s)
+        tl.fromTo(".q",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+          5.3
+        );
+
+        // 具体式子 (配音"就要把具体的数字" 约 8.0s)
+        tl.fromTo(".concrete",
+          { y: 40, scale: 0.9, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          8.0
+        );
+        // 数字高亮跳动（强调"具体的数字"）
+        tl.to(".num", { color: "#ff1493", scale: 1.25, duration: 0.3, stagger: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }, 9.5);
+
+        // 箭头
+        tl.fromTo(".m-arrow",
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
+          10.6
+        );
+
+        // 一般式 (配音"换成可以变化的字母" 约 11.0s)
+        tl.fromTo(".general",
+          { y: 40, scale: 0.9, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          11.0
+        );
+        // 字母依次弹跳强调
+        tl.fromTo(".letter",
+          { scale: 0.4, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.4, stagger: 0.18, ease: "back.out(2.4)" },
+          11.5
+        );
+
+        // 提示语 (配音"这就是参数" 约 13.1s)
+        tl.fromTo(".note",
+          { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+          13.1
+        );
+
+        // 一般式卡片强调脉冲 (配音"只要研究清楚这个一般式的性质" 约 15.0s)
+        tl.to(".general", { scale: 1.06, duration: 0.35, yoyo: true, repeat: 1, ease: "sine.inOut" }, 15.0);
+        tl.to(".letter", { color: "#ff1493", duration: 0.4, stagger: 0.12, yoyo: true, repeat: 1, ease: "sine.inOut" }, 15.4);
+
+        tl.to({}, { duration: 0.01 }, 21.99);
+
+        window.__timelines["scene-04-param"] = tl;
+      })();
+    </script>
+  </div>
+</template>

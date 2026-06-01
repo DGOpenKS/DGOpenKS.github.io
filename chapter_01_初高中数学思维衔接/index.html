@@ -158,6 +158,14 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .stat span{font-family:var(--mono);font-weight:900;color:var(--ink)}
 .callout{border:1px solid color-mix(in srgb,var(--conclusion) 32%,var(--line));background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:16px;margin-top:16px}
 .callout strong{color:var(--conclusion)}
+.throughline{border:1px solid color-mix(in srgb,var(--object) 24%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--object) 7%,var(--surface)),var(--surface));border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:18px 20px;margin:0 0 12px}
+.throughline b{display:block;color:var(--object);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.path-steps{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--muted);font-weight:900;font-size:.88rem}
+.path-steps span{display:inline-flex;align-items:center;gap:8px}
+.path-steps span:not(:last-child)::after{content:"→";color:var(--soft)}
+.bridge{border:1px solid color-mix(in srgb,var(--movement) 26%,var(--line));background:color-mix(in srgb,var(--movement) 7%,var(--surface));border-left:4px solid var(--movement);border-radius:14px;padding:15px 16px;margin-top:18px}
+.bridge b{display:block;color:var(--movement);margin-bottom:6px}
+.bridge p{color:var(--muted);margin:0}
 .warning{border-color:color-mix(in srgb,var(--warning) 32%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));border-left-color:var(--warning)}
 .warning strong{color:var(--warning)}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
@@ -196,6 +204,8 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 @media(max-width:620px){
   .hero{padding-top:42px}
   .question-strip,.control-grid,.stat-grid,.lens-grid,.transfer-grid,.reflection-list{grid-template-columns:1fr}
+  .path-steps{display:grid;grid-template-columns:1fr}
+  .path-steps span:not(:last-child)::after{content:"";display:none}
   .panel,.canvas-panel{padding:14px}
   canvas{height:330px}
 }
@@ -222,7 +232,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   <div class="reveal">
     <div class="eyebrow">Chapter 01 · Thinking Transition</div>
     <h1>从“求答案”到“研究对象”</h1>
-    <p class="lead">这一章不是为了教会你一个新的二次函数技巧，而是让你感受到高中数学真正的变化：同一个式子，可以从一道题，变成一个值得研究的数学对象。</p>
+    <p class="lead">我们会从一道熟悉的方程出发，先得到答案，再发现答案不够用；接着把式子看成函数对象，继续研究它的关系、参数和定义域。真正要学的，不是某个技巧，而是一种新的数学视角。</p>
     <div class="hero-actions">
       <a class="btn primary" href="#stage1">开始体验</a>
       <a class="btn" href="animations/_render/animation.html">▶ 观看动画讲解</a>
@@ -247,6 +257,18 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 </header>
 
 <main>
+  <div class="throughline reveal" aria-label="本章主线">
+    <b>本章主线</b>
+    <div class="path-steps">
+      <span>答案</span>
+      <span>对象</span>
+      <span>关系</span>
+      <span>参数家族</span>
+      <span>定义域</span>
+      <span>数学姿态</span>
+    </div>
+  </div>
+
   <section class="stage" id="stage0">
     <aside class="stage-marker"><span>▶</span>Animated Intro</aside>
     <div class="stage-body reveal">
@@ -283,11 +305,15 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <h3>高中会怎么问？</h3>
           <p>初中问：“这个方程的答案是多少？”高中会把同一个式子变成一个函数，再继续追问它的结构。</p>
           <div class="big-formula" id="seniorFunction" style="font-size:1.35rem">$y = x^2 - 4x + 3$</div>
-          <p id="seniorPrompt" class="subtle">你现在不一定完全明白这些问题，但可以先尝试：它在哪里为正？哪里为负？最低点在哪里？如果只研究一段 x，结论会不会变？</p>
+          <p id="seniorPrompt" class="subtle">你现在不一定完全明白这些问题，但可以先尝试：它在哪里为正？哪里为负？顶点在哪里？如果只研究一段 x，结论会不会变？</p>
           <div class="callout">
             <p><strong>本章目标：</strong>不是学一个更难的技巧，而是换一种看数学的眼睛。</p>
           </div>
         </div>
+      </div>
+      <div class="bridge">
+        <b>下一问：两个答案够了吗？</b>
+        <p>现在我们已经得到答案。但如果问题不是“什么时候等于 0”，而是“什么时候大于 0、小于 0、达到极值”，两个答案就不够了。于是，同一个式子需要被看成一个完整对象。</p>
       </div>
     </div>
   </section>
@@ -329,7 +355,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <button class="question-btn active" type="button" data-question="zeros">哪里 y = 0？</button>
           <button class="question-btn" type="button" data-question="positive">哪里 y > 0？</button>
           <button class="question-btn" type="button" data-question="negative">哪里 y < 0？</button>
-          <button class="question-btn" type="button" data-question="minimum">最低点在哪？</button>
+          <button class="question-btn" type="button" data-question="minimum">顶点在哪？</button>
           <button class="question-btn" type="button" data-question="change">x 变化时 y 如何变？</button>
         </div>
         <div class="stat-grid">
@@ -338,6 +364,10 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <div class="stat"><b>已知答案</b><span id="answerStat">x=1,3</span></div>
           <div class="stat"><b>新视角</b><span id="insightStat">答案只是对象的一部分</span></div>
         </div>
+      </div>
+      <div class="bridge">
+        <b>下一问：这种变化只发生在二次函数里吗？</b>
+        <p>刚才我们看到，零点、正负、顶点和变化趋势都来自同一条曲线。高中数学不只是多问几个问题，而是把一个答案放回一整条关系中理解。</p>
       </div>
     </div>
   </section>
@@ -376,7 +406,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
         </div>
         <div class="compare-card new">
           <h3>高中问题 / object view</h3>
-          <p id="pairNew">研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？最小值在哪里？</p>
+          <p id="pairNew">研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？顶点和极值在哪里？</p>
           <p class="subtle" id="pairNewNote">同一个式子变成整条函数对象。</p>
         </div>
       </div>
@@ -387,6 +417,10 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
       </div>
       <div class="callout">
         <p><strong>关键转变：</strong>答案仍然重要，但它不再是终点。它是理解对象结构的一扇门。</p>
+      </div>
+      <div class="bridge">
+        <b>下一问：如果数字变了，性质还会怎样变？</b>
+        <p>当我们会研究一个具体函数后，自然会追问：如果式子里的数字变了，这些性质还会怎样变化？这时，数字不再只是数字，它们变成了控制一类函数的参数。</p>
       </div>
     </div>
   </section>
@@ -411,8 +445,8 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
         </div>
         <canvas id="familyCanvas" class="direct-manipulation" aria-label="参数家族图像，可拖动顶点"></canvas>
         <div class="mode-tabs" aria-label="参数表达方式">
-          <button class="mode-tab active" type="button" data-family-mode="vertex">直观控制：a,h,k</button>
-          <button class="mode-tab" type="button" data-family-mode="standard">常见写法：a,b,c</button>
+          <button class="mode-tab active" type="button" data-family-mode="vertex">顶点式：a,h,k</button>
+          <button class="mode-tab" type="button" data-family-mode="standard">一般式：a,b,c</button>
         </div>
         <div class="control-panel active" id="vertexControls">
           <div class="control-grid">
@@ -460,6 +494,10 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <div class="stat"><b>控制含义</b><span>参数决定对象形状</span></div>
         </div>
       </div>
+      <div class="bridge">
+        <b>下一问：公式确定了，对象就完整了吗？</b>
+        <p>参数告诉我们公式怎样变化，但一个函数对象还没有说完。同一个表达式，如果只研究不同的 x 范围，值域、极值和单调性都可能改变。</p>
+      </div>
     </div>
   </section>
 
@@ -501,11 +539,15 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <div class="stat"><b>完整对象</b><span id="domainObject">表达式 + [-1,4]</span></div>
           <div class="stat"><b>值域下界</b><span id="domainMinY">-1.00</span></div>
           <div class="stat"><b>值域上界</b><span id="domainMaxY">8.00</span></div>
-          <div class="stat"><b>结论</b><span id="domainConclusion">顶点在区间内</span></div>
+          <div class="stat"><b>结论</b><span id="domainConclusion">顶点在区间内，最小值由顶点给出</span></div>
         </div>
         <div class="callout" id="domainCallout">
           <p><strong>高中视角：</strong>一个完整的研究对象常常是“表达式 + 定义域”。定义域变了，值域、最值、单调性都可能改变。</p>
         </div>
+      </div>
+      <div class="bridge">
+        <b>最后一问：这些变化合起来训练什么？</b>
+        <p>到这里，函数已经不只是一个式子了。它至少包含表达式、变量关系、参数结构和定义域。现在可以回头看：高中数学到底在训练什么？</p>
       </div>
     </div>
   </section>
@@ -583,7 +625,7 @@ const relationPairs = [
     caseIndex:0,
     old:'解方程 $x^2 - 4x + 3 = 0$，求 $x$。',
     oldNote:'目标是得到两个具体答案。',
-    next:'研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？最小值在哪里？',
+    next:'研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？顶点和极值在哪里？',
     nextNote:'同一个式子变成整条函数对象。',
     shift:'从“求两个答案”变成“研究整个函数对象”。'
   },
@@ -637,6 +679,11 @@ function lerp(a, b, t){ return a + (b - a) * t; }
 function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
 function pretty(value){ return Number(value).toFixed(2).replace(/\.00$/,'').replace(/(\.\d)0$/,'$1'); }
 function signed(value){ return value >= 0 ? `+ ${pretty(value)}` : `- ${pretty(Math.abs(value))}`; }
+function extremumName(a){
+  if(a > .001) return '最小值';
+  if(a < -.001) return '最大值';
+  return '极值';
+}
 function coeff(value, variable, first=false){
   if(Math.abs(value) < .001) return '';
   const sign = value < 0 ? '-' : first ? '' : '+';
@@ -824,7 +871,7 @@ function drawObject(){
   }
   if(objectState.question === 'minimum'){
     dashedLine(item,g.X(vx),g.Y(g.yMin),g.X(vx),g.Y(g.yMax),colors.parameter());
-    drawPoint(item,g,vx,vy,colors.conclusion(),`最小值 ${pretty(vy)}`,7);
+    drawPoint(item,g,vx,vy,colors.conclusion(),`${extremumName(a)} ${pretty(vy)}`,7);
   }
   if(objectState.question === 'change'){
     const x = objectState.probe;
@@ -881,7 +928,7 @@ function setQuestion(q){
     zeros:['求零点',rootText,'答案是曲线与 x 轴的交点'],
     positive:['判断正值区间',positiveText,'图像在 x 轴上方'],
     negative:['判断负值区间',negativeText,'图像在 x 轴下方'],
-    minimum:['寻找最小值',`顶点 (${pretty(vx)},${pretty(vy)})`,'性质来自整个对象'],
+    minimum:[`寻找${extremumName(problemA())}`,`顶点 (${pretty(vx)},${pretty(vy)})`,'极值性质来自整个对象'],
     change:['观察变化','点沿曲线移动','x 与 y 是一组关系']
   }[q];
   document.getElementById('questionLabel').textContent = text[0];
@@ -897,7 +944,7 @@ function updateProblemUI(){
   document.getElementById('answerChip').hidden = true;
   document.getElementById('answerChip').innerHTML = problemState.roots.length ? problemState.rootLabels.map(label => `$x=${label}$`).join(' 或 ') : '没有实数解';
   document.getElementById('juniorPrompt').textContent = '你可能会很自然地想：分解因式，找到两个答案，然后结束。';
-  document.getElementById('seniorPrompt').textContent = '高中会把同一个式子继续追问：它在哪里为正？哪里为负？最低点在哪里？如果只研究一段 x，结论会不会变？';
+  document.getElementById('seniorPrompt').textContent = '高中会把同一个式子继续追问：它在哪里为正？哪里为负？顶点在哪里？如果只研究一段 x，结论会不会变？';
   setQuestion(objectState.question);
   updateDomainUI();
   if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
@@ -1096,7 +1143,7 @@ function drawDomain(){
     drawCurve(item,g,fBase,colors.object(),4,.95,[x1,x2]);
     drawPoint(item,g,x1,y1,colors.input(),'左端点');
     drawPoint(item,g,x2,y2,colors.input(),'右端点');
-    if(x1 <= vxBase && x2 >= vxBase) drawPoint(item,g,vxBase,fBase(vxBase),colors.conclusion(),'区间最小');
+    if(x1 <= vxBase && x2 >= vxBase) drawPoint(item,g,vxBase,fBase(vxBase),colors.conclusion(),`区间${extremumName(problemA())}`);
   } else {
     const ctx = item.ctx;
     ctx.save();
@@ -1126,7 +1173,7 @@ function updateDomainUI(){
     const ys = candidates.map(fBase);
     document.getElementById('domainMinY').textContent = pretty(Math.min(...ys));
     document.getElementById('domainMaxY').textContent = pretty(Math.max(...ys));
-    document.getElementById('domainConclusion').textContent = min <= vxBase && max >= vxBase ? '顶点在区间内' : '最小值在端点处';
+    document.getElementById('domainConclusion').textContent = min <= vxBase && max >= vxBase ? `顶点在区间内，${extremumName(problemA())}由顶点给出` : '极值出现在端点处';
   }
   schedule(drawDomain, domainState);
 }

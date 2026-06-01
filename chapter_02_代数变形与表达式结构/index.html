@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 代数变形与表达式结构 | DGOpenKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--surface:#fff;--surface-2:#f8fafc;--ink:#0f172a;--muted:#64748b;--line:#dbe3ef;--object:#2563eb;--input:#06b6d4;--output:#8b5cf6;--parameter:#f59e0b;--movement:#7c3aed;--conclusion:#10b981;--warning:#ef4444;--radius:14px;--radius-lg:22px;--shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);--font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;--ease:cubic-bezier(.22,1,.36,1)}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#08111f;--surface:#101827;--surface-2:#0d1524;--ink:#e5edf7;--muted:#94a3b8;--line:#1e2d45;--object:#60a5fa;--input:#22d3ee;--output:#a78bfa;--parameter:#fbbf24;--movement:#c084fc;--conclusion:#34d399;--warning:#f87171;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}a{color:inherit}button,input{font:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;gap:10px;align-items:center;overflow-x:auto;scrollbar-width:none}.brand{font-weight:800;color:var(--object);white-space:nowrap;margin-right:10px;text-decoration:none}.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}.nav-pill:hover{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent)}
+.hero{max-width:1180px;margin:0 auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);gap:42px;align-items:center}.eyebrow{display:inline-flex;color:var(--object);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}.hero h1{font-size:clamp(2.1rem,5vw,4.5rem);line-height:1.05;margin:0 0 20px;font-weight:800}.lead{font-size:clamp(1.03rem,1.6vw,1.22rem);color:var(--muted);max-width:660px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hero-card,.panel,.lab{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}.formula-stack{display:grid;gap:12px}.formula-line{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.formula-line strong{color:var(--object)}
+main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}h2{font-size:clamp(1.55rem,2.6vw,2.55rem);line-height:1.18;margin:0 0 14px}h3{margin:0 0 10px}.subtle{color:var(--muted)}p{margin:0 0 12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}.card b{color:var(--object)}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{border:1px solid var(--line);background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;font-size:.76rem;font-weight:900}
+.area-demo{display:grid;grid-template-columns:minmax(260px,.92fr) minmax(280px,1.08fr);gap:18px;align-items:center}.square-board{width:min(420px,100%);aspect-ratio:1;margin:auto;display:grid;grid-template-columns:var(--a,58%) 1fr;grid-template-rows:var(--a,58%) 1fr;border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--surface-2)}.piece{display:grid;place-items:center;font-family:var(--mono);font-weight:900;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)}.aa{background:color-mix(in srgb,var(--object) 18%,transparent);color:var(--object)}.ab{background:color-mix(in srgb,var(--parameter) 20%,transparent);color:var(--parameter)}.bb{background:color-mix(in srgb,var(--output) 18%,transparent);color:var(--output)}.controls{display:grid;gap:12px}.control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.control label{display:flex;justify-content:space-between;font-weight:900;color:var(--parameter);font-size:.86rem;margin-bottom:8px}.control input{width:100%;accent-color:var(--parameter)}
+.method-list{display:grid;gap:10px}.method{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:start;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.method code{font-family:var(--mono);font-weight:900;color:var(--object);white-space:normal}.warning{border-left:4px solid var(--warning);background:color-mix(in srgb,var(--warning) 8%,var(--surface));border-color:color-mix(in srgb,var(--warning) 30%,var(--line))}.ok{border-left:4px solid var(--conclusion);background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-color:color-mix(in srgb,var(--conclusion) 30%,var(--line))}
+.radical-box{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}.big{font-size:clamp(1.2rem,2.6vw,2rem);font-family:var(--mono);font-weight:900}.arrow{font-size:2rem;color:var(--movement);font-weight:900;text-align:center}.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.hero,.stage,.grid-2,.grid-3,.area-demo,.radical-box{grid-template-columns:1fr}.stage-marker{position:static;display:flex;gap:10px;align-items:center}.stage-marker span{margin-bottom:0}.arrow{transform:rotate(90deg)}}@media(max-width:620px){.hero{padding-top:42px}.method{grid-template-columns:1fr}.hero-card,.panel,.lab,.card{padding:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="章节导航"><div class="topbar-inner">
+  <a class="brand" href="../">DGOpenKS</a>
+  <a class="nav-pill" href="#formula">公式图解</a>
+  <a class="nav-pill" href="#factor">因式分解</a>
+  <a class="nav-pill" href="#fraction">分式根式</a>
+  <a class="nav-pill" href="#exam">考试落点</a>
+</div></nav>
+
+<header class="hero">
+  <div class="reveal">
+    <div class="eyebrow">Chapter 02</div>
+    <h1>代数变形与表达式结构</h1>
+    <p class="lead">式子不是一串符号。展开、分解、配方、化简，都是为了让隐藏的结构显出来。</p>
+    <div class="hero-actions"><a class="btn primary" href="#formula">从公式图解开始</a><a class="btn" href="../chapter_01_初高中数学思维衔接/">返回第一章</a></div>
+  </div>
+  <div class="hero-card reveal">
+    <div class="formula-stack">
+      <div class="formula-line"><strong>展开</strong>：$(a+b)^2=a^2+2ab+b^2$</div>
+      <div class="formula-line"><strong>分解</strong>：$x^2-5x+6=(x-2)(x-3)$</div>
+      <div class="formula-line"><strong>配方</strong>：$x^2+6x+5=(x+3)^2-4$</div>
+      <div class="formula-line"><strong>保条件</strong>：$\dfrac{x^2-1}{x-1}=x+1,\ x\ne1$</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="stage" id="structure">
+    <aside class="stage-marker"><span>1</span>Structure</aside>
+    <div class="reveal">
+      <div class="stage-kicker">看见式子的层次</div>
+      <h2>同一个式子，换一种写法，就换一种看法。</h2>
+      <div class="grid-3">
+        <div class="card"><b>项</b><p class="subtle">$x^2+2x+1$ 看到的是三块相加，适合合并、比较系数。</p></div>
+        <div class="card"><b>因子</b><p class="subtle">$(x+1)^2$ 看到的是平方结构，适合研究非负、最值和图像。</p></div>
+        <div class="card"><b>整体</b><p class="subtle">把 $x+1$ 看作一整块，复杂式子会突然变简单。</p></div>
+      </div>
+      <div class="card ok"><b>本章主线</b><p>看结构 → 换写法 → 暴露信息 → 保留条件。</p></div>
+    </div>
+  </section>
+
+  <section class="stage" id="formula">
+    <aside class="stage-marker"><span>2</span>Formula</aside>
+    <div class="reveal">
+      <div class="stage-kicker">乘法公式图解</div>
+      <h2>完全平方公式不是背出来的，是面积拼出来的。</h2>
+      <div class="lab area-demo">
+        <div class="square-board" id="squareBoard" aria-label="完全平方公式面积图">
+          <div class="piece aa">$a^2$</div><div class="piece ab">$ab$</div>
+          <div class="piece ab">$ab$</div><div class="piece bb">$b^2$</div>
+        </div>
+        <div>
+          <p class="subtle">边长从 $a+b$ 拆成 $a$ 和 $b$，一个大正方形自然分成四块。</p>
+          <div class="big">$$(a+b)^2=a^2+2ab+b^2$$</div>
+          <div class="controls">
+            <div class="control"><label><span>a</span><span id="aVal">5</span></label><input id="aRange" type="range" min="2" max="8" value="5"></div>
+            <div class="control"><label><span>b</span><span id="bVal">3</span></label><input id="bRange" type="range" min="1" max="7" value="3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:18px">
+        <div class="card"><b>平方差</b><p>$(a+b)(a-b)=a^2-b^2$。它表示“大正方形去掉小正方形”后的面积。</p></div>
+        <div class="card"><b>立方和差</b><p>$a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)$。高中复杂因式分解中常作为工具。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="factor">
+    <aside class="stage-marker"><span>3</span>Factor</aside>
+    <div class="reveal">
+      <div class="stage-kicker">因式分解的方法库</div>
+      <h2>因式分解不是为了变短，而是为了让零点、符号、范围变清楚。</h2>
+      <div class="method-list">
+        <div class="method"><code>提公因式</code><p>$ax+ay=a(x+y)$。先找共同结构。</p></div>
+        <div class="method"><code>公式法</code><p>$x^2-9=(x-3)(x+3)$。看到平方差就拆成两个因子。</p></div>
+        <div class="method"><code>十字相乘</code><p>$x^2-5x+6=(x-2)(x-3)$。常用于二次三项式。</p></div>
+        <div class="method"><code>分组分解</code><p>$ax+ay+bx+by=(a+b)(x+y)$。先分组，再提公因式。</p></div>
+        <div class="method"><code>换元思想</code><p>把 $x^2+x$ 看成 $t$，复杂式子变成熟悉的二次式。</p></div>
+        <div class="method"><code>配方法</code><p>$x^2+6x+5=(x+3)^2-4$。它把一般式变成“中心 + 偏移”。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="fraction">
+    <aside class="stage-marker"><span>4</span>Limits</aside>
+    <div class="reveal">
+      <div class="stage-kicker">分式、根式、绝对值</div>
+      <h2>化简之后，条件不能丢。</h2>
+      <div class="grid-2">
+        <div class="card warning"><b>分式化简</b><p>$\dfrac{x^2-1}{x-1}=\dfrac{(x-1)(x+1)}{x-1}=x+1$，但原式要求 $x\ne1$。</p></div>
+        <div class="card warning"><b>根式限制</b><p>$\sqrt{x-2}$ 要求 $x\ge2$。偶次根号内不能小于 0。</p></div>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <h3>嵌套根号的拆解</h3>
+        <div class="radical-box">
+          <div class="big">$\sqrt{a+2\sqrt b}$</div>
+          <div class="arrow">→</div>
+          <div class="big">$\sqrt m+\sqrt n$</div>
+        </div>
+        <p class="subtle">平方右边：$(\sqrt m+\sqrt n)^2=m+n+2\sqrt{mn}$。所以要找 $m+n=a,\ mn=b$。</p>
+        <div class="card ok"><b>例子</b><p>$\sqrt{7+4\sqrt3}=\sqrt4+\sqrt3=2+\sqrt3$，因为 $4+3=7,\ 4\cdot3=12$。</p></div>
+      </div>
+      <div class="card" style="margin-top:18px"><b>绝对值</b><p>$|x-a|$ 表示数轴上 $x$ 到 $a$ 的距离。分段讨论不是机械分类，而是在问“点落在哪一边”。</p></div>
+    </div>
+  </section>
+
+  <section class="stage" id="exam">
+    <aside class="stage-marker"><span>5</span>Exam</aside>
+    <div class="reveal">
+      <div class="stage-kicker">考试落点</div>
+      <h2>高中题目里，变形通常服务三个目标。</h2>
+      <div class="grid-3">
+        <div class="card"><b>求零点</b><p>把式子分解成因子，方程的解会显出来。</p></div>
+        <div class="card"><b>看范围</b><p>配成平方，非负结构和最值会显出来。</p></div>
+        <div class="card"><b>保定义域</b><p>分式、根式、对数和复合函数都依赖条件。</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 第二章 · 代数变形与表达式结构</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+  const aRange=document.getElementById('aRange'),bRange=document.getElementById('bRange'),board=document.getElementById('squareBoard'),aVal=document.getElementById('aVal'),bVal=document.getElementById('bVal');
+  function updateSquare(){const a=Number(aRange.value),b=Number(bRange.value),pct=100*a/(a+b);board.style.setProperty('--a',pct+'%');aVal.textContent=a;bVal.textContent=b}
+  aRange.addEventListener('input',updateSquare);bRange.addEventListener('input',updateSquare);updateSquare();
+});
+</script>
+</body>
+</html>

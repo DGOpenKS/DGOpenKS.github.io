@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第二章 代数变形与表达式结构 | DGOpenKS</title>
+<title>第二章 乘法公式与表达式结构 | DGOpenKS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,6 +33,17 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
 .pair-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.pair-box{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;font-family:var(--mono);font-weight:900}.distance-track{position:relative;height:92px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;overflow:hidden}.distance-axis{position:absolute;left:28px;right:28px;top:48px;height:2px;background:var(--axis)}.distance-range{position:absolute;top:39px;height:20px;border-radius:999px;background:color-mix(in srgb,var(--conclusion) 20%,transparent);border:1px solid color-mix(in srgb,var(--conclusion) 38%,var(--line));left:var(--rangeLeft,30%);width:var(--rangeWidth,40%)}.distance-point{position:absolute;top:37px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:3px solid var(--object);font-size:.72rem;font-weight:900;color:var(--object);transform:translateX(-50%)}.distance-point.center{left:var(--centerPct,50%)}.distance-point.left{left:var(--leftPct,30%);border-color:var(--conclusion);color:var(--conclusion)}.distance-point.right{left:var(--rightPct,70%);border-color:var(--conclusion);color:var(--conclusion)}.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}.reveal{opacity:1;transform:translateY(0);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
 @media(max-width:900px){.hero,.stage,.grid-2,.grid-3,.area-demo,.canvas-lab,.split-demo,.strategy-grid,.learn-grid,.formula-lab,.hole-lab,.absolute-lab,.vertex-lab,.substitution-lab,.formula-dual,.formula-meta,.algebra-proof{grid-template-columns:1fr}.stage-marker{position:static;display:flex;align-items:center;gap:10px}.stage-marker span{margin-bottom:0}.arrow{transform:rotate(90deg)}}@media(max-width:620px){.hero{padding-top:42px}.hero-card,.panel,.lab,.card,.practice-card,.formula-rich-card{padding:14px}.method{grid-template-columns:1fr}.stat-grid,.brief-grid,.pair-grid{grid-template-columns:1fr}canvas{height:330px}.strategy{grid-template-columns:1fr}.brief-item{min-height:auto}.formula-lab{gap:12px}.practice-head{align-items:flex-start}.hole-graph{min-height:220px}.vertex-svg{height:300px}.visual-panel svg{height:190px}.visual-controls{right:10px;bottom:10px;grid-template-columns:1fr}.mini-practice{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+.formula-dual .visual-panel{grid-template-rows:auto auto;align-content:start}
+.formula-dual .visual-panel svg{grid-row:2;height:270px}
+@media(max-width:620px){.formula-dual .visual-panel svg{height:240px}}
+.cube-visual{display:grid;grid-template-columns:minmax(340px,1.08fr) minmax(240px,.92fr);gap:14px;align-items:stretch}.cube-panel{border:1px solid var(--line);background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px;overflow:hidden}.cube-panel b{color:var(--muted);font-size:.84rem}.cube-three-wrap{position:relative;min-height:330px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface);background-size:28px 28px;overflow:hidden}.cube-three-wrap canvas{width:100%;height:100%;min-height:330px;border:0;border-radius:0;background:transparent}.cube-three-fallback{position:absolute;inset:auto 12px 12px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);font-size:.82rem;font-weight:800}.cube-legend{display:grid;gap:8px}.cube-legend-row{display:grid;grid-template-columns:18px minmax(0,1fr);gap:9px;align-items:start;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 10px;color:var(--muted);font-size:.9rem}.cube-legend-row i{width:18px;height:18px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:3px}.cube-legend-row b{display:block;color:var(--object);margin-bottom:2px}.cube-legend-row:nth-child(1) i{background:color-mix(in srgb,var(--object) 40%,var(--surface))}.cube-legend-row:nth-child(2) i{background:color-mix(in srgb,var(--parameter) 45%,var(--surface))}.cube-legend-row:nth-child(3) i{background:color-mix(in srgb,var(--input) 42%,var(--surface))}.cube-legend-row:nth-child(4) i{background:color-mix(in srgb,var(--output) 42%,var(--surface))}.cube-slice-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:12px;padding:10px;color:var(--muted);font-size:.9rem;font-weight:700}
+@media(max-width:900px){.cube-visual{grid-template-columns:1fr}.cube-three-wrap,.cube-three-wrap canvas{min-height:300px}}@media(max-width:620px){.cube-three-wrap,.cube-three-wrap canvas{min-height:260px}.cube-legend-row{font-size:.84rem}}
+.formula-control-panel{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(320px,1.22fr);gap:14px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:14px;margin:18px 0}.formula-control-title b{display:block;color:var(--object);font-size:1rem;margin-bottom:4px}.formula-control-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}.formula-master-control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px}.formula-master-control label{display:flex;justify-content:space-between;gap:10px;color:var(--parameter);font-weight:900;font-size:.84rem}.formula-master-control input{width:100%;accent-color:var(--parameter);margin-top:6px}.formula-value-chip{display:grid;align-content:center;min-height:64px;border:1px solid color-mix(in srgb,var(--object) 24%,var(--line));background:color-mix(in srgb,var(--object) 7%,var(--surface));border-radius:12px;padding:10px;font-family:var(--mono);font-weight:900;color:var(--object);text-align:center}.formula-structure-visual{display:grid;grid-template-columns:minmax(300px,1fr) minmax(260px,.9fr);gap:14px}.factor-visual-panel{border:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:28px 28px;border-radius:14px;padding:12px;min-height:250px;display:grid;align-content:center;gap:10px;overflow:hidden}.term-flow{display:grid;gap:8px}.term-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}.term-chip{border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:9px 11px;font-family:var(--mono);font-weight:900;color:var(--ink);min-width:70px;text-align:center}.term-chip.keep{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.term-chip.cancel{border-color:color-mix(in srgb,var(--warning) 44%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));color:var(--warning);text-decoration:line-through;text-decoration-thickness:2px}.term-chip.factor{border-color:color-mix(in srgb,var(--parameter) 48%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter)}.factor-svg{width:100%;height:210px;display:block}.factor-svg text{font-family:Georgia,"Times New Roman",serif;font-weight:700;text-anchor:middle;dominant-baseline:middle;fill:var(--ink)}.factor-svg .note{font-family:var(--font);font-size:13px;font-weight:900;fill:var(--muted)}.formula-term-key{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.term-key-item{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:11px;padding:8px 9px;color:var(--muted);font-size:.86rem;font-weight:800}.term-key-item i{width:16px;height:16px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:4px}.term-key-item.object i{background:color-mix(in srgb,var(--object) 28%,var(--surface))}.term-key-item.parameter i{background:color-mix(in srgb,var(--parameter) 34%,var(--surface))}.term-key-item.input i{background:color-mix(in srgb,var(--input) 31%,var(--surface))}.term-key-item.output i{background:color-mix(in srgb,var(--output) 30%,var(--surface))}.term-key-item.warning i{background:color-mix(in srgb,var(--warning) 18%,var(--surface))}.cube-drag-hint{position:absolute;right:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--parameter) 36%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--parameter);border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:900;pointer-events:none}.formula-term-legend{display:grid;gap:8px}.formula-term-legend .cube-legend-row{background:var(--surface)}@media(max-width:900px){.formula-control-panel,.formula-control-grid,.formula-structure-visual{grid-template-columns:1fr}.formula-value-chip{text-align:left}.formula-term-key{grid-template-columns:1fr 1fr}}@media(max-width:620px){.term-chip{min-width:58px;font-size:.86rem}.factor-visual-panel{min-height:220px}.formula-term-key{grid-template-columns:1fr}}
+.card-local-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;border:1px solid color-mix(in srgb,var(--parameter) 34%,var(--line));background:color-mix(in srgb,var(--surface) 90%,transparent);border-radius:12px;padding:9px 10px}.card-local-control{display:grid;gap:5px;color:var(--parameter);font-size:.78rem;font-weight:900}.card-local-control label{display:flex;justify-content:space-between;gap:8px}.card-local-control input{width:100%;accent-color:var(--parameter)}.card-local-reset{align-self:stretch;border:1px solid var(--line);background:var(--surface);color:var(--object);border-radius:10px;padding:6px 10px;font-weight:900;cursor:pointer}.card-local-reset:hover,.card-local-reset:focus-visible{outline:0;border-color:color-mix(in srgb,var(--object) 42%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.cube-factor-three{grid-column:1/-1;margin-bottom:10px}.cube-factor-three .cube-three-wrap{min-height:280px}.cube-factor-three .cube-three-wrap canvas{min-height:280px}.cube-label-note{position:absolute;left:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);border-radius:999px;padding:5px 9px;font-size:.76rem;font-weight:900;pointer-events:none}@media(max-width:900px){.card-local-controls{grid-template-columns:1fr}}@media(max-width:620px){.card-local-reset{min-height:38px}}
+.split-forward{border:1px solid color-mix(in srgb,var(--conclusion) 34%,var(--line));background:color-mix(in srgb,var(--conclusion) 7%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:14px;color:var(--muted);font-weight:800}.split-forward a{color:var(--conclusion);font-weight:900}#factor,#square,#fraction,#radical,#absolute,#strategy{display:none}
+.factor-intro{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(420px,1.18fr);gap:18px;align-items:center}.factor-purpose{display:grid;gap:10px;margin-top:12px}.purpose-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px}.purpose-row b{color:var(--object);font-size:.84rem}.purpose-row span{color:var(--muted);font-size:.9rem}.quick-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.quick-method{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:16px;display:grid;gap:10px}.quick-method b{color:var(--object)}.method-signal{display:inline-flex;justify-self:start;border:1px solid color-mix(in srgb,var(--parameter) 42%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter);border-radius:999px;padding:4px 9px;font-size:.76rem;font-weight:900}.deep-factor-grid{display:grid;gap:16px;margin-top:18px}.deep-factor-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:18px;display:grid;gap:14px}.deep-factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.deep-factor-head b{display:block;color:var(--object);font-size:1.05rem}.deep-factor-body{display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:14px;align-items:stretch}.factor-visual{min-height:250px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:30px 30px;position:relative;overflow:hidden;padding:16px}.factor-steps{display:grid;gap:8px}.factor-step{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 12px;font-family:var(--mono);font-weight:900;color:var(--muted);line-height:1.55}.factor-step.active{color:var(--object);border-color:color-mix(in srgb,var(--object) 45%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.factor-step.result{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 9%,var(--surface))}.group-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}.group-tile{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px;text-align:center;font-family:var(--mono);font-weight:900;color:var(--ink)}.group-tile.same{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.factor-arrow{display:grid;place-items:center;color:var(--movement);font-weight:900;font-size:1.4rem}.substitution-map{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;height:100%}.sub-box{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px;text-align:center;font-family:var(--mono);font-weight:900}.sub-box.focus{border-color:color-mix(in srgb,var(--parameter) 50%,var(--line));background:color-mix(in srgb,var(--parameter) 12%,var(--surface));color:var(--parameter)}.square-build{display:grid;place-items:center;height:100%;gap:8px}.square-build svg,.zero-factor svg{width:100%;height:210px;display:block}.zero-factor{display:grid;gap:10px;height:100%}.zero-caption{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.88rem;font-weight:800}.zero-caption span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 9px}.factor-decision{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.decision-card{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px;color:var(--muted);font-size:.9rem}.decision-card b{display:block;color:var(--object);margin-bottom:4px}.factor-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:14px;padding:12px;color:var(--muted);font-weight:700}
+.factor-root-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.factor-root-control{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px}.factor-root-control label{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--parameter);font-weight:900;font-size:.84rem}.factor-root-control input{width:100%;accent-color:var(--parameter);margin-top:6px}
+@media(max-width:900px){.factor-intro,.deep-factor-body,.quick-methods,.factor-decision{grid-template-columns:1fr}.factor-visual{min-height:220px}.substitution-map{grid-template-columns:1fr}.factor-arrow{font-size:1rem;line-height:1.45;text-align:center;min-height:28px}}@media(max-width:620px){.purpose-row{grid-template-columns:1fr}.deep-factor-card{padding:14px}.factor-visual{padding:12px}.group-board{grid-template-columns:1fr}.group-tile{font-size:.86rem;padding:10px}.square-build svg,.zero-factor svg{height:190px}}
 </style>
 </head>
 <body>
@@ -41,19 +52,15 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
     <a class="brand" href="../">DGOpenKS</a>
     <a class="nav-pill" href="#structure">结构</a>
     <a class="nav-pill" href="#formula">公式</a>
-    <a class="nav-pill" href="#factor">分解</a>
-    <a class="nav-pill" href="#fraction">分式</a>
-    <a class="nav-pill" href="#radical">根式</a>
-    <a class="nav-pill" href="#absolute">绝对值</a>
-    <a class="nav-pill" href="#strategy">策略</a>
+    <a class="nav-pill" href="#links">下一章</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="reveal">
     <div class="eyebrow">Chapter 02 · Algebraic Structure</div>
-    <h1>代数变形与表达式结构</h1>
-    <p class="lead">本章围绕表达式的结构识别与等价变形展开，重点训练公式运用、因式分解、配方、分式根式处理以及条件保留。</p>
+    <h1>乘法公式与表达式结构</h1>
+    <p class="lead">本章先训练“看结构”的眼睛，再用面积、体积和交叉项图像看懂乘法公式。复杂因式分解、分式根式和条件控制会拆到后续章节。</p>
     <div class="hero-actions">
       <a class="btn primary" href="#structure">开始学习</a>
       <a class="btn" href="chapter_02_代数变形与表达式结构.md">查看章节讲义</a>
@@ -64,19 +71,19 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
     <div class="chapter-brief">
       <div class="brief-head">
         <span class="brief-label">Core Transformation</span>
-        <div class="brief-formula">$x^2+6x+5 \rightarrow (x+3)^2-4$</div>
+        <div class="brief-formula">$(a+b)^2,\ a^2-b^2,\ (a+b)^3$</div>
       </div>
       <div class="brief-grid">
         <div class="brief-item"><b>结构识别</b><p>区分项、因子与整体，判断表达式当前暴露的信息。</p></div>
-        <div class="brief-item"><b>工具选择</b><p>根据目标选择展开、分解、配方、换元或有理化。</p></div>
-        <div class="brief-item"><b>信息提取</b><p>通过变形获得零点、符号、最值、范围与图像特征。</p></div>
-        <div class="brief-item"><b>条件控制</b><p>在分式、根式、绝对值问题中保留定义限制。</p></div>
+        <div class="brief-item"><b>展开合并</b><p>把乘法结构拆成项结构，看见交叉项从哪里来。</p></div>
+        <div class="brief-item"><b>公式图解</b><p>用面积和体积解释完全平方、平方差与二项式立方。</p></div>
+        <div class="brief-item"><b>反向识别</b><p>看到公式结构时，知道以后可以反过来用于因式分解。</p></div>
       </div>
       <div class="brief-path">
         <span>看结构</span>
-        <span>选工具</span>
-        <span>做变形</span>
-        <span>保条件</span>
+        <span>看图形</span>
+        <span>认公式</span>
+        <span>接分解</span>
       </div>
     </div>
   </div>
@@ -189,6 +196,17 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
       <div class="stage-kicker">乘法公式的几何对应</div>
       <h2>乘法公式：把面积、体积与代数结构对应起来。</h2>
       <p class="subtle">公式两边不是魔法。左边和右边描述的是同一个面积、体积或结构，只是观察方式不同。</p>
+      <div class="formula-control-panel" aria-label="统一调节乘法公式中的 a 和 b">
+        <div class="formula-control-title">
+          <b>统一参数控制</b>
+          <p class="subtle">拖动 $a,b$，面积图、体积图、公式数值和抵消结构会同步变化。为了保证差公式清晰，系统会自动保持 $a>b$。</p>
+        </div>
+        <div class="formula-control-grid">
+          <div class="formula-master-control"><label><span>a</span><span id="formulaAVal">6</span></label><input id="formulaA" type="range" min="3" max="9" step="1" value="6"></div>
+          <div class="formula-master-control"><label><span>b</span><span id="formulaBVal">2</span></label><input id="formulaB" type="range" min="1" max="6" step="1" value="2"></div>
+          <div class="formula-value-chip" id="formulaValueChip">a=6, b=2</div>
+        </div>
+      </div>
       <div class="formula-card-grid" aria-label="核心乘法公式卡片">
         <article class="formula-rich-card" data-formula-card="square-plus" data-a="5" data-b="3" data-a-min="2" data-a-max="8" data-b-min="1" data-b-max="7">
           <div class="formula-rich-head">
@@ -197,8 +215,14 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <div class="formula">$$(a+b)^2=a^2+2ab+b^2$$</div>
           <div class="formula-dual">
-            <div class="visual-panel"><b>左边：边长为 $a+b$ 的整体正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边整体正方形"></svg><div class="visual-controls" aria-label="调整 a 和 b"><div class="visual-control">a <span data-a-label>5</span><span class="stepper"><button type="button" data-step-var="a" data-step-delta="-1" aria-label="减小 a">−</button><button type="button" data-step-var="a" data-step-delta="1" aria-label="增大 a">+</button></span></div><div class="visual-control">b <span data-b-label>3</span><span class="stepper"><button type="button" data-step-var="b" data-step-delta="-1" aria-label="减小 b">−</button><button type="button" data-step-var="b" data-step-delta="1" aria-label="增大 b">+</button></span></div></div></div>
+            <div class="visual-panel"><b>左边：边长为 $a+b$ 的整体正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边整体正方形"></svg></div>
             <div class="visual-panel"><b>右边：$a^2,ab,ab,b^2$ 四块面积</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边面积分解"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="完全平方加法图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：边长 $a$ 的正方形</span></div>
+            <div class="term-key-item parameter"><i></i><span>$ab$：横向交叉矩形</span></div>
+            <div class="term-key-item input"><i></i><span>$ab$：纵向交叉矩形</span></div>
+            <div class="term-key-item output"><i></i><span>$b^2$：边长 $b$ 的正方形</span></div>
           </div>
           <div class="formula-live" data-live-formula></div>
           <div class="formula-meta">
@@ -215,8 +239,14 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <div class="formula">$$(a-b)^2=a^2-2ab+b^2$$</div>
           <div class="formula-dual">
-            <div class="visual-panel"><b>左边：边长为 $a-b$ 的正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边差的平方"></svg><div class="visual-controls" aria-label="调整 a 和 b"><div class="visual-control">a <span data-a-label>7</span><span class="stepper"><button type="button" data-step-var="a" data-step-delta="-1" aria-label="减小 a">−</button><button type="button" data-step-var="a" data-step-delta="1" aria-label="增大 a">+</button></span></div><div class="visual-control">b <span data-b-label>2</span><span class="stepper"><button type="button" data-step-var="b" data-step-delta="-1" aria-label="减小 b">−</button><button type="button" data-step-var="b" data-step-delta="1" aria-label="增大 b">+</button></span></div></div></div>
+            <div class="visual-panel"><b>左边：边长为 $a-b$ 的正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边差的平方"></svg></div>
             <div class="visual-panel"><b>右边：$a^2$ 去掉两条 $ab$，重叠的 $b^2$ 加回来</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边差平方分解"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="完全平方减法图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：先看完整大正方形</span></div>
+            <div class="term-key-item warning"><i></i><span>$-ab$：横向拿走一条</span></div>
+            <div class="term-key-item warning"><i></i><span>$-ab$：纵向拿走一条</span></div>
+            <div class="term-key-item output"><i></i><span>$+b^2$：重叠部分加回</span></div>
           </div>
           <div class="formula-live" data-live-formula></div>
           <div class="formula-meta">
@@ -233,8 +263,14 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <div class="formula">$$a^2-b^2=(a+b)(a-b)$$</div>
           <div class="formula-dual">
-            <div class="visual-panel"><b>左边：$a^2-b^2$，大正方形挖掉小正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边平方差"></svg><div class="visual-controls" aria-label="调整 a 和 b"><div class="visual-control">a <span data-a-label>7</span><span class="stepper"><button type="button" data-step-var="a" data-step-delta="-1" aria-label="减小 a">−</button><button type="button" data-step-var="a" data-step-delta="1" aria-label="增大 a">+</button></span></div><div class="visual-control">b <span data-b-label>3</span><span class="stepper"><button type="button" data-step-var="b" data-step-delta="-1" aria-label="减小 b">−</button><button type="button" data-step-var="b" data-step-delta="1" aria-label="增大 b">+</button></span></div></div></div>
+            <div class="visual-panel"><b>左边：$a^2-b^2$，大正方形挖掉小正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边平方差"></svg></div>
             <div class="visual-panel"><b>右边：重排成长方形，边长 $a+b$ 与 $a-b$</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边重排矩形"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="平方差图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：大正方形</span></div>
+            <div class="term-key-item warning"><i></i><span>$-b^2$：挖去的小正方形</span></div>
+            <div class="term-key-item parameter"><i></i><span>$a+b$：重排后的长</span></div>
+            <div class="term-key-item input"><i></i><span>$a-b$：重排后的宽</span></div>
           </div>
           <div class="formula-live" data-live-formula></div>
           <div class="formula-meta">
@@ -250,6 +286,25 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
             <span class="tag">体积分解</span>
           </div>
           <div class="formula">$$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$</div>
+          <div class="cube-visual" aria-label="二项式立方公式的体积分解图">
+            <div class="cube-panel">
+              <b>边长 $a+b$ 的立方体：沿三个方向各切出 $a$ 与 $b$</b>
+              <div class="cube-three-wrap" data-binomial-cube-three aria-label="Three.js 立方体体积分解，可视化 a3、三块 a2b、三块 ab2 和 b3">
+                <div class="cube-drag-hint">拖动旋转</div>
+                <div class="cube-three-fallback">加载 Three.js 后显示 8 个体块：1 个 $a^3$、3 个 $a^2b$、3 个 $ab^2$、1 个 $b^3$。</div>
+              </div>
+            </div>
+            <div class="cube-panel">
+              <b>系数 $1,3,3,1$ 来自体块的摆放方向</b>
+              <div class="cube-legend">
+                <div class="cube-legend-row"><i></i><span><b>$a^3$</b>三个方向都取 $a$，只有中间一块。</span></div>
+                <div class="cube-legend-row"><i></i><span><b>$3a^2b$</b>两个方向取 $a$，一个方向取 $b$，有前后、左右、上下三种位置。</span></div>
+                <div class="cube-legend-row"><i></i><span><b>$3ab^2$</b>一个方向取 $a$，两个方向取 $b$，同样有三种位置。</span></div>
+                <div class="cube-legend-row"><i></i><span><b>$b^3$</b>三个方向都取 $b$，是角落里的小立方体。</span></div>
+              </div>
+              <div class="cube-slice-note">先看整体体积 $(a+b)^3$，再看每个小块的长、宽、高。这样 $3a^2b$ 和 $3ab^2$ 就不是“背出来的 3”，而是三条空间方向的计数。</div>
+            </div>
+          </div>
           <div class="algebra-proof">
             <div class="proof-step"><b>一次展开</b>$(a+b)^3=(a+b)(a+b)^2$</div>
             <div class="proof-step"><b>代入平方</b>$(a+b)(a^2+2ab+b^2)$</div>
@@ -269,6 +324,27 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
             <span class="tag">因子分层</span>
           </div>
           <div class="formula">$$a^3+b^3=(a+b)(a^2-ab+b^2)$$</div>
+          <div class="formula-structure-visual" data-cube-factor="sum" aria-label="立方和公式的因子展开抵消图">
+            <div class="factor-visual-panel">
+              <svg class="factor-svg" viewBox="0 0 420 220" role="img" aria-label="两个立方相加与因子分层">
+                <rect x="62" y="62" width="76" height="76" rx="12" fill="color-mix(in srgb,var(--object) 18%,transparent)" stroke="var(--object)" stroke-width="2"></rect>
+                <rect x="144" y="88" width="48" height="48" rx="10" fill="color-mix(in srgb,var(--output) 18%,transparent)" stroke="var(--output)" stroke-width="2"></rect>
+                <text x="100" y="100">a³</text><text x="168" y="112">b³</text>
+                <text class="note" x="120" y="168" data-cube-svg-note="sum-left">例：a³+b³</text>
+                <path d="M220 110 L260 110" stroke="var(--movement)" stroke-width="4" stroke-linecap="round"></path>
+                <path d="M252 100 L264 110 L252 120" fill="none" stroke="var(--movement)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <rect x="284" y="56" width="96" height="40" rx="12" fill="color-mix(in srgb,var(--parameter) 14%,transparent)" stroke="var(--parameter)" stroke-width="2"></rect>
+                <rect x="284" y="112" width="96" height="58" rx="12" fill="color-mix(in srgb,var(--input) 12%,transparent)" stroke="var(--input)" stroke-width="2"></rect>
+                <text x="332" y="76">a+b</text><text x="332" y="141">a²−ab+b²</text>
+                <text class="note" x="332" y="194" data-cube-svg-note="sum-right">例：(a+b)(a²−ab+b²)</text>
+              </svg>
+            </div>
+            <div class="factor-visual-panel">
+              <b>乘回去看抵消</b>
+              <div class="term-flow" data-cube-flow="sum"></div>
+              <div class="cube-slice-note" data-cube-note="sum"></div>
+            </div>
+          </div>
           <div class="algebra-proof">
             <div class="proof-step"><b>一次因子</b>把 $a=-b$ 代入，$a^3+b^3=0$，所以有因子 $a+b$。</div>
             <div class="proof-step"><b>二次因子</b>用 $a^2-ab+b^2$ 安排交叉项的抵消。</div>
@@ -288,6 +364,27 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
             <span class="tag">符号结构</span>
           </div>
           <div class="formula">$$a^3-b^3=(a-b)(a^2+ab+b^2)$$</div>
+          <div class="formula-structure-visual" data-cube-factor="diff" aria-label="立方差公式的体积挖去与因子展开图">
+            <div class="factor-visual-panel">
+              <svg class="factor-svg" viewBox="0 0 420 220" role="img" aria-label="大立方挖去小立方">
+                <rect x="68" y="52" width="118" height="118" rx="14" fill="color-mix(in srgb,var(--object) 18%,transparent)" stroke="var(--object)" stroke-width="2"></rect>
+                <rect x="136" y="102" width="50" height="50" rx="10" fill="color-mix(in srgb,var(--warning) 14%,transparent)" stroke="var(--warning)" stroke-width="2" stroke-dasharray="7 5"></rect>
+                <text x="112" y="98">a³</text><text x="161" y="128">b³</text>
+                <text class="note" x="126" y="190" data-cube-svg-note="diff-left">例：a³−b³</text>
+                <path d="M220 110 L260 110" stroke="var(--movement)" stroke-width="4" stroke-linecap="round"></path>
+                <path d="M252 100 L264 110 L252 120" fill="none" stroke="var(--movement)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <rect x="284" y="56" width="96" height="40" rx="12" fill="color-mix(in srgb,var(--parameter) 14%,transparent)" stroke="var(--parameter)" stroke-width="2"></rect>
+                <rect x="284" y="112" width="96" height="58" rx="12" fill="color-mix(in srgb,var(--input) 12%,transparent)" stroke="var(--input)" stroke-width="2"></rect>
+                <text x="332" y="76">a−b</text><text x="332" y="141">a²+ab+b²</text>
+                <text class="note" x="332" y="194" data-cube-svg-note="diff-right">例：(a−b)(a²+ab+b²)</text>
+              </svg>
+            </div>
+            <div class="factor-visual-panel">
+              <b>乘回去看抵消</b>
+              <div class="term-flow" data-cube-flow="diff"></div>
+              <div class="cube-slice-note" data-cube-note="diff"></div>
+            </div>
+          </div>
           <div class="algebra-proof">
             <div class="proof-step"><b>一次因子</b>把 $a=b$ 代入，$a^3-b^3=0$，所以有因子 $a-b$。</div>
             <div class="proof-step"><b>二次因子</b>后面三项是 $a^2+ab+b^2$，中间项为正。</div>
@@ -335,41 +432,171 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
     <aside class="stage-marker"><span>3</span>Factor</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">因式分解方法库</div>
-      <h2>因式分解用于提取零点、符号与范围信息。</h2>
-      <div class="canvas-lab lab">
+      <h2>因式分解：把“加法结构”变成“乘法结构”。</h2>
+      <p class="subtle">先用简单方法快速排查，再用更强的方法处理结构隐藏、重复整体和零点信息。目标不是背步骤，而是看出式子适合变成哪一种乘积。</p>
+      <div class="factor-intro lab">
         <div>
-          <h3>二次式分解与零点</h3>
-          <p class="subtle">$x^2-5x+6$ 写成 $(x-2)(x-3)$ 后，零点和符号区间可以直接读取。</p>
-          <div class="formula">$x^2-5x+6=(x-2)(x-3)$</div>
-          <div class="stat-grid">
-            <div class="stat"><b>零点</b><span>x=2,3</span></div>
-            <div class="stat"><b>符号</b><span>外正内负</span></div>
+          <h3>先看分解后能读出什么</h3>
+          <p class="subtle">$x^2-5x+6$ 写成 $(x-2)(x-3)$ 后，零点、符号区间和限制条件会从乘积结构里直接露出来。</p>
+          <div class="formula" id="factorIntroFormula">$x^2-5x+6=(x-2)(x-3)$</div>
+          <div class="factor-purpose">
+            <div class="purpose-row"><b>零点</b><span>每个一次因式给出一个使乘积为 0 的位置。</span></div>
+            <div class="purpose-row"><b>符号</b><span>数轴被零点切开，每段只需要判断乘积正负。</span></div>
+            <div class="purpose-row"><b>限制</b><span>分式、根式和不等式中，因式会暴露不能取的值。</span></div>
+          </div>
+          <div class="factor-root-controls" aria-label="调整两个零点">
+            <div class="factor-root-control"><label><span>左零点</span><span id="factorRootAVal">2</span></label><input id="factorRootA" type="range" min="-4" max="5" value="2" step="1"></div>
+            <div class="factor-root-control"><label><span>右零点</span><span id="factorRootBVal">3</span></label><input id="factorRootB" type="range" min="-3" max="6" value="3" step="1"></div>
           </div>
         </div>
         <canvas id="factorCanvas" width="900" height="480" aria-label="因式分解与零点图像"></canvas>
       </div>
       <div class="factor-line" aria-label="因式分解符号数轴">
         <div class="factor-axis"></div>
-        <div class="factor-interval" title="负值区间"></div>
-        <div class="factor-dot r2"></div><div class="factor-dot r3"></div>
-        <div class="factor-label l2">$2$</div><div class="factor-label l3">$3$</div>
+        <div class="factor-interval" id="factorInterval" title="负值区间"></div>
+        <div class="factor-dot r2" id="factorDotA"></div><div class="factor-dot r3" id="factorDotB"></div>
+        <div class="factor-label l2" id="factorLabelA">$2$</div><div class="factor-label l3" id="factorLabelB">$3$</div>
       </div>
-      <div class="method-list" style="margin-top:18px">
-        <div class="method"><code>提公因式</code><p>$3x^2+6x=3x(x+2)$。先找共同因子。</p></div>
-        <div class="method"><code>公式法</code><p>$x^2-9=(x+3)(x-3)$。看到公式结构就反向使用。</p></div>
-        <div class="method"><code>十字相乘</code><p>$2x^2+5x+3=(2x+3)(x+1)$。展开检查中间项。</p></div>
-        <div class="method"><code>分组分解</code><p>$ax+ay+bx+by=(a+b)(x+y)$。先制造共同结构。</p></div>
-        <div class="method"><code>换元</code><p>令 $t=x^2+x$，把复杂式子降成熟悉二次式。</p></div>
-        <div class="method"><code>配方法</code><p>$x^2+6x+5=(x+3)^2-4$。它服务最值、顶点和范围。</p></div>
+
+      <div class="quick-methods" aria-label="前三个基础分解方法">
+        <div class="quick-method">
+          <span class="method-signal">每项都有</span>
+          <b>1. 提公因式</b>
+          <div class="formula">$3x^2+6x=3x(x+2)$</div>
+          <p class="subtle">先找每一项共同拥有的因子；这是所有分解前的第一检查。</p>
+        </div>
+        <div class="quick-method">
+          <span class="method-signal">像公式</span>
+          <b>2. 公式法</b>
+          <div class="formula">$x^2-9=(x+3)(x-3)$</div>
+          <p class="subtle">看到平方差、完全平方、立方和差，就把展开公式反过来用。</p>
+        </div>
+        <div class="quick-method">
+          <span class="method-signal">二次三项式</span>
+          <b>3. 十字相乘</b>
+          <div class="formula">$2x^2+5x+3=(2x+3)(x+1)$</div>
+          <p class="subtle">候选因式乘回去检查中间项，不能只看常数项。</p>
+        </div>
       </div>
-      <div class="learn-grid">
-        <div class="learn-step"><b>是什么</b><p>把多项式写成若干因子的乘积。</p></div>
-        <div class="learn-step"><b>为什么</b><p>乘积为零、正负判断、定义域限制都更容易读出。</p></div>
-        <div class="learn-step"><b>怎么做</b><p>先看公因式和公式，再看二次三项式、分组与换元。</p></div>
+
+      <div class="factor-note">后面四种方法更重要的是“识别隐藏结构”：分组制造共同括号，换元降低复杂度，配方转成平方差，零点反推出因式。</div>
+
+      <div class="deep-factor-grid" aria-label="后四个复杂因式分解方法详解">
+        <article class="deep-factor-card">
+          <div class="deep-factor-head">
+            <div><b>4. 分组分解：先制造共同结构</b><p class="subtle">当四项直接没有共同因式时，尝试把它们分成两组，让两组提取后出现同一个括号。</p></div>
+            <span class="tag">结构制造</span>
+          </div>
+          <div class="deep-factor-body">
+            <div class="factor-visual">
+              <div class="group-board">
+                <div class="group-tile">$ax+ay$</div>
+                <div class="group-tile">$bx+by$</div>
+                <div class="group-tile same">$a(x+y)$</div>
+                <div class="group-tile same">$b(x+y)$</div>
+              </div>
+              <div class="factor-arrow">共同括号 $(x+y)$ 出现</div>
+            </div>
+            <div class="factor-steps">
+              <div class="factor-step">$ax+ay+bx+by$</div>
+              <div class="factor-step active">$=a(x+y)+b(x+y)$</div>
+              <div class="factor-step result">$=(a+b)(x+y)$</div>
+              <p class="subtle">检查点：分组之后，两边必须出现同一个整体因式；如果没有，就换分组方式。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="deep-factor-card">
+          <div class="deep-factor-head">
+            <div><b>5. 换元法：把重复整体临时命名</b><p class="subtle">当复杂部分反复出现时，不急着展开；先把它看成一个新对象，问题会降成熟悉的二次式。</p></div>
+            <span class="tag">降维</span>
+          </div>
+          <div class="deep-factor-body">
+            <div class="factor-visual">
+              <div class="substitution-map">
+                <div class="sub-box focus">$x^2+x$</div>
+                <div class="factor-arrow">记作</div>
+                <div class="sub-box">$t$</div>
+              </div>
+            </div>
+            <div class="factor-steps">
+              <div class="factor-step">$(x^2+x)^2-5(x^2+x)+6$</div>
+              <div class="factor-step active">令 $t=x^2+x$，得到 $t^2-5t+6$</div>
+              <div class="factor-step active">$t^2-5t+6=(t-2)(t-3)$</div>
+              <div class="factor-step result">$(x^2+x-2)(x^2+x-3)$</div>
+              <p class="subtle">检查点：换元后必须换回；能继续分解的因式还要继续处理。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="deep-factor-card">
+          <div class="deep-factor-head">
+            <div><b>6. 配方法辅助分解：先变成平方差</b><p class="subtle">十字相乘不顺时，可以先补成完全平方，再利用平方差分解。</p></div>
+            <span class="tag">补方转化</span>
+          </div>
+          <div class="deep-factor-body">
+            <div class="factor-visual square-build" aria-label="配方辅助分解图解">
+              <svg viewBox="0 0 360 210" role="img" aria-label="x平方和6x补成完全平方">
+                <rect x="88" y="46" width="92" height="92" rx="10" class="svg-piece svg-object"></rect>
+                <rect x="180" y="46" width="46" height="92" rx="8" class="svg-piece svg-parameter"></rect>
+                <rect x="88" y="138" width="92" height="46" rx="8" class="svg-piece svg-parameter"></rect>
+                <rect x="180" y="138" width="46" height="46" rx="8" class="svg-piece svg-output"></rect>
+                <text class="svg-label object" x="134" y="92">x²</text>
+                <text class="svg-label parameter" x="203" y="92">3x</text>
+                <text class="svg-label parameter" x="134" y="161">3x</text>
+                <text class="svg-label output" x="203" y="161">9</text>
+                <text class="svg-note" x="70" y="202">补成 (x+3)²，再扣掉多补的 4</text>
+              </svg>
+            </div>
+            <div class="factor-steps">
+              <div class="factor-step">$x^2+6x+5$</div>
+              <div class="factor-step active">$=x^2+6x+9-4$</div>
+              <div class="factor-step active">$=(x+3)^2-2^2$</div>
+              <div class="factor-step result">$=(x+5)(x+1)$</div>
+              <p class="subtle">检查点：补上的平方要同时扣回，不能改变原式。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="deep-factor-card">
+          <div class="deep-factor-head">
+            <div><b>7. 零点法：从根反推出因式</b><p class="subtle">如果知道多项式在 $x=r$ 处为 0，就能得到因式 $(x-r)$。二次式的两个零点对应两个一次因式。</p></div>
+            <span class="tag">图像读因式</span>
+          </div>
+          <div class="deep-factor-body">
+            <div class="factor-visual zero-factor" aria-label="零点与因式关系图解">
+              <svg viewBox="0 0 360 210" role="img" aria-label="抛物线经过两个零点">
+                <line x1="34" y1="154" x2="326" y2="154" class="svg-arrow dim-object"></line>
+                <line x1="178" y1="30" x2="178" y2="184" stroke="var(--grid)" stroke-width="2"></line>
+                <path d="M62 62 C106 190 250 190 298 62" fill="none" stroke="var(--object)" stroke-width="4" stroke-linecap="round"></path>
+                <circle cx="132" cy="154" r="7" fill="var(--warning)"></circle>
+                <circle cx="224" cy="154" r="7" fill="var(--warning)"></circle>
+                <text class="svg-note dim-object" x="126" y="178">2</text>
+                <text class="svg-note dim-object" x="218" y="178">3</text>
+                <text class="svg-label object" x="180" y="92">(x−2)(x−3)</text>
+              </svg>
+              <div class="zero-caption"><span>零点 2 → 因式 $x-2$</span><span>零点 3 → 因式 $x-3$</span></div>
+            </div>
+            <div class="factor-steps">
+              <div class="factor-step">$x^2-5x+6=0$ 的根是 $2,3$</div>
+              <div class="factor-step active">所以包含因式 $(x-2)$ 与 $(x-3)$</div>
+              <div class="factor-step result">$x^2-5x+6=(x-2)(x-3)$</div>
+              <p class="subtle">检查点：首项系数不是 1 时，还要保留外面的系数。</p>
+            </div>
+          </div>
+        </article>
       </div>
+
+      <div class="factor-decision" aria-label="因式分解方法选择顺序">
+        <div class="decision-card"><b>先看共同因子</b>每项都有同一因子，先提出来。</div>
+        <div class="decision-card"><b>再看公式形状</b>平方差、完全平方优先。</div>
+        <div class="decision-card"><b>二次三项式</b>试十字相乘或由零点反推。</div>
+        <div class="decision-card"><b>结构复杂</b>尝试分组、换元或配方转化。</div>
+      </div>
+
       <div class="practice-card" aria-live="polite">
         <div class="practice-head">
-          <b>因式分解例题</b>
+          <b>因式分解方法选择练习</b>
           <div class="practice-actions">
             <button class="mini-btn" type="button" id="factorReveal">显示答案</button>
             <button class="mini-btn" type="button" id="factorNext">换一道题</button>
@@ -381,11 +608,12 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
             <button class="choice-btn" type="button" data-choice="提公因式">提公因式</button>
             <button class="choice-btn" type="button" data-choice="公式法">公式法</button>
             <button class="choice-btn" type="button" data-choice="十字相乘">十字相乘</button>
-            <button class="choice-btn" type="button" data-choice="分组">分组</button>
-            <button class="choice-btn" type="button" data-choice="换元">换元</button>
-            <button class="choice-btn" type="button" data-choice="配方">配方</button>
+            <button class="choice-btn" type="button" data-choice="分组分解">分组分解</button>
+            <button class="choice-btn" type="button" data-choice="换元法">换元法</button>
+            <button class="choice-btn" type="button" data-choice="配方法">配方法</button>
+            <button class="choice-btn" type="button" data-choice="零点法">零点法</button>
           </div>
-          <div class="choice-feedback" id="factorMethodFeedback">先选方法，再看步骤。</div>
+          <div class="choice-feedback" id="factorMethodFeedback">先看结构信号，再选择方法。</div>
           <div class="practice-answer" id="factorAnswerBox">
             <div class="practice-line" id="factorAnswer">$(x-3)(x-4)$</div>
             <div class="explain" id="factorExplain">找两个数，乘积为常数项，和为一次项系数。</div>
@@ -394,7 +622,6 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
       </div>
     </div>
   </section>
-
   <section class="stage" id="square">
     <aside class="stage-marker"><span>4</span>Complete Square</aside>
     <div class="stage-body reveal">
@@ -632,21 +859,21 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
   </section>
 
   <section class="stage" id="links">
-    <aside class="stage-marker"><span>9</span>Next</aside>
+    <aside class="stage-marker"><span>3</span>Next</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">与后续章节的联系</div>
-      <h2>这一章是后面几章的工具箱。</h2>
+      <h2>公式结构学完后，下一步是把公式反过来用。</h2>
       <div class="grid-3">
-        <div class="card"><b>连接第三章</b><p>因式分解帮助解方程和不等式，例如 $(x-2)(x-3)>0$。</p></div>
-        <div class="card"><b>连接第四章</b><p>配方帮助看二次函数顶点、对称轴和最值。</p></div>
-        <div class="card"><b>连接第五章</b><p>圆的一般式配方后才能看见圆心和半径。</p></div>
+        <div class="card"><b>连接第三章</b><p>平方差、完全平方、立方和差会反向成为因式分解工具。</p></div>
+        <div class="card"><b>连接第四章</b><p>分式、根式和绝对值会继续使用公式，但必须保留限制条件。</p></div>
+        <div class="card"><b>连接第五章</b><p>方程和不等式会把因式分解、配方和数轴结合起来。</p></div>
       </div>
-      <div class="card ok"><b>本章总结</b><p>看结构 → 选工具 → 做变形 → 暴露信息 → 保留条件 → 服务解题。</p></div>
+      <div class="split-forward">本章只保留结构和乘法公式主线。继续学习：<a href="../chapter_03_多项式变形与因式分解/">第三章：多项式变形与因式分解</a>。</div>
     </div>
   </section>
 </main>
 
-<footer class="footer">DGOpenKS · 第二章 · 代数变形与表达式结构</footer>
+<footer class="footer">DGOpenKS · 第二章 · 乘法公式与表达式结构</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
@@ -666,6 +893,176 @@ document.addEventListener('DOMContentLoaded',()=>{
   revealEls.forEach(el=>{revealObserver.observe(el);revealIfVisible(el)});
   requestAnimationFrame(revealHashTarget);
   window.addEventListener('hashchange',()=>requestAnimationFrame(revealHashTarget));
+
+  const formulaState={a:6,b:2};
+  function getFormulaParams(){
+    return {...formulaState};
+  }
+  async function initBinomialCubeThree(){
+    const host=document.querySelector('[data-binomial-cube-three]');
+    if(!host)return;
+    const fallback=host.querySelector('.cube-three-fallback');
+    try{
+      const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      const rootStyle=getComputedStyle(document.documentElement);
+      const readColor=name=>rootStyle.getPropertyValue(name).trim()||'#64748b';
+      const scene=new THREE.Scene();
+      const camera=new THREE.OrthographicCamera(-3.4,3.4,2.65,-2.65,.1,100);
+      camera.position.set(4.5,3.6,5.2);
+      camera.lookAt(0,0,0);
+      const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+      renderer.outputColorSpace=THREE.SRGBColorSpace;
+      host.appendChild(renderer.domElement);
+      fallback?.remove();
+
+      scene.add(new THREE.AmbientLight(0xffffff,.7));
+      const keyLight=new THREE.DirectionalLight(0xffffff,1.25);
+      keyLight.position.set(4,6,5);
+      scene.add(keyLight);
+      const fillLight=new THREE.DirectionalLight(0xffffff,.45);
+      fillLight.position.set(-4,2,-3);
+      scene.add(fillLight);
+
+      const group=new THREE.Group();
+      scene.add(group);
+      const colors={
+        0:readColor('--object'),
+        1:readColor('--parameter'),
+        2:readColor('--input'),
+        3:readColor('--output')
+      };
+      const labels={0:'a³',1:'a²b',2:'ab²',3:'b³'};
+      function makeLabel(text,color){
+        const canvas=document.createElement('canvas');
+        canvas.width=320;canvas.height=116;
+        const ctx=canvas.getContext('2d');
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle='rgba(255,255,255,.94)';
+        ctx.strokeStyle=color;
+        ctx.lineWidth=6;
+        ctx.roundRect(36,20,248,76,22);
+        ctx.fill();ctx.stroke();
+        ctx.fillStyle=color;
+        ctx.font='800 44px Georgia, Times New Roman, serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='middle';
+        ctx.fillText(text,160,59);
+        const texture=new THREE.CanvasTexture(canvas);
+        texture.colorSpace=THREE.SRGBColorSpace;
+        const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false}));
+        sprite.scale.set(.94,.34,1);
+        return sprite;
+      }
+      function clearGroup(){
+        while(group.children.length){
+          const child=group.children.pop();
+          if(child.geometry)child.geometry.dispose();
+          if(child.material){
+            if(child.material.map)child.material.map.dispose();
+            child.material.dispose();
+          }
+        }
+      }
+      function buildCube(){
+        clearGroup();
+        const params=getFormulaParams();
+        const scale=3.05/(params.a+params.b);
+        const a=params.a*scale,b=params.b*scale,gap=.12,total=a+b+gap;
+        const segments=[{key:'a',size:a},{key:'b',size:b}];
+        const centerFor=index=>index===0?-total/2+a/2:-total/2+a+gap+b/2;
+        const seenLabels=new Set();
+        const labelOffsets={
+          0:new THREE.Vector3(-.42,.42,-.18),
+          1:new THREE.Vector3(.36,.46,.24),
+          2:new THREE.Vector3(-.34,.44,.34),
+          3:new THREE.Vector3(.38,.5,-.12)
+        };
+        segments.forEach((sx,ix)=>segments.forEach((sy,iy)=>segments.forEach((sz,iz)=>{
+          const bCount=[sx,sy,sz].filter(part=>part.key==='b').length;
+          const geometry=new THREE.BoxGeometry(sx.size,sy.size,sz.size);
+          const material=new THREE.MeshStandardMaterial({
+            color:new THREE.Color(colors[bCount]),
+            roughness:.58,
+            metalness:.03,
+            transparent:true,
+            opacity:.86
+          });
+          const mesh=new THREE.Mesh(geometry,material);
+          mesh.position.set(centerFor(ix),centerFor(iy),centerFor(iz));
+          group.add(mesh);
+          const edges=new THREE.LineSegments(
+            new THREE.EdgesGeometry(geometry),
+            new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.52})
+          );
+          edges.position.copy(mesh.position);
+          group.add(edges);
+          if(!seenLabels.has(bCount)){
+            seenLabels.add(bCount);
+            const label=makeLabel(labels[bCount],colors[bCount]);
+            label.position.copy(mesh.position).add(labelOffsets[bCount]);
+            label.position.y+=sy.size*.62+.12;
+            group.add(label);
+          }
+        })));
+      }
+      buildCube();
+      window.addEventListener('formula-params-change',buildCube);
+      group.rotation.set(-.34,.58,0);
+      let dragging=false;
+      let lastPointer={x:0,y:0};
+      host.style.cursor='grab';
+      host.style.touchAction='none';
+      host.addEventListener('pointerdown',event=>{
+        dragging=true;
+        lastPointer={x:event.clientX,y:event.clientY};
+        host.style.cursor='grabbing';
+        host.setPointerCapture?.(event.pointerId);
+      });
+      host.addEventListener('pointermove',event=>{
+        if(!dragging)return;
+        const dx=event.clientX-lastPointer.x;
+        const dy=event.clientY-lastPointer.y;
+        lastPointer={x:event.clientX,y:event.clientY};
+        group.rotation.y+=dx*.01;
+        group.rotation.x+=dy*.01;
+        group.rotation.x=Math.max(-1.15,Math.min(.55,group.rotation.x));
+      });
+      const stopDrag=event=>{
+        dragging=false;
+        host.style.cursor='grab';
+        host.releasePointerCapture?.(event.pointerId);
+      };
+      host.addEventListener('pointerup',stopDrag);
+      host.addEventListener('pointercancel',stopDrag);
+      host.addEventListener('pointerleave',event=>{if(dragging)stopDrag(event)});
+
+      function resize(){
+        const width=Math.max(260,host.clientWidth);
+        const height=Math.max(260,host.clientHeight);
+        renderer.setSize(width,height,false);
+        const aspect=width/height;
+        const frustum=5.3;
+        camera.left=-frustum*aspect/2;
+        camera.right=frustum*aspect/2;
+        camera.top=frustum/2;
+        camera.bottom=-frustum/2;
+        camera.updateProjectionMatrix();
+      }
+      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const resizeObserver=new ResizeObserver(resize);
+      resizeObserver.observe(host);
+      resize();
+      function render(){
+        renderer.render(scene,camera);
+        requestAnimationFrame(render);
+      }
+      render();
+    }catch(error){
+      if(fallback)fallback.textContent='Three.js 加载失败时，可根据右侧图例理解 8 个体块的体积分解。';
+    }
+  }
+  initBinomialCubeThree();
 
   const aRange=document.getElementById('aRange');
   const bRange=document.getElementById('bRange');
@@ -919,11 +1316,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     svg.querySelectorAll('text.svg-note').forEach(note=>{
       const text=note.textContent.trim();
       const y=Number(note.getAttribute('y'));
+      if(text.startsWith('a')&&(text.includes('-')||text.length>1)){
+        if(y>184)note.setAttribute('y',String(y-18));
+        return;
+      }
       if(['a','b','a+b','a鈭抌','a-b'].includes(text)){
         if(y>184)note.setAttribute('y',String(y-18));
         return;
       }
-      note.setAttribute('y','192');
+      note.setAttribute('y','238');
       note.querySelectorAll('tspan').forEach((span,index)=>span.setAttribute('dy',index?17:0));
     });
   }
@@ -1001,10 +1402,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     card.dataset.a=String(a);
     card.dataset.b=String(b);
-    card.querySelector('[data-a-label]').textContent=a;
-    card.querySelector('[data-b-label]').textContent=b;
     const left=card.querySelector('svg[data-side="left"]');
     const right=card.querySelector('svg[data-side="right"]');
+    [left,right].forEach(svg=>svg?.setAttribute('viewBox','0 0 360 270'));
     const live=card.querySelector('[data-live-formula]');
     const total=a+b;
     const base=142;
@@ -1054,24 +1454,289 @@ document.addEventListener('DOMContentLoaded',()=>{
       live.innerHTML=`${a}²−${b}²=(${a}+${b})(${a}−${b})=${a*a-b*b}`;
     }
   }
+  function ensureFormulaCardControls(card){
+    if(card.querySelector('[data-card-controls]'))return;
+    const head=card.querySelector('.formula-rich-head');
+    if(!head)return;
+    const a=Number(card.dataset.a||formulaState.a);
+    const b=Number(card.dataset.b||formulaState.b);
+    const controls=document.createElement('div');
+    controls.className='card-local-controls';
+    controls.dataset.cardControls='';
+    controls.innerHTML=[
+      `<div class="card-local-control"><label><span>a</span><span data-card-a-val>${a}</span></label><input data-card-a type="range" min="${card.dataset.aMin||3}" max="${card.dataset.aMax||9}" step="1" value="${a}"></div>`,
+      `<div class="card-local-control"><label><span>b</span><span data-card-b-val>${b}</span></label><input data-card-b type="range" min="${card.dataset.bMin||1}" max="${card.dataset.bMax||6}" step="1" value="${b}"></div>`,
+      '<button class="card-local-reset" type="button" data-card-reset>重置</button>'
+    ].join('');
+    head.insertAdjacentElement('afterend',controls);
+    const aInput=controls.querySelector('[data-card-a]');
+    const bInput=controls.querySelector('[data-card-b]');
+    const aVal=controls.querySelector('[data-card-a-val]');
+    const bVal=controls.querySelector('[data-card-b-val]');
+    function applyLocal(){
+      let nextA=Number(aInput.value);
+      let nextB=Number(bInput.value);
+      if(nextB>=nextA){
+        nextB=nextA-1;
+        bInput.value=String(nextB);
+      }
+      aVal.textContent=nextA;
+      bVal.textContent=nextB;
+      if(formulaA&&formulaB){
+        formulaA.value=String(nextA);
+        formulaB.value=String(nextB);
+        syncFormulaSystem();
+      }else{
+        card.dataset.a=String(nextA);
+        card.dataset.b=String(nextB);
+        drawFormulaCard(card);
+      }
+    }
+    aInput.addEventListener('input',applyLocal);
+    bInput.addEventListener('input',applyLocal);
+    controls.querySelector('[data-card-reset]')?.addEventListener('click',()=>{
+      aInput.value=card.dataset.aMin&&Number(card.dataset.aMin)>formulaState.a?card.dataset.aMin:'6';
+      bInput.value='2';
+      applyLocal();
+    });
+  }
+  function syncFormulaCardControls(card,a,b){
+    const controls=card.querySelector('[data-card-controls]');
+    if(!controls)return;
+    const aInput=controls.querySelector('[data-card-a]');
+    const bInput=controls.querySelector('[data-card-b]');
+    const aVal=controls.querySelector('[data-card-a-val]');
+    const bVal=controls.querySelector('[data-card-b-val]');
+    if(aInput&&document.activeElement!==aInput)aInput.value=String(a);
+    if(bInput&&document.activeElement!==bInput)bInput.value=String(b);
+    if(aVal)aVal.textContent=a;
+    if(bVal)bVal.textContent=b;
+  }
   document.querySelectorAll('[data-formula-card]').forEach(card=>{
-    let pending=false;
-    const update=()=>{
-      if(pending)return;
-      pending=true;
-      requestAnimationFrame(()=>{pending=false;drawFormulaCard(card)});
-    };
-    card.querySelectorAll('[data-step-var]').forEach(btn=>btn.addEventListener('click',()=>{
-      const key=btn.dataset.stepVar;
-      const delta=Number(btn.dataset.stepDelta);
-      const min=Number(card.dataset[`${key}Min`]);
-      const max=Number(card.dataset[`${key}Max`]);
-      const next=Math.max(min,Math.min(max,Number(card.dataset[key])+delta));
-      card.dataset[key]=String(next);
-      update();
-    }));
-    update();
+    ensureFormulaCardControls(card);
+    requestAnimationFrame(()=>drawFormulaCard(card));
   });
+  const formulaA=document.getElementById('formulaA');
+  const formulaB=document.getElementById('formulaB');
+  const formulaAVal=document.getElementById('formulaAVal');
+  const formulaBVal=document.getElementById('formulaBVal');
+  const formulaValueChip=document.getElementById('formulaValueChip');
+  function cubeTermHtml(text,cls=''){
+    return `<span class="term-chip ${cls}">${text}</span>`;
+  }
+  function ensureCubeFactorThreePanels(){
+    document.querySelectorAll('[data-cube-factor]').forEach(panel=>{
+      const kind=panel.dataset.cubeFactor;
+      if(panel.querySelector('[data-cube-factor-three]'))return;
+      const firstPanel=panel.querySelector('.factor-visual-panel');
+      if(!firstPanel)return;
+      const threePanel=document.createElement('div');
+      threePanel.className='factor-visual-panel cube-factor-three';
+      threePanel.innerHTML=[
+        `<b>${kind==='sum'?'立方和 3D：两个立方相加':'立方差 3D：大立方挖去小立方'}</b>`,
+        `<div class="cube-three-wrap" data-cube-factor-three="${kind}" aria-label="${kind==='sum'?'立方和三维图解，可拖动旋转':'立方差三维图解，可拖动旋转'}">`,
+        '<div class="cube-label-note">拖动旋转 · 随 a,b 改变</div>',
+        '<div class="cube-three-fallback">加载 Three.js 后显示可旋转 3D 图解。</div>',
+        '</div>'
+      ].join('');
+      firstPanel.insertAdjacentElement('beforebegin',threePanel);
+    });
+  }
+  async function initCubeFactorThree(){
+    const hosts=[...document.querySelectorAll('[data-cube-factor-three]')];
+    if(!hosts.length)return;
+    try{
+      const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      const rootStyle=getComputedStyle(document.documentElement);
+      const readColor=name=>rootStyle.getPropertyValue(name).trim()||'#64748b';
+      hosts.forEach(host=>{
+        const kind=host.dataset.cubeFactorThree;
+        const fallback=host.querySelector('.cube-three-fallback');
+        const scene=new THREE.Scene();
+        const camera=new THREE.OrthographicCamera(-3.4,3.4,2.55,-2.55,.1,100);
+        camera.position.set(4.4,3.3,5);
+        camera.lookAt(0,0,0);
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+        renderer.outputColorSpace=THREE.SRGBColorSpace;
+        host.appendChild(renderer.domElement);
+        fallback?.remove();
+        scene.add(new THREE.AmbientLight(0xffffff,.76));
+        const key=new THREE.DirectionalLight(0xffffff,1.2);
+        key.position.set(4,6,5);
+        scene.add(key);
+        const group=new THREE.Group();
+        scene.add(group);
+        function makeTextSprite(text,color){
+          const canvas=document.createElement('canvas');
+          canvas.width=380;canvas.height=112;
+          const ctx=canvas.getContext('2d');
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          ctx.fillStyle='rgba(255,255,255,.95)';
+          ctx.strokeStyle=color;
+          ctx.lineWidth=6;
+          ctx.roundRect(30,18,320,76,22);
+          ctx.fill();ctx.stroke();
+          ctx.fillStyle=color;
+          ctx.font='800 34px Georgia, Times New Roman, serif';
+          ctx.textAlign='center';
+          ctx.textBaseline='middle';
+          ctx.fillText(text,190,57);
+          const texture=new THREE.CanvasTexture(canvas);
+          texture.colorSpace=THREE.SRGBColorSpace;
+          const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false}));
+          sprite.scale.set(1.18,.35,1);
+          return sprite;
+        }
+        function clearGroup(){
+          while(group.children.length){
+            const child=group.children.pop();
+            child.geometry?.dispose();
+            if(child.material){
+              child.material.map?.dispose();
+              child.material.dispose();
+            }
+          }
+        }
+        function addCube(size,position,color,opacity,label,labelOffset=new THREE.Vector3(0,.86,0)){
+          const geometry=new THREE.BoxGeometry(size,size,size);
+          const material=new THREE.MeshStandardMaterial({color:new THREE.Color(color),roughness:.55,metalness:.02,transparent:true,opacity});
+          const mesh=new THREE.Mesh(geometry,material);
+          mesh.position.copy(position);
+          group.add(mesh);
+          const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geometry),new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.55}));
+          edges.position.copy(position);
+          group.add(edges);
+          const sprite=makeTextSprite(label,color);
+          sprite.position.copy(position).add(labelOffset);
+          group.add(sprite);
+        }
+        function build(){
+          clearGroup();
+          const {a,b}=getFormulaParams();
+          const object=readColor('--object');
+          const output=readColor('--output');
+          const warning=readColor('--warning');
+          const parameter=readColor('--parameter');
+          if(kind==='sum'){
+            const scale=2.4/a;
+            const aSize=a*scale;
+            const bSize=Math.max(.58,b*scale);
+            addCube(aSize,new THREE.Vector3(-.86,0,0),object,.78,`a³ = ${a**3}`,new THREE.Vector3(-.28,aSize*.66,.05));
+            addCube(bSize,new THREE.Vector3(1.36,-(aSize-bSize)/2,0),output,.86,`b³ = ${b**3}`,new THREE.Vector3(.22,bSize*.8,.12));
+            const factor=makeTextSprite(`a³+b³ = ${a**3+b**3}`,parameter);
+            factor.position.set(.24,-1.72,.2);
+            group.add(factor);
+          }else{
+            const scale=2.6/a;
+            const aSize=a*scale;
+            const bSize=Math.max(.48,b*scale);
+            addCube(aSize,new THREE.Vector3(0,0,0),object,.42,`a³ = ${a**3}`,new THREE.Vector3(-.54,aSize*.62,-.12));
+            addCube(bSize,new THREE.Vector3(aSize/2-bSize/2,aSize/2-bSize/2,aSize/2-bSize/2),warning,.82,`−b³ = ${-(b**3)}`,new THREE.Vector3(.18,bSize*.86,.15));
+            const remain=makeTextSprite(`a³-b³ = ${a**3-b**3}`,parameter);
+            remain.position.set(-.1,-1.74,.2);
+            group.add(remain);
+          }
+        }
+        build();
+        window.addEventListener('formula-params-change',build);
+        group.rotation.set(-.36,.62,0);
+        let dragging=false,last={x:0,y:0};
+        host.style.cursor='grab';
+        host.style.touchAction='none';
+        host.addEventListener('pointerdown',event=>{
+          dragging=true;last={x:event.clientX,y:event.clientY};host.style.cursor='grabbing';host.setPointerCapture?.(event.pointerId);
+        });
+        host.addEventListener('pointermove',event=>{
+          if(!dragging)return;
+          const dx=event.clientX-last.x,dy=event.clientY-last.y;
+          last={x:event.clientX,y:event.clientY};
+          group.rotation.y+=dx*.01;
+          group.rotation.x=Math.max(-1.18,Math.min(.55,group.rotation.x+dy*.01));
+        });
+        const stop=event=>{dragging=false;host.style.cursor='grab';host.releasePointerCapture?.(event.pointerId);};
+        host.addEventListener('pointerup',stop);
+        host.addEventListener('pointercancel',stop);
+        host.addEventListener('pointerleave',event=>{if(dragging)stop(event);});
+        function resize(){
+          const width=Math.max(260,host.clientWidth);
+          const height=Math.max(240,host.clientHeight);
+          renderer.setSize(width,height,false);
+          const aspect=width/height;
+          const frustum=5.1;
+          camera.left=-frustum*aspect/2;
+          camera.right=frustum*aspect/2;
+          camera.top=frustum/2;
+          camera.bottom=-frustum/2;
+          camera.updateProjectionMatrix();
+        }
+        new ResizeObserver(resize).observe(host);
+        resize();
+        function render(){
+          renderer.render(scene,camera);
+          requestAnimationFrame(render);
+        }
+        render();
+      });
+    }catch(error){
+      document.querySelectorAll('[data-cube-factor-three] .cube-three-fallback').forEach(fallback=>{
+        fallback.textContent='Three.js 加载失败时，可先根据下方抵消图理解立方和差结构。';
+      });
+    }
+  }
+  ensureCubeFactorThreePanels();
+  initCubeFactorThree();
+  function renderCubeFactor(kind){
+    const flow=document.querySelector(`[data-cube-flow="${kind}"]`);
+    const note=document.querySelector(`[data-cube-note="${kind}"]`);
+    if(!flow||!note)return;
+    const {a,b}=getFormulaParams();
+    const a3=a**3,b3=b**3,a2b=a*a*b,ab2=a*b*b;
+    if(kind==='sum'){
+      flow.innerHTML=[
+        `<div class="term-row">${cubeTermHtml('a+b','factor')}${cubeTermHtml('a²−ab+b²','factor')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`a³=${a3}`,'keep')}${cubeTermHtml(`−a²b=${-a2b}`,'cancel')}${cubeTermHtml(`+ab²=${ab2}`,'cancel')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`+a²b=${a2b}`,'cancel')}${cubeTermHtml(`−ab²=${-ab2}`,'cancel')}${cubeTermHtml(`+b³=${b3}`,'keep')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`a³+b³=${a3+b3}`,'keep')}</div>`
+      ].join('');
+      note.innerHTML=`代入 $a=${a}, b=${b}$：$-a^2b$ 与 $+a^2b$ 抵消，$+ab^2$ 与 $-ab^2$ 抵消，只剩 $a^3+b^3=${a3+b3}$。`;
+    }else{
+      flow.innerHTML=[
+        `<div class="term-row">${cubeTermHtml('a−b','factor')}${cubeTermHtml('a²+ab+b²','factor')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`a³=${a3}`,'keep')}${cubeTermHtml(`+a²b=${a2b}`,'cancel')}${cubeTermHtml(`+ab²=${ab2}`,'cancel')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`−a²b=${-a2b}`,'cancel')}${cubeTermHtml(`−ab²=${-ab2}`,'cancel')}${cubeTermHtml(`−b³=${-b3}`,'keep')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`a³−b³=${a3-b3}`,'keep')}</div>`
+      ].join('');
+      note.innerHTML=`代入 $a=${a}, b=${b}$：中间的 $a^2b$ 和 $ab^2$ 成对抵消，只剩 $a^3-b^3=${a3-b3}$。`;
+    }
+    refreshMath(flow,note);
+  }
+  function syncFormulaSystem(){
+    if(!formulaA||!formulaB)return;
+    let a=Number(formulaA.value);
+    let b=Number(formulaB.value);
+    if(b>=a){
+      b=a-1;
+      formulaB.value=String(b);
+    }
+    formulaState.a=a;
+    formulaState.b=b;
+    formulaAVal.textContent=a;
+    formulaBVal.textContent=b;
+    formulaValueChip.textContent=`a=${a}, b=${b}`;
+    document.querySelectorAll('[data-formula-card]').forEach(card=>{
+      card.dataset.a=String(a);
+      card.dataset.b=String(b);
+      syncFormulaCardControls(card,a,b);
+      drawFormulaCard(card);
+    });
+    renderCubeFactor('sum');
+    renderCubeFactor('diff');
+    window.dispatchEvent(new CustomEvent('formula-params-change',{detail:{a,b}}));
+  }
+  formulaA?.addEventListener('input',syncFormulaSystem);
+  formulaB?.addEventListener('input',syncFormulaSystem);
+  requestAnimationFrame(syncFormulaSystem);
 
   const randInt=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
   const pick=items=>items[randInt(0,items.length-1)];
@@ -1165,15 +1830,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   updateFormulaPractice();
 
   const factorCases=[
-    {q:'$3x^2+6x$',method:'提公因式',ans:'$3x(x+2)$',ex:'每一项都有共同因子 $3x$，先提出共同因子。'},
-    {q:'$x^2-7x+12$',method:'十字相乘',ans:'$(x-3)(x-4)$',ex:'找两个数，乘积为 $12$，和为 $-7$，所以是 $-3,-4$。'},
-    {q:'$2x^2+5x+3$',method:'十字相乘',ans:'$(2x+3)(x+1)$',ex:'十字相乘后中间项为 $2x+3x=5x$。'},
-    {q:'$x^2-9$',method:'公式法',ans:'$(x+3)(x-3)$',ex:'两个平方相减，直接使用平方差公式。'},
-    {q:'$ax+ay+bx+by$',method:'分组',ans:'$(a+b)(x+y)$',ex:'先分组：$a(x+y)+b(x+y)$，再提整体公因式。'},
-    {q:'$(x^2+x)^2-5(x^2+x)+6$',method:'换元',ans:'$(x^2+x-2)(x^2+x-3)$',ex:'令 $t=x^2+x$，先分解 $t^2-5t+6$。'},
-    {q:'$x^2+6x+5$',method:'配方',ans:'$(x+3)^2-4$',ex:'若目标是最值、顶点或范围，优先补成完全平方。'}
-  ];
-  let factorIndex=0;
+    {q:'$3x^2+6x$',method:'提公因式',ans:'$3x(x+2)$',ex:'每一项都有 $3x$，先把共同因子提出来。'},
+    {q:'$x^2-9$',method:'公式法',ans:'$(x+3)(x-3)$',ex:'这是两个平方相减，直接反向使用平方差公式。'},
+    {q:'$2x^2+5x+3$',method:'十字相乘',ans:'$(2x+3)(x+1)$',ex:'乘回去检查中间项：$2x\\cdot1+3\\cdot x=5x$。'},
+    {q:'$ax+ay+bx+by$',method:'分组分解',ans:'$(a+b)(x+y)$',ex:'先分组为 $a(x+y)+b(x+y)$，再把共同整体 $(x+y)$ 提出来。'},
+    {q:'$(x^2+x)^2-5(x^2+x)+6$',method:'换元法',ans:'$(x^2+x-2)(x^2+x-3)$',ex:'令 $t=x^2+x$，先分解 $t^2-5t+6=(t-2)(t-3)$，再换回。'},
+    {q:'$x^2+6x+5$',method:'配方法',ans:'$(x+5)(x+1)$',ex:'先配方：$x^2+6x+5=(x+3)^2-4$，再用平方差。'},
+    {q:'$x^2-5x+6$，已知零点为 $2,3$',method:'零点法',ans:'$(x-2)(x-3)$',ex:'零点 $r$ 对应因式 $(x-r)$；两个零点给出两个一次因式。'}
+  ];  let factorIndex=0;
   let currentFactorCase=factorCases[0];
   const factorQuestion=document.getElementById('factorQuestion');
   const factorAnswer=document.getElementById('factorAnswer');
@@ -1185,7 +1849,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     factorQuestion.innerHTML=item.q;
     factorAnswer.innerHTML=item.ans;
     factorExplain.innerHTML=item.ex;
-    factorMethodFeedback.textContent='先选方法，再看步骤。';
+    factorMethodFeedback.textContent='先看结构信号，再选择方法。';
     factorIndex++;
     clearChoices('factorChoices');
     setPracticeVisible('factorAnswerBox','factorReveal',false);
@@ -1361,9 +2025,76 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const canvas=document.getElementById('factorCanvas');
   const ctx=canvas.getContext('2d');
-  function sx(x){return canvas.width/2+x*80}
-  function sy(y){return canvas.height/2-y*36}
+  const factorRootA=document.getElementById('factorRootA');
+  const factorRootB=document.getElementById('factorRootB');
+  const factorRootAVal=document.getElementById('factorRootAVal');
+  const factorRootBVal=document.getElementById('factorRootBVal');
+  const factorIntroFormula=document.getElementById('factorIntroFormula');
+  const factorPurposeSpans=document.querySelectorAll('.factor-purpose .purpose-row span');
+  const factorInterval=document.getElementById('factorInterval');
+  const factorDotA=document.getElementById('factorDotA');
+  const factorDotB=document.getElementById('factorDotB');
+  const factorLabelA=document.getElementById('factorLabelA');
+  const factorLabelB=document.getElementById('factorLabelB');
+  const factorMin=-4;
+  const factorMax=6;
+  function sx(x){return canvas.width/2+x*72}
+  function sy(y){return canvas.height/2-y*30}
+  function factorSigned(n,variable=''){
+    if(n===0)return '';
+    const abs=Math.abs(n);
+    return `${n>0?'+':'-'}${abs}${variable}`;
+  }
+  function factorTermForRoot(r){
+    return r===0?'x':`(x${r>0?'-':'+'}${Math.abs(r)})`;
+  }
+  function factorPct(x){
+    return Math.max(0,Math.min(100,(x-factorMin)/(factorMax-factorMin)*100));
+  }
+  function positionFactorLine(a,b){
+    const pa=factorPct(a);
+    const pb=factorPct(b);
+    if(factorInterval){
+      factorInterval.style.left=`${pa}%`;
+      factorInterval.style.right=`${100-pb}%`;
+    }
+    [[factorDotA,factorLabelA,a,pa],[factorDotB,factorLabelB,b,pb]].forEach(([dot,label,value,pct])=>{
+      if(dot)dot.style.left=`${pct}%`;
+      if(label){
+        label.style.left=`${pct}%`;
+        label.textContent=value;
+      }
+    });
+  }
   function drawFactor(){
+    let rawA=Number(factorRootA?.value ?? 2);
+    let rawB=Number(factorRootB?.value ?? 3);
+    let a=Math.min(rawA,rawB);
+    let b=Math.max(rawA,rawB);
+    if(a===b){
+      if(b<factorMax){
+        b+=1;
+        rawB=b;
+        if(factorRootB)factorRootB.value=String(b);
+      }else{
+        a-=1;
+        rawA=a;
+        if(factorRootA)factorRootA.value=String(a);
+      }
+    }
+    const sum=a+b;
+    const product=a*b;
+    if(factorRootAVal)factorRootAVal.textContent=rawA;
+    if(factorRootBVal)factorRootBVal.textContent=rawB;
+    const factors=`${factorTermForRoot(a)}${factorTermForRoot(b)}`;
+    const polynomial=`x^2${factorSigned(-sum,'x')}${factorSigned(product)}`;
+    if(factorIntroFormula)factorIntroFormula.innerHTML=`$${polynomial}=${factors}$`;
+    if(factorPurposeSpans.length>=3){
+      factorPurposeSpans[0].textContent=`两个一次因式分别给出零点 x=${a} 与 x=${b}。`;
+      factorPurposeSpans[1].textContent=`数轴被 ${a}, ${b} 切开；开口向上时，中间区间 ${a}<x<${b} 为负。`;
+      factorPurposeSpans[2].textContent=`如果这些因式在分母或根式条件中出现，x=${a}, ${b} 常常是需要单独检查的值。`;
+    }
+    positionFactorLine(a,b);
     ctx.clearRect(0,0,canvas.width,canvas.height);
     const rootStyle=getComputedStyle(document.documentElement);
     const line=rootStyle.getPropertyValue('--line').trim();
@@ -1385,26 +2116,29 @@ document.addEventListener('DOMContentLoaded',()=>{
     ctx.lineWidth=4;
     ctx.beginPath();
     let first=true;
-    for(let x=-4.5;x<=6.5;x+=.04){
-      const y=(x-2)*(x-3);
+    for(let x=factorMin-.5;x<=factorMax+.5;x+=.04){
+      const y=(x-a)*(x-b);
       const X=sx(x),Y=sy(y);
       if(first){ctx.moveTo(X,Y);first=false}else ctx.lineTo(X,Y);
     }
     ctx.stroke();
     ctx.fillStyle=conclusion;
-    [2,3].forEach(r=>{
+    [a,b].forEach(r=>{
       ctx.beginPath();ctx.arc(sx(r),sy(0),8,0,Math.PI*2);ctx.fill();
       ctx.font='800 18px sans-serif';ctx.fillText('x='+r,sx(r)-18,sy(0)+30);
     });
     ctx.fillStyle=warning;
     ctx.globalAlpha=.12;
-    ctx.fillRect(sx(2),0,sx(3)-sx(2),canvas.height);
+    ctx.fillRect(sx(a),0,sx(b)-sx(a),canvas.height);
     ctx.globalAlpha=1;
     ctx.fillStyle=ink;
     ctx.font='800 18px sans-serif';
-    ctx.fillText('y=(x-2)(x-3)',24,34);
-    ctx.fillText('2<x<3 之间函数为负',sx(2)+12,sy(-1.2));
+    ctx.fillText(`y=${factors}`,24,34);
+    ctx.fillText(`${a}<x<${b} 之间为负`,sx(a)+12,sy(-2));
+    refreshMath(factorIntroFormula);
   }
+  factorRootA?.addEventListener('input',drawFactor);
+  factorRootB?.addEventListener('input',drawFactor);
   drawFactor();
 });
 </script>

@@ -1,0 +1,18 @@
+# HyperFrames / local inspection files
+hfinspect/
+hyperframes-*.tgz
+
+# Local video sandbox and render outputs
+video/sandbox/
+video/**/renders/
+*.mp4
+
+# Review screenshots
+*-review.png
+*-full-review.png
+chapter02-review.png
+chapter02-full-review.png
+
+# Local backups
+_backup*/
+**/_backup*/

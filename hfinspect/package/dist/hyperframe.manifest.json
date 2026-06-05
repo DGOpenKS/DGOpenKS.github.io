@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "buildId": "dev",
+  "sha256": "263b5297d99075bd3e72e256d0c1c313496611b245bbb029415a7822af1ad47a",
+  "artifacts": {
+    "iife": "hyperframe.runtime.iife.js",
+    "esm": "hyperframe.runtime.mjs"
+  },
+  "contract": {
+    "globals": {
+      "player": "__player",
+      "playerReady": "__playerReady",
+      "renderReady": "__renderReady",
+      "timelines": "__timelines",
+      "clipManifest": "__clipManifest"
+    },
+    "messageSources": {
+      "parent": "hf-parent",
+      "preview": "hf-preview"
+    }
+  }
+}

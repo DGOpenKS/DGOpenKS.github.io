@@ -38,7 +38,7 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
 @media(max-width:620px){.formula-dual .visual-panel svg{height:240px}}
 .cube-visual{display:grid;grid-template-columns:minmax(340px,1.08fr) minmax(240px,.92fr);gap:14px;align-items:stretch}.cube-panel{border:1px solid var(--line);background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px;overflow:hidden}.cube-panel b{color:var(--muted);font-size:.84rem}.cube-three-wrap{position:relative;min-height:330px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface);background-size:28px 28px;overflow:hidden}.cube-three-wrap canvas{width:100%;height:100%;min-height:330px;border:0;border-radius:0;background:transparent}.cube-three-fallback{position:absolute;inset:auto 12px 12px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);font-size:.82rem;font-weight:800}.cube-legend{display:grid;gap:8px}.cube-legend-row{display:grid;grid-template-columns:18px minmax(0,1fr);gap:9px;align-items:start;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 10px;color:var(--muted);font-size:.9rem}.cube-legend-row i{width:18px;height:18px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:3px}.cube-legend-row b{display:block;color:var(--object);margin-bottom:2px}.cube-legend-row:nth-child(1) i{background:color-mix(in srgb,var(--object) 40%,var(--surface))}.cube-legend-row:nth-child(2) i{background:color-mix(in srgb,var(--parameter) 45%,var(--surface))}.cube-legend-row:nth-child(3) i{background:color-mix(in srgb,var(--input) 42%,var(--surface))}.cube-legend-row:nth-child(4) i{background:color-mix(in srgb,var(--output) 42%,var(--surface))}.cube-slice-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:12px;padding:10px;color:var(--muted);font-size:.9rem;font-weight:700}
 @media(max-width:900px){.cube-visual{grid-template-columns:1fr}.cube-three-wrap,.cube-three-wrap canvas{min-height:300px}}@media(max-width:620px){.cube-three-wrap,.cube-three-wrap canvas{min-height:260px}.cube-legend-row{font-size:.84rem}}
-.formula-control-panel{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(320px,1.22fr);gap:14px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:14px;margin:18px 0}.formula-control-title b{display:block;color:var(--object);font-size:1rem;margin-bottom:4px}.formula-control-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}.formula-master-control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px}.formula-master-control label{display:flex;justify-content:space-between;gap:10px;color:var(--parameter);font-weight:900;font-size:.84rem}.formula-master-control input{width:100%;accent-color:var(--parameter);margin-top:6px}.formula-value-chip{display:grid;align-content:center;min-height:64px;border:1px solid color-mix(in srgb,var(--object) 24%,var(--line));background:color-mix(in srgb,var(--object) 7%,var(--surface));border-radius:12px;padding:10px;font-family:var(--mono);font-weight:900;color:var(--object);text-align:center}.formula-structure-visual{display:grid;grid-template-columns:minmax(300px,1fr) minmax(260px,.9fr);gap:14px}.factor-visual-panel{border:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:28px 28px;border-radius:14px;padding:12px;min-height:250px;display:grid;align-content:center;gap:10px;overflow:hidden}.term-flow{display:grid;gap:8px}.term-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}.term-chip{border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:9px 11px;font-family:var(--mono);font-weight:900;color:var(--ink);min-width:70px;text-align:center}.term-chip.keep{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.term-chip.cancel{border-color:color-mix(in srgb,var(--warning) 44%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));color:var(--warning);text-decoration:line-through;text-decoration-thickness:2px}.term-chip.factor{border-color:color-mix(in srgb,var(--parameter) 48%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter)}.factor-svg{width:100%;height:210px;display:block}.factor-svg text{font-family:Georgia,"Times New Roman",serif;font-weight:700;text-anchor:middle;dominant-baseline:middle;fill:var(--ink)}.factor-svg .note{font-family:var(--font);font-size:13px;font-weight:900;fill:var(--muted)}.formula-term-key{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.term-key-item{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:11px;padding:8px 9px;color:var(--muted);font-size:.86rem;font-weight:800}.term-key-item i{width:16px;height:16px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:4px}.term-key-item.object i{background:color-mix(in srgb,var(--object) 28%,var(--surface))}.term-key-item.parameter i{background:color-mix(in srgb,var(--parameter) 34%,var(--surface))}.term-key-item.input i{background:color-mix(in srgb,var(--input) 31%,var(--surface))}.term-key-item.output i{background:color-mix(in srgb,var(--output) 30%,var(--surface))}.term-key-item.warning i{background:color-mix(in srgb,var(--warning) 18%,var(--surface))}.cube-drag-hint{position:absolute;right:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--parameter) 36%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--parameter);border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:900;pointer-events:none}.formula-term-legend{display:grid;gap:8px}.formula-term-legend .cube-legend-row{background:var(--surface)}@media(max-width:900px){.formula-control-panel,.formula-control-grid,.formula-structure-visual{grid-template-columns:1fr}.formula-value-chip{text-align:left}.formula-term-key{grid-template-columns:1fr 1fr}}@media(max-width:620px){.term-chip{min-width:58px;font-size:.86rem}.factor-visual-panel{min-height:220px}.formula-term-key{grid-template-columns:1fr}}
+.formula-structure-visual{display:grid;grid-template-columns:minmax(300px,1fr) minmax(260px,.9fr);gap:14px}.factor-visual-panel{border:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:28px 28px;border-radius:14px;padding:12px;min-height:250px;display:grid;align-content:center;gap:10px;overflow:hidden}.term-flow{display:grid;gap:8px}.term-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}.term-chip{border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:9px 11px;font-family:var(--mono);font-weight:900;color:var(--ink);min-width:70px;text-align:center}.term-chip.keep{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.term-chip.cancel{border-color:color-mix(in srgb,var(--warning) 44%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));color:var(--warning);text-decoration:line-through;text-decoration-thickness:2px}.term-chip.factor{border-color:color-mix(in srgb,var(--parameter) 48%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter)}.factor-svg{width:100%;height:210px;display:block}.factor-svg text{font-family:Georgia,"Times New Roman",serif;font-weight:700;text-anchor:middle;dominant-baseline:middle;fill:var(--ink)}.factor-svg .note{font-family:var(--font);font-size:13px;font-weight:900;fill:var(--muted)}.formula-term-key{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.term-key-item{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:11px;padding:8px 9px;color:var(--muted);font-size:.86rem;font-weight:800}.term-key-item i{width:16px;height:16px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:4px}.term-key-item.object i{background:color-mix(in srgb,var(--object) 28%,var(--surface))}.term-key-item.parameter i{background:color-mix(in srgb,var(--parameter) 34%,var(--surface))}.term-key-item.input i{background:color-mix(in srgb,var(--input) 31%,var(--surface))}.term-key-item.output i{background:color-mix(in srgb,var(--output) 30%,var(--surface))}.term-key-item.warning i{background:color-mix(in srgb,var(--warning) 18%,var(--surface))}.cube-drag-hint{position:absolute;right:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--parameter) 36%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--parameter);border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:900;pointer-events:none}.formula-term-legend{display:grid;gap:8px}.formula-term-legend .cube-legend-row{background:var(--surface)}@media(max-width:900px){.formula-structure-visual{grid-template-columns:1fr}.formula-term-key{grid-template-columns:1fr 1fr}}@media(max-width:620px){.term-chip{min-width:58px;font-size:.86rem}.factor-visual-panel{min-height:220px}.formula-term-key{grid-template-columns:1fr}}
 .card-local-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;border:1px solid color-mix(in srgb,var(--parameter) 34%,var(--line));background:color-mix(in srgb,var(--surface) 90%,transparent);border-radius:12px;padding:9px 10px}.card-local-control{display:grid;gap:5px;color:var(--parameter);font-size:.78rem;font-weight:900}.card-local-control label{display:flex;justify-content:space-between;gap:8px}.card-local-control input{width:100%;accent-color:var(--parameter)}.card-local-reset{align-self:stretch;border:1px solid var(--line);background:var(--surface);color:var(--object);border-radius:10px;padding:6px 10px;font-weight:900;cursor:pointer}.card-local-reset:hover,.card-local-reset:focus-visible{outline:0;border-color:color-mix(in srgb,var(--object) 42%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.cube-factor-three{grid-column:1/-1;margin-bottom:10px}.cube-factor-three .cube-three-wrap{min-height:280px}.cube-factor-three .cube-three-wrap canvas{min-height:280px}.cube-label-note{position:absolute;left:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);border-radius:999px;padding:5px 9px;font-size:.76rem;font-weight:900;pointer-events:none}@media(max-width:900px){.card-local-controls{grid-template-columns:1fr}}@media(max-width:620px){.card-local-reset{min-height:38px}}
 .split-forward{border:1px solid color-mix(in srgb,var(--conclusion) 34%,var(--line));background:color-mix(in srgb,var(--conclusion) 7%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:14px;color:var(--muted);font-weight:800}.split-forward a{color:var(--conclusion);font-weight:900}#factor,#square,#fraction,#radical,#absolute,#strategy{display:none}
 .factor-intro{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(420px,1.18fr);gap:18px;align-items:center}.factor-purpose{display:grid;gap:10px;margin-top:12px}.purpose-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px}.purpose-row b{color:var(--object);font-size:.84rem}.purpose-row span{color:var(--muted);font-size:.9rem}.quick-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.quick-method{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:16px;display:grid;gap:10px}.quick-method b{color:var(--object)}.method-signal{display:inline-flex;justify-self:start;border:1px solid color-mix(in srgb,var(--parameter) 42%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter);border-radius:999px;padding:4px 9px;font-size:.76rem;font-weight:900}.deep-factor-grid{display:grid;gap:16px;margin-top:18px}.deep-factor-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:18px;display:grid;gap:14px}.deep-factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.deep-factor-head b{display:block;color:var(--object);font-size:1.05rem}.deep-factor-body{display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:14px;align-items:stretch}.factor-visual{min-height:250px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:30px 30px;position:relative;overflow:hidden;padding:16px}.factor-steps{display:grid;gap:8px}.factor-step{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 12px;font-family:var(--mono);font-weight:900;color:var(--muted);line-height:1.55}.factor-step.active{color:var(--object);border-color:color-mix(in srgb,var(--object) 45%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.factor-step.result{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 9%,var(--surface))}.group-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}.group-tile{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px;text-align:center;font-family:var(--mono);font-weight:900;color:var(--ink)}.group-tile.same{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.factor-arrow{display:grid;place-items:center;color:var(--movement);font-weight:900;font-size:1.4rem}.substitution-map{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;height:100%}.sub-box{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px;text-align:center;font-family:var(--mono);font-weight:900}.sub-box.focus{border-color:color-mix(in srgb,var(--parameter) 50%,var(--line));background:color-mix(in srgb,var(--parameter) 12%,var(--surface));color:var(--parameter)}.square-build{display:grid;place-items:center;height:100%;gap:8px}.square-build svg,.zero-factor svg{width:100%;height:210px;display:block}.zero-factor{display:grid;gap:10px;height:100%}.zero-caption{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.88rem;font-weight:800}.zero-caption span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 9px}.factor-decision{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.decision-card{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px;color:var(--muted);font-size:.9rem}.decision-card b{display:block;color:var(--object);margin-bottom:4px}.factor-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:14px;padding:12px;color:var(--muted);font-weight:700}
@@ -196,17 +196,6 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
       <div class="stage-kicker">乘法公式的几何对应</div>
       <h2>乘法公式：把面积、体积与代数结构对应起来。</h2>
       <p class="subtle">公式两边不是魔法。左边和右边描述的是同一个面积、体积或结构，只是观察方式不同。</p>
-      <div class="formula-control-panel" aria-label="统一调节乘法公式中的 a 和 b">
-        <div class="formula-control-title">
-          <b>统一参数控制</b>
-          <p class="subtle">拖动 $a,b$，面积图、体积图、公式数值和抵消结构会同步变化。为了保证差公式清晰，系统会自动保持 $a>b$。</p>
-        </div>
-        <div class="formula-control-grid">
-          <div class="formula-master-control"><label><span>a</span><span id="formulaAVal">6</span></label><input id="formulaA" type="range" min="3" max="9" step="1" value="6"></div>
-          <div class="formula-master-control"><label><span>b</span><span id="formulaBVal">2</span></label><input id="formulaB" type="range" min="1" max="6" step="1" value="2"></div>
-          <div class="formula-value-chip" id="formulaValueChip">a=6, b=2</div>
-        </div>
-      </div>
       <div class="formula-card-grid" aria-label="核心乘法公式卡片">
         <article class="formula-rich-card" data-formula-card="square-plus" data-a="5" data-b="3" data-a-min="2" data-a-max="8" data-b-min="1" data-b-max="7">
           <div class="formula-rich-head">
@@ -280,7 +269,7 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <details class="mini-exercise" data-mini-kind="square-diff"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
         </article>
-        <article class="formula-rich-card">
+        <article class="formula-rich-card" data-cube-module="cube-plus" data-a="6" data-b="2" data-a-min="3" data-a-max="9" data-b-min="1" data-b-max="6">
           <div class="formula-rich-head">
             <div><b>二项式立方公式</b><p class="subtle">边长为 $a+b$ 的立方体可以拆成 $a^3,3a^2b,3ab^2,b^3$。</p></div>
             <span class="tag">体积分解</span>
@@ -290,8 +279,8 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
             <div class="cube-panel">
               <b>边长 $a+b$ 的立方体：沿三个方向各切出 $a$ 与 $b$</b>
               <div class="cube-three-wrap" data-binomial-cube-three aria-label="Three.js 立方体体积分解，可视化 a3、三块 a2b、三块 ab2 和 b3">
-                <div class="cube-drag-hint">拖动旋转</div>
-                <div class="cube-three-fallback">加载 Three.js 后显示 8 个体块：1 个 $a^3$、3 个 $a^2b$、3 个 $ab^2$、1 个 $b^3$。</div>
+                <div class="cube-drag-hint">点击抽出 · 拖动旋转</div>
+                <div class="cube-three-fallback">加载 Three.js 后显示可独立抽出的 8 个体块：1 个 $a^3$、3 个 $a^2b$、3 个 $ab^2$、1 个 $b^3$。</div>
               </div>
             </div>
             <div class="cube-panel">
@@ -318,7 +307,7 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <details class="mini-exercise" data-mini-kind="cube-plus"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
         </article>
-        <article class="formula-rich-card">
+        <article class="formula-rich-card" data-cube-module="cube-sum" data-a="5" data-b="2" data-a-min="2" data-a-max="9" data-b-min="1" data-b-max="6">
           <div class="formula-rich-head">
             <div><b>立方和公式</b><p class="subtle">两个立方相加，先找一次因子 $a+b$，再用二次因子抵消交叉项。</p></div>
             <span class="tag">因子分层</span>
@@ -358,7 +347,7 @@ canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(-
           </div>
           <details class="mini-exercise" data-mini-kind="cube-sum"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
         </article>
-        <article class="formula-rich-card">
+        <article class="formula-rich-card" data-cube-module="cube-diff" data-a="6" data-b="2" data-a-min="3" data-a-max="9" data-b-min="1" data-b-max="6">
           <div class="formula-rich-head">
             <div><b>立方差公式</b><p class="subtle">两个立方相减，符号集中在一次因子，二次因子保持三项全正。</p></div>
             <span class="tag">符号结构</span>
@@ -894,13 +883,16 @@ document.addEventListener('DOMContentLoaded',()=>{
   requestAnimationFrame(revealHashTarget);
   window.addEventListener('hashchange',()=>requestAnimationFrame(revealHashTarget));
 
-  const formulaState={a:6,b:2};
-  function getFormulaParams(){
-    return {...formulaState};
+  function getModuleParams(module){
+    return {
+      a:Number(module?.dataset.a||6),
+      b:Number(module?.dataset.b||2)
+    };
   }
   async function initBinomialCubeThree(){
     const host=document.querySelector('[data-binomial-cube-three]');
     if(!host)return;
+    const module=host.closest('[data-cube-module]');
     const fallback=host.querySelector('.cube-three-fallback');
     try{
       const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
@@ -926,6 +918,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
       const group=new THREE.Group();
       scene.add(group);
+      const raycaster=new THREE.Raycaster();
+      const pointer=new THREE.Vector2();
+      let pieces=[];
+      let selectedTerm=null;
       const colors={
         0:readColor('--object'),
         1:readColor('--parameter'),
@@ -933,6 +929,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         3:readColor('--output')
       };
       const labels={0:'a³',1:'a²b',2:'ab²',3:'b³'};
+      const termLabels={0:'a³',1:'3a²b',2:'3ab²',3:'b³'};
       function makeLabel(text,color){
         const canvas=document.createElement('canvas');
         canvas.width=320;canvas.height=116;
@@ -955,59 +952,118 @@ document.addEventListener('DOMContentLoaded',()=>{
         return sprite;
       }
       function clearGroup(){
-        while(group.children.length){
-          const child=group.children.pop();
+        group.traverse(child=>{
           if(child.geometry)child.geometry.dispose();
           if(child.material){
-            if(child.material.map)child.material.map.dispose();
-            child.material.dispose();
+            if(Array.isArray(child.material)){
+              child.material.forEach(material=>{material.map?.dispose();material.dispose();});
+            }else{
+              child.material.map?.dispose();
+              child.material.dispose();
+            }
           }
+        });
+        group.clear();
+        pieces=[];
+      }
+      function makePiece(size,position,color,term,labelText){
+        const piece=new THREE.Group();
+        piece.position.copy(position);
+        piece.userData.term=term;
+        piece.userData.target=position.clone();
+        const geometry=new THREE.BoxGeometry(size.x,size.y,size.z);
+        const material=new THREE.MeshStandardMaterial({
+          color:new THREE.Color(color),
+          roughness:.58,
+          metalness:.03,
+          transparent:true,
+          opacity:.86
+        });
+        const mesh=new THREE.Mesh(geometry,material);
+        mesh.userData.term=term;
+        piece.add(mesh);
+        const edges=new THREE.LineSegments(
+          new THREE.EdgesGeometry(geometry),
+          new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.52})
+        );
+        piece.add(edges);
+        if(labelText){
+          const label=makeLabel(labelText,color);
+          label.position.set(0,size.y*.58+.12,0);
+          piece.add(label);
         }
+        group.add(piece);
+        pieces.push(piece);
+        return piece;
+      }
+      function updatePieceTargets(){
+        pieces.forEach(piece=>{
+          const term=piece.userData.term;
+          const base=piece.userData.termPosition||piece.userData.assembledPosition;
+          const focus=selectedTerm===term;
+          const dimmed=selectedTerm!==null&&!focus;
+          piece.userData.target.copy(base);
+          if(focus){
+            piece.userData.target.add(piece.userData.focusOffset);
+          }
+          piece.traverse(child=>{
+            if(child.material&&child.material.opacity!==undefined){
+              child.material.opacity=dimmed?.25:.86;
+            }
+          });
+        });
+      }
+      function setSelectedTerm(term){
+        selectedTerm=selectedTerm===term?null:term;
+        updatePieceTargets();
       }
       function buildCube(){
         clearGroup();
-        const params=getFormulaParams();
-        const scale=3.05/(params.a+params.b);
-        const a=params.a*scale,b=params.b*scale,gap=.12,total=a+b+gap;
+        selectedTerm=null;
+        const params=getModuleParams(module);
+        const scale=2.35/(params.a+params.b);
+        const a=params.a*scale,b=params.b*scale,gap=.1,total=a+b+gap;
         const segments=[{key:'a',size:a},{key:'b',size:b}];
         const centerFor=index=>index===0?-total/2+a/2:-total/2+a+gap+b/2;
-        const seenLabels=new Set();
-        const labelOffsets={
-          0:new THREE.Vector3(-.42,.42,-.18),
-          1:new THREE.Vector3(.36,.46,.24),
-          2:new THREE.Vector3(-.34,.44,.34),
-          3:new THREE.Vector3(.38,.5,-.12)
+        const termX={0:-2.15,1:-.72,2:.72,3:2.08};
+        const counts={0:0,1:0,2:0,3:0};
+        const focusOffsets={
+          0:new THREE.Vector3(-.78,.5,.12),
+          1:new THREE.Vector3(-.24,.68,.5),
+          2:new THREE.Vector3(.24,.68,.5),
+          3:new THREE.Vector3(.78,.5,.12)
         };
         segments.forEach((sx,ix)=>segments.forEach((sy,iy)=>segments.forEach((sz,iz)=>{
           const bCount=[sx,sy,sz].filter(part=>part.key==='b').length;
-          const geometry=new THREE.BoxGeometry(sx.size,sy.size,sz.size);
-          const material=new THREE.MeshStandardMaterial({
-            color:new THREE.Color(colors[bCount]),
-            roughness:.58,
-            metalness:.03,
-            transparent:true,
-            opacity:.86
-          });
-          const mesh=new THREE.Mesh(geometry,material);
-          mesh.position.set(centerFor(ix),centerFor(iy),centerFor(iz));
-          group.add(mesh);
-          const edges=new THREE.LineSegments(
-            new THREE.EdgesGeometry(geometry),
-            new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.52})
+          const index=counts[bCount]++;
+          const assembledPosition=new THREE.Vector3(centerFor(ix),centerFor(iy),centerFor(iz));
+          const termPosition=assembledPosition.clone();
+          termPosition.x+=termX[bCount];
+          const verticalLift=bCount===0?.3:bCount===3?-.18:0;
+          const stackGap=(bCount===1||bCount===2)?.18:0;
+          termPosition.y+=verticalLift;
+          termPosition.z+=(index-1)*stackGap;
+          const piece=makePiece(
+            new THREE.Vector3(sx.size,sy.size,sz.size),
+            termPosition,
+            colors[bCount],
+            bCount,
+            index===0?labels[bCount]:''
           );
-          edges.position.copy(mesh.position);
-          group.add(edges);
-          if(!seenLabels.has(bCount)){
-            seenLabels.add(bCount);
-            const label=makeLabel(labels[bCount],colors[bCount]);
-            label.position.copy(mesh.position).add(labelOffsets[bCount]);
-            label.position.y+=sy.size*.62+.12;
-            group.add(label);
-          }
+          piece.userData.assembledPosition=assembledPosition;
+          piece.userData.termPosition=termPosition;
+          piece.userData.focusOffset=focusOffsets[bCount].clone();
         })));
+        Object.entries(termLabels).forEach(([term,text])=>{
+          const label=makeLabel(text,colors[term]);
+          label.position.set(termX[term],-1.55,.55);
+          label.scale.set(1,.36,1);
+          group.add(label);
+        });
+        updatePieceTargets();
       }
       buildCube();
-      window.addEventListener('formula-params-change',buildCube);
+      module?.addEventListener('module-params-change',buildCube);
       group.rotation.set(-.34,.58,0);
       let dragging=false;
       let lastPointer={x:0,y:0};
@@ -1016,6 +1072,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       host.addEventListener('pointerdown',event=>{
         dragging=true;
         lastPointer={x:event.clientX,y:event.clientY};
+        host.dataset.dragMoved='0';
         host.style.cursor='grabbing';
         host.setPointerCapture?.(event.pointerId);
       });
@@ -1024,14 +1081,30 @@ document.addEventListener('DOMContentLoaded',()=>{
         const dx=event.clientX-lastPointer.x;
         const dy=event.clientY-lastPointer.y;
         lastPointer={x:event.clientX,y:event.clientY};
+        if(Math.abs(dx)+Math.abs(dy)>4)host.dataset.dragMoved='1';
         group.rotation.y+=dx*.01;
         group.rotation.x+=dy*.01;
         group.rotation.x=Math.max(-1.15,Math.min(.55,group.rotation.x));
       });
       const stopDrag=event=>{
+        const wasDrag=host.dataset.dragMoved==='1';
         dragging=false;
         host.style.cursor='grab';
         host.releasePointerCapture?.(event.pointerId);
+        if(wasDrag)return;
+        const rect=host.getBoundingClientRect();
+        pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
+        pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
+        raycaster.setFromCamera(pointer,camera);
+        const meshes=[];
+        pieces.forEach(piece=>piece.traverse(child=>{if(child.isMesh)meshes.push(child);}));
+        const hit=raycaster.intersectObjects(meshes,false)[0];
+        if(hit){
+          setSelectedTerm(hit.object.userData.term);
+        }else{
+          selectedTerm=null;
+          updatePieceTargets();
+        }
       };
       host.addEventListener('pointerup',stopDrag);
       host.addEventListener('pointercancel',stopDrag);
@@ -1054,6 +1127,9 @@ document.addEventListener('DOMContentLoaded',()=>{
       resizeObserver.observe(host);
       resize();
       function render(){
+        pieces.forEach(piece=>{
+          if(piece.userData.target)piece.position.lerp(piece.userData.target,.18);
+        });
         renderer.render(scene,camera);
         requestAnimationFrame(render);
       }
@@ -1458,8 +1534,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(card.querySelector('[data-card-controls]'))return;
     const head=card.querySelector('.formula-rich-head');
     if(!head)return;
-    const a=Number(card.dataset.a||formulaState.a);
-    const b=Number(card.dataset.b||formulaState.b);
+    const a=Number(card.dataset.a||6);
+    const b=Number(card.dataset.b||2);
+    card.dataset.defaultA=card.dataset.defaultA||String(a);
+    card.dataset.defaultB=card.dataset.defaultB||String(b);
     const controls=document.createElement('div');
     controls.className='card-local-controls';
     controls.dataset.cardControls='';
@@ -1482,45 +1560,69 @@ document.addEventListener('DOMContentLoaded',()=>{
       }
       aVal.textContent=nextA;
       bVal.textContent=nextB;
-      if(formulaA&&formulaB){
-        formulaA.value=String(nextA);
-        formulaB.value=String(nextB);
-        syncFormulaSystem();
-      }else{
-        card.dataset.a=String(nextA);
-        card.dataset.b=String(nextB);
-        drawFormulaCard(card);
-      }
+      card.dataset.a=String(nextA);
+      card.dataset.b=String(nextB);
+      drawFormulaCard(card);
     }
     aInput.addEventListener('input',applyLocal);
     bInput.addEventListener('input',applyLocal);
     controls.querySelector('[data-card-reset]')?.addEventListener('click',()=>{
-      aInput.value=card.dataset.aMin&&Number(card.dataset.aMin)>formulaState.a?card.dataset.aMin:'6';
-      bInput.value='2';
+      aInput.value=card.dataset.defaultA||'6';
+      bInput.value=card.dataset.defaultB||'2';
       applyLocal();
     });
-  }
-  function syncFormulaCardControls(card,a,b){
-    const controls=card.querySelector('[data-card-controls]');
-    if(!controls)return;
-    const aInput=controls.querySelector('[data-card-a]');
-    const bInput=controls.querySelector('[data-card-b]');
-    const aVal=controls.querySelector('[data-card-a-val]');
-    const bVal=controls.querySelector('[data-card-b-val]');
-    if(aInput&&document.activeElement!==aInput)aInput.value=String(a);
-    if(bInput&&document.activeElement!==bInput)bInput.value=String(b);
-    if(aVal)aVal.textContent=a;
-    if(bVal)bVal.textContent=b;
   }
   document.querySelectorAll('[data-formula-card]').forEach(card=>{
     ensureFormulaCardControls(card);
     requestAnimationFrame(()=>drawFormulaCard(card));
   });
-  const formulaA=document.getElementById('formulaA');
-  const formulaB=document.getElementById('formulaB');
-  const formulaAVal=document.getElementById('formulaAVal');
-  const formulaBVal=document.getElementById('formulaBVal');
-  const formulaValueChip=document.getElementById('formulaValueChip');
+  function ensureCubeModuleControls(module){
+    if(module.querySelector('[data-card-controls]'))return;
+    const head=module.querySelector('.formula-rich-head');
+    if(!head)return;
+    const a=Number(module.dataset.a||6);
+    const b=Number(module.dataset.b||2);
+    module.dataset.defaultA=module.dataset.defaultA||String(a);
+    module.dataset.defaultB=module.dataset.defaultB||String(b);
+    const controls=document.createElement('div');
+    controls.className='card-local-controls';
+    controls.dataset.cardControls='';
+    controls.innerHTML=[
+      `<div class="card-local-control"><label><span>a</span><span data-card-a-val>${a}</span></label><input data-card-a type="range" min="${module.dataset.aMin||3}" max="${module.dataset.aMax||9}" step="1" value="${a}"></div>`,
+      `<div class="card-local-control"><label><span>b</span><span data-card-b-val>${b}</span></label><input data-card-b type="range" min="${module.dataset.bMin||1}" max="${module.dataset.bMax||6}" step="1" value="${b}"></div>`,
+      '<button class="card-local-reset" type="button" data-card-reset>重置</button>'
+    ].join('');
+    head.insertAdjacentElement('afterend',controls);
+    const aInput=controls.querySelector('[data-card-a]');
+    const bInput=controls.querySelector('[data-card-b]');
+    const aVal=controls.querySelector('[data-card-a-val]');
+    const bVal=controls.querySelector('[data-card-b-val]');
+    function applyLocal(){
+      let nextA=Number(aInput.value);
+      let nextB=Number(bInput.value);
+      if(nextB>=nextA){
+        nextB=nextA-1;
+        bInput.value=String(nextB);
+      }
+      aVal.textContent=nextA;
+      bVal.textContent=nextB;
+      module.dataset.a=String(nextA);
+      module.dataset.b=String(nextB);
+      if(module.dataset.cubeModule==='cube-sum')renderCubeFactor('sum',module);
+      if(module.dataset.cubeModule==='cube-diff')renderCubeFactor('diff',module);
+      module.dispatchEvent(new CustomEvent('module-params-change',{detail:{a:nextA,b:nextB}}));
+    }
+    aInput.addEventListener('input',applyLocal);
+    bInput.addEventListener('input',applyLocal);
+    controls.querySelector('[data-card-reset]')?.addEventListener('click',()=>{
+      aInput.value=module.dataset.defaultA||'6';
+      bInput.value=module.dataset.defaultB||'2';
+      applyLocal();
+    });
+  }
+  document.querySelectorAll('[data-cube-module]').forEach(module=>{
+    ensureCubeModuleControls(module);
+  });
   function cubeTermHtml(text,cls=''){
     return `<span class="term-chip ${cls}">${text}</span>`;
   }
@@ -1551,6 +1653,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const readColor=name=>rootStyle.getPropertyValue(name).trim()||'#64748b';
       hosts.forEach(host=>{
         const kind=host.dataset.cubeFactorThree;
+        const module=host.closest('[data-cube-module]');
         const fallback=host.querySelector('.cube-three-fallback');
         const scene=new THREE.Scene();
         const camera=new THREE.OrthographicCamera(-3.4,3.4,2.55,-2.55,.1,100);
@@ -1613,7 +1716,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         function build(){
           clearGroup();
-          const {a,b}=getFormulaParams();
+          const {a,b}=getModuleParams(module);
           const object=readColor('--object');
           const output=readColor('--output');
           const warning=readColor('--warning');
@@ -1639,7 +1742,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           }
         }
         build();
-        window.addEventListener('formula-params-change',build);
+        module?.addEventListener('module-params-change',build);
         group.rotation.set(-.36,.62,0);
         let dragging=false,last={x:0,y:0};
         host.style.cursor='grab';
@@ -1686,11 +1789,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   ensureCubeFactorThreePanels();
   initCubeFactorThree();
-  function renderCubeFactor(kind){
-    const flow=document.querySelector(`[data-cube-flow="${kind}"]`);
-    const note=document.querySelector(`[data-cube-note="${kind}"]`);
+  function renderCubeFactor(kind,module=document.querySelector(`[data-cube-module="cube-${kind}"]`)){
+    const flow=module?.querySelector(`[data-cube-flow="${kind}"]`);
+    const note=module?.querySelector(`[data-cube-note="${kind}"]`);
     if(!flow||!note)return;
-    const {a,b}=getFormulaParams();
+    const {a,b}=getModuleParams(module);
     const a3=a**3,b3=b**3,a2b=a*a*b,ab2=a*b*b;
     if(kind==='sum'){
       flow.innerHTML=[
@@ -1711,32 +1814,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     refreshMath(flow,note);
   }
-  function syncFormulaSystem(){
-    if(!formulaA||!formulaB)return;
-    let a=Number(formulaA.value);
-    let b=Number(formulaB.value);
-    if(b>=a){
-      b=a-1;
-      formulaB.value=String(b);
-    }
-    formulaState.a=a;
-    formulaState.b=b;
-    formulaAVal.textContent=a;
-    formulaBVal.textContent=b;
-    formulaValueChip.textContent=`a=${a}, b=${b}`;
-    document.querySelectorAll('[data-formula-card]').forEach(card=>{
-      card.dataset.a=String(a);
-      card.dataset.b=String(b);
-      syncFormulaCardControls(card,a,b);
-      drawFormulaCard(card);
-    });
-    renderCubeFactor('sum');
-    renderCubeFactor('diff');
-    window.dispatchEvent(new CustomEvent('formula-params-change',{detail:{a,b}}));
-  }
-  formulaA?.addEventListener('input',syncFormulaSystem);
-  formulaB?.addEventListener('input',syncFormulaSystem);
-  requestAnimationFrame(syncFormulaSystem);
+  renderCubeFactor('sum');
+  renderCubeFactor('diff');
 
   const randInt=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
   const pick=items=>items[randInt(0,items.length-1)];

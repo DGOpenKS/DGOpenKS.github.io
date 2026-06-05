@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 分式、根式与条件控制 | DGOpenKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--surface:#fff;--surface-2:#f8fafc;--ink:#0f172a;--muted:#64748b;--line:#dbe3ef;--grid:#e6edf5;--object:#2563eb;--input:#06b6d4;--output:#8b5cf6;--parameter:#f59e0b;--movement:#7c3aed;--conclusion:#10b981;--warning:#ef4444;--radius:14px;--radius-lg:22px;--shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);--font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;--ease:cubic-bezier(.22,1,.36,1)}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#08111f;--surface:#101827;--surface-2:#0d1524;--ink:#e5edf7;--muted:#94a3b8;--line:#1e2d45;--grid:#1d2b3f;--object:#60a5fa;--input:#22d3ee;--output:#a78bfa;--parameter:#fbbf24;--movement:#c084fc;--conclusion:#34d399;--warning:#f87171;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}button,input{font:inherit}a{color:inherit}.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;gap:10px;align-items:center;overflow-x:auto}.brand{font-weight:800;color:var(--object);white-space:nowrap;margin-right:10px;text-decoration:none}.nav-pill{text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:800;padding:5px 11px;border-radius:999px;white-space:nowrap}.nav-pill:hover,.nav-pill:focus-visible{outline:0;color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent)}
+.hero{max-width:1180px;margin:0 auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.96fr);gap:42px;align-items:center}.eyebrow{display:inline-flex;color:var(--object);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}.hero h1{font-size:clamp(2.1rem,5vw,4.4rem);line-height:1.05;margin:0 0 20px;font-weight:800}.lead{font-size:clamp(1.03rem,1.6vw,1.22rem);color:var(--muted);max-width:680px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hero-card,.panel,.lab,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}.checklist{display:grid;gap:10px}.check-row{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:12px}.check-row i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:color-mix(in srgb,var(--parameter) 13%,transparent);border:1px solid color-mix(in srgb,var(--parameter) 30%,var(--line));color:var(--parameter);font-style:normal;font-family:var(--mono);font-weight:900}.check-row b{display:block;color:var(--object);margin-bottom:3px}
+main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent);scroll-margin-top:72px}.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}h2{font-size:clamp(1.55rem,2.6vw,2.55rem);line-height:1.18;margin:0 0 14px}h3{margin:0 0 10px}.subtle{color:var(--muted)}p{margin:0 0 12px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}.card b{display:block;color:var(--object);margin-bottom:6px}.formula{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;overflow-x:auto}.ok{border-left:4px solid var(--conclusion);background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-color:color-mix(in srgb,var(--conclusion) 30%,var(--line))}.warning{border-left:4px solid var(--warning);background:color-mix(in srgb,var(--warning) 8%,var(--surface));border-color:color-mix(in srgb,var(--warning) 30%,var(--line))}
+canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}.lab-grid{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(420px,1.22fr);gap:18px;align-items:start}.controls{display:grid;gap:12px}.control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.control label{display:flex;justify-content:space-between;gap:12px;font-weight:900;color:var(--parameter);font-size:.86rem;margin-bottom:8px}.control input{width:100%;accent-color:var(--parameter)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.stat{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.stat b{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;margin-bottom:4px}.stat span{font-family:var(--mono);font-weight:900}
+.condition-board{display:grid;gap:10px}.condition-step{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px;color:var(--muted);font-weight:800}.condition-step strong{color:var(--object)}.number-line{position:relative;height:96px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);margin:14px 0}.axis{position:absolute;left:28px;right:28px;top:48px;height:3px;border-radius:999px;background:var(--line)}.range{position:absolute;top:43px;height:13px;border-radius:999px;background:color-mix(in srgb,var(--conclusion) 28%,transparent);border:1px solid color-mix(in srgb,var(--conclusion) 45%,var(--line));left:var(--left,30%);width:var(--width,40%)}.point{position:absolute;top:37px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:3px solid var(--object);color:var(--object);font-size:.72rem;font-weight:900;transform:translateX(-50%);left:var(--point,50%)}.point.open{border-color:var(--warning);color:var(--warning)}.line-label{position:absolute;top:62px;transform:translateX(-50%);font-family:var(--mono);font-weight:900;color:var(--muted);left:var(--point,50%)}.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}.reveal{opacity:1;transform:translateY(0);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.hero,.stage,.grid-2,.grid-3,.lab-grid{grid-template-columns:1fr}.stage-marker{position:static;display:flex;gap:10px;align-items:center}.stage-marker span{margin-bottom:0}}@media(max-width:620px){.hero{padding-top:42px}.hero-card,.panel,.lab,.card{padding:14px}canvas{height:330px}.stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="章节导航"><div class="topbar-inner">
+  <a class="brand" href="../">DGOpenKS</a>
+  <a class="nav-pill" href="#principle">条件原则</a>
+  <a class="nav-pill" href="#fraction">分式挖点</a>
+  <a class="nav-pill" href="#radical">根式验根</a>
+  <a class="nav-pill" href="#absolute">绝对值分段</a>
+  <a class="nav-pill" href="#check">检查清单</a>
+</div></nav>
+
+<header class="hero">
+  <div class="reveal">
+    <div class="eyebrow">Chapter 04 · Condition Control</div>
+    <h1>分式、根式与条件控制</h1>
+    <p class="lead">这些变形最容易“算对形式、改错对象”。本章把限制条件、增根、分段边界放到图像里看。</p>
+    <div class="hero-actions"><a class="btn primary" href="#fraction">查看挖空点</a><a class="btn" href="../chapter_03_多项式变形与因式分解/">上一章</a></div>
+  </div>
+  <div class="hero-card reveal">
+    <div class="checklist">
+      <div class="check-row"><i>÷</i><div><b>分母</b><span class="subtle">不能为 $0$，约分后限制还在。</span></div></div>
+      <div class="check-row"><i>√</i><div><b>根号</b><span class="subtle">偶次根号内非负，平方后要验根。</span></div></div>
+      <div class="check-row"><i>| |</i><div><b>绝对值</b><span class="subtle">距离问题要按边界分段。</span></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="stage" id="principle">
+    <aside class="stage-marker"><span>1</span>Rule</aside>
+    <div class="reveal">
+      <div class="stage-kicker">本章总原则</div>
+      <h2>变形前看结构，变形后查条件。</h2>
+      <div class="grid-3">
+        <div class="card"><b>约分</b><p class="subtle">只能约因子，不能约项。约掉的因子仍然决定哪些点不存在。</p></div>
+        <div class="card"><b>平方</b><p class="subtle">平方会扩大可能解集，所以必须代回原式验根。</p></div>
+        <div class="card"><b>分段</b><p class="subtle">绝对值、分母符号、根号条件都可能把数轴切开。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="fraction">
+    <aside class="stage-marker"><span>2</span>Fraction</aside>
+    <div class="reveal">
+      <div class="stage-kicker">分式约分与挖空点</div>
+      <h2>化简式像同一条直线，但原式可能少一个点。</h2>
+      <div class="lab lab-grid">
+        <div>
+          <div class="formula">$\frac{x^2-a^2}{x-a}=x+a,\quad x\ne a$</div>
+          <div class="control"><label><span>挖空点 a</span><span id="holeVal">1</span></label><input id="holeRange" type="range" min="-4" max="4" step="1" value="1"></div>
+          <div class="stats">
+            <div class="stat"><b>原式限制</b><span id="holeCond">$x\ne1$</span></div>
+            <div class="stat"><b>挖空点</b><span id="holePoint">$(1,2)$</span></div>
+          </div>
+        </div>
+        <canvas id="fractionCanvas" width="900" height="480" aria-label="分式化简后的挖空点图像"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="radical">
+    <aside class="stage-marker"><span>3</span>Radical</aside>
+    <div class="reveal">
+      <div class="stage-kicker">根式方程与验根</div>
+      <h2>平方会产生候选解，真正答案必须回到原式检查。</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="formula">$\sqrt{x+1}=x-1$</div>
+          <div class="condition-board">
+            <div class="condition-step"><strong>条件一：</strong>$x+1\ge0$，所以 $x\ge-1$。</div>
+            <div class="condition-step"><strong>条件二：</strong>右边 $x-1\ge0$，所以 $x\ge1$。</div>
+            <div class="condition-step"><strong>平方：</strong>$x+1=(x-1)^2$，候选 $x=0,3$。</div>
+            <div class="condition-step"><strong>验根：</strong>$x=0$ 不满足右边非负，$x=3$ 是真解。</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="number-line" aria-label="根式方程条件数轴">
+            <div class="axis"></div><div class="range" style="--left:60%;--width:34%"></div>
+            <div class="point open" style="--point:50%">0</div><div class="line-label" style="--point:50%">候选但舍去</div>
+            <div class="point" style="--point:80%">3</div><div class="line-label" style="--point:80%">真解</div>
+          </div>
+          <div class="card ok"><b>流程</b><p>定条件 → 隔离根式 → 平方 → 解方程 → 代回验根。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="absolute">
+    <aside class="stage-marker"><span>4</span>Absolute</aside>
+    <div class="reveal">
+      <div class="stage-kicker">绝对值是距离</div>
+      <h2>$|x-a|<r$ 表示离 $a$ 的距离小于 $r$。</h2>
+      <div class="lab lab-grid">
+        <div>
+          <div class="control"><label><span>中心 a</span><span id="absAVal">1</span></label><input id="absA" type="range" min="-4" max="4" step="1" value="1"></div>
+          <div class="control"><label><span>半径 r</span><span id="absRVal">2</span></label><input id="absR" type="range" min="1" max="5" step="1" value="2"></div>
+          <div class="formula" id="absFormula">$|x-1|<2 \Rightarrow -1<x<3$</div>
+        </div>
+        <div class="panel">
+          <div class="number-line">
+            <div class="axis"></div><div class="range" id="absRange"></div>
+            <div class="point" id="absCenter">a</div><div class="line-label" id="absCenterLabel">中心</div>
+          </div>
+          <p class="subtle">图中绿色区间是满足距离条件的所有 $x$。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="check">
+    <aside class="stage-marker"><span>5</span>Check</aside>
+    <div class="reveal">
+      <div class="stage-kicker">条件检查清单</div>
+      <h2>每做一步变形，都问有没有改变研究对象。</h2>
+      <div class="grid-3">
+        <div class="card warning"><b>分母</b><p>是否把不能取的值约掉了？</p></div>
+        <div class="card warning"><b>根号</b><p>是否平方引入了增根？</p></div>
+        <div class="card warning"><b>绝对值</b><p>是否漏掉了分段边界？</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 第四章 · 分式、根式与条件控制</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('in')}),{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+  const root=getComputedStyle(document.documentElement),color=name=>root.getPropertyValue(name).trim();
+  function refreshMath(el){if(window.MathJax&&el)MathJax.typesetPromise([el]).catch(()=>{})}
+  const canvas=document.getElementById('fractionCanvas'),ctx=canvas.getContext('2d'),holeRange=document.getElementById('holeRange'),holeVal=document.getElementById('holeVal'),holeCond=document.getElementById('holeCond'),holePoint=document.getElementById('holePoint');
+  function sx(x){return canvas.width/2+x*72} function sy(y){return canvas.height/2-y*34}
+  function drawFraction(){const a=Number(holeRange.value);holeVal.textContent=a;holeCond.textContent=`x≠${a}`;holePoint.textContent=`(${a}, ${2*a})`;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle=color('--line');ctx.lineWidth=1;for(let x=0;x<canvas.width;x+=72){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}for(let y=0;y<canvas.height;y+=34){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}ctx.strokeStyle=color('--ink');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,sy(0));ctx.lineTo(canvas.width,sy(0));ctx.moveTo(sx(0),0);ctx.lineTo(sx(0),canvas.height);ctx.stroke();ctx.strokeStyle=color('--object');ctx.lineWidth=4;ctx.beginPath();for(let x=-6;x<=6;x+=.05){const y=x+a;if(x===-6)ctx.moveTo(sx(x),sy(y));else ctx.lineTo(sx(x),sy(y))}ctx.stroke();ctx.fillStyle=color('--surface-2');ctx.strokeStyle=color('--warning');ctx.lineWidth=4;ctx.beginPath();ctx.arc(sx(a),sy(2*a),10,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle=color('--warning');ctx.font='800 18px sans-serif';ctx.fillText(`挖空点 (${a}, ${2*a})`,sx(a)+14,sy(2*a)-12);refreshMath(holeCond);refreshMath(holePoint)}
+  holeRange.addEventListener('input',drawFraction);drawFraction();
+  const absA=document.getElementById('absA'),absR=document.getElementById('absR'),absAVal=document.getElementById('absAVal'),absRVal=document.getElementById('absRVal'),absFormula=document.getElementById('absFormula'),absRange=document.getElementById('absRange'),absCenter=document.getElementById('absCenter'),absCenterLabel=document.getElementById('absCenterLabel');
+  function pct(x){return Math.max(4,Math.min(96,(x+6)/12*100))}
+  function updateAbs(){const a=Number(absA.value),r=Number(absR.value),left=a-r,right=a+r;absAVal.textContent=a;absRVal.textContent=r;absFormula.textContent=`|x${a<0?'+':'-'}${Math.abs(a)}|<${r} ⇒ ${left}<x<${right}`;absRange.style.setProperty('--left',pct(left)+'%');absRange.style.setProperty('--width',(pct(right)-pct(left))+'%');absCenter.style.setProperty('--point',pct(a)+'%');absCenterLabel.style.setProperty('--point',pct(a)+'%');absCenter.textContent=a;refreshMath(absFormula)}
+  absA.addEventListener('input',updateAbs);absR.addEventListener('input',updateAbs);updateAbs();
+});
+</script>
+</body>
+</html>

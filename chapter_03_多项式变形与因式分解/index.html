@@ -107,6 +107,8 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
 .practice-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .practice-head h3{margin:0;font-size:1.15rem}.practice-head p{color:var(--muted);margin:3px 0 0}
 .question-box{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;overflow-x:auto}
+.practice-input-row{display:grid;gap:6px;color:var(--muted);font-size:.86rem;font-weight:800;margin:10px 0}
+.practice-input-row input{min-height:42px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:9px 12px;font-family:var(--mono);font-weight:800}
 .method-options{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
 .choice-btn[aria-pressed="true"]{color:var(--object);border-color:var(--object);background:color-mix(in srgb,var(--object) 8%,var(--surface))}
 .choice-btn.good{color:var(--success);border-color:var(--success);background:color-mix(in srgb,var(--success) 9%,var(--surface))}
@@ -253,6 +255,23 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
             <div class="state-box" id="crossState"><b>交叉检查</b><br>二次项、常数项和一次项必须同时匹配。</div>
           </div>
         </div>
+        <div class="practice-panel mini-practice" data-topic-practice="cross">
+          <div class="practice-head">
+            <div>
+              <h3>试一试：用十字相乘分解</h3>
+              <p>先找两个一次因式，再检查交叉项。</p>
+            </div>
+            <button class="tool-btn" type="button" data-topic-new>换题</button>
+          </div>
+          <div class="question-box" data-topic-question></div>
+          <label class="practice-input-row"><span>你的分解结果</span><input data-topic-input type="text" placeholder="例如：(x-6)(x+4)"></label>
+          <div class="method-options">
+            <button class="answer-btn" type="button" data-topic-check>检查</button>
+            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
+          </div>
+          <div class="feedback" data-topic-feedback>先自己尝试写出两个括号。</div>
+          <div class="answer-line" data-topic-answer></div>
+        </div>
       </article>
     </div>
   </section>
@@ -298,6 +317,23 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
             <div class="state-box" id="squareState"><b>配方结果</b><br>顶点和最值从平方结构中读出来。</div>
           </div>
         </div>
+        <div class="practice-panel mini-practice" data-topic-practice="square">
+          <div class="practice-head">
+            <div>
+              <h3>试一试：把二次式配方</h3>
+              <p>把一次项系数除以 2，再补平方。</p>
+            </div>
+            <button class="tool-btn" type="button" data-topic-new>换题</button>
+          </div>
+          <div class="question-box" data-topic-question></div>
+          <label class="practice-input-row"><span>你的配方结果</span><input data-topic-input type="text" placeholder="例如：(x+3)^2-8"></label>
+          <div class="method-options">
+            <button class="answer-btn" type="button" data-topic-check>检查</button>
+            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
+          </div>
+          <div class="feedback" data-topic-feedback>注意：补上的量必须同时减去。</div>
+          <div class="answer-line" data-topic-answer></div>
+        </div>
       </article>
     </div>
   </section>
@@ -329,6 +365,23 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
             </div>
             <div class="state-box" id="subState"><b>结构信号</b><br>同一个整体反复出现，优先尝试换元。</div>
           </div>
+        </div>
+        <div class="practice-panel mini-practice" data-topic-practice="substitution">
+          <div class="practice-head">
+            <div>
+              <h3>试一试：先换元再分解</h3>
+              <p>找出重复整体，把它临时记作 $t$。</p>
+            </div>
+            <button class="tool-btn" type="button" data-topic-new>换题</button>
+          </div>
+          <div class="question-box" data-topic-question></div>
+          <label class="practice-input-row"><span>你的分解结果</span><input data-topic-input type="text" placeholder="先写换元，再写换回后的因式"></label>
+          <div class="method-options">
+            <button class="answer-btn" type="button" data-topic-check>检查</button>
+            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
+          </div>
+          <div class="feedback" data-topic-feedback>先不要展开，先圈出重复整体。</div>
+          <div class="answer-line" data-topic-answer></div>
         </div>
       </article>
     </div>
@@ -402,6 +455,100 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
   function nonzero(min,max){let n=0;while(n===0)n=rand(min,max);return n}
+  function normalizeMathInput(value){
+    return value.toLowerCase()
+      .replace(/\s+/g,'')
+      .replace(/（/g,'(').replace(/）/g,')')
+      .replace(/[−–]/g,'-')
+      .replace(/\*\*/g,'^')
+      .replace(/[·×*]/g,'')
+      .replace(/²/g,'^2')
+      .replace(/\$/g,'');
+  }
+  function tokenizeExpression(source){
+    const text=normalizeMathInput(source);
+    const tokens=[];
+    for(let i=0;i<text.length;){
+      const ch=text[i];
+      if(/[0-9.]/.test(ch)){
+        let j=i+1;
+        while(j<text.length&&/[0-9.]/.test(text[j]))j++;
+        tokens.push({type:'number',value:Number(text.slice(i,j))});i=j;continue;
+      }
+      if(ch==='x'){tokens.push({type:'x'});i++;continue}
+      if('+-*/^()'.includes(ch)){tokens.push({type:ch});i++;continue}
+      return null;
+    }
+    return tokens;
+  }
+  function evaluateExpression(source,xValue){
+    const tokens=tokenizeExpression(source);
+    if(!tokens)return NaN;
+    let index=0;
+    const peek=()=>tokens[index];
+    const take=type=>peek()?.type===type?(index++,true):false;
+    const startsAtom=token=>token&&(token.type==='number'||token.type==='x'||token.type==='(');
+    function parseExpression(){
+      let value=parseTerm();
+      while(peek()?.type==='+'||peek()?.type==='-'){
+        const op=tokens[index++].type,next=parseTerm();
+        value=op==='+'?value+next:value-next;
+      }
+      return value;
+    }
+    function parseTerm(){
+      let value=parsePower();
+      while(peek()?.type==='*'||peek()?.type==='/'||startsAtom(peek())){
+        if(peek()?.type==='*'){index++;value*=parsePower();continue}
+        if(peek()?.type==='/'){index++;value/=parsePower();continue}
+        value*=parsePower();
+      }
+      return value;
+    }
+    function parsePower(){
+      let value=parseUnary();
+      if(take('^'))value=Math.pow(value,parsePower());
+      return value;
+    }
+    function parseUnary(){
+      if(take('+'))return parseUnary();
+      if(take('-'))return -parseUnary();
+      return parsePrimary();
+    }
+    function parsePrimary(){
+      const token=peek();
+      if(!token)return NaN;
+      if(token.type==='number'){index++;return token.value}
+      if(token.type==='x'){index++;return xValue}
+      if(take('(')){
+        const value=parseExpression();
+        if(!take(')'))return NaN;
+        return value;
+      }
+      return NaN;
+    }
+    const result=parseExpression();
+    return index===tokens.length?result:NaN;
+  }
+  function algebraicallyMatches(input,expected){
+    const samples=[-3,-2,-1,0,1,2,3,5];
+    return samples.every(x=>{
+      const a=evaluateExpression(input,x);
+      const b=evaluateExpression(expected,x);
+      return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-8;
+    });
+  }
+  function hasRequiredAnswerShape(value,kind){
+    const text=normalizeMathInput(value);
+    if(kind==='cross')return text.includes(')(');
+    if(kind==='square')return text.includes('(')&&(text.includes('^2')||text.includes(')('));
+    if(kind==='substitution')return text.includes(')(');
+    return true;
+  }
+  function matchesExpectedAnswer(value,item){
+    if(normalizeMathInput(value).length<2||!hasRequiredAnswerShape(value,item.kind))return false;
+    return item.accepted.some(answer=>normalizeMathInput(value)===normalizeMathInput(answer)||algebraicallyMatches(value,answer));
+  }
 
   const crossCanvas=document.getElementById('crossCanvas');
   const crossCtx=crossCanvas.getContext('2d');
@@ -563,6 +710,93 @@ document.addEventListener('DOMContentLoaded',()=>{
     typeset(feedback,answer);
   });
   renderPractice();
+
+  function makeTopicPractice(kind){
+    if(kind==='cross'){
+      const m=rand(1,4),p=rand(1,4),n=nonzero(-6,6),q=nonzero(-6,6);
+      const a=m*p,b=m*q+n*p,c=n*q;
+      const ans=`${factorPart(m,n)}${factorPart(p,q)}`;
+      const alt=`${factorPart(p,q)}${factorPart(m,n)}`;
+      return {
+        kind:'cross',
+        q:`$${firstTerm(a,'x^2')}${signTerm(b,'x')}${signTerm(c)}$`,
+        ans:`$${ans}$`,
+        accepted:[ans,alt],
+        hint:'先自己尝试写出两个括号，再检查交叉项。',
+        success:`交叉项正确：$${m}x\\cdot ${q}+${n}\\cdot ${p}x=${b}x$。`,
+        retry:'还不太对。提示：常数项和二次项都要匹配，交叉项也要合成一次项。'
+      };
+    }
+    if(kind==='square'){
+      const p=2*nonzero(-5,5),c=rand(-8,10),half=p/2,k=c-half*half;
+      const base=`(x${signTerm(half)})`;
+      const ans=`${base}^2${signTerm(k)}`;
+      return {
+        kind:'square',
+        q:`$${firstTerm(1,'x^2')}${signTerm(p,'x')}${signTerm(c)}$`,
+        ans:`$${ans}$`,
+        accepted:[ans,`${base}${base}${signTerm(k)}`],
+        hint:'先把一次项系数除以 2，再把平方补出来。',
+        success:`配方正确：一次项系数的一半是 $${half}$，常数剩下 $${k}$。`,
+        retry:'还不太对。提示：括号里应该是一次项系数的一半，括号外要减去补上的平方。'
+      };
+    }
+    const wholes=['x^2+x','x^2-2x','x+1','2x-1'];
+    const whole=wholes[rand(0,wholes.length-1)];
+    const r=rand(1,6),s=rand(1,6),middle=-(r+s),prod=r*s;
+    const finalAns=`(${whole}-${r})(${whole}-${s})`;
+    const finalAlt=`(${whole}-${s})(${whole}-${r})`;
+    return {
+      kind:'substitution',
+      q:`$(${whole})^2${signTerm(middle,`(${whole})`)}+${prod}$`,
+      ans:`令 $t=${whole}$，则 $t^2${signTerm(middle,'t')}+${prod}=(t-${r})(t-${s})$，所以原式为 $(${whole}-${r})(${whole}-${s})$。`,
+      accepted:[finalAns,finalAlt],
+      hint:'先不要展开，先圈出重复整体。',
+      success:`换元方向正确：重复整体是 $${whole}$，分解后要换回原变量。`,
+      retry:'还不太对。提示：先令重复整体为 t，分解出两个一次因式后再换回。'
+    };
+  }
+  document.querySelectorAll('[data-topic-practice]').forEach(panel=>{
+    const questionEl=panel.querySelector('[data-topic-question]');
+    const answerEl=panel.querySelector('[data-topic-answer]');
+    const feedbackEl=panel.querySelector('[data-topic-feedback]');
+    const toggle=panel.querySelector('[data-topic-answer-toggle]');
+    const input=panel.querySelector('[data-topic-input]');
+    const check=panel.querySelector('[data-topic-check]');
+    let item=null;
+    function renderTopic(){
+      item=makeTopicPractice(panel.dataset.topicPractice);
+      questionEl.innerHTML=item.q;
+      answerEl.innerHTML=`答案：${item.ans}`;
+      answerEl.classList.remove('show');
+      feedbackEl.className='feedback';
+      feedbackEl.textContent=item.hint;
+      input.value='';
+      toggle.textContent='显示答案';
+      toggle.setAttribute('aria-expanded','false');
+      typeset(questionEl,answerEl,feedbackEl);
+    }
+    panel.querySelector('[data-topic-new]').addEventListener('click',renderTopic);
+    check.addEventListener('click',()=>{
+      const value=normalizeMathInput(input.value);
+      if(!value){
+        feedbackEl.className='feedback bad';
+        feedbackEl.textContent='先写下你的尝试，再检查。';
+        return;
+      }
+      const correct=matchesExpectedAnswer(input.value,item);
+      feedbackEl.className=`feedback ${correct?'good':'bad'}`;
+      feedbackEl.innerHTML=correct?item.success:item.retry;
+      typeset(feedbackEl);
+    });
+    toggle.addEventListener('click',()=>{
+      const visible=answerEl.classList.toggle('show');
+      toggle.textContent=visible?'隐藏答案':'显示答案';
+      toggle.setAttribute('aria-expanded',String(visible));
+      if(visible)typeset(answerEl);
+    });
+    renderTopic();
+  });
 
   if(prefersReduced)document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
 });

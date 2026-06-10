@@ -18,7 +18,7 @@ window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$
   --bg:#f4f7fb;--surface:#fff;--surface-2:#f8fafc;--ink:#111827;--muted:#64748b;
   --line:#dbe4ef;--grid:#e7edf5;--a:#2563eb;--b:#0891b2;--mixed-a:#d97706;
   --mixed-b:#7c3aed;--negative:#dc2626;--success:#059669;--inactive:#94a3b8;
-  --shadow:0 16px 48px rgba(15,23,42,.08);--radius:8px;
+  --shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);--radius:14px;--radius-lg:22px;
   --font:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -28,7 +28,7 @@ window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$
     color-scheme:dark;--bg:#09111d;--surface:#111b29;--surface-2:#0d1725;--ink:#e8eef7;
     --muted:#9aa8ba;--line:#26364b;--grid:#1d2c40;--a:#60a5fa;--b:#22d3ee;
     --mixed-a:#fbbf24;--mixed-b:#c084fc;--negative:#fb7185;--success:#34d399;
-    --inactive:#64748b;--shadow:0 18px 54px rgba(0,0,0,.28);
+    --inactive:#64748b;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28);
   }
 }
 *{box-sizing:border-box}
@@ -38,49 +38,57 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line
 button,input{font:inherit}
 button{letter-spacing:0}
 a{color:inherit}
-.hero>*,.hero-summary,.summary-formulas,.article-copy>*,.lab-title,.lab-side,.prose,.review-prose{min-width:0}
+.hero>*,.hero-card,.chapter-brief,.stage-body,.formula-rich-card,.article-copy>*,.lab-title,.lab-side,.prose,.review-prose{min-width:0}
 p,h1,h2,h3,h4{overflow-wrap:anywhere}
 .topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px)}
 .topbar-inner{max-width:1180px;margin:auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto}
 .brand{color:var(--a);font-weight:800;text-decoration:none;margin-right:10px;white-space:nowrap}
-.nav-link{padding:6px 10px;color:var(--muted);font-size:.84rem;font-weight:700;text-decoration:none;white-space:nowrap}
-.nav-link:hover,.nav-link:focus-visible{color:var(--a);outline:2px solid color-mix(in srgb,var(--a) 28%,transparent);outline-offset:2px}
-.hero{max-width:1180px;margin:auto;padding:62px 22px 44px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);gap:42px;align-items:center}
-.eyebrow{color:var(--a);font-size:.78rem;font-weight:800;text-transform:uppercase;margin-bottom:14px}
+.nav-link{padding:5px 11px;color:var(--muted);font-size:.82rem;font-weight:800;text-decoration:none;white-space:nowrap;border:1px solid transparent;border-radius:999px}
+.nav-link:hover,.nav-link:focus-visible{color:var(--a);background:color-mix(in srgb,var(--a) 9%,transparent);border-color:color-mix(in srgb,var(--a) 18%,transparent);outline:0}
+.hero{max-width:1180px;margin:auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.96fr);gap:42px;align-items:center}
+.eyebrow{display:inline-flex;color:var(--a);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--a) 9%,transparent);border:1px solid color-mix(in srgb,var(--a) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
 h1{font-size:clamp(2.3rem,5vw,4.7rem);line-height:1.06;margin:0 0 18px}
 .lead{max-width:690px;color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.18rem);margin:0 0 24px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px}
-.btn,.tool-btn,.answer-btn{min-height:40px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);padding:8px 13px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn,.tool-btn,.answer-btn{min-height:40px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:8px 13px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
 .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn:hover,.tool-btn:hover,.answer-btn:hover{border-color:color-mix(in srgb,var(--a) 48%,var(--line));color:var(--a)}
 .btn:focus-visible,.tool-btn:focus-visible,.answer-btn:focus-visible,input:focus-visible,summary:focus-visible{
   outline:3px solid color-mix(in srgb,var(--a) 30%,transparent);outline-offset:2px
 }
-.hero-summary{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-.summary-formulas{display:grid;gap:10px;font-family:Georgia,"Times New Roman",serif;font-size:1.16rem;font-weight:700}
-.summary-formulas div{padding:10px 12px;border-left:3px solid var(--a);background:var(--surface-2);overflow-x:auto}
-.summary-formulas div:nth-child(2){border-color:var(--mixed-a)}
-.summary-formulas div:nth-child(3){border-color:var(--success)}
-.summary-note{margin:15px 0 0;color:var(--muted);font-size:.9rem}
-main{max-width:1180px;margin:auto;padding:0 22px 90px}
-.intro{padding:40px 0 22px;border-top:1px solid var(--line)}
-.intro h2,.section-head h2{font-size:clamp(1.55rem,2.7vw,2.45rem);line-height:1.2;margin:0 0 10px}
-.intro p,.section-head p{color:var(--muted);margin:0}
+.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}
+.chapter-brief{display:grid;gap:14px}
+.brief-head{border-bottom:1px solid var(--line);padding-bottom:14px}
+.brief-label{display:block;color:var(--muted);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.brief-formula{font-family:var(--mono);font-weight:900;font-size:clamp(1.1rem,2.1vw,1.55rem);line-height:1.35;color:var(--ink)}
+.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.brief-item{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:92px}
+.brief-item b{display:block;color:var(--a);font-size:.92rem;margin-bottom:6px}
+.brief-item p{color:var(--muted);font-size:.86rem;margin:0}
+.brief-path{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;font-weight:900}
+.brief-path span{display:inline-flex;align-items:center;gap:8px}.brief-path span:not(:last-child)::after{content:"→";color:var(--inactive)}
+main{max-width:1180px;margin:auto;padding:8px 22px 90px}
+.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent);scroll-margin-top:72px}
+.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}
+.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--a);margin-bottom:10px}
+.stage-kicker{color:var(--a);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.chapter-intro h2,.section-head h2{font-size:clamp(1.55rem,2.7vw,2.45rem);line-height:1.2;margin:0 0 10px}
+.chapter-intro p,.section-head p{color:var(--muted);margin:0}
 .prose{max-width:850px;color:var(--muted);font-size:1rem}
 .prose p{margin:0 0 14px}
 .prose strong{color:var(--ink)}
 .reading-path{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 .path-step{border-top:3px solid var(--line);padding:12px 2px 0;color:var(--muted);font-size:.9rem}
 .path-step b{display:block;color:var(--ink);margin-bottom:4px}
-.identity-list{display:grid;gap:28px;margin-top:22px}
-.identity-lab{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:76px}
-.lab-head{padding:20px 20px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.formula-card-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:20px}
+.formula-rich-card{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);overflow:hidden;display:grid;gap:0;scroll-margin-top:76px}
+.formula-rich-head{padding:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
 .lab-title{min-width:0}
 .lab-index{color:var(--a);font-size:.76rem;font-weight:800;text-transform:uppercase}
 .lab-title h3{font-size:1.28rem;margin:3px 0 4px}
 .lab-title p{color:var(--muted);margin:0;font-size:.94rem}
 .formula-badge{flex:0 0 auto;padding:9px 12px;border:1px solid var(--line);background:var(--surface-2);border-radius:var(--radius);font-family:Georgia,"Times New Roman",serif;font-weight:700;white-space:nowrap}
-.article-copy{padding:22px 20px 24px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);gap:28px;border-bottom:1px solid var(--line)}
+.article-copy{padding:18px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);gap:18px;border-bottom:1px solid var(--line)}
 .article-copy h4{font-size:1.16rem;margin:0 0 10px;color:var(--ink)}
 .article-copy p{color:var(--muted);margin:0 0 12px}
 .derivation{display:grid;gap:8px;align-content:start}
@@ -89,7 +97,7 @@ main{max-width:1180px;margin:auto;padding:0 22px 90px}
 .derivation-note{color:var(--muted);font-size:.86rem}
 .transition-copy{max-width:850px;margin:4px auto 0;padding:10px 0 4px;color:var(--muted)}
 .transition-copy b{color:var(--ink)}
-.parameter-bar{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface-2);align-items:end}
+.parameter-bar{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--surface-2);align-items:end}
 .range-control{display:grid;gap:6px}
 .range-control label{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.84rem;font-weight:700}
 .range-control output{color:var(--ink);font-family:var(--mono)}
@@ -112,6 +120,8 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
 .scene-chip.b{color:var(--b);border-color:color-mix(in srgb,var(--b) 35%,var(--line))}
 .scene-chip.negative{color:var(--negative);border-style:dashed}
 .scene-hint{position:absolute;right:12px;bottom:12px;z-index:3;color:var(--muted);font-size:.76rem;font-weight:700;background:color-mix(in srgb,var(--surface) 90%,transparent);padding:5px 8px;border:1px solid var(--line);border-radius:6px;pointer-events:none}
+.assembly-status{border-left:3px solid var(--a);padding:10px 12px;background:color-mix(in srgb,var(--a) 7%,var(--surface));color:var(--muted);font-size:.88rem}
+.assembly-status b{color:var(--a)}
 .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center}
 .fallback-diagram{max-width:560px;color:var(--muted)}
 .fallback-diagram strong{display:block;color:var(--ink);font-size:1.2rem;margin-bottom:10px}
@@ -129,19 +139,24 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
 .numeric-check{border-left:3px solid var(--success);padding:10px 12px;background:color-mix(in srgb,var(--success) 7%,var(--surface));color:var(--muted);font-size:.88rem}
 .numeric-check b{color:var(--success)}
 .tool-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.tool-row.binomial-controls{grid-template-columns:repeat(4,1fr)}
 .tool-btn{min-width:0;padding:7px;font-size:.82rem}
 .tool-btn[disabled]{cursor:not-allowed;opacity:.42;color:var(--muted)}
 .tool-btn[aria-pressed="true"]{color:var(--a);border-color:var(--a);background:color-mix(in srgb,var(--a) 8%,var(--surface))}
 .legend{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.legend-item{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.79rem}
+.legend-item{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.79rem;border:1px solid transparent;border-radius:6px;padding:2px 4px}
+.legend-item[data-focus-term]{cursor:pointer}
+.legend-item[data-focus-term]:hover,.legend-item[data-focus-term]:focus-visible{outline:0;color:var(--a);border-color:color-mix(in srgb,var(--a) 30%,var(--line));background:color-mix(in srgb,var(--a) 7%,var(--surface))}
+.legend-item.active{color:var(--success);border-color:color-mix(in srgb,var(--success) 36%,var(--line));background:color-mix(in srgb,var(--success) 8%,var(--surface))}
+.legend-item.inactive{opacity:.5;cursor:default}
 .swatch{width:14px;height:14px;border-radius:3px;border:1px solid color-mix(in srgb,var(--ink) 18%,var(--line));flex:0 0 auto}
 .swatch.a{background:var(--a)}.swatch.b{background:var(--b)}.swatch.mixed-a{background:var(--mixed-a)}
 .swatch.mixed-b{background:var(--mixed-b)}.swatch.negative{background:var(--negative)}.swatch.success{background:var(--success)}
-.learning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 20px;border-top:1px solid var(--line);background:var(--surface-2)}
-.learning-item{font-size:.88rem;color:var(--muted)}
-.learning-item b{display:block;color:var(--ink);margin-bottom:3px}
-.mini-practice{border-top:1px solid var(--line);padding:14px 20px}
-.mini-practice summary{cursor:pointer;color:var(--a);font-weight:800}
+.formula-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 18px;border-top:1px solid var(--line);background:var(--surface-2)}
+.formula-meta div{font-size:.88rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.formula-meta b{display:block;color:var(--ink);margin-bottom:3px}
+.mini-exercise{border-top:1px solid var(--line);padding:14px 18px}
+.mini-exercise summary{cursor:pointer;color:var(--a);font-weight:800}
 .practice-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;margin-top:12px}
 .practice-question,.practice-answer{padding:10px 12px;border:1px solid var(--line);background:var(--surface-2);border-radius:var(--radius);font-family:var(--mono);font-weight:700}
 .practice-answer{grid-column:1/-1;display:none;color:var(--success)}
@@ -157,19 +172,22 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
 .footer{border-top:1px solid var(--line);padding:30px 22px;color:var(--muted);text-align:center;font-size:.84rem}
 .noscript{max-width:1180px;margin:12px auto;padding:12px 22px;color:var(--negative);font-weight:700}
 @media(max-width:900px){
-  .hero,.lab-main,.article-copy{grid-template-columns:1fr}
+  .hero,.stage,.lab-main,.article-copy{grid-template-columns:1fr}
+  .stage-marker{position:static;display:flex;align-items:center;gap:10px}
+  .stage-marker span{margin-bottom:0}
   .scene-wrap{border-right:0;border-bottom:1px solid var(--line)}
-  .learning-grid,.review-grid,.reading-path{grid-template-columns:1fr}
+  .formula-meta,.review-grid,.reading-path{grid-template-columns:1fr}
 }
 @media(max-width:620px){
-  .hero{padding-top:40px}.hero-summary{padding:15px}
-  .lab-head{display:grid}.formula-badge{white-space:normal}
+  .hero{padding-top:40px}.hero-card,.formula-rich-card{padding:14px}
+  .brief-grid{grid-template-columns:1fr}.brief-item{min-height:auto}
+  .formula-rich-head{display:grid}.formula-badge{white-space:normal}
   .parameter-bar{grid-template-columns:1fr}.constraint{grid-column:auto}
   .scene-wrap,.lab-main{min-height:360px}.scene-wrap{height:360px}
   .tool-row{grid-template-columns:repeat(3,1fr)}
   .legend{grid-template-columns:1fr 1fr}
   .practice-body{grid-template-columns:1fr}.practice-actions{justify-content:flex-start}
-  .learning-grid{padding:14px}.mini-practice{padding:14px}
+  .formula-meta{padding:14px}.mini-exercise{padding:14px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -194,25 +212,42 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
     <h1>立方相关公式</h1>
     <p class="lead">平方公式可以用面积解释，立方公式则把同样的结构提升到了体积。我们将从一个完整立方体的拆分出发，再讨论两个立方相加或相减时，怎样把加法结构重新写成乘法结构。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#binomial">开始探索</a>
+      <a class="btn primary" href="#formula">开始探索</a>
       <a class="btn" href="../chapter_02-1_完全平方与平方差公式/">上一节</a>
       <a class="btn" href="../index.html">返回目录</a>
     </div>
   </div>
-  <div class="hero-summary" aria-label="本节三个核心公式">
-    <div class="summary-formulas">
-      <div>$(a+b)^3=a^3+3a^2b+3ab^2+b^3$</div>
-      <div>$a^3+b^3=(a+b)(a^2-ab+b^2)$</div>
-      <div>$a^3-b^3=(a-b)(a^2+ab+b^2)$</div>
+  <div class="hero-card reveal" aria-label="本节摘要">
+    <div class="chapter-brief">
+      <div class="brief-head">
+        <span class="brief-label">Core Transformation</span>
+        <div class="brief-formula">$(a+b)^3,\ a^3+b^3,\ a^3-b^3$</div>
+      </div>
+      <div class="brief-grid">
+        <div class="brief-item"><b>先拆误解</b><p>$(a+b)^3$ 不是 $a^3+b^3$，因为它是三个整体相乘。</p></div>
+        <div class="brief-item"><b>看见体积</b><p>用 8 个体块解释 $1,3,3,1$ 的来源。</p></div>
+        <div class="brief-item"><b>制造因子</b><p>立方和通过补项与抵消看见共同因子 $a+b$。</p></div>
+        <div class="brief-item"><b>看见切割</b><p>立方差通过移除后剩余体看见共同厚度 $a-b$。</p></div>
+      </div>
+      <div class="brief-path">
+        <span>问题</span>
+        <span>误解</span>
+        <span>体积结构</span>
+        <span>公式</span>
+        <span>练习</span>
+      </div>
     </div>
-    <p class="summary-note">三个式子都含有三次方，但变形方向并不相同：第一个从乘积走向多项式，后两个从多项式回到乘积。</p>
   </div>
 </header>
 
 <noscript><div class="noscript">当前浏览器禁用了 JavaScript。页面仍保留公式和静态说明，但参数探索与 3D 分步演示不可用。</div></noscript>
 
 <main>
-  <section class="intro">
+  <section class="stage" id="formula">
+    <aside class="stage-marker"><span>1</span>Formula</aside>
+    <div class="stage-body reveal">
+      <div class="stage-kicker">从误解进入结构</div>
+      <div class="chapter-intro">
     <h2>立方公式研究的是两种相反的变形。</h2>
     <div class="prose">
       <p>在上一节中，我们已经看到：展开会把一个乘法结构拆成若干项，而因式分解会把若干项重新组织成乘积。到了三次式，这两个方向仍然存在，只是项的数量和图形结构都更复杂。</p>
@@ -224,11 +259,11 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
       <div class="path-step"><b>第二步：找因子</b>通过补项与抵消，让立方和出现共同因子。</div>
       <div class="path-step"><b>第三步：看切割</b>从立方差的剩余体中找出共同厚度。</div>
     </div>
-  </section>
+      </div>
 
-  <div class="identity-list">
-    <article class="identity-lab" id="binomial" data-lab="binomial" data-a="3" data-b="1">
-      <header class="lab-head">
+  <div class="formula-card-grid">
+    <article class="formula-rich-card identity-lab" id="binomial" data-lab="binomial" data-a="3" data-b="1">
+      <header class="formula-rich-head">
         <div class="lab-title">
           <div class="lab-index">01 · Volume Expansion</div>
           <h3>二项式立方</h3>
@@ -263,7 +298,7 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
         <div class="scene-wrap">
           <div class="scene-host" data-scene aria-label="二项式立方三维分解图，可拖动旋转"></div>
           <div class="scene-overlay" data-labels></div>
-          <div class="scene-hint">拖动画布旋转</div>
+          <div class="scene-hint">拖动体块到右侧槽位；空白处拖动可旋转</div>
           <div class="fallback" data-fallback>
             <div class="fallback-diagram"><strong>静态体积分解</strong><div class="fallback-row"><span class="fallback-block">$a^3$</span><span>+</span><span class="fallback-block">$3a^2b$</span><span>+</span><span class="fallback-block b">$3ab^2$</span><span>+</span><span class="fallback-block b">$b^3$</span></div><p>三个方向分别选择长度 $a$ 或 $b$，形成 8 个体块。</p></div>
           </div>
@@ -274,27 +309,27 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
           <div class="step-formula" data-step-formula>$(a+b)^3$</div>
           <div class="step-copy" data-step-copy aria-live="polite"></div>
           <div class="numeric-check" data-check></div>
-          <div class="tool-row">
-            <button class="tool-btn" type="button" data-action="prev" title="上一步" aria-label="上一步">←</button>
-            <button class="tool-btn" type="button" data-action="next" title="下一步" aria-label="下一步">→</button>
-            <button class="tool-btn" type="button" data-action="play" aria-pressed="false">播放</button>
+          <div class="assembly-status" data-assembly-status hidden></div>
+          <div class="tool-row binomial-controls">
+            <button class="tool-btn" type="button" data-action="whole">整体</button>
+            <button class="tool-btn" type="button" data-action="split">分割</button>
             <button class="tool-btn" type="button" data-action="reset">重置</button>
             <button class="tool-btn" type="button" data-action="labels" aria-pressed="true">标签</button>
           </div>
           <div class="legend">
-            <div class="legend-item"><i class="swatch a"></i>$a^3$</div>
-            <div class="legend-item"><i class="swatch mixed-a"></i>$a^2b$</div>
-            <div class="legend-item"><i class="swatch mixed-b"></i>$ab^2$</div>
-            <div class="legend-item"><i class="swatch b"></i>$b^3$</div>
+            <div class="legend-item" data-focus-term="a3" tabindex="0"><i class="swatch a"></i>$a^3$</div>
+            <div class="legend-item" data-focus-term="a2b" tabindex="0"><i class="swatch mixed-a"></i>$a^2b$</div>
+            <div class="legend-item" data-focus-term="ab2" tabindex="0"><i class="swatch mixed-b"></i>$ab^2$</div>
+            <div class="legend-item" data-focus-term="b3" tabindex="0"><i class="swatch b"></i>$b^3$</div>
           </div>
         </div>
       </div>
-      <div class="learning-grid">
+      <div class="formula-meta">
         <div class="learning-item"><b>什么时候用</b>展开二项式的三次方。</div>
         <div class="learning-item"><b>核心观察</b>两个中间项各有三种方向组合。</div>
         <div class="learning-item"><b>常见错误</b>不要漏掉 $3a^2b$ 或 $3ab^2$。</div>
       </div>
-      <details class="mini-practice" data-practice="binomial">
+      <details class="mini-exercise" data-practice="binomial">
         <summary>小练习：展开一个二项式立方</summary>
         <div class="practice-body"><div class="practice-question" data-question></div><div class="practice-actions"><button class="answer-btn" type="button" data-new-question>换题</button><button class="answer-btn" type="button" data-toggle-answer aria-expanded="false">显示答案</button></div><div class="practice-answer" data-answer></div></div>
       </details>
@@ -302,8 +337,8 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
 
     <div class="transition-copy"><b>从展开转向分解。</b> 上一部分从一个整体乘积出发，把它拆成四项。接下来方向相反：面对已经相加的两个立方，我们要主动制造共同因子，把加法结构重新组织成乘法结构。</div>
 
-    <article class="identity-lab" id="sum" data-lab="sum" data-a="3" data-b="1">
-      <header class="lab-head">
+    <article class="formula-rich-card identity-lab" id="sum" data-lab="sum" data-a="3" data-b="1">
+      <header class="formula-rich-head">
         <div class="lab-title">
           <div class="lab-index">02 · Signed Factor Structure</div>
           <h3>立方和公式</h3>
@@ -355,19 +390,19 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
             <button class="tool-btn" type="button" data-action="labels" aria-pressed="true">标签</button>
           </div>
           <div class="legend">
-            <div class="legend-item"><i class="swatch a"></i>正项 $a^2$</div>
-            <div class="legend-item"><i class="swatch negative"></i>负项 $-ab$</div>
-            <div class="legend-item"><i class="swatch b"></i>正项 $b^2$</div>
-            <div class="legend-item"><i class="swatch mixed-a"></i>共同长度</div>
+            <div class="legend-item" data-focus-term="sum-a2" tabindex="0"><i class="swatch a"></i>正项 $a^2$</div>
+            <div class="legend-item" data-focus-term="sum-neg-ab" tabindex="0"><i class="swatch negative"></i>负项 $-ab$</div>
+            <div class="legend-item" data-focus-term="sum-b2" tabindex="0"><i class="swatch b"></i>正项 $b^2$</div>
+            <div class="legend-item" data-focus-term="all" tabindex="0"><i class="swatch mixed-a"></i>共同长度</div>
           </div>
         </div>
       </div>
-      <div class="learning-grid">
+      <div class="formula-meta">
         <div class="learning-item"><b>什么时候用</b>分解两个立方的和。</div>
         <div class="learning-item"><b>核心观察</b>三个有符号体积都有共同长度 $a+b$。</div>
         <div class="learning-item"><b>常见错误</b>二次因子中间项是 $-ab$。</div>
       </div>
-      <details class="mini-practice" data-practice="sum">
+      <details class="mini-exercise" data-practice="sum">
         <summary>小练习：分解一个立方和</summary>
         <div class="practice-body"><div class="practice-question" data-question></div><div class="practice-actions"><button class="answer-btn" type="button" data-new-question>换题</button><button class="answer-btn" type="button" data-toggle-answer aria-expanded="false">显示答案</button></div><div class="practice-answer" data-answer></div></div>
       </details>
@@ -375,8 +410,8 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
 
     <div class="transition-copy"><b>立方差为什么更直观？</b> 立方和需要借助补项来制造共同因子，而立方差可以直接从几何切割中看见共同长度。把一个小立方体从大立方体的角落拿走，剩余部分能够切成三块厚度相同的长方体。</div>
 
-    <article class="identity-lab" id="difference" data-lab="difference" data-a="3" data-b="1">
-      <header class="lab-head">
+    <article class="formula-rich-card identity-lab" id="difference" data-lab="difference" data-a="3" data-b="1">
+      <header class="formula-rich-head">
         <div class="lab-title">
           <div class="lab-index">03 · Cut And Factor</div>
           <h3>立方差公式</h3>
@@ -428,26 +463,30 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
             <button class="tool-btn" type="button" data-action="labels" aria-pressed="true">标签</button>
           </div>
           <div class="legend">
-            <div class="legend-item"><i class="swatch a"></i>大立方体</div>
-            <div class="legend-item"><i class="swatch negative"></i>移除 $b^3$</div>
-            <div class="legend-item"><i class="swatch success"></i>共同厚度</div>
-            <div class="legend-item"><i class="swatch mixed-a"></i>混合底面</div>
+            <div class="legend-item" data-focus-term="diff-a2" tabindex="0"><i class="swatch a"></i>大立方体</div>
+            <div class="legend-item" data-focus-term="removed" tabindex="0"><i class="swatch negative"></i>移除 $b^3$</div>
+            <div class="legend-item" data-focus-term="all" tabindex="0"><i class="swatch success"></i>共同厚度</div>
+            <div class="legend-item" data-focus-term="diff-ab" tabindex="0"><i class="swatch mixed-a"></i>混合底面</div>
           </div>
         </div>
       </div>
-      <div class="learning-grid">
+      <div class="formula-meta">
         <div class="learning-item"><b>什么时候用</b>分解两个立方的差。</div>
         <div class="learning-item"><b>核心观察</b>剩余三块共同厚度都是 $a-b$。</div>
         <div class="learning-item"><b>常见错误</b>二次因子三项全正。</div>
       </div>
-      <details class="mini-practice" data-practice="difference">
+      <details class="mini-exercise" data-practice="difference">
         <summary>小练习：分解一个立方差</summary>
         <div class="practice-body"><div class="practice-question" data-question></div><div class="practice-actions"><button class="answer-btn" type="button" data-new-question>换题</button><button class="answer-btn" type="button" data-toggle-answer aria-expanded="false">显示答案</button></div><div class="practice-answer" data-answer></div></div>
       </details>
     </article>
   </div>
+    </div>
+  </section>
 
-  <section class="review" id="review">
+  <section class="stage review" id="review">
+    <aside class="stage-marker"><span>2</span>Review</aside>
+    <div class="stage-body reveal">
     <div class="section-head">
       <h2>把三个公式放回同一条逻辑主线。</h2>
       <p>公式的形式不同，但判断方法始终是先看当前结构，再决定变形方向。</p>
@@ -462,6 +501,7 @@ input[type="range"]{width:100%;accent-color:var(--mixed-a);cursor:pointer}
       <div class="review-card"><b>$a^3+b^3$</b><p>一次因子同号，二次因子的中间项异号。</p></div>
       <div class="review-card"><b>$a^3-b^3$</b><p>一次因子同号，二次因子三项全正。</p></div>
     </div>
+    </div>
   </section>
 </main>
 
@@ -474,10 +514,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   const STEP_DATA={
     binomial:[
       ['完整立方体','$(a+b)^3$','边长为 $a+b$ 的完整立方体。先把它看成一个整体。'],
-      ['显示切割','$(a+b)^3$','三个方向都按 $a$ 与 $b$ 分段，8 个体块的边界同时出现。'],
-      ['分离体块','$a^3+3a^2b+3ab^2+b^3$','8 个体块分开：一个 $a^3$，三个 $a^2b$，三个 $ab^2$，一个 $b^3$。'],
-      ['同类分组','$1\\cdot a^3+3\\cdot a^2b+3\\cdot ab^2+1\\cdot b^3$','按体积类型重新排队，系数 $1,3,3,1$ 来自体块数量。'],
-      ['恒等验证','$(a+b)^3=a^3+3a^2b+3ab^2+b^3$','重新合拢后总体积不变，图形分解与代数展开完全对应。']
+      ['分割并组装','$a^3+a^2b+a^2b+a^2b+ab^2+ab^2+ab^2+b^3$','先看清每块的三条边分别是 $a$ 还是 $b$，再把体块拖到右侧对应槽位。'],
+      ['同类分组','$1\\cdot a^3+3\\cdot a^2b+3\\cdot ab^2+1\\cdot b^3$','拖拽完成后，同类体块按 $1,3,3,1$ 排列，系数来自体块数量。'],
+      ['公式对照','$(a+b)^3=a^3+3a^2b+3ab^2+b^3$','重新把体积分组与公式逐项对应：每一项都来自确定的长、宽、高。']
     ],
     sum:[
       ['两个立方体','$a^3+b^3$','左边只是两个独立正立方体的体积之和。'],
@@ -508,18 +547,26 @@ document.addEventListener('DOMContentLoaded',()=>{
       child.geometry?.dispose();
       if(child.material){
         const materials=Array.isArray(child.material)?child.material:[child.material];
-        materials.forEach(material=>material.dispose());
+        materials.forEach(material=>{material.map?.dispose();material.dispose()});
       }
     });
   }
   function makeMaterial(THREE,color,opacity=.9,wireframe=false){
     return new THREE.MeshStandardMaterial({color,roughness:.62,metalness:.02,transparent:opacity<1,opacity,wireframe});
   }
-  function addBox(THREE,group,{size,position=[0,0,0],color,opacity=.9,dashed=false,name=''}) {
+  function addBox(THREE,group,{size,position=[0,0,0],color,opacity=.9,dashed=false,name='',meta={}}) {
     const geometry=new THREE.BoxGeometry(...size);
     const mesh=new THREE.Mesh(geometry,makeMaterial(THREE,color,opacity,false));
     mesh.position.set(...position);
     mesh.name=name;
+    mesh.userData={
+      id:meta.id||name,
+      term:meta.term||name,
+      group:meta.group||meta.term||name,
+      dimensions:meta.dimensions||size,
+      label:meta.label||name,
+      mathMeaning:meta.mathMeaning||''
+    };
     group.add(mesh);
     const edgeGeometry=new THREE.EdgesGeometry(geometry);
     const edgeMaterial=dashed
@@ -527,9 +574,37 @@ document.addEventListener('DOMContentLoaded',()=>{
       :new THREE.LineBasicMaterial({color:COLORS.edge,transparent:true,opacity:.58});
     const edges=new THREE.LineSegments(edgeGeometry,edgeMaterial);
     edges.position.copy(mesh.position);
+    edges.userData={...mesh.userData,role:'edge'};
+    mesh.userData.edgeRef=edges;
     if(dashed)edges.computeLineDistances();
     group.add(edges);
     return mesh;
+  }
+  function addTextSprite(THREE,group,text,position,color='#111827',scale=.42){
+    const canvas=document.createElement('canvas');
+    canvas.width=256;canvas.height=96;
+    const context=canvas.getContext('2d');
+    context.clearRect(0,0,canvas.width,canvas.height);
+    context.fillStyle='rgba(255,255,255,.92)';
+    context.strokeStyle='rgba(148,163,184,.9)';
+    context.lineWidth=4;
+    context.beginPath();
+    if(context.roundRect)context.roundRect(10,14,236,68,16);
+    else context.rect(10,14,236,68);
+    context.fill();context.stroke();
+    context.fillStyle=color;
+    context.font='700 28px "Noto Sans SC", Arial, sans-serif';
+    context.textAlign='center';context.textBaseline='middle';
+    context.fillText(text,128,48);
+    const texture=new THREE.CanvasTexture(canvas);
+    texture.needsUpdate=true;
+    const material=new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false});
+    const sprite=new THREE.Sprite(material);
+    sprite.position.set(...position);
+    sprite.scale.set(scale*2.25,scale*.84,1);
+    sprite.userData={role:'label',text};
+    group.add(sprite);
+    return sprite;
   }
   function scaled(value,max,span=3){return Math.max(.22,value/max*span)}
 
@@ -539,7 +614,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       this.type=root.dataset.lab;
       this.defaults={a:Number(root.dataset.a),b:Number(root.dataset.b)};
       this.a=this.defaults.a;this.b=this.defaults.b;this.step=0;
-      this.playing=false;this.labelsVisible=true;this.timers=[];
+      this.playing=false;this.labelsVisible=true;this.focusTerm='all';this.timers=[];
+      this.assembly=new Map();this.draggableObjects=[];this.dragPiece=null;this.dragOffset=null;this.dragPlane=null;
       this.host=root.querySelector('[data-scene]');
       this.fallback=root.querySelector('[data-fallback]');
       this.labels=root.querySelector('[data-labels]');
@@ -548,6 +624,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       this.stepFormula=root.querySelector('[data-step-formula]');
       this.stepCopy=root.querySelector('[data-step-copy]');
       this.check=root.querySelector('[data-check]');
+      this.assemblyStatus=root.querySelector('[data-assembly-status]');
       this.constraint=root.querySelector('[data-constraint]');
       this.aInput=root.querySelector('[data-param="a"]');
       this.bInput=root.querySelector('[data-param="b"]');
@@ -557,6 +634,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       this.steps=STEP_DATA[this.type];
       this.setupProgress();
       this.bind();
+      this.bindLegendFocus();
       this.setupThree();
       this.update(true);
     }
@@ -568,12 +646,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     bind(){
       this.aInput.addEventListener('input',()=>this.setParam('a',Number(this.aInput.value)));
       this.bInput.addEventListener('input',()=>this.setParam('b',Number(this.bInput.value)));
-      this.buttons.prev.addEventListener('click',()=>this.setStep(this.step-1));
-      this.buttons.next.addEventListener('click',()=>this.setStep(this.step+1));
-      this.buttons.play.addEventListener('click',()=>this.playing?this.pause():this.play());
-      this.buttons.reset.addEventListener('click',()=>this.resetView());
-      this.buttons.labels.addEventListener('click',()=>this.toggleLabels());
-      this.buttons['reset-params'].addEventListener('click',()=>this.resetParams());
+      if(this.type==='binomial'){
+        this.buttons.whole?.addEventListener('click',()=>{this.pause();this.step=0;this.resetAssembly();this.update()});
+        this.buttons.split?.addEventListener('click',()=>{this.pause();this.step=1;this.resetAssembly();this.update()});
+      }else{
+        this.buttons.prev?.addEventListener('click',()=>this.setStep(this.step-1));
+        this.buttons.next?.addEventListener('click',()=>this.setStep(this.step+1));
+        this.buttons.play?.addEventListener('click',()=>this.playing?this.pause():this.play());
+      }
+      this.buttons.reset?.addEventListener('click',()=>this.resetView());
+      this.buttons.labels?.addEventListener('click',()=>this.toggleLabels());
+      this.buttons['reset-params']?.addEventListener('click',()=>this.resetParams());
     }
     setupThree(){
       if(!window.THREE){this.setEngineState(false);return}
@@ -592,6 +675,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         const key=new THREE.DirectionalLight(0xffffff,1.15);key.position.set(5,7,6);this.scene.add(key);
         const fill=new THREE.DirectionalLight(0xffffff,.35);fill.position.set(-4,2,-3);this.scene.add(fill);
         this.model=new THREE.Group();this.model.rotation.set(-.35,.62,0);this.scene.add(this.model);
+        this.raycaster=new THREE.Raycaster();
+        this.pointer=new THREE.Vector2();
+        this.dragPlane=new THREE.Plane(new THREE.Vector3(0,0,1),0);
         this.visible=true;this.needsRender=true;this.dragging=false;
         this.bindSceneInteraction();
         this.resizeObserver=new ResizeObserver(()=>this.resize());
@@ -607,7 +693,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     setEngineState(ready){
       this.ready=ready;
       this.fallback.hidden=ready;
-      ['prev','next','play','reset','labels'].forEach(key=>{this.buttons[key].disabled=!ready});
+      ['prev','next','play','whole','split','reset','labels'].forEach(key=>{if(this.buttons[key])this.buttons[key].disabled=!ready});
       if(!ready){
         this.stepCopy.innerHTML='3D 引擎未加载，当前显示正确的静态公式图解。参数仍可用于数值验证。';
         this.root.dataset.engine='fallback';
@@ -615,18 +701,56 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     bindSceneInteraction(){
       let last={x:0,y:0};
+      const setPointer=event=>{
+        const rect=this.renderer.domElement.getBoundingClientRect();
+        this.pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
+        this.pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
+      };
+      const intersectDragPlane=event=>{
+        setPointer(event);
+        this.raycaster.setFromCamera(this.pointer,this.camera);
+        const point=new this.THREE.Vector3();
+        return this.raycaster.ray.intersectPlane(this.dragPlane,point)?this.model.worldToLocal(point.clone()):null;
+      };
       this.host.addEventListener('pointerdown',event=>{
+        setPointer(event);
+        if(this.type==='binomial'&&this.step>0){
+          this.raycaster.setFromCamera(this.pointer,this.camera);
+          const hit=this.raycaster.intersectObjects(this.draggableObjects,false)[0];
+          if(hit?.object){
+            this.dragPiece=hit.object;
+            const normal=new this.THREE.Vector3();
+            this.camera.getWorldDirection(normal).negate();
+            this.dragPlane.setFromNormalAndCoplanarPoint(normal,hit.point);
+            const localPoint=this.model.worldToLocal(hit.point.clone());
+            this.dragOffset=this.dragPiece.position.clone().sub(localPoint);
+            this.dragging=false;
+            this.host.classList.add('dragging');this.host.setPointerCapture?.(event.pointerId);
+            return;
+          }
+        }
         this.dragging=true;last={x:event.clientX,y:event.clientY};
         this.host.classList.add('dragging');this.host.setPointerCapture?.(event.pointerId);
       });
       this.host.addEventListener('pointermove',event=>{
+        if(this.dragPiece){
+          const point=intersectDragPlane(event);
+          if(point){
+            this.movePiece(this.dragPiece,point.add(this.dragOffset));
+            this.needsRender=true;
+          }
+          return;
+        }
         if(!this.dragging)return;
         const dx=event.clientX-last.x,dy=event.clientY-last.y;last={x:event.clientX,y:event.clientY};
         this.model.rotation.y+=dx*.009;
         this.model.rotation.x=Math.max(-1.05,Math.min(.45,this.model.rotation.x+dy*.008));
         this.needsRender=true;
       });
-      const stop=event=>{this.dragging=false;this.host.classList.remove('dragging');this.host.releasePointerCapture?.(event.pointerId)};
+      const stop=event=>{
+        if(this.dragPiece)this.finishPieceDrag(this.dragPiece);
+        this.dragPiece=null;this.dragging=false;this.host.classList.remove('dragging');this.host.releasePointerCapture?.(event.pointerId)
+      };
       this.host.addEventListener('pointerup',stop);
       this.host.addEventListener('pointercancel',stop);
     }
@@ -666,26 +790,30 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
       }
       if(key==='a')this.a=value;else this.b=value;
-      this.step=0;this.update();
+      this.step=0;this.focusTerm='all';this.resetAssembly();this.update();
     }
     resetParams(){
-      this.pause();this.a=this.defaults.a;this.b=this.defaults.b;this.step=0;
+      this.pause();this.a=this.defaults.a;this.b=this.defaults.b;this.step=0;this.focusTerm='all';this.resetAssembly();
       this.aInput.value=String(this.a);this.bInput.value=String(this.b);this.constraint.textContent='';
       this.update();
     }
     resetView(){
-      this.pause();this.a=this.defaults.a;this.b=this.defaults.b;this.step=0;
+      this.pause();this.a=this.defaults.a;this.b=this.defaults.b;this.step=0;this.resetAssembly();
       this.aInput.value=String(this.a);this.bInput.value=String(this.b);this.constraint.textContent='';
       if(this.model)this.model.rotation.set(-.35,.62,0);
+      this.focusTerm='all';
       this.update();
     }
     setStep(next){
-      this.pause();this.step=Math.max(0,Math.min(this.steps.length-1,next));this.update();
+      this.pause();this.step=Math.max(0,Math.min(this.steps.length-1,next));this.focusTerm='all';
+      if(this.type==='binomial'&&this.step<2)this.resetAssembly();
+      this.update();
     }
     play(){
       if(!this.ready)return;
       if(this.step>=this.steps.length-1)this.step=0;
-      this.playing=true;this.buttons.play.textContent='暂停';this.buttons.play.setAttribute('aria-pressed','true');
+      this.playing=true;
+      if(this.buttons.play){this.buttons.play.textContent='暂停';this.buttons.play.setAttribute('aria-pressed','true')}
       const advance=()=>{
         if(!this.playing)return;
         this.update();
@@ -696,7 +824,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     pause(){
       this.playing=false;this.timers.forEach(clearTimeout);this.timers=[];
-      this.buttons.play.textContent='播放';this.buttons.play.setAttribute('aria-pressed','false');
+      if(this.buttons.play){this.buttons.play.textContent='播放';this.buttons.play.setAttribute('aria-pressed','false')}
     }
     toggleLabels(){
       this.labelsVisible=!this.labelsVisible;
@@ -714,13 +842,74 @@ document.addEventListener('DOMContentLoaded',()=>{
       const [name,formula,copy]=this.steps[this.step];
       this.stepName.textContent=`步骤 ${this.step+1}/${this.steps.length} · ${name}`;
       this.stepFormula.innerHTML=formula;this.stepCopy.innerHTML=copy;
-      this.buttons.prev.disabled=!this.ready||this.step===0;
-      this.buttons.next.disabled=!this.ready||this.step===this.steps.length-1;
+      if(this.buttons.prev)this.buttons.prev.disabled=!this.ready||this.step===0;
+      if(this.buttons.next)this.buttons.next.disabled=!this.ready||this.step===this.steps.length-1;
+      if(this.buttons.whole)this.buttons.whole.setAttribute('aria-pressed',String(this.step===0));
+      if(this.buttons.split)this.buttons.split.setAttribute('aria-pressed',String(this.step>0));
+      this.updateAssemblyStatus();
       this.updateCheck();
       this.updateLabels();
+      this.updateLegendFocus();
       if(this.ready)this.buildScene();
-      typeset(this.stepFormula,this.stepCopy,this.check,this.labels);
+      typeset(this.stepFormula,this.stepCopy,this.check,this.labels,this.assemblyStatus);
       if(initial&&!this.ready)this.setEngineState(false);
+    }
+    resetAssembly(){
+      this.assembly.clear();this.dragPiece=null;this.dragOffset=null;
+    }
+    updateAssemblyStatus(){
+      if(!this.assemblyStatus)return;
+      if(this.type!=='binomial'||this.step===0){this.assemblyStatus.hidden=true;return}
+      const placed=[...this.assembly.values()].filter(Boolean).length;
+      this.assemblyStatus.hidden=false;
+      this.assemblyStatus.innerHTML=`<b>拖拽组装</b><br>已吸附 ${placed}/8 块。先读每块标签，再拖到同类项槽位。`;
+      if(placed===8){
+        this.assemblyStatus.innerHTML='<b>组装完成</b><br>8 个体块已经按 $a^3,3a^2b,3ab^2,b^3$ 排好，可以对照公式。';
+      }
+    }
+    getFocusTerms(){
+      if(this.type==='binomial'&&this.step>=2){
+        return [['a3','$a^3$'],['a2b','$3a^2b$'],['ab2','$3ab^2$'],['b3','$b^3$']];
+      }
+      if(this.type==='sum'&&this.step>=1){
+        return [['sum-a2','$a^2(a+b)$'],['sum-neg-ab','$-ab(a+b)$'],['sum-b2','$b^2(a+b)$']];
+      }
+      if(this.type==='difference'&&this.step>=1){
+        if(this.step===1)return [['removed','$b^3$'],['diff-a2','$a^2(a-b)$'],['diff-ab','$ab(a-b)$'],['diff-b2','$b^2(a-b)$']];
+        return [['diff-a2','$a^2(a-b)$'],['diff-ab','$ab(a-b)$'],['diff-b2','$b^2(a-b)$']];
+      }
+      return [];
+    }
+    bindLegendFocus(){
+      this.root.querySelectorAll('.legend-item[data-focus-term]').forEach(item=>{
+        const activate=()=>{
+          if(item.classList.contains('inactive'))return;
+          this.focusTerm=item.dataset.focusTerm;
+          this.updateLegendFocus();
+          if(this.ready)this.buildScene();
+          this.needsRender=true;
+        };
+        item.addEventListener('click',activate);
+        item.addEventListener('keydown',event=>{
+          if(event.key==='Enter'||event.key===' '){event.preventDefault();activate()}
+        });
+      });
+    }
+    updateLegendFocus(){
+      const validTerms=new Set(this.getFocusTerms().map(([term])=>term));
+      validTerms.add('all');
+      this.root.querySelectorAll('.legend-item[data-focus-term]').forEach(item=>{
+        const term=item.dataset.focusTerm;
+        const active=this.focusTerm===term||(this.focusTerm==='all'&&term==='all');
+        const available=validTerms.has(term);
+        item.classList.toggle('active',active);
+        item.classList.toggle('inactive',!available);
+        item.setAttribute('aria-pressed',String(active));
+        item.setAttribute('aria-disabled',String(!available));
+      });
+    }
+    termOpacity(term,base=.88){
+      return this.focusTerm==='all'||this.focusTerm===term?base:Math.min(.22,base);
     }
     updateCheck(){
       const a=this.a,b=this.b;
@@ -739,7 +928,9 @@ document.addEventListener('DOMContentLoaded',()=>{
       const a=this.a,b=this.b,d=a-b;
       let chips=[];
       if(this.type==='binomial'){
-        chips=this.step<2?[['a',`a=${a}`],['b',`b=${b}`]]:[['a',`a³=${a**3}`],['',`3a²b=${3*a*a*b}`],['',`3ab²=${3*a*b*b}`],['b',`b³=${b**3}`]];
+        chips=this.step===0
+          ?[['a',`a=${a}`],['b',`b=${b}`],['',`整边 a+b=${a+b}`]]
+          :[['a',`a×a×a=${a**3}`],['',`3 个 a²b=${3*a*a*b}`],['',`3 个 ab²=${3*a*b*b}`],['b',`b×b×b=${b**3}`],['',`标签按 长×宽×高 读`]];
       }else if(this.type==='sum'){
         chips=this.step===0?[['a',`a³=${a**3}`],['b',`b³=${b**3}`]]:[['a',`a²(a+b)=${a*a*(a+b)}`],['negative',`−ab(a+b)=−${a*b*(a+b)}`],['b',`b²(a+b)=${b*b*(a+b)}`]];
       }else{
@@ -750,9 +941,35 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     buildScene(){
       this.clearModel();
+      this.draggableObjects=[];
       if(this.type==='binomial')this.buildBinomial();
       if(this.type==='sum')this.buildSum();
       if(this.type==='difference')this.buildDifference();
+      this.needsRender=true;
+    }
+    movePiece(mesh,position){
+      mesh.position.copy(position);
+      mesh.userData.edgeRef?.position.copy(position);
+      if(mesh.userData.labelRef)mesh.userData.labelRef.position.set(position.x,position.y+mesh.userData.labelLift,position.z);
+    }
+    finishPieceDrag(mesh){
+      const target=mesh.userData.targetPosition;
+      const source=mesh.userData.sourcePosition;
+      if(!target||!source)return;
+      const distance=mesh.position.distanceTo(target);
+      const snapped=distance<.55;
+      this.assembly.set(mesh.userData.id,snapped);
+      this.movePiece(mesh,snapped?target:source);
+      const placed=[...this.assembly.values()].filter(Boolean).length;
+      if(placed===8){
+        this.step=2;
+        this.update();
+        return;
+      }
+      this.updateAssemblyStatus();
+      this.updateLegendFocus();
+      this.updateLabels();
+      typeset(this.assemblyStatus,this.labels);
       this.needsRender=true;
     }
     buildBinomial(){
@@ -760,25 +977,61 @@ document.addEventListener('DOMContentLoaded',()=>{
       const sizes={a:a*scale,b:b*scale};
       const center=letter=>letter==='a'?-1.5+sizes.a/2:1.5-sizes.b/2;
       const specs=[
-        ['a3',['a','a','a'],COLORS.a],['a2b1',['a','a','b'],COLORS.mixedA],['a2b2',['a','b','a'],COLORS.mixedA],['a2b3',['b','a','a'],COLORS.mixedA],
-        ['ab21',['a','b','b'],COLORS.mixedB],['ab22',['b','a','b'],COLORS.mixedB],['ab23',['b','b','a'],COLORS.mixedB],['b3',['b','b','b'],COLORS.b]
+        ['binomial-a3',['a','a','a'],COLORS.a,'a3','$a^3$','边长 a 的立方体','a × a × a'],
+        ['binomial-a2b-x',['a','a','b'],COLORS.mixedA,'a2b','$a^2b$','两个 a 方向和一个 b 方向组成的体块','a × a × b'],
+        ['binomial-a2b-y',['a','b','a'],COLORS.mixedA,'a2b','$a^2b$','两个 a 方向和一个 b 方向组成的体块','a × b × a'],
+        ['binomial-a2b-z',['b','a','a'],COLORS.mixedA,'a2b','$a^2b$','两个 a 方向和一个 b 方向组成的体块','b × a × a'],
+        ['binomial-ab2-x',['a','b','b'],COLORS.mixedB,'ab2','$ab^2$','一个 a 方向和两个 b 方向组成的体块','a × b × b'],
+        ['binomial-ab2-y',['b','a','b'],COLORS.mixedB,'ab2','$ab^2$','一个 a 方向和两个 b 方向组成的体块','b × a × b'],
+        ['binomial-ab2-z',['b','b','a'],COLORS.mixedB,'ab2','$ab^2$','一个 a 方向和两个 b 方向组成的体块','b × b × a'],
+        ['binomial-b3',['b','b','b'],COLORS.b,'b3','$b^3$','边长 b 的立方体','b × b × b']
       ];
-      const explode=[[-2.4,-1.4,0],[-2.2,.7,0],[-.7,2,0],[.8,1.9,0],[2.25,.9,0],[2.3,-.8,0],[.45,-2,0],[-1.2,-2.05,0]];
-      const grouped=[[-2.55,.8,0],[-.9,1.35,0],[-.9,.25,0],[-.9,-.85,0],[.9,1.35,0],[.9,.25,0],[.9,-.85,0],[2.55,.8,0]];
+      const sources=[[-2.75,-1.15,0],[-2.75,.2,0],[-1.55,1.45,0],[-.25,1.45,0],[1.05,1.45,0],[2.45,.25,0],[2.45,-1.05,0],[-1.35,-1.8,0]];
+      const targets=[[-2.55,.55,0],[-.85,1.35,0],[-.85,.25,0],[-.85,-.85,0],[.9,1.35,0],[.9,.25,0],[.9,-.85,0],[2.55,.55,0]];
       specs.forEach((spec,index)=>{
         const dims=spec[1].map(letter=>sizes[letter]);
         const assembled=spec[1].map(letter=>center(letter));
+        const source=new THREE.Vector3(...sources[index]);
+        const target=new THREE.Vector3(...targets[index]);
         let position=assembled;
-        if(this.step===2)position=explode[index];
-        if(this.step===3)position=grouped[index];
-        addBox(THREE,this.model,{size:dims,position,color:spec[2],opacity:this.step===1?.72:.9,name:spec[0]});
+        if(this.step===1)position=this.assembly.get(spec[0])?target:source;
+        if(this.step>=2)position=target;
+        if(this.step>0){
+          addBox(THREE,this.model,{
+            size:dims,position:target.toArray(),color:COLORS.edge,opacity:.08,dashed:true,name:`slot-${spec[0]}`,
+            meta:{id:`slot-${spec[0]}`,term:'slot',group:'slot',dimensions:dims,label:'目标槽位',mathMeaning:'同类项组装槽位'}
+          });
+        }
+        const mesh=addBox(THREE,this.model,{
+          size:dims,
+          position:Array.isArray(position)?position:position.toArray(),
+          color:spec[2],
+          opacity:this.step===0?.86:this.termOpacity(spec[3],.9),
+          name:spec[0],
+          meta:{id:spec[0],term:spec[3],group:spec[3],dimensions:spec[1],label:spec[4],mathMeaning:spec[5]}
+        });
+        mesh.userData.sourcePosition=source;
+        mesh.userData.targetPosition=target;
+        mesh.userData.slotIndex=index;
+        if(this.step>0){
+          mesh.userData.draggable=true;
+          this.draggableObjects.push(mesh);
+          const labelLift=Math.max(...dims)/2+.28;
+          mesh.userData.labelLift=labelLift;
+          mesh.userData.labelRef=addTextSprite(THREE,this.model,spec[6],[mesh.position.x,mesh.position.y+labelLift,mesh.position.z],spec[2],.42);
+        }
       });
+      if(this.step===0){
+        addTextSprite(THREE,this.model,'x: a+b',[0,-2.05,0],COLORS.edge,.46);
+        addTextSprite(THREE,this.model,'y: a+b',[-2.05,0,0],COLORS.edge,.46);
+        addTextSprite(THREE,this.model,'z: a+b',[1.75,1.75,0],COLORS.edge,.46);
+      }
     }
     buildSum(){
       const THREE=this.THREE,a=this.a,b=this.b,max=Math.max(a,b),s=2.15/max;
       if(this.step===0){
-        addBox(THREE,this.model,{size:[a*s,a*s,a*s],position:[-1.35,0,0],color:COLORS.a,opacity:.9});
-        addBox(THREE,this.model,{size:[b*s,b*s,b*s],position:[1.55,-(a-b)*s/2,0],color:COLORS.b,opacity:.9});
+        addBox(THREE,this.model,{size:[a*s,a*s,a*s],position:[-1.35,0,0],color:COLORS.a,opacity:.9,name:'sum-a3',meta:{id:'sum-a3',term:'a3',group:'a',dimensions:[a,a,a],label:'$a^3$',mathMeaning:'左边的正立方体 a^3'}});
+        addBox(THREE,this.model,{size:[b*s,b*s,b*s],position:[1.55,-(a-b)*s/2,0],color:COLORS.b,opacity:.9,name:'sum-b3',meta:{id:'sum-b3',term:'b3',group:'b',dimensions:[b,b,b],label:'$b^3$',mathMeaning:'左边的正立方体 b^3'}});
         return;
       }
       const length=3.2;
@@ -786,33 +1039,33 @@ document.addEventListener('DOMContentLoaded',()=>{
       const heights=[Math.max(.38,a*a*areaScale),Math.max(.32,a*b*areaScale),Math.max(.28,b*b*areaScale)];
       const aligned=this.step>=2;
       const positions=aligned?[-1.35,0,1.35]:[-1.8,0,1.8];
-      addBox(THREE,this.model,{size:[length,heights[0],.72],position:[0,positions[0],0],color:COLORS.a,opacity:.86});
-      addBox(THREE,this.model,{size:[length,heights[1],.72],position:[0,positions[1],0],color:COLORS.negative,opacity:.3,dashed:true});
-      addBox(THREE,this.model,{size:[length,heights[2],.72],position:[0,positions[2],0],color:COLORS.b,opacity:.86});
+      addBox(THREE,this.model,{size:[length,heights[0],.72],position:[0,positions[0],0],color:COLORS.a,opacity:this.termOpacity('sum-a2',.86),name:'sum-a2',meta:{id:'sum-a2',term:'sum-a2',group:'positive',dimensions:['a+b','a^2'],label:'$a^2(a+b)$',mathMeaning:'共同长度 a+b 上的正体积项'}});
+      addBox(THREE,this.model,{size:[length,heights[1],.72],position:[0,positions[1],0],color:COLORS.negative,opacity:this.termOpacity('sum-neg-ab',.3),dashed:true,name:'sum-neg-ab',meta:{id:'sum-neg-ab',term:'sum-neg-ab',group:'negative',dimensions:['a+b','ab'],label:'$-ab(a+b)$',mathMeaning:'代数上的负体积项，用于抵消并制造共同因子'}});
+      addBox(THREE,this.model,{size:[length,heights[2],.72],position:[0,positions[2],0],color:COLORS.b,opacity:this.termOpacity('sum-b2',.86),name:'sum-b2',meta:{id:'sum-b2',term:'sum-b2',group:'positive',dimensions:['a+b','b^2'],label:'$b^2(a+b)$',mathMeaning:'共同长度 a+b 上的正体积项'}});
     }
     buildDifference(){
       const THREE=this.THREE,a=this.a,b=this.b,d=a-b,s=3/a,A=a*s,B=b*s,D=d*s;
       if(this.step===0){
-        addBox(THREE,this.model,{size:[A,A,A],color:COLORS.a,opacity:.36});
+        addBox(THREE,this.model,{size:[A,A,A],color:COLORS.a,opacity:.36,name:'diff-source-a3',meta:{id:'diff-source-a3',term:'a3',group:'source',dimensions:[a,a,a],label:'$a^3$',mathMeaning:'被移除前的边长 a 大立方体'}});
         const corner=(A-B)/2;
-        addBox(THREE,this.model,{size:[B,B,B],position:[corner,corner,corner],color:COLORS.negative,opacity:.48,dashed:true});
+        addBox(THREE,this.model,{size:[B,B,B],position:[corner,corner,corner],color:COLORS.negative,opacity:.48,dashed:true,name:'diff-removed',meta:{id:'diff-removed',term:'removed',group:'negative',dimensions:[b,b,b],label:'$b^3$',mathMeaning:'从角落移除的边长 b 小立方体'}});
         return;
       }
       if(this.step===1){
         const x=A-B;
-        addBox(THREE,this.model,{size:[x,A,A],position:[-B/2,0,0],color:COLORS.a,opacity:.76});
-        addBox(THREE,this.model,{size:[B,x,A],position:[x/2,-B/2,0],color:COLORS.mixedA,opacity:.76});
-        addBox(THREE,this.model,{size:[B,B,x],position:[x/2,x/2,-B/2],color:COLORS.b,opacity:.76});
-        addBox(THREE,this.model,{size:[B,B,B],position:[2.35,1.45,.5],color:COLORS.negative,opacity:.48,dashed:true});
+        addBox(THREE,this.model,{size:[x,A,A],position:[-B/2,0,0],color:COLORS.a,opacity:this.termOpacity('diff-a2',.76),name:'diff-a2',meta:{id:'diff-a2',term:'diff-a2',group:'positive',dimensions:['a-b','a','a'],label:'$a^2(a-b)$',mathMeaning:'剩余体中底面 a^2、厚度 a-b 的部分'}});
+        addBox(THREE,this.model,{size:[B,x,A],position:[x/2,-B/2,0],color:COLORS.mixedA,opacity:this.termOpacity('diff-ab',.76),name:'diff-ab',meta:{id:'diff-ab',term:'diff-ab',group:'positive',dimensions:['a-b','a','b'],label:'$ab(a-b)$',mathMeaning:'剩余体中底面 ab、厚度 a-b 的部分'}});
+        addBox(THREE,this.model,{size:[B,B,x],position:[x/2,x/2,-B/2],color:COLORS.b,opacity:this.termOpacity('diff-b2',.76),name:'diff-b2',meta:{id:'diff-b2',term:'diff-b2',group:'positive',dimensions:['a-b','b','b'],label:'$b^2(a-b)$',mathMeaning:'剩余体中底面 b^2、厚度 a-b 的部分'}});
+        addBox(THREE,this.model,{size:[B,B,B],position:[2.35,1.45,.5],color:COLORS.negative,opacity:this.termOpacity('removed',.48),dashed:true,name:'diff-removed',meta:{id:'diff-removed',term:'removed',group:'negative',dimensions:[b,b,b],label:'$b^3$',mathMeaning:'已经从角落移出的 b^3'}});
         return;
       }
       const pieces=[
-        {size:[D,A,A],color:COLORS.a},
-        {size:[D,A,B],color:COLORS.mixedA},
-        {size:[D,B,B],color:COLORS.b}
+        {size:[D,A,A],color:COLORS.a,term:'diff-a2',id:'diff-a2',label:'$a^2(a-b)$',meaning:'底面 a^2、共同厚度 a-b'},
+        {size:[D,A,B],color:COLORS.mixedA,term:'diff-ab',id:'diff-ab',label:'$ab(a-b)$',meaning:'底面 ab、共同厚度 a-b'},
+        {size:[D,B,B],color:COLORS.b,term:'diff-b2',id:'diff-b2',label:'$b^2(a-b)$',meaning:'底面 b^2、共同厚度 a-b'}
       ];
       const positions=this.step===2?[[-2,0,0],[.2,1.35,0],[2,-.55,0]]:[[-1.85,.75,0],[0,.15,0],[1.75,-.35,0]];
-      pieces.forEach((piece,index)=>addBox(THREE,this.model,{...piece,position:positions[index],opacity:.88}));
+      pieces.forEach((piece,index)=>addBox(THREE,this.model,{size:piece.size,color:piece.color,position:positions[index],opacity:this.termOpacity(piece.term,.88),name:piece.id,meta:{id:piece.id,term:piece.term,group:'positive',dimensions:piece.size,label:piece.label,mathMeaning:piece.meaning}}));
     }
   }
 

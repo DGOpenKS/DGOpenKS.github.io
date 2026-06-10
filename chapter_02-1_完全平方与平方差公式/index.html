@@ -1,0 +1,2240 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 02-1 完全平方与平方差公式 | DGOpenKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--surface:#fff;--surface-2:#f8fafc;--ink:#0f172a;--muted:#64748b;--soft:#94a3b8;--line:#dbe3ef;--axis:#334155;--grid:#e6edf5;--object:#2563eb;--input:#06b6d4;--output:#8b5cf6;--parameter:#f59e0b;--movement:#7c3aed;--conclusion:#10b981;--warning:#ef4444;--radius:14px;--radius-lg:22px;--shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);--font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;--ease:cubic-bezier(.22,1,.36,1)}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#08111f;--surface:#101827;--surface-2:#0d1524;--ink:#e5edf7;--muted:#94a3b8;--soft:#64748b;--line:#1e2d45;--axis:#cbd5e1;--grid:#1d2b3f;--object:#60a5fa;--input:#22d3ee;--output:#a78bfa;--parameter:#fbbf24;--movement:#c084fc;--conclusion:#34d399;--warning:#f87171;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}button,input{font:inherit}a{color:inherit}p,td,.lead,.explain{overflow-wrap:anywhere}.hero>*,.stage-body,.card,.panel,.lab,.practice-card{min-width:0}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none}.topbar-inner::-webkit-scrollbar{display:none}.brand{font-weight:800;color:var(--object);white-space:nowrap;text-decoration:none;margin-right:10px}.nav-pill{text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:800;padding:5px 11px;border:1px solid transparent;border-radius:999px;white-space:nowrap}.nav-pill:hover,.nav-pill:focus-visible{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent);outline:0}
+.hero{max-width:1180px;margin:0 auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.96fr);gap:42px;align-items:center}.eyebrow{display:inline-flex;color:var(--object);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}.hero h1{font-size:clamp(2.1rem,5vw,4.5rem);line-height:1.05;margin:0 0 20px;font-weight:800}.lead{font-size:clamp(1.03rem,1.6vw,1.22rem);color:var(--muted);max-width:680px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hero-card,.panel,.lab,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}.chapter-brief{display:grid;gap:14px}.brief-head{border-bottom:1px solid var(--line);padding-bottom:14px}.brief-label{display:block;color:var(--muted);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}.brief-formula{font-family:var(--mono);font-weight:900;font-size:clamp(1.1rem,2.1vw,1.55rem);line-height:1.35;color:var(--ink)}.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.brief-item{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:92px}.brief-item b{display:block;color:var(--object);font-size:.92rem;margin-bottom:6px}.brief-item p{color:var(--muted);font-size:.86rem;margin:0}.brief-path{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;font-weight:900}.brief-path span{display:inline-flex;align-items:center;gap:8px}.brief-path span:not(:last-child)::after{content:"→";color:var(--soft)}
+main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent);scroll-margin-top:72px}.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}h2{font-size:clamp(1.55rem,2.6vw,2.55rem);line-height:1.18;margin:0 0 14px}h3{margin:0 0 10px;font-size:1.05rem}p{margin:0 0 12px}.subtle{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}.card b{color:var(--object)}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tag{border:1px solid var(--line);background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;font-size:.76rem;font-weight:900}.formula{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;overflow-x:auto}.ok{border-left:4px solid var(--conclusion);background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-color:color-mix(in srgb,var(--conclusion) 30%,var(--line))}.warning{border-left:4px solid var(--warning);background:color-mix(in srgb,var(--warning) 8%,var(--surface));border-color:color-mix(in srgb,var(--warning) 30%,var(--line))}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}table{border-collapse:collapse;width:100%;min-width:620px}th,td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}th{color:var(--object);font-size:.85rem;background:var(--surface-2)}td{color:var(--muted)}tr:last-child td{border-bottom:0}
+.area-demo{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(280px,1.1fr);gap:18px;align-items:center}.controls{display:grid;gap:12px}.control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.control label{display:flex;justify-content:space-between;gap:12px;font-weight:900;color:var(--parameter);font-size:.86rem;margin-bottom:8px}.control input{width:100%;accent-color:var(--parameter)}
+.method-list{display:grid;gap:10px}.method{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.method code{font-family:var(--mono);font-weight:900;color:var(--object);white-space:normal}.split-demo{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}.arrow{font-size:2rem;color:var(--movement);font-weight:900;text-align:center}.big{font-size:clamp(1.1rem,2.4vw,1.8rem);font-family:var(--mono);font-weight:900}.mini-list{display:grid;gap:8px;margin-top:12px}.mini-list span{display:block;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--muted);font-weight:700}
+canvas{display:block;width:100%;height:420px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}.canvas-lab{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(420px,1.22fr);gap:18px;align-items:start}.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.stat{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.stat b{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;margin-bottom:4px}.stat span{font-family:var(--mono);font-weight:900}
+.strategy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.strategy{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}.strategy i{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:color-mix(in srgb,var(--parameter) 12%,transparent);color:var(--parameter);font-style:normal;font-family:var(--mono);font-weight:900}.strategy b{display:block;color:var(--object)}
+.learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.learn-step{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.learn-step b{display:block;color:var(--object);margin-bottom:6px}.learn-step p{font-size:.9rem;color:var(--muted);margin:0}.practice-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:18px;margin-top:18px}.practice-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}.practice-head b{color:var(--object)}.practice-actions{display:flex;gap:8px;flex-wrap:wrap}.practice-output{display:grid;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.practice-answer{display:none;border-top:1px solid var(--line);margin-top:4px;padding-top:12px}.practice-answer.show{display:grid;gap:8px}.practice-line{font-family:var(--mono);font-weight:900;color:var(--ink);overflow-x:auto}.explain{color:var(--muted);font-size:.94rem}.mini-btn{border:1px solid var(--line);background:var(--surface);color:var(--object);border-radius:999px;padding:7px 12px;font-weight:900;cursor:pointer}.mini-btn:hover,.mini-btn:focus-visible{outline:0;border-color:color-mix(in srgb,var(--object) 45%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.mini-btn:disabled{cursor:not-allowed;opacity:.46;background:var(--surface-2);color:var(--muted)}
+.math-chip{display:inline-flex;align-items:center;min-height:34px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:4px 9px;color:var(--ink);font-weight:800}.formula-lab{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.diagram-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:16px;display:grid;gap:12px}.diagram-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.diagram-title b{color:var(--object)}.mini-board{position:relative;width:100%;aspect-ratio:1.15;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);overflow:hidden;contain:layout paint}.formula-svg{display:block;width:100%;height:100%}.svg-grid line{stroke:var(--grid);stroke-width:1}.svg-piece{stroke-width:1.4;vector-effect:non-scaling-stroke;shape-rendering:geometricPrecision}.svg-object{fill:color-mix(in srgb,var(--object) 16%,transparent);stroke:color-mix(in srgb,var(--object) 50%,var(--line))}.svg-parameter{fill:color-mix(in srgb,var(--parameter) 18%,transparent);stroke:color-mix(in srgb,var(--parameter) 52%,var(--line))}.svg-input{fill:color-mix(in srgb,var(--input) 17%,transparent);stroke:color-mix(in srgb,var(--input) 54%,var(--line))}.svg-output{fill:color-mix(in srgb,var(--output) 16%,transparent);stroke:color-mix(in srgb,var(--output) 52%,var(--line))}.svg-removed{fill:color-mix(in srgb,var(--warning) 12%,var(--surface));stroke:color-mix(in srgb,var(--warning) 58%,var(--line));stroke-dasharray:7 5}.svg-label{font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:700;text-anchor:middle;dominant-baseline:middle;pointer-events:none}.svg-label.object{fill:var(--object)}.svg-label.parameter{fill:var(--parameter)}.svg-label.input{fill:var(--input)}.svg-label.output{fill:var(--output)}.svg-label.warning{fill:var(--warning)}.svg-note{font-family:var(--font);font-size:14px;font-weight:800;fill:var(--muted)}.svg-note.dim-object{fill:var(--object)}.svg-note.dim-parameter{fill:var(--parameter)}.svg-note.dim-composite{fill:var(--movement)}.svg-arrow{fill:none;stroke:var(--movement);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.svg-arrow.dim-object{stroke:var(--object)}.svg-arrow.dim-parameter{stroke:var(--parameter)}.svg-arrow.dim-composite{stroke:var(--movement)}.live-formula{font-family:Georgia,"Times New Roman",serif;font-weight:700}.live-formula sup{font-size:.68em;line-height:0}.choice-row{display:flex;gap:8px;flex-wrap:wrap}.choice-btn{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 11px;font-size:.84rem;font-weight:900;cursor:pointer}.choice-btn:hover,.choice-btn:focus-visible{outline:0;color:var(--object);border-color:color-mix(in srgb,var(--object) 35%,var(--line));background:color-mix(in srgb,var(--object) 7%,var(--surface))}.choice-btn.selected{color:var(--object);border-color:color-mix(in srgb,var(--object) 50%,var(--line));background:color-mix(in srgb,var(--object) 10%,var(--surface))}.choice-btn.correct{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 55%,var(--line));background:color-mix(in srgb,var(--conclusion) 11%,var(--surface))}.choice-btn.wrong{color:var(--warning);border-color:color-mix(in srgb,var(--warning) 55%,var(--line));background:color-mix(in srgb,var(--warning) 9%,var(--surface))}.choice-feedback{min-height:28px;color:var(--muted);font-size:.9rem;font-weight:800}.vertex-lab{display:grid;grid-template-columns:minmax(320px,1.12fr) minmax(280px,.88fr);gap:18px;align-items:center;margin-top:18px}.vertex-svg{display:block;width:100%;height:360px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2)}.vertex-path{fill:none;stroke:var(--object);stroke-width:4;stroke-linecap:round}.vertex-dot{fill:var(--warning);stroke:var(--surface);stroke-width:4}.vertex-guide{stroke:var(--warning);stroke-dasharray:6 6;stroke-width:2}.distance-ray{position:absolute;top:39px;height:20px;border-radius:999px;background:color-mix(in srgb,var(--parameter) 18%,transparent);border:1px solid color-mix(in srgb,var(--parameter) 40%,var(--line));display:none}.distance-ray.left{left:28px;width:var(--leftRayWidth,22%)}.distance-ray.right{right:28px;width:var(--rightRayWidth,22%)}.distance-track.mode-out .distance-range{display:none}.distance-track.mode-out .distance-ray{display:block}
+.merged-subsection{margin-top:28px;padding-top:24px;border-top:1px dashed var(--line)}.substitution-lab{display:grid;grid-template-columns:minmax(280px,.86fr) minmax(320px,1.14fr);gap:18px;margin-top:18px}.whole-expression{display:grid;gap:10px}.whole-step{border:1px solid var(--line);background:var(--surface-2);border-radius:14px;padding:12px;font-family:var(--mono);font-weight:900;color:var(--muted);transition:border-color .22s var(--ease),background .22s var(--ease),color .22s var(--ease),transform .22s var(--ease)}.whole-step.active{color:var(--object);border-color:color-mix(in srgb,var(--object) 48%,var(--line));background:color-mix(in srgb,var(--object) 9%,var(--surface));transform:translateY(-1px)}.whole-highlight{display:inline-block;border:1px solid color-mix(in srgb,var(--parameter) 55%,var(--line));background:color-mix(in srgb,var(--parameter) 16%,transparent);border-radius:9px;padding:1px 5px;color:var(--parameter)}.formula-card-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:20px}.formula-rich-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:18px;display:grid;gap:14px}.formula-rich-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}.formula-rich-head b{display:block;color:var(--object);font-size:1.08rem}.formula-dual{display:grid;grid-template-columns:1fr 1fr;gap:14px}.visual-panel{position:relative;border:1px solid var(--line);background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px;overflow:hidden}.visual-panel b{order:-2;color:var(--muted);font-size:.82rem}.visual-panel svg{width:100%;height:220px;border-radius:12px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface);background-size:28px 28px}.visual-controls{order:-1;position:static;justify-self:start;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:7px;border:1px solid color-mix(in srgb,var(--parameter) 42%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);box-shadow:var(--shadow-soft)}.visual-control{display:grid;grid-template-columns:auto auto;align-items:center;gap:6px;color:var(--parameter);font-size:.78rem;font-weight:900}.visual-control span{min-width:16px;text-align:center}.stepper{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}.stepper button{width:24px;height:24px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--parameter);font-weight:900;cursor:pointer;line-height:1}.stepper button:last-child{border-right:0}.stepper button:hover,.stepper button:focus-visible{outline:0;background:color-mix(in srgb,var(--parameter) 12%,transparent)}.algebra-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.proof-step{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px;color:var(--muted)}.proof-step b{display:block;color:var(--object);margin-bottom:4px}.formula-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.formula-meta div{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--muted);font-size:.9rem}.formula-meta b{display:block;color:var(--object);margin-bottom:4px}.mini-exercise{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);padding:10px}.mini-exercise summary{cursor:pointer;color:var(--object);font-weight:900}.mini-practice{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;margin-top:8px}.mini-practice .formula{margin:0}.mini-practice-answer{grid-column:1/-1;display:grid;gap:6px}.formula-live{font-family:var(--mono);font-weight:900;color:var(--ink)}
+.factor-line{position:relative;height:82px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;margin-top:14px;padding:18px}.factor-axis{position:absolute;left:28px;right:28px;top:42px;height:2px;background:var(--axis)}.factor-interval{position:absolute;top:30px;height:24px;border-radius:999px;background:color-mix(in srgb,var(--warning) 18%,transparent);border:1px solid color-mix(in srgb,var(--warning) 40%,var(--line));left:42%;right:34%}.factor-dot{position:absolute;top:34px;width:18px;height:18px;border-radius:50%;background:var(--surface);border:3px solid var(--conclusion);transform:translateX(-50%)}.factor-dot.r2{left:42%}.factor-dot.r3{left:66%}.factor-label{position:absolute;top:52px;transform:translateX(-50%);font-family:var(--mono);font-weight:900;color:var(--muted)}.factor-label.l2{left:42%}.factor-label.l3{left:66%}
+.hole-lab,.absolute-lab{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(320px,1.18fr);gap:18px;align-items:center}.hole-graph{position:relative;width:100%;min-height:260px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:32px 32px;overflow:hidden}.hole-graph::before{content:"";position:absolute;left:8%;right:8%;top:66%;height:3px;background:var(--object);transform:rotate(-28deg);transform-origin:center}.hole-dot{position:absolute;left:52%;top:42%;width:18px;height:18px;border-radius:50%;background:var(--surface);border:4px solid var(--warning);box-shadow:0 0 0 6px color-mix(in srgb,var(--warning) 14%,transparent)}.hole-note{position:absolute;left:56%;top:35%;font-size:.86rem;font-weight:900;color:var(--warning)}
+.pair-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.pair-box{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;font-family:var(--mono);font-weight:900}.distance-track{position:relative;height:92px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;overflow:hidden}.distance-axis{position:absolute;left:28px;right:28px;top:48px;height:2px;background:var(--axis)}.distance-range{position:absolute;top:39px;height:20px;border-radius:999px;background:color-mix(in srgb,var(--conclusion) 20%,transparent);border:1px solid color-mix(in srgb,var(--conclusion) 38%,var(--line));left:var(--rangeLeft,30%);width:var(--rangeWidth,40%)}.distance-point{position:absolute;top:37px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:3px solid var(--object);font-size:.72rem;font-weight:900;color:var(--object);transform:translateX(-50%)}.distance-point.center{left:var(--centerPct,50%)}.distance-point.left{left:var(--leftPct,30%);border-color:var(--conclusion);color:var(--conclusion)}.distance-point.right{left:var(--rightPct,70%);border-color:var(--conclusion);color:var(--conclusion)}.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}.reveal{opacity:1;transform:translateY(0);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.hero,.stage,.grid-2,.grid-3,.area-demo,.canvas-lab,.split-demo,.strategy-grid,.learn-grid,.formula-lab,.hole-lab,.absolute-lab,.vertex-lab,.substitution-lab,.formula-dual,.formula-meta,.algebra-proof{grid-template-columns:1fr}.stage-marker{position:static;display:flex;align-items:center;gap:10px}.stage-marker span{margin-bottom:0}.arrow{transform:rotate(90deg)}}@media(max-width:620px){.hero{padding-top:42px}.hero-card,.panel,.lab,.card,.practice-card,.formula-rich-card{padding:14px}.method{grid-template-columns:1fr}.stat-grid,.brief-grid,.pair-grid{grid-template-columns:1fr}canvas{height:330px}.strategy{grid-template-columns:1fr}.brief-item{min-height:auto}.formula-lab{gap:12px}.practice-head{align-items:flex-start}.hole-graph{min-height:220px}.vertex-svg{height:300px}.visual-panel svg{height:190px}.visual-controls{right:10px;bottom:10px;grid-template-columns:1fr}.mini-practice{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+.formula-dual .visual-panel{grid-template-rows:auto auto;align-content:start}
+.formula-dual .visual-panel svg{grid-row:2;height:270px}
+@media(max-width:620px){.formula-dual .visual-panel svg{height:240px}}
+.cube-visual{display:grid;grid-template-columns:minmax(340px,1.08fr) minmax(240px,.92fr);gap:14px;align-items:stretch}.cube-panel{border:1px solid var(--line);background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px;overflow:hidden}.cube-panel b{color:var(--muted);font-size:.84rem}.cube-three-wrap{position:relative;min-height:330px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface);background-size:28px 28px;overflow:hidden}.cube-three-wrap canvas{width:100%;height:100%;min-height:330px;border:0;border-radius:0;background:transparent}.cube-three-fallback{position:absolute;inset:auto 12px 12px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);font-size:.82rem;font-weight:800}.cube-legend{display:grid;gap:8px}.cube-legend-row{display:grid;grid-template-columns:18px minmax(0,1fr);gap:9px;align-items:start;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 10px;color:var(--muted);font-size:.9rem}.cube-legend-row i{width:18px;height:18px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:3px}.cube-legend-row b{display:block;color:var(--object);margin-bottom:2px}.cube-legend-row:nth-child(1) i{background:color-mix(in srgb,var(--object) 40%,var(--surface))}.cube-legend-row:nth-child(2) i{background:color-mix(in srgb,var(--parameter) 45%,var(--surface))}.cube-legend-row:nth-child(3) i{background:color-mix(in srgb,var(--input) 42%,var(--surface))}.cube-legend-row:nth-child(4) i{background:color-mix(in srgb,var(--output) 42%,var(--surface))}.cube-slice-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:12px;padding:10px;color:var(--muted);font-size:.9rem;font-weight:700}
+.cube-action-row{display:flex;gap:8px;flex-wrap:wrap}.binomial-builder{height:520px;min-height:520px}.binomial-builder canvas{height:100%;min-height:0}.binomial-side{align-content:start}.binomial-formula-readout{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;font-family:var(--mono);font-weight:900;text-align:center;color:var(--ink);overflow-x:auto}.binomial-status{border:1px solid color-mix(in srgb,var(--conclusion) 32%,var(--line));background:color-mix(in srgb,var(--conclusion) 7%,var(--surface));border-radius:12px;padding:10px;color:var(--muted);font-size:.9rem;font-weight:800}.binomial-status.error{border-color:color-mix(in srgb,var(--warning) 45%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));color:var(--warning)}.binomial-status.done{border-color:color-mix(in srgb,var(--conclusion) 55%,var(--line));background:color-mix(in srgb,var(--conclusion) 11%,var(--surface));color:var(--conclusion)}.binomial-status.hover{border-color:color-mix(in srgb,var(--parameter) 45%,var(--line));background:color-mix(in srgb,var(--parameter) 9%,var(--surface));color:var(--parameter)}
+@media(max-width:900px){.cube-visual{grid-template-columns:1fr}.cube-three-wrap,.cube-three-wrap canvas{min-height:300px}}@media(max-width:620px){.cube-three-wrap,.cube-three-wrap canvas{min-height:260px}.cube-legend-row{font-size:.84rem}}
+@media(max-width:900px){.binomial-builder{height:430px;min-height:430px}}@media(max-width:620px){.cube-action-row .mini-btn{flex:1 1 120px}.binomial-builder{height:360px;min-height:360px}}
+.formula-structure-visual{display:grid;grid-template-columns:minmax(300px,1fr) minmax(260px,.9fr);gap:14px}.factor-visual-panel{border:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:28px 28px;border-radius:14px;padding:12px;min-height:250px;display:grid;align-content:center;gap:10px;overflow:hidden}.cube-diff-factor-result{grid-column:1/-1}.term-flow{display:grid;gap:8px}.term-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}.term-chip{border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:9px 11px;font-family:var(--mono);font-weight:900;color:var(--ink);min-width:70px;text-align:center}.term-chip.keep{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.term-chip.cancel{border-color:color-mix(in srgb,var(--warning) 44%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface));color:var(--warning);text-decoration:line-through;text-decoration-thickness:2px}.term-chip.factor{border-color:color-mix(in srgb,var(--parameter) 48%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter)}.factor-svg{width:100%;height:210px;display:block}.factor-svg text{font-family:Georgia,"Times New Roman",serif;font-weight:700;text-anchor:middle;dominant-baseline:middle;fill:var(--ink)}.factor-svg .note{font-family:var(--font);font-size:13px;font-weight:900;fill:var(--muted)}.cube-diff-diagram{display:grid;gap:10px}.cube-diff-diagram svg{width:100%;height:330px;display:block}.cube-diff-diagram text{font-family:Georgia,"Times New Roman",serif;font-weight:800;text-anchor:middle;dominant-baseline:middle}.cube-diff-diagram .piece-front,.cube-diff-diagram .piece-top,.cube-diff-diagram .piece-side{stroke-width:2;vector-effect:non-scaling-stroke}.cube-diff-diagram .piece-a{fill:color-mix(in srgb,var(--object) 30%,var(--surface));stroke:var(--object)}.cube-diff-diagram .piece-ab{fill:color-mix(in srgb,var(--parameter) 34%,var(--surface));stroke:var(--parameter)}.cube-diff-diagram .piece-b{fill:color-mix(in srgb,var(--input) 34%,var(--surface));stroke:var(--input)}.cube-diff-diagram .piece-top{filter:brightness(1.08)}.cube-diff-diagram .piece-side{filter:brightness(.92)}.cube-diff-diagram .label-a,.term-a{color:var(--object);fill:var(--object)}.cube-diff-diagram .label-b,.term-b{color:var(--input);fill:var(--input)}.cube-diff-diagram .label-diff,.term-diff{color:var(--conclusion);fill:var(--conclusion)}.cube-diff-diagram .label-volume{fill:var(--ink);font-size:24px}.cube-diff-diagram .note{font-family:var(--font);font-size:14px;font-weight:900;fill:var(--muted)}.factor-result{display:grid;gap:8px;align-content:center;justify-items:center;text-align:center}.factor-result-line{font-family:var(--mono);font-size:clamp(1rem,2vw,1.42rem);font-weight:900;color:var(--ink);line-height:1.45}.factor-result-line.final{color:var(--conclusion)}.factor-result .common{border:1px solid color-mix(in srgb,var(--conclusion) 42%,var(--line));background:color-mix(in srgb,var(--conclusion) 9%,var(--surface));border-radius:10px;padding:2px 7px}.formula-term-key{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.term-key-item{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:11px;padding:8px 9px;color:var(--muted);font-size:.86rem;font-weight:800}.term-key-item i{width:16px;height:16px;border-radius:5px;border:1px solid color-mix(in srgb,var(--axis) 30%,var(--line));margin-top:4px}.term-key-item.object i{background:color-mix(in srgb,var(--object) 28%,var(--surface))}.term-key-item.parameter i{background:color-mix(in srgb,var(--parameter) 34%,var(--surface))}.term-key-item.input i{background:color-mix(in srgb,var(--input) 31%,var(--surface))}.term-key-item.output i{background:color-mix(in srgb,var(--output) 30%,var(--surface))}.term-key-item.warning i{background:color-mix(in srgb,var(--warning) 18%,var(--surface))}.cube-drag-hint{position:absolute;right:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--parameter) 36%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--parameter);border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:900;pointer-events:none}.formula-term-legend{display:grid;gap:8px}.formula-term-legend .cube-legend-row{background:var(--surface)}@media(max-width:900px){.formula-structure-visual{grid-template-columns:1fr}.formula-term-key{grid-template-columns:1fr 1fr}}@media(max-width:620px){.term-chip{min-width:58px;font-size:.86rem}.factor-visual-panel{min-height:220px}.cube-diff-diagram svg{height:300px}.formula-term-key{grid-template-columns:1fr}}
+.cube-sum-proof{display:grid;gap:14px;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:16px}.cube-sum-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.cube-sum-step-tabs,.cube-sum-actions{display:flex;gap:8px;flex-wrap:wrap}.cube-sum-stage{position:relative;min-height:390px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:28px 28px;overflow:hidden}.cube-sum-scene{position:absolute;inset:0;padding:18px;display:grid;grid-template-columns:minmax(220px,.72fr) minmax(340px,1.28fr);gap:14px;align-items:center;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .28s var(--ease),transform .28s var(--ease)}.cube-sum-scene.active{opacity:1;transform:translateY(0);pointer-events:auto}.cube-sum-scene-copy{display:grid;gap:8px;align-content:center;background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);border-radius:14px;padding:16px}.cube-sum-scene-copy h3{font-family:var(--mono);font-size:clamp(1.08rem,2vw,1.55rem);margin:0;color:var(--ink)}.cube-sum-scene-copy p{color:var(--muted);font-weight:750;margin:0}.cube-sum-stage-label{justify-self:start;border:1px solid color-mix(in srgb,var(--parameter) 40%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter);border-radius:999px;padding:4px 9px;font-size:.76rem;font-weight:900}.cube-sum-svg{width:100%;height:100%;min-height:300px;display:block}.iso-cube polygon{stroke-width:2;vector-effect:non-scaling-stroke}.iso-cube .top{fill:color-mix(in srgb,var(--object) 22%,var(--surface));stroke:var(--object)}.iso-cube .side{fill:color-mix(in srgb,var(--object) 14%,var(--surface));stroke:var(--object)}.iso-cube .front{fill:color-mix(in srgb,var(--object) 30%,var(--surface));stroke:var(--object)}.iso-cube.cube-b .top{fill:color-mix(in srgb,var(--output) 22%,var(--surface));stroke:var(--output)}.iso-cube.cube-b .side{fill:color-mix(in srgb,var(--output) 14%,var(--surface));stroke:var(--output)}.iso-cube.cube-b .front{fill:color-mix(in srgb,var(--output) 30%,var(--surface));stroke:var(--output)}.iso-cube text,.cube-sum-svg text{font-family:Georgia,"Times New Roman",serif;font-weight:800;text-anchor:middle;dominant-baseline:middle;fill:var(--ink)}.cube-sum-cubes .plus{font-family:var(--mono);font-size:42px;fill:var(--movement)}.cube-sum-cubes .scene-note{font-family:var(--font);font-size:15px;font-weight:900;fill:var(--muted)}.cube-sum-derivation{display:grid;gap:10px;background:color-mix(in srgb,var(--surface) 94%,transparent);border:1px solid var(--line);border-radius:14px;padding:16px;align-self:stretch;align-content:center}.derivation-line{font-family:var(--mono);font-weight:900;font-size:clamp(.95rem,1.8vw,1.24rem);line-height:1.55;color:var(--ink);overflow-x:auto}.derivation-line.grouped{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sum-term{border:1px solid var(--line);border-radius:10px;padding:5px 8px;background:var(--surface)}.sum-term.blue{color:var(--object);border-color:color-mix(in srgb,var(--object) 45%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.sum-term.red{color:var(--warning);border-color:color-mix(in srgb,var(--warning) 45%,var(--line));background:color-mix(in srgb,var(--warning) 8%,var(--surface))}.sum-term.green{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 8%,var(--surface))}.cancel-pairs{display:flex;gap:8px;flex-wrap:wrap}.cancel-pairs span,.common-factor-note{border:1px dashed color-mix(in srgb,var(--parameter) 48%,var(--line));background:color-mix(in srgb,var(--parameter) 8%,var(--surface));color:var(--muted);border-radius:10px;padding:7px 9px;font-weight:850}.derivation-line.result{color:var(--conclusion)}.cube-sum-prism .prism-top{fill:color-mix(in srgb,var(--parameter) 18%,var(--surface));stroke:var(--parameter);stroke-width:2}.cube-sum-prism .prism-side{fill:color-mix(in srgb,var(--movement) 13%,var(--surface));stroke:var(--movement);stroke-width:2}.cube-sum-prism .prism-front{fill:color-mix(in srgb,var(--surface) 70%,transparent);stroke:var(--axis);stroke-width:2}.cube-sum-prism .base-a2{fill:color-mix(in srgb,var(--object) 30%,transparent);stroke:var(--object);stroke-width:2}.cube-sum-prism .base-minus{fill:color-mix(in srgb,var(--warning) 26%,transparent);stroke:var(--warning);stroke-width:2;stroke-dasharray:6 4}.cube-sum-prism .base-b2{fill:color-mix(in srgb,var(--conclusion) 26%,transparent);stroke:var(--conclusion);stroke-width:2}.cube-sum-prism .base-label{font-family:var(--mono);font-size:22px;font-weight:900;fill:var(--ink)}.cube-sum-prism .minus{fill:var(--warning)}.height-line{stroke:var(--parameter);stroke-width:3;stroke-linecap:round}.height-label,.base-formula{font-family:var(--mono);font-weight:900;fill:var(--parameter)}.height-label{font-size:22px;text-anchor:start}.base-formula{font-size:20px;fill:var(--ink)}.cube-sum-structure-formula{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-weight:900;font-size:clamp(1rem,2vw,1.35rem)}.height-factor,.base-factor{border:1px solid color-mix(in srgb,var(--parameter) 45%,var(--line));background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-radius:10px;padding:5px 9px}.base-factor{border-color:color-mix(in srgb,var(--conclusion) 42%,var(--line));background:color-mix(in srgb,var(--conclusion) 8%,var(--surface))}.cube-sum-readout{display:grid;gap:8px}.cube-sum-readout .formula{margin:0}.cube-sum-readout p{margin:0;color:var(--muted);font-weight:800}.cube-sum-warning{margin:0;box-shadow:none}@media(max-width:900px){.cube-sum-scene{grid-template-columns:1fr;align-content:start;overflow:auto}.cube-sum-stage{min-height:620px}.cube-sum-svg{min-height:260px}.cube-sum-scene-copy{align-content:start}}@media(max-width:620px){.cube-sum-proof{padding:12px}.cube-sum-stage{min-height:660px}.cube-sum-step-tabs .choice-btn,.cube-sum-actions .mini-btn{flex:1 1 132px}.derivation-line{font-size:.9rem}.cube-sum-prism .base-label{font-size:18px}.height-label,.base-formula{font-size:17px}}@media(prefers-reduced-motion:reduce){.cube-sum-scene{transition:none;transform:none}}
+.card-local-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;border:1px solid color-mix(in srgb,var(--parameter) 34%,var(--line));background:color-mix(in srgb,var(--surface) 90%,transparent);border-radius:12px;padding:9px 10px}.card-local-control{display:grid;gap:5px;color:var(--parameter);font-size:.78rem;font-weight:900}.card-local-control label{display:flex;justify-content:space-between;gap:8px}.card-local-control input{width:100%;accent-color:var(--parameter)}.card-local-reset{align-self:stretch;border:1px solid var(--line);background:var(--surface);color:var(--object);border-radius:10px;padding:6px 10px;font-weight:900;cursor:pointer}.card-local-reset:hover,.card-local-reset:focus-visible{outline:0;border-color:color-mix(in srgb,var(--object) 42%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.cube-factor-three{grid-column:1/-1;margin-bottom:10px}.cube-factor-three .cube-three-wrap{min-height:280px}.cube-factor-three .cube-three-wrap canvas{min-height:280px}.cube-label-note{position:absolute;left:12px;top:12px;z-index:2;border:1px solid color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);border-radius:999px;padding:5px 9px;font-size:.76rem;font-weight:900;pointer-events:none}.var-a,.card-local-control .var-a{color:var(--object);font-weight:950}.var-b,.card-local-control .var-b{color:var(--input);font-weight:950}.cube-sum-svg .var-a{fill:var(--object)}.cube-sum-svg .var-b{fill:var(--input)}.cube-diff-method-copy{display:grid;gap:8px}.cube-diff-method-copy span{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;color:var(--muted);font-weight:850}.cube-diff-method-copy b{color:var(--object)}@media(max-width:900px){.card-local-controls{grid-template-columns:1fr}}@media(max-width:620px){.card-local-reset{min-height:38px}}
+.split-forward{border:1px solid color-mix(in srgb,var(--conclusion) 34%,var(--line));background:color-mix(in srgb,var(--conclusion) 7%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:14px;color:var(--muted);font-weight:800}.split-forward a{color:var(--conclusion);font-weight:900}#factor,#square,#fraction,#radical,#absolute,#strategy{display:none}
+.factor-intro{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(420px,1.18fr);gap:18px;align-items:center}.factor-purpose{display:grid;gap:10px;margin-top:12px}.purpose-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px}.purpose-row b{color:var(--object);font-size:.84rem}.purpose-row span{color:var(--muted);font-size:.9rem}.quick-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.quick-method{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:16px;display:grid;gap:10px}.quick-method b{color:var(--object)}.method-signal{display:inline-flex;justify-self:start;border:1px solid color-mix(in srgb,var(--parameter) 42%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));color:var(--parameter);border-radius:999px;padding:4px 9px;font-size:.76rem;font-weight:900}.deep-factor-grid{display:grid;gap:16px;margin-top:18px}.deep-factor-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:18px;display:grid;gap:14px}.deep-factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.deep-factor-head b{display:block;color:var(--object);font-size:1.05rem}.deep-factor-body{display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:14px;align-items:stretch}.factor-visual{min-height:250px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--surface-2);background-size:30px 30px;position:relative;overflow:hidden;padding:16px}.factor-steps{display:grid;gap:8px}.factor-step{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 12px;font-family:var(--mono);font-weight:900;color:var(--muted);line-height:1.55}.factor-step.active{color:var(--object);border-color:color-mix(in srgb,var(--object) 45%,var(--line));background:color-mix(in srgb,var(--object) 8%,var(--surface))}.factor-step.result{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 9%,var(--surface))}.group-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}.group-tile{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px;text-align:center;font-family:var(--mono);font-weight:900;color:var(--ink)}.group-tile.same{border-color:color-mix(in srgb,var(--conclusion) 45%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,var(--surface));color:var(--conclusion)}.factor-arrow{display:grid;place-items:center;color:var(--movement);font-weight:900;font-size:1.4rem}.substitution-map{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;height:100%}.sub-box{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px;text-align:center;font-family:var(--mono);font-weight:900}.sub-box.focus{border-color:color-mix(in srgb,var(--parameter) 50%,var(--line));background:color-mix(in srgb,var(--parameter) 12%,var(--surface));color:var(--parameter)}.square-build{display:grid;place-items:center;height:100%;gap:8px}.square-build svg,.zero-factor svg{width:100%;height:210px;display:block}.zero-factor{display:grid;gap:10px;height:100%}.zero-caption{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.88rem;font-weight:800}.zero-caption span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 9px}.factor-decision{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.decision-card{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px;color:var(--muted);font-size:.9rem}.decision-card b{display:block;color:var(--object);margin-bottom:4px}.factor-note{border-left:4px solid var(--parameter);background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-color:color-mix(in srgb,var(--parameter) 34%,var(--line));border-radius:14px;padding:12px;color:var(--muted);font-weight:700}
+.factor-root-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.factor-root-control{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px}.factor-root-control label{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--parameter);font-weight:900;font-size:.84rem}.factor-root-control input{width:100%;accent-color:var(--parameter);margin-top:6px}
+@media(max-width:900px){.factor-intro,.deep-factor-body,.quick-methods,.factor-decision{grid-template-columns:1fr}.factor-visual{min-height:220px}.substitution-map{grid-template-columns:1fr}.factor-arrow{font-size:1rem;line-height:1.45;text-align:center;min-height:28px}}@media(max-width:620px){.purpose-row{grid-template-columns:1fr}.deep-factor-card{padding:14px}.factor-visual{padding:12px}.group-board{grid-template-columns:1fr}.group-tile{font-size:.86rem;padding:10px}.square-build svg,.zero-factor svg{height:190px}}
+</style>
+</head>
+<body data-formula-scope="square">
+<nav class="topbar" aria-label="章节导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../">DGOpenKS</a>    <a class="nav-pill" href="#formula">面积结构</a>
+    <a class="nav-pill" href="#links">下一节</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="reveal">
+    <div class="eyebrow">Chapter 02-1 · Square Identities</div>
+    <h1>完全平方与平方差公式</h1>
+    <p class="lead">这一节只解决一个问题：为什么平方公式不是把每一项分别平方，而是同一块面积在拆分、补回和重排中的不同表达。</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#formula">开始学习</a>
+      <a class="btn" href="../chapter_02-2_立方相关公式/">下一节：立方相关公式</a>
+      <a class="btn" href="../index.html">返回目录</a>
+    </div>
+  </div>
+  <div class="hero-card reveal" aria-label="本章摘要">
+    <div class="chapter-brief">
+      <div class="brief-head">
+        <span class="brief-label">Core Transformation</span>
+        <div class="brief-formula">$(a+b)^2,\ (a-b)^2,\ a^2-b^2$</div>
+      </div>
+      <div class="brief-grid">
+        <div class="brief-item"><b>先拆误解</b><p>$(a+b)^2$ 不是 $a^2+b^2$，因为它是两个整体相乘。</p></div>
+        <div class="brief-item"><b>看见面积</b><p>把边长拆成 $a$ 与 $b$，观察多出来的两块 $ab$。</p></div>
+        <div class="brief-item"><b>区分对象</b><p>分清“差的平方”与“平方的差”，它们不是同一个结构。</p></div>
+        <div class="brief-item"><b>反向识别</b><p>用首尾平方和中间项判断能否反向分解。</p></div>
+      </div>
+      <div class="brief-path">
+        <span>问题</span>
+        <span>误解</span>
+        <span>面积结构</span>
+        <span>公式</span>
+        <span>练习</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="stage" id="formula">
+    <aside class="stage-marker"><span>1</span>Formula</aside>
+    <div class="stage-body reveal">
+      <div class="stage-kicker">从误解进入结构</div>
+      <h2>先问清楚：这个平方到底在平方谁？</h2>
+      <p class="subtle">完全平方和平方差都可以从面积理解。关键不是先背公式，而是先看当前对象是一整个边长的平方，还是两个平方面积相减。</p>
+      <div class="grid-2">
+        <div class="card warning">
+          <b>容易想错的地方</b>
+          <p>看到 $(a+b)^2$，很多人会直接写成 $a^2+b^2$。这个错误不是粗心，而是没有把它看成 $(a+b)(a+b)$。</p>
+        </div>
+        <div class="card ok">
+          <b>这一节要看见的结构</b>
+          <p>公式两边描述的是同一块面积：有时把它拆成几块，有时把挖掉后的剩余面积重新排成长方形。</p>
+        </div>
+      </div>
+      <div class="formula-card-grid" aria-label="核心乘法公式卡片">
+        <article class="formula-rich-card" data-formula-card="square-plus" data-a="5" data-b="3" data-a-min="2" data-a-max="8" data-b-min="1" data-b-max="7">
+          <div class="formula-rich-head">
+            <div><b>完全平方公式（加法）</b><p class="subtle">先把 $(a+b)^2$ 看成边长为 $a+b$ 的一个整体正方形，再观察它被拆成哪些面积块。</p></div>
+            <span class="tag">面积恒等</span>
+          </div>
+          <div class="formula">$$(a+b)^2=a^2+2ab+b^2$$</div>
+          <div class="formula-dual">
+            <div class="visual-panel"><b>左边：一个完整的 $(a+b)\times(a+b)$ 正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边整体正方形"></svg></div>
+            <div class="visual-panel"><b>右边：拆成 $a^2,ab,ab,b^2$ 四块</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边面积分解"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="完全平方加法图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：边长 $a$ 的正方形</span></div>
+            <div class="term-key-item parameter"><i></i><span>$ab$：横向交叉矩形</span></div>
+            <div class="term-key-item input"><i></i><span>$ab$：纵向交叉矩形</span></div>
+            <div class="term-key-item output"><i></i><span>$b^2$：边长 $b$ 的正方形</span></div>
+          </div>
+          <div class="formula-live" data-live-formula></div>
+          <div class="formula-meta">
+            <div><b>什么时候用</b>展开和识别正的完全平方结构。</div>
+            <div><b>常见错误</b>漏掉两个交叉面积，写成 $a^2+b^2$。</div>
+            <div><b>要带走什么</b>$2ab$ 来自两块不同位置的 $ab$ 矩形。</div>
+          </div>
+          <details class="mini-exercise" data-mini-kind="square-plus"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
+        </article>
+        <article class="formula-rich-card" data-formula-card="square-minus" data-a="7" data-b="2" data-a-min="3" data-a-max="9" data-b-min="1" data-b-max="6">
+          <div class="formula-rich-head">
+            <div><b>完全平方公式（减法）</b><p class="subtle">$(a-b)^2$ 是“差的平方”。它不是直接用 $a^2$ 减去 $b^2$，而是一个边长为 $a-b$ 的正方形。</p></div>
+            <span class="tag">差的平方</span>
+          </div>
+          <div class="formula">$$(a-b)^2=a^2-2ab+b^2$$</div>
+          <div class="formula-dual">
+            <div class="visual-panel"><b>左边：边长为 $a-b$ 的目标正方形</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边差的平方"></svg></div>
+            <div class="visual-panel"><b>右边：从 $a^2$ 中拿走两条 $ab$，再把重叠的 $b^2$ 加回</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边差平方分解"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="完全平方减法图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：先看完整大正方形</span></div>
+            <div class="term-key-item warning"><i></i><span>$-ab$：横向拿走一条</span></div>
+            <div class="term-key-item warning"><i></i><span>$-ab$：纵向拿走一条</span></div>
+            <div class="term-key-item output"><i></i><span>$+b^2$：重叠部分加回</span></div>
+          </div>
+          <div class="formula-live" data-live-formula></div>
+          <div class="formula-meta">
+            <div><b>什么时候用</b>展开和识别负中间项的完全平方结构。</div>
+            <div><b>常见错误</b>把“差的平方”误看成“平方的差”。</div>
+            <div><b>要带走什么</b>$+b^2$ 是被重复拿走后必须补回的部分。</div>
+          </div>
+          <details class="mini-exercise" data-mini-kind="square-minus"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
+        </article>
+        <article class="formula-rich-card" data-formula-card="square-diff" data-a="7" data-b="3" data-a-min="4" data-a-max="10" data-b-min="1" data-b-max="6">
+          <div class="formula-rich-head">
+            <div><b>平方差公式</b><p class="subtle">$a^2-b^2$ 是“两个平方相减”。它的重点不是展开，而是把剩余面积重排成乘积。</p></div>
+            <span class="tag">重排面积</span>
+          </div>
+          <div class="formula">$$a^2-b^2=(a+b)(a-b)$$</div>
+          <div class="formula-dual">
+            <div class="visual-panel"><b>左边：从 $a^2$ 中挖去 $b^2$</b><svg data-side="left" viewBox="0 0 360 220" role="img" aria-label="左边平方差"></svg></div>
+            <div class="visual-panel"><b>右边：剩余面积重排成长为 $a+b$、宽为 $a-b$ 的长方形</b><svg data-side="right" viewBox="0 0 360 220" role="img" aria-label="右边重排矩形"></svg></div>
+          </div>
+          <div class="formula-term-key" aria-label="平方差图例">
+            <div class="term-key-item object"><i></i><span>$a^2$：大正方形</span></div>
+            <div class="term-key-item warning"><i></i><span>$-b^2$：挖去的小正方形</span></div>
+            <div class="term-key-item parameter"><i></i><span>$a+b$：重排后的长</span></div>
+            <div class="term-key-item input"><i></i><span>$a-b$：重排后的宽</span></div>
+          </div>
+          <div class="formula-live" data-live-formula></div>
+          <div class="formula-meta">
+            <div><b>什么时候用</b>看到两个平方相减，并希望分解成乘积。</div>
+            <div><b>常见错误</b>$a^2+b^2$ 没有“挖掉”的结构，不能用平方差。</div>
+            <div><b>要带走什么</b>平方差来自剩余面积的重排。</div>
+          </div>
+          <details class="mini-exercise" data-mini-kind="square-diff"><summary data-mini-title>小练习</summary><div class="mini-practice"><div class="formula" data-mini-question></div><button class="mini-btn" type="button" data-mini-next>换一题</button><div class="mini-practice-answer"><div class="formula" data-mini-answer></div><p class="subtle" data-mini-explain></p></div></div></details>
+        </article>
+      </div>
+      <div class="practice-card" aria-live="polite">
+        <div class="practice-head">
+          <b>结构判断练习</b>
+          <div class="practice-actions">
+            <button class="mini-btn" type="button" id="formulaReveal">显示答案</button>
+            <button class="mini-btn" type="button" id="formulaNext">换一道题</button>
+          </div>
+        </div>
+        <div class="practice-output">
+          <div class="practice-line" id="formulaQuestion">$x^2+10x+25$</div>
+          <div class="choice-row" id="formulaChoices" aria-label="选择适用公式">
+            <button class="choice-btn" type="button" data-choice="完全平方">完全平方</button>
+            <button class="choice-btn" type="button" data-choice="平方差">平方差</button>
+            <button class="choice-btn" type="button" data-choice="都不是">都不是</button>
+
+          </div>
+          <div class="choice-feedback" id="formulaFeedback">先看它是完全平方结构，还是两个平方相减。</div>
+          <div class="practice-answer" id="formulaAnswerBox">
+            <div class="practice-line" id="formulaAnswer">$(x+5)^2$</div>
+            <div class="explain" id="formulaExplain">三项结构，两端分别是 $x^2$ 与 $5^2$，中间项 $10x=2\cdot x\cdot5$。</div>
+          </div>
+        </div>
+      </div>
+      <div class="card warning">
+        <b>最后检查</b>
+        <p>完全平方要检查中间项是不是两端平方根乘积的两倍；平方差必须是两个平方相减。只看首尾是不是平方，判断还不够。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="links">
+    <aside class="stage-marker"><span>2</span>Next</aside>
+    <div class="stage-body reveal">
+      <div class="stage-kicker">与后续章节的联系</div>
+      <h2>学会看面积结构后，再进入体积结构。</h2>
+      <div class="grid-3">
+        <div class="card"><b>继续 02-2</b><p>立方相关公式会把“面积拆分”升级为“体积结构”和“交叉项抵消”。</p></div>
+        <div class="card"><b>连接第三章</b><p>本节的反向识别会成为因式分解的基础工具。</p></div>
+        <div class="card"><b>保留判断意识</b><p>先判断结构，再选公式。公式不是模板替换，而是结构识别的结果。</p></div>
+      </div>
+      <div class="split-forward">继续学习：<a href="../chapter_02-2_立方相关公式/">第二章 02-2：立方相关公式</a>。</div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 第二章 02-1 · 完全平方与平方差公式</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('in')}),{threshold:.16});
+  const revealEls=[...document.querySelectorAll('.reveal')];
+  function revealIfVisible(el){
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight*.96&&rect.bottom>0)el.classList.add('in');
+  }
+  function revealHashTarget(){
+    if(!location.hash)return;
+    const target=document.querySelector(location.hash);
+    if(!target)return;
+    target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    target.scrollIntoView({block:'start'});
+  }
+  revealEls.forEach(el=>{revealObserver.observe(el);revealIfVisible(el)});
+  requestAnimationFrame(revealHashTarget);
+  window.addEventListener('hashchange',()=>requestAnimationFrame(revealHashTarget));
+
+  function getModuleParams(module){
+    return {
+      a:Number(module?.dataset.a||6),
+      b:Number(module?.dataset.b||2)
+    };
+  }
+  async function initBinomialCubeThree(){
+    const hosts=[...document.querySelectorAll('[data-binomial-cube-three]')];
+    if(!hosts.length)return;
+    try{
+      const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      const rootStyle=getComputedStyle(document.documentElement);
+      const readColor=name=>rootStyle.getPropertyValue(name).trim()||'#64748b';
+      hosts.forEach(host=>{
+      const module=host.closest('[data-cube-module]');
+      const fallback=host.querySelector('.cube-three-fallback');
+      const formulaBox=module?.querySelector('[data-binomial-formula]');
+      const statusBox=module?.querySelector('[data-binomial-status]');
+      const explainBox=module?.querySelector('[data-binomial-explain]');
+      const controls=module?.querySelector('[data-binomial-controls]');
+      const legendBox=module?.querySelector('.cube-legend');
+      const initialMode=host.dataset.cubeBuilder==='diff'?'diff':'binomial';
+      const binomialLegendHtml=legendBox?.innerHTML||'';
+      const scene=new THREE.Scene();
+      const camera=new THREE.OrthographicCamera(-4.6,4.6,3.2,-3.2,.1,100);
+      camera.position.set(5.2,4.2,6.2);
+      camera.lookAt(0,0,0);
+      const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+      renderer.outputColorSpace=THREE.SRGBColorSpace;
+      host.appendChild(renderer.domElement);
+      fallback?.remove();
+
+      scene.add(new THREE.AmbientLight(0xffffff,.7));
+      const keyLight=new THREE.DirectionalLight(0xffffff,1.25);
+      keyLight.position.set(4,6,5);
+      scene.add(keyLight);
+      const fillLight=new THREE.DirectionalLight(0xffffff,.45);
+      fillLight.position.set(-4,2,-3);
+      scene.add(fillLight);
+
+      const rootGroup=new THREE.Group();
+      const pieceGroup=new THREE.Group();
+      const targetGroup=new THREE.Group();
+      rootGroup.add(targetGroup,pieceGroup);
+      scene.add(rootGroup);
+      const raycaster=new THREE.Raycaster();
+      const pointer=new THREE.Vector2();
+      const dragPlane=new THREE.Plane();
+      const planeHit=new THREE.Vector3();
+      let pieceRecords=[];
+      let clickableMeshes=[];
+      let dragged=null;
+      let dragOffset=new THREE.Vector3();
+      let rotating=false;
+      let lastPointer={x:0,y:0};
+      let demoTimers=[];
+      const state={
+        mode:'assembled',
+        activeMode:'binomial',
+        labelsVisible:true,
+        explanationVisible:true,
+        snapped:new Set(),
+        draggingId:null,
+        pieces:[]
+      };
+      const colors={
+        a3:readColor('--object'),
+        a2b:readColor('--parameter'),
+        ab2:readColor('--input'),
+        b3:readColor('--output'),
+        source:readColor('--object'),
+        removed:readColor('--warning'),
+        diffA2:readColor('--object'),
+        diffAB:readColor('--parameter'),
+        diffB2:readColor('--input')
+      };
+      const colorForGroup=group=>colors[group]||readColor('--object');
+      const formulaComplete='$(a+b)^3=a^3+3a^2b+3ab^2+b^3$';
+      const formulaUnknown='$(a+b)^3=?$';
+      const diffFormulaComplete='$a^3-b^3=(a-b)(a^2+ab+b^2)$';
+      const diffFormulaUnknown='$a^3-b^3=?$';
+      const binomialPieceSpecs=[
+        {id:'a3',formula:'a^3',dimensions:['a','a','a'],colorGroup:'a3',label:'a³',draggable:true},
+        {id:'a2b-xy',formula:'a^2b',dimensions:['a','a','b'],colorGroup:'a2b',label:'a²b',draggable:true},
+        {id:'a2b-xz',formula:'a^2b',dimensions:['a','b','a'],colorGroup:'a2b',label:'a²b',draggable:true},
+        {id:'a2b-yz',formula:'a^2b',dimensions:['b','a','a'],colorGroup:'a2b',label:'a²b',draggable:true},
+        {id:'ab2-x',formula:'ab^2',dimensions:['a','b','b'],colorGroup:'ab2',label:'ab²',draggable:true},
+        {id:'ab2-y',formula:'ab^2',dimensions:['b','a','b'],colorGroup:'ab2',label:'ab²',draggable:true},
+        {id:'ab2-z',formula:'ab^2',dimensions:['b','b','a'],colorGroup:'ab2',label:'ab²',draggable:true},
+        {id:'b3',formula:'b^3',dimensions:['b','b','b'],colorGroup:'b3',label:'b³',draggable:true}
+      ];
+      const diffPieceSpecs=[
+        {id:'diff-source-a3',formula:'a^3',role:'source',dimensions:['a','a','a'],numericSize:[3,3,3],colorGroup:'source',label:'a³',draggable:false,visibleStages:['whole'],hoverText:'完整大立方体 a × a × a'},
+        {id:'diff-negative-b3-marker',formula:'b^3',role:'remove-marker',dimensions:['b','b','b'],numericSize:[1,1,1],colorGroup:'removed',label:'b³',style:'transparent-red-dashed',draggable:false,visibleStages:['whole'],hoverText:'角落中将被移除的体积 b³'},
+        {id:'diff-removed-b3',formula:'-b^3',role:'removed',dimensions:['b','b','b'],numericSize:[1,1,1],colorGroup:'removed',label:'-b³',style:'negative-red',draggable:false,visibleStages:['removed','split'],hoverText:'被移除的体积 b³'},
+        {id:'diff-a2',formula:'a^2(a-b)',role:'remaining-piece',dimensions:['a','a','a-b'],numericSize:[3,3,2],colorGroup:'diffA2',label:'a²(a-b)',hoverText:'a × a × (a-b)',draggable:true,visibleStages:['split','assembled']},
+        {id:'diff-ab',formula:'ab(a-b)',role:'remaining-piece',dimensions:['a','b','a-b'],numericSize:[3,1,2],colorGroup:'diffAB',label:'ab(a-b)',hoverText:'a × b × (a-b)',draggable:true,visibleStages:['split','assembled']},
+        {id:'diff-b2',formula:'b^2(a-b)',role:'remaining-piece',dimensions:['b','b','a-b'],numericSize:[1,1,2],colorGroup:'diffB2',label:'b²(a-b)',hoverText:'b × b × (a-b)',draggable:true,visibleStages:['split','assembled']}
+      ];
+      if(initialMode==='diff'){
+        window.__cubeDiffState=state;
+      }else{
+        window.__binomialCubeState=state;
+      }
+      function makeLabel(text,color){
+        const canvas=document.createElement('canvas');
+        canvas.width=360;canvas.height=128;
+        const ctx=canvas.getContext('2d');
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle='rgba(255,255,255,.94)';
+        ctx.strokeStyle=color;
+        ctx.lineWidth=6;
+        ctx.roundRect(34,20,292,86,24);
+        ctx.fill();ctx.stroke();
+        ctx.fillStyle=color;
+        ctx.font='800 44px Georgia, Times New Roman, serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='middle';
+        ctx.fillText(text,180,64);
+        const texture=new THREE.CanvasTexture(canvas);
+        texture.colorSpace=THREE.SRGBColorSpace;
+        const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false}));
+        sprite.scale.set(.98,.36,1);
+        sprite.userData.isLabel=true;
+        return sprite;
+      }
+      function disposeObject(object){
+        object.traverse(child=>{
+          if(child.geometry)child.geometry.dispose();
+          if(child.material){
+            if(Array.isArray(child.material)){
+              child.material.forEach(material=>{material.map?.dispose();material.dispose();});
+            }else{
+              child.material.map?.dispose();
+              child.material.dispose();
+            }
+          }
+        });
+      }
+      function clearSceneParts(){
+        disposeObject(pieceGroup);
+        disposeObject(targetGroup);
+        pieceGroup.clear();
+        targetGroup.clear();
+        pieceRecords=[];
+        clickableMeshes=[];
+        state.snapped.clear();
+        state.wholeLabel=null;
+        state.diffTargetLabels=null;
+      }
+      function setStatus(text,kind=''){
+        if(!statusBox)return;
+        statusBox.textContent=text;
+        statusBox.classList.toggle('error',kind==='error');
+        statusBox.classList.toggle('done',kind==='done');
+        statusBox.classList.toggle('hover',kind==='hover');
+      }
+      function setFormula(text){
+        if(!formulaBox)return;
+        formulaBox.innerHTML=text;
+        refreshMath(formulaBox);
+      }
+      function updatePublicState(){
+        state.pieces=pieceRecords.map(record=>({
+          id:record.data.id,
+          formula:record.data.formula,
+          role:record.data.role,
+          dimensions:record.data.dimensions,
+          numericSize:record.data.numericSize,
+          colorGroup:record.data.colorGroup,
+          initialPosition:record.data.initialPosition,
+          explodedPosition:record.data.explodedPosition,
+          targetPosition:record.data.targetPosition,
+          label:record.data.label,
+          draggable:record.data.draggable,
+          visible:!!record.object?.visible,
+          snapped:state.snapped.has(record.data.id)
+        }));
+        host.dataset.pieceCount=String(pieceRecords.length);
+        host.dataset.activeMode=state.activeMode;
+        host.dataset.cubeState=state.mode;
+        host.dataset.snappedCount=String(state.snapped.size);
+      }
+      state.screenPoint=(id,kind='current')=>{
+        const record=pieceRecords.find(item=>item.data.id===id);
+        if(!record)return null;
+        const local=kind==='target'
+          ?new THREE.Vector3(...record.data.targetPosition)
+          :kind==='exploded'
+            ?new THREE.Vector3(...record.data.explodedPosition)
+            :record.object.position.clone();
+        const world=rootGroup.localToWorld(local.clone());
+        const projected=world.project(camera);
+        const rect=host.getBoundingClientRect();
+        return {
+          x:rect.left+(projected.x+1)*rect.width/2,
+          y:rect.top+(-projected.y+1)*rect.height/2
+        };
+      };
+      function makePieceMesh(record){
+        const size=new THREE.Vector3(...record.renderSize);
+        const color=colorForGroup(record.data.colorGroup);
+        const piece=new THREE.Group();
+        piece.position.fromArray(record.data.initialPosition);
+        piece.userData.pieceId=record.data.id;
+        piece.userData.target=new THREE.Vector3(...record.data.initialPosition);
+        const geometry=new THREE.BoxGeometry(size.x,size.y,size.z);
+        const material=new THREE.MeshStandardMaterial({
+          color:new THREE.Color(color),
+          roughness:.58,
+          metalness:.03,
+          transparent:true,
+          opacity:record.data.opacity??.9
+        });
+        const mesh=new THREE.Mesh(geometry,material);
+        mesh.userData.pieceId=record.data.id;
+        piece.add(mesh);
+        const edges=new THREE.LineSegments(
+          new THREE.EdgesGeometry(geometry),
+          new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.72})
+        );
+        piece.add(edges);
+        const label=makeLabel(record.data.label,color);
+        label.position.set(0,size.y*.62+.18,0);
+        piece.add(label);
+        pieceGroup.add(piece);
+        clickableMeshes.push(mesh);
+        record.object=piece;
+        record.mesh=mesh;
+        record.labelObject=label;
+        return piece;
+      }
+      function makeTargetGhost(record){
+        const geometry=new THREE.BoxGeometry(...record.renderSize);
+        const material=new THREE.MeshBasicMaterial({
+          color:new THREE.Color(colorForGroup(record.data.colorGroup)),
+          transparent:true,
+          opacity:.055,
+          depthWrite:false
+        });
+        const ghost=new THREE.Mesh(geometry,material);
+        ghost.position.fromArray(record.data.targetPosition);
+        const edges=new THREE.LineSegments(
+          new THREE.EdgesGeometry(geometry),
+          new THREE.LineBasicMaterial({color:new THREE.Color(colorForGroup(record.data.colorGroup)),transparent:true,opacity:.45})
+        );
+        edges.position.copy(ghost.position);
+        targetGroup.add(ghost,edges);
+        return ghost;
+      }
+      function buildBinomialPieces(){
+        clearSceneParts();
+        const {a,b}=getModuleParams(module);
+        if(b>=a){
+          module.dataset.b=String(Math.max(1,a-1));
+        }
+        const params=getModuleParams(module);
+        const values={a:params.a,b:params.b};
+        const total=params.a+params.b;
+        const renderScale=2.7/total;
+        const centerFor=letter=>{
+          const size=values[letter];
+          return letter==='a'?-total/2+size/2:total/2-size/2;
+        };
+        const explodedLayout={
+          a3:[-2.35,-1.35,-.15],
+          'a2b-xy':[-2.15,1.05,.2],
+          'a2b-xz':[-.65,2.05,-.25],
+          'a2b-yz':[.95,1.85,.25],
+          'ab2-x':[2.45,.8,-.2],
+          'ab2-y':[2.25,-.85,.25],
+          'ab2-z':[.45,-2.05,-.25],
+          b3:[-1.1,-2.15,.2]
+        };
+        const volumeCheck={
+          a:params.a,
+          b:params.b,
+          a3:params.a**3,
+          a2bEach:params.a**2*params.b,
+          a2bTotal:3*params.a**2*params.b,
+          ab2Each:params.a*params.b**2,
+          ab2Total:3*params.a*params.b**2,
+          b3:params.b**3,
+          total:(params.a+params.b)**3,
+          sum:params.a**3+3*params.a**2*params.b+3*params.a*params.b**2+params.b**3
+        };
+        // Volume check for the requested default a=2,b=1:
+        // a^3=8, three a^2b blocks total 12, three ab^2 blocks total 6, b^3=1,
+        // 8+12+6+1=27=(2+1)^3.
+        binomialPieceSpecs.forEach(spec=>{
+          const numericSize=spec.dimensions.map(dim=>values[dim]);
+          const target=spec.dimensions.map(dim=>centerFor(dim)*renderScale);
+          const exploded=explodedLayout[spec.id]||target;
+          const record={
+            data:{
+              ...spec,
+              numericSize,
+              initialPosition:[...target],
+              targetPosition:[...target],
+              explodedPosition:exploded
+            },
+            renderSize:numericSize.map(size=>size*renderScale)
+          };
+          pieceRecords.push(record);
+          makeTargetGhost(record);
+          makePieceMesh(record);
+        });
+        targetGroup.visible=false;
+        state.volumeCheck=volumeCheck;
+        state.activeMode='binomial';
+        state.mode='assembled';
+        setFormula(formulaUnknown);
+        setStatus('初始为完整立方体。点击“拆开”后，把 8 个体块拖回透明目标框。');
+        const wholeLabel=makeLabel('(a+b)³',readColor('--movement'));
+        wholeLabel.name='whole-cube-label';
+        wholeLabel.position.set(0,1.82,0);
+        pieceGroup.add(wholeLabel);
+        state.wholeLabel=wholeLabel;
+        updateLabelVisibility();
+        updatePublicState();
+      }
+      function buildDiffPieces(){
+        clearSceneParts();
+        let {a,b}=getModuleParams(module);
+        if(b>=a){
+          b=Math.max(1,a-1);
+          module.dataset.b=String(b);
+        }
+        const d=a-b;
+        const renderScale=2.55/a;
+        const corner=(a/2-b/2)*renderScale;
+        const sourcePositions={
+          'diff-source-a3':[0,0,0],
+          'diff-negative-b3-marker':[corner,corner,corner],
+          'diff-removed-b3':[corner,corner,corner],
+          'diff-a2':[-.32,-.12,-.62],
+          'diff-ab':[1.05,.78,-.22],
+          'diff-b2':[1.55,1.12,.45]
+        };
+        const explodedPositions={
+          'diff-source-a3':[0,0,0],
+          'diff-negative-b3-marker':[corner,corner,corner],
+          'diff-removed-b3':[2.38,1.7,1.05],
+          'diff-a2':[-2.05,.5,-.18],
+          'diff-ab':[.75,1.55,.04],
+          'diff-b2':[2.25,.3,.08]
+        };
+        const targetPositions={
+          'diff-source-a3':[0,0,0],
+          'diff-negative-b3-marker':[corner,corner,corner],
+          'diff-removed-b3':[2.38,1.7,1.05],
+          'diff-a2':[-.9,.2,0],
+          'diff-ab':[1.15,-.62,0],
+          'diff-b2':[2.22,-1.02,0]
+        };
+        const volumeCheck={
+          a,b,
+          a3:a**3,
+          b3:b**3,
+          left:a**3-b**3,
+          diffA2:a*a*d,
+          diffAB:a*b*d,
+          diffB2:b*b*d,
+          right:d*(a*a+a*b+b*b),
+          sum:a*a*d+a*b*d+b*b*d
+        };
+        // Volume check for the requested a=3,b=1:
+        // a^3=27, b^3=1, so a^3-b^3=26.
+        // a^2(a-b)=3*3*2=18, ab(a-b)=3*1*2=6, b^2(a-b)=1*1*2=2,
+        // and 18+6+2=26=(a-b)(a^2+ab+b^2)=2*(9+3+1).
+        const diffNumericSize=spec=>{
+          if(spec.role==='source')return [a,a,a];
+          if(spec.role==='remove-marker'||spec.role==='removed')return [b,b,b];
+          if(spec.id==='diff-a2')return [a,a,d];
+          if(spec.id==='diff-ab')return [a,b,d];
+          if(spec.id==='diff-b2')return [b,b,d];
+          return spec.numericSize;
+        };
+        diffPieceSpecs.forEach(spec=>{
+          const numericSize=diffNumericSize(spec);
+          const record={
+            data:{
+              ...spec,
+              numericSize,
+              initialPosition:[...sourcePositions[spec.id]],
+              sourcePosition:[...sourcePositions[spec.id]],
+              explodedPosition:[...explodedPositions[spec.id]],
+              targetPosition:[...targetPositions[spec.id]],
+              opacity:spec.role==='remove-marker'?.22:spec.role==='removed'?.45:spec.role==='source'?.34:.9
+            },
+            renderSize:numericSize.map(size=>size*renderScale)
+          };
+          pieceRecords.push(record);
+          if(spec.role==='remaining-piece')makeTargetGhost(record);
+          makePieceMesh(record);
+          if(spec.role==='remaining-piece')record.object.visible=false;
+          if(spec.role==='removed')record.object.visible=false;
+        });
+        const diffEdgeLabel=makeLabel('公共边 a-b',readColor('--conclusion'));
+        diffEdgeLabel.position.set(.85,-1.98,.85);
+        diffEdgeLabel.scale.set(1.18,.42,1);
+        targetGroup.add(diffEdgeLabel);
+        const diffTargetLabels=[diffEdgeLabel];
+        [
+          ['a²',[-.9,1.72,.55],colors.diffA2],
+          ['ab',[1.15,.62,.55],colors.diffAB],
+          ['b²',[2.22,.05,.55],colors.diffB2]
+        ].forEach(([text,position,color])=>{
+          const label=makeLabel(text,color);
+          label.position.set(...position);
+          label.scale.set(.78,.3,1);
+          targetGroup.add(label);
+          diffTargetLabels.push(label);
+        });
+        state.diffEdgeLabel=diffEdgeLabel;
+        state.diffTargetLabels=diffTargetLabels;
+        targetGroup.visible=false;
+        state.volumeCheck=volumeCheck;
+        state.activeMode='diff';
+        state.mode='whole';
+        setFormula(diffFormulaUnknown);
+        setStatus('第 1 步：先认清变量。蓝色 a 是大立方边长，青色 b 是角落小立方边长；红色虚线块是将被移除的 b³。');
+        if(explainBox)explainBox.innerHTML=`体积检查：当 $a=${a},b=${b}$，$a^3-b^3=${a**3}-${b**3}=${a**3-b**3}$；右边 $(a-b)(a^2+ab+b^2)=${d}\\times(${a*a}+${a*b}+${b*b})=${d*(a*a+a*b+b*b)}$。`;
+        refreshMath(explainBox);
+        setDiffStageVisibility('whole');
+        updatePublicState();
+      }
+      function updateLabelVisibility(){
+        pieceRecords.forEach(record=>{
+          if(record.labelObject){
+            const binomialVisible=state.activeMode==='binomial'&&state.mode!=='assembled';
+            const diffVisible=state.activeMode==='diff'&&(record.data.role!=='remaining-piece'||record.object.visible);
+            record.labelObject.visible=state.labelsVisible&&(binomialVisible||diffVisible);
+          }
+        });
+        if(state.wholeLabel)state.wholeLabel.visible=state.labelsVisible&&state.mode==='assembled';
+      }
+      function setDiffStageVisibility(stage){
+        pieceRecords.forEach(record=>{
+          const role=record.data.role;
+          record.object.visible=
+            (stage==='whole'&&(role==='source'||role==='remove-marker'))||
+            (stage==='removed'&&(role==='source'||role==='remove-marker'||role==='removed'))||
+            ((stage==='split'||stage==='assembled')&&(role==='removed'||role==='remaining-piece'));
+          if(stage==='whole')moveRecordTo(record,record.data.initialPosition);
+          if(stage==='removed'){
+            if(role==='removed')moveRecordTo(record,record.data.explodedPosition);
+            else moveRecordTo(record,record.data.initialPosition);
+          }
+          if(stage==='split'&&role==='remaining-piece')moveRecordTo(record,record.data.explodedPosition);
+          if(stage==='assembled'&&role==='remaining-piece')moveRecordTo(record,record.data.targetPosition);
+        });
+        targetGroup.visible=stage==='split'||stage==='assembled';
+        updateLabelVisibility();
+      }
+      function moveRecordTo(record,positionArray,immediate=false){
+        record.object.userData.target.fromArray(positionArray);
+        if(immediate)record.object.position.fromArray(positionArray);
+      }
+      function remainingRecords(){
+        return pieceRecords.filter(record=>record.data.role==='remaining-piece');
+      }
+      function draggableRecords(){
+        return pieceRecords.filter(record=>record.data.draggable);
+      }
+      function explodePieces(shouldClearTimers=true){
+        if(shouldClearTimers)clearDemoTimers();
+        state.mode='exploded';
+        state.snapped.clear();
+        targetGroup.visible=true;
+        pieceRecords.forEach(record=>moveRecordTo(record,record.data.explodedPosition));
+        setFormula(formulaComplete);
+        setStatus('已拆开：现在能看到 8 个独立体块。把每块拖到透明目标框附近会自动吸附。');
+        updateLabelVisibility();
+        updatePublicState();
+      }
+      function resetPieces(){
+        clearDemoTimers();
+        if(state.activeMode==='diff'){
+          resetDiff();
+          return;
+        }
+        state.mode='assembled';
+        state.snapped.clear();
+        targetGroup.visible=false;
+        pieceRecords.forEach(record=>moveRecordTo(record,record.data.initialPosition));
+        setFormula(formulaUnknown);
+        setStatus('已重置为完整立方体。点击“拆开”开始拼装练习。');
+        updateLabelVisibility();
+        updatePublicState();
+      }
+      function removeDiffB3(shouldClearTimers=true){
+        if(shouldClearTimers)clearDemoTimers();
+        state.mode='removed';
+        state.snapped.clear();
+        setDiffStageVisibility('removed');
+        setFormula(diffFormulaUnknown);
+        setStatus('第 2 步：已经移除 b³。剩余图形不是规则长方体，需要沿 a-b 的方向切开。');
+        updateActionStates();
+        updatePublicState();
+      }
+      function splitDiffRemainder(shouldClearTimers=true){
+        if(shouldClearTimers)clearDemoTimers();
+        if(state.mode==='whole')removeDiffB3(false);
+        state.mode='split';
+        state.snapped.clear();
+        setDiffStageVisibility('split');
+        setFormula('$a^3-b^3=b^2(a-b)+ab(a-b)+a^2(a-b)$');
+        setStatus('第 3-4 步：三块底面不同，但厚度都等于 a-b。把三块拖到透明目标区，比较共同厚度。');
+        updateActionStates();
+        updatePublicState();
+      }
+      function resetDiff(){
+        clearDemoTimers();
+        state.activeMode='diff';
+        state.mode='whole';
+        state.snapped.clear();
+        setDiffStageVisibility('whole');
+        setFormula(diffFormulaUnknown);
+        setStatus('已重置：完整 a³ 与角落里将被移除的 b³。先观察 a 与 b 的颜色和边长位置。');
+        controls?.querySelector('[data-cube-action="explode"]')&&(controls.querySelector('[data-cube-action="explode"]').textContent='2 移除 b³');
+        updateActionStates();
+        updatePublicState();
+      }
+      function clearDemoTimers(){
+        demoTimers.forEach(timer=>clearTimeout(timer));
+        demoTimers=[];
+      }
+      function checkCompletion(){
+        const needed=draggableRecords().length;
+        if(state.snapped.size!==needed)return;
+        state.mode=state.activeMode==='diff'?'assembled':'completed';
+        if(state.activeMode==='diff'){
+          setDiffStageVisibility('assembled');
+          setFormula(diffFormulaComplete);
+          setStatus('第 5 步完成：三块都有共同厚度 a-b，所以 a^3 - b^3 = (a-b)(a^2 + ab + b^2)。', 'done');
+          updateActionStates();
+        }else{
+          setFormula(formulaComplete);
+          setStatus('拼装完成：(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3', 'done');
+        }
+        updatePublicState();
+      }
+      function snapRecord(record){
+        state.snapped.add(record.data.id);
+        moveRecordTo(record,record.data.targetPosition);
+        checkCompletion();
+      }
+      function runDemo(){
+        clearDemoTimers();
+        if(state.activeMode==='diff'){
+          resetDiff();
+          demoTimers.push(setTimeout(()=>removeDiffB3(false),350));
+          demoTimers.push(setTimeout(()=>splitDiffRemainder(false),1150));
+          remainingRecords().forEach((record,index)=>{
+            demoTimers.push(setTimeout(()=>snapRecord(record),2050+index*520));
+          });
+          return;
+        }
+        resetPieces();
+        demoTimers.push(setTimeout(()=>explodePieces(false),350));
+        draggableRecords().forEach((record,index)=>{
+          demoTimers.push(setTimeout(()=>snapRecord(record),1050+index*360));
+        });
+      }
+      function setActionLabels(){
+        const map=state.activeMode==='diff'
+          ?{explain:'1 标出 b³',explode:'2 移除 b³',split:'3 切成三块',reset:'重置',demo:'播放完整过程',labels:state.labelsVisible?'隐藏标签':'显示标签'}
+          :{explode:'拆开',split:'拆分剩余体积',reset:'重置',demo:'自动演示',labels:state.labelsVisible?'隐藏标签':'显示标签',explain:state.explanationVisible?'隐藏公式解释':'显示公式解释'};
+        controls?.querySelectorAll('[data-cube-action]').forEach(button=>{
+          button.textContent=map[button.dataset.cubeAction]||button.textContent;
+          if(button.dataset.cubeAction==='split')button.style.display=state.activeMode==='diff'?'':'none';
+          if(button.dataset.cubeAction==='explain')button.style.display='';
+        });
+        updateActionStates();
+      }
+      function updateActionStates(){
+        controls?.querySelectorAll('[data-cube-action]').forEach(button=>button.disabled=false);
+        if(state.activeMode!=='diff')return;
+        const removeButton=controls?.querySelector('[data-cube-action="explode"]');
+        const splitButton=controls?.querySelector('[data-cube-action="split"]');
+        if(removeButton)removeButton.disabled=state.mode!=='whole';
+        if(splitButton)splitButton.disabled=state.mode!=='removed';
+      }
+      function setCubeMode(mode){
+        clearDemoTimers();
+        state.activeMode=mode;
+        if(mode==='diff'){
+          const {a,b}=getModuleParams(module);
+          const d=a-b;
+          if(legendBox){
+            legendBox.innerHTML=[
+              '<div class="cube-legend-row"><i></i><span><b>$a^3$</b><span class="var-a">a</span> 是大立方体边长。</span></div>',
+              '<div class="cube-legend-row"><i></i><span><b>$-b^3$</b><span class="var-b">b</span> 是被移除的小立方体边长。</span></div>',
+              '<div class="cube-legend-row"><i></i><span><b>$b^2(a-b)$</b>底面 $b\\times b$，共同厚度 $a-b$。</span></div>',
+              '<div class="cube-legend-row"><i></i><span><b>$ab(a-b)$</b>底面 $a\\times b$，共同厚度 $a-b$。</span></div>',
+              '<div class="cube-legend-row"><i></i><span><b>$a^2(a-b)$</b>底面 $a\\times a$，共同厚度 $a-b$。</span></div>'
+            ].join('');
+            refreshMath(legendBox);
+          }
+          if(explainBox)explainBox.innerHTML=`体积检查：当 $a=${a},b=${b}$，$a^3-b^3=${a**3}-${b**3}=${a**3-b**3}$；右边 $(a-b)(a^2+ab+b^2)=${d}\\times(${a*a}+${a*b}+${b*b})=${d*(a*a+a*b+b*b)}$。`;
+          buildDiffPieces();
+        }else{
+          if(legendBox){ legendBox.innerHTML=binomialLegendHtml; refreshMath(legendBox); }
+          if(explainBox)explainBox.innerHTML='体积检查：当 $a=2,b=1$，$a^3=8$，三个 $a^2b$ 共 $12$，三个 $ab^2$ 共 $6$，$b^3=1$，总和 $27=(2+1)^3$。';
+          buildBinomialPieces();
+        }
+        refreshMath(explainBox);
+        setActionLabels();
+      }
+      setCubeMode(initialMode);
+      module?.addEventListener('module-params-change',()=>{
+        if(state.activeMode==='binomial')buildBinomialPieces();
+        if(state.activeMode==='diff')buildDiffPieces();
+      });
+      rootGroup.rotation.set(-.38,.62,0);
+      host.style.cursor='grab';
+      host.style.touchAction='none';
+      function updatePointer(event){
+        const rect=host.getBoundingClientRect();
+        pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
+        pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
+      }
+      function getHitRecord(event){
+        updatePointer(event);
+        raycaster.setFromCamera(pointer,camera);
+        const hit=raycaster.intersectObjects(clickableMeshes,false)[0];
+        if(!hit)return null;
+        const id=hit.object.userData.pieceId;
+        return pieceRecords.find(record=>record.data.id===id)||null;
+      }
+      host.addEventListener('pointerdown',event=>{
+        clearDemoTimers();
+        lastPointer={x:event.clientX,y:event.clientY};
+        const hitRecord=state.mode!=='assembled'?getHitRecord(event):null;
+        if(hitRecord&&hitRecord.data.draggable){
+          dragged=hitRecord;
+          state.draggingId=hitRecord.data.id;
+          const normal=camera.getWorldDirection(new THREE.Vector3()).normalize();
+          dragPlane.setFromNormalAndCoplanarPoint(normal,hitRecord.object.position);
+          raycaster.ray.intersectPlane(dragPlane,planeHit);
+          dragOffset.copy(hitRecord.object.position).sub(planeHit);
+          host.style.cursor='grabbing';
+        }else{
+          rotating=true;
+          host.style.cursor='grabbing';
+        }
+        host.setPointerCapture?.(event.pointerId);
+      });
+      host.addEventListener('pointermove',event=>{
+        if(dragged){
+          updatePointer(event);
+          raycaster.setFromCamera(pointer,camera);
+          if(raycaster.ray.intersectPlane(dragPlane,planeHit)){
+            dragged.object.position.copy(planeHit).add(dragOffset);
+            dragged.object.userData.target.copy(dragged.object.position);
+          }
+          return;
+        }
+        if(!rotating&&state.activeMode==='diff'){
+          const hitRecord=getHitRecord(event);
+          if(hitRecord?.data.hoverText){
+            setStatus(hitRecord.data.hoverText,'hover');
+          }else if(statusBox?.classList.contains('hover')){
+            setStatus(state.mode==='split'
+              ?'第 3-4 步：三块底面不同，但厚度都等于 a-b。把三块拖到透明目标区，比较共同厚度。'
+              :'立方差模式：先标出并移除 b³，再切开剩余体积，最后提取共同厚度 a-b。');
+          }
+        }
+        if(!rotating)return;
+        const dx=event.clientX-lastPointer.x;
+        const dy=event.clientY-lastPointer.y;
+        lastPointer={x:event.clientX,y:event.clientY};
+        rootGroup.rotation.y+=dx*.01;
+        rootGroup.rotation.x=Math.max(-1.16,Math.min(.58,rootGroup.rotation.x+dy*.01));
+      });
+      function releasePointer(event){
+        host.style.cursor='grab';
+        host.releasePointerCapture?.(event.pointerId);
+        if(dragged){
+          const target=new THREE.Vector3(...dragged.data.targetPosition);
+          const distance=dragged.object.position.distanceTo(target);
+          const targetScreen=state.screenPoint(dragged.data.id,'target');
+          const screenDistance=targetScreen?Math.hypot(event.clientX-targetScreen.x,event.clientY-targetScreen.y):Infinity;
+          if(distance<.55||screenDistance<118){
+            snapRecord(dragged);
+            if(!(String(state.mode).includes('completed')||state.mode==='assembled')){
+              const remaining=draggableRecords().length-state.snapped.size;
+              setStatus(`已吸附 ${dragged.data.label}。还剩 ${remaining} 个体块。`);
+            }
+          }else{
+            moveRecordTo(dragged,dragged.data.explodedPosition);
+            setStatus(`${dragged.data.label} 没有放到正确目标附近，已回弹。`, 'error');
+          }
+          dragged=null;
+          state.draggingId=null;
+          updatePublicState();
+        }
+        rotating=false;
+      }
+      host.addEventListener('pointerup',releasePointer);
+      host.addEventListener('pointercancel',releasePointer);
+      host.addEventListener('pointerleave',event=>{if(dragged||rotating)releasePointer(event)});
+      controls?.addEventListener('click',event=>{
+        const button=event.target.closest('[data-cube-action]');
+        if(!button)return;
+        const action=button.dataset.cubeAction;
+        if(action==='explode'){
+          if(state.activeMode==='diff'){
+            removeDiffB3();
+          }else{
+            explodePieces();
+          }
+        }
+        if(action==='split'&&state.activeMode==='diff')splitDiffRemainder();
+        if(action==='reset')resetPieces();
+        if(action==='demo')runDemo();
+        if(action==='labels'){
+          state.labelsVisible=!state.labelsVisible;
+          button.textContent=state.labelsVisible?'隐藏标签':'显示标签';
+          updateLabelVisibility();
+          updatePublicState();
+        }
+        if(action==='explain'){
+          if(state.activeMode==='diff'){
+            resetDiff();
+            setStatus('第 1 步：已标出角落中的 b³。注意 a 与 b 是不同边长，颜色不同，不能把两个字母混成同一类。','hover');
+            return;
+          }
+          state.explanationVisible=!state.explanationVisible;
+          if(explainBox)explainBox.style.display=state.explanationVisible?'':'none';
+          button.textContent=state.explanationVisible
+            ?'隐藏公式解释'
+            :'显示公式解释';
+        }
+      });
+      function resize(){
+        const width=Math.max(260,host.clientWidth);
+        const height=Math.max(320,host.clientHeight);
+        renderer.setSize(width,height,false);
+        const aspect=width/height;
+        const frustum=8.65;
+        camera.left=-frustum*aspect/2;
+        camera.right=frustum*aspect/2;
+        camera.top=frustum/2;
+        camera.bottom=-frustum/2;
+        camera.updateProjectionMatrix();
+      }
+      const resizeObserver=new ResizeObserver(resize);
+      resizeObserver.observe(host);
+      resize();
+      const rootWorldQuaternion=new THREE.Quaternion();
+      const labelQuaternion=new THREE.Quaternion();
+      function render(){
+        rootGroup.getWorldQuaternion(rootWorldQuaternion);
+        rootWorldQuaternion.invert();
+        labelQuaternion.copy(rootWorldQuaternion).multiply(camera.quaternion);
+        pieceRecords.forEach(record=>{
+          if(record.object?.userData.target)record.object.position.lerp(record.object.userData.target,.16);
+          if(record.labelObject)record.labelObject.quaternion.copy(labelQuaternion);
+        });
+        if(state.wholeLabel)state.wholeLabel.quaternion.copy(labelQuaternion);
+        state.diffTargetLabels?.forEach(label=>label.quaternion.copy(labelQuaternion));
+        renderer.render(scene,camera);
+        requestAnimationFrame(render);
+      }
+      render();
+      });
+    }catch(error){
+      document.querySelectorAll('[data-binomial-cube-three] .cube-three-fallback').forEach(fallback=>{
+        fallback.textContent='Three.js 加载失败时，可根据旁边图例理解体积分解。';
+      });
+    }
+  }
+  initBinomialCubeThree();
+
+  const aRange=document.getElementById('aRange');
+  const bRange=document.getElementById('bRange');
+  const aVal=document.getElementById('aVal');
+  const bVal=document.getElementById('bVal');
+  function setSvgRect(el,x,y,w,h){
+    if(!el)return;
+    el.setAttribute('x',x);
+    el.setAttribute('y',y);
+    el.setAttribute('width',w);
+    el.setAttribute('height',h);
+  }
+  function setSvgText(el,x,y){
+    if(!el)return;
+    el.setAttribute('x',x);
+    el.setAttribute('y',y);
+  }
+  const squareParts={
+    aa:document.getElementById('sqAA'),
+    ab1:document.getElementById('sqAB1'),
+    ab2:document.getElementById('sqAB2'),
+    bb:document.getElementById('sqBB'),
+    aaText:document.getElementById('sqAAText'),
+    ab1Text:document.getElementById('sqAB1Text'),
+    ab2Text:document.getElementById('sqAB2Text'),
+    bbText:document.getElementById('sqBBText')
+  };
+  let squarePending=false;
+  function drawSquare(){
+    squarePending=false;
+    const a=Number(aRange.value);
+    const b=Number(bRange.value);
+    const base=176;
+    const x0=70;
+    const y0=28;
+    const aw=Math.round(base*a/(a+b));
+    const bw=base-aw;
+    setSvgRect(squareParts.aa,x0,y0,aw,aw);
+    setSvgRect(squareParts.ab1,x0+aw,y0,bw,aw);
+    setSvgRect(squareParts.ab2,x0,y0+aw,aw,bw);
+    setSvgRect(squareParts.bb,x0+aw,y0+aw,bw,bw);
+    setSvgText(squareParts.aaText,x0+aw/2,y0+aw/2);
+    setSvgText(squareParts.ab1Text,x0+aw+bw/2,y0+aw/2);
+    setSvgText(squareParts.ab2Text,x0+aw/2,y0+aw+bw/2);
+    setSvgText(squareParts.bbText,x0+aw+bw/2,y0+aw+bw/2);
+    aVal.textContent=a;
+    bVal.textContent=b;
+  }
+  function updateSquare(){
+    if(squarePending)return;
+    squarePending=true;
+    requestAnimationFrame(drawSquare);
+  }
+  if(aRange&&bRange&&aVal&&bVal&&squareParts.aa){
+    aRange.addEventListener('input',updateSquare);
+    bRange.addEventListener('input',updateSquare);
+    updateSquare();
+  }
+
+  function refreshMath(...nodes){
+    if(window.MathJax?.typesetPromise) MathJax.typesetPromise(nodes.filter(Boolean));
+  }
+  function setPracticeVisible(boxId,buttonId,visible){
+    const box=document.getElementById(boxId);
+    const button=document.getElementById(buttonId);
+    if(!box||!button)return;
+    box.classList.toggle('show',visible);
+    button.textContent=visible?'隐藏答案':'显示答案';
+    button.setAttribute('aria-expanded',String(visible));
+  }
+  function bindPracticeToggle(boxId,buttonId){
+    const button=document.getElementById(buttonId);
+    button?.addEventListener('click',()=>{
+      const box=document.getElementById(boxId);
+      const visible=!box?.classList.contains('show');
+      setPracticeVisible(boxId,buttonId,visible);
+      if(visible) refreshMath(box);
+    });
+    setPracticeVisible(boxId,buttonId,false);
+  }
+  bindPracticeToggle('structureAnswerBox','structureReveal');
+  bindPracticeToggle('basicAnswerBox','basicReveal');
+  bindPracticeToggle('formulaAnswerBox','formulaReveal');
+  bindPracticeToggle('factorAnswerBox','factorReveal');
+  bindPracticeToggle('fractionAnswerBox','fractionReveal');
+  bindPracticeToggle('rationalAnswerBox','rationalReveal');
+  bindPracticeToggle('radicalAnswerBox','radicalReveal');
+  document.querySelectorAll('[data-cube-sum-proof]').forEach(proof=>{
+    const scenes=[...proof.querySelectorAll('[data-sum-scene]')];
+    const buttons=[...proof.querySelectorAll('[data-sum-step]')];
+    const formula=proof.querySelector('[data-sum-formula]');
+    const explanation=proof.querySelector('[data-sum-explanation]');
+    const playButton=proof.querySelector('[data-sum-play]');
+    const resetButton=proof.querySelector('[data-sum-reset]');
+    let playTimers=[];
+    const steps=[
+      {
+        formula:'$$a^3+b^3$$',
+        explanation:'左边表示两个立方体的体积之和。先保持它们彼此独立，不把它们直接拼成一个简单长方体。'
+      },
+      {
+        formula:'$$a^3+b^3=a^2(a+b)-ab(a+b)+b^2(a+b)$$',
+        explanation:'我们故意补入并抵消 $a^2b$ 和 $ab^2$，目的不是改变数值，而是制造三组共同因子 $a+b$。'
+      },
+      {
+        formula:'$$a^3+b^3=(a+b)(a^2-ab+b^2)$$',
+        explanation:'右边表示高度为 $a+b$、底面积为 $a^2-ab+b^2$ 的结构模型；红色 $-ab$ 表示被减去的面积项。'
+      }
+    ];
+    function stopPlay(){
+      playTimers.forEach(timer=>clearTimeout(timer));
+      playTimers=[];
+      if(playButton)playButton.textContent='播放';
+    }
+    function setSumProofStep(index){
+      stopPlay();
+      const next=Math.max(0,Math.min(steps.length-1,index));
+      proof.dataset.step=String(next);
+      scenes.forEach((scene,sceneIndex)=>scene.classList.toggle('active',sceneIndex===next));
+      buttons.forEach(button=>button.classList.toggle('selected',Number(button.dataset.sumStep)===next));
+      if(formula)formula.innerHTML=steps[next].formula;
+      if(explanation)explanation.innerHTML=steps[next].explanation;
+      refreshMath(formula,explanation,proof.querySelector(`[data-sum-scene="${next}"]`));
+    }
+    buttons.forEach(button=>button.addEventListener('click',()=>setSumProofStep(Number(button.dataset.sumStep))));
+    resetButton?.addEventListener('click',()=>setSumProofStep(0));
+    playButton?.addEventListener('click',()=>{
+      if(playTimers.length){
+        stopPlay();
+        return;
+      }
+      playButton.textContent='暂停';
+      [0,1,2].forEach((step,index)=>{
+        playTimers.push(setTimeout(()=>{
+          const next=Math.max(0,Math.min(steps.length-1,step));
+          proof.dataset.step=String(next);
+          scenes.forEach((scene,sceneIndex)=>scene.classList.toggle('active',sceneIndex===next));
+          buttons.forEach(button=>button.classList.toggle('selected',Number(button.dataset.sumStep)===next));
+          if(formula)formula.innerHTML=steps[next].formula;
+          if(explanation)explanation.innerHTML=steps[next].explanation;
+          refreshMath(formula,explanation,proof.querySelector(`[data-sum-scene="${next}"]`));
+          if(index===2)stopPlay();
+        },index*1350));
+      });
+    });
+    setSumProofStep(0);
+  });
+  let wholeStepIndex=0;
+  const wholeSteps=[...document.querySelectorAll('[data-whole-step]')];
+  function updateWholeSteps(){
+    wholeSteps.forEach((step,index)=>step.classList.toggle('active',index<=wholeStepIndex));
+  }
+  document.getElementById('wholePrev')?.addEventListener('click',()=>{
+    wholeStepIndex=Math.max(0,wholeStepIndex-1);
+    updateWholeSteps();
+  });
+  document.getElementById('wholeNext')?.addEventListener('click',()=>{
+    wholeStepIndex=Math.min(wholeSteps.length-1,wholeStepIndex+1);
+    updateWholeSteps();
+  });
+  updateWholeSteps();
+  function clearChoices(containerId){
+    document.querySelectorAll(`#${containerId} .choice-btn`).forEach(btn=>btn.classList.remove('selected','correct','wrong'));
+  }
+  function setChoiceState(containerId,choice,correct,feedbackId){
+    clearChoices(containerId);
+    document.querySelectorAll(`#${containerId} .choice-btn`).forEach(btn=>{
+      if(btn.dataset.choice===choice||btn.dataset.mode===choice){
+        btn.classList.add('selected',choice===correct?'correct':'wrong');
+      }
+    });
+    const feedback=document.getElementById(feedbackId);
+    if(feedback)feedback.textContent=choice===correct?'判断正确，可以查看完整步骤。':`这道题优先不是“${choice}”，再看结构特征。`;
+  }
+
+  const structureCases=[
+    {q:'请将 $(x+2)(x+5)$ 展开并合并同类项。',a:'任务：把乘法结构变成加法结构。提示：先用分配律。结构判断：这是乘法结构。变形：$(x+2)(x+5)=x^2+5x+2x+10=x^2+7x+10$。暴露信息：二次项、一次项和常数项清楚出现。易错提醒：不要漏掉两个交叉乘积。'},
+    {q:'请把 $4x(x-2)+3(x-2)$ 进行因式分解。',a:'任务：寻找共同因子。提示：把 $x-2$ 当成一个整体。结构判断：两项都含整体因子 $(x-2)$。变形：$4x(x-2)+3(x-2)=(4x+3)(x-2)$。暴露信息：乘法结构出现。易错提醒：公因式不一定是单个字母。'},
+    {q:'请观察 $(x^2+x)^2-5(x^2+x)+6$，找出可整体处理的部分并完成变形。',a:'任务：整体代换。提示：重复出现的是 $x^2+x$。结构判断：复杂整体重复出现。令 $t=x^2+x$，原式变为 $t^2-5t+6=(t-2)(t-3)$。换回：$(x^2+x-2)(x^2+x-3)$。继续检查：$x^2+x-2=(x+2)(x-1)$。易错提醒：换元后必须换回。'},
+    {q:'请先判断结构，再选择一种合适变形：$3x^2-2x+5x^2+7x$。',a:'任务：化简。提示：找同类项。结构判断：加减结构中有同类项。变形：$3x^2+5x^2-2x+7x=8x^2+5x$。暴露信息：标准形式更清楚。易错提醒：只有字母部分完全相同才能合并。'}
+  ];
+  let structureIndex=0;
+  const structureQuestion=document.getElementById('structureQuestion');
+  const structureAnswer=document.getElementById('structureAnswer');
+  function updateStructure(){
+    if(!structureQuestion||!structureAnswer)return;
+    const item=structureCases[structureIndex%structureCases.length];
+    structureQuestion.innerHTML=item.q;
+    structureAnswer.innerHTML=item.a;
+    structureIndex++;
+    setPracticeVisible('structureAnswerBox','structureReveal',false);
+    refreshMath(structureQuestion,structureAnswer);
+  }
+  document.getElementById('structureNext')?.addEventListener('click',updateStructure);
+  updateStructure();
+
+  const basicCases=[
+    {q:'展开并合并：$(2x-1)(x+3)$',ans:'$2x^2+5x-3$',ex:'乘法结构适合展开；交叉项为 $6x-x=5x$。'},
+    {q:'合并同类项：$3x^2-2x+5x^2+7x$',ans:'$8x^2+5x$',ex:'项结构适合整理成标准形式。'},
+    {q:'提公因式：$4x(x-2)+3(x-2)$',ans:'$(4x+3)(x-2)$',ex:'把 $x-2$ 看成整体公因式。'},
+    {q:'整体公因式：$a(x+y)-b(x+y)$',ans:'$(a-b)(x+y)$',ex:'共同结构是整个括号 $x+y$。'}
+  ];
+  let basicIndex=0;
+  const basicQuestion=document.getElementById('basicQuestion');
+  const basicAnswer=document.getElementById('basicAnswer');
+  const basicExplain=document.getElementById('basicExplain');
+  function updateBasic(){
+    if(!basicQuestion||!basicAnswer||!basicExplain)return;
+    const item=basicCases[basicIndex%basicCases.length];
+    basicQuestion.innerHTML=item.q;
+    basicAnswer.innerHTML=item.ans;
+    basicExplain.innerHTML=item.ex;
+    basicIndex++;
+    setPracticeVisible('basicAnswerBox','basicReveal',false);
+    refreshMath(basicQuestion,basicAnswer,basicExplain);
+  }
+  document.getElementById('basicNext')?.addEventListener('click',updateBasic);
+  updateBasic();
+
+  const diffA=document.getElementById('diffA');
+  const diffB=document.getElementById('diffB');
+  const diffAVal=document.getElementById('diffAVal');
+  const diffBVal=document.getElementById('diffBVal');
+  const diffCutRect=document.getElementById('diffCutRect');
+  const diffCutText=document.getElementById('diffCutText');
+  const diffProductRect=document.getElementById('diffProductRect');
+  const diffProductText=document.getElementById('diffProductText');
+  const diffFormulaText=document.getElementById('diffFormulaText');
+  let diffPending=false;
+  function drawDiff(){
+    diffPending=false;
+    let a=Number(diffA.value);
+    let b=Number(diffB.value);
+    if(b>=a){
+      b=a-1;
+      diffB.value=b;
+    }
+    diffAVal.textContent=a;
+    diffBVal.textContent=b;
+    const outer=128;
+    const cut=Math.max(18,outer*b/a);
+    const cutX=34+outer-cut;
+    const cutY=42;
+    setSvgRect(diffCutRect,cutX,cutY,cut,cut);
+    setSvgText(diffCutText,cutX+cut/2,cutY+cut/2);
+    const productH=Math.max(42,outer*(a-b)/a);
+    const productW=94+Math.min(34,34*b/a);
+    const productX=238;
+    const productY=42+(outer-productH)/2;
+    setSvgRect(diffProductRect,productX,productY,productW,productH);
+    setSvgText(diffProductText,productX+productW/2,productY+productH/2);
+    diffFormulaText.innerHTML=`${a}<sup>2</sup> − ${b}<sup>2</sup> = (${a} + ${b})(${a} − ${b}) = ${a*a-b*b}`;
+  }
+  function updateDiff(){
+    if(diffPending)return;
+    diffPending=true;
+    requestAnimationFrame(drawDiff);
+  }
+  if(diffA&&diffB&&diffAVal&&diffBVal&&diffCutRect&&diffProductRect&&diffFormulaText){
+    diffA.addEventListener('input',updateDiff);
+    diffB.addEventListener('input',updateDiff);
+    updateDiff();
+  }
+
+  function svgRect(x,y,w,h,cls,label){
+    const labelClass=cls.includes('parameter')?'parameter':cls.includes('input')?'input':cls.includes('output')?'output':cls.includes('removed')?'warning':'object';
+    return `<rect class="svg-piece ${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="8"></rect>${label?`<text class="svg-label ${labelClass}" x="${x+w/2}" y="${y+h/2}">${label}</text>`:''}`;
+  }
+  function dimClass(label){
+    const text=String(label).trim();
+    if(text==='b')return 'dim-parameter';
+    if(text==='a+b')return 'dim-composite';
+    if(text==='a'||text.startsWith('a'))return 'dim-object';
+    return 'dim-composite';
+  }
+  function svgHDim(x,y,w,label){
+    const cls=dimClass(label);
+    return `<line class="svg-arrow ${cls}" x1="${x}" y1="${y}" x2="${x+w}" y2="${y}"></line><text class="svg-note ${cls}" text-anchor="middle" x="${x+w/2}" y="${y-6}">${label}</text>`;
+  }
+  function svgHDimLabel(x,y,w,label,labelDy=-6){
+    const cls=dimClass(label);
+    return `<line class="svg-arrow ${cls}" x1="${x}" y1="${y}" x2="${x+w}" y2="${y}"></line><text class="svg-note ${cls}" text-anchor="middle" x="${x+w/2}" y="${y+labelDy}">${label}</text>`;
+  }
+  function svgVDim(x,y,h,label){
+    const labelX=x<180?x-16:x+16;
+    const cls=dimClass(label);
+    return `<line class="svg-arrow ${cls}" x1="${x}" y1="${y}" x2="${x}" y2="${y+h}"></line><text class="svg-note ${cls}" text-anchor="middle" x="${labelX}" y="${y+h/2+5}">${label}</text>`;
+  }
+  function svgVDimLabel(x,y,h,label,labelDx){
+    const cls=dimClass(label);
+    return `<line class="svg-arrow ${cls}" x1="${x}" y1="${y}" x2="${x}" y2="${y+h}"></line><text class="svg-note ${cls}" text-anchor="middle" x="${x+labelDx}" y="${y+h/2+5}">${label}</text>`;
+  }
+  function svgNote(x,y,...lines){
+    return `<text class="svg-note" x="${x}" y="${y}">${lines.map((line,index)=>`<tspan x="${x}" dy="${index?17:0}">${line}</tspan>`).join('')}</text>`;
+  }
+  function svgCutLine(x1,y1,x2,y2){
+    return `<line class="svg-piece svg-removed" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"></line>`;
+  }
+  function svgLabel(x,y,cls,label){
+    return `<text class="svg-label ${cls}" x="${x}" y="${y}">${label}</text>`;
+  }
+  function svgFitLabel(x,y,cls,label,size){
+    return `<text class="svg-label ${cls}" x="${x}" y="${y}" style="font-size:${size}px">${label}</text>`;
+  }
+  function clearDims(svg){
+    svg.querySelectorAll('line.svg-arrow').forEach(line=>line.remove());
+    svg.querySelectorAll('text.svg-note').forEach(note=>{
+      const text=note.textContent.trim();
+      if(['a','b','a+b','a−b','a-b'].includes(text))note.remove();
+    });
+  }
+  function separateNotesAndDims(svg){
+    svg.querySelectorAll('text.svg-note').forEach(note=>{
+      const text=note.textContent.trim();
+      const y=Number(note.getAttribute('y'));
+      if(text.startsWith('a')&&(text.includes('-')||text.length>1)){
+        if(y>184)note.setAttribute('y',String(y-18));
+        return;
+      }
+      if(['a','b','a+b','a鈭抌','a-b'].includes(text)){
+        if(y>184)note.setAttribute('y',String(y-18));
+        return;
+      }
+      note.setAttribute('y','238');
+      note.querySelectorAll('tspan').forEach((span,index)=>span.setAttribute('dy',index?17:0));
+    });
+  }
+  function rebuildSplitDims(svg,x,y,aW,bW,h){
+    clearDims(svg);
+    svg.insertAdjacentHTML('beforeend',[
+      svgHDimLabel(x,y+h+6,aW,'a',13),
+      svgVDim(x-12,y,aW,'a'),
+      svgHDim(x+aW,y-12,bW,'b'),
+      svgVDimLabel(x+aW+bW+20,y+aW,bW,'b',22)
+    ].join(''));
+  }
+  function rebuildHoleDims(svg,x,y,base,cut){
+    clearDims(svg);
+    svg.insertAdjacentHTML('beforeend',[
+      svgHDimLabel(x,y+base+6,base,'a',13),
+      svgVDim(x-12,y,base,'a'),
+      svgHDim(x+base-cut,y-16,cut,'b'),
+      svgVDimLabel(x+base+22,y,cut,'b',24)
+    ].join(''));
+  }
+  function rebuildMinusDims(svg,x,y,keep,cut,base){
+    clearDims(svg);
+    svg.insertAdjacentHTML('beforeend',[
+      svgHDimLabel(x,y+base+14,keep,'a−b',15),
+      svgVDim(x-12,y,keep,'a−b'),
+      svgHDim(x+keep,y-12,cut,'b'),
+      svgVDimLabel(x+base+12,y+keep,cut,'b',16)
+    ].join(''));
+  }
+  function rebuildRectDims(svg,rx,ry,ah,bh,rh){
+    clearDims(svg);
+    svg.insertAdjacentHTML('beforeend',[
+      svgHDimLabel(rx,ry+rh+8,ah,'a',13),
+      svgVDim(rx-12,ry,rh,'a−b'),
+      svgHDim(rx+ah,ry-14,bh,'b'),
+      svgVDimLabel(rx+ah+bh+12,ry,rh,'a−b',18)
+    ].join(''));
+  }
+  function recolorSecondAb(svg){
+    const abRects=[...svg.querySelectorAll('rect.svg-parameter')];
+    const abLabels=[...svg.querySelectorAll('text.svg-label.parameter')];
+    abRects[1]?.classList.replace('svg-parameter','svg-input');
+    abLabels[1]?.classList.replace('parameter','input');
+  }
+  function refineSquareDiff(left,right,geom){
+    const {x,y,base,cut,rx,ry,ah,bh,rh}=geom;
+    const leftNotes=[...left.querySelectorAll('text.svg-note')];
+    leftNotes.forEach(note=>{
+      if(note.textContent.trim()==='b'){
+        const noteX=Number(note.getAttribute('x'));
+        const noteY=Number(note.getAttribute('y'));
+        if(noteY<y){
+          note.setAttribute('y',String(y-36));
+        }else if(noteX>x+base){
+          note.setAttribute('x',String(x+base+30));
+        }
+      }
+    });
+    right.querySelectorAll('text.svg-label.object,text.svg-label.parameter').forEach(label=>label.remove());
+    const leftLabelSize=ah<92?17:20;
+    const rightLabelSize=bh<64?16:20;
+    right.insertAdjacentHTML('beforeend',`${svgFitLabel(rx+ah/2,ry+rh/2,'object','a(a−b)',leftLabelSize)}${svgFitLabel(rx+ah+bh/2,ry+rh/2,'parameter','b(a−b)',rightLabelSize)}`);
+  }
+  function applySquareDiffDims(left,right,geom){
+    const {x,y,base,cut,rx,ry,ah,bh,rh}=geom;
+    rebuildHoleDims(left,x,y,base,cut);
+    rebuildRectDims(right,rx,ry,ah,bh,rh);
+  }
+  function drawFormulaCard(card){
+    const type=card.dataset.formulaCard;
+    let a=Number(card.dataset.a), b=Number(card.dataset.b);
+    if((type==='square-minus'||type==='square-diff')&&b>=a){
+      b=a-1;
+    }
+    card.dataset.a=String(a);
+    card.dataset.b=String(b);
+    const left=card.querySelector('svg[data-side="left"]');
+    const right=card.querySelector('svg[data-side="right"]');
+    [left,right].forEach(svg=>svg?.setAttribute('viewBox','0 0 360 270'));
+    const live=card.querySelector('[data-live-formula]');
+    const total=a+b;
+    const base=142;
+    const aw=Math.round(base*a/total);
+    const bw=base-aw;
+    if(type==='square-plus'){
+      const x=102, y=30;
+      left.innerHTML=`${svgRect(x,y,base,base,'svg-object','(a+b)²')}${svgHDim(x,y-12,base,'a+b')}${svgVDim(x-12,y,base,'a+b')}${svgNote(68,196,'同一个正方形面积',`(${a}+${b})²=${total*total}`)}`;
+      right.innerHTML=`${svgRect(x,y,aw,aw,'svg-object','a²')}${svgRect(x+aw,y,bw,aw,'svg-parameter','ab')}${svgRect(x,y+aw,aw,bw,'svg-parameter','ab')}${svgRect(x+aw,y+aw,bw,bw,'svg-output','b²')}${svgCutLine(x+aw,y,x+aw,y+base)}${svgCutLine(x,y+aw,x+base,y+aw)}${svgHDim(x,y-12,aw,'a')}${svgHDim(x+aw,y-12,bw,'b')}${svgVDim(x-12,y,aw,'a')}${svgVDim(x-12,y+aw,bw,'b')}${svgNote(52,196,'只切开不增减面积',`${a*a}+2·${a*b}+${b*b}=${total*total}`)}`;
+      live.innerHTML=`(${a}+${b})²=${a*a}+2·${a*b}+${b*b}=${total*total}`;
+    }
+    if(type==='square-plus'){
+      recolorSecondAb(right);
+      right.querySelectorAll('line.svg-removed').forEach(line=>line.remove());
+      const x=102, y=30;
+      rebuildSplitDims(right,x,y,aw,bw,base);
+      separateNotesAndDims(left);
+      separateNotesAndDims(right);
+    }
+    if(type==='square-minus'){
+      const diff=a-b;
+      const x=102, y=28;
+      const keep=Math.max(42,Math.round(base*diff/a));
+      const cut=base-keep;
+      left.innerHTML=`${svgRect(x,y,keep,keep,'svg-object','(a−b)²')}${svgHDim(x,y-12,keep,'a−b')}${svgVDim(x-12,y,keep,'a−b')}${svgNote(72,196,'留下的正方形',`(${a}−${b})²=${diff*diff}`)}`;
+      right.innerHTML=`${svgRect(x,y,base,base,'svg-object')}${svgRect(x+keep,y,cut,base,'svg-removed')}${svgRect(x,y+keep,base,cut,'svg-removed')}${svgRect(x+keep,y+keep,cut,cut,'svg-output','b²')}${svgLabel(x+keep/2,y+keep/2,'object','a²')}${svgLabel(x+keep+cut/2,y+keep/2,'warning','ab')}${svgLabel(x+keep/2,y+keep+cut/2,'warning','ab')}${svgCutLine(x+keep,y,x+keep,y+base)}${svgCutLine(x,y+keep,x+base,y+keep)}${svgHDim(x,y-12,keep,'a−b')}${svgHDim(x+keep,y-12,cut,'b')}${svgVDim(x-12,y,keep,'a−b')}${svgVDim(x-12,y+keep,cut,'b')}${svgNote(36,196,'从 a² 扣两条 ab，重叠处补回 b²',`${a*a}−2·${a*b}+${b*b}=${diff*diff}`)}`;
+      rebuildMinusDims(right,x,y,keep,cut,base);
+      separateNotesAndDims(left);
+      separateNotesAndDims(right);
+      live.innerHTML=`(${a}−${b})²=${a*a}−2·${a*b}+${b*b}=${diff*diff}`;
+    }
+    if(type==='square-diff'){
+      const diff=a-b;
+      const x=96, y=28;
+      const cut=Math.round(base*b/a);
+      const keep=base-cut;
+      const rx=64, ry=70, rw=190;
+      const ah=Math.round(rw*a/(a+b));
+      const bh=rw-ah;
+      const rh=Math.max(44,Math.round(base*diff/a));
+      left.innerHTML=`${svgRect(x,y,base,base,'svg-object','a²')}${svgRect(x+base-cut,y,cut,cut,'svg-removed','b²')}${svgHDim(x,y-12,base,'a')}${svgVDim(x-12,y,base,'a')}${svgHDim(x+base-cut,y-24,cut,'b')}${svgVDim(x+base+12,y,cut,'b')}${svgNote(42,196,'挖掉 b²，剩下 L 形',`${a*a}−${b*b}=${a*a-b*b}`)}`;
+      right.innerHTML=`${svgRect(rx,ry,ah,rh,'svg-object','a(a−b)')}${svgRect(rx+ah,ry,bh,rh,'svg-parameter','b(a−b)')}${svgHDim(rx,ry-14,ah,'a')}${svgHDim(rx+ah,ry-14,bh,'b')}${svgVDim(rx-12,ry,rh,'a−b')}${svgNote(44,196,'L 形剪开平移，面积没变',`(${a}+${b})(${a-b})=${a*a-b*b}`)}`;
+      refineSquareDiff(left,right,{x,y,base,cut,rx,ry,ah,bh,rh});
+      applySquareDiffDims(left,right,{x,y,base,cut,rx,ry,ah,bh,rh});
+      separateNotesAndDims(left);
+      separateNotesAndDims(right);
+      live.innerHTML=`${a}²−${b}²=(${a}+${b})(${a}−${b})=${a*a-b*b}`;
+    }
+  }
+  function ensureFormulaCardControls(card){
+    if(card.querySelector('[data-card-controls]'))return;
+    const head=card.querySelector('.formula-rich-head');
+    if(!head)return;
+    const a=Number(card.dataset.a||6);
+    const b=Number(card.dataset.b||2);
+    card.dataset.defaultA=card.dataset.defaultA||String(a);
+    card.dataset.defaultB=card.dataset.defaultB||String(b);
+    const controls=document.createElement('div');
+    controls.className='card-local-controls';
+    controls.dataset.cardControls='';
+    controls.innerHTML=[
+      `<div class="card-local-control"><label><span>a</span><span data-card-a-val>${a}</span></label><input data-card-a type="range" min="${card.dataset.aMin||3}" max="${card.dataset.aMax||9}" step="1" value="${a}"></div>`,
+      `<div class="card-local-control"><label><span>b</span><span data-card-b-val>${b}</span></label><input data-card-b type="range" min="${card.dataset.bMin||1}" max="${card.dataset.bMax||6}" step="1" value="${b}"></div>`,
+      '<button class="card-local-reset" type="button" data-card-reset>重置</button>'
+    ].join('');
+    head.insertAdjacentElement('afterend',controls);
+    const aInput=controls.querySelector('[data-card-a]');
+    const bInput=controls.querySelector('[data-card-b]');
+    const aVal=controls.querySelector('[data-card-a-val]');
+    const bVal=controls.querySelector('[data-card-b-val]');
+    function applyLocal(){
+      let nextA=Number(aInput.value);
+      let nextB=Number(bInput.value);
+      if(nextB>=nextA){
+        nextB=nextA-1;
+        bInput.value=String(nextB);
+      }
+      aVal.textContent=nextA;
+      bVal.textContent=nextB;
+      card.dataset.a=String(nextA);
+      card.dataset.b=String(nextB);
+      drawFormulaCard(card);
+    }
+    aInput.addEventListener('input',applyLocal);
+    bInput.addEventListener('input',applyLocal);
+    controls.querySelector('[data-card-reset]')?.addEventListener('click',()=>{
+      aInput.value=card.dataset.defaultA||'6';
+      bInput.value=card.dataset.defaultB||'2';
+      applyLocal();
+    });
+  }
+  document.querySelectorAll('[data-formula-card]').forEach(card=>{
+    ensureFormulaCardControls(card);
+    requestAnimationFrame(()=>drawFormulaCard(card));
+  });
+  function ensureCubeModuleControls(module){
+    if(module.querySelector('[data-card-controls]'))return;
+    const head=module.querySelector('.formula-rich-head');
+    if(!head)return;
+    const a=Number(module.dataset.a||6);
+    const b=Number(module.dataset.b||2);
+    module.dataset.defaultA=module.dataset.defaultA||String(a);
+    module.dataset.defaultB=module.dataset.defaultB||String(b);
+    const controls=document.createElement('div');
+    controls.className='card-local-controls';
+    controls.dataset.cardControls='';
+    controls.innerHTML=[
+      `<div class="card-local-control"><label><span class="var-a">a：大边长</span><span data-card-a-val>${a}</span></label><input data-card-a type="range" min="${module.dataset.aMin||3}" max="${module.dataset.aMax||9}" step="1" value="${a}"></div>`,
+      `<div class="card-local-control"><label><span class="var-b">b：小边长</span><span data-card-b-val>${b}</span></label><input data-card-b type="range" min="${module.dataset.bMin||1}" max="${module.dataset.bMax||6}" step="1" value="${b}"></div>`,
+      '<button class="card-local-reset" type="button" data-card-reset>重置</button>'
+    ].join('');
+    head.insertAdjacentElement('afterend',controls);
+    const aInput=controls.querySelector('[data-card-a]');
+    const bInput=controls.querySelector('[data-card-b]');
+    const aVal=controls.querySelector('[data-card-a-val]');
+    const bVal=controls.querySelector('[data-card-b-val]');
+    function applyLocal(){
+      let nextA=Number(aInput.value);
+      let nextB=Number(bInput.value);
+      if(nextB>=nextA){
+        nextB=nextA-1;
+        bInput.value=String(nextB);
+      }
+      aVal.textContent=nextA;
+      bVal.textContent=nextB;
+      module.dataset.a=String(nextA);
+      module.dataset.b=String(nextB);
+      if(module.dataset.cubeModule==='cube-sum')renderCubeFactor('sum',module);
+      if(module.dataset.cubeModule==='cube-diff')renderCubeFactor('diff',module);
+      module.dispatchEvent(new CustomEvent('module-params-change',{detail:{a:nextA,b:nextB}}));
+    }
+    aInput.addEventListener('input',applyLocal);
+    bInput.addEventListener('input',applyLocal);
+    controls.querySelector('[data-card-reset]')?.addEventListener('click',()=>{
+      aInput.value=module.dataset.defaultA||'6';
+      bInput.value=module.dataset.defaultB||'2';
+      applyLocal();
+    });
+  }
+  document.querySelectorAll('[data-cube-module]').forEach(module=>{
+    ensureCubeModuleControls(module);
+  });
+  function cubeTermHtml(text,cls=''){
+    return `<span class="term-chip ${cls}">${text}</span>`;
+  }
+  const coloredA='<span class="term-a">a</span>';
+  const coloredB='<span class="term-b">b</span>';
+  const coloredDiff=`<span class="common">(${coloredA}-${coloredB})</span>`;
+  const coloredSum=`<span class="common">(${coloredA}+${coloredB})</span>`;
+  const coloredA2=`${coloredA}<sup>2</sup>`;
+  const coloredB2=`${coloredB}<sup>2</sup>`;
+  const coloredAB=`${coloredA}${coloredB}`;
+  function renderCubeDiffSlices(module){
+    const host=module?.querySelector('[data-cube-diff-slices]');
+    if(!host)return;
+    const {a,b}=getModuleParams(module);
+    const diff=a-b;
+    const a2=a*a, ab=a*b, b2=b*b;
+    const esc=text=>String(text).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const prism=({x,y,w,h,d,cls,title,top,side,front,volume})=>{
+      const topPoly=`${x},${y} ${x+d},${y-d} ${x+w+d},${y-d} ${x+w},${y}`;
+      const sidePoly=`${x+w},${y} ${x+w+d},${y-d} ${x+w+d},${y+h-d} ${x+w},${y+h}`;
+      return [
+        `<polygon class="piece-top ${cls}" points="${topPoly}"></polygon>`,
+        `<polygon class="piece-side ${cls}" points="${sidePoly}"></polygon>`,
+        `<rect class="piece-front ${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="8"></rect>`,
+        `<text class="label-volume" x="${x+w*.52}" y="${y+h*.52}">${esc(title)}</text>`,
+        `<text class="label-diff" x="${x+w*.52+d*.45}" y="${y-d-12}">${esc(top)}</text>`,
+        `<text class="label-b" x="${x+w+d+20}" y="${y+h*.42-d*.35}">${esc(side)}</text>`,
+        `<text class="label-a" x="${x+w*.5}" y="${y+h+22}">${esc(front)}</text>`,
+        `<text class="note" x="${x+w*.52}" y="${y+h+43}">${esc(volume)}</text>`
+      ].join('');
+    };
+    host.innerHTML=[
+      '<svg viewBox="0 0 440 360" role="img" aria-label="立方差分解为三块厚度相同的长方体">',
+      prism({x:98,y:50,w:92,h:58,d:38,cls:'piece-b',title:'b²(a-b)',top:'a-b',side:'b',front:'b',volume:`${b2}×${diff}=${b2*diff}`}),
+      prism({x:68,y:154,w:176,h:58,d:38,cls:'piece-ab',title:'ab(a-b)',top:'a-b',side:'b',front:'a',volume:`${ab}×${diff}=${ab*diff}`}),
+      prism({x:42,y:258,w:232,h:64,d:38,cls:'piece-a',title:'a²(a-b)',top:'a-b',side:'a',front:'a',volume:`${a2}×${diff}=${a2*diff}`}),
+      `<text class="note" x="330" y="54">a³-b³=${a**3-b**3}</text>`,
+      `<text class="note" x="330" y="78">拆成 ${a2}+${ab}+${b2} 个小面积</text>`,
+      '</svg>'
+    ].join('');
+  }
+  function ensureCubeFactorThreePanels(){
+    document.querySelectorAll('[data-cube-factor]').forEach(panel=>{
+      const kind=panel.dataset.cubeFactor;
+      if(kind==='diff'||kind==='sum')return;
+      if(panel.querySelector('[data-cube-factor-three]'))return;
+      const firstPanel=panel.querySelector('.factor-visual-panel');
+      if(!firstPanel)return;
+      const threePanel=document.createElement('div');
+      threePanel.className='factor-visual-panel cube-factor-three';
+      threePanel.innerHTML=[
+        `<b>${kind==='sum'?'立方和 3D：两个立方相加':'立方差 3D：大立方挖去小立方'}</b>`,
+        `<div class="cube-three-wrap" data-cube-factor-three="${kind}" aria-label="${kind==='sum'?'立方和三维图解，可拖动旋转':'立方差三维图解，可拖动旋转'}">`,
+        '<div class="cube-label-note">拖动旋转 · 随 a,b 改变</div>',
+        '<div class="cube-three-fallback">加载 Three.js 后显示可旋转 3D 图解。</div>',
+        '</div>'
+      ].join('');
+      firstPanel.insertAdjacentElement('beforebegin',threePanel);
+    });
+  }
+  async function initCubeFactorThree(){
+    const hosts=[...document.querySelectorAll('[data-cube-factor-three]')];
+    if(!hosts.length)return;
+    try{
+      const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      const rootStyle=getComputedStyle(document.documentElement);
+      const readColor=name=>rootStyle.getPropertyValue(name).trim()||'#64748b';
+      hosts.forEach(host=>{
+        const kind=host.dataset.cubeFactorThree;
+        const module=host.closest('[data-cube-module]');
+        const fallback=host.querySelector('.cube-three-fallback');
+        const scene=new THREE.Scene();
+        const camera=new THREE.OrthographicCamera(-3.4,3.4,2.55,-2.55,.1,100);
+        camera.position.set(4.4,3.3,5);
+        camera.lookAt(0,0,0);
+        const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+        renderer.outputColorSpace=THREE.SRGBColorSpace;
+        host.appendChild(renderer.domElement);
+        fallback?.remove();
+        scene.add(new THREE.AmbientLight(0xffffff,.76));
+        const key=new THREE.DirectionalLight(0xffffff,1.2);
+        key.position.set(4,6,5);
+        scene.add(key);
+        const group=new THREE.Group();
+        scene.add(group);
+        function makeTextSprite(text,color){
+          const canvas=document.createElement('canvas');
+          canvas.width=380;canvas.height=112;
+          const ctx=canvas.getContext('2d');
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          ctx.fillStyle='rgba(255,255,255,.95)';
+          ctx.strokeStyle=color;
+          ctx.lineWidth=6;
+          ctx.roundRect(30,18,320,76,22);
+          ctx.fill();ctx.stroke();
+          ctx.fillStyle=color;
+          ctx.font='800 34px Georgia, Times New Roman, serif';
+          ctx.textAlign='center';
+          ctx.textBaseline='middle';
+          ctx.fillText(text,190,57);
+          const texture=new THREE.CanvasTexture(canvas);
+          texture.colorSpace=THREE.SRGBColorSpace;
+          const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false}));
+          sprite.scale.set(1.18,.35,1);
+          return sprite;
+        }
+        function clearGroup(){
+          while(group.children.length){
+            const child=group.children.pop();
+            child.geometry?.dispose();
+            if(child.material){
+              child.material.map?.dispose();
+              child.material.dispose();
+            }
+          }
+        }
+        function addCube(size,position,color,opacity,label,labelOffset=new THREE.Vector3(0,.86,0)){
+          const geometry=new THREE.BoxGeometry(size,size,size);
+          const material=new THREE.MeshStandardMaterial({color:new THREE.Color(color),roughness:.55,metalness:.02,transparent:true,opacity});
+          const mesh=new THREE.Mesh(geometry,material);
+          mesh.position.copy(position);
+          group.add(mesh);
+          const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geometry),new THREE.LineBasicMaterial({color:new THREE.Color(readColor('--axis')),transparent:true,opacity:.55}));
+          edges.position.copy(position);
+          group.add(edges);
+          const sprite=makeTextSprite(label,color);
+          sprite.position.copy(position).add(labelOffset);
+          group.add(sprite);
+        }
+        function build(){
+          clearGroup();
+          const {a,b}=getModuleParams(module);
+          const object=readColor('--object');
+          const output=readColor('--output');
+          const warning=readColor('--warning');
+          const parameter=readColor('--parameter');
+          if(kind==='sum'){
+            const scale=2.4/a;
+            const aSize=a*scale;
+            const bSize=Math.max(.58,b*scale);
+            addCube(aSize,new THREE.Vector3(-.86,0,0),object,.78,`a³ = ${a**3}`,new THREE.Vector3(-.28,aSize*.66,.05));
+            addCube(bSize,new THREE.Vector3(1.36,-(aSize-bSize)/2,0),output,.86,`b³ = ${b**3}`,new THREE.Vector3(.22,bSize*.8,.12));
+            const factor=makeTextSprite(`a³+b³ = ${a**3+b**3}`,parameter);
+            factor.position.set(.24,-1.72,.2);
+            group.add(factor);
+          }else{
+            const scale=2.6/a;
+            const aSize=a*scale;
+            const bSize=Math.max(.48,b*scale);
+            addCube(aSize,new THREE.Vector3(0,0,0),object,.42,`a³ = ${a**3}`,new THREE.Vector3(-.54,aSize*.62,-.12));
+            addCube(bSize,new THREE.Vector3(aSize/2-bSize/2,aSize/2-bSize/2,aSize/2-bSize/2),warning,.82,`−b³ = ${-(b**3)}`,new THREE.Vector3(.18,bSize*.86,.15));
+            const remain=makeTextSprite(`a³-b³ = ${a**3-b**3}`,parameter);
+            remain.position.set(-.1,-1.74,.2);
+            group.add(remain);
+          }
+        }
+        build();
+        module?.addEventListener('module-params-change',build);
+        group.rotation.set(-.36,.62,0);
+        let dragging=false,last={x:0,y:0};
+        host.style.cursor='grab';
+        host.style.touchAction='none';
+        host.addEventListener('pointerdown',event=>{
+          dragging=true;last={x:event.clientX,y:event.clientY};host.style.cursor='grabbing';host.setPointerCapture?.(event.pointerId);
+        });
+        host.addEventListener('pointermove',event=>{
+          if(!dragging)return;
+          const dx=event.clientX-last.x,dy=event.clientY-last.y;
+          last={x:event.clientX,y:event.clientY};
+          group.rotation.y+=dx*.01;
+          group.rotation.x=Math.max(-1.18,Math.min(.55,group.rotation.x+dy*.01));
+        });
+        const stop=event=>{dragging=false;host.style.cursor='grab';host.releasePointerCapture?.(event.pointerId);};
+        host.addEventListener('pointerup',stop);
+        host.addEventListener('pointercancel',stop);
+        host.addEventListener('pointerleave',event=>{if(dragging)stop(event);});
+        function resize(){
+          const width=Math.max(260,host.clientWidth);
+          const height=Math.max(240,host.clientHeight);
+          renderer.setSize(width,height,false);
+          const aspect=width/height;
+          const frustum=5.1;
+          camera.left=-frustum*aspect/2;
+          camera.right=frustum*aspect/2;
+          camera.top=frustum/2;
+          camera.bottom=-frustum/2;
+          camera.updateProjectionMatrix();
+        }
+        new ResizeObserver(resize).observe(host);
+        resize();
+        function render(){
+          renderer.render(scene,camera);
+          requestAnimationFrame(render);
+        }
+        render();
+      });
+    }catch(error){
+      document.querySelectorAll('[data-cube-factor-three] .cube-three-fallback').forEach(fallback=>{
+        fallback.textContent='Three.js 加载失败时，可先根据下方抵消图理解立方和差结构。';
+      });
+    }
+  }
+  ensureCubeFactorThreePanels();
+  initCubeFactorThree();
+  function renderCubeFactor(kind,module=document.querySelector(`[data-cube-module="cube-${kind}"]`)){
+    const flow=module?.querySelector(`[data-cube-flow="${kind}"]`);
+    const note=module?.querySelector(`[data-cube-note="${kind}"]`);
+    if(!flow||!note)return;
+    const {a,b}=getModuleParams(module);
+    const a3=a**3,b3=b**3,a2b=a*a*b,ab2=a*b*b;
+    if(kind==='diff')renderCubeDiffSlices(module);
+    if(kind==='sum'){
+      flow.innerHTML=[
+        `<div class="term-row">${cubeTermHtml(`${coloredSum}`,'factor')}${cubeTermHtml(`${coloredA2}−${coloredAB}+${coloredB2}`,'factor')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`${coloredA}<sup>3</sup>=${a3}`,'keep')}${cubeTermHtml(`−${coloredA2}${coloredB}=${-a2b}`,'cancel')}${cubeTermHtml(`+${coloredA}${coloredB2}=${ab2}`,'cancel')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`+${coloredA2}${coloredB}=${a2b}`,'cancel')}${cubeTermHtml(`−${coloredA}${coloredB2}=${-ab2}`,'cancel')}${cubeTermHtml(`+${coloredB}<sup>3</sup>=${b3}`,'keep')}</div>`,
+        `<div class="term-row">${cubeTermHtml(`${coloredA}<sup>3</sup>+${coloredB}<sup>3</sup>=${a3+b3}`,'keep')}</div>`
+      ].join('');
+      note.innerHTML=`代入 $a=${a}, b=${b}$：$-a^2b$ 与 $+a^2b$ 抵消，$+ab^2$ 与 $-ab^2$ 抵消，只剩 $a^3+b^3=${a3+b3}$。`;
+    }else{
+      const diff=a-b,a2=a*a,ab=a*b,b2=b*b;
+      flow.innerHTML=[
+        `<div class="factor-result">`,
+        `<div class="factor-result-line">${coloredB2}${coloredDiff} + ${coloredAB}${coloredDiff} + ${coloredA2}${coloredDiff}</div>`,
+        `<div class="factor-result-line">= ${coloredDiff}(${coloredB2} + ${coloredAB} + ${coloredA2})</div>`,
+        `<div class="factor-result-line">= ${coloredDiff}(${coloredA2} + ${coloredAB} + ${coloredB2})</div>`,
+        `<div class="factor-result-line final">= (${a}-${b})(${a2}+${ab}+${b2}) = ${a3-b3}</div>`,
+        `</div>`
+      ].join('');
+      note.innerHTML=`代入 $a=${a}, b=${b}$：三块体积按视频切割顺序是 $b^2(a-b)=${b2*diff}$、$ab(a-b)=${ab*diff}$、$a^2(a-b)=${a2*diff}$。共同厚度都是 $a-b=${diff}$，所以提取公因式得到 $(a-b)(a^2+ab+b^2)$。`;
+    }
+    refreshMath(flow,note);
+  }
+  renderCubeFactor('sum');
+  renderCubeFactor('diff');
+
+  const randInt=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
+  const pick=items=>items[randInt(0,items.length-1)];
+  const xTerm=k=>k===1?'x':`${k}x`;
+  const x2Term=k=>k===1?'x^2':`${k}x^2`;
+  const x3Term=k=>k===1?'x^3':`${k}x^3`;
+  function makeMiniExercise(kind){
+    const m=randInt(1,4);
+    const n=randInt(2,9);
+    const lx=xTerm(m);
+    const ax2=x2Term(m*m);
+    if(kind==='square-plus'){
+      return {title:`小练习：展开 $(${lx}+${n})^2$`,q:`$(${lx}+${n})^2$`,ans:`$${ax2}+${2*m*n}x+${n*n}$`,ex:`中间项是 $2\\cdot${m}x\\cdot${n}=${2*m*n}x$。`};
+    }
+    if(kind==='square-minus'){
+      return {title:`小练习：识别 $${ax2}-${2*m*n}x+${n*n}$`,q:`$${ax2}-${2*m*n}x+${n*n}$`,ans:`$(${lx}-${n})^2$`,ex:`两端是 $(${lx})^2$ 和 $${n}^2$，中间项为负。`};
+    }
+    if(kind==='square-diff'){
+      return {title:`小练习：分解 $${ax2}-${n*n}$`,q:`$${ax2}-${n*n}$`,ans:`$(${lx}+${n})(${lx}-${n})$`,ex:`先识别为 $(${lx})^2-${n}^2$。`};
+    }
+    if(kind==='cube-plus'){
+      return {title:`小练习：展开 $(${lx}+${n})^3$`,q:`$(${lx}+${n})^3$`,ans:`$${x3Term(m**3)}+${3*m*m*n}x^2+${3*m*n*n}x+${n**3}$`,ex:`系数来自 $a^3+3a^2b+3ab^2+b^3$。`};
+    }
+    if(kind==='cube-sum'){
+      const mm=m*m, nn=n*n;
+      return {title:`小练习：分解 $${x3Term(m**3)}+${n**3}$`,q:`$${x3Term(m**3)}+${n**3}$`,ans:`$(${lx}+${n})(${x2Term(mm)}-${m*n}x+${nn})$`,ex:`这是 $(${lx})^3+${n}^3$，二次因子中间项为负。`};
+    }
+    const mm=m*m, nn=n*n;
+    return {title:`小练习：分解 $${x3Term(m**3)}-${n**3}$`,q:`$${x3Term(m**3)}-${n**3}$`,ans:`$(${lx}-${n})(${x2Term(mm)}+${m*n}x+${nn})$`,ex:`这是 $(${lx})^3-${n}^3$，二次因子三项全正。`};
+  }
+  function renderMiniExercise(box){
+    const item=makeMiniExercise(box.dataset.miniKind);
+    box.querySelector('[data-mini-title]').innerHTML=item.title;
+    box.querySelector('[data-mini-question]').innerHTML=item.q;
+    box.querySelector('[data-mini-answer]').innerHTML=item.ans;
+    box.querySelector('[data-mini-explain]').innerHTML=item.ex;
+    refreshMath(box);
+  }
+  document.querySelectorAll('[data-mini-kind]').forEach(box=>{
+    box.querySelector('[data-mini-next]')?.addEventListener('click',event=>{
+      event.preventDefault();
+      renderMiniExercise(box);
+    });
+    renderMiniExercise(box);
+  });
+  function makeFormulaCase(){
+    const formulaScope=document.body.dataset.formulaScope||'all';
+    const formulaKinds={
+      square:['square-plus-expand','square-minus-expand','square-plus-factor','square-minus-factor','square-diff-factor','not-square-middle','not-square-sum'],
+      cube:['cube-plus-expand','cube-sum-factor','cube-diff-factor'],
+      all:['square-plus-expand','square-minus-expand','square-plus-factor','square-minus-factor','square-diff-factor','cube-sum-factor','cube-diff-factor']
+    };
+    const kind=pick(formulaKinds[formulaScope]||formulaKinds.all);
+    const m=randInt(1,4);
+    const n=randInt(2,9);
+    const lx=xTerm(m);
+    const ax2=x2Term(m*m);
+    if(kind==='square-plus-expand'){
+      return {q:`$(${lx}+${n})^2$`,type:'完全平方',ans:`$${ax2}+${2*m*n}x+${n*n}$`,ex:`按 $(a+b)^2=a^2+2ab+b^2$，这里 $a=${lx}, b=${n}$，中间项是 $2\\cdot${m}x\\cdot${n}=${2*m*n}x$。`};
+    }
+    if(kind==='square-minus-expand'){
+      return {q:`$(${lx}-${n})^2$`,type:'完全平方',ans:`$${ax2}-${2*m*n}x+${n*n}$`,ex:`按 $(a-b)^2=a^2-2ab+b^2$，这里 $a=${lx}, b=${n}$，中间项带负号。`};
+    }
+    if(kind==='square-plus-factor'){
+      return {q:`$${ax2}+${2*m*n}x+${n*n}$`,type:'完全平方',ans:`$(${lx}+${n})^2$`,ex:`两端是 $(${lx})^2$ 和 $${n}^2$，中间项 $${2*m*n}x=2\\cdot${m}x\\cdot${n}$。`};
+    }
+    if(kind==='square-minus-factor'){
+      return {q:`$${ax2}-${2*m*n}x+${n*n}$`,type:'完全平方',ans:`$(${lx}-${n})^2$`,ex:`两端是 $(${lx})^2$ 和 $${n}^2$，中间项为负，所以是差的完全平方。`};
+    }
+    if(kind==='square-diff-factor'){
+      return {q:`$${ax2}-${n*n}$`,type:'平方差',ans:`$(${lx}+${n})(${lx}-${n})$`,ex:`这是两个平方相减：$(${lx})^2-${n}^2$，所以用 $a^2-b^2=(a+b)(a-b)$。`};
+    }
+    if(kind==='not-square-middle'){
+      const wrongMiddle=2*m*n+pick([-2,-1,1,2]);
+      return {q:`$${ax2}+${wrongMiddle}x+${n*n}$`,type:'都不是',ans:'不能直接用本节公式。',ex:`两端虽然是 $(${lx})^2$ 和 $${n}^2$，但中间项应为 $2\\cdot${m}x\\cdot${n}=${2*m*n}x$，这里是 $${wrongMiddle}x$，所以不是完全平方。`};
+    }
+    if(kind==='not-square-sum'){
+      return {q:`$${ax2}+${n*n}$`,type:'都不是',ans:'不能直接用平方差公式。',ex:`平方差要求两个平方相减，而这里是 $(${lx})^2+${n}^2$。$a^2+b^2$ 不是平方差，也不是本节可直接分解的结构。`};
+    }
+    if(kind==='cube-plus-expand'){
+      return {q:`$(${lx}+${n})^3$`,type:'二项式立方',ans:`$${x3Term(m**3)}+${3*m*m*n}x^2+${3*m*n*n}x+${n**3}$`,ex:`按 $(a+b)^3=a^3+3a^2b+3ab^2+b^3$，这里 $a=${lx}, b=${n}$，两个中间项来自三种摆放方向。`};
+    }    if(kind==='cube-sum-factor'){
+      const mm=m*m, nn=n*n;
+      return {q:`$${x3Term(m**3)}+${n**3}$`,type:'立方和差',ans:`$(${lx}+${n})(${x2Term(mm)}-${m*n}x+${nn})$`,ex:`这是立方和：$(${lx})^3+${n}^3$，二次因子中间项是 $-${m*n}x$。`};
+    }
+    const mm=m*m, nn=n*n;
+    return {q:`$${x3Term(m**3)}-${n**3}$`,type:'立方和差',ans:`$(${lx}-${n})(${x2Term(mm)}+${m*n}x+${nn})$`,ex:`这是立方差：$(${lx})^3-${n}^3$，二次因子三项全正。`};
+  }
+  let currentFormulaCase=makeFormulaCase();
+  const formulaQuestion=document.getElementById('formulaQuestion');
+  const formulaAnswer=document.getElementById('formulaAnswer');
+  const formulaExplain=document.getElementById('formulaExplain');
+  const formulaFeedback=document.getElementById('formulaFeedback');
+  function updateFormulaPractice(){
+    currentFormulaCase=makeFormulaCase();
+    formulaQuestion.innerHTML=currentFormulaCase.q;
+    formulaAnswer.innerHTML=currentFormulaCase.ans;
+    formulaExplain.innerHTML=currentFormulaCase.ex;
+    formulaFeedback.textContent='随机题：先判断完全平方、平方差，还是都不是。';
+    clearChoices('formulaChoices');
+    setPracticeVisible('formulaAnswerBox','formulaReveal',false);
+    refreshMath(formulaQuestion,formulaAnswer,formulaExplain);
+  }
+  document.querySelectorAll('#formulaChoices .choice-btn').forEach(btn=>btn.addEventListener('click',()=>setChoiceState('formulaChoices',btn.dataset.choice,currentFormulaCase.type,'formulaFeedback')));
+  document.getElementById('formulaNext')?.addEventListener('click',updateFormulaPractice);
+  updateFormulaPractice();
+
+  const factorCases=[
+    {q:'$3x^2+6x$',method:'提公因式',ans:'$3x(x+2)$',ex:'每一项都有 $3x$，先把共同因子提出来。'},
+    {q:'$x^2-9$',method:'公式法',ans:'$(x+3)(x-3)$',ex:'这是两个平方相减，直接反向使用平方差公式。'},
+    {q:'$2x^2+5x+3$',method:'十字相乘',ans:'$(2x+3)(x+1)$',ex:'乘回去检查中间项：$2x\\cdot1+3\\cdot x=5x$。'},
+    {q:'$ax+ay+bx+by$',method:'分组分解',ans:'$(a+b)(x+y)$',ex:'先分组为 $a(x+y)+b(x+y)$，再把共同整体 $(x+y)$ 提出来。'},
+    {q:'$(x^2+x)^2-5(x^2+x)+6$',method:'换元法',ans:'$(x^2+x-2)(x^2+x-3)$',ex:'令 $t=x^2+x$，先分解 $t^2-5t+6=(t-2)(t-3)$，再换回。'},
+    {q:'$x^2+6x+5$',method:'配方法',ans:'$(x+5)(x+1)$',ex:'先配方：$x^2+6x+5=(x+3)^2-4$，再用平方差。'},
+    {q:'$x^2-5x+6$，已知零点为 $2,3$',method:'零点法',ans:'$(x-2)(x-3)$',ex:'零点 $r$ 对应因式 $(x-r)$；两个零点给出两个一次因式。'}
+  ];  let factorIndex=0;
+  let currentFactorCase=factorCases[0];
+  const factorQuestion=document.getElementById('factorQuestion');
+  const factorAnswer=document.getElementById('factorAnswer');
+  const factorExplain=document.getElementById('factorExplain');
+  const factorMethodFeedback=document.getElementById('factorMethodFeedback');
+  function updateFactorPractice(){
+    if(!factorQuestion||!factorAnswer||!factorExplain||!factorMethodFeedback)return;
+    const item=factorCases[factorIndex%factorCases.length];
+    currentFactorCase=item;
+    factorQuestion.innerHTML=item.q;
+    factorAnswer.innerHTML=item.ans;
+    factorExplain.innerHTML=item.ex;
+    factorMethodFeedback.textContent='先看结构信号，再选择方法。';
+    factorIndex++;
+    clearChoices('factorChoices');
+    setPracticeVisible('factorAnswerBox','factorReveal',false);
+    refreshMath(factorQuestion,factorAnswer,factorExplain);
+  }
+  document.querySelectorAll('#factorChoices .choice-btn').forEach(btn=>btn.addEventListener('click',()=>setChoiceState('factorChoices',btn.dataset.choice,currentFactorCase.method,'factorMethodFeedback')));
+  document.getElementById('factorNext')?.addEventListener('click',updateFactorPractice);
+  updateFactorPractice();
+
+  const vertexB=document.getElementById('vertexB');
+  const vertexC=document.getElementById('vertexC');
+  const vertexBVal=document.getElementById('vertexBVal');
+  const vertexCVal=document.getElementById('vertexCVal');
+  const vertexPath=document.getElementById('vertexPath');
+  const vertexDot=document.getElementById('vertexDot');
+  const vertexGuide=document.getElementById('vertexGuide');
+  const vertexLabel=document.getElementById('vertexLabel');
+  const vertexFormula=document.getElementById('vertexFormula');
+  function px(x){return 260+x*26}
+  function py(y){return 180-y*14}
+  function signed(n,variable=''){
+    if(n===0)return '';
+    const abs=Math.abs(n);
+    return `${n>0?' + ':' − '}${abs}${variable}`;
+  }
+  function insideSign(h){
+    if(h===0)return 'x';
+    return h>0?`x − ${h}`:`x + ${Math.abs(h)}`;
+  }
+  let vertexPending=false;
+  function drawVertex(){
+    if(!vertexB||!vertexC||!vertexBVal||!vertexCVal||!vertexPath||!vertexDot||!vertexGuide||!vertexLabel||!vertexFormula)return;
+    vertexPending=false;
+    const b=Number(vertexB.value);
+    const c=Number(vertexC.value);
+    const h=-b/2;
+    const k=c-b*b/4;
+    let d='';
+    for(let x=-8;x<=8;x+=.25){
+      const y=x*x+b*x+c;
+      const X=px(x),Y=py(y);
+      d+=(x===-8?'M':'L')+X.toFixed(1)+' '+Y.toFixed(1)+' ';
+    }
+    vertexPath.setAttribute('d',d);
+    vertexDot.setAttribute('cx',px(h));
+    vertexDot.setAttribute('cy',py(k));
+    vertexGuide.setAttribute('x1',px(h));
+    vertexGuide.setAttribute('x2',px(h));
+    vertexLabel.setAttribute('x',px(h)+16);
+    vertexLabel.setAttribute('y',py(k)-14);
+    vertexLabel.textContent=`顶点 (${h}, ${k})`;
+    vertexBVal.textContent=b;
+    vertexCVal.textContent=c;
+    vertexFormula.innerHTML=`x<sup>2</sup>${signed(b,'x')}${signed(c)} = (${insideSign(h)})<sup>2</sup>${signed(k)}`;
+  }
+  function updateVertex(){
+    if(vertexPending)return;
+    vertexPending=true;
+    requestAnimationFrame(drawVertex);
+  }
+  vertexB?.addEventListener('input',updateVertex);
+  vertexC?.addEventListener('input',updateVertex);
+  updateVertex();
+
+  const fractionCases=[
+    {q:'$\\frac{x^2-4}{x-2}$',ans:'$x+2,\\quad x\\ne2$',ex:'先写 $x-2\\ne0$，再约去共同因子。'},
+    {q:'$\\frac{x^2-1}{x+1}$',ans:'$x-1,\\quad x\\ne-1$',ex:'原分母为 $x+1$，所以 $x=-1$ 必须排除。'},
+    {q:'$\\frac{x^2+3x}{x}$',ans:'$x+3,\\quad x\\ne0$',ex:'先提 $x(x+3)$，再约分；$x=0$ 不能取。'},
+    {q:'$\\frac{x^2-9}{x^2-3x}$',ans:'$\\frac{x+3}{x},\\quad x\\ne0,3$',ex:'分母 $x(x-3)$ 给出两个限制，约掉 $x-3$ 后仍要保留 $x\\ne3$。'}
+  ];
+  let fractionIndex=0;
+  const fractionQuestion=document.getElementById('fractionQuestion');
+  const fractionAnswer=document.getElementById('fractionAnswer');
+  const fractionExplain=document.getElementById('fractionExplain');
+  function updateFraction(){
+    if(!fractionQuestion||!fractionAnswer||!fractionExplain)return;
+    const item=fractionCases[fractionIndex%fractionCases.length];
+    fractionQuestion.innerHTML=item.q;
+    fractionAnswer.innerHTML=item.ans;
+    fractionExplain.innerHTML=item.ex;
+    fractionIndex++;
+    setPracticeVisible('fractionAnswerBox','fractionReveal',false);
+    refreshMath(fractionQuestion,fractionAnswer,fractionExplain);
+  }
+  document.getElementById('fractionNext')?.addEventListener('click',updateFraction);
+  updateFraction();
+
+  const rationalCases=[
+    {q:'$\\frac1{\\sqrt3+1}$',ans:'$\\frac{\\sqrt3-1}{2}$',ex:'乘共轭式 $\\sqrt3-1$，分母变成 $3-1$。'},
+    {q:'$\\frac2{\\sqrt5-1}$',ans:'$\\frac{\\sqrt5+1}{2}$',ex:'分子分母同乘 $\\sqrt5+1$，分母为 $5-1=4$。'},
+    {q:'$\\frac1{2+\\sqrt3}$',ans:'$2-\\sqrt3$',ex:'乘共轭式 $2-\\sqrt3$，分母为 $4-3=1$。'}
+  ];
+  let rationalIndex=0;
+  const rationalQuestion=document.getElementById('rationalQuestion');
+  const rationalAnswer=document.getElementById('rationalAnswer');
+  const rationalExplain=document.getElementById('rationalExplain');
+  function updateRational(){
+    if(!rationalQuestion||!rationalAnswer||!rationalExplain)return;
+    const item=rationalCases[rationalIndex%rationalCases.length];
+    rationalQuestion.innerHTML=item.q;
+    rationalAnswer.innerHTML=item.ans;
+    rationalExplain.innerHTML=item.ex;
+    rationalIndex++;
+    setPracticeVisible('rationalAnswerBox','rationalReveal',false);
+    refreshMath(rationalQuestion,rationalAnswer,rationalExplain);
+  }
+  document.getElementById('rationalNext')?.addEventListener('click',updateRational);
+  updateRational();
+
+  const radicalCases=[
+    {q:'$\\sqrt{7+4\\sqrt3}$',ans:'$2+\\sqrt3$',ex:'寻找 $m+n=7,\\ mn=12$，取 $m=4,n=3$。'},
+    {q:'$\\sqrt{11+6\\sqrt2}$',ans:'$3+\\sqrt2$',ex:'因为 $9+2=11,\\ 9\\cdot2=18$，交叉项为 $2\\sqrt{18}=6\\sqrt2$。'},
+    {q:'$\\sqrt{13-4\\sqrt{10}}$',ans:'$2\\sqrt2-\\sqrt5$',ex:'因为 $8+5=13,\\ 8\\cdot5=40$，交叉项为 $2\\sqrt{40}=4\\sqrt{10}$。'},
+    {q:'$\\sqrt{14-6\\sqrt5}$',ans:'$3-\\sqrt5$',ex:'因为 $9+5=14,\\ 9\\cdot5=45$，交叉项为 $2\\sqrt{45}=6\\sqrt5$。'}
+  ];
+  let radicalIndex=0;
+  const radicalQuestion=document.getElementById('radicalQuestion');
+  const radicalAnswer=document.getElementById('radicalAnswer');
+  const radicalExplain=document.getElementById('radicalExplain');
+  function updateRadical(){
+    if(!radicalQuestion||!radicalAnswer||!radicalExplain)return;
+    const item=radicalCases[radicalIndex%radicalCases.length];
+    radicalQuestion.innerHTML=item.q;
+    radicalAnswer.innerHTML=item.ans;
+    radicalExplain.innerHTML=item.ex;
+    radicalIndex++;
+    setPracticeVisible('radicalAnswerBox','radicalReveal',false);
+    refreshMath(radicalQuestion,radicalAnswer,radicalExplain);
+  }
+  document.getElementById('radicalNext')?.addEventListener('click',updateRadical);
+  updateRadical();
+
+  const absA=document.getElementById('absA');
+  const absR=document.getElementById('absR');
+  const absAVal=document.getElementById('absAVal');
+  const absRVal=document.getElementById('absRVal');
+  const absFormula=document.getElementById('absFormula');
+  const distanceTrack=document.getElementById('distanceTrack');
+  const absLeft=document.getElementById('absLeft');
+  const absCenter=document.getElementById('absCenter');
+  const absRight=document.getElementById('absRight');
+  let absMode='in';
+  function pctOnLine(x){return 10+(x+6)/18*80}
+  function updateAbs(){
+    if(!absA||!absR||!absAVal||!absRVal||!absFormula||!distanceTrack||!absLeft||!absCenter||!absRight)return;
+    const a=Number(absA.value);
+    const r=Number(absR.value);
+    const left=a-r;
+    const right=a+r;
+    const centerText=a>=0?`x-${a}`:`x+${Math.abs(a)}`;
+    const leftPct=pctOnLine(left);
+    const rightPct=pctOnLine(right);
+    absAVal.textContent=a;
+    absRVal.textContent=r;
+    absFormula.innerHTML=absMode==='in'
+      ? `|${centerText}| &lt; ${r} &Rightarrow; ${left} &lt; x &lt; ${right}`
+      : `|${centerText}| &gt; ${r} &Rightarrow; x &lt; ${left} 或 x &gt; ${right}`;
+    distanceTrack.classList.toggle('mode-out',absMode==='out');
+    distanceTrack.style.setProperty('--centerPct',pctOnLine(a)+'%');
+    distanceTrack.style.setProperty('--leftPct',leftPct+'%');
+    distanceTrack.style.setProperty('--rightPct',rightPct+'%');
+    distanceTrack.style.setProperty('--rangeLeft',leftPct+'%');
+    distanceTrack.style.setProperty('--rangeWidth',(rightPct-leftPct)+'%');
+    distanceTrack.style.setProperty('--leftRayWidth',`calc(${leftPct}% - 28px)`);
+    distanceTrack.style.setProperty('--rightRayWidth',`calc(${100-rightPct}% - 28px)`);
+    absLeft.textContent=left;
+    absCenter.textContent=a;
+    absRight.textContent=right;
+  }
+  document.querySelectorAll('#absModeChoices .choice-btn').forEach(btn=>btn.addEventListener('click',()=>{
+    absMode=btn.dataset.mode;
+    document.querySelectorAll('#absModeChoices .choice-btn').forEach(item=>item.classList.toggle('selected',item===btn));
+    updateAbs();
+  }));
+  absA?.addEventListener('input',updateAbs);
+  absR?.addEventListener('input',updateAbs);
+  updateAbs();
+
+  const canvas=document.getElementById('factorCanvas');
+  const ctx=canvas?.getContext('2d');
+  const factorRootA=document.getElementById('factorRootA');
+  const factorRootB=document.getElementById('factorRootB');
+  const factorRootAVal=document.getElementById('factorRootAVal');
+  const factorRootBVal=document.getElementById('factorRootBVal');
+  const factorIntroFormula=document.getElementById('factorIntroFormula');
+  const factorPurposeSpans=document.querySelectorAll('.factor-purpose .purpose-row span');
+  const factorInterval=document.getElementById('factorInterval');
+  const factorDotA=document.getElementById('factorDotA');
+  const factorDotB=document.getElementById('factorDotB');
+  const factorLabelA=document.getElementById('factorLabelA');
+  const factorLabelB=document.getElementById('factorLabelB');
+  const factorMin=-4;
+  const factorMax=6;
+  function sx(x){return canvas.width/2+x*72}
+  function sy(y){return canvas.height/2-y*30}
+  function factorSigned(n,variable=''){
+    if(n===0)return '';
+    const abs=Math.abs(n);
+    return `${n>0?'+':'-'}${abs}${variable}`;
+  }
+  function factorTermForRoot(r){
+    return r===0?'x':`(x${r>0?'-':'+'}${Math.abs(r)})`;
+  }
+  function factorPct(x){
+    return Math.max(0,Math.min(100,(x-factorMin)/(factorMax-factorMin)*100));
+  }
+  function positionFactorLine(a,b){
+    const pa=factorPct(a);
+    const pb=factorPct(b);
+    if(factorInterval){
+      factorInterval.style.left=`${pa}%`;
+      factorInterval.style.right=`${100-pb}%`;
+    }
+    [[factorDotA,factorLabelA,a,pa],[factorDotB,factorLabelB,b,pb]].forEach(([dot,label,value,pct])=>{
+      if(dot)dot.style.left=`${pct}%`;
+      if(label){
+        label.style.left=`${pct}%`;
+        label.textContent=value;
+      }
+    });
+  }
+  function drawFactor(){
+    if(!canvas||!ctx)return;
+    let rawA=Number(factorRootA?.value ?? 2);
+    let rawB=Number(factorRootB?.value ?? 3);
+    let a=Math.min(rawA,rawB);
+    let b=Math.max(rawA,rawB);
+    if(a===b){
+      if(b<factorMax){
+        b+=1;
+        rawB=b;
+        if(factorRootB)factorRootB.value=String(b);
+      }else{
+        a-=1;
+        rawA=a;
+        if(factorRootA)factorRootA.value=String(a);
+      }
+    }
+    const sum=a+b;
+    const product=a*b;
+    if(factorRootAVal)factorRootAVal.textContent=rawA;
+    if(factorRootBVal)factorRootBVal.textContent=rawB;
+    const factors=`${factorTermForRoot(a)}${factorTermForRoot(b)}`;
+    const polynomial=`x^2${factorSigned(-sum,'x')}${factorSigned(product)}`;
+    if(factorIntroFormula)factorIntroFormula.innerHTML=`$${polynomial}=${factors}$`;
+    if(factorPurposeSpans.length>=3){
+      factorPurposeSpans[0].textContent=`两个一次因式分别给出零点 x=${a} 与 x=${b}。`;
+      factorPurposeSpans[1].textContent=`数轴被 ${a}, ${b} 切开；开口向上时，中间区间 ${a}<x<${b} 为负。`;
+      factorPurposeSpans[2].textContent=`如果这些因式在分母或根式条件中出现，x=${a}, ${b} 常常是需要单独检查的值。`;
+    }
+    positionFactorLine(a,b);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const rootStyle=getComputedStyle(document.documentElement);
+    const line=rootStyle.getPropertyValue('--line').trim();
+    const ink=rootStyle.getPropertyValue('--ink').trim();
+    const object=rootStyle.getPropertyValue('--object').trim();
+    const conclusion=rootStyle.getPropertyValue('--conclusion').trim();
+    const warning=rootStyle.getPropertyValue('--warning').trim();
+    ctx.strokeStyle=line;
+    ctx.lineWidth=1;
+    for(let x=0;x<canvas.width;x+=80){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}
+    for(let y=0;y<canvas.height;y+=36){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}
+    ctx.strokeStyle=ink;
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(0,sy(0));ctx.lineTo(canvas.width,sy(0));
+    ctx.moveTo(sx(0),0);ctx.lineTo(sx(0),canvas.height);
+    ctx.stroke();
+    ctx.strokeStyle=object;
+    ctx.lineWidth=4;
+    ctx.beginPath();
+    let first=true;
+    for(let x=factorMin-.5;x<=factorMax+.5;x+=.04){
+      const y=(x-a)*(x-b);
+      const X=sx(x),Y=sy(y);
+      if(first){ctx.moveTo(X,Y);first=false}else ctx.lineTo(X,Y);
+    }
+    ctx.stroke();
+    ctx.fillStyle=conclusion;
+    [a,b].forEach(r=>{
+      ctx.beginPath();ctx.arc(sx(r),sy(0),8,0,Math.PI*2);ctx.fill();
+      ctx.font='800 18px sans-serif';ctx.fillText('x='+r,sx(r)-18,sy(0)+30);
+    });
+    ctx.fillStyle=warning;
+    ctx.globalAlpha=.12;
+    ctx.fillRect(sx(a),0,sx(b)-sx(a),canvas.height);
+    ctx.globalAlpha=1;
+    ctx.fillStyle=ink;
+    ctx.font='800 18px sans-serif';
+    ctx.fillText(`y=${factors}`,24,34);
+    ctx.fillText(`${a}<x<${b} 之间为负`,sx(a)+12,sy(-2));
+    refreshMath(factorIntroFormula);
+  }
+  factorRootA?.addEventListener('input',drawFactor);
+  factorRootB?.addEventListener('input',drawFactor);
+  drawFactor();
+});
+</script>
+</body>
+</html>
+
+
+

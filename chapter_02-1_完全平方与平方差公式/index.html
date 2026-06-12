@@ -106,41 +106,42 @@ svg{display:block;width:100%;height:auto}
 <header class="topbar">
   <nav class="topbar-inner" aria-label="章节导航">
     <a class="brand" href="../index.html">DGOpenKS</a>
-    <a class="nav" href="#question">先问什么</a>
-    <a class="nav" href="#visual">找 2ab</a>
-    <a class="nav" href="#formulas">看三种动作</a>
+    <a class="nav" href="#question">学习入口</a>
+    <a class="nav" href="#visual">认识分块</a>
+    <a class="nav" href="#formulas">推出公式</a>
     <a class="nav" href="#mistakes">排除误判</a>
-    <a class="nav" href="#practice">再判断一次</a>
+    <a class="nav" href="#examples">例题对照</a>
+    <a class="nav" href="#practice">自主练习</a>
   </nav>
 </header>
 
 <section class="hero" id="question">
   <div>
     <span class="eyebrow">Chapter 02-1</span>
-    <h1>先看面积，再写公式</h1>
-    <p class="lead">看到 (a+b)²，先别急着写 a²+b²。<br>中间那块 2ab 从哪里来？<br>把式子看成一块面积，答案就会露出来。</p>
+    <h1>从面积开始认识公式</h1>
+    <p class="lead">一条正方形的边，可以由 $a$ 和 $b$ 两段拼成。<br>把这块正方形切开以后，每一块面积都能对应到式子中的一项。<br>公式不是先背下来的结论，而是面积分块后的记录。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#visual">看 2ab 从哪里来</a>
-      <a class="btn" href="#practice">先做一个结构判断</a>
+      <a class="btn primary" href="#visual">观察正方形怎样分块</a>
+      <a class="btn" href="#practice">练习结构判断</a>
     </div>
   </div>
   <aside class="brief" aria-label="本页学习目标">
-    <b>这三条先不用急着背。</b>
-    <p class="subtle">待会儿只看一件事：图里的每一块面积，在式子里对应哪一项？</p>
+    <b>先建立三个面积对象。</b>
+    <p class="subtle">先弄清图形关系，再把它写成代数式。</p>
     <div class="brief-formulas">
-      <div>$(a+b)^2=a^2+2ab+b^2$</div>
-      <div>$(a-b)^2=a^2-2ab+b^2$</div>
-      <div>$a^2-b^2=(a+b)(a-b)$</div>
+      <div>边长为 $a+b$ 的正方形</div>
+      <div>边长为 $a-b$ 的正方形</div>
+      <div>大正方形减去小正方形</div>
     </div>
   </aside>
 </section>
 
 <main>
   <section class="section" id="visual">
-    <div class="marker"><span>1</span>找交叉项</div>
+    <div class="marker"><span>1</span>认识对象</div>
     <div>
-      <h2>为什么中间会多出 2ab？</h2>
-      <p>先盯住中间两块长方形。把边长看成两段拼起来：一段是 $a$，一段是 $b$。横向切一次、纵向切一次以后，$a$ 和 $b$ 会交叉出现两次。</p>
+      <h2>先从边长为 $a+b$ 的正方形开始</h2>
+      <p>把一条边分成 $a$ 和 $b$ 两段，再沿横向和纵向各切一次。正方形会被分成四块面积：一块 $a^2$，两块 $ab$，一块 $b^2$。</p>
       <div class="area-lab lab">
         <div class="controls">
           <div class="control">
@@ -153,12 +154,12 @@ svg{display:block;width:100%;height:auto}
           </div>
           <div class="segmented" aria-label="面积结构">
             <button type="button" data-mode="plus" aria-pressed="true">拆开这块面积</button>
-            <button type="button" data-mode="minus" aria-pressed="false">看哪一角要补回</button>
-            <button type="button" data-mode="diff" aria-pressed="false">把剩下部分切开再拼</button>
+            <button type="button" data-mode="minus" aria-pressed="false">确认哪一角要补回</button>
+            <button type="button" data-mode="diff" aria-pressed="false">切分并重排剩余部分</button>
           </div>
           <div class="visual-readout">
-            <b id="visualTitle">$(a+b)^2$ 的四块面积</b>
-            <p id="visualText" class="subtle">你应该看到：$a^2$、$b^2$ 和两块 $ab$。中间项 $2ab$ 来自两次交叉。</p>
+            <b id="visualTitle">边长 $a+b$ 的正方形被分成四块</b>
+            <p id="visualText" class="subtle">四块面积分别是 $a^2$、$ab$、$ab$、$b^2$。两块 $ab$ 合在一起，后面会写成 $2ab$。</p>
           </div>
         </div>
         <div class="svg-wrap">
@@ -171,8 +172,8 @@ svg{display:block;width:100%;height:auto}
   <section class="section" id="formulas">
     <div class="marker"><span>2</span>从图到式</div>
     <div>
-      <h2>每条公式都要能在图里找到</h2>
-      <p>下面三条不是先给出的答案。先把它们当成三种面积动作来看：一块被拆开，一块被补回，一块被切开再拼。找不到对应面积的项，公式里也不能乱写。</p>
+      <h2>从面积动作推出公式</h2>
+      <p>有了面积对象以后，再写公式。每个代数项都要能回到图形中的一块面积：一块被拆开，一块被补回，一块被切开再拼。找不到对应面积的项，就不能写进公式。</p>
       <div class="formula-cards">
         <article class="formula-card">
           <div>
@@ -194,7 +195,7 @@ svg{display:block;width:100%;height:auto}
           <div>
             <h3>$a^2-b^2$：挖掉一块后再切开拼接</h3>
             <div class="formula">$a^2-b^2=(a+b)(a-b)$</div>
-            <p>从大正方形拿掉小正方形后，剩下的是 L 形。先沿着缺口的边把它切成两块，再把下面那块转到右侧，才拼成长和宽分别为 $a+b$ 与 $a-b$ 的长方形。</p>
+            <p>从大正方形拿掉小正方形后，剩下的是 L 形。沿着缺口的边切成两块，并把下面那块转到右侧，就能拼成长和宽分别为 $a+b$ 与 $a-b$ 的长方形。</p>
           </div>
           <div class="mini-svg"><svg viewBox="0 0 260 190" data-mini="diff"></svg></div>
         </article>
@@ -205,8 +206,8 @@ svg{display:block;width:100%;height:auto}
   <section class="section" id="mistakes">
     <div class="marker"><span>3</span>排除误判</div>
     <div>
-      <h2>什么时候不能套这些公式？</h2>
-      <p>很多错误不是算错，而是把对象看错了。每次套公式前先停一下：这是整体平方，两个平方相减，还是只是长得有点像？</p>
+      <h2>什么时候不能直接使用这些公式？</h2>
+      <p>很多错误不是计算错误，而是面积对象判断错误。使用公式前先确认：这是整体平方，两个平方相减，还是只有形式相似？</p>
       <div class="mistake-grid">
         <div class="mistake">
           <strong>把 $(a+b)^2$ 写成 $a^2+b^2$</strong>
@@ -217,11 +218,11 @@ svg{display:block;width:100%;height:auto}
           <p>前者是“差的平方”，后者是“平方的差”。对象不同，面积动作也不同。</p>
         </div>
         <div class="mistake">
-          <strong>只看首尾平方，不看中间项</strong>
-          <p>$x^2+8x+25$ 的首尾像 $x^2$ 和 $5^2$，但中间项应是 $10x$，所以它不是完全平方。</p>
+          <strong>只检查首尾平方，不检查中间项</strong>
+          <p>$x^2+8x+25$ 的首尾分别是 $x^2$ 和 $5^2$，但完全平方还要求中间项等于 $10x$，所以它不是完全平方。</p>
         </div>
         <div class="mistake">
-          <strong>看到两个平方就用平方差</strong>
+          <strong>仅凭两个平方就使用平方差</strong>
           <p>平方差必须是两个平方相减。$a^2+b^2$ 不是平方差，不能写成 $(a+b)(a-b)$。</p>
         </div>
       </div>
@@ -229,31 +230,31 @@ svg{display:block;width:100%;height:auto}
   </section>
 
   <section class="section" id="examples">
-    <div class="marker"><span>4</span>对照检查</div>
+    <div class="marker"><span>4</span>例题对照</div>
     <div>
-      <h2>先说它像哪种面积，再动笔</h2>
+      <h2>看四个例子，分清三种结构</h2>
       <div class="example-list">
-        <div class="example"><b>$(x+3)^2$</b><p>先读成 $(x+3)(x+3)$，交叉项有 $x\cdot3$ 和 $3\cdot x$，所以结果是 $x^2+6x+9$。</p></div>
+        <div class="example"><b>$(x+3)^2$</b><p>把它读成 $(x+3)(x+3)$，交叉项有 $x\cdot3$ 和 $3\cdot x$，所以结果是 $x^2+6x+9$。</p></div>
         <div class="example"><b>$(x-4)^2$</b><p>这是差的平方，不是平方差。最后的 $+16$ 是补回的角落，所以结果是 $x^2-8x+16$。</p></div>
-        <div class="example"><b>$x^2-25$</b><p>先看成 $x^2-5^2$，这是两个平方相减，所以可以写成 $(x+5)(x-5)$。</p></div>
-        <div class="example"><b>$x^2+8x+25$</b><p>它看起来像完全平方，但 $2\cdot x\cdot5=10x$，中间项不匹配，所以不能写成 $(x+5)^2$。</p></div>
+        <div class="example"><b>$x^2-25$</b><p>把它改写为 $x^2-5^2$。这是两个平方相减，所以可以写成 $(x+5)(x-5)$。</p></div>
+        <div class="example"><b>$x^2+8x+25$</b><p>首尾分别是 $x^2$ 和 $5^2$，但 $2\cdot x\cdot5=10x$。中间项不匹配，所以不能写成 $(x+5)^2$。</p></div>
       </div>
-      <div class="callout ok">检查顺序：先问是不是整体平方，再问是不是两个平方相减；如果你选完全平方，还要检查中间项能不能看成两块相同的交叉面积。</div>
+      <div class="callout ok">检查顺序：先判断是否为整体平方，再判断是否为两个平方相减；如果判断为完全平方，还要检查中间项能否对应两块相同的交叉面积。</div>
     </div>
   </section>
 
   <section class="section" id="practice">
-    <div class="marker"><span>5</span>再判断</div>
+    <div class="marker"><span>5</span>自主练习</div>
     <div>
-      <h2>先不要展开，先判断结构</h2>
-      <p>每道题先做同一个判断：它像一整块正方形、补回的正方形，还是切掉一块后的差？如果都不像，就不要硬套公式。</p>
+      <h2>自己判断结构，再展开或分解</h2>
+      <p>做题时，第一步是判断结构：完整正方形、需要补回角落的正方形，还是两个正方形相减？如果都不是，就不能直接使用本节公式。</p>
       <div class="practice lab">
         <div class="practice-top">
           <div>
-            <h3 id="practiceTitle">这道式子像哪种面积？</h3>
-            <p id="practiceHint" class="subtle">先选结构，再写展开或分解结果。判断错了，后面的计算通常也会跟着错。</p>
+            <h3 id="practiceTitle">这道式子属于哪种面积结构？</h3>
+            <p id="practiceHint" class="subtle">选择结构后，再写展开或分解结果。结构判断错误，后面的计算也容易跟着出错。</p>
           </div>
-          <button class="btn" type="button" id="newQuestion">换一道再判断</button>
+          <button class="btn" type="button" id="newQuestion">更换题目再判断</button>
         </div>
         <div class="question-box">
           <div class="formula" id="questionFormula"></div>
@@ -265,16 +266,16 @@ svg{display:block;width:100%;height:auto}
         </div>
         <div class="answer-row">
           <input id="answerInput" type="text" autocomplete="off" placeholder="例如：(x+3)^2 或 x^2+6x+9">
-          <button class="mini-btn" type="button" id="checkAnswer">检查我漏了哪一块</button>
-          <button class="mini-btn" type="button" id="revealAnswer">把图和公式对上</button>
+          <button class="mini-btn" type="button" id="checkAnswer">检查是否漏项</button>
+          <button class="mini-btn" type="button" id="revealAnswer">对应图形与公式</button>
         </div>
-        <div class="feedback" id="feedback">先别急着算。先判断它对应哪种面积动作，再写结果。</div>
+        <div class="feedback" id="feedback">先判断面积动作，再写结果。</div>
         <div class="answer-reveal" id="answerReveal">
           <div class="formula" id="answerFormula"></div>
           <p class="subtle" id="answerExplain"></p>
         </div>
       </div>
-      <p class="footer-note">最后记住这一句：式子里的每一项，都应该能在图里找到对应的面积。找不到，就先别写进公式。</p>
+      <p class="footer-note">最后确认这个判断：式子里的每一项，都应该能在图里找到对应的面积。找不到对应面积，就不要先写进公式。</p>
     </div>
   </section>
 </main>
@@ -390,15 +391,15 @@ function drawArea(){
   $('#bVal').textContent=b;
   if(mode==='plus'){
     drawPlus(svg,{aValue:a,bValue:b});
-    $('#visualTitle').innerHTML='盯住中间两块：它们都是 $ab$';
-    $('#visualText').innerHTML='边长分成 $a$ 和 $b$ 后，横向一次、纵向一次都会出现交叉面积。所以中间项不是 $ab$，而是 $2ab$。';
+    $('#visualTitle').innerHTML='边长 $a+b$ 的正方形被分成四块';
+    $('#visualText').innerHTML='边长分成 $a$ 和 $b$ 后，横向一次、纵向一次都会出现 $ab$。两块 $ab$ 合在一起，写成 $2ab$。';
   }else if(mode==='minus'){
     drawMinus(svg,{aValue:a,bValue:b});
-    $('#visualTitle').innerHTML='看右下角：这块 $b^2$ 被多减了一次';
+    $('#visualTitle').innerHTML='观察右下角：这块 $b^2$ 被多减了一次';
     $('#visualText').innerHTML='为了留下边长 $a-b$ 的正方形，会减去两条 $ab$。它们在角落重叠，所以那块 $b^2$ 要补回。';
   }else{
     drawDiff(svg,{aValue:a,bValue:b});
-    $('#visualTitle').innerHTML='先挖掉 $b^2$，再把剩下部分切开拼接';
+    $('#visualTitle').innerHTML='挖掉 $b^2$ 后，切分并重排剩余部分';
     $('#visualText').innerHTML='左边和右边用同一个比例尺。L 形被切成两块后拼成长方形，高没有变，是 $a-b$；宽变成 $a+b$。';
   }
   refreshMath($('#visualTitle'),$('#visualText'));
@@ -454,7 +455,7 @@ function makeCase(){
       q:`$(${lx}+${n})^2$`,
       ans:`$${ax2}+${2*m*n}x+${n*n}$`,
       accepted:[`${ax2}+${2*m*n}x+${n*n}`],
-      explain:`先读成两个相同括号相乘。中间项来自两次交叉：$2\\cdot ${lx}\\cdot ${n}=${2*m*n}x$。`
+      explain:`把它读成两个相同括号相乘。中间项来自两次交叉：$2\\cdot ${lx}\\cdot ${n}=${2*m*n}x$。`
     };
   }
   if(kind==='minusExpand'){
@@ -490,7 +491,7 @@ function makeCase(){
       q:`$${ax2}-${n*n}$`,
       ans:`$(${lx}+${n})(${lx}-${n})$`,
       accepted:[`(${lx}+${n})(${lx}-${n})`,`(${lx}-${n})(${lx}+${n})`],
-      explain:`这是两个平方相减：$(${lx})^2-${n}^2$。面积图里要先挖掉小正方形，再把剩下的 L 形切开并拼成长方形，所以得到 $(a+b)(a-b)$。`
+      explain:`这是两个平方相减：$(${lx})^2-${n}^2$。面积图里挖掉小正方形，再把剩下的 L 形切开并拼成长方形，所以得到 $(a+b)(a-b)$。`
     };
   }
   if(kind==='notMiddle'){
@@ -501,7 +502,7 @@ function makeCase(){
       q:`$${ax2}+${middle}x+${n*n}$`,
       ans:'不能直接使用本节公式',
       accepted:['不能','不能直接使用','不能直接用','都不能','不是'],
-      explain:`它首尾像平方，但中间项应该是 $2\\cdot ${lx}\\cdot ${n}=${2*m*n}x$，不是 $${middle}x$。`
+      explain:`它的首尾分别是平方项，但中间项应该是 $2\\cdot ${lx}\\cdot ${n}=${2*m*n}x$，不是 $${middle}x$。`
     };
   }
   return {
@@ -529,7 +530,7 @@ function newQuestion(){
   $('#answerExplain').innerHTML=current.explain;
   $('#answerReveal').classList.remove('show');
   $$('#choiceGroup button').forEach(btn=>{btn.className='';btn.disabled=false});
-  setFeedback('先别急着算。先判断它对应哪种面积动作，再写结果。');
+  setFeedback('先判断面积动作，再写结果。');
   refreshMath($('#questionFormula'),$('#answerFormula'),$('#answerExplain'));
 }
 $$('#choiceGroup button').forEach(btn=>{
@@ -538,33 +539,33 @@ $$('#choiceGroup button').forEach(btn=>{
     $$('#choiceGroup button').forEach(item=>item.className=item===btn?'selected':'');
     if(selectedType===current.type){
       btn.className='correct';
-      setFeedback('结构判断对了。现在再写结果：如果是完全平方，别漏中间两块；如果是平方差，先把它看成两个平方相减。','good');
+      setFeedback('结构判断正确。接着写结果：完全平方要保留中间两块，平方差要写成两个平方相减。','good');
     }else{
       btn.className='wrong';
       const names={'complete-square':'完全平方','square-diff':'平方差','neither':'都不能直接用'};
-      setFeedback(`结构还没看准。你现在要判断的不是先算多少，而是它像哪种面积。正确结构是：${names[current.type]}。`,'bad');
+      setFeedback(`结构判断还不准确。这里要先分清面积结构，再计算。正确结构是：${names[current.type]}。`,'bad');
     }
   });
 });
 $('#checkAnswer').addEventListener('click',()=>{
   const raw=$('#answerInput').value;
   if(!selectedType){
-    setFeedback('先选结构。公式能不能用，取决于你有没有先看对对象。','bad');
+    setFeedback('请选择结构类型。只有对象判断正确，公式才有使用条件。','bad');
     return;
   }
   if(selectedType!==current.type){
-    setFeedback('结构判断还不对，先别急着写结果。回到面积对象：它是整体平方、两个平方相减，还是只是长得像？','bad');
+    setFeedback('结构判断还不准确。回到面积对象：它是整体平方、两个平方相减，还是只有形式相似？','bad');
     return;
   }
   if(!normalize(raw)){
-    setFeedback('还没有写结果。先把你刚才选的结构写出来：展开、分解，或者写“不能”。','bad');
+    setFeedback('还没有写结果。请把已选择的结构写出来：展开、分解，或者写“不能”。','bad');
     return;
   }
   const ok=isAnswerAccepted(raw,current);
   if(ok){
     setFeedback(`正确。${current.explain}`,'good');
   }else{
-    setFeedback('写法还不匹配。检查三件事：中间项有没有漏，符号有没有反，括号里的整体有没有看错。','bad');
+    setFeedback('写法还不匹配。请检查三件事：中间项是否遗漏，符号是否相反，括号里的整体是否判断正确。','bad');
   }
 });
 $('#revealAnswer').addEventListener('click',()=>{

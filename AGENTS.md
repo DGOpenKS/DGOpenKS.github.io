@@ -469,6 +469,15 @@ The first screen must create a learning need. It should include a concrete quest
 
 The first screen must not be a dense formula dump, decorative animation alone, or a static textbook heading unless the learning purpose requires it.
 
+For beginner-facing pages, the first screen must not assume the learner already knows the formula, symbol, special term, or surprising term that the page is meant to explain. Introduce the concrete object first, then the observation, then the formula or named structure.
+
+Example:
+
+- Weak: ask "2ab 从哪里来?" before the learner has seen why two `ab` areas exist.
+- Better: start from a square whose side is split into `a` and `b`, show the four area pieces, then name the two `ab` pieces as `2ab`.
+
+When a later section depends on a distinction such as "worked examples" versus "self practice", the section titles must make the different learning jobs visible. Do not give adjacent sections near-identical headings such as two versions of "先判断结构".
+
 ### Blog Prose Spine
 
 Every learning page must have a readable prose or instructional spine.
@@ -521,11 +530,11 @@ Avoid learner-flat openings such as:
 
 Prefer openings such as:
 
-- "看到 ___，先别急着 ___.";
+- "看到 ___，先判断 ___.";
 - "真正要分清的是 ___.";
-- "你会发现，___ 不是靠背，而是从 ___ 看出来的.";
+- "你会发现，___ 不是靠背，而是从 ___ 推出的.";
 - "如果 ___，说明你可能漏看了 ___.";
-- "先问自己：___ ?".
+- "先判断：___ ?".
 
 ### Page Copy Voice
 
@@ -543,9 +552,9 @@ Avoid:
 
 Prefer:
 
-- "先做一个判断。";
-- "你现在只需要看一件事。";
-- "拖动时注意哪一块没有变。";
+- "先判断结构。";
+- "当前只关注一件事。";
+- "拖动时重点观察哪一块没有变。";
 - "如果图里找不到这一项，说明展开时可能漏了一块。".
 
 ### Visible Text Jobs
@@ -582,13 +591,13 @@ Weak labels:
 
 Better labels:
 
-- "看 2ab 从哪里来";
+- "观察正方形怎样分块";
 - "拆开这块面积";
 - "判断这是不是完全平方";
-- "换一道再判断";
-- "检查我漏掉了哪一块";
-- "把图和公式对上";
-- "先做一个结构判断".
+- "更换题目再判断";
+- "检查是否漏项";
+- "对应图形与公式";
+- "练习结构判断".
 
 A CTA label should answer:
 
@@ -610,19 +619,28 @@ Weak headings:
 
 Better headings:
 
-- "为什么中间会多出 2ab?";
+- "先从边长为 a+b 的正方形开始";
 - "哪种式子像一整块正方形?";
 - "什么时候不能用完全平方?";
-- "先判断结构，再展开";
+- "先判断结构，再展开或分解";
+- "看四个例子，分清三种结构";
+- "自己判断结构，再展开或分解";
 - "图里找不到的一项，公式里也不能乱写".
 
 Headings should advance the article rather than label components.
+
+Adjacent headings must also show the role of each section in the learning sequence. A worked-example section and a practice section should not both use almost the same heading. Prefer distinctions such as:
+
+- Example section: "看四个例子，分清三种结构";
+- Practice section: "自己判断结构，再展开或分解".
 
 ### Formula Card Framing
 
 Formula cards may appear in the first screen only when they are framed as objects to compare, questions to resolve, or structures to be explained.
 
 They must not appear as unexplained authority.
+
+On beginner-facing pages, if formulas depend on a visual or concrete object that has not yet been introduced, do not put the formulas in the first viewport. Put the concrete objects there instead, then introduce formulas after the learner has seen the object and observation.
 
 Weak framing:
 
@@ -634,9 +652,10 @@ Weak framing:
 Better framing:
 
 ```text
-这三条先不用背。
-先把它们当成三种面积动作来看:
-一块被拆开，一块被补回，一块被切开再拼。
+先建立三个面积对象:
+边长为 a+b 的正方形;
+边长为 a-b 的正方形;
+大正方形减去小正方形。
 ```
 
 ### Visual And Interaction Prompts
@@ -650,9 +669,9 @@ Weak prompts:
 
 Better prompts:
 
-- "拖动时先盯住中间两块。";
+- "拖动时重点观察中间两块。";
 - "数字在变，但这两块始终来自同一个动作：a 和 b 相乘。";
-- "这就是为什么展开后会出现 2ab。".
+- "两块 ab 合在一起，展开后写成 2ab。".
 
 ### Practice And Feedback Microcopy
 
@@ -665,7 +684,7 @@ Weak practice copy:
 
 Better practice copy:
 
-- "先不要展开。先判断它像哪种面积结构：整块正方形、补回的正方形，还是切掉一块后的差。";
+- "先判断结构，再展开或分解。判断它属于哪种面积结构：完整正方形、需要补回角落的正方形，还是两个正方形相减。";
 - "如果你选了完全平方，请先确认：中间项是不是两个相同乘积合起来的 2ab。".
 
 Practice feedback should be concise but explanatory. It should not only say correct or incorrect.
@@ -707,6 +726,79 @@ Preferred tone:
 - not teacher-facing;
 - not implementation-facing.
 
+### Register And Tone Control
+
+HTML page prose should use modern written explanatory Chinese.
+
+It should be:
+
+- learner-facing;
+- clear;
+- concrete;
+- concise;
+- mathematically precise;
+- inviting to continue;
+- but not casual, chatty, childish, or speech-like.
+
+Learner-facing does not mean conversational slang.
+Natural does not mean oral.
+Engaging does not mean informal.
+
+Avoid overly colloquial or spoken phrases such as:
+
+- 待会儿;
+- 等下;
+- 先盯住;
+- 咱们;
+- 搞懂;
+- 搞定;
+- 看一下;
+- 来看一眼;
+- 你看哈;
+- 很神奇;
+- 答案就会露出来;
+- 这就对了;
+- 超简单;
+- 别慌;
+- 一眼看穿.
+
+Also avoid stiff translated or unnatural word order such as:
+
+- 暂不展开，先判断结构;
+- 进行展开;
+- 每道题都进行同一个判断;
+- 它对应一整块正方形;
+- 当前重点不是计算结果;
+- 答案会变得清楚.
+
+Prefer precise written teaching verbs such as:
+
+- 接下来;
+- 暂时;
+- 先观察;
+- 重点观察;
+- 比较;
+- 判断;
+- 对应;
+- 检查;
+- 说明;
+- 推出;
+- 发现;
+- 区分;
+- 确认;
+- 回到图形;
+- 回到结构.
+
+Prefer natural written Chinese word order:
+
+- 先判断结构，再展开;
+- 先判断结构，再展开或分解;
+- 做题时，第一步是判断结构;
+- 选择结构后，再写展开或分解结果;
+- 结构判断正确，公式才有使用条件.
+
+The tone should feel like a clear learning article, not like a spoken lecture transcript, not like a short-video script, and not like marketing copy.
+
 Final principle:
 
 ```text
@@ -744,6 +836,9 @@ An HTML/blog page passes only if:
 - formulas are motivated and explained;
 - examples show reasoning, not only answers;
 - practice tests the current concept and gives useful feedback;
+- beginner-facing pages introduce object and observation before naming formulas, symbols, or surprising terms;
+- adjacent sections have distinct learning jobs, especially worked examples versus self practice;
+- Chinese page prose uses natural written word order, not oral slang or stiff translated phrasing;
 - the page is responsive, accessible, and readable;
 - motion and visual polish do not compete with learning.
 
@@ -752,6 +847,7 @@ An HTML/blog page fails if:
 - it introduces new mathematical claims not present in Markdown;
 - it silently changes the Markdown explanation;
 - it starts with an unmotivated formula dump;
+- it assumes a beginner already knows the formula, symbol, or term that the page is supposed to explain;
 - it is mostly disconnected cards/widgets with no prose or instructional spine;
 - it uses animation, 3D, or interaction as decoration;
 - it shows visualizations without observation guidance;
@@ -764,7 +860,9 @@ An HTML/blog page also fails if:
 
 - the hero copy merely announces the topic without creating learning need;
 - visible text sounds like a design plan, scope note, or teacher instruction;
+- visible text sounds like spoken classroom banter, short-video copy, or stiff translated Chinese;
 - headings are only component labels and do not mark conceptual turns;
+- adjacent headings repeat the same learning job and make worked examples look like practice;
 - CTA labels are generic UI actions instead of learning actions;
 - formula cards appear as unexplained authority;
 - visualizations are shown without specific observation prompts;

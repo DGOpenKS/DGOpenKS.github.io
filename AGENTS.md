@@ -976,6 +976,55 @@ Rendered diagrams, graphs, models, and formula visuals must accurately represent
 
 Whenever possible, visual state, formula state, and answer-checking state should share the same internal data model.
 
+### Mathematical Diagram Precision Standard
+
+Mathematical diagrams must be generated from explicit mathematical models, not by visually placing points until they look right.
+
+For coordinate systems, function graphs, analytic geometry, plane geometry, or solid geometry:
+
+- define the mathematical object first: function, point, line, circle, polygon, vector, plane, solid, transformation, or relation;
+- define a world-coordinate system and a deterministic mapping from mathematical coordinates to SVG, Canvas, or WebGL coordinates;
+- compute all labeled points, intersections, roots, vertices, midpoints, tangent points, perpendicular feet, areas, and lengths from the model;
+- generate curves by sampling the function or using a mathematically justified path, not by hand-drawn Bezier curves that only approximate the intended shape visually;
+- bind labels to mathematical objects with stable offsets, so labels do not imply a different point, line, axis, or region;
+- keep visual encodings consistent: axes, grids, function curves, construction lines, roots, vertices, intersections, and highlighted regions must have stable roles;
+- avoid decorative distortions, arbitrary point placement, misleading curvature, inaccurate proportions, or labels that cover the object they explain.
+
+For function graphs:
+
+- roots must lie on both the graph and the x-axis;
+- y-intercepts must lie on both the graph and the y-axis;
+- intersections must satisfy both functions;
+- vertices must lie on the graph and on the symmetry axis when applicable;
+- tangent points must lie on both the curve and the tangent line;
+- area rectangles must have vertices determined by axes and points on the graph;
+- asymptotes, excluded values, and undefined points must be shown only when mathematically correct for the visible domain.
+
+For plane geometry:
+
+- midpoints must be computed as averages;
+- perpendicular and parallel markings must match actual slopes, vectors, or angle calculations;
+- equal-length marks must correspond to equal computed distances;
+- angle marks must correspond to actual angle values or proven equal angles;
+- circles, arcs, and tangent lines must use computed centers, radii, and tangent points.
+
+For 3D or solid geometry:
+
+- vertices, edges, faces, dimensions, cross-sections, and projections must be model-defined;
+- camera perspective may clarify depth, but must not change mathematical relationships;
+- labels must refer to actual vertices, edges, faces, dimensions, or computed derived objects.
+
+Manual SVG coordinates are allowed only for layout containers, decorative separators, and non-mathematical framing. They are not allowed for mathematically meaningful points, curves, intersections, or geometric relationships unless those coordinates are the output of a documented model.
+
+Before accepting a mathematical diagram, self-check at least the relevant invariants:
+
+- Does every highlighted point satisfy the equation, construction, or relation it claims to show?
+- Do intersections satisfy all objects involved?
+- Do roots have y=0 in world coordinates?
+- Does the vertex match the formula or construction?
+- Do labels point to the correct mathematical object?
+- Does the rendered diagram still preserve these relationships after responsive scaling?
+
 The page fails if visual labels, formula values, and answer logic disagree.
 
 ### Formula Rendering

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 00-1 代数与函数快速回顾 | 中考特辑</title>
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#2563eb;--cyan:#0891b2;--amber:#d97706;--green:#059669;--red:#dc2626;--purple:#7c3aed;--shadow:0 18px 55px rgba(15,23,42,.08);--soft-shadow:0 8px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Cascadia Code","Consolas","SFMono-Regular",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.72}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;gap:10px;align-items:center;overflow:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);white-space:nowrap;margin-right:8px}
+.nav{font-size:.86rem;text-decoration:none;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 11px;white-space:nowrap;font-weight:800}
+.nav:hover,.nav:focus-visible{outline:0;color:var(--blue);background:#eff6ff;border-color:#bfdbfe}
+.hero{max-width:1120px;margin:0 auto;padding:60px 20px 34px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,390px);gap:30px;align-items:center}
+.eyebrow{display:inline-flex;color:var(--blue);background:#eff6ff;border:1px solid #bfdbfe;border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:16px}
+h1{font-size:clamp(2.15rem,5vw,4.35rem);line-height:1.05;margin:0 0 18px;letter-spacing:0}
+.lead{font-size:1.08rem;color:var(--muted);max-width:680px;margin:0}
+.hero-card,.card,.quick-table,.footer-nav{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}
+.hero-card b,.card b{display:block;color:var(--blue);margin-bottom:8px}
+.hero-card svg{display:block;width:100%;height:auto}
+main{max-width:1120px;margin:0 auto;padding:0 20px 76px}
+.section{display:grid;grid-template-columns:140px minmax(0,1fr);gap:26px;padding:42px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:72px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);background:var(--paper);border-radius:50%;color:var(--blue);margin-bottom:8px}
+h2{font-size:clamp(1.45rem,3vw,2.3rem);line-height:1.2;margin:0 0 14px}
+h3{font-size:1.05rem;margin:0 0 8px}
+p{margin:0 0 12px}
+.subtle{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{box-shadow:var(--soft-shadow)}
+.card ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+.formula-list{display:grid;gap:8px}
+.formula{font-family:var(--mono);font-weight:900;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto}
+.formula-chip{display:block;margin-top:10px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-weight:900;color:var(--ink);overflow:auto}
+.formula-card{display:grid;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--soft-shadow);padding:14px;min-height:132px}
+.formula-card strong{color:var(--blue)}
+.formula-card .formula{margin:0;font-size:.95rem}
+.function-card{display:grid;gap:12px}
+.mini-graph{width:100%;height:auto;display:block;background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--line);border-radius:10px}
+.graph-axis{stroke:#94a3b8;stroke-width:1.8;vector-effect:non-scaling-stroke}
+.graph-grid{stroke:#e8eef7;stroke-width:1;vector-effect:non-scaling-stroke}
+.graph-label{font-size:12px;font-weight:900;fill:#64748b;font-family:var(--font)}
+.graph-note{font-size:12px;font-weight:900;fill:var(--blue);font-family:var(--font)}
+.label-bg{fill:rgba(255,255,255,.9);stroke:#dbe5f2;stroke-width:.8}
+.graph-dim{stroke:#d97706;stroke-width:2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.symmetry-axis{stroke:#7c3aed;stroke-width:2;stroke-dasharray:6 6;vector-effect:non-scaling-stroke}
+.math-point{stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
+.axis-label{font-size:11px;font-weight:900;fill:#64748b;font-family:var(--font)}
+.quadratic-panel{display:grid;grid-template-columns:minmax(320px,.95fr) minmax(0,1.05fr);gap:14px;margin-top:14px;align-items:stretch}
+.quadratic-graph{background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:var(--soft-shadow)}
+.quad-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.point-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;box-shadow:var(--soft-shadow)}
+.point-card b{display:block;color:var(--purple);margin-bottom:5px}
+.formula-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}
+.tag{display:inline-flex;border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:900;color:var(--muted);margin:0 6px 8px 0}
+.warn{border-left:4px solid var(--red);background:#fff7f7}
+.ok{border-left:4px solid var(--green);background:#f0fdf4}
+.quick-table{box-shadow:var(--soft-shadow);overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:680px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--blue);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+.footer-nav{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:18px}
+.btn{border:1px solid var(--line);background:var(--ink);color:white;border-radius:999px;padding:10px 15px;font-weight:900;text-decoration:none;display:inline-flex}
+@media(max-width:980px){.formula-gallery,.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:880px){.hero,.section,.grid-2,.grid-3,.quadratic-panel{grid-template-columns:1fr}.marker{position:static;display:flex;gap:10px;align-items:center}.marker span{margin:0}.hero{padding-top:42px}.footer-nav{align-items:flex-start;flex-direction:column}}
+@media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}h1{font-size:2.25rem}.hero-card,.card,.quick-table,.footer-nav{padding:14px}.lead{font-size:1rem}.nav{font-size:.8rem}}
+@media(max-width:520px){.formula-gallery,.grid-4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="topbar-inner" aria-label="页面导航">
+    <span class="brand">中考特辑</span>
+    <a class="nav" href="#goal">本页目标</a>
+    <a class="nav" href="#calc">计算化简</a>
+    <a class="nav" href="#equation">方程不等式</a>
+    <a class="nav" href="#function">函数图象</a>
+    <a class="nav" href="#coordinate">坐标公式</a>
+    <a class="nav" href="#mistakes">易错提醒</a>
+  </nav>
+</header>
+
+<section class="hero" id="goal">
+  <div>
+    <span class="eyebrow">Chapter 00-1 · 江西中考数学快速回顾</span>
+    <h1>代数与函数快速回顾</h1>
+    <p class="lead">这一页不是完整知识清单，也不承担系统讲解任务，而是帮助你进行考前唤醒。看到代数和函数题，先想起符号、范围、图象、关键点和坐标公式，先保证基础分，再寻找综合题入口。</p>
+  </div>
+  <aside class="hero-card" aria-label="本页核心问题">
+    <b>核心问题</b>
+    <p class="subtle">代数和函数最该想起哪些重点？</p>
+    <svg viewBox="0 0 360 210" role="img" aria-label="代数与函数回顾地图">
+      <rect x="14" y="18" width="332" height="174" rx="16" fill="#f8fafc" stroke="#dbe5f2"/>
+      <path d="M54 158 C104 112 124 130 158 86 S236 54 306 36" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+      <line x1="54" y1="158" x2="306" y2="158" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="54" y1="158" x2="54" y2="34" stroke="#94a3b8" stroke-width="2"/>
+      <circle cx="154" cy="90" r="7" fill="#d97706"/>
+      <circle cx="224" cy="62" r="7" fill="#059669"/>
+      <text x="70" y="50" fill="#64748b" font-size="14" font-weight="800">图象</text>
+      <text x="132" y="119" fill="#64748b" font-size="14" font-weight="800">关键点</text>
+      <text x="228" y="92" fill="#64748b" font-size="14" font-weight="800">最值</text>
+      <text x="76" y="182" fill="#2563eb" font-size="14" font-weight="900">式子、图象、坐标互相转化</text>
+    </svg>
+  </aside>
+</section>
+
+<main>
+  <section class="section" id="calc">
+    <aside class="marker"><span>1</span>计算化简</aside>
+    <div>
+      <h2>计算题先稳住基础检查</h2>
+      <div class="grid-2">
+        <article class="card"><b>实数运算</b><p class="subtle">检查符号、绝对值、平方根、科学记数法。</p><span class="formula-chip">$|a|\ge0,\quad \sqrt{a^2}=|a|$</span></article>
+        <article class="card"><b>整式运算</b><p class="subtle">检查乘法公式、因式分解、合并同类项。</p><span class="formula-chip">$(a\pm b)^2=a^2\pm2ab+b^2$</span></article>
+        <article class="card"><b>分式化简</b><p class="subtle">分母不能为 0，最后要化到最简。</p><span class="formula-chip">$\frac{A}{B}$ 有意义：$B\ne0$</span></article>
+        <article class="card"><b>二次根式</b><p class="subtle">根号下非负，能化简的要化简。</p><span class="formula-chip">$\sqrt a$ 有意义：$a\ge0$</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="equation">
+    <aside class="marker"><span>2</span>方程不等式</aside>
+    <div>
+      <h2>解出结果以后，还要判断能不能用</h2>
+      <div class="grid-3">
+        <article class="card"><b>分式方程</b><p class="subtle">最后必须验根，排除让分母为 0 的值。</p></article>
+        <article class="card"><b>不等式</b><p class="subtle">两边乘除负数时，不等号要变号。</p></article>
+        <article class="card"><b>实际问题</b><p class="subtle">答案要检查范围、单位和是否符合题意；整数、正数、非负数也要逐项确认。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="function">
+    <aside class="marker"><span>3</span>函数图象</aside>
+    <div>
+      <h2>三类函数先建立图象反应</h2>
+      <div class="grid-3">
+        <article class="card function-card">
+          <b>一次函数看直线</b>
+          <svg id="linearGraph" class="mini-graph" viewBox="0 0 260 150" role="img" aria-label="一次函数直线图象"></svg>
+          <p class="subtle">$k$ 决定增减，$b$ 决定与 $y$ 轴交点；两条直线的交点常表示相等或临界状态。</p>
+        </article>
+        <article class="card function-card">
+          <b>反比例函数看象限</b>
+          <svg id="inverseGraph" class="mini-graph" viewBox="0 0 260 150" role="img" aria-label="反比例函数图象和面积"></svg>
+          <p class="subtle">$k$ 的正负决定图象位置，始终有 $x\ne0$；矩形面积常与 $|k|$ 有关。</p>
+        </article>
+        <article class="card function-card">
+          <b>二次函数看抛物线</b>
+          <svg id="quadraticSmallGraph" class="mini-graph" viewBox="0 0 260 150" role="img" aria-label="二次函数抛物线图象"></svg>
+          <p class="subtle">开口、对称轴、顶点、交点和最值是主要入口。</p>
+        </article>
+      </div>
+      <div class="quadratic-panel">
+        <div class="quadratic-graph">
+          <svg id="quadraticLargeGraph" class="mini-graph" viewBox="0 0 420 250" role="img" aria-label="二次函数关键点示意图"></svg>
+        </div>
+        <div class="quad-points">
+          <article class="point-card"><b>开口</b><p class="subtle">$a>0$ 开口向上，$a<0$ 开口向下。</p></article>
+          <article class="point-card"><b>对称轴</b><p class="subtle">$x=-\frac{b}{2a}$。</p></article>
+          <article class="point-card"><b>顶点与最值</b><p class="subtle">顶点对应最大值或最小值。</p></article>
+          <article class="point-card"><b>交点与方程</b><p class="subtle">与 $x$ 轴交点对应方程的根。</p></article>
+          <article class="point-card"><b>应用题最值</b><p class="subtle">面积、利润、距离最值常回到顶点。</p></article>
+          <article class="point-card"><b>考前判断</b><p class="subtle">先定位图象，再写代数关系。</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="coordinate">
+    <aside class="marker"><span>4</span>坐标公式</aside>
+    <div>
+      <h2>把几何关系转化成代数关系</h2>
+      <div class="formula-gallery" aria-label="坐标公式速查卡">
+        <article class="formula-card"><strong>中点坐标</strong><div class="formula">$M(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2})$</div><p class="subtle">两端平均，常用于对称和四边形。</p></article>
+        <article class="formula-card"><strong>两点距离</strong><div class="formula">$AB=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$</div><p class="subtle">横差、纵差分别平方后相加。</p></article>
+        <article class="formula-card"><strong>斜率</strong><div class="formula">$k=\frac{y_2-y_1}{x_2-x_1}$</div><p class="subtle">前提是 $x_1\ne x_2$。</p></article>
+        <article class="formula-card"><strong>垂直</strong><div class="formula">$k_1\cdot k_2=-1$</div><p class="subtle">竖直线与水平线单独判断。</p></article>
+      </div>
+      <div class="quick-table">
+        <table>
+          <thead><tr><th>工具</th><th>公式或判断</th><th>考前提醒</th></tr></thead>
+          <tbody>
+            <tr><td>中点坐标</td><td>$M(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2})$</td><td>常和对称、平行四边形一起出现。</td></tr>
+            <tr><td>两点距离</td><td>$AB=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$</td><td>注意平方后再相加。</td></tr>
+            <tr><td>斜率</td><td>$k=\frac{y_2-y_1}{x_2-x_1}$，其中 $x_1\ne x_2$</td><td>竖直线没有斜率。</td></tr>
+            <tr><td>平行</td><td>$k_1=k_2$，且两直线不重合</td><td>重合不是两条平行直线。</td></tr>
+            <tr><td>垂直</td><td>$k_1\cdot k_2=-1$</td><td>竖直线与水平线互相垂直。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mistakes">
+    <aside class="marker"><span>5</span>易错提醒</aside>
+    <div>
+      <h2>最容易丢分的地方</h2>
+      <div class="grid-2">
+        <article class="card warn"><b>基础检查</b><p class="subtle">分母是否为 0；分式方程是否验根；不等式乘除负数时是否变号；根号下是否非负。</p></article>
+        <article class="card warn"><b>函数与实际问题</b><p class="subtle">图象是否看清象限、交点、顶点和最值；答案是否符合范围、单位和题意。</p></article>
+      </div>
+      <div class="card ok" style="margin-top:14px"><b>函数综合入口</b><p class="subtle">题目给出点、线、交点、最值或面积时，先判断能否转化为坐标、方程或函数关系。</p></div>
+      <div class="footer-nav">
+        <div><b>考前一句话</b><p class="subtle">先稳住基础检查，再抓住图象、公式和关键点。</p></div>
+        <a class="btn" href="../chapter00-2_几何与综合快速回顾/">进入 00-2 几何与综合</a>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const svgNS='http://www.w3.org/2000/svg';
+
+function makeSvgEl(name, attrs={}, text=''){
+  const el=document.createElementNS(svgNS,name);
+  Object.entries(attrs).forEach(([key,value])=>el.setAttribute(key,value));
+  if(text)el.textContent=text;
+  return el;
+}
+
+function createPlot(svg, viewBox, domain, range){
+  const [width,height]=viewBox;
+  const pad={left:30,right:28,top:24,bottom:24};
+  const plot={
+    width,height,pad,
+    sx:x=>pad.left+(x-domain.xMin)/(domain.xMax-domain.xMin)*(width-pad.left-pad.right),
+    sy:y=>height-pad.bottom-(y-range.yMin)/(range.yMax-range.yMin)*(height-pad.top-pad.bottom)
+  };
+  svg.innerHTML='';
+  svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+  return plot;
+}
+
+function drawAxes(svg, plot, domain, range, xTicks=[], yTicks=[]){
+  xTicks.forEach(x=>svg.appendChild(makeSvgEl('line',{class:'graph-grid',x1:plot.sx(x),y1:plot.pad.top,x2:plot.sx(x),y2:plot.height-plot.pad.bottom})));
+  yTicks.forEach(y=>svg.appendChild(makeSvgEl('line',{class:'graph-grid',x1:plot.pad.left,y1:plot.sy(y),x2:plot.width-plot.pad.right,y2:plot.sy(y)})));
+  if(range.yMin<=0&&range.yMax>=0)svg.appendChild(makeSvgEl('line',{class:'graph-axis',x1:plot.pad.left,y1:plot.sy(0),x2:plot.width-plot.pad.right,y2:plot.sy(0)}));
+  if(domain.xMin<=0&&domain.xMax>=0)svg.appendChild(makeSvgEl('line',{class:'graph-axis',x1:plot.sx(0),y1:plot.pad.top,x2:plot.sx(0),y2:plot.height-plot.pad.bottom}));
+}
+
+function samplePoints(fn,xMin,xMax,steps,plot){
+  const points=[];
+  for(let i=0;i<=steps;i++){
+    const x=xMin+(xMax-xMin)*i/steps;
+    const y=fn(x);
+    points.push(`${plot.sx(x).toFixed(2)},${plot.sy(y).toFixed(2)}`);
+  }
+  return points.join(' ');
+}
+
+function drawPoint(svg,plot,x,y,fill,r=5){
+  svg.appendChild(makeSvgEl('circle',{class:'math-point',cx:plot.sx(x),cy:plot.sy(y),r,fill}));
+}
+
+function drawLabel(svg,plot,x,y,text,dx=8,dy=-8,cls='graph-note',anchor='start'){
+  const group=makeSvgEl('g',{});
+  const textEl=makeSvgEl('text',{
+    class:cls,
+    x:plot.sx(x)+dx,
+    y:plot.sy(y)+dy,
+    'text-anchor':anchor,
+    'dominant-baseline':'middle'
+  },text);
+  group.appendChild(textEl);
+  svg.appendChild(group);
+  const box=textEl.getBBox();
+  group.insertBefore(makeSvgEl('rect',{
+    class:'label-bg',
+    x:box.x-4,
+    y:box.y-3,
+    width:box.width+8,
+    height:box.height+6,
+    rx:4
+  }),textEl);
+}
+
+function drawLinearGraph(){
+  const svg=document.querySelector('#linearGraph');
+  const domain={xMin:-1.4,xMax:4.4};
+  const range={yMin:-.7,yMax:3.9};
+  const plot=createPlot(svg,[260,150],domain,range);
+  drawAxes(svg,plot,domain,range,[-1,0,1.5,3,4],[0,1.5,3]);
+  const f=x=>0.45*x+0.5;
+  const g=x=>0.18*x+1.55;
+  const xi=(1.55-0.5)/(0.45-0.18);
+  const yi=f(xi);
+  [[f,'#2563eb',4],[g,'#0891b2',3]].forEach(([fn,color,width])=>{
+    svg.appendChild(makeSvgEl('polyline',{points:samplePoints(fn,domain.xMin,domain.xMax,2,plot),fill:'none',stroke:color,'stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  });
+  drawPoint(svg,plot,0,f(0),'#d97706',5);
+  drawPoint(svg,plot,xi,yi,'#059669',6);
+  drawLabel(svg,plot,0,f(0),'b',10,-10,'graph-label');
+  drawLabel(svg,plot,xi,yi,'两线交点',-12,-18,'graph-note','end');
+  return {xi, yi, fAtXi:f(xi), gAtXi:g(xi), b:f(0)};
+}
+
+function drawInverseGraph(){
+  const svg=document.querySelector('#inverseGraph');
+  const domain={xMin:-3.2,xMax:3.2};
+  const range={yMin:-3.2,yMax:3.2};
+  const plot=createPlot(svg,[260,150],domain,range);
+  drawAxes(svg,plot,domain,range,[-2.5,-1.2,1.2,2.5],[-2.5,-1.2,1.2,2.5]);
+  const k=3;
+  const fn=x=>k/x;
+  svg.appendChild(makeSvgEl('polyline',{points:samplePoints(fn,-3.0,-0.95,44,plot),fill:'none',stroke:'#0891b2','stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  svg.appendChild(makeSvgEl('polyline',{points:samplePoints(fn,0.95,3.0,44,plot),fill:'none',stroke:'#0891b2','stroke-width':4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  const p={x:2,y:fn(2)};
+  const x0=plot.sx(0), y0=plot.sy(0), px=plot.sx(p.x), py=plot.sy(p.y);
+  svg.appendChild(makeSvgEl('rect',{x:x0,y:py,width:px-x0,height:y0-py,fill:'rgba(217,119,6,.16)',stroke:'#d97706','stroke-width':2}));
+  svg.appendChild(makeSvgEl('line',{class:'graph-dim',x1:px,y1:py,x2:px,y2:y0}));
+  svg.appendChild(makeSvgEl('line',{class:'graph-dim',x1:x0,y1:py,x2:px,y2:py}));
+  drawPoint(svg,plot,p.x,p.y,'#d97706',5);
+  drawLabel(svg,plot,p.x,p.y,'面积 |k|',-12,-20,'graph-note','end');
+  return {k, point:p, area:p.x*p.y};
+}
+
+function drawQuadratic(svgSelector, viewBox, large=false){
+  const svg=document.querySelector(svgSelector);
+  const domain={xMin:-3.2,xMax:3.2};
+  const range={yMin:-1.65,yMax:2.25};
+  const plot=createPlot(svg,viewBox,domain,range);
+  drawAxes(svg,plot,domain,range,[-2,-1,0,1,2],[-1.28,0,1]);
+  const a=0.32;
+  const fn=x=>a*(x*x-4);
+  const vertex={x:0,y:fn(0)};
+  const roots=[-2,2];
+  svg.appendChild(makeSvgEl('polyline',{points:samplePoints(fn,domain.xMin,domain.xMax,96,plot),fill:'none',stroke:'#7c3aed','stroke-width':large?5:4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  svg.appendChild(makeSvgEl('line',{class:'symmetry-axis',x1:plot.sx(vertex.x),y1:plot.pad.top,x2:plot.sx(vertex.x),y2:plot.height-plot.pad.bottom}));
+  roots.forEach(root=>drawPoint(svg,plot,root,0,'#d97706',large?6:5));
+  drawPoint(svg,plot,vertex.x,vertex.y,'#059669',large?7:6);
+  drawLabel(svg,plot,vertex.x,vertex.y,large?'顶点 / 最小值':'顶点',large?18:14,large?22:18);
+  drawLabel(svg,plot,vertex.x,range.yMax,'x=-b/(2a)',large?12:10,large?18:16,'graph-label');
+  if(large){
+    drawLabel(svg,plot,roots[0],0,'根',-12,-18,'graph-label','end');
+    drawLabel(svg,plot,roots[1],0,'根',12,-18,'graph-label');
+  }
+  return {a, vertex, roots, rootValues:roots.map(fn)};
+}
+
+function drawAllMathGraphs(){
+  window.__chapter00GraphChecks={
+    linear:drawLinearGraph(),
+    inverse:drawInverseGraph(),
+    quadraticSmall:drawQuadratic('#quadraticSmallGraph',[260,150]),
+    quadraticLarge:drawQuadratic('#quadraticLargeGraph',[420,250],true)
+  };
+}
+
+drawAllMathGraphs();
+</script>
+</body>
+</html>

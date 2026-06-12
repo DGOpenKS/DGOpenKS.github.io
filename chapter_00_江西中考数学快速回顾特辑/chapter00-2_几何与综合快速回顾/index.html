@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 00-2 几何与综合快速回顾 | 中考特辑</title>
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--axis:#94a3b8;--grid:#e8eef7;--blue:#2563eb;--cyan:#0891b2;--amber:#d97706;--green:#059669;--red:#dc2626;--purple:#7c3aed;--shadow:0 18px 55px rgba(15,23,42,.08);--soft-shadow:0 8px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Cascadia Code","Consolas","SFMono-Regular",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.72}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1160px;margin:0 auto;padding:10px 20px;display:flex;gap:10px;align-items:center;overflow:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);white-space:nowrap;margin-right:8px}
+.nav{font-size:.86rem;text-decoration:none;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 11px;white-space:nowrap;font-weight:800}
+.nav:hover,.nav:focus-visible{outline:0;color:var(--blue);background:#eff6ff;border-color:#bfdbfe}
+.hero{max-width:1160px;margin:0 auto;padding:58px 20px 34px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,420px);gap:30px;align-items:center}
+.eyebrow{display:inline-flex;color:var(--blue);background:#eff6ff;border:1px solid #bfdbfe;border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:16px}
+h1{font-size:clamp(2.15rem,5vw,4.2rem);line-height:1.06;margin:0 0 18px;letter-spacing:0}
+.lead{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.hero-card,.card,.method-table,.footer-nav,.diagram-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}
+.hero-card b,.card b,.diagram-card b{display:block;color:var(--blue);margin-bottom:8px}
+.hero-card svg{display:block;width:100%;height:auto}
+main{max-width:1160px;margin:0 auto;padding:0 20px 76px}
+.section{display:grid;grid-template-columns:140px minmax(0,1fr);gap:26px;padding:42px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:72px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);background:var(--paper);border-radius:50%;color:var(--blue);margin-bottom:8px}
+h2{font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.2;margin:0 0 12px}
+h3{font-size:1.05rem;margin:0 0 8px}
+p{margin:0 0 12px}
+.subtle{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.shape-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.diagram-card{box-shadow:var(--soft-shadow);display:grid;grid-template-rows:auto auto 1fr;gap:10px}
+.diagram-card svg{width:100%;height:auto;display:block;background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--line);border-radius:10px}
+.property-list{margin:0;padding-left:18px;color:var(--muted)}
+.property-list li{margin:4px 0}
+.note{background:#f0fdf4;border-left:4px solid var(--green);border-radius:10px;padding:12px 14px;color:#065f46;margin-top:14px}
+.warn{border-left:4px solid var(--red);background:#fff7f7}
+.ok{border-left:4px solid var(--green);background:#f0fdf4}
+.method-table{box-shadow:var(--soft-shadow);overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--blue);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+.step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start}
+.step-num{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#eff6ff;color:var(--blue);font-family:var(--mono);font-weight:900}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pill{display:inline-flex;border:1px solid var(--line);background:var(--soft);color:var(--muted);border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:900}
+.svg-grid{stroke:var(--grid);stroke-width:1;vector-effect:non-scaling-stroke}
+.svg-axis{stroke:var(--axis);stroke-width:1.8;vector-effect:non-scaling-stroke}
+.shape-line{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.shape-line.thin{stroke-width:2.4}
+.aux-line{fill:none;stroke:#7c3aed;stroke-width:2.4;stroke-dasharray:6 6;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.measure-line{fill:none;stroke:#d97706;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.green-line{fill:none;stroke:#059669;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.shape-fill{fill:rgba(37,99,235,.08)}
+.circle-fill{fill:rgba(8,145,178,.07)}
+.point{stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
+.label{font-size:12px;font-weight:900;fill:#64748b;font-family:var(--font)}
+.label-blue{font-size:12px;font-weight:900;fill:#2563eb;font-family:var(--font)}
+.label-purple{font-size:12px;font-weight:900;fill:#7c3aed;font-family:var(--font)}
+.label-amber{font-size:12px;font-weight:900;fill:#d97706;font-family:var(--font)}
+.label-bg{fill:rgba(255,255,255,.92);stroke:#dbe5f2;stroke-width:.8}
+.footer-nav{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:18px}
+.btn{border:1px solid var(--line);background:var(--ink);color:white;border-radius:999px;padding:10px 15px;font-weight:900;text-decoration:none;display:inline-flex}
+.btn.secondary{background:var(--paper);color:var(--ink)}
+@media(max-width:1040px){.shape-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:880px){.hero,.section,.grid-2,.grid-3{grid-template-columns:1fr}.marker{position:static;display:flex;gap:10px;align-items:center}.marker span{margin:0}.hero{padding-top:42px}.footer-nav{align-items:flex-start;flex-direction:column}}
+@media(max-width:680px){.shape-grid{grid-template-columns:1fr}}
+@media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}h1{font-size:2.25rem}.hero-card,.card,.method-table,.footer-nav,.diagram-card{padding:14px}.lead{font-size:1rem}.nav{font-size:.8rem}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="topbar-inner" aria-label="页面导航">
+    <span class="brand">中考特辑</span>
+    <a class="nav" href="#goal">本页目标</a>
+    <a class="nav" href="#shapes">图形性质</a>
+    <a class="nav" href="#method">条件入口</a>
+    <a class="nav" href="#synthesis">综合入口</a>
+    <a class="nav" href="#final">压轴抢分</a>
+    <a class="nav" href="#mistakes">易错提醒</a>
+  </nav>
+</header>
+
+<section class="hero" id="goal">
+  <div>
+    <span class="eyebrow">Chapter 00-2 · 江西中考数学快速回顾</span>
+    <h1>先认图形，再选方法</h1>
+    <p class="lead">这一页用于考前快速回顾几何与综合题的常见入口。先确认图形的基本性质，再根据条件选择方法；做综合题时，把图形条件转化为长度、角、面积、坐标或方程关系。</p>
+  </div>
+  <aside class="hero-card" aria-label="几何条件到方法的入口地图">
+    <b>考场判断顺序</b>
+    <p class="subtle">先看图形类型，再看已知条件，最后写出可确定的关系。</p>
+    <svg id="heroMap" viewBox="0 0 360 220" role="img" aria-label="图形、条件、关系式的判断顺序"></svg>
+  </aside>
+</section>
+
+<main>
+  <section class="section" id="shapes">
+    <aside class="marker"><span>1</span>图形性质</aside>
+    <div>
+      <h2>基本图形先抓最常用的性质</h2>
+      <p class="subtle">考前不需要把所有结论逐条重背。更重要的是看到图形时，能立即确认哪些性质可以使用，哪些条件还没有出现。</p>
+      <div class="shape-grid">
+        <article class="diagram-card">
+          <b>三角形：边角关系是主要入口</b>
+          <svg id="triangleDiagram" viewBox="0 0 300 210" role="img" aria-label="三角形中位线、直角和相似入口"></svg>
+          <ul class="property-list">
+            <li>全等用于推出对应边、对应角相等。</li>
+            <li>相似用于建立比例关系。</li>
+            <li>直角常连接勾股、HL、斜边中线。</li>
+            <li>中点常连接中位线、倍长中线或平行四边形。</li>
+          </ul>
+        </article>
+        <article class="diagram-card">
+          <b>四边形：性质和判定要一起看</b>
+          <svg id="quadrilateralDiagram" viewBox="0 0 300 210" role="img" aria-label="特殊四边形的边、角、对角线性质"></svg>
+          <ul class="property-list">
+            <li>平行四边形看对边平行且相等。</li>
+            <li>矩形看四个直角、对角线相等。</li>
+            <li>菱形看四边相等、对角线垂直。</li>
+            <li>正方形同时具有矩形和菱形性质。</li>
+          </ul>
+        </article>
+        <article class="diagram-card">
+          <b>圆：先把半径和圆心连出来</b>
+          <svg id="circleDiagram" viewBox="0 0 300 210" role="img" aria-label="圆周角、垂径定理和切线性质"></svg>
+          <ul class="property-list">
+            <li>圆周角常对应同弧或同弦。</li>
+            <li>垂径定理连接垂直、平分弦、平分弧。</li>
+            <li>切线题先连接圆心与切点。</li>
+            <li>半径垂直切线是常用结论和判定入口。</li>
+          </ul>
+        </article>
+      </div>
+      <div class="note">做题时先确认“这个条件能生成什么关系”：相等、平行、垂直、比例、面积，或者坐标方程。</div>
+    </div>
+  </section>
+
+  <section class="section" id="method">
+    <aside class="marker"><span>2</span>条件入口</aside>
+    <div>
+      <h2>看到条件，先对应到可用方法</h2>
+      <div class="method-table">
+        <table>
+          <thead><tr><th>看到条件</th><th>优先联想</th><th>检查重点</th></tr></thead>
+          <tbody>
+            <tr><td>中点</td><td>中位线、倍长中线、构造平行四边形</td><td>是否能推出平行线或相等线段。</td></tr>
+            <tr><td>角平分线</td><td>等角、角平分线性质、全等、相似</td><td>是否有角相等、距离相等或比例关系。</td></tr>
+            <tr><td>直角</td><td>勾股定理、HL、斜边中线</td><td>是否能建立长度关系或证明全等。</td></tr>
+            <tr><td>平行</td><td>同位角、内错角、相似、平行四边形</td><td>写相似比例时要对应同一顺序。</td></tr>
+            <tr><td>圆</td><td>连接圆心、连接半径、寻找同弧圆周角</td><td>圆心、半径、弦、切点是否已经进入图形。</td></tr>
+            <tr><td>切线</td><td>连接半径，再证垂直；或由垂直推出切线</td><td>切点必须明确，不能只凭图形看起来相切。</td></tr>
+            <tr><td>最短路径</td><td>轴对称、展开图、两点之间线段最短</td><td>是否已经把折线路径转化为一条线段。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="synthesis">
+    <aside class="marker"><span>3</span>综合入口</aside>
+    <div>
+      <h2>综合题先把图形条件转成关系式</h2>
+      <p class="subtle">综合题通常不是缺少公式，而是没有先确定变量和关系。先写“设什么、求什么、条件是什么”，再选择代数或几何方法。</p>
+      <div class="grid-2">
+        <article class="card">
+          <b>动点题：先设变量</b>
+          <p class="subtle">用变量表示长度、面积或坐标，再检查变量范围。点在线段上、射线上或图形边界上，范围通常不同。</p>
+          <span class="pill">变量</span><span class="pill">范围</span><span class="pill">函数关系</span>
+        </article>
+        <article class="card">
+          <b>面积题：先找底和高</b>
+          <p class="subtle">能直接找底高就直接计算；不能直接找时，考虑割补法、等底等高或坐标面积。</p>
+          <span class="pill">底高</span><span class="pill">割补</span><span class="pill">等积</span>
+        </article>
+        <article class="card">
+          <b>最值题：先判断最值来源</b>
+          <p class="subtle">最值可能来自二次函数、线段最短、三角形三边关系，也可能来自变量范围的端点。</p>
+          <span class="pill">顶点</span><span class="pill">最短线段</span><span class="pill">端点检查</span>
+        </article>
+        <article class="card">
+          <b>存在性问题：先分类</b>
+          <p class="subtle">先确定分类标准，再逐类讨论。分类要互不重复，也不能遗漏可能情况。</p>
+          <span class="pill">分类标准</span><span class="pill">不重不漏</span><span class="pill">验算条件</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="final">
+    <aside class="marker"><span>4</span>压轴抢分</aside>
+    <div>
+      <h2>压轴题先保住可以确定的过程</h2>
+      <div class="grid-3">
+        <article class="card step"><span class="step-num">1</span><div><b>第 1 问确保完成</b><p class="subtle">第 1 问通常给出后续关系的入口，先把基础结论写完整。</p></div></article>
+        <article class="card step"><span class="step-num">2</span><div><b>第 2 问提取明显关系</b><p class="subtle">先写已经确定的角、线段、比例、坐标或方程。</p></div></article>
+        <article class="card step"><span class="step-num">3</span><div><b>最后一问保留依据</b><p class="subtle">即使不能完整求解，也要留下变量、分类和关键关系式。</p></div></article>
+      </div>
+      <div class="card ok" style="margin-top:14px"><b>步骤分来自可验证的数学关系</b><p class="subtle">不要只写结论。应写出由哪个条件推出哪个关系，再把关系代入计算或分类。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="mistakes">
+    <aside class="marker"><span>5</span>易错提醒</aside>
+    <div>
+      <h2>最后检查这些位置</h2>
+      <div class="grid-2">
+        <article class="card warn"><b>几何题</b><p class="subtle">条件是否用完；辅助线是否有目标；相似比例是否对应；圆中是否连接半径、圆心和切点。</p></article>
+        <article class="card warn"><b>综合题</b><p class="subtle">变量范围、分类讨论、最值条件、单位和实际意义是否检查完整。</p></article>
+      </div>
+      <div class="footer-nav">
+        <a class="btn secondary" href="../chapter00-1_代数与函数快速回顾/">返回 00-1 代数与函数</a>
+        <div><b>考前一句话</b><p class="subtle">条件通向方法，方法生成关系式；压轴题先写出能确定的关系。</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const svgNS='http://www.w3.org/2000/svg';
+
+function el(name,attrs={},text=''){
+  const node=document.createElementNS(svgNS,name);
+  Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));
+  if(text)node.textContent=text;
+  return node;
+}
+
+function addLabel(svg,x,y,text,cls='label',anchor='middle'){
+  const group=el('g',{});
+  const textNode=el('text',{class:cls,x,y,'text-anchor':anchor,'dominant-baseline':'middle'},text);
+  group.appendChild(textNode);
+  svg.appendChild(group);
+  const box=textNode.getBBox();
+  group.insertBefore(el('rect',{class:'label-bg',x:box.x-4,y:box.y-3,width:box.width+8,height:box.height+6,rx:4}),textNode);
+  return group;
+}
+
+function addPoint(svg,x,y,fill='#2563eb',r=5){
+  svg.appendChild(el('circle',{class:'point',cx:x,cy:y,r,fill}));
+}
+
+function drawHeroMap(){
+  const svg=document.querySelector('#heroMap');
+  svg.innerHTML='';
+  svg.appendChild(el('rect',{x:16,y:18,width:328,height:184,rx:18,fill:'#f8fafc',stroke:'#dbe5f2'}));
+  const nodes=[
+    {x:72,y:68,t:'图形',c:'#2563eb'},
+    {x:180,y:68,t:'条件',c:'#7c3aed'},
+    {x:288,y:68,t:'关系',c:'#059669'},
+    {x:180,y:150,t:'方法',c:'#d97706'}
+  ];
+  [['72,68','180,68'],['180,68','288,68'],['180,82','180,134'],['288,82','194,138']].forEach(pair=>{
+    const [a,b]=pair.map(s=>s.split(',').map(Number));
+    svg.appendChild(el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#94a3b8','stroke-width':2,'stroke-linecap':'round'}));
+  });
+  nodes.forEach(n=>{
+    svg.appendChild(el('circle',{cx:n.x,cy:n.y,r:34,fill:'#fff',stroke:n.c,'stroke-width':3}));
+    addLabel(svg,n.x,n.y,n.t,'label-blue');
+  });
+  addLabel(svg,180,28,'先判断图形，再提取关系','label', 'middle');
+}
+
+function drawTriangle(){
+  const svg=document.querySelector('#triangleDiagram');
+  svg.innerHTML='';
+  const A={x:56,y:160}, B={x:248,y:160}, C={x:56,y:48};
+  const M={x:(A.x+C.x)/2,y:(A.y+C.y)/2}, N={x:(B.x+C.x)/2,y:(B.y+C.y)/2};
+  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`,class:'shape-fill',stroke:'#2563eb','stroke-width':4,'stroke-linejoin':'round'}));
+  svg.appendChild(el('line',{class:'green-line',x1:M.x,y1:M.y,x2:N.x,y2:N.y}));
+  svg.appendChild(el('path',{class:'measure-line',d:`M ${A.x} ${A.y} L ${A.x+24} ${A.y} L ${A.x+24} ${A.y-24}`}));
+  svg.appendChild(el('path',{class:'aux-line',d:`M ${C.x} ${C.y} L ${A.x} ${A.y}`}));
+  svg.appendChild(el('path',{class:'aux-line',d:`M ${C.x} ${C.y} L ${B.x} ${B.y}`}));
+  [A,B,C,M,N].forEach((p,i)=>addPoint(svg,p.x,p.y,i<3?'#2563eb':'#059669',i<3?5:4));
+  addLabel(svg,50,176,'A','label');
+  addLabel(svg,252,176,'B','label');
+  addLabel(svg,56,30,'C','label');
+  addLabel(svg,112,88,'中位线','label-blue');
+  addLabel(svg,86,138,'直角入口','label-amber','start');
+}
+
+function drawQuadrilateral(){
+  const svg=document.querySelector('#quadrilateralDiagram');
+  svg.innerHTML='';
+  const A={x:62,y:54}, B={x:238,y:54}, C={x:238,y:160}, D={x:62,y:160};
+  const center={x:(A.x+C.x)/2,y:(A.y+C.y)/2};
+  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y} ${D.x},${D.y}`,class:'shape-fill',stroke:'#2563eb','stroke-width':4,'stroke-linejoin':'round'}));
+  svg.appendChild(el('line',{class:'aux-line',x1:A.x,y1:A.y,x2:C.x,y2:C.y}));
+  svg.appendChild(el('line',{class:'aux-line',x1:B.x,y1:B.y,x2:D.x,y2:D.y}));
+  svg.appendChild(el('path',{class:'measure-line',d:`M ${A.x+16} ${A.y} L ${A.x+16} ${A.y+16} L ${A.x} ${A.y+16}`}));
+  svg.appendChild(el('line',{class:'green-line',x1:92,y1:39,x2:208,y2:39}));
+  svg.appendChild(el('line',{class:'green-line',x1:92,y1:175,x2:208,y2:175}));
+  [A,B,C,D,center].forEach((p,i)=>addPoint(svg,p.x,p.y,i===4?'#059669':'#2563eb',i===4?4:5));
+  addLabel(svg,150,28,'对边平行 / 相等','label-blue');
+  addLabel(svg,150,106,'对角线','label-purple');
+  addLabel(svg,88,82,'矩形直角','label-amber','start');
+}
+
+function drawCircle(){
+  const svg=document.querySelector('#circleDiagram');
+  svg.innerHTML='';
+  const O={x:150,y:108}, r=58;
+  const T={x:150,y:50};
+  const L={x:82,y:132}, R={x:218,y:132};
+  svg.appendChild(el('circle',{cx:O.x,cy:O.y,r,class:'circle-fill',stroke:'#0891b2','stroke-width':4}));
+  svg.appendChild(el('line',{class:'shape-line thin',x1:L.x,y1:L.y,x2:R.x,y2:R.y,stroke:'#2563eb'}));
+  svg.appendChild(el('line',{class:'measure-line',x1:40,y1:T.y,x2:260,y2:T.y}));
+  svg.appendChild(el('line',{class:'green-line',x1:O.x,y1:O.y,x2:T.x,y2:T.y}));
+  svg.appendChild(el('line',{class:'aux-line',x1:O.x,y1:O.y,x2:O.x,y2:132}));
+  svg.appendChild(el('path',{class:'measure-line',d:`M ${T.x+14} ${T.y} L ${T.x+14} ${T.y+14} L ${T.x} ${T.y+14}`}));
+  [O,T,L,R].forEach((p,i)=>addPoint(svg,p.x,p.y,i===1?'#d97706':i===0?'#059669':'#2563eb',i<2?5:4));
+  addLabel(svg,150,128,'O','label');
+  addLabel(svg,184,65,'半径垂直切线','label-blue','start');
+  addLabel(svg,150,158,'垂径定理入口','label-purple');
+}
+
+function drawAll(){
+  drawHeroMap();
+  drawTriangle();
+  drawQuadrilateral();
+  drawCircle();
+}
+
+drawAll();
+</script>
+</body>
+</html>

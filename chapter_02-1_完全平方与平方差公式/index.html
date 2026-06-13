@@ -50,15 +50,15 @@ p{margin:0 0 12px}
 .warn{border-left-color:var(--red);background:#fef2f2;color:#991b1b}
 .ok{border-left-color:var(--green);background:#ecfdf5;color:#065f46}
 .formula{font-family:var(--mono);font-weight:900;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow:auto;margin:10px 0}
-.area-lab{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
-.controls{display:grid;gap:12px}
+.area-lab{display:grid;grid-template-columns:300px minmax(0,1fr);grid-template-areas:"controls visual";gap:18px;align-items:start}
+.controls{display:grid;grid-area:controls;gap:12px}
 .control{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:12px}
 .control label{display:flex;justify-content:space-between;gap:12px;font-weight:900;color:var(--amber);margin-bottom:6px}
 .control input{width:100%;accent-color:var(--amber)}
 .segmented{display:grid;gap:8px}
 .segmented button{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:9px 10px;text-align:left;font-weight:900;color:var(--muted);cursor:pointer}
 .segmented button[aria-pressed="true"]{color:var(--blue);border-color:#93c5fd;background:#eff6ff}
-.svg-wrap{display:grid;place-items:center;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:28px 28px;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:410px}
+.svg-wrap{display:grid;grid-area:visual;place-items:center;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:28px 28px;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:410px}
 svg{display:block;width:100%;height:auto}
 #areaSvg{max-width:640px}
 .piece{stroke-width:2.2;vector-effect:non-scaling-stroke;shape-rendering:geometricPrecision}
@@ -99,7 +99,7 @@ svg{display:block;width:100%;height:auto}
 .answer-reveal.show{display:block}
 .footer-note{margin-top:16px;font-size:1.05rem;font-weight:900;color:var(--ink)}
 @media(max-width:880px){.hero,.section,.area-lab,.formula-card,.grid-2,.grid-3,.mistake-grid{grid-template-columns:minmax(0,1fr)}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero{padding-top:42px}.brief{max-width:none}}
-@media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}.panel,.card,.lab,.formula-card{padding:14px}.answer-row{grid-template-columns:1fr}.hero-actions .btn{width:100%}.svg-wrap{min-height:auto;overflow:hidden}.example{grid-template-columns:1fr}h1{font-size:2.25rem}.lead{font-size:1rem;max-width:100%;word-break:break-word}.topbar-inner{padding-left:14px;padding-right:14px}p,.lead,.subtle,.feedback,.mistake,.example{overflow-wrap:anywhere}.formula{white-space:normal;overflow-wrap:anywhere}.area-lab,.controls,.brief,.formula-card,.practice,.question-box{min-width:0}.lead mjx-container{display:inline-block;max-width:100%;vertical-align:middle}}
+@media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}.panel,.card,.lab,.formula-card{padding:14px}.answer-row{grid-template-columns:1fr}.hero-actions .btn{width:100%}.svg-wrap{min-height:auto;overflow:hidden}.example{grid-template-columns:1fr}h1{font-size:2.25rem}.lead{font-size:1rem;max-width:100%;word-break:break-word}.topbar-inner{padding-left:14px;padding-right:14px}p,.lead,.subtle,.feedback,.mistake,.example{overflow-wrap:anywhere}.formula{white-space:normal;overflow-wrap:anywhere}.area-lab,.controls,.brief,.formula-card,.practice,.question-box{min-width:0}.lead mjx-container{display:inline-block;max-width:100%;vertical-align:middle}.area-lab{grid-template-areas:"visual" "controls";gap:12px}.area-lab .svg-wrap{position:sticky;top:54px;z-index:3;padding:10px;background-color:var(--soft);box-shadow:0 8px 22px rgba(15,23,42,.08)}#areaSvg{max-height:300px}.controls{gap:9px}.control{padding:8px 10px}.control label{align-items:center;margin-bottom:2px;font-size:.95rem}.control input{display:block}.segmented{gap:7px}.segmented button{padding:8px 10px;font-size:.95rem}.visual-readout{margin-top:6px;gap:4px}.visual-readout p{margin-bottom:0}}
 </style>
 </head>
 <body data-page="chapter02-1">
@@ -143,6 +143,9 @@ svg{display:block;width:100%;height:auto}
       <h2>先从边长为 $a+b$ 的正方形开始</h2>
       <p>把一条边分成 $a$ 和 $b$ 两段，再沿横向和纵向各切一次。正方形会被分成四块面积：一块 $a^2$，两块 $ab$，一块 $b^2$。</p>
       <div class="area-lab lab">
+        <div class="svg-wrap">
+          <svg id="areaSvg" viewBox="0 0 520 420" role="img" aria-label="完全平方与平方差面积图"></svg>
+        </div>
         <div class="controls">
           <div class="control">
             <label for="aRange">a 的长度 <span id="aVal">5</span></label>
@@ -161,9 +164,6 @@ svg{display:block;width:100%;height:auto}
             <b id="visualTitle">边长 $a+b$ 的正方形被分成四块</b>
             <p id="visualText" class="subtle">四块面积分别是 $a^2$、$ab$、$ab$、$b^2$。两块 $ab$ 合在一起，后面会写成 $2ab$。</p>
           </div>
-        </div>
-        <div class="svg-wrap">
-          <svg id="areaSvg" viewBox="0 0 520 420" role="img" aria-label="完全平方与平方差面积图"></svg>
         </div>
       </div>
     </div>
@@ -288,6 +288,14 @@ let mode='plus';
 
 function refreshMath(...nodes){
   if(window.MathJax?.typesetPromise) window.MathJax.typesetPromise(nodes.filter(Boolean));
+}
+function keepAreaVisualFirst(){
+  const lab=$('.area-lab');
+  const visual=lab?.querySelector('.svg-wrap');
+  const controls=lab?.querySelector('.controls');
+  if(lab&&visual&&controls&&(visual.compareDocumentPosition(controls)&Node.DOCUMENT_POSITION_PRECEDING)){
+    lab.insertBefore(visual,controls);
+  }
 }
 function el(name,attrs={},text=''){
   const node=document.createElementNS(svgNS,name);
@@ -574,6 +582,7 @@ $('#revealAnswer').addEventListener('click',()=>{
 });
 $('#newQuestion').addEventListener('click',newQuestion);
 
+keepAreaVisualFirst();
 drawArea();
 drawMini();
 newQuestion();

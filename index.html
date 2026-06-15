@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DGOpenKS · 交互式高中数学知识空间</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
@@ -115,6 +112,10 @@ p{margin:0 0 12px}
 .connection-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
 .connection-list span{font-size:.72rem;font-weight:800;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
 .chapter-card.featured{border-color:color-mix(in srgb,var(--conclusion) 34%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--conclusion) 7%,var(--surface)),var(--surface))}
+.chapter-card.bridge{border-color:color-mix(in srgb,var(--parameter) 38%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--parameter) 10%,var(--surface)),var(--surface))}
+.chapter-card.bridge .chapter-num{color:var(--parameter);background:color-mix(in srgb,var(--parameter) 12%,transparent);border-color:color-mix(in srgb,var(--parameter) 26%,var(--line))}
+.bridge-note{border:1px solid color-mix(in srgb,var(--parameter) 30%,var(--line));background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-left:4px solid var(--parameter);border-radius:14px;padding:16px;margin:18px 0;color:var(--muted)}
+.bridge-note strong{color:var(--parameter)}
 .chapter-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
 .chapter-num{font-family:var(--mono);font-weight:900;color:var(--object);background:color-mix(in srgb,var(--object) 10%,transparent);border:1px solid color-mix(in srgb,var(--object) 22%,var(--line));border-radius:999px;padding:5px 10px;white-space:nowrap}
 .chapter-title{font-size:1.32rem;font-weight:900;margin:0}
@@ -173,6 +174,7 @@ p{margin:0 0 12px}
   <div class="topbar-inner">
     <a class="brand" href="#top">DGOpenKS</a>
     <a class="nav-pill" href="#experience">体验方式</a>
+    <a class="nav-pill" href="#bridge">中考回顾</a>
     <a class="nav-pill" href="#start">推荐起点</a>
     <a class="nav-pill" href="#trunks">数学主干</a>
     <a class="nav-pill" href="#chapters">章节入口</a>
@@ -187,7 +189,8 @@ p{margin:0 0 12px}
     <h1>把数学变成可探索的空间</h1>
     <p class="lead">视频、图像、交互模块，一起打开高中数学的结构。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="chapter_01_初高中数学思维衔接/">从第一章开始</a>
+      <a class="btn primary" href="#bridge">先看中考快回顾</a>
+      <a class="btn" href="chapter_01_初高中数学思维衔接/">直接进入第一章</a>
       <a class="btn" href="#trunks">查看数学主干</a>
     </div>
   </div>
@@ -236,11 +239,57 @@ p{margin:0 0 12px}
     </div>
   </section>
 
+  <section class="stage" id="bridge">
+    <aside class="stage-marker"><span>2</span>Bridge</aside>
+    <div class="stage-body reveal">
+      <div class="stage-kicker">中考快回顾 · 特别入口</div>
+      <h2>先把初中常用工具唤醒。</h2>
+      <p class="subtle">这两页不是主线章节，而是进入高中衔接前的快速检查包。适合考前、开篇前，或发现基础工具不够顺手时回来看。</p>
+      <div class="bridge-note">
+        <p><strong>特殊标注：</strong>Chapter 00 是“快速回顾特辑”，用于唤醒代数、函数、几何与综合题入口；学完后再回到 01-05 的系统衔接主线。</p>
+      </div>
+      <div class="grid-2">
+        <div class="chapter-card bridge">
+          <div class="chapter-head">
+            <div>
+              <div class="chapter-num">00-1</div>
+              <h3 class="chapter-title">代数与函数快速回顾</h3>
+            </div>
+            <span class="status open">特辑</span>
+          </div>
+          <p>考前唤醒符号、范围、图象、关键点和坐标公式，先稳住基础分，再寻找综合题入口。</p>
+          <div class="tag-row">
+            <span class="tag param">代数检查</span>
+            <span class="tag object">函数图象</span>
+            <span class="tag move">坐标关系</span>
+          </div>
+          <a class="btn" href="chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/">进入 00-1</a>
+        </div>
+        <div class="chapter-card bridge">
+          <div class="chapter-head">
+            <div>
+              <div class="chapter-num">00-2</div>
+              <h3 class="chapter-title">几何与综合快速回顾</h3>
+            </div>
+            <span class="status open">特辑</span>
+          </div>
+          <p>先认图形，再选方法；把几何条件转化为长度、角、面积、坐标或方程关系。</p>
+          <div class="tag-row">
+            <span class="tag object">基本图形</span>
+            <span class="tag move">方法选择</span>
+            <span class="tag param">综合入口</span>
+          </div>
+          <a class="btn" href="chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/">进入 00-2</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="stage" id="start">
-    <aside class="stage-marker"><span>2</span>Start</aside>
+    <aside class="stage-marker"><span>3</span>Start</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">推荐起点</div>
-      <h2>从第一章进入。</h2>
+      <h2>完成快速回顾后，从第一章进入。</h2>
       <div class="chapter-card featured">
         <div class="chapter-head">
           <div>
@@ -267,7 +316,7 @@ p{margin:0 0 12px}
   </section>
 
   <section class="stage" id="trunks">
-    <aside class="stage-marker"><span>3</span>Trunks</aside>
+    <aside class="stage-marker"><span>4</span>Trunks</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">高中数学的贯穿主干</div>
       <h2>真正反复出现的，是这些主干。</h2>
@@ -308,10 +357,13 @@ p{margin:0 0 12px}
   </section>
 
   <section class="stage" id="chapters">
-    <aside class="stage-marker"><span>4</span>Entries</aside>
+    <aside class="stage-marker"><span>5</span>Entries</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">章节入口</div>
       <h2>初高中衔接五章。</h2>
+      <div class="bridge-note">
+        <p><strong>需要快速回顾？</strong>可以先进入 <a href="chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/">00-1 代数与函数</a> 或 <a href="chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/">00-2 几何与综合</a>，再回到下面五章主线。</p>
+      </div>
       <div class="grid-2">
         <div class="chapter-card">
           <div class="chapter-head">
@@ -416,7 +468,7 @@ p{margin:0 0 12px}
   </section>
 
   <section class="stage" id="vision">
-    <aside class="stage-marker"><span>5</span>Vision</aside>
+    <aside class="stage-marker"><span>6</span>Vision</aside>
     <div class="stage-body reveal">
       <div class="philosophy">
         <div class="stage-kicker">项目理念</div>

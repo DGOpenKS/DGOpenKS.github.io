@@ -224,6 +224,34 @@ For each core formula or concept, explain:
 
 Concept explanations must land on mathematical structure, not only on intuition, metaphor, or memory tricks.
 
+### Formula And Structure Article Refinement Rules
+
+For formula-centered or algebraic-structure Markdown, begin from a concrete conflict, common mistake, or judgment problem whenever possible, rather than an abstract announcement of the topic.
+
+The opening scope must match the full article. If a formula, variant, reverse use, or object is introduced later, it should either appear in the initial scope or be clearly marked as a secondary extension.
+
+Formula classification should support learner judgment. Prefer short comparison tables or compact blocks that answer:
+
+- what form is being seen;
+- what should be checked first;
+- whether the next action is expansion, factorization, transformation, or rejection of the formula.
+
+When deriving formulas, prefer showing how the formula is discovered from structure, not only verifying it after it is stated. Verification by multiplying back is useful, but important formulas should also explain how the unknown part is determined. For example, set an unknown middle coefficient, require cancellation or matching, and then solve for that coefficient.
+
+Avoid repeated derivations. A formula's source should be fully developed once. Later appearances should summarize, compare, apply, or check the formula instead of repeating the same explanation.
+
+State mathematical scope carefully. When a claim depends on the current learning range, such as integer, rational, or polynomial factorization, say so explicitly. Avoid globally false shortcuts such as saying a number is "not a cube" when it is only not a usable complete cube in the current range.
+
+Use Markdown math syntax for core formulas and derivation equations, such as inline `$...$` or block `$$...$$`. Use code blocks mainly for structure tables, question families, judgment prompts, or plain-text comparison patterns.
+
+If a variant formula is introduced, include at least one example or practice family for it. Do not introduce a sign variant, transformed object, reverse-use formula, or look-alike structure without giving the learner a chance to check that structure.
+
+Visualization notes inside final learner-facing Markdown must be learner-facing. Avoid authoring notes such as "this section should use a diagram." Prefer prose such as "if this is shown with a diagram, you should notice..." or "the diagram helps reveal..." If a note is only for later HTML, visualization, or interaction design, keep it clearly separated as an authoring note and do not mix it into the learner-facing article.
+
+When an article repeatedly asks the learner to "judge the structure first," provide a final executable judgment method, such as a table or checklist. The learner should know what to ask before applying the formula.
+
+For multi-formula articles, control cognitive load by making each formula's role explicit: which one expands, which one factors, which one checks structure, and which look-alike forms cannot use the formula directly.
+
 ### Examples And Practice
 
 Examples should reveal structure, train judgment, or prevent a specific misunderstanding. They should not merely demonstrate procedures.
@@ -321,6 +349,10 @@ Before a Markdown is accepted as a core knowledge source, it must satisfy:
 10. Visualization notes, if present, are teaching intentions only.
 11. The article does not over-expand into a later lesson.
 12. The ending returns to the final understanding.
+13. For formula or structure articles, the opening scope matches all formulas, variants, and reverse uses introduced later.
+14. Important formulas are derived from structure, not only verified after being stated.
+15. If the article requires structure judgment, it gives an executable judgment table, checklist, or decision method.
+16. Core formulas and derivation equations use Markdown math syntax unless a code block is intentionally used for a plain-text structure pattern.
 
 Additional review question:
 
@@ -338,8 +370,12 @@ Reject or revise Markdown that falls into these patterns:
 - Teacher lesson-plan voice: "help students master..." instead of explaining to the learner.
 - Page requirement writing: buttons, cards, animation, interaction, layout, or implementation.
 - Formula pile-up: formulas appear before object, observation, and structure.
+- Scope mismatch: the opening promises one object, but later introduces extra formulas, variants, or reverse uses without framing them.
+- Verification-only derivation: a formula is stated and checked, but the article does not explain how its missing part or structure is found.
+- Judgment without method: the article repeatedly says "judge the structure first" but gives no executable judgment table, checklist, or decision path.
 - Error list only: wrong answers are listed without structural causes or checks.
 - Exercise pile-up: many questions appear without training judgment.
+- Unsupported variant: a sign variant, transformed object, or reverse-use formula appears without an example or focused practice.
 - Over-expansion: too many later ideas are packed into one Markdown.
 - Empty metaphor: vivid language appears without mathematical structure.
 
@@ -817,6 +853,8 @@ Every visualization must have a before/during/after teaching structure:
 
 In HTML/blog pages, formulas should usually appear as summaries of an observed structure, not as unexplained starting points. Formula blocks must explain, as applicable, the relationship, transformation, invariant, condition, or quantity captured by the formula; what each symbol means; how the formula connects to a concrete example; and the plain-language meaning of the formula.
 
+For formula-centered pages, core formulas should normally be paired with 2D or 3D rendered structures and, when useful, interaction. The learner should be able to see the formula's terms, coefficients, signs, cancellation, decomposition, recomposition, or parameter relationships in the rendered object, not only read them in text.
+
 Worked examples must be part of the explanation, not only an appendix after theory. A good example starts from a learner-facing question, shows the reasoning path, identifies the key decision, connects back to the concept just introduced, and avoids introducing new theory not present in Markdown.
 
 HTML may instantiate concrete examples from approved Markdown structures or practice families. Markdown backflow is required only when an example introduces a new explanation, new reasoning path, new misconception category, new formula clarification, or missing conceptual bridge.
@@ -834,6 +872,7 @@ An HTML/blog page passes only if:
 - the page has a readable prose or instructional spine appropriate to its page type;
 - visuals and interactions serve understanding;
 - formulas are motivated and explained;
+- core computational formulas on formula-centered pages have corresponding 2D or 3D visual or interactive representations whenever practical;
 - examples show reasoning, not only answers;
 - practice tests the current concept and gives useful feedback;
 - beginner-facing pages introduce object and observation before naming formulas, symbols, or surprising terms;
@@ -847,6 +886,7 @@ An HTML/blog page fails if:
 - it introduces new mathematical claims not present in Markdown;
 - it silently changes the Markdown explanation;
 - it starts with an unmotivated formula dump;
+- a core computational formula remains only a text formula when its structure can reasonably be shown through 2D or 3D rendering;
 - it assumes a beginner already knows the formula, symbol, or term that the page is supposed to explain;
 - it is mostly disconnected cards/widgets with no prose or instructional spine;
 - it uses animation, 3D, or interaction as decoration;
@@ -1035,6 +1075,27 @@ Formula rendering must avoid tiny symbols, clipped fractions, broken line wrappi
 
 A formula is not rendered correctly if it is visually present but too small, clipped, overflowing, or disconnected from its explanation.
 
+### Formula Visualization And Interaction Requirement
+
+For formula-centered HTML/blog pages, formula rendering is not only typesetting. A core computational formula should be turned into a visible mathematical structure that the learner can observe, compare, or manipulate.
+
+Every core computational formula on a formula explainer page must have a corresponding 2D or 3D visual representation whenever practical. A text-only formula card is not sufficient for a core formula if the formula has a meaningful structure, transformation, geometric model, cancellation pattern, decomposition, recomposition, or parameter relationship that can be rendered.
+
+Choose the representation by mathematical meaning:
+
+- use 2D diagrams for area models, algebraic transformation steps, sign tables, coordinate relationships, function behavior, symbolic matching, or planar structure;
+- use 3D models for cubic formulas, volume, solid decomposition, spatial subtraction, spatial recomposition, cross-sections, or formula structures whose terms correspond to cuboids, layers, or spatial blocks;
+- use interactive controls such as sliders, steppers, toggles, scrubbable stages, term focus, hover/focus highlighting, drag, reset, and randomized checks when they help the learner test the formula structure;
+- use linked formula highlighting so visual parts and symbolic terms explain each other.
+
+For multi-formula pages, each core formula needs its own visual or interactive treatment. Reusing one visualization for several formulas is allowed only when the shared model explicitly shows each formula's distinct structure and state.
+
+Negative terms, subtraction, and cancellation must still be visualized when they are central to the formula. Do not avoid visualization merely because a formula contains negative or signed quantities. Represent them with removal, cut-away regions, transparent subtraction volumes, signed blocks, opposite-color terms, paired cancellation, or staged comparison. Do not misrepresent signed quantities as ordinary positive physical pieces.
+
+If a core formula cannot be visualized directly, the page must still provide an adjacent structural rendering of the closest meaningful object: a transformation diagram, cancellation map, factor-matching diagram, term correspondence table, or interactive algebraic state. Explain why this representation is used.
+
+Formula interactions must have a learning purpose. They should help the learner see where terms come from, why coefficients appear, why signs change, why cancellation occurs, when a formula applies, or why a look-alike expression does not apply.
+
 ### Rendering Technology Choice
 
 Choose rendering technology by teaching need.
@@ -1163,6 +1224,10 @@ Formula:
 - Are formulas motivated?
 - Are symbols explained?
 - Are formulas connected to examples?
+- Does every core computational formula have a corresponding 2D or 3D visual representation when practical?
+- Do formula terms, coefficients, signs, cancellations, decompositions, or recompositions correspond to visible parts of the rendering?
+- If a formula uses negative or signed quantities, are they rendered through removal, cut-away regions, signed blocks, cancellation, or another non-misleading structure?
+- Are formula visuals interactive when interaction would help the learner test or vary the structure?
 
 Interaction:
 

@@ -3,133 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第三章 因式分解不是套方法，而是看结构 | DGOpenKS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<title>Chapter 03 因式分解不是套方法，而是看结构 | DGOpenKS</title>
 <style>
 :root{
   color-scheme:light;
-  --bg:#f5f7fb;--surface:#fff;--surface-2:#f8fafc;--ink:#111827;--muted:#64748b;
-  --line:#dbe4ef;--grid:#e7edf5;--object:#2563eb;--input:#0891b2;--output:#7c3aed;
-  --parameter:#d97706;--success:#059669;--warning:#dc2626;--inactive:#94a3b8;
-  --shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);
-  --radius:14px;--radius-lg:22px;--font:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;--ease:cubic-bezier(.22,1,.36,1);
-}
-@media(prefers-color-scheme:dark){
-  :root{
-    color-scheme:dark;--bg:#09111d;--surface:#111b29;--surface-2:#0d1725;--ink:#e8eef7;
-    --muted:#9aa8ba;--line:#26364b;--grid:#1d2c40;--object:#60a5fa;--input:#22d3ee;
-    --output:#c084fc;--parameter:#fbbf24;--success:#34d399;--warning:#fb7185;
-    --inactive:#64748b;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28);
-  }
+  --bg:#f6f8fb;
+  --paper:#ffffff;
+  --soft:#f8fafc;
+  --ink:#101827;
+  --muted:#637083;
+  --line:#d9e3f0;
+  --grid:#e8eef6;
+  --blue:#2563eb;
+  --blue-soft:#eef4ff;
+  --blue-line:#c8d9ff;
+  --amber:#d97706;
+  --amber-soft:#fff7ed;
+  --amber-line:#fed7aa;
+  --purple:#7c3aed;
+  --purple-soft:#f4f0ff;
+  --purple-line:#d8ccff;
+  --green:#059669;
+  --green-soft:#ecfdf5;
+  --green-line:#a7f3d0;
+  --red:#dc2626;
+  --red-soft:#fef2f2;
+  --red-line:#fecaca;
+  --cyan:#0891b2;
+  --cyan-soft:#ecfeff;
+  --cyan-line:#a5f3fc;
+  --shadow:0 18px 48px rgba(15,23,42,.08);
+  --soft-shadow:0 8px 24px rgba(15,23,42,.06);
+  --radius:8px;
+  --font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"Cascadia Code","Consolas","SFMono-Regular",monospace;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}
 button,input{font:inherit}
 button{letter-spacing:0}
 a{color:inherit}
-.hero>*,.hero-card,.stage-body,.rich-card,.lab-side,.practice-panel{min-width:0}
-p,h1,h2,h3,h4{overflow-wrap:anywhere}
-.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px)}
-.topbar-inner{max-width:1180px;margin:auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto}
-.brand{color:var(--object);font-weight:800;text-decoration:none;margin-right:10px;white-space:nowrap}
-.nav-link{padding:5px 11px;color:var(--muted);font-size:.82rem;font-weight:800;text-decoration:none;white-space:nowrap;border:1px solid transparent;border-radius:999px}
-.nav-link:hover,.nav-link:focus-visible{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent);outline:0}
-.hero{max-width:1180px;margin:auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.96fr);gap:42px;align-items:center}
-.eyebrow{display:inline-flex;color:var(--object);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
-h1{font-size:clamp(2.25rem,5vw,4.6rem);line-height:1.06;margin:0 0 18px}
-.lead{max-width:700px;color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.18rem);margin:0 0 24px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
-.btn,.tool-btn,.choice-btn,.answer-btn{min-height:40px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:8px 13px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
-.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.btn:hover,.tool-btn:hover,.choice-btn:hover,.answer-btn:hover{border-color:color-mix(in srgb,var(--object) 48%,var(--line));color:var(--object)}
-.btn:focus-visible,.tool-btn:focus-visible,.choice-btn:focus-visible,.answer-btn:focus-visible,input:focus-visible{
-  outline:3px solid color-mix(in srgb,var(--object) 30%,transparent);outline-offset:2px
+p,h1,h2,h3{overflow-wrap:anywhere}
+.math{font-family:Georgia,"Times New Roman",serif;font-weight:700;white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.9);backdrop-filter:blur(16px)}
+.topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:10px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.hero{max-width:1180px;margin:auto;padding:54px 20px 28px;display:grid;grid-template-columns:minmax(0,.88fr) minmax(360px,1.12fr);gap:26px;align-items:stretch}
+.eyebrow{display:inline-flex;align-items:center;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:16px}
+h1{font-size:clamp(2.05rem,4.8vw,4.25rem);line-height:1.07;margin:0 0 16px;letter-spacing:0}
+.lead{font-size:1.08rem;color:var(--muted);max-width:720px;margin:0 0 20px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn,.tool-btn,.choice-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:9px 14px;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}
+.btn.primary{background:var(--ink);color:white;border-color:var(--ink)}
+.btn:hover,.btn:focus-visible,.tool-btn:hover,.tool-btn:focus-visible,.choice-btn:hover,.choice-btn:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.tool-btn[aria-pressed=true],.choice-btn[aria-pressed=true]{border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.tool-btn.good,.choice-btn.good{border-color:var(--green-line);background:var(--green-soft);color:var(--green)}
+.tool-btn.bad,.choice-btn.bad{border-color:var(--red-line);background:var(--red-soft);color:var(--red)}
+.surface,.mini-lab,.practice-shell{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow)}
+.hero-lab{min-width:0;padding:16px;display:grid;gap:12px}
+.expression-strip{display:grid;gap:10px}
+.expression{border:1px solid var(--line);background:var(--soft);border-radius:var(--radius);padding:12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}
+.expression strong{font-family:Georgia,"Times New Roman",serif;font-size:1.25rem}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:.75rem;font-weight:900;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.blue{color:var(--blue);border-color:var(--blue-line);background:var(--blue-soft)}
+.tag.amber{color:var(--amber);border-color:var(--amber-line);background:var(--amber-soft)}
+.tag.purple{color:var(--purple);border-color:var(--purple-line);background:var(--purple-soft)}
+.tag.green{color:var(--green);border-color:var(--green-line);background:var(--green-soft)}
+.tag.red{color:var(--red);border-color:var(--red-line);background:var(--red-soft)}
+.lab-feedback{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:12px;color:#1e3a8a}
+.lab-feedback b{display:block;margin-bottom:4px}
+main{max-width:1180px;margin:auto;padding:8px 20px 86px}
+.section{display:grid;grid-template-columns:172px minmax(0,1fr);gap:28px;padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:64px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--paper);border:1px solid var(--line);color:var(--blue);margin-bottom:10px}
+.section h2{font-size:clamp(1.48rem,2.6vw,2.3rem);line-height:1.22;margin:0 0 10px}
+.section-intro{color:var(--muted);max-width:850px;margin:0 0 18px}
+.signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.signal-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:grid;gap:8px;min-height:154px}
+.signal-card b{color:var(--blue)}
+.signal-card code,.formula-box{font-family:var(--mono);font-weight:900;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:9px;display:block;overflow:auto}
+.signal-card p{margin:0;color:var(--muted);font-size:.9rem}
+.mistake-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mistake{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:15px}
+.mistake strong{display:block;color:var(--red);margin-bottom:8px}
+.mistake p{margin:0 0 10px;color:var(--muted)}
+.method-stack{display:grid;gap:18px}
+.method{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);overflow:hidden}
+.method-head{padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.method-head h3{margin:3px 0 4px;font-size:1.22rem}
+.method-head p{margin:0;color:var(--muted)}
+.method-index{font-size:.76rem;font-weight:900;color:var(--blue)}
+.method-body{padding:16px;display:grid;grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr);gap:16px;align-items:start}
+.method-copy p{margin:0 0 12px;color:var(--muted)}
+.mini-lab{padding:14px;display:grid;gap:12px}
+.control-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.control{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:10px}
+.control label{display:flex;justify-content:space-between;gap:10px;color:var(--amber);font-size:.83rem;font-weight:900;margin-bottom:6px}
+.control input{width:100%;accent-color:var(--amber)}
+.cross-board{position:relative;min-height:250px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:28px 28px;overflow:hidden}
+.cross-line{position:absolute;height:4px;left:22%;right:22%;top:50%;background:var(--purple);transform-origin:center;opacity:.7;border-radius:999px}
+.cross-line.one{transform:rotate(24deg)}
+.cross-line.two{transform:rotate(-24deg)}
+.cross-node{position:absolute;width:98px;min-height:46px;display:grid;place-items:center;border:2px solid var(--blue-line);background:rgba(255,255,255,.94);border-radius:var(--radius);font-family:var(--mono);font-weight:900}
+.cross-node.n{border-color:var(--amber-line);color:var(--amber)}
+.cross-node.left-top{left:8%;top:20%}.cross-node.left-bottom{left:8%;bottom:20%}.cross-node.right-top{right:8%;top:20%}.cross-node.right-bottom{right:8%;bottom:20%}
+.lab-readout{display:grid;gap:8px}
+.read-row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--soft);border-radius:var(--radius);padding:9px 10px;text-align:center;font-family:var(--mono);font-weight:900;overflow:auto}
+.arrow{font-weight:900;color:var(--purple)}
+.square-board{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:28px 28px;min-height:260px;padding:18px;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:18px;align-items:center}
+.square-visual{width:min(100%,250px);aspect-ratio:1;display:grid;grid-template-columns:2fr .75fr;grid-template-rows:2fr .75fr;border:2px solid var(--blue);background:white}
+.sq-a{background:rgba(37,99,235,.16);display:grid;place-items:center;font-family:var(--mono);font-weight:900}
+.sq-b,.sq-c{background:rgba(217,119,6,.18);display:grid;place-items:center;font-size:.82rem;font-weight:900;color:var(--amber)}
+.sq-d{background:rgba(5,150,105,.18);display:grid;place-items:center;font-size:.82rem;font-weight:900;color:var(--green);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.square-summary{display:grid;gap:10px}
+.sub-box{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;display:grid;gap:10px}
+.token{display:inline-block;border:1px solid var(--amber-line);background:var(--amber-soft);color:var(--amber);border-radius:6px;padding:1px 5px;font-weight:900}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center}
+.flow-step{border:1px solid var(--line);background:white;border-radius:var(--radius);padding:10px;text-align:center;font-family:var(--mono);font-weight:900;min-height:58px;display:grid;place-items:center}
+.examples{display:grid;gap:12px}
+.example{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:15px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;align-items:start}
+.example b{display:block;color:var(--blue);margin-bottom:6px}
+.example p{margin:0;color:var(--muted)}
+.steps{display:grid;gap:7px}
+.step{border-left:3px solid var(--line);background:var(--soft);border-radius:var(--radius);padding:9px 10px;font-family:var(--mono);font-weight:800;overflow:auto}
+.step.focus{border-color:var(--green);background:var(--green-soft)}
+.practice-shell{padding:16px;display:grid;gap:13px}
+.practice-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.practice-top h3{margin:0;font-size:1.12rem}
+.practice-top p{margin:3px 0 0;color:var(--muted)}
+.question{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px;font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;font-weight:700}
+.choices{display:flex;gap:8px;flex-wrap:wrap}
+.feedback{min-height:56px;border:1px solid var(--line);background:var(--soft);border-radius:var(--radius);padding:12px;color:var(--muted);font-weight:800}
+.feedback.good{border-color:var(--green-line);background:var(--green-soft);color:#047857}
+.feedback.bad{border-color:var(--red-line);background:var(--red-soft);color:#991b1b}
+.checklist{display:grid;gap:9px;margin-top:12px}
+.check-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+.check-item span:first-child{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-weight:900;font-size:.78rem}
+.footer{border-top:1px solid var(--line);padding:30px 20px;color:var(--muted);text-align:center;font-size:.86rem}
+@media(max-width:960px){
+  .hero,.section,.method-body,.signal-grid,.mistake-grid,.example{grid-template-columns:1fr}
+  .marker{position:static;display:flex;align-items:center;gap:10px}
+  .marker span{margin-bottom:0}
 }
-.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}
-.chapter-brief{display:grid;gap:14px}
-.brief-head{border-bottom:1px solid var(--line);padding-bottom:14px}
-.brief-label{display:block;color:var(--muted);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
-.brief-formula{font-family:var(--mono);font-weight:900;font-size:clamp(1.05rem,2vw,1.45rem);line-height:1.35;color:var(--ink)}
-.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.brief-item{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:92px}
-.brief-item b{display:block;color:var(--object);font-size:.92rem;margin-bottom:6px}
-.brief-item p{color:var(--muted);font-size:.86rem;margin:0}
-.brief-path{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;font-weight:900}
-.brief-path span{display:inline-flex;align-items:center;gap:8px}.brief-path span:not(:last-child)::after{content:"→";color:var(--inactive)}
-main{max-width:1180px;margin:auto;padding:8px 22px 90px}
-.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent);scroll-margin-top:72px}
-.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}
-.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}
-.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.stage-body h2{font-size:clamp(1.55rem,2.7vw,2.45rem);line-height:1.2;margin:0 0 10px}
-.stage-body>p{color:var(--muted);margin:0 0 18px;max-width:850px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card,.rich-card,.practice-panel{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:18px}
-.card b{display:block;color:var(--object);margin-bottom:6px}.card p{color:var(--muted);margin:0}
-.signal-list{display:grid;gap:10px;margin-top:18px}
-.signal-row{display:grid;grid-template-columns:160px minmax(0,1fr) 150px;gap:10px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px}
-.signal-row b{color:var(--object)}.signal-row code{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px;overflow-x:auto}.signal-row span{color:var(--muted)}
-.rich-card{border-radius:var(--radius-lg);overflow:hidden;padding:0;scroll-margin-top:76px}
-.rich-head{padding:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
-.rich-head h3{font-size:1.28rem;margin:3px 0 4px}.rich-head p{color:var(--muted);margin:0;font-size:.94rem}
-.lab-index{color:var(--object);font-size:.76rem;font-weight:800;text-transform:uppercase}
-.formula-badge{flex:0 0 auto;padding:9px 12px;border:1px solid var(--line);background:var(--surface-2);border-radius:var(--radius);font-family:Georgia,"Times New Roman",serif;font-weight:700;white-space:nowrap}
-.article-copy{padding:18px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,.98fr);gap:18px;border-bottom:1px solid var(--line)}
-.article-copy h4{font-size:1.12rem;margin:0 0 10px}.article-copy p{color:var(--muted);margin:0 0 12px}
-.formula{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;overflow-x:auto}
-.diagram-card{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:12px;min-width:0}
-canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
-.lab-main{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(440px,1.28fr);gap:18px;padding:18px;align-items:start}
-.lab-main.visual-lab .diagram-card{position:sticky;top:74px}
-.lab-side{display:grid;align-content:start;gap:12px;min-width:0}
-.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}
-.control label{display:flex;justify-content:space-between;gap:10px;color:var(--parameter);font-size:.84rem;font-weight:800;margin-bottom:8px}
-.control input{width:100%;accent-color:var(--parameter)}
-.state-box{border-left:3px solid var(--success);background:color-mix(in srgb,var(--success) 7%,var(--surface));border-radius:12px;padding:11px;color:var(--muted);font-size:.9rem}
-.state-box b{color:var(--success)}
-.term-chain{display:grid;gap:8px}
-.term-row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
-.term-chip{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;font-family:var(--mono);font-weight:900;text-align:center}
-.term-arrow{font-weight:900;color:var(--output);text-align:center}
-.focus-token{display:inline-block;border:1px solid color-mix(in srgb,var(--parameter) 46%,var(--line));background:color-mix(in srgb,var(--parameter) 10%,var(--surface));border-radius:8px;padding:2px 6px;font-weight:900;color:var(--parameter)}
-.practice-panel{margin-top:16px}
-.practice-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.practice-head h3{margin:0;font-size:1.15rem}.practice-head p{color:var(--muted);margin:3px 0 0}
-.question-box{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;overflow-x:auto}
-.practice-input-row{display:grid;gap:6px;color:var(--muted);font-size:.86rem;font-weight:800;margin:10px 0}
-.practice-input-row input{min-height:42px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:9px 12px;font-family:var(--mono);font-weight:800}
-.method-options{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.choice-btn[aria-pressed="true"]{color:var(--object);border-color:var(--object);background:color-mix(in srgb,var(--object) 8%,var(--surface))}
-.choice-btn.good{color:var(--success);border-color:var(--success);background:color-mix(in srgb,var(--success) 9%,var(--surface))}
-.choice-btn.bad{color:var(--warning);border-color:var(--warning);background:color-mix(in srgb,var(--warning) 8%,var(--surface))}
-.feedback{min-height:44px;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 12px;color:var(--muted);font-weight:700}
-.feedback.good{border-color:color-mix(in srgb,var(--success) 44%,var(--line));color:var(--success);background:color-mix(in srgb,var(--success) 7%,var(--surface))}
-.feedback.bad{border-color:color-mix(in srgb,var(--warning) 44%,var(--line));color:var(--warning);background:color-mix(in srgb,var(--warning) 7%,var(--surface))}
-.answer-line{display:none;margin-top:8px;color:var(--success);font-family:var(--mono);font-weight:900}.answer-line.show{display:block}
-.footer{border-top:1px solid var(--line);padding:30px 22px;color:var(--muted);text-align:center;font-size:.84rem}
-.reveal{opacity:1;transform:translateY(0);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
-@media(max-width:900px){
-  .hero,.stage,.grid-3,.grid-2,.article-copy,.lab-main{grid-template-columns:1fr}
-  .lab-main.visual-lab .diagram-card{position:static}
-  .stage-marker{position:static;display:flex;align-items:center;gap:10px}.stage-marker span{margin-bottom:0}
-  .signal-row{grid-template-columns:1fr}.term-row{grid-template-columns:1fr}.term-arrow{transform:rotate(90deg)}
-}
-@media(max-width:620px){
-  .hero{padding-top:40px}.hero-card,.card,.practice-panel{padding:14px}.brief-grid{grid-template-columns:1fr}.brief-item{min-height:auto}
-  .rich-head{display:grid}.formula-badge{white-space:normal}.article-copy,.lab-main{padding:14px}
-  canvas{height:auto}.control-grid,.method-options{display:grid;grid-template-columns:1fr}.choice-btn{width:100%}
+@media(max-width:640px){
+  .hero,main{padding-left:14px;padding-right:14px}
+  .hero{padding-top:36px}
+  h1{font-size:2rem}
+  .lead{font-size:1rem}
+  .surface,.mini-lab,.practice-shell,.method-head,.method-body{padding:14px}
+  .expression{grid-template-columns:1fr}
+  .control-grid,.square-board,.flow{grid-template-columns:1fr}
+  .read-row{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}
+  .choices{display:grid;grid-template-columns:1fr}
+  .choice-btn,.tool-btn,.btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -140,269 +172,292 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
-    <a class="brand" href="../">DGOpenKS</a>
-    <a class="nav-link" href="#question">核心问题</a>
+    <a class="brand" href="../index.html">DGOpenKS</a>
     <a class="nav-link" href="#signals">结构信号</a>
-    <a class="nav-link" href="#cross">十字相乘</a>
-    <a class="nav-link" href="#square">配方</a>
-    <a class="nav-link" href="#substitution">换元</a>
-    <a class="nav-link" href="#practice">练习</a>
+    <a class="nav-link" href="#mistakes">易错判断</a>
+    <a class="nav-link" href="#methods">三种重点方法</a>
+    <a class="nav-link" href="#examples">例子检查</a>
+    <a class="nav-link" href="#practice">练习判断</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="reveal">
-    <div class="eyebrow">Chapter 03 · Factorization</div>
+<header class="hero" id="question">
+  <div>
+    <span class="eyebrow">Chapter 03</span>
     <h1>因式分解不是套方法，而是看结构</h1>
-    <p class="lead">面对一个多项式，先不要急着套公式。先问：它隐藏的是共同因子、平方结构、两个一次因式，还是一个反复出现的整体？</p>
+    <p class="lead">看到多项式，先别急着想“用哪种方法”。先问它的项是不是来自某个乘法展开：共同因子、平方结构、两个一次因式，还是一个反复出现的整体。</p>
     <div class="hero-actions">
       <a class="btn primary" href="#signals">先看结构信号</a>
-      <a class="btn" href="../chapter_02-2_立方相关公式/">上一章</a>
+      <a class="btn" href="#practice">做结构判断</a>
       <a class="btn" href="../index.html">返回目录</a>
     </div>
   </div>
-  <div class="hero-card reveal" aria-label="本节摘要">
-    <div class="chapter-brief">
-      <div class="brief-head">
-        <span class="brief-label">Core Transformation</span>
-        <div class="brief-formula">加法结构 → 乘法结构</div>
-      </div>
-      <div class="brief-grid">
-        <div class="brief-item"><b>先排查简单信号</b><p>公因式、公式、分组先看一眼，不要直接上复杂方法。</p></div>
-        <div class="brief-item"><b>十字相乘</b><p>不只是拆常数项，还要看交叉乘积能否合成一次项。</p></div>
-        <div class="brief-item"><b>配方</b><p>加减同一个量，让二次式出现完整平方。</p></div>
-        <div class="brief-item"><b>换元</b><p>把重复出现的整体临时命名，再回到熟悉结构。</p></div>
-      </div>
-      <div class="brief-path">
-        <span>问题</span><span>误解</span><span>结构信号</span><span>重点方法</span><span>练习反馈</span>
-      </div>
+  <div class="surface hero-lab" aria-label="结构判断预览">
+    <div class="expression-strip">
+      <div class="expression"><strong>x²+7x+12</strong><span class="tag blue">两个一次因式</span></div>
+      <div class="expression"><strong>(x²+x)²-5(x²+x)+6</strong><span class="tag amber">重复整体</span></div>
+      <div class="expression"><strong>x²+6x+5</strong><span class="tag purple">补平方</span></div>
+    </div>
+    <div class="lab-feedback">
+      <b>核心转换</b>
+      <span class="math">加法结构 → 乘法结构</span>。方法只是结构信号的回应，最后都要乘回去检查。
     </div>
   </div>
 </header>
 
 <main>
-  <section class="stage" id="question">
-    <aside class="stage-marker"><span>1</span>Question</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">先问为什么</div>
-      <h2>因式分解的目标，是把“相加的项”重新组织成“相乘的因子”。</h2>
-      <p>学生最容易卡住的地方，不是某个方法不会算，而是不知道什么时候该用哪个方法。真正的顺序应该是：先观察结构，再选择方法。</p>
-      <div class="grid-3">
-        <div class="card"><b>不是背方法表</b><p>方法只是对结构信号的回应。</p></div>
-        <div class="card"><b>不是越复杂越好</b><p>能提公因式时，先把明显共同部分拿出来。</p></div>
-        <div class="card"><b>不是一律展开</b><p>遇到重复整体时，展开反而会遮住结构。</p></div>
+  <section class="section" id="signals">
+    <aside class="marker"><span>1</span>Signals</aside>
+    <div>
+      <h2>先看多项式在暗示什么</h2>
+      <p class="section-intro">这张表不是方法大全，而是判断入口。先识别结构信号，再决定下一步。</p>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <b>共同部分</b>
+          <code>6x²-9x</code>
+          <p>每一项都有共同因子，先提公因式。</p>
+          <span class="tag blue">提公因式</span>
+        </article>
+        <article class="signal-card">
+          <b>平方差</b>
+          <code>x²-25</code>
+          <p>两项相减，且都能看成平方。</p>
+          <span class="tag green">公式法</span>
+        </article>
+        <article class="signal-card">
+          <b>二次三项式</b>
+          <code>x²+7x+12</code>
+          <p>检查两个数的和与积，或用配方看平方结构。</p>
+          <span class="tag purple">十字 / 配方</span>
+        </article>
+        <article class="signal-card">
+          <b>完全平方</b>
+          <code>x²+10x+25</code>
+          <p>检查是否满足 <span class="math">A²±2AB+B²</span>。</p>
+          <span class="tag green">公式法</span>
+        </article>
+        <article class="signal-card">
+          <b>重复整体</b>
+          <code>(x²+x)²+3(x²+x)+2</code>
+          <p>先把重复整体临时看成一个新对象。</p>
+          <span class="tag amber">换元法</span>
+        </article>
+        <article class="signal-card">
+          <b>四项分组</b>
+          <code>ax+ay+bx+by</code>
+          <p>分组以后，要能制造同一个括号。</p>
+          <span class="tag cyan">分组分解</span>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="signals">
-    <aside class="stage-marker"><span>2</span>Signals</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">方法选择表</div>
-      <h2>先看结构信号，再选分解方法。</h2>
-      <p>这部分只做快速判断。简单方法不展开讲，后面重点看十字相乘、配方和换元。</p>
-      <div class="signal-list" aria-label="因式分解结构信号">
-        <div class="signal-row"><b>共同部分</b><code>$kx^2+mx$</code><span>先提公因式</span></div>
-        <div class="signal-row"><b>特殊公式</b><code>$x^2-a^2$</code><span>平方差、完全平方、立方和差</span></div>
-        <div class="signal-row"><b>二次三项式</b><code>$ax^2+bx+c$</code><span>考虑十字相乘</span></div>
-        <div class="signal-row"><b>平方结构</b><code>$x^2+px+c$</code><span>考虑配方</span></div>
-        <div class="signal-row"><b>重复整体</b><code>$(x^2+x)^2-5(x^2+x)+6$</code><span>考虑换元</span></div>
-        <div class="signal-row"><b>四项分组</b><code>$ax+ay+bx+by$</code><span>分组制造共同括号</span></div>
+  <section class="section" id="mistakes">
+    <aside class="marker"><span>2</span>Mistakes</aside>
+    <div>
+      <h2>三个最容易看错的地方</h2>
+      <p class="section-intro">错误通常不是因为少背一个技巧，而是因为少检查了一个结构条件。</p>
+      <div class="mistake-grid">
+        <article class="mistake">
+          <strong>只拆常数项</strong>
+          <p>首项系数不是 1 时，不能只拆常数项，还要拆二次项并检查交叉乘积。</p>
+          <code class="formula-box">(mx+n)(px+q)=mpx²+(mq+np)x+nq</code>
+        </article>
+        <article class="mistake">
+          <strong>复杂式子先展开</strong>
+          <p>如果整体反复出现，展开会把结构打散。先保留它，再临时命名。</p>
+          <code class="formula-box">t=x²+x</code>
+        </article>
+        <article class="mistake">
+          <strong>配方只加不减</strong>
+          <p>配方要加上需要的量，也要减去同样的量，原式才没有改变。</p>
+          <code class="formula-box">x²+6x+5=(x+3)²-4</code>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="cross">
-    <aside class="stage-marker"><span>3</span>Cross</aside>
-    <div class="stage-body reveal">
-      <article class="rich-card">
-        <header class="rich-head">
-          <div>
-            <div class="lab-index">01 · Cross Multiplication</div>
-            <h3>十字相乘：检查交叉项，不是只拆常数项</h3>
-            <p>二次三项式能不能拆成两个一次因式，关键在交叉乘积之和。</p>
-          </div>
-          <div class="formula-badge">$ax^2+bx+c$</div>
-        </header>
-        <div class="article-copy">
-          <div>
-            <h4>学生常见错误</h4>
-            <p>只把常数项拆成两个数，然后直接写因式。这会漏掉最重要的检查：两条交叉乘积加起来是否正好等于一次项。</p>
-            <div class="formula">$2x^2+5x+3=(2x+3)(x+1)$</div>
-            <p>这里 $2x\cdot 1$ 和 $3\cdot x$ 合起来是 $5x$，所以拆分成立。</p>
-          </div>
-          <div>
-            <h4>观察顺序</h4>
-            <p>先看两个一次因式的竖向乘积，再看两条交叉乘积。只有三处都匹配，因式分解才成立。</p>
-            <div class="formula">$mx\cdot px,\quad n\cdot q,\quad mx\cdot q+n\cdot px$</div>
-          </div>
-        </div>
-        <div class="lab-main visual-lab">
-          <div class="lab-side">
-            <div class="control-grid">
-              <div class="control"><label><span>左上系数 m</span><output id="mVal">2</output></label><input id="mRange" type="range" min="1" max="5" step="1" value="2"></div>
-              <div class="control"><label><span>右上系数 p</span><output id="pVal">1</output></label><input id="pRange" type="range" min="1" max="5" step="1" value="1"></div>
-              <div class="control"><label><span>左下常数 n</span><output id="nVal">3</output></label><input id="nRange" type="range" min="-6" max="6" step="1" value="3"></div>
-              <div class="control"><label><span>右下常数 q</span><output id="qVal">1</output></label><input id="qRange" type="range" min="-6" max="6" step="1" value="1"></div>
-            </div>
-            <div class="term-chain">
-              <div class="term-row"><span class="term-chip" id="crossFactorForm">$(2x+3)(x+1)$</span><span class="term-arrow">→</span><span class="term-chip" id="crossExpandedForm">$2x^2+5x+3$</span></div>
-              <div class="term-row"><span class="term-chip" id="crossProducts">$2x+3x$</span><span class="term-arrow">=</span><span class="term-chip" id="crossMiddle">$5x$</span></div>
-            </div>
-          </div>
-          <div class="diagram-card">
-            <canvas id="crossCanvas" width="720" height="420" aria-label="十字相乘交叉项图解"></canvas>
-            <div class="state-box" id="crossState"><b>交叉检查</b><br>二次项、常数项和一次项必须同时匹配。</div>
-          </div>
-        </div>
-        <div class="practice-panel mini-practice" data-topic-practice="cross">
-          <div class="practice-head">
+  <section class="section" id="methods">
+    <aside class="marker"><span>3</span>Methods</aside>
+    <div>
+      <h2>三种重点方法，都从结构里长出来</h2>
+      <p class="section-intro">这里不把方法平均铺开，而是抓住最容易影响判断的三类：十字相乘、配方、换元。</p>
+      <div class="method-stack">
+        <article class="method" id="cross">
+          <header class="method-head">
             <div>
-              <h3>试一试：用十字相乘分解</h3>
-              <p>先找两个一次因式，再检查交叉项。</p>
+              <div class="method-index">01 · Cross Multiplication</div>
+              <h3>十字相乘：交叉项必须合成一次项</h3>
+              <p>把两个一次因式乘开，二次项、常数项和一次项要同时匹配。</p>
             </div>
-            <button class="tool-btn" type="button" data-topic-new>换题</button>
+            <span class="tag purple">双重检查</span>
+          </header>
+          <div class="method-body">
+            <div class="method-copy">
+              <p>一般要看 <span class="math">(mx+n)(px+q)</span>。二次项来自 <span class="math">mpx²</span>，常数项来自 <span class="math">nq</span>，一次项来自两条交叉乘积 <span class="math">mqx+npx</span>。</p>
+              <div class="formula-box">2x²+7x+3=(2x+1)(x+3)</div>
+              <p>因为 <span class="math">2·1=2</span>，<span class="math">1·3=3</span>，并且 <span class="math">2·3+1·1=7</span>。首项系数不是 1 时，不能只拆常数项。</p>
+            </div>
+            <div class="mini-lab">
+              <div class="control-grid">
+                <div class="control"><label for="leftCoefRange">左首项 m <output id="leftCoefOut">2</output></label><input id="leftCoefRange" type="range" min="1" max="6" value="2"></div>
+                <div class="control"><label for="rightCoefRange">右首项 p <output id="rightCoefOut">1</output></label><input id="rightCoefRange" type="range" min="1" max="6" value="1"></div>
+                <div class="control"><label for="leftConstRange">左常数 n <output id="leftConstOut">1</output></label><input id="leftConstRange" type="range" min="-6" max="6" value="1"></div>
+                <div class="control"><label for="rightConstRange">右常数 q <output id="rightConstOut">3</output></label><input id="rightConstRange" type="range" min="-6" max="6" value="3"></div>
+              </div>
+              <div class="cross-board" aria-label="十字相乘交叉项示意">
+                <div class="cross-line one"></div>
+                <div class="cross-line two"></div>
+                <div class="cross-node left-top" id="leftCoefNode">2x</div>
+                <div class="cross-node left-bottom n" id="leftConstNode">1</div>
+                <div class="cross-node right-top" id="rightCoefNode">x</div>
+                <div class="cross-node right-bottom n" id="rightConstNode">3</div>
+              </div>
+              <div class="lab-readout">
+                <div class="read-row"><span class="pill" id="crossFactors">(2x+1)(x+3)</span><span class="arrow">→</span><span class="pill" id="crossExpanded">2x²+7x+3</span></div>
+                <div class="read-row"><span class="pill" id="crossLead">二次项：2·1=2</span><span class="arrow">且</span><span class="pill" id="crossConst">常数项：1·3=3</span></div>
+                <div class="read-row"><span class="pill" id="crossDiagA">2x·3=6x</span><span class="arrow">+</span><span class="pill" id="crossDiagB">1·x=1x，所以一次项 7x</span></div>
+              </div>
+            </div>
           </div>
-          <div class="question-box" data-topic-question></div>
-          <label class="practice-input-row"><span>你的分解结果</span><input data-topic-input type="text" placeholder="例如：(x-6)(x+4)"></label>
-          <div class="method-options">
-            <button class="answer-btn" type="button" data-topic-check>检查</button>
-            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
+        </article>
+
+        <article class="method" id="square">
+          <header class="method-head">
+            <div>
+              <div class="method-index">02 · Completing The Square</div>
+              <h3>配方：补出完整平方，同时保持原式不变</h3>
+              <p>配方不是凭空加数，而是加减同一个量，让平方结构显出来。</p>
+            </div>
+            <span class="tag amber">加减同量</span>
+          </header>
+          <div class="method-body">
+            <div class="method-copy">
+              <p><span class="math">x²+6x</span> 差一个 <span class="math">9</span> 才能成为 <span class="math">(x+3)²</span>。原式没有这个 9，所以要同时减去 9。</p>
+              <div class="formula-box">x²+6x+5=x²+6x+9-9+5=(x+3)²-4</div>
+              <p>配方可以先看见平方差，再继续分解成 <span class="math">(x+1)(x+5)</span>。</p>
+            </div>
+            <div class="mini-lab">
+              <div class="control-grid">
+                <div class="control"><label for="pRange">一次项系数 p <output id="pOut">6</output></label><input id="pRange" type="range" min="-10" max="10" step="2" value="6"></div>
+                <div class="control"><label for="cRange">常数 c <output id="cOut">5</output></label><input id="cRange" type="range" min="-10" max="12" step="1" value="5"></div>
+              </div>
+              <div class="square-board" aria-label="配方面积示意">
+                <div class="square-visual">
+                  <div class="sq-a">x²</div>
+                  <div class="sq-b" id="halfX1">3x</div>
+                  <div class="sq-c" id="halfX2">3x</div>
+                  <div class="sq-d" id="cornerSq">9</div>
+                </div>
+                <div class="square-summary">
+                  <div class="pill" id="squareNeed">补出 (x+3)²</div>
+                  <div class="pill" id="squareKeep">再减 9 保持不变</div>
+                  <div class="pill" id="squareResult">结果：(x+3)²-4</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="feedback" data-topic-feedback>先自己尝试写出两个括号。</div>
-          <div class="answer-line" data-topic-answer></div>
-        </div>
-      </article>
+        </article>
+
+        <article class="method" id="substitution">
+          <header class="method-head">
+            <div>
+              <div class="method-index">03 · Substitution</div>
+              <h3>换元：重复整体先当成一个对象</h3>
+              <p>不要急着展开。先把重复出现的整体保留下来，题目会回到熟悉的二次三项式。</p>
+            </div>
+            <span class="tag green">临时命名</span>
+          </header>
+          <div class="method-body">
+            <div class="method-copy">
+              <p>在 <span class="math">(x²+x)²-5(x²+x)+6</span> 里，重复整体是 <span class="token">x²+x</span>。设 <span class="math">t=x²+x</span>，就变成 <span class="math">t²-5t+6</span>。</p>
+              <div class="formula-box">(x²+x)²-5(x²+x)+6=(x²+x-2)(x²+x-3)</div>
+              <p>换元只是临时命名。分解完要把 <span class="math">t</span> 换回原来的整体。</p>
+            </div>
+            <div class="mini-lab">
+              <div class="choices" aria-label="选择换元例子">
+                <button class="choice-btn" type="button" data-sub-example="0" aria-pressed="true">x²+x</button>
+                <button class="choice-btn" type="button" data-sub-example="1" aria-pressed="false">x-2</button>
+                <button class="choice-btn" type="button" data-sub-example="2" aria-pressed="false">2x-1</button>
+              </div>
+              <div class="sub-box">
+                <div id="subOriginal" class="formula-box">(x²+x)²-5(x²+x)+6</div>
+                <div class="flow">
+                  <div class="flow-step" id="subLet">t=x²+x</div>
+                  <div class="arrow">→</div>
+                  <div class="flow-step" id="subTForm">t²-5t+6</div>
+                  <div class="arrow">→</div>
+                  <div class="flow-step" id="subResult">(x²+x-2)(x²+x-3)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="stage" id="square">
-    <aside class="stage-marker"><span>4</span>Square</aside>
-    <div class="stage-body reveal">
-      <article class="rich-card">
-        <header class="rich-head">
+  <section class="section" id="examples">
+    <aside class="marker"><span>4</span>Examples</aside>
+    <div>
+      <h2>例子检查：先说结构，再写步骤</h2>
+      <p class="section-intro">每个例子都先判断结构信号。没有这个判断，后面的计算就容易变成乱试。</p>
+      <div class="examples">
+        <article class="example">
           <div>
-            <div class="lab-index">02 · Completing The Square</div>
-            <h3>配方：补出完整平方，同时保持原式不变</h3>
-            <p>配方不是凭空加一个数，而是加减同一个数，让平方结构出现。</p>
+            <b>例 1：首项系数不是 1 的十字相乘</b>
+            <p class="math">2x²+7x+3</p>
+            <p>同时拆二次项和常数项，再检查交叉乘积。</p>
           </div>
-          <div class="formula-badge">$x^2+px+c$</div>
-        </header>
-        <div class="article-copy">
+          <div class="steps">
+            <div class="step">2x·x=2x²，1·3=3</div>
+            <div class="step">2x·3+1·x=7x</div>
+            <div class="step focus">2x²+7x+3=(2x+1)(x+3)</div>
+          </div>
+        </article>
+        <article class="example">
           <div>
-            <h4>为什么要补 $\left(\frac p2\right)^2$？</h4>
-            <p>$x^2+px$ 可以看成两块相同的长条拼在 $x^2$ 旁边。每块长条的一半长度是 $\frac p2$，缺角正好是 $\left(\frac p2\right)^2$。</p>
-            <div class="formula" id="squareFormula">$x^2+6x+5=(x+3)^2-4$</div>
-            <p>补上的量必须再减去，原式才没有被改变。</p>
+            <b>例 2：先提公因式</b>
+            <p class="math">2x²+10x+12</p>
+            <p>每一项都有公因式 2，先把它提出来。</p>
           </div>
+          <div class="steps">
+            <div class="step">2x²+10x+12=2(x²+5x+6)</div>
+            <div class="step">x²+5x+6=(x+2)(x+3)</div>
+            <div class="step focus">2x²+10x+12=2(x+2)(x+3)</div>
+          </div>
+        </article>
+        <article class="example">
           <div>
-            <h4>观察顺序</h4>
-            <p>先把一次项分成两半，放到正方形的两侧；再看缺角面积。配方的数就来自这个缺角。</p>
-            <div class="formula">$x^2+px=x^2+2\cdot \frac p2 x$</div>
+            <b>例 3：换元保留整体</b>
+            <p class="math">(x-2)²-4(x-2)+3</p>
+            <p>重复整体是 x-2，先设 t=x-2。</p>
           </div>
-        </div>
-        <div class="lab-main visual-lab">
-          <div class="lab-side">
-            <div class="control-grid">
-              <div class="control"><label><span>一次项系数 p</span><output id="squarePVal">6</output></label><input id="squarePRange" type="range" min="-8" max="8" step="1" value="6"></div>
-              <div class="control"><label><span>常数项 c</span><output id="squareCVal">5</output></label><input id="squareCRange" type="range" min="-8" max="12" step="1" value="5"></div>
-            </div>
-            <div class="term-chain">
-              <div class="term-row"><span class="term-chip" id="squareOriginal">$x^2+6x+5$</span><span class="term-arrow">→</span><span class="term-chip" id="squareCompleted">$(x+3)^2-4$</span></div>
-              <div class="state-box" id="squareInfo"><b>读信息</b><br>顶点横坐标是 $-3$，最小值是 $-4$。</div>
-            </div>
+          <div class="steps">
+            <div class="step">t²-4t+3=(t-1)(t-3)</div>
+            <div class="step">t=x-2</div>
+            <div class="step focus">(x-2)²-4(x-2)+3=(x-3)(x-5)</div>
           </div>
-          <div class="diagram-card">
-            <canvas id="squareCanvas" width="720" height="420" aria-label="配方面积图与顶点图"></canvas>
-            <div class="state-box" id="squareState"><b>配方结果</b><br>顶点和最值从平方结构中读出来。</div>
-          </div>
-        </div>
-        <div class="practice-panel mini-practice" data-topic-practice="square">
-          <div class="practice-head">
-            <div>
-              <h3>试一试：把二次式配方</h3>
-              <p>把一次项系数除以 2，再补平方。</p>
-            </div>
-            <button class="tool-btn" type="button" data-topic-new>换题</button>
-          </div>
-          <div class="question-box" data-topic-question></div>
-          <label class="practice-input-row"><span>你的配方结果</span><input data-topic-input type="text" placeholder="例如：(x+3)^2-8"></label>
-          <div class="method-options">
-            <button class="answer-btn" type="button" data-topic-check>检查</button>
-            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
-          </div>
-          <div class="feedback" data-topic-feedback>注意：补上的量必须同时减去。</div>
-          <div class="answer-line" data-topic-answer></div>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="stage" id="substitution">
-    <aside class="stage-marker"><span>5</span>Substitute</aside>
-    <div class="stage-body reveal">
-      <article class="rich-card">
-        <header class="rich-head">
+  <section class="section" id="practice">
+    <aside class="marker"><span>5</span>Practice</aside>
+    <div>
+      <h2>练习：先判断结构信号</h2>
+      <p class="section-intro">这组练习不先要求你算到底，而是先训练“第一眼看什么”。选错时，反馈会指出漏掉的结构。</p>
+      <div class="practice-shell">
+        <div class="practice-top">
           <div>
-            <div class="lab-index">03 · Repeated Whole</div>
-            <h3>换元：先把重复整体当成一个对象</h3>
-            <p>复杂式子不一定要展开；有时给重复整体一个临时名字，结构就变简单了。</p>
+            <h3>当前多项式</h3>
+            <p>先选方法，再看反馈。</p>
           </div>
-          <div class="formula-badge">$t=x^2+x$</div>
-        </header>
-        <div class="article-copy">
-          <div>
-            <h4>换元不是改题，而是临时命名</h4>
-            <p>在 $(x^2+x)^2-5(x^2+x)+6$ 中，重复整体是 <span class="focus-token">$x^2+x$</span>。先令它为 $t$，原式变成 $t^2-5t+6$。</p>
-            <div class="formula">$t^2-5t+6=(t-2)(t-3)$</div>
-            <p>最后必须把 $t$ 换回原来的 $x^2+x$。</p>
-          </div>
-          <div class="diagram-card">
-            <div class="term-chain">
-              <div class="term-row"><span class="term-chip" id="subOriginal">$(x^2+x)^2-5(x^2+x)+6$</span><span class="term-arrow">→</span><span class="term-chip">$t^2-5t+6$</span></div>
-              <div class="term-row"><span class="term-chip">$t^2-5t+6$</span><span class="term-arrow">→</span><span class="term-chip" id="subTFactor">$(t-2)(t-3)$</span></div>
-              <div class="term-row"><span class="term-chip" id="subBack">$(x^2+x-2)(x^2+x-3)$</span><span class="term-arrow">✓</span><span class="term-chip">换回原变量</span></div>
-            </div>
-            <div class="state-box" id="subState"><b>结构信号</b><br>同一个整体反复出现，优先尝试换元。</div>
-          </div>
+          <button class="tool-btn" type="button" id="newQuestion">换一题</button>
         </div>
-        <div class="practice-panel mini-practice" data-topic-practice="substitution">
-          <div class="practice-head">
-            <div>
-              <h3>试一试：先换元再分解</h3>
-              <p>找出重复整体，把它临时记作 $t$。</p>
-            </div>
-            <button class="tool-btn" type="button" data-topic-new>换题</button>
-          </div>
-          <div class="question-box" data-topic-question></div>
-          <label class="practice-input-row"><span>你的分解结果</span><input data-topic-input type="text" placeholder="先写换元，再写换回后的因式"></label>
-          <div class="method-options">
-            <button class="answer-btn" type="button" data-topic-check>检查</button>
-            <button class="answer-btn" type="button" data-topic-answer-toggle>显示答案</button>
-          </div>
-          <div class="feedback" data-topic-feedback>先不要展开，先圈出重复整体。</div>
-          <div class="answer-line" data-topic-answer></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="stage" id="practice">
-    <aside class="stage-marker"><span>6</span>Practice</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">随机练习</div>
-      <h2>先说结构信号，再选方法。</h2>
-      <p>每次换题都会生成围绕本节知识点的题目。目标不是刷数量，而是训练“看结构”。</p>
-      <div class="practice-panel" data-practice>
-        <div class="practice-head">
-          <div>
-            <h3>方法选择练习</h3>
-            <p>判断这道题优先用哪种方法，并看反馈。</p>
-          </div>
-          <button class="tool-btn" type="button" data-new-question>换题</button>
-        </div>
-        <div class="question-box" data-question>$x^2-9$</div>
-        <div class="method-options" data-choices>
+        <div class="question" id="questionText">x²+7x+12</div>
+        <div class="choices" id="practiceChoices">
           <button class="choice-btn" type="button" data-method="提公因式">提公因式</button>
           <button class="choice-btn" type="button" data-method="公式法">公式法</button>
           <button class="choice-btn" type="button" data-method="十字相乘">十字相乘</button>
@@ -410,396 +465,238 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:12/7;border-radius:12px
           <button class="choice-btn" type="button" data-method="换元法">换元法</button>
           <button class="choice-btn" type="button" data-method="分组分解">分组分解</button>
         </div>
-        <div class="feedback" data-feedback>请选择适合的方法。</div>
-        <div class="answer-line" data-answer></div>
+        <div class="feedback" id="practiceFeedback">请选择一个结构信号。</div>
+      </div>
+      <div class="checklist" aria-label="因式分解判断顺序">
+        <div class="check-item"><span>1</span><div>先提公因式。</div></div>
+        <div class="check-item"><span>2</span><div>再看平方差、完全平方等直接公式。</div></div>
+        <div class="check-item"><span>3</span><div>二次三项式检查十字相乘或配方。</div></div>
+        <div class="check-item"><span>4</span><div>重复整体考虑换元，四项式尝试分组。</div></div>
+        <div class="check-item"><span>5</span><div>最后乘回去检查。</div></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer">DGOpenKS · 第三章 · 多项式变形与因式分解</footer>
+<footer class="footer">DGOpenKS · Chapter 03 · 把加法里的结构看回乘法里的来源</footer>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const root=getComputedStyle(document.documentElement);
-  const color=name=>root.getPropertyValue(name).trim();
-  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('in')});
-  },{threshold:.16});
-  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-
-  function typeset(...nodes){
-    const targets=nodes.filter(Boolean);
-    if(window.MathJax?.typesetPromise&&targets.length)window.MathJax.typesetPromise(targets).catch(()=>{});
-  }
-  function signTerm(n,variable=''){
-    if(n===0)return '';
-    const sign=n>0?'+':'-';
-    const abs=Math.abs(n);
-    if(variable&&abs===1)return `${sign}${variable}`;
+(() => {
+  const $ = selector => document.querySelector(selector);
+  const $$ = selector => [...document.querySelectorAll(selector)];
+  const fmtSigned = (value, variable = '') => {
+    if (value === 0) return '';
+    const sign = value > 0 ? '+' : '-';
+    const abs = Math.abs(value);
+    if (variable && abs === 1) return `${sign}${variable}`;
     return `${sign}${abs}${variable}`;
-  }
-  function firstTerm(coef,variable){
-    if(coef===1)return variable;
-    if(coef===-1)return `-${variable}`;
-    return `${coef}${variable}`;
-  }
-  function roundedRect(ctx,x,y,w,h,r){
-    if(ctx.roundRect)ctx.roundRect(x,y,w,h,r);
-    else ctx.rect(x,y,w,h);
-  }
-  function factorPart(coef,constant){
-    const x=coef===1?'x':`${coef}x`;
-    return `(${x}${signTerm(constant)})`;
-  }
-  function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-  function nonzero(min,max){let n=0;while(n===0)n=rand(min,max);return n}
-  function normalizeMathInput(value){
-    return value.toLowerCase()
-      .replace(/\s+/g,'')
-      .replace(/（/g,'(').replace(/）/g,')')
-      .replace(/[−–]/g,'-')
-      .replace(/\*\*/g,'^')
-      .replace(/[·×*]/g,'')
-      .replace(/²/g,'^2')
-      .replace(/\$/g,'');
-  }
-  function tokenizeExpression(source){
-    const text=normalizeMathInput(source);
-    const tokens=[];
-    for(let i=0;i<text.length;){
-      const ch=text[i];
-      if(/[0-9.]/.test(ch)){
-        let j=i+1;
-        while(j<text.length&&/[0-9.]/.test(text[j]))j++;
-        tokens.push({type:'number',value:Number(text.slice(i,j))});i=j;continue;
-      }
-      if(ch==='x'){tokens.push({type:'x'});i++;continue}
-      if('+-*/^()'.includes(ch)){tokens.push({type:ch});i++;continue}
-      return null;
-    }
-    return tokens;
-  }
-  function evaluateExpression(source,xValue){
-    const tokens=tokenizeExpression(source);
-    if(!tokens)return NaN;
-    let index=0;
-    const peek=()=>tokens[index];
-    const take=type=>peek()?.type===type?(index++,true):false;
-    const startsAtom=token=>token&&(token.type==='number'||token.type==='x'||token.type==='(');
-    function parseExpression(){
-      let value=parseTerm();
-      while(peek()?.type==='+'||peek()?.type==='-'){
-        const op=tokens[index++].type,next=parseTerm();
-        value=op==='+'?value+next:value-next;
-      }
-      return value;
-    }
-    function parseTerm(){
-      let value=parsePower();
-      while(peek()?.type==='*'||peek()?.type==='/'||startsAtom(peek())){
-        if(peek()?.type==='*'){index++;value*=parsePower();continue}
-        if(peek()?.type==='/'){index++;value/=parsePower();continue}
-        value*=parsePower();
-      }
-      return value;
-    }
-    function parsePower(){
-      let value=parseUnary();
-      if(take('^'))value=Math.pow(value,parsePower());
-      return value;
-    }
-    function parseUnary(){
-      if(take('+'))return parseUnary();
-      if(take('-'))return -parseUnary();
-      return parsePrimary();
-    }
-    function parsePrimary(){
-      const token=peek();
-      if(!token)return NaN;
-      if(token.type==='number'){index++;return token.value}
-      if(token.type==='x'){index++;return xValue}
-      if(take('(')){
-        const value=parseExpression();
-        if(!take(')'))return NaN;
-        return value;
-      }
-      return NaN;
-    }
-    const result=parseExpression();
-    return index===tokens.length?result:NaN;
-  }
-  function algebraicallyMatches(input,expected){
-    const samples=[-3,-2,-1,0,1,2,3,5];
-    return samples.every(x=>{
-      const a=evaluateExpression(input,x);
-      const b=evaluateExpression(expected,x);
-      return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-8;
-    });
-  }
-  function hasRequiredAnswerShape(value,kind){
-    const text=normalizeMathInput(value);
-    if(kind==='cross')return text.includes(')(');
-    if(kind==='square')return text.includes('(')&&(text.includes('^2')||text.includes(')('));
-    if(kind==='substitution')return text.includes(')(');
-    return true;
-  }
-  function matchesExpectedAnswer(value,item){
-    if(normalizeMathInput(value).length<2||!hasRequiredAnswerShape(value,item.kind))return false;
-    return item.accepted.some(answer=>normalizeMathInput(value)===normalizeMathInput(answer)||algebraicallyMatches(value,answer));
-  }
-
-  const crossCanvas=document.getElementById('crossCanvas');
-  const crossCtx=crossCanvas.getContext('2d');
-  const controls={
-    m:document.getElementById('mRange'),p:document.getElementById('pRange'),
-    n:document.getElementById('nRange'),q:document.getElementById('qRange')
   };
-  const outputs={
-    m:document.getElementById('mVal'),p:document.getElementById('pVal'),
-    n:document.getElementById('nVal'),q:document.getElementById('qVal')
+  const firstTerm = (coef, term) => {
+    if (coef === 1) return term;
+    if (coef === -1) return `-${term}`;
+    return `${coef}${term}`;
   };
-  function drawCross(){
-    const m=Number(controls.m.value),p=Number(controls.p.value),n=Number(controls.n.value),q=Number(controls.q.value);
-    Object.keys(outputs).forEach(key=>outputs[key].textContent=controls[key].value);
-    const a=m*p,b=m*q+n*p,c=n*q;
-    const w=crossCanvas.width,h=crossCanvas.height;
-    crossCtx.clearRect(0,0,w,h);
-    crossCtx.strokeStyle=color('--grid');crossCtx.lineWidth=1;
-    for(let x=0;x<w;x+=36){crossCtx.beginPath();crossCtx.moveTo(x,0);crossCtx.lineTo(x,h);crossCtx.stroke()}
-    for(let y=0;y<h;y+=36){crossCtx.beginPath();crossCtx.moveTo(0,y);crossCtx.lineTo(w,y);crossCtx.stroke()}
-    const leftX=170,rightX=550,topY=110,bottomY=290;
-    crossCtx.strokeStyle=color('--output');crossCtx.lineWidth=5;crossCtx.globalAlpha=.9;
-    crossCtx.beginPath();crossCtx.moveTo(leftX,topY);crossCtx.lineTo(rightX,bottomY);crossCtx.moveTo(leftX,bottomY);crossCtx.lineTo(rightX,topY);crossCtx.stroke();
-    crossCtx.globalAlpha=1;
-    function node(x,y,text,accent){
-      crossCtx.fillStyle=color('--surface');
-      crossCtx.strokeStyle=accent;crossCtx.lineWidth=3;
-      crossCtx.beginPath();roundedRect(crossCtx,x-78,y-28,156,56,14);crossCtx.fill();crossCtx.stroke();
-      crossCtx.fillStyle=color('--ink');crossCtx.font='800 24px sans-serif';crossCtx.textAlign='center';crossCtx.textBaseline='middle';crossCtx.fillText(text,x,y);
-    }
-    node(leftX,topY,`${m}x`,color('--object'));node(leftX,bottomY,`${n}`,color('--parameter'));
-    node(rightX,topY,`${p}x`,color('--object'));node(rightX,bottomY,`${q}`,color('--parameter'));
-    crossCtx.fillStyle=color('--surface');
-    crossCtx.strokeStyle=color('--line');crossCtx.lineWidth=2;
-    crossCtx.beginPath();roundedRect(crossCtx,232,24,256,64,14);crossCtx.fill();crossCtx.stroke();
-    crossCtx.fillStyle=color('--success');crossCtx.font='900 22px sans-serif';crossCtx.textAlign='center';crossCtx.textBaseline='middle';
-    crossCtx.fillText(`一次项：${m*q}x ${signTerm(n*p,'x')} = ${b}x`,360,56);
-    crossCtx.fillStyle=color('--muted');crossCtx.font='800 17px sans-serif';
-    crossCtx.fillText(`${m}x · ${q} = ${m*q}x`,360,170);
-    crossCtx.fillText(`${n} · ${p}x = ${n*p}x`,360,232);
-    document.getElementById('crossFactorForm').textContent=`$${factorPart(m,n)}${factorPart(p,q)}$`;
-    document.getElementById('crossExpandedForm').textContent=`$${firstTerm(a,'x^2')}${signTerm(b,'x')}${signTerm(c)}$`;
-    document.getElementById('crossProducts').textContent=`$${m*q}x${signTerm(n*p,'x')}$`;
-    document.getElementById('crossMiddle').textContent=`$${b}x$`;
-    document.getElementById('crossState').innerHTML=`<b>交叉检查</b><br>二次项 ${a}x²，常数项 ${c}，交叉项合成 ${b}x。`;
-    typeset(document.getElementById('crossFactorForm'),document.getElementById('crossExpandedForm'),document.getElementById('crossProducts'),document.getElementById('crossMiddle'),document.getElementById('crossState'));
-  }
-  Object.values(controls).forEach(input=>input.addEventListener('input',drawCross));
-  drawCross();
+  const linearTerm = coef => {
+    if (coef === 1) return 'x';
+    if (coef === -1) return '-x';
+    return `${coef}x`;
+  };
+  const linearFactor = (coef, constant) => `(${linearTerm(coef)}${fmtSigned(constant)})`;
+  const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  const nonzero = (min, max) => {
+    let value = 0;
+    while (value === 0) value = rand(min, max);
+    return value;
+  };
 
-  const squareCanvas=document.getElementById('squareCanvas');
-  const squareCtx=squareCanvas.getContext('2d');
-  const squareP=document.getElementById('squarePRange'),squareC=document.getElementById('squareCRange');
-  function drawSquare(){
-    const p=Number(squareP.value),c=Number(squareC.value),half=p/2,constant=c-half*half;
-    document.getElementById('squarePVal').textContent=p;
-    document.getElementById('squareCVal').textContent=c;
-    const w=squareCanvas.width,h=squareCanvas.height;
-    squareCtx.clearRect(0,0,w,h);
-    squareCtx.strokeStyle=color('--grid');squareCtx.lineWidth=1;
-    for(let x=0;x<w;x+=36){squareCtx.beginPath();squareCtx.moveTo(x,0);squareCtx.lineTo(x,h);squareCtx.stroke()}
-    for(let y=0;y<h;y+=36){squareCtx.beginPath();squareCtx.moveTo(0,y);squareCtx.lineTo(w,y);squareCtx.stroke()}
-    const base=142,bar=Math.min(84,Math.max(30,Math.abs(p)*9)),left=76,top=82;
-    squareCtx.fillStyle=color('--object');squareCtx.globalAlpha=.16;squareCtx.fillRect(left,top,base,base);
-    squareCtx.globalAlpha=1;squareCtx.strokeStyle=color('--object');squareCtx.lineWidth=3;squareCtx.strokeRect(left,top,base,base);
-    squareCtx.fillStyle=color('--parameter');squareCtx.globalAlpha=.18;squareCtx.fillRect(left+base,top,bar,base);squareCtx.fillRect(left,top+base,base,bar);
-    squareCtx.globalAlpha=1;squareCtx.strokeStyle=color('--parameter');squareCtx.strokeRect(left+base,top,bar,base);squareCtx.strokeRect(left,top+base,base,bar);
-    squareCtx.fillStyle=color('--success');squareCtx.globalAlpha=.22;squareCtx.fillRect(left+base,top+base,bar,bar);
-    squareCtx.globalAlpha=1;squareCtx.strokeStyle=color('--success');squareCtx.strokeRect(left+base,top+base,bar,bar);
-    squareCtx.fillStyle=color('--ink');squareCtx.font='900 20px sans-serif';squareCtx.textAlign='center';squareCtx.textBaseline='middle';
-    squareCtx.fillText('x²',left+base/2,top+base/2);
-    squareCtx.fillText(`${p}/2·x`,left+base+bar/2,top+base/2);
-    squareCtx.fillText(`${p}/2·x`,left+base/2,top+base+bar/2);
-    squareCtx.fillText(`(${p}/2)²`,left+base+bar/2,top+base+bar/2);
-    squareCtx.fillStyle=color('--surface');
-    squareCtx.strokeStyle=color('--line');squareCtx.lineWidth=2;
-    squareCtx.beginPath();roundedRect(squareCtx,430,92,220,112,16);squareCtx.fill();squareCtx.stroke();
-    squareCtx.fillStyle=color('--muted');squareCtx.font='800 18px sans-serif';squareCtx.fillText('补出完整平方',540,126);
-    squareCtx.fillStyle=color('--success');squareCtx.font='900 24px sans-serif';squareCtx.fillText(`(x${signTerm(half)})²`,540,168);
-    squareCtx.fillStyle=color('--surface');
-    squareCtx.strokeStyle=color('--line');squareCtx.lineWidth=2;
-    squareCtx.beginPath();roundedRect(squareCtx,430,230,220,126,16);squareCtx.fill();squareCtx.stroke();
-    squareCtx.fillStyle=color('--muted');squareCtx.font='800 17px sans-serif';
-    squareCtx.fillText('常数调整',540,258);
-    squareCtx.fillStyle=color('--parameter');squareCtx.font='900 20px sans-serif';
-    squareCtx.fillText(`c = ${c}`,540,288);
-    squareCtx.fillStyle=color('--warning');
-    squareCtx.fillText(`减缺角 ${half*half}`,540,318);
-    squareCtx.fillStyle=color('--success');
-    squareCtx.fillText(`剩余 ${constant}`,540,348);
-    const original=`$x^2${signTerm(p,'x')}${signTerm(c)}$`;
-    const completed=`$(x${signTerm(half)})^2${signTerm(constant)}$`;
-    document.getElementById('squareFormula').textContent=`${original}=${completed}`;
-    document.getElementById('squareOriginal').textContent=original;
-    document.getElementById('squareCompleted').textContent=completed;
-    document.getElementById('squareInfo').innerHTML=`<b>读信息</b><br>顶点横坐标是 ${-half}，最小值是 ${constant}。`;
-    document.getElementById('squareState').innerHTML=`<b>补上的量</b><br>补 ${half*half}，再减 ${half*half}；常数项从 ${c} 变成 ${constant}。`;
-    typeset(document.getElementById('squareFormula'),document.getElementById('squareOriginal'),document.getElementById('squareCompleted'),document.getElementById('squareInfo'),document.getElementById('squareState'));
+  const leftCoefRange = $('#leftCoefRange');
+  const rightCoefRange = $('#rightCoefRange');
+  const leftConstRange = $('#leftConstRange');
+  const rightConstRange = $('#rightConstRange');
+  function updateCross() {
+    const m = Number(leftCoefRange.value);
+    const p = Number(rightCoefRange.value);
+    const n = Number(leftConstRange.value);
+    const q = Number(rightConstRange.value);
+    const a = m * p;
+    const b = m * q + n * p;
+    const c = n * q;
+    $('#leftCoefOut').textContent = m;
+    $('#rightCoefOut').textContent = p;
+    $('#leftConstOut').textContent = n;
+    $('#rightConstOut').textContent = q;
+    $('#leftCoefNode').textContent = linearTerm(m);
+    $('#rightCoefNode').textContent = linearTerm(p);
+    $('#leftConstNode').textContent = n;
+    $('#rightConstNode').textContent = q;
+    $('#crossFactors').textContent = `${linearFactor(m, n)}${linearFactor(p, q)}`;
+    $('#crossExpanded').textContent = `${firstTerm(a, 'x²')}${fmtSigned(b, 'x')}${fmtSigned(c)}`;
+    $('#crossLead').textContent = `二次项：${m}·${p}=${a}`;
+    $('#crossConst').textContent = `常数项：${n}·${q}=${c}`;
+    $('#crossDiagA').textContent = `${linearTerm(m)}·${q}=${m * q}x`;
+    $('#crossDiagB').textContent = `${n}·${linearTerm(p)}=${n * p}x，所以一次项 ${b}x`;
   }
-  [squareP,squareC].forEach(input=>{
-    input.addEventListener('input',drawSquare);
-    input.addEventListener('change',drawSquare);
+  [leftCoefRange, rightCoefRange, leftConstRange, rightConstRange].forEach(input => input.addEventListener('input', updateCross));
+  updateCross();
+
+  const pRange = $('#pRange');
+  const cRange = $('#cRange');
+  function updateSquare() {
+    const p = Number(pRange.value);
+    const c = Number(cRange.value);
+    const half = p / 2;
+    const corner = half * half;
+    const remain = c - corner;
+    $('#pOut').textContent = p;
+    $('#cOut').textContent = c;
+    $('#halfX1').textContent = `${half}x`;
+    $('#halfX2').textContent = `${half}x`;
+    $('#cornerSq').textContent = corner;
+    $('#squareNeed').textContent = `补出 (x${fmtSigned(half)})²`;
+    $('#squareKeep').textContent = `再减 ${corner} 保持不变`;
+    $('#squareResult').textContent = `结果：(x${fmtSigned(half)})²${fmtSigned(remain)}`;
+  }
+  [pRange, cRange].forEach(input => input.addEventListener('input', updateSquare));
+  updateSquare();
+
+  const subExamples = [
+    {
+      whole: 'x²+x',
+      original: '(x²+x)²-5(x²+x)+6',
+      tForm: 't²-5t+6',
+      result: '(x²+x-2)(x²+x-3)'
+    },
+    {
+      whole: 'x-2',
+      original: '(x-2)²-4(x-2)+3',
+      tForm: 't²-4t+3',
+      result: '(x-3)(x-5)'
+    },
+    {
+      whole: '2x-1',
+      original: '(2x-1)²+5(2x-1)+6',
+      tForm: 't²+5t+6',
+      result: '(2x+1)(2x+2)'
+    }
+  ];
+  function setSubExample(index) {
+    const item = subExamples[index];
+    $('#subOriginal').innerHTML = item.original.replaceAll(item.whole, `<span class="token">${item.whole}</span>`);
+    $('#subLet').textContent = `t=${item.whole}`;
+    $('#subTForm').textContent = item.tForm;
+    $('#subResult').textContent = item.result;
+    $$('[data-sub-example]').forEach(button => {
+      button.setAttribute('aria-pressed', String(Number(button.dataset.subExample) === index));
+    });
+  }
+  $$('[data-sub-example]').forEach(button => {
+    button.addEventListener('click', () => setSubExample(Number(button.dataset.subExample)));
   });
-  drawSquare();
+  setSubExample(0);
 
-  const practice=document.querySelector('[data-practice]');
-  const question=practice.querySelector('[data-question]');
-  const answer=practice.querySelector('[data-answer]');
-  const feedback=practice.querySelector('[data-feedback]');
-  const buttons=[...practice.querySelectorAll('[data-method]')];
-  let current=null;
-  function makePractice(){
-    const type=rand(0,5);
-    if(type===0){
-      const k=nonzero(2,7),m=nonzero(-8,8);
-      return {q:`$${k}x^2${signTerm(k*m,'x')}$`,method:'提公因式',signal:'每一项都有共同因子。',ans:`$${k}x(x${signTerm(m)})$`,wrong:'先看每项有没有共同部分。'};
-    }
-    if(type===1){
-      const a=rand(2,9);
-      return {q:`$x^2-${a*a}$`,method:'公式法',signal:'两个平方相减。',ans:`$(x-${a})(x+${a})$`,wrong:'这是平方差，不需要十字相乘。'};
-    }
-    if(type===2){
-      const r=rand(1,8),s=rand(1,8),sign=rand(0,1)?1:-1;
-      const b=sign*(r+s),c=r*s;
-      return {q:`$x^2${signTerm(b,'x')}+${c}$`,method:'十字相乘',signal:'二次三项式，要检查交叉项。',ans:`$(x${signTerm(sign*r)})(x${signTerm(sign*s)})$`,wrong:'不要只拆常数项，还要检查一次项。'};
-    }
-    if(type===3){
-      const p=2*rand(-4,4)||6,c=rand(-6,8),half=p/2;
-      return {q:`$x^2${signTerm(p,'x')}${signTerm(c)}$`,method:'配方法',signal:'目标是补出完整平方。',ans:`$(x${signTerm(half)})^2${signTerm(c-half*half)}$`,wrong:'配方时补上的量必须同时减去。'};
-    }
-    if(type===4){
-      const r=rand(1,5),s=rand(1,5),middle=-(r+s),prod=r*s;
-      const whole=rand(0,1)?'x^2+x':'x^2-2x';
-      return {q:`$(${whole})^2${signTerm(middle,`(${whole})`)}+${prod}$`,method:'换元法',signal:`重复整体 $${whole}$ 可以临时记作 $t$。`,ans:`$(${whole}-${r})(${whole}-${s})$`,wrong:'不要急着展开，先找重复出现的整体。'};
-    }
-    return {q:'$ax+ay+bx+by$',method:'分组分解',signal:'四项分组后能制造共同括号。',ans:'$(a+b)(x+y)$',wrong:'把前两项和后两项分组，看共同括号。'};
-  }
-  function renderPractice(){
-    current=makePractice();
-    question.innerHTML=current.q;
-    answer.innerHTML=`答案：${current.ans}`;
-    answer.classList.remove('show');
-    feedback.className='feedback';
-    feedback.textContent='请选择适合的方法。';
-    buttons.forEach(btn=>{btn.classList.remove('good','bad');btn.setAttribute('aria-pressed','false')});
-    typeset(question,answer);
-  }
-  practice.querySelector('[data-new-question]').addEventListener('click',renderPractice);
-  practice.querySelector('[data-choices]').addEventListener('click',event=>{
-    const btn=event.target.closest('[data-method]');
-    if(!btn)return;
-    buttons.forEach(item=>{item.classList.remove('good','bad');item.setAttribute('aria-pressed','false')});
-    const correct=btn.dataset.method===current.method;
-    btn.classList.add(correct?'good':'bad');
-    btn.setAttribute('aria-pressed','true');
-    feedback.className=`feedback ${correct?'good':'bad'}`;
-    feedback.innerHTML=correct?`选对了：${current.signal}`:`更适合 ${current.method}。${current.wrong}`;
-    answer.classList.add('show');
-    typeset(feedback,answer);
-  });
-  renderPractice();
-
-  function makeTopicPractice(kind){
-    if(kind==='cross'){
-      const m=rand(1,4),p=rand(1,4),n=nonzero(-6,6),q=nonzero(-6,6);
-      const a=m*p,b=m*q+n*p,c=n*q;
-      const ans=`${factorPart(m,n)}${factorPart(p,q)}`;
-      const alt=`${factorPart(p,q)}${factorPart(m,n)}`;
-      return {
-        kind:'cross',
-        q:`$${firstTerm(a,'x^2')}${signTerm(b,'x')}${signTerm(c)}$`,
-        ans:`$${ans}$`,
-        accepted:[ans,alt],
-        hint:'先自己尝试写出两个括号，再检查交叉项。',
-        success:`交叉项正确：$${m}x\\cdot ${q}+${n}\\cdot ${p}x=${b}x$。`,
-        retry:'还不太对。提示：常数项和二次项都要匹配，交叉项也要合成一次项。'
-      };
-    }
-    if(kind==='square'){
-      const p=2*nonzero(-5,5),c=rand(-8,10),half=p/2,k=c-half*half;
-      const base=`(x${signTerm(half)})`;
-      const ans=`${base}^2${signTerm(k)}`;
-      return {
-        kind:'square',
-        q:`$${firstTerm(1,'x^2')}${signTerm(p,'x')}${signTerm(c)}$`,
-        ans:`$${ans}$`,
-        accepted:[ans,`${base}${base}${signTerm(k)}`],
-        hint:'先把一次项系数除以 2，再把平方补出来。',
-        success:`配方正确：一次项系数的一半是 $${half}$，常数剩下 $${k}$。`,
-        retry:'还不太对。提示：括号里应该是一次项系数的一半，括号外要减去补上的平方。'
-      };
-    }
-    const wholes=['x^2+x','x^2-2x','x+1','2x-1'];
-    const whole=wholes[rand(0,wholes.length-1)];
-    const r=rand(1,6),s=rand(1,6),middle=-(r+s),prod=r*s;
-    const finalAns=`(${whole}-${r})(${whole}-${s})`;
-    const finalAlt=`(${whole}-${s})(${whole}-${r})`;
-    return {
-      kind:'substitution',
-      q:`$(${whole})^2${signTerm(middle,`(${whole})`)}+${prod}$`,
-      ans:`令 $t=${whole}$，则 $t^2${signTerm(middle,'t')}+${prod}=(t-${r})(t-${s})$，所以原式为 $(${whole}-${r})(${whole}-${s})$。`,
-      accepted:[finalAns,finalAlt],
-      hint:'先不要展开，先圈出重复整体。',
-      success:`换元方向正确：重复整体是 $${whole}$，分解后要换回原变量。`,
-      retry:'还不太对。提示：先令重复整体为 t，分解出两个一次因式后再换回。'
-    };
-  }
-  document.querySelectorAll('[data-topic-practice]').forEach(panel=>{
-    const questionEl=panel.querySelector('[data-topic-question]');
-    const answerEl=panel.querySelector('[data-topic-answer]');
-    const feedbackEl=panel.querySelector('[data-topic-feedback]');
-    const toggle=panel.querySelector('[data-topic-answer-toggle]');
-    const input=panel.querySelector('[data-topic-input]');
-    const check=panel.querySelector('[data-topic-check]');
-    let item=null;
-    function renderTopic(){
-      item=makeTopicPractice(panel.dataset.topicPractice);
-      questionEl.innerHTML=item.q;
-      answerEl.innerHTML=`答案：${item.ans}`;
-      answerEl.classList.remove('show');
-      feedbackEl.className='feedback';
-      feedbackEl.textContent=item.hint;
-      input.value='';
-      toggle.textContent='显示答案';
-      toggle.setAttribute('aria-expanded','false');
-      typeset(questionEl,answerEl,feedbackEl);
-    }
-    panel.querySelector('[data-topic-new]').addEventListener('click',renderTopic);
-    check.addEventListener('click',()=>{
-      const value=normalizeMathInput(input.value);
-      if(!value){
-        feedbackEl.className='feedback bad';
-        feedbackEl.textContent='先写下你的尝试，再检查。';
-        return;
+  const methods = {
+    common: {
+      method: '提公因式',
+      make() {
+        const k = rand(2, 8);
+        const n = nonzero(-6, 6);
+        return {
+          text: `${k}x²${fmtSigned(k * n, 'x')}`,
+          feedback: `每一项都有共同因子 ${k}x，先提公因式。`
+        };
       }
-      const correct=matchesExpectedAnswer(input.value,item);
-      feedbackEl.className=`feedback ${correct?'good':'bad'}`;
-      feedbackEl.innerHTML=correct?item.success:item.retry;
-      typeset(feedbackEl);
+    },
+    formula: {
+      method: '公式法',
+      make() {
+        const a = rand(2, 9);
+        return {
+          text: `x²-${a * a}`,
+          feedback: `这是平方差：x²-${a}²=(x-${a})(x+${a})。`
+        };
+      }
+    },
+    cross: {
+      method: '十字相乘',
+      make() {
+        const m = rand(1, 4);
+        const p = rand(1, 4);
+        const n = nonzero(-5, 5);
+        const q = nonzero(-5, 5);
+        const a = m * p;
+        const b = m * q + n * p;
+        const c = n * q;
+        return {
+          text: `${firstTerm(a, 'x²')}${fmtSigned(b, 'x')}${fmtSigned(c)}`,
+          feedback: `可看成 ${linearFactor(m, n)}${linearFactor(p, q)}：${m}·${p}=${a}，${n}·${q}=${c}，交叉项 ${m}·${q}+${n}·${p}=${b}。`
+        };
+      }
+    },
+    square: {
+      method: '配方法',
+      make() {
+        const p = 2 * nonzero(-5, 5);
+        const c = rand(-8, 12);
+        const half = p / 2;
+        return {
+          text: `x²${fmtSigned(p, 'x')}${fmtSigned(c)}`,
+          feedback: `把 x²${fmtSigned(p, 'x')} 补成 (x${fmtSigned(half)})²，再调整常数。`
+        };
+      }
+    },
+    sub: {
+      method: '换元法',
+      make() {
+        const whole = ['x²+x', 'x-2', '2x-1'][rand(0, 2)];
+        const r = rand(1, 5);
+        const s = rand(1, 5);
+        return {
+          text: `(${whole})²${fmtSigned(-(r + s), `(${whole})`)}+${r * s}`,
+          feedback: `重复整体是 ${whole}，先设 t=${whole}。`
+        };
+      }
+    },
+    group: {
+      method: '分组分解',
+      make() {
+        return {
+          text: 'ax+ay+bx+by',
+          feedback: '分成 (ax+ay)+(bx+by)，制造共同括号 x+y。'
+        };
+      }
+    }
+  };
+  const methodKeys = Object.keys(methods);
+  let current = methods.cross.make();
+  function renderQuestion() {
+    const key = methodKeys[rand(0, methodKeys.length - 1)];
+    current = { method: methods[key].method, ...methods[key].make() };
+    $('#questionText').textContent = current.text;
+    $('#practiceFeedback').className = 'feedback';
+    $('#practiceFeedback').textContent = '请选择一个结构信号。';
+    $$('#practiceChoices .choice-btn').forEach(button => {
+      button.classList.remove('good', 'bad');
+      button.setAttribute('aria-pressed', 'false');
     });
-    toggle.addEventListener('click',()=>{
-      const visible=answerEl.classList.toggle('show');
-      toggle.textContent=visible?'隐藏答案':'显示答案';
-      toggle.setAttribute('aria-expanded',String(visible));
-      if(visible)typeset(answerEl);
+  }
+  $('#newQuestion').addEventListener('click', renderQuestion);
+  $('#practiceChoices').addEventListener('click', event => {
+    const button = event.target.closest('[data-method]');
+    if (!button) return;
+    const correct = button.dataset.method === current.method;
+    $$('#practiceChoices .choice-btn').forEach(item => {
+      item.classList.remove('good', 'bad');
+      item.setAttribute('aria-pressed', 'false');
     });
-    renderTopic();
+    button.classList.add(correct ? 'good' : 'bad');
+    button.setAttribute('aria-pressed', 'true');
+    $('#practiceFeedback').className = `feedback ${correct ? 'good' : 'bad'}`;
+    $('#practiceFeedback').textContent = correct
+      ? `选对了：${current.feedback}`
+      : `更适合 ${current.method}。${current.feedback}`;
   });
-
-  if(prefersReduced)document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-});
+  renderQuestion();
+})();
 </script>
 </body>
 </html>

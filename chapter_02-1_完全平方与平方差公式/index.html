@@ -35,6 +35,13 @@ h1{font-size:clamp(2.1rem,5vw,4.7rem);line-height:1.04;margin:0 0 18px;letter-sp
 .brief b{color:var(--blue)}
 .brief-formulas{display:grid;gap:9px;margin-top:12px}
 .brief-formulas div{font-family:var(--mono);font-weight:900;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto}
+.contract-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.contract-list li{display:grid;gap:3px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:10px}
+.contract-list strong{color:var(--blue)}
+.object-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 18px}
+.object-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--soft-shadow)}
+.object-card b{display:block;color:var(--blue);margin-bottom:6px}
+.object-card p{margin:0;color:var(--muted)}
 main{max-width:1120px;margin:0 auto;padding:0 20px 80px}
 .section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
 .marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
@@ -98,7 +105,7 @@ svg{display:block;width:100%;height:auto}
 .answer-reveal{display:none;border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
 .answer-reveal.show{display:block}
 .footer-note{margin-top:16px;font-size:1.05rem;font-weight:900;color:var(--ink)}
-@media(max-width:880px){.hero,.section,.area-lab,.formula-card,.grid-2,.grid-3,.mistake-grid{grid-template-columns:minmax(0,1fr)}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero{padding-top:42px}.brief{max-width:none}}
+@media(max-width:880px){.hero,.section,.area-lab,.formula-card,.grid-2,.grid-3,.mistake-grid,.object-strip{grid-template-columns:minmax(0,1fr)}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero{padding-top:42px}.brief{max-width:none}}
 @media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}.panel,.card,.lab,.formula-card{padding:14px}.answer-row{grid-template-columns:1fr}.hero-actions .btn{width:100%}.svg-wrap{min-height:auto;overflow:hidden}.example{grid-template-columns:1fr}h1{font-size:2.25rem}.lead{font-size:1rem;max-width:100%;word-break:break-word}.topbar-inner{padding-left:14px;padding-right:14px}p,.lead,.subtle,.feedback,.mistake,.example{overflow-wrap:anywhere}.formula{white-space:normal;overflow-wrap:anywhere}.area-lab,.controls,.brief,.formula-card,.practice,.question-box{min-width:0}.lead mjx-container{display:inline-block;max-width:100%;vertical-align:middle}.area-lab{grid-template-areas:"visual" "controls";gap:12px}.area-lab .svg-wrap{position:sticky;top:54px;z-index:3;padding:10px;background-color:var(--soft);box-shadow:0 8px 22px rgba(15,23,42,.08)}#areaSvg{max-height:300px}.controls{gap:9px}.control{padding:8px 10px}.control label{align-items:center;margin-bottom:2px;font-size:.95rem}.control input{display:block}.segmented{gap:7px}.segmented button{padding:8px 10px;font-size:.95rem}.visual-readout{margin-top:6px;gap:4px}.visual-readout p{margin-bottom:0}}
 </style>
 </head>
@@ -118,21 +125,21 @@ svg{display:block;width:100%;height:auto}
 <section class="hero" id="question">
   <div>
     <span class="eyebrow">Chapter 02-1</span>
-    <h1>从面积开始认识公式</h1>
-    <p class="lead">一条正方形的边，可以由 $a$ 和 $b$ 两段拼成。<br>把这块正方形切开以后，每一块面积都能对应到式子中的一项。<br>公式不是先背下来的结论，而是面积分块后的记录。</p>
+    <h1>用面积分清完全平方和平方差</h1>
+    <p class="lead">看到 $(a+b)^2$、$(a-b)^2$ 和 $a^2-b^2$，先不要急着套公式。这里要分清的是三种面积动作：一整块正方形怎样拆开，减去两条后为什么要补回角落，以及挖掉小正方形后怎样重排成一个长方形。读完后，你应该能先判断结构，再决定展开、分解，或者拒绝误用公式。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#visual">观察正方形怎样分块</a>
+      <a class="btn primary" href="#visual">先看三种面积对象</a>
       <a class="btn" href="#practice">练习结构判断</a>
     </div>
   </div>
-  <aside class="brief" aria-label="本页学习目标">
-    <b>先建立三个面积对象。</b>
-    <p class="subtle">先弄清图形关系，再把它写成代数式。</p>
-    <div class="brief-formulas">
-      <div>边长为 $a+b$ 的正方形</div>
-      <div>边长为 $a-b$ 的正方形</div>
-      <div>大正方形减去小正方形</div>
-    </div>
+  <aside class="brief" aria-label="学习目标">
+    <b>先知道这次要分清什么。</b>
+    <ul class="contract-list">
+      <li><strong>看什么</strong><span>三个对象分别是 $(a+b)^2$、$(a-b)^2$ 和 $a^2-b^2$。</span></li>
+      <li><strong>容易错在哪里</strong><span>把“和的平方”看成“分别平方”，或把“差的平方”和“平方的差”混在一起。</span></li>
+      <li><strong>用什么方法</strong><span>用面积的拆分、补回、重排来解释每一项从哪里来。</span></li>
+      <li><strong>最后能判断什么</strong><span>一个式子能不能用完全平方或平方差公式。</span></li>
+    </ul>
   </aside>
 </section>
 
@@ -140,8 +147,23 @@ svg{display:block;width:100%;height:auto}
   <section class="section" id="visual">
     <div class="marker"><span>1</span>认识对象</div>
     <div>
-      <h2>先从边长为 $a+b$ 的正方形开始</h2>
-      <p>把一条边分成 $a$ 和 $b$ 两段，再沿横向和纵向各切一次。正方形会被分成四块面积：一块 $a^2$，两块 $ab$，一块 $b^2$。</p>
+      <h2>先把三种面积对象摆出来</h2>
+      <p>下面先不急着背公式。先看三个对象分别在做什么：$(a+b)^2$ 是一整块边长为 $a+b$ 的正方形，$(a-b)^2$ 是从边长为 $a$ 的正方形里留下边长为 $a-b$ 的部分，$a^2-b^2$ 是大正方形挖掉小正方形后的剩余面积。</p>
+      <div class="object-strip" aria-label="三种面积对象">
+        <article class="object-card">
+          <b>$(a+b)^2$：拆开一整块正方形</b>
+          <p>边长分成 $a$ 和 $b$，横竖各切一次，会出现 $a^2$、两块 $ab$、$b^2$。</p>
+        </article>
+        <article class="object-card">
+          <b>$(a-b)^2$：减去以后要补回角落</b>
+          <p>从 $a^2$ 里减去两条宽为 $b$ 的长方形，角落的 $b^2$ 会被多减一次。</p>
+        </article>
+        <article class="object-card">
+          <b>$a^2-b^2$：挖掉后重排剩余面积</b>
+          <p>大正方形挖掉小正方形，剩下的 L 形可以重排成长方形。</p>
+        </article>
+      </div>
+      <p>对应关系已经摆出来了。接下来用同一张面积图逐个细看：文字说到哪一种结构，图里就切换到哪一种结构。</p>
       <div class="area-lab lab">
         <div class="svg-wrap">
           <svg id="areaSvg" viewBox="0 0 520 420" role="img" aria-label="完全平方与平方差面积图"></svg>
@@ -172,8 +194,8 @@ svg{display:block;width:100%;height:auto}
   <section class="section" id="formulas">
     <div class="marker"><span>2</span>从图到式</div>
     <div>
-      <h2>从面积动作推出公式</h2>
-      <p>有了面积对象以后，再写公式。每个代数项都要能回到图形中的一块面积：一块被拆开，一块被补回，一块被切开再拼。找不到对应面积的项，就不能写进公式。</p>
+      <h2>面积动作清楚以后，再写公式</h2>
+      <p>上一段先把对象摆出来了；这一段把每个面积动作翻译成代数式。每个代数项都要能回到图形中的一块面积：一块被拆开，一块被补回，一块被切开再拼。找不到对应面积的项，就不能写进公式。</p>
       <div class="formula-cards">
         <article class="formula-card">
           <div>
@@ -206,8 +228,8 @@ svg{display:block;width:100%;height:auto}
   <section class="section" id="mistakes">
     <div class="marker"><span>3</span>排除误判</div>
     <div>
-      <h2>什么时候不能直接使用这些公式？</h2>
-      <p>很多错误不是计算错误，而是面积对象判断错误。使用公式前先确认：这是整体平方，两个平方相减，还是只有形式相似？</p>
+      <h2>公式写出来以后，马上排除误判</h2>
+      <p>前面已经看到公式从面积动作来；现在反过来检查，哪些式子看起来像，却不能直接套用。很多错误不是计算错误，而是面积对象判断错误。使用公式前先确认：这是整体平方，两个平方相减，还是只有形式相似？</p>
       <div class="mistake-grid">
         <div class="mistake">
           <strong>把 $(a+b)^2$ 写成 $a^2+b^2$</strong>
@@ -233,6 +255,7 @@ svg{display:block;width:100%;height:auto}
     <div class="marker"><span>4</span>例题对照</div>
     <div>
       <h2>看四个例子，分清三种结构</h2>
+      <p>误判排除以后，再用固定例子检查判断顺序。每个例子都先说它是什么对象，再给出展开或分解结果。</p>
       <div class="example-list">
         <div class="example"><b>$(x+3)^2$</b><p>把它读成 $(x+3)(x+3)$，交叉项有 $x\cdot3$ 和 $3\cdot x$，所以结果是 $x^2+6x+9$。</p></div>
         <div class="example"><b>$(x-4)^2$</b><p>这是差的平方，不是平方差。最后的 $+16$ 是补回的角落，所以结果是 $x^2-8x+16$。</p></div>
@@ -247,7 +270,7 @@ svg{display:block;width:100%;height:auto}
     <div class="marker"><span>5</span>自主练习</div>
     <div>
       <h2>自己判断结构，再展开或分解</h2>
-      <p>做题时，第一步是判断结构：完整正方形、需要补回角落的正方形，还是两个正方形相减？如果都不是，就不能直接使用本节公式。</p>
+      <p>例子给出了判断示范；练习时换成你自己先判断。第一步不是计算，而是判断结构：完整正方形、需要补回角落的正方形，还是两个正方形相减？如果都不是，就不能直接使用这些公式。</p>
       <div class="practice lab">
         <div class="practice-top">
           <div>
@@ -450,7 +473,7 @@ function normalize(str){
 function isAnswerAccepted(raw,entry){
   const value=normalize(raw);
   if(entry.type==='neither'){
-    return ['不能','不是','都不能','不能直接用','不能直接使用','不能直接使用本节公式','不能直接使用平方差公式'].includes(value);
+    return ['不能','不是','都不能','不能直接用','不能直接使用','不能直接使用这些公式','不能直接使用平方差公式'].includes(value);
   }
   return entry.accepted.map(normalize).includes(value);
 }
@@ -508,7 +531,7 @@ function makeCase(){
     return {
       type:'neither',
       q:`$${ax2}+${middle}x+${n*n}$`,
-      ans:'不能直接使用本节公式',
+      ans:'不能直接使用这些公式',
       accepted:['不能','不能直接使用','不能直接用','都不能','不是'],
       explain:`它的首尾分别是平方项，但中间项应该是 $2\\cdot ${lx}\\cdot ${n}=${2*m*n}x$，不是 $${middle}x$。`
     };

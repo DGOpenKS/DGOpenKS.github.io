@@ -75,8 +75,12 @@ h1{font-size:clamp(2.15rem,5vw,4.6rem);line-height:1.05;margin:0 0 18px;letter-s
 .btn.primary{background:var(--ink);color:white;border-color:var(--ink)}
 .btn:hover,.btn:focus-visible,.tool-btn:hover,.tool-btn:focus-visible,.choice-btn:hover,.choice-btn:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
 .brief{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-.brief h2{font-size:1.06rem;margin:0 0 12px}
-.judge-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+  .brief h2{font-size:1.06rem;margin:0 0 12px}
+  .contract-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .contract-list li{display:grid;gap:3px;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:10px}
+  .contract-list strong{color:var(--blue)}
+  .contract-list span{color:var(--muted)}
+  .judge-table{width:100%;border-collapse:separate;border-spacing:0 8px}
 .judge-table th{font-size:.78rem;color:var(--muted);text-align:left;font-weight:900;padding:0 8px}
 .judge-table td{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 8px;vertical-align:top;font-size:.91rem}
 .judge-table td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius)}
@@ -91,7 +95,12 @@ p{margin:0 0 12px}
 .subtle{color:var(--muted)}
 .callout{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:14px 16px;margin:16px 0;color:var(--blue-deep)}
 .warn{border-left-color:var(--red);background:#fef2f2;color:#991b1b}
-.formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px;overflow:auto;margin:9px 0}
+  .formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px;overflow:auto;margin:9px 0}
+  .object-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 18px}
+  .object-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:14px}
+  .object-card b{display:block;color:var(--blue);margin-bottom:6px}
+  .object-card p{margin:0;color:var(--muted)}
+  .object-card .formula-line{background:var(--paper);margin:8px 0}
 .tool-surface{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow)}
 .cube-lab{margin-top:22px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);min-height:520px;overflow:hidden}
 .cube-viewport{position:relative;min-height:520px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px;overflow:hidden}
@@ -122,6 +131,12 @@ input[type=range]{width:100%;accent-color:var(--amber)}
 .mistake-grid,.example-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:16px}
 .card strong{display:block;color:var(--red);margin-bottom:8px}
+.prose-bridge{max-width:760px}
+.micro-check{display:grid;gap:8px;margin:14px 0 0;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
+.micro-check b{color:var(--blue)}
+.mistake-card p{margin-bottom:8px}
+.mistake-card p:last-child{margin-bottom:0}
+.mistake-card b{color:var(--ink)}
 .derivation-lab{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:18px;margin-top:18px}
 .formula-lab-intro{margin:20px 0 12px}
 .formula-lab-intro h3{margin-bottom:4px}
@@ -157,7 +172,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
 .scene-label.whole{font-size:.9rem;border-color:var(--blue-line);color:var(--blue-deep);background:rgba(255,255,255,.94)}
 .scene-label.group-title{font-size:.82rem;color:var(--ink);background:rgba(255,255,255,.94)}
 .formula-panel{padding:18px;display:grid;align-content:start;gap:14px}
-.formula-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.formula-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
 .formula-panel.diff-cube-fixed .formula-size-control{display:none}
 .formula-status{position:absolute;left:12px;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:2;pointer-events:none}
 .formula-badges{position:absolute;left:10px;top:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:2;pointer-events:none}
@@ -198,7 +213,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
 .summary-card b{display:block;color:var(--blue);margin-bottom:6px}
 .footer{border-top:1px solid var(--line);padding:30px 20px;color:var(--muted);text-align:center;font-size:.86rem}
 @media(max-width:920px){
-  .hero,.section,.cube-lab,.derivation-lab,.formula-lab{grid-template-columns:minmax(0,1fr)}
+  .hero,.section,.cube-lab,.derivation-lab,.formula-lab,.object-strip{grid-template-columns:minmax(0,1fr)}
   .marker{position:static;display:flex;align-items:center;gap:10px}
   .marker span{margin:0}
   .cube-viewport,.formula-lab-viewport{min-height:430px}
@@ -251,7 +266,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
   <div>
     <span class="eyebrow">Chapter 02-2</span>
     <h1>先看三次结构，再写公式</h1>
-    <p class="lead">看到 <span class="math">(a+b)<sup>3</sup></span>，不要急着写成 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。先问：这是一个整体被立方，还是两个完整立方相加或相减？判断清楚，公式才有来源。</p>
+    <p class="lead">看到 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>，先不要抢着套公式。真正要分清的是：这是一个整体被立方，还是两个完整立方相加或相减？这一页会用三个括号的选择和混合项抵消，帮你决定该展开、分解，还是先停下来。</p>
     <div class="hero-actions">
       <a class="btn primary" href="#cube">观察三个括号怎样选择</a>
       <a class="btn" href="#practice">练习结构判断</a>
@@ -259,13 +274,14 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     </div>
   </div>
   <aside class="brief" aria-label="三次结构判断表">
-    <h2>先分清三类对象</h2>
+    <h2>先分清对象，再决定动作</h2>
     <table class="judge-table">
       <thead><tr><th>看到的形式</th><th>先判断什么</th><th>变形方向</th></tr></thead>
       <tbody>
         <tr><td><span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span></td><td>是不是一个整体被立方</td><td>展开成四项</td></tr>
         <tr><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>两端是不是完整立方</td><td>分解成两个因式</td></tr>
         <tr><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>两端是不是完整立方</td><td>分解成两个因式</td></tr>
+        <tr><td>只是含三次项</td><td>能不能看成上面三类</td><td>不能直接套公式</td></tr>
       </tbody>
     </table>
   </aside>
@@ -278,6 +294,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       <h2>先从三个括号相乘看起</h2>
       <p>把 <span class="math">(a+b)<sup>3</sup></span> 读成 <span class="math">(a+b)(a+b)(a+b)</span>。每个括号里选一次，三个括号的选择合在一起，就产生了四类项。</p>
       <div class="formula-line">(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></div>
+      <p class="prose-bridge">下面的立方体分块只服务于一件事：把公式里的四类项立刻放到图里看。图里如果找不到某一类体块，展开时就很可能漏掉了对应的项。</p>
       <div class="cube-lab tool-surface">
         <div class="cube-viewport">
           <div class="cube-scene" id="cubeScene" aria-label="边长为 a+b 的立方体分块图，可拖动旋转"></div>
@@ -315,6 +332,11 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         </div>
       </div>
       <div class="callout">中间的两个 <span class="math">3</span> 不是额外背出来的数字，而是选择位置的数量。</div>
+      <div class="micro-check">
+        <b>同一个判断也能处理差的立方。</b>
+        <span>把 <span class="math">(a-b)<sup>3</sup></span> 看成 <span class="math">(a+(-b))<sup>3</sup></span>：<span class="math">-b</span> 被选中一次是负，两次变正，三次仍是负。</span>
+        <div class="formula-line">(a-b)<sup>3</sup> = a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></div>
+      </div>
     </div>
   </section>
 
@@ -322,23 +344,31 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     <aside class="marker"><span>2</span>易错结构</aside>
     <div>
       <h2>这里最容易看错什么</h2>
-      <p>三次公式的错误，多数不是算错，而是对象看错。先判断对象，再决定公式。</p>
+      <p class="prose-bridge">三次公式的错误，多数不是算错，而是对象看错。上一段已经看到“整体立方”会产生混合项；现在把几个常见误读逐个拆开，看错在哪里、为什么容易错、怎样检查。</p>
       <div class="mistake-grid">
-        <article class="card">
+        <article class="card mistake-card">
           <strong>把整体立方看成分别立方</strong>
-          <p><span class="math">(a+b)<sup>3</sup></span> 是三个相同括号相乘，不是 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。检查时先写成 <span class="math">(a+b)(a+b)(a+b)</span>。</p>
+          <p><b>错误表现：</b><span class="math">(a+b)<sup>3</sup></span> 被写成 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。</p>
+          <p><b>真正的结构：</b>这是三个相同括号相乘，中间还会出现 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。</p>
+          <p><b>检查方法：</b>先改写成 <span class="math">(a+b)(a+b)(a+b)</span>，再检查有没有漏掉混合选择。</p>
         </article>
-        <article class="card">
+        <article class="card mistake-card">
           <strong>把差的立方看成立方的差</strong>
-          <p><span class="math">(a-b)<sup>3</sup></span> 是一个整体被立方；<span class="math">a<sup>3</sup>-b<sup>3</sup></span> 是两个立方相减。它们的变形方向不同。</p>
+          <p><b>错误表现：</b><span class="math">(a-b)<sup>3</sup></span> 被当成 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。</p>
+          <p><b>真正的结构：</b>前者是一个括号整体被立方，要展开；后者是两个完整立方相减，要分解。</p>
+          <p><b>检查方法：</b>先读出对象：“差的立方”还是“立方的差”。读法不同，下一步就不同。</p>
         </article>
-        <article class="card">
+        <article class="card mistake-card">
           <strong>把二次因子的符号写反</strong>
-          <p>立方和的二次因子中间项是 <span class="math">-ab</span>；立方差的二次因子三项全正。符号要服务于乘回去时的抵消。</p>
+          <p><b>错误表现：</b><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 写成 <span class="math">(a+b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>。</p>
+          <p><b>真正的结构：</b>二次因子的中间项不是凭口令定符号，而是要让乘回去产生的混合项抵消。</p>
+          <p><b>检查方法：</b>立方和对应 <span class="math">-ab</span>；立方差对应 <span class="math">+ab</span>，乘回去只应剩下两个立方。</p>
         </article>
-        <article class="card">
+        <article class="card mistake-card">
           <strong>看到三次项就套公式</strong>
-          <p>在当前整式因式分解范围内，<span class="math">x<sup>3</sup>+9</span> 不能直接看成立方和。两端都要是完整立方。</p>
+          <p><b>错误表现：</b>只因为式子里有三次项和加号，就把 <span class="math">x<sup>3</sup>+9</span> 当成立方和。</p>
+          <p><b>真正的结构：</b>当前范围内，两端都要能看成完整立方，例如 <span class="math">27=3<sup>3</sup></span> 或 <span class="math">8x<sup>3</sup>=(2x)<sup>3</sup></span>。</p>
+          <p><b>检查方法：</b>先问两端是不是完整立方；答不上来，就不能直接套本节公式。</p>
         </article>
       </div>
     </div>
@@ -348,10 +378,10 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     <aside class="marker"><span>3</span>抵消推导</aside>
     <div>
       <h2>立方和、立方差的二次因子怎样推出</h2>
-      <p>乘回去检查很重要，但更关键的是知道中间项为什么这样写。先把二次因子的中间项设成 <span class="math">kab</span>，再让混合项抵消。</p>
+      <p class="prose-bridge">前面分清了三种对象，现在只处理立方和与立方差的分解。乘回去检查很重要，但更关键的是知道二次因子的中间项为什么这样写：先把它设成 <span class="math">kab</span>，再让混合项抵消。</p>
       <div class="formula-lab-intro">
-        <h3>按体积状态一步步观察</h3>
-        <p class="subtle">先选公式，再切换观察阶段。重点不是让图更花，而是让每个被去掉、补回或留下的体块都能对应到公式中的一项。</p>
+        <h3>先看体块对应，再回到代数抵消</h3>
+        <p class="subtle">先选立方和或立方差，再切换观察阶段。体块只帮助你对应公式中的项；真正决定二次因子中间符号的，是下面的 <span class="math">k</span> 抵消检查。</p>
       </div>
       <div class="formula-lab tool-surface">
         <div class="formula-lab-viewport">
@@ -367,7 +397,6 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         </div>
         <div class="formula-panel">
           <div class="formula-tabs" aria-label="选择要观察的立方公式">
-            <button class="tool-btn" type="button" data-formula-mode="diffCube" aria-pressed="false">差的立方</button>
             <button class="tool-btn" type="button" data-formula-mode="sumFactor" aria-pressed="false">立方和</button>
             <button class="tool-btn" type="button" data-formula-mode="diffFactor" aria-pressed="true">立方差</button>
           </div>
@@ -398,7 +427,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       </div>
       <div class="derivation-lab">
         <div class="k-panel tool-surface">
-          <h3>选择要推出的公式</h3>
+          <h3>用 k 决定中间项</h3>
           <div class="mode-row">
             <button class="tool-btn" type="button" data-k-mode="sum" aria-pressed="true">立方和</button>
             <button class="tool-btn" type="button" data-k-mode="diff" aria-pressed="false">立方差</button>
@@ -426,12 +455,13 @@ input[type=range]{width:100%;accent-color:var(--amber)}
   <section class="section" id="examples">
     <aside class="marker"><span>4</span>例子检查</aside>
     <div>
-      <h2>用例子检查理解</h2>
+      <h2>看五个例子，先读对象再动手</h2>
+      <p class="prose-bridge">例题不是为了展示答案，而是为了训练第一步的判断：先读出对象，再决定展开、分解或停止。每个例子都把“先看什么”放在计算前面。</p>
       <div class="example-grid">
         <article class="card example-card">
           <b>例 1：展开和的立方</b>
           <div class="formula-line">(x+2)<sup>3</sup> = x<sup>3</sup> + 6x<sup>2</sup> + 12x + 8</div>
-          <p>四类项是 <span class="math">x<sup>3</sup></span>、<span class="math">3·x<sup>2</sup>·2</span>、<span class="math">3·x·2<sup>2</sup></span>、<span class="math">2<sup>3</sup></span>。</p>
+          <p>先读成三个相同括号相乘。四类项是 <span class="math">x<sup>3</sup></span>、<span class="math">3·x<sup>2</sup>·2</span>、<span class="math">3·x·2<sup>2</sup></span>、<span class="math">2<sup>3</sup></span>。</p>
         </article>
         <article class="card example-card">
           <b>例 2：展开差的立方</b>
@@ -441,28 +471,33 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         <article class="card example-card">
           <b>例 3：分解立方和</b>
           <div class="formula-line">x<sup>3</sup> + 27 = (x+3)(x<sup>2</sup>-3x+9)</div>
-          <p>先识别 <span class="math">27=3<sup>3</sup></span>。立方和的二次因子中间项是负号。</p>
+          <p>先识别 <span class="math">x<sup>3</sup>+3<sup>3</sup></span>。立方和的二次因子中间项是负号，这样乘回去才抵消。</p>
         </article>
         <article class="card example-card">
           <b>例 4：分解立方差</b>
           <div class="formula-line">8x<sup>3</sup> - 125 = (2x-5)(4x<sup>2</sup>+10x+25)</div>
           <p>这里 <span class="math">8x<sup>3</sup>=(2x)<sup>3</sup></span>。整个 <span class="math">2x</span> 才是被立方的对象。</p>
         </article>
+        <article class="card example-card">
+          <b>例 5：看起来像，但不能直接用</b>
+          <div class="formula-line">x<sup>3</sup> + 9</div>
+          <p>它有三次项和加号，但 <span class="math">9</span> 在当前范围内不能作为完整三次方来处理，所以不能直接套立方和公式。</p>
+        </article>
       </div>
-      <div class="callout warn">反例：<span class="math">x<sup>3</sup>+9</span> 看起来像立方和，但在当前整式因式分解范围内，<span class="math">9</span> 不能作为完整三次方来处理。</div>
+      <div class="callout warn">如果第一步只能说“它有三次项”，还不能说明它是整体立方、立方和或立方差，就先不要套公式。</div>
     </div>
   </section>
 
   <section class="section" id="practice">
     <aside class="marker"><span>5</span>自主练习</aside>
     <div>
-      <h2>先判断结构，再展开或分解</h2>
-      <p>每道题先判断属于哪一类。结构判断错了，后面的公式就算背熟也容易写反。</p>
+      <h2>自己判断结构，再决定下一步</h2>
+      <p class="prose-bridge">这里换成你来判断。每道题先选结构，再看反馈里的展开、分解或拒绝理由。结构判断错了，后面的公式就算背熟也容易写反。</p>
       <div class="practice-shell tool-surface">
         <div class="practice-top">
           <div>
             <h3 id="practiceTitle">这道式子属于哪种三次结构？</h3>
-            <p class="subtle">先选结构，再看对应的展开或分解。</p>
+            <p class="subtle">先选结构，再看对应的展开、分解或停止理由。</p>
           </div>
           <button class="btn" type="button" id="newQuestion">更换题目再判断</button>
         </div>
@@ -482,8 +517,8 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       <p>立方相关公式不是一串容易混淆的符号。整体立方的中间项来自三个括号的混合选择；立方和、立方差的二次因子来自让混合项抵消。</p>
       <div class="summary-grid">
         <div class="summary-card"><b>整体立方</b><p>先写成三个括号相乘，再数选择位置。</p></div>
-        <div class="summary-card"><b>立方和</b><p>一次因子同号，二次因子中间项为负。</p></div>
-        <div class="summary-card"><b>立方差</b><p>一次因子同号，二次因子三项全正。</p></div>
+        <div class="summary-card"><b>立方和</b><p>一次因子是 <span class="math">a+b</span>，二次因子中间项为负。</p></div>
+        <div class="summary-card"><b>立方差</b><p>一次因子是 <span class="math">a-b</span>，二次因子三项全正。</p></div>
         <div class="summary-card"><b>不能直接用</b><p>两端不是完整立方时，先停下来判断。</p></div>
       </div>
     </div>

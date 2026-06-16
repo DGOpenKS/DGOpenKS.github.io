@@ -6,7 +6,7 @@ Use:
 - `$knowledge-essay-writer` for drafting DGOpenKS core teaching Markdown as knowledge-understanding essays.
 - `$prose-style-editor` for polishing DGOpenKS Markdown prose without changing mathematical meaning.
 - `$understanding-reviewer` for reviewing DGOpenKS Markdown understanding quality, tone, examples, and DGOpenKS fit before deriving pages or videos.
-- `$html-prose-adapter` for adapting approved DGOpenKS Markdown understanding into learner-facing HTML/blog page prose. Use it for hero copy, subtitles, section transitions, visual prompts, formula lead-ins, example narration, practice instructions, CTA/button labels, and educational feedback microcopy. It must preserve mathematical meaning and must not invent new core explanations. If better page prose requires missing source understanding, report Markdown backflow instead of inventing it.
+- `$html-prose-adapter` for adapting approved DGOpenKS Markdown understanding into learner-facing HTML/blog page prose. Use it for hero copy, subtitles, section transitions, visual prompts, formula lead-ins, example narration, practice instructions, CTA/button labels, and educational feedback microcopy. It must also preserve the visible core reading path, make the first-screen learning contract clear, align prose with nearby shown content, improve section-to-section continuity, and prevent the main explanation from becoming fragmented click-browsing. It must preserve mathematical meaning and must not invent new core explanations. If better page prose requires missing source understanding, report Markdown backflow instead of inventing it.
 - `$design-reference-curator` before major DGOpenKS page redesigns to choose references and visual direction.
 - `$ui-quality-reviewer` after DGOpenKS page implementation to review UI polish, learning clarity, interaction quality, motion restraint, and mobile readiness.
 - `$formula-visualization` for formula-centered visual design, formula structure diagrams, algebraic transformation steps, formula cards, formula-to-image correspondence, and formula exercise feedback.
@@ -545,6 +545,116 @@ The goal is not marketing copy. The goal is clear, concrete, mathematically prec
 
 `$html-prose-adapter` belongs to the HTML/blog derivative layer. It may adapt approved Markdown understanding into page-level learner prose. It may not modify source Markdown unless the user explicitly authorizes Markdown backflow. It may not invent new mathematical explanations, formulas, misconception categories, or reasoning paths.
 
+## HTML Text Flow Standard
+
+HTML text must support continuous reading.
+
+This is a derivative-layer rule for HTML/blog page text only. It does not change the Core Markdown Standard and does not add mathematical rendering, visualization, animation, or interaction implementation requirements.
+
+Core explanation should be read, not hunted. The first screen should make the learning contract clear. What the prose says, the page should immediately show.
+
+### Core Path Visible By Default
+
+The main conceptual explanation must be visible by default.
+
+A learner should be able to understand the page's core idea by reading the visible page flow from top to bottom. The learner should not have to click through scattered cards, tabs, accordions, or panels to reconstruct the core explanation.
+
+Do not hide the main learning path behind:
+
+- tabs;
+- accordions;
+- click-to-reveal cards;
+- carousels;
+- scattered panels;
+- disconnected content blocks.
+
+Clickable or collapsible content may be used for:
+
+- optional details;
+- additional examples;
+- hints;
+- answer reveal;
+- practice variants;
+- side comparisons;
+- deeper explanation.
+
+Clicks must not be required to understand the core idea.
+
+### First-Screen Learning Contract
+
+The title and first paragraph must make the page's learning contract clear.
+
+After reading the title and first paragraph, the learner should know:
+
+- what object the page studies;
+- what confusion, contrast, or judgment problem the page solves;
+- what method the page will use;
+- what the learner will be able to decide, explain, expand, factor, compute, compare, or check.
+
+The first screen fails if the title sounds attractive but the learner still cannot tell what the chapter is about after reading the first paragraph.
+
+Good first-screen copy should answer:
+
+- What are we looking at?
+- Why is it easy to get wrong?
+- What will this page help me distinguish?
+- What should I be able to do after reading?
+
+### Say -> Show Alignment
+
+HTML page text should follow Say -> Show alignment.
+
+When prose names an object, expression, formula, example, contrast, or judgment task, the corresponding content should appear immediately nearby.
+
+Use this pattern:
+
+```text
+Say:
+Tell the learner what to look at or judge.
+
+Show:
+Immediately display the corresponding expression, formula, example, option, or text block.
+
+Interpret:
+Explain what the shown object means and why it matters.
+```
+
+Do not mention an important object and make the learner click elsewhere to find it. Do not describe a comparison while the compared objects are hidden. Do not introduce a judgment task before the learner can see the object being judged.
+
+This adapts the video principle "speak what, then show what" into HTML text: what the text says, the page should immediately show in the reading flow.
+
+### Avoid Fragmented Browsing
+
+Cards, panels, tabs, and callouts may organize content, but they must not break the reasoning chain.
+
+If content is split into cards, the split must make the sequence clearer. Each card should still belong to a visible reading order, and the page should make clear why the content is grouped that way.
+
+The page fails if the learner must browse around the interface to assemble the main explanation.
+
+### Section Re-Orientation
+
+Each major section should begin with a short orientation sentence.
+
+It should answer:
+
+- Where are we in the learning path?
+- What are we judging or explaining now?
+- How does this connect to the previous section?
+
+Avoid adjacent sections with similar headings or unclear roles. Worked examples and self practice must have visibly different learning jobs.
+
+### HTML Prose Adapter Responsibilities
+
+`$html-prose-adapter` should not only polish sentences. It should ensure that the order of visible page text matches the learner's understanding path.
+
+Expand `$html-prose-adapter` responsibilities to include:
+
+- preserving the visible core reading path;
+- making the first-screen learning contract clear;
+- applying Say -> Show alignment;
+- improving section-to-section continuity;
+- preventing the main explanation from becoming fragmented click-browsing.
+
 ### Hero Copy
 
 The first screen should not only summarize the topic. It should create a reason to continue.
@@ -899,10 +1009,16 @@ An HTML/blog page fails if:
 An HTML/blog page also fails if:
 
 - the hero copy merely announces the topic without creating learning need;
+- the title and first paragraph do not make the chapter topic and learning task clear;
+- the learner must click through multiple content fragments to understand the main explanation;
+- the page says something but does not immediately show the corresponding object, expression, formula, example, contrast, or judgment task;
+- core explanation is scattered across tabs, cards, accordions, carousels, or panels without a visible reading sequence;
+- section headings or openings do not clarify where the learner is in the learning path;
 - visible text sounds like a design plan, scope note, or teacher instruction;
 - visible text sounds like spoken classroom banter, short-video copy, or stiff translated Chinese;
 - headings are only component labels and do not mark conceptual turns;
 - adjacent headings repeat the same learning job and make worked examples look like practice;
+- worked examples and practice blocks look like the same kind of content;
 - CTA labels are generic UI actions instead of learning actions;
 - formula cards appear as unexplained authority;
 - visualizations are shown without specific observation prompts;
@@ -1212,6 +1328,16 @@ Page prose:
 - Does practice copy train judgment rather than only operation?
 - Does feedback microcopy explain the learner's reasoning error?
 - Is the tone clear, concrete, mathematically precise, and non-hype?
+
+Text flow:
+
+- Can the learner understand the core idea by reading the visible page from top to bottom?
+- Is the main explanation hidden behind clicks, tabs, accordions, carousels, or scattered panels?
+- Does the title plus first paragraph clearly state what the chapter is about?
+- Does the first screen say what object is being studied, what confusion or contrast is being solved, and what the learner will be able to do?
+- When text names an object, expression, formula, example, contrast, or judgment task, does the corresponding content appear immediately nearby?
+- Do sections re-orient the learner instead of jumping between disconnected blocks?
+- Are worked examples and self practice clearly distinguished?
 
 Visualization:
 

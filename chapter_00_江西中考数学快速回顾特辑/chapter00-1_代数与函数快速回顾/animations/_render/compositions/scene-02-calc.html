@@ -1,0 +1,202 @@
+<template id="scene-02-calc-template">
+  <div data-composition-id="scene-02-calc" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="content">
+        <div class="badge">计算化简</div>
+        <div class="grid">
+
+          <!-- 实数运算 -->
+          <div class="card card-1">
+            <div class="card-label">实数运算</div>
+            <!-- √a² = |a|, |a| ≥ 0 全在一行 -->
+            <div class="formula-row">
+              <span class="sqrt-wrap blue">
+                <svg class="rad-svg" viewBox="0 0 30 70" width="30" height="70"><polyline points="2,58 10,68 22,2 30,2" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span class="sqrt-body">a<span class="sup2">2</span></span>
+              </span>
+              <span class="fm op">=</span>
+              <span class="fm pink">|a|</span>
+              <span class="fm op geq-part" style="opacity:0">&ge;</span>
+              <span class="fm geq-part" style="opacity:0">0</span>
+            </div>
+          </div>
+
+          <!-- 整式运算 -->
+          <div class="card card-2">
+            <div class="card-label">整式运算</div>
+            <div class="formula-row tight">
+              <span class="fm blue">(a+b)&sup2;</span>
+              <span class="fm op">=</span>
+              <span class="fm blue">a&sup2;</span>
+              <span class="fm op">+</span>
+              <span class="fm pink">2ab</span>
+              <span class="fm op">+</span>
+              <span class="fm green">b&sup2;</span>
+            </div>
+            <div class="formula-row tight row-2" style="opacity:0">
+              <span class="fm blue">(a&minus;b)&sup2;</span>
+              <span class="fm op">=</span>
+              <span class="fm blue">a&sup2;</span>
+              <span class="fm op">&minus;</span>
+              <span class="fm pink">2ab</span>
+              <span class="fm op">+</span>
+              <span class="fm green">b&sup2;</span>
+            </div>
+          </div>
+
+          <!-- 分式化简 -->
+          <div class="card card-3">
+            <div class="card-label">分式化简</div>
+            <div class="formula-row">
+              <span class="fm">
+                <span class="frac">
+                  <span class="num">A</span>
+                  <span class="den">B</span>
+                </span>
+              </span>
+              <span class="fm op" style="margin-left:24px;">有意义</span>
+              <span class="fm op">&rArr;</span>
+              <span class="fm pink">B &ne; 0</span>
+            </div>
+          </div>
+
+          <!-- 二次根式 -->
+          <div class="card card-4">
+            <div class="card-label">二次根式</div>
+            <div class="formula-row">
+              <span class="sqrt-wrap">
+                <svg class="rad-svg" viewBox="0 0 30 70" width="30" height="70"><polyline points="2,58 10,68 22,2 30,2" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span class="sqrt-body">a</span>
+              </span>
+              <span class="fm op" style="margin-left:16px;">有意义</span>
+              <span class="fm op">&rArr;</span>
+              <span class="fm pink">a &ge; 0</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-02-calc"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-02-calc"] .panel {
+        position: absolute; inset: 0; background: var(--bg);
+      }
+      [data-composition-id="scene-02-calc"] .content {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        padding: 48px 80px 40px; gap: 32px;
+      }
+      [data-composition-id="scene-02-calc"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 52px; color: var(--paper);
+        background: var(--blue); padding: 12px 48px;
+        border-radius: 24px; border: 5px solid var(--ink);
+        letter-spacing: 0.12em; opacity: 0;
+      }
+      [data-composition-id="scene-02-calc"] .grid {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 32px; width: 100%; max-width: 1600px;
+      }
+      [data-composition-id="scene-02-calc"] .card {
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 28px; box-shadow: 12px 12px 0 0 var(--ink);
+        padding: 36px 48px;
+        display: flex; flex-direction: column; gap: 14px;
+        opacity: 0; transform: translateY(40px);
+      }
+      [data-composition-id="scene-02-calc"] .card-label {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 38px; color: var(--blue);
+        border-bottom: 3px solid var(--yellow); padding-bottom: 10px;
+      }
+      [data-composition-id="scene-02-calc"] .formula-row {
+        display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      }
+      [data-composition-id="scene-02-calc"] .formula-row.tight { gap: 8px; }
+      [data-composition-id="scene-02-calc"] .fm {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 52px; color: var(--ink);
+        display: inline-flex; align-items: center;
+      }
+      [data-composition-id="scene-02-calc"] .fm.op { font-size: 42px; color: #555; }
+      [data-composition-id="scene-02-calc"] .fm.blue { color: var(--blue); }
+      [data-composition-id="scene-02-calc"] .fm.pink { color: var(--pink); }
+      [data-composition-id="scene-02-calc"] .fm.green { color: var(--green); }
+      /* 根号 */
+      [data-composition-id="scene-02-calc"] .sqrt-wrap {
+        display: inline-flex; align-items: flex-start; color: var(--ink);
+      }
+      [data-composition-id="scene-02-calc"] .sqrt-wrap.blue { color: var(--blue); }
+      [data-composition-id="scene-02-calc"] .rad-svg {
+        display: block; margin-right: -2px; flex-shrink: 0; margin-top: 0;
+      }
+      [data-composition-id="scene-02-calc"] .sqrt-body {
+        display: inline-block;
+        border-top: 4px solid currentColor;
+        padding: 6px 10px 0 2px;
+        font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 52px;
+        line-height: 1.2;
+      }
+      [data-composition-id="scene-02-calc"] .sup2 {
+        font-size: 0.58em; vertical-align: super;
+      }
+      /* 分式 */
+      [data-composition-id="scene-02-calc"] .frac {
+        display: inline-flex; flex-direction: column; align-items: center;
+        font-size: 48px; line-height: 1; font-family: "Fredoka", sans-serif; font-weight: 700;
+      }
+      [data-composition-id="scene-02-calc"] .frac .num {
+        border-bottom: 4px solid var(--ink); padding-bottom: 4px; min-width: 40px; text-align: center;
+      }
+      [data-composition-id="scene-02-calc"] .frac .den {
+        padding-top: 4px; min-width: 40px; text-align: center;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-02-calc"]';
+        var tl = gsap.timeline({ paused: true });
+
+        tl.from(S + " .panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.fromTo(S + " .badge",
+          { y: -30, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0.4);
+
+        // 实数运算：念完"代数的基础是运算"后出现（~2.3s）
+        tl.to(S + " .card-1", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 2.3);
+        // |a| ≥ 0：念到"而绝对值恒大于等于零"时出现（~7.6s）
+        tl.to(S + " .geq-part", { opacity: 1, duration: 0.3, stagger: 0.1, ease: "power2.out" }, 7.6);
+
+        // 整式运算：念完"对于实数运算...等于零"后出现（~10.0s）
+        tl.to(S + " .card-2", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 10.0);
+        // (a-b)² 第二行：念到"a减b的平方"时出现（~16.4s）
+        tl.to(S + " .card-2 .row-2", { opacity: 1, duration: 0.4, ease: "power2.out" }, 16.4);
+
+        // 分式化简：念完"对于整式运算...b平方²"后出现（~21.0s）
+        tl.to(S + " .card-3", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 21.0);
+
+        // 二次根式：念完"对于分式...不为零"后出现（~24.8s）
+        tl.to(S + " .card-4", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 24.8);
+
+        // 四张卡片脉冲
+        tl.to(S + " .card", { scale: 1.02, duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut", stagger: 0.06 }, 30.0);
+
+        tl.to({}, { duration: 0.01 }, 34.36);
+        window.__timelines["scene-02-calc"] = tl;
+      })();
+    </script>
+  </div>
+</template>

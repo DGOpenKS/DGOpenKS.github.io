@@ -1,0 +1,112 @@
+<template id="scene-06-outro-template">
+  <div data-composition-id="scene-06-outro" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="middle">
+        <div class="stage-block"></div>
+        <div class="inner">
+          <div class="badge">
+            <span class="dot"></span>
+            <span>本节完</span>
+            <span class="dot"></span>
+          </div>
+          <h1 class="headline">
+            <span class="row">
+              <span class="ch">下一节</span>
+            </span>
+            <span class="row">
+              <span class="ch accent-green">几何</span>
+              <span class="ch">与</span>
+              <span class="ch accent-pink">综合</span>
+            </span>
+          </h1>
+          <div class="stroke"></div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-06-outro"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: var(--bg);
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-06-outro"] .panel {
+        position: absolute; inset: 0; background: var(--bg); overflow: hidden;
+      }
+      [data-composition-id="scene-06-outro"] .middle {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 0 96px; gap: 28px;
+      }
+      [data-composition-id="scene-06-outro"] .stage-block {
+        position: absolute;
+        background: var(--paper); border: 6px solid var(--ink);
+        border-radius: 36px; box-shadow: 18px 18px 0 0 var(--ink);
+        left: 60px; right: 60px; top: 60px; bottom: 60px;
+        z-index: 0; opacity: 0;
+      }
+      [data-composition-id="scene-06-outro"] .inner {
+        position: relative; z-index: 2;
+        display: flex; flex-direction: column;
+        align-items: center; gap: 32px;
+      }
+      [data-composition-id="scene-06-outro"] .badge {
+        display: inline-flex; align-items: center; gap: 18px;
+        padding: 16px 40px; background: var(--green); color: var(--paper);
+        border-radius: 9999px; border: 5px solid var(--ink);
+        font-family: "ZCOOL KuaiLe", "Nunito", sans-serif;
+        font-weight: 700; font-size: 44px; letter-spacing: 0.16em; opacity: 0;
+      }
+      [data-composition-id="scene-06-outro"] .badge .dot {
+        width: 18px; height: 18px; border-radius: 50%;
+        background: var(--yellow); border: 3px solid var(--ink);
+      }
+      [data-composition-id="scene-06-outro"] .headline {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 100px; line-height: 1.2;
+        text-align: center; color: var(--ink); margin: 0;
+        display: flex; flex-direction: column; align-items: center; gap: 4px;
+      }
+      [data-composition-id="scene-06-outro"] .headline .row {
+        display: flex; justify-content: center; gap: 6px;
+        opacity: 0; transform: translateY(30px);
+      }
+      [data-composition-id="scene-06-outro"] .headline .ch { display: inline-block; }
+      [data-composition-id="scene-06-outro"] .headline .ch.accent-green { color: var(--green); }
+      [data-composition-id="scene-06-outro"] .headline .ch.accent-pink { color: var(--pink); }
+      [data-composition-id="scene-06-outro"] .stroke {
+        width: 500px; height: 16px; background: var(--yellow);
+        border-radius: 8px; border: 4px solid var(--ink);
+        transform-origin: left center; transform: scaleX(0); margin-top: -8px;
+      }
+      [data-composition-id="scene-06-outro"] .hint {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 42px; color: #666; font-weight: 700; opacity: 0;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true, defaults: { ease: "back.out(1.7)" } });
+
+        tl.from(".panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.45, ease: "back.out(1.6)" }, 0);
+        tl.to(".stage-block", { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.05);
+        tl.fromTo(".badge",
+          { opacity: 0, y: -50, scale: 0.4, rotate: -8 },
+          { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 0.5, ease: "back.out(2)" }, 0.2);
+        tl.to(".headline .row",
+          { opacity: 1, y: 0, duration: 0.4, stagger: 0.2, ease: "back.out(1.8)" }, 0.6);
+        tl.to(".stroke", { scaleX: 1, duration: 0.4, ease: "power3.out" }, 1.4);
+
+        tl.to({}, { duration: 0.01 }, 5.85);
+        window.__timelines["scene-06-outro"] = tl;
+      })();
+    </script>
+  </div>
+</template>

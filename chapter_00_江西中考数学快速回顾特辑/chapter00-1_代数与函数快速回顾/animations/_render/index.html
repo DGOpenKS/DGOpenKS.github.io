@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@700;900&family=ZCOOL+KuaiLe&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000000; }
+      [data-composition-id="root"] {
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: #000000;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: #1a1a1a;
+      }
+      .scene-host { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      data-composition-id="root"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="113.86"
+      data-track-index="0"
+    >
+      <!-- s0: 片头标题 (0 ~ 6.10s) -->
+      <div class="scene-host clip" data-composition-id="scene-00-title"
+        data-composition-src="compositions/scene-00-title.html"
+        data-start="0" data-duration="6.10" data-track-index="1"></div>
+
+      <!-- s2: 计算化简 (6.10 ~ 40.92s) -->
+      <div class="scene-host clip" data-composition-id="scene-02-calc"
+        data-composition-src="compositions/scene-02-calc.html"
+        data-start="6.10" data-duration="34.82" data-track-index="1"></div>
+
+      <!-- s3: 坐标公式 (40.92 ~ 54.74s) -->
+      <div class="scene-host clip" data-composition-id="scene-03-coord-linear"
+        data-composition-src="compositions/scene-03-coord-linear.html"
+        data-start="40.92" data-duration="13.82" data-track-index="1"></div>
+
+      <!-- s3b: 一次函数 (54.74 ~ 77.95s) -->
+      <div class="scene-host clip" data-composition-id="scene-03b-linear"
+        data-composition-src="compositions/scene-03b-linear.html"
+        data-start="54.74" data-duration="23.21" data-track-index="1"></div>
+
+      <!-- s4: 反比例函数 (77.95 ~ 92.78s) -->
+      <div class="scene-host clip" data-composition-id="scene-04-inverse"
+        data-composition-src="compositions/scene-04-inverse.html"
+        data-start="77.95" data-duration="14.83" data-track-index="1"></div>
+
+      <!-- s5: 二次函数 (92.78 ~ 108.00s) -->
+      <div class="scene-host clip" data-composition-id="scene-05-quadratic"
+        data-composition-src="compositions/scene-05-quadratic.html"
+        data-start="92.78" data-duration="15.22" data-track-index="1"></div>
+
+      <!-- s6: 结尾 (108.00 ~ 113.86s) -->
+      <div class="scene-host clip" data-composition-id="scene-06-outro"
+        data-composition-src="compositions/scene-06-outro.html"
+        data-start="108.00" data-duration="5.86" data-track-index="1"></div>
+
+      <!-- 配音 -->
+      <audio id="voice-s0" class="clip" data-start="0" data-duration="6.10" data-track-index="2" data-volume="1" src="assets/s0-title.mp3"></audio>
+      <audio id="voice-s2" class="clip" data-start="6.10" data-duration="34.82" data-track-index="2" data-volume="1" src="assets/s2-calc.mp3"></audio>
+      <audio id="voice-s3" class="clip" data-start="40.92" data-duration="13.82" data-track-index="2" data-volume="1" src="assets/s3-coord-linear.mp3"></audio>
+      <audio id="voice-s3b" class="clip" data-start="54.74" data-duration="23.21" data-track-index="2" data-volume="1" src="assets/s3b-linear.mp3"></audio>
+      <audio id="voice-s4" class="clip" data-start="77.95" data-duration="14.83" data-track-index="2" data-volume="1" src="assets/s4-inverse.mp3"></audio>
+      <audio id="voice-s5" class="clip" data-start="92.78" data-duration="15.22" data-track-index="2" data-volume="1" src="assets/s5-quadratic.mp3"></audio>
+      <audio id="voice-s6" class="clip" data-start="108.00" data-duration="5.86" data-track-index="2" data-volume="1" src="assets/s6-outro.mp3"></audio>
+
+      <!-- BGM -->
+      <audio id="bgm" class="clip" data-start="0" data-duration="113.86" data-track-index="3" data-volume="0.08" src="assets/bgm.mp3"></audio>
+
+      <!-- 字幕层 -->
+      <div id="subtitle-layer" style="position:absolute;bottom:60px;left:0;right:0;text-align:center;z-index:100;pointer-events:none;">
+        <div id="sub-text" style="display:inline-block;font-family:'ZCOOL KuaiLe','Noto Sans SC',sans-serif;font-size:42px;color:#ffffff;background:rgba(0,0,0,0.65);padding:12px 36px;border-radius:16px;opacity:0;"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        var subs = [
+          // s0
+          [0, 6.10, "2 分钟，带你回顾中考数学核心考点——代数与函数。"],
+          // s2
+          [6.10, 8.60, "代数的基础是运算。"],
+          [8.60, 16.20, "对于实数运算，根号 a 的平方等于 a 的绝对值，而绝对值恒大于等于零。"],
+          [16.20, 22.60, "对于整式运算，a 加 b 的平方等于 a 平方加 2ab 加 b 平方。"],
+          [22.60, 27.30, "a 减 b 的平方等于 a 平方减 2ab 加 b 平方。"],
+          [27.30, 31.30, "对于分式，我们要求分母不为零。"],
+          [31.30, 36.30, "而对于二次根式，同样要求被开方数大于等于零。"],
+          [36.30, 40.92, "掌握了运算规则，接下来看函数图像。"],
+          // s3
+          [40.92, 44.42, "给定两点坐标A和B，"],
+          [44.42, 48.92, "中点C的坐标为横纵坐标的平均值，"],
+          [48.92, 52.72, "两点距离d等于横坐标差的平方加上纵坐标差的平方，"],
+          [52.72, 54.74, "最后再开根号。"],
+          // s3b
+          [54.74, 59.24, "将两点连接可以得到一条直线，这便是一次函数。"],
+          [59.24, 64.74, "k 是斜率，等于 yB 减 yA 除以 xB 减 xA；"],
+          [64.74, 68.74, "b 是与 y 轴的交点，等于 yA 减 k 乘 xA。"],
+          [68.74, 77.95, "固定 k 不变、改变 b，相当于垂直移动直线，移动后的直线与原直线平行。"],
+          // s4
+          [77.95, 82.35, "对于反比例函数，其图象是双曲线。"],
+          [82.35, 88.45, "当 k 为正，曲线在一三象限；当 k 为负，曲线在二四象限。"],
+          [88.45, 92.78, "图象上任意一点，横纵坐标之积等于 k。"],
+          // s5
+          [92.78, 97.78, "对于二次函数，其图象是一条抛物线。"],
+          [97.78, 101.18, "对称轴为 x 等于负 b 除以 2a。"],
+          [101.18, 108.00, "当 a 大于零，开口向上，有最小值；当 a 小于零，开口向下，有最大值。"],
+          // s6 outro
+          [108.00, 113.86, "了解了代数与函数后，下一节我们将回顾几何图像。"],
+        ];
+
+        var subEl = document.getElementById("sub-text");
+        subs.forEach(function(s) {
+          tl.call(function() {
+            subEl.textContent = s[2];
+            gsap.to(subEl, { opacity: 1, duration: 0.2 });
+          }, null, s[0]);
+          tl.call(function() {
+            gsap.to(subEl, { opacity: 0, duration: 0.15 });
+          }, null, s[1] - 0.1);
+        });
+
+        tl.to({}, { duration: 0.01 }, 113.85);
+        window.__timelines["root"] = tl;
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<template id="scene-05-quadratic-template">
+  <div data-composition-id="scene-05-quadratic" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="content">
+
+        <!-- LEFT: parabola SVG -->
+        <div class="left">
+          <svg class="quad-svg" viewBox="-20 -20 640 560" width="540" height="480">
+            <!-- Grid -->
+            <g class="grid-lines">
+              <line x1="0" y1="0" x2="600" y2="0"/><line x1="0" y1="100" x2="600" y2="100"/>
+              <line x1="0" y1="200" x2="600" y2="200"/><line x1="0" y1="300" x2="600" y2="300"/>
+              <line x1="0" y1="400" x2="600" y2="400"/><line x1="0" y1="500" x2="600" y2="500"/>
+              <line x1="0" y1="0" x2="0" y2="500"/><line x1="100" y1="0" x2="100" y2="500"/>
+              <line x1="200" y1="0" x2="200" y2="500"/><line x1="300" y1="0" x2="300" y2="500"/>
+              <line x1="400" y1="0" x2="400" y2="500"/><line x1="500" y1="0" x2="500" y2="500"/>
+              <line x1="600" y1="0" x2="600" y2="500"/>
+            </g>
+            <!-- Axes: y-axis at x=80, x-axis at y=400 -->
+            <line class="axis" x1="-10" y1="400" x2="610" y2="400"/>
+            <line class="axis" x1="80" y1="-10" x2="80" y2="520"/>
+            <text class="axis-lbl" x="600" y="420">x</text>
+            <text class="axis-lbl" x="88" y="8">y</text>
+            <text class="axis-lbl" x="50" y="425">O</text>
+
+            <!-- Parabola: y = 0.005(x-320)^2 + 120, extends below x-axis -->
+            <polyline class="parabola para-up" points="
+              53,476 58,463 63,450 68,438 73,425 78,413 83,401
+              88,389 93,378 98,366 103,355 108,345 113,334
+              118,324 123,314 128,304 133,295 138,286 143,277
+              148,268 153,259 158,251 163,243 168,236 173,228
+              178,221 183,214 188,207 193,201 198,194 203,188
+              208,183 213,177 218,172 223,167 228,162 233,158
+              238,154 243,150 248,146 253,142 258,139 263,136
+              268,134 273,131 278,129 283,127 288,125 293,124
+              298,122 303,121 308,121 313,120 318,120 320,120
+              323,120 328,120 333,121 338,122 343,123 348,124
+              353,125 358,127 363,129 368,132 373,134 378,137
+              383,140 388,143 393,147 398,150 403,154 408,159
+              413,163 418,168 423,173 428,178 433,184 438,190
+              443,196 448,202 453,208 458,215 463,222 468,230
+              473,237 478,245 483,253 488,261 493,270 498,278
+              503,287 508,297 513,306 518,316 523,326 528,336
+              533,347 538,358 543,369 548,380 553,391 558,403
+              563,415 568,428 573,440 578,453 583,466
+            " fill="none"/>
+
+            <!-- Symmetry axis at x=320 -->
+            <line class="sym-axis" x1="320" y1="30" x2="320" y2="490"/>
+            <text class="sym-lbl" x="322" y="50">x = -b/(2a)</text>
+
+            <!-- Vertex at (320, 120) -->
+            <circle class="vertex-pt" cx="320" cy="120" r="12"/>
+            <text class="vertex-lbl" x="340" y="110">顶点</text>
+
+            <!-- X-axis intercepts at (83,400) and (557,400) -->
+            <circle class="intercept-pt" cx="83" cy="400" r="10"/>
+            <circle class="intercept-pt" cx="557" cy="400" r="10"/>
+            <text class="intercept-lbl" x="110" y="445">x₁</text>
+            <text class="intercept-lbl" x="520" y="445">x₂</text>
+
+            <!-- Opening direction label -->
+            <text class="open-lbl lbl-down" x="370" y="480">a&lt;0 开口向下</text>
+          </svg>
+        </div>
+
+        <!-- RIGHT: info -->
+        <div class="right">
+          <div class="badge">二次函数</div>
+
+          <div class="info-block">
+            <div class="info-title">y = ax² + bx + c</div>
+
+            <div class="fact-item item-2">
+              <div class="fact-label">对称轴</div>
+              <div class="sym-formula">x = −b / (2a)</div>
+            </div>
+
+            <div class="fact-item item-1">
+              <div class="fact-label">开口方向</div>
+              <div class="fact-row">
+                <div class="fact-chip chip-blue">a &gt; 0   开口向上，有最小值</div>
+              </div>
+              <div class="fact-row">
+                <div class="fact-chip chip-pink">a &lt; 0   开口向下，有最大值</div>
+              </div>
+            </div>
+
+            <div class="fact-item item-3">
+              <div class="fact-label">与 x 轴交点</div>
+              <div class="fact-desc">交点横坐标对应方程 ax²+bx+c=0 的根</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-05-quadratic"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-05-quadratic"] .panel {
+        position: absolute; inset: 0; background: var(--bg);
+      }
+      [data-composition-id="scene-05-quadratic"] .content {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: row;
+        align-items: center; justify-content: center;
+        gap: 80px; padding: 60px 80px;
+      }
+      [data-composition-id="scene-05-quadratic"] .left {
+        flex: 0 0 auto;
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 28px; box-shadow: 14px 14px 0 0 var(--ink);
+        padding: 24px; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .right {
+        flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 720px;
+      }
+      [data-composition-id="scene-05-quadratic"] .grid-lines line {
+        stroke: #e8e0d0; stroke-width: 1.5;
+      }
+      [data-composition-id="scene-05-quadratic"] .axis {
+        stroke: var(--ink); stroke-width: 3;
+      }
+      [data-composition-id="scene-05-quadratic"] .axis-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 30px; font-weight: 700; fill: var(--ink);
+      }
+      [data-composition-id="scene-05-quadratic"] .parabola {
+        stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; opacity: 0;
+        stroke-dasharray: 1500; stroke-dashoffset: 1500;
+      }
+      [data-composition-id="scene-05-quadratic"] .para-up { stroke: var(--blue); }
+      [data-composition-id="scene-05-quadratic"] .sym-axis {
+        stroke: var(--pink); stroke-width: 3; stroke-dasharray: 10 6; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .sym-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 700;
+        fill: var(--pink); text-anchor: start; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .vertex-pt {
+        fill: var(--yellow); stroke: var(--ink); stroke-width: 4; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .vertex-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 700;
+        fill: var(--ink); opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .intercept-pt {
+        fill: var(--green); stroke: var(--ink); stroke-width: 3; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .intercept-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 700;
+        fill: var(--green); text-anchor: middle; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .open-lbl {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 32px; font-weight: 700; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .lbl-up { fill: var(--blue); }
+      [data-composition-id="scene-05-quadratic"] .lbl-down { fill: var(--pink); }
+      /* Right panel */
+      [data-composition-id="scene-05-quadratic"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 48px; color: var(--paper);
+        background: var(--pink); padding: 10px 40px;
+        border-radius: 20px; border: 5px solid var(--ink);
+        letter-spacing: 0.10em; opacity: 0; align-self: flex-start;
+      }
+      [data-composition-id="scene-05-quadratic"] .info-block {
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 24px; box-shadow: 10px 10px 0 0 var(--ink);
+        padding: 24px 36px; display: flex; flex-direction: column; gap: 18px;
+        opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .info-title {
+        font-family: "Fredoka", sans-serif; font-size: 48px; font-weight: 700;
+        color: var(--blue); border-bottom: 3px solid var(--yellow); padding-bottom: 10px;
+      }
+      [data-composition-id="scene-05-quadratic"] .fact-item {
+        display: flex; flex-direction: column; gap: 8px;
+        padding-top: 4px; opacity: 0;
+      }
+      [data-composition-id="scene-05-quadratic"] .fact-label {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 34px; color: var(--ink); font-weight: 700;
+      }
+      [data-composition-id="scene-05-quadratic"] .fact-row {
+        display: flex; gap: 16px; flex-wrap: wrap;
+      }
+      [data-composition-id="scene-05-quadratic"] .fact-chip {
+        font-family: "Fredoka", "Noto Sans SC", sans-serif; font-weight: 700; font-size: 32px;
+        padding: 6px 20px; border-radius: 12px; border: 4px solid var(--ink);
+        box-shadow: 5px 5px 0 0 var(--ink);
+      }
+      [data-composition-id="scene-05-quadratic"] .chip-blue { background: color-mix(in srgb, var(--blue) 14%, var(--paper)); color: var(--blue); }
+      [data-composition-id="scene-05-quadratic"] .chip-pink { background: color-mix(in srgb, var(--pink) 14%, var(--paper)); color: var(--pink); }
+      [data-composition-id="scene-05-quadratic"] .sym-formula {
+        font-family: "Fredoka", sans-serif; font-size: 46px; font-weight: 700; color: var(--pink);
+      }
+      [data-composition-id="scene-05-quadratic"] .fact-desc {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 32px; color: #555; font-weight: 700;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-05-quadratic"]';
+        var tl = gsap.timeline({ paused: true });
+
+        tl.from(S + " .panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.fromTo(S + " .left", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.3);
+        tl.fromTo(S + " .badge", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0.5);
+
+        // Audio: "对于二次函数，其是一条抛物线，" (0 ~ 5s)
+        tl.to(S + " .info-block", { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.0);
+        tl.to(S + " .para-up", { strokeDashoffset: 0, opacity: 1, duration: 2.0, ease: "power2.inOut" }, 2.0);
+
+        // Audio: "对称轴为 x 等于负 b 除以 2a。" (5 ~ 8.4s)
+        tl.to(S + " .sym-axis", { opacity: 1, duration: 0.5 }, 5.0);
+        tl.to(S + " .sym-lbl", { opacity: 1, duration: 0.4 }, 5.4);
+        tl.to(S + " .item-2", { opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 5.2);
+        tl.to(S + " .vertex-pt", { opacity: 1, duration: 0.4 }, 6.5);
+        tl.to(S + " .vertex-lbl", { opacity: 1, duration: 0.4 }, 6.7);
+        tl.to(S + " .vertex-pt", { scale: 1.3, transformOrigin: "50% 50%", duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut" }, 7.0);
+
+        // Audio: "当 a 大于零，开口向上，有最小值；当 a 小于零，开口向下，有最大值。" (8.4 ~ 15.2s)
+        tl.to(S + " .item-1", { opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 8.4);
+        tl.to(S + " .lbl-down", { opacity: 1, duration: 0.4 }, 11.5);
+        tl.to(S + " .item-1", { opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 8.4);
+        tl.to(S + " .intercept-pt", { opacity: 1, duration: 0.4, stagger: 0.2 }, 12.0);
+        tl.to(S + " .intercept-lbl", { opacity: 1, duration: 0.4, stagger: 0.2 }, 12.3);
+        tl.to(S + " .item-3", { opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 12.0);
+
+        tl.to({}, { duration: 0.01 }, 21.99);
+        window.__timelines["scene-05-quadratic"] = tl;
+      })();
+    </script>
+  </div>
+</template>

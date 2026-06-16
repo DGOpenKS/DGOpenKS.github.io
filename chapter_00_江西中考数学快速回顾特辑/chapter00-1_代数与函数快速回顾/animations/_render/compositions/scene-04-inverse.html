@@ -1,0 +1,215 @@
+<template id="scene-04-inverse-template">
+  <div data-composition-id="scene-04-inverse" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="content">
+
+        <!-- LEFT: hyperbola SVG -->
+        <div class="left">
+          <svg class="inv-svg" viewBox="-280 -280 560 560" width="520" height="520">
+            <!-- Quadrant labels -->
+            <text class="q-lbl q1" x="110" y="-110">一象限</text>
+            <text class="q-lbl q2" x="-180" y="-110">二象限</text>
+            <text class="q-lbl q3" x="-180" y="140">三象限</text>
+            <text class="q-lbl q4" x="110" y="140">四象限</text>
+
+            <!-- Axes -->
+            <line class="axis" x1="-260" y1="0" x2="260" y2="0"/>
+            <line class="axis" x1="0" y1="-260" x2="0" y2="260"/>
+            <text class="axis-lbl" x="252" y="18">x</text>
+            <text class="axis-lbl" x="12" y="-240">y</text>
+
+            <!-- k>0: Q1 and Q3 curves, y = 4800/x -->
+            <path class="curve curve-pos q13"
+              d="M 20,-240 Q 30,-160 40,-120 Q 50,-96 60,-80 Q 80,-60 120,-40 Q 160,-30 240,-20"
+              fill="none"/>
+            <path class="curve curve-pos q31"
+              d="M -20,240 Q -30,160 -40,120 Q -50,96 -60,80 Q -80,60 -120,40 Q -160,30 -240,20"
+              fill="none"/>
+
+            <!-- k<0: Q2 and Q4 curves, y = -4800/x -->
+            <path class="curve curve-neg q24"
+              d="M -20,-240 Q -30,-160 -40,-120 Q -50,-96 -60,-80 Q -80,-60 -120,-40 Q -160,-30 -240,-20"
+              fill="none"/>
+            <path class="curve curve-neg q42"
+              d="M 20,240 Q 30,160 40,120 Q 50,96 60,80 Q 80,60 120,40 Q 160,30 240,20"
+              fill="none"/>
+
+            <!-- Point P on the k>0 curve at x=60, y=4800/60=80 → SVG (60,-80) -->
+            <circle class="pt-p" cx="60" cy="-80" r="10"/>
+            <text class="lbl-p" x="72" y="-90">P(x,y)</text>
+            <line class="dim-line" x1="0" y1="-80" x2="60" y2="-80"/>
+            <line class="dim-line" x1="60" y1="0" x2="60" y2="-80"/>
+            <text class="prod-lbl" x="40" y="-180">x · y = k</text>
+          </svg>
+        </div>
+
+        <!-- RIGHT: info -->
+        <div class="right">
+          <div class="badge">反比例函数</div>
+
+          <div class="info-block">
+            <div class="info-title">y = k / x</div>
+
+            <div class="case-row case-pos">
+              <div class="case-chip chip-green">k &gt; 0</div>
+              <div class="case-desc">曲线在<span class="hl-green">一、三</span>象限</div>
+            </div>
+
+            <div class="case-row case-neg">
+              <div class="case-chip chip-pink">k &lt; 0</div>
+              <div class="case-desc">曲线在<span class="hl-pink">二、四</span>象限</div>
+            </div>
+
+            <div class="prod-row">
+              <span class="prod-fm">图象上任意一点</span>
+              <span class="prod-fm accent">x · y = k</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-04-inverse"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-04-inverse"] .panel {
+        position: absolute; inset: 0; background: var(--bg);
+      }
+      [data-composition-id="scene-04-inverse"] .content {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: row;
+        align-items: center; justify-content: center;
+        gap: 80px; padding: 60px 80px;
+      }
+      [data-composition-id="scene-04-inverse"] .left {
+        flex: 0 0 auto;
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 28px; box-shadow: 14px 14px 0 0 var(--ink);
+        padding: 24px; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .right {
+        flex: 1; display: flex; flex-direction: column; gap: 36px; min-width: 680px;
+      }
+      [data-composition-id="scene-04-inverse"] .axis {
+        stroke: var(--ink); stroke-width: 3;
+      }
+      [data-composition-id="scene-04-inverse"] .axis-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 28px; font-weight: 700; fill: var(--ink);
+      }
+      [data-composition-id="scene-04-inverse"] .q-lbl {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 24px; fill: #666; font-weight: 700; text-anchor: middle; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .curve {
+        stroke-width: 5; stroke-linecap: round; opacity: 0;
+        stroke-dasharray: 600; stroke-dashoffset: 600;
+      }
+      [data-composition-id="scene-04-inverse"] .curve-pos { stroke: var(--blue); }
+      [data-composition-id="scene-04-inverse"] .curve-neg { stroke: var(--pink); }
+      [data-composition-id="scene-04-inverse"] .pt-p {
+        fill: var(--ink); stroke: var(--paper); stroke-width: 3; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .lbl-p {
+        font-family: "Fredoka", sans-serif; font-size: 26px; font-weight: 700;
+        fill: var(--ink); opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .dim-line {
+        stroke: #aaa; stroke-width: 2; stroke-dasharray: 6 4; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .prod-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 32px; font-weight: 700;
+        fill: var(--pink); opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 52px; color: var(--paper);
+        background: var(--green); padding: 12px 48px;
+        border-radius: 24px; border: 5px solid var(--ink);
+        letter-spacing: 0.10em; opacity: 0; align-self: flex-start;
+      }
+      [data-composition-id="scene-04-inverse"] .info-block {
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 24px; box-shadow: 10px 10px 0 0 var(--ink);
+        padding: 36px 44px; display: flex; flex-direction: column; gap: 24px;
+        opacity: 0; transform: translateY(30px);
+      }
+      [data-composition-id="scene-04-inverse"] .info-title {
+        font-family: "Fredoka", sans-serif; font-size: 56px; font-weight: 700;
+        color: var(--blue); border-bottom: 3px solid var(--yellow); padding-bottom: 12px;
+      }
+      [data-composition-id="scene-04-inverse"] .case-row {
+        display: flex; align-items: center; gap: 24px; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .case-chip {
+        font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 40px;
+        padding: 10px 28px; border-radius: 14px; border: 4px solid var(--ink);
+        box-shadow: 6px 6px 0 0 var(--ink); min-width: 140px; text-align: center;
+      }
+      [data-composition-id="scene-04-inverse"] .chip-green { background: color-mix(in srgb, var(--green) 18%, var(--paper)); color: var(--green); }
+      [data-composition-id="scene-04-inverse"] .chip-pink { background: color-mix(in srgb, var(--pink) 18%, var(--paper)); color: var(--pink); }
+      [data-composition-id="scene-04-inverse"] .case-desc {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 40px; font-weight: 700; color: var(--ink);
+      }
+      [data-composition-id="scene-04-inverse"] .hl-green { color: var(--green); }
+      [data-composition-id="scene-04-inverse"] .hl-pink { color: var(--pink); }
+      [data-composition-id="scene-04-inverse"] .prod-row {
+        display: flex; flex-direction: column; gap: 6px;
+        border-top: 2px dashed #ccc; padding-top: 16px; opacity: 0;
+      }
+      [data-composition-id="scene-04-inverse"] .prod-fm {
+        font-family: "Nunito", "Noto Sans SC", sans-serif;
+        font-size: 36px; font-weight: 700; color: #555;
+      }
+      [data-composition-id="scene-04-inverse"] .prod-fm.accent {
+        font-family: "Fredoka", sans-serif; font-size: 52px; color: var(--pink);
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-04-inverse"]';
+        var tl = gsap.timeline({ paused: true });
+
+        tl.from(S + " .panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.fromTo(S + " .left", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.3);
+        tl.fromTo(S + " .badge", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0.5);
+
+        // Audio: "对于反比例函数，其是双曲线。" (0 ~ 4.4s)
+        // Only show the axes and info block title during this phrase
+        tl.to(S + " .info-block", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 1.5);
+
+        // Audio: "当k为正，曲线在一三象限，" (4.4 ~ 7.5s)
+        tl.to(S + " .q1", { opacity: 1, duration: 0.3 }, 4.4);
+        tl.to(S + " .q3", { opacity: 1, duration: 0.3 }, 4.6);
+        tl.to(S + " .curve-pos", { strokeDashoffset: 0, opacity: 1, duration: 1.2, ease: "power2.out", stagger: 0.2 }, 4.8);
+        tl.to(S + " .case-pos", { opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 5.0);
+
+        // Audio: "当k为负，曲线在二四象限。" (7.5 ~ 10.5s)
+        tl.to(S + " .q2", { opacity: 1, duration: 0.3 }, 7.5);
+        tl.to(S + " .q4", { opacity: 1, duration: 0.3 }, 7.7);
+        tl.to(S + " .curve-neg", { strokeDashoffset: 0, opacity: 1, duration: 1.2, ease: "power2.out", stagger: 0.2 }, 7.9);
+        tl.to(S + " .case-neg", { opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 8.0);
+
+        // Audio: "图象上任意一点，横纵坐标之积等于k。" (10.5 ~ 14.8s)
+        tl.to(S + " .pt-p", { opacity: 1, duration: 0.4 }, 10.5);
+        tl.to(S + " .lbl-p", { opacity: 1, duration: 0.4 }, 10.7);
+        tl.to(S + " .dim-line", { opacity: 1, duration: 0.4, stagger: 0.15 }, 11.0);
+        tl.to(S + " .prod-lbl", { opacity: 1, duration: 0.4 }, 11.5);
+        tl.to(S + " .prod-row", { opacity: 1, duration: 0.4 }, 11.5);
+
+        tl.to({}, { duration: 0.01 }, 14.99);
+        window.__timelines["scene-04-inverse"] = tl;
+      })();
+    </script>
+  </div>
+</template>

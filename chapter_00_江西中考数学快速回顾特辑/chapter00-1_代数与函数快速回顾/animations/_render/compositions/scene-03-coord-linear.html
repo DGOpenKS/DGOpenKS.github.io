@@ -1,0 +1,214 @@
+<template id="scene-03-coord-linear-template">
+  <div data-composition-id="scene-03-coord-linear" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="content">
+
+        <!-- LEFT: coordinate SVG -->
+        <div class="left">
+          <svg class="coord-svg" viewBox="-60 -60 620 620" width="540" height="540">
+            <g class="grid-lines">
+              <line x1="0" y1="0" x2="500" y2="0"/><line x1="0" y1="100" x2="500" y2="100"/>
+              <line x1="0" y1="200" x2="500" y2="200"/><line x1="0" y1="300" x2="500" y2="300"/>
+              <line x1="0" y1="400" x2="500" y2="400"/><line x1="0" y1="500" x2="500" y2="500"/>
+              <line x1="0" y1="0" x2="0" y2="500"/><line x1="100" y1="0" x2="100" y2="500"/>
+              <line x1="200" y1="0" x2="200" y2="500"/><line x1="300" y1="0" x2="300" y2="500"/>
+              <line x1="400" y1="0" x2="400" y2="500"/><line x1="500" y1="0" x2="500" y2="500"/>
+            </g>
+            <line class="axis" x1="-40" y1="300" x2="520" y2="300"/>
+            <line class="axis" x1="100" y1="-40" x2="100" y2="540"/>
+            <text class="axis-lbl" x="510" y="320">x</text>
+            <text class="axis-lbl" x="115" y="-15">y</text>
+            <text class="axis-lbl" x="60" y="330">O</text>
+
+            <!-- Point A (top-left) -->
+            <circle class="pt pt-a" cx="150" cy="180" r="14"/>
+            <text class="pt-lbl lbl-a" x="100" y="160">A</text>
+
+            <!-- Point B (bottom-right) -->
+            <circle class="pt pt-b" cx="400" cy="420" r="14"/>
+            <text class="pt-lbl lbl-b" x="418" y="455">B</text>
+
+            <!-- Dimension helper lines (right triangle) -->
+            <line class="dim-h" x1="150" y1="420" x2="400" y2="420"/>
+            <line class="dim-v" x1="150" y1="180" x2="150" y2="420"/>
+            <!-- xA - xB label (centered on horizontal leg) -->
+            <foreignObject class="dim-fo dim-fo-h" x="195" y="432" width="220" height="70" style="opacity:0">
+              <span class="dim-katex" id="dim-label-h"></span>
+            </foreignObject>
+            <!-- yA - yB label (left of vertical leg, clear of y-axis) -->
+            <foreignObject class="dim-fo dim-fo-v" x="-55" y="230" width="195" height="70" style="opacity:0">
+              <span class="dim-katex" id="dim-label-v"></span>
+            </foreignObject>
+
+            <!-- Midpoint C (on segment AB) -->
+            <circle class="pt pt-c" cx="275" cy="300" r="12"/>
+            <!-- C label inside the triangle, near the point -->
+            <text class="pt-lbl lbl-c" x="240" y="340">C</text>
+
+            <!-- Distance line A-B (hypotenuse) -->
+            <line class="dist-line" x1="150" y1="180" x2="400" y2="420"/>
+            <!-- d label (near midpoint, upper-right) -->
+            <text class="d-label" x="295" y="280">d</text>
+          </svg>
+        </div>
+
+        <!-- RIGHT: progressive formula elements -->
+        <div class="right">
+          <div class="badge">坐标公式</div>
+
+          <div class="text-line line-twopoints">给定两点坐标 A 和 B</div>
+
+          <div class="formula-block block-midpoint">
+            <div class="formula-label">中点 C</div>
+            <div class="formula-eq" id="eq-midpoint"></div>
+          </div>
+
+          <div class="formula-block block-dist">
+            <div class="formula-label">两点距离 d</div>
+            <div class="formula-eq" id="eq-dist"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-03-coord-linear"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-03-coord-linear"] .panel {
+        position: absolute; inset: 0; background: var(--bg);
+      }
+      [data-composition-id="scene-03-coord-linear"] .content {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: row;
+        align-items: center; justify-content: center;
+        gap: 80px; padding: 60px 80px;
+      }
+      [data-composition-id="scene-03-coord-linear"] .left {
+        flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 28px; box-shadow: 14px 14px 0 0 var(--ink);
+        padding: 24px; opacity: 0;
+      }
+      [data-composition-id="scene-03-coord-linear"] .right {
+        flex: 1; display: flex; flex-direction: column;
+        gap: 36px; min-width: 760px;
+      }
+      /* SVG */
+      [data-composition-id="scene-03-coord-linear"] .grid-lines line { stroke: #e8e0d0; stroke-width: 1.5; }
+      [data-composition-id="scene-03-coord-linear"] .axis { stroke: var(--ink); stroke-width: 3; }
+      [data-composition-id="scene-03-coord-linear"] .axis-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 38px; font-weight: 700; fill: #222;
+      }
+      [data-composition-id="scene-03-coord-linear"] .pt { stroke-width: 4; }
+      [data-composition-id="scene-03-coord-linear"] .pt-a { fill: var(--blue); stroke: var(--blue); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .pt-b { fill: var(--green); stroke: var(--green); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .pt-c { fill: var(--pink); stroke: var(--pink); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .pt-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 42px; font-weight: 700;
+      }
+      [data-composition-id="scene-03-coord-linear"] .lbl-a { fill: var(--blue); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .lbl-b { fill: var(--green); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .lbl-c { fill: var(--pink); opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .dist-line {
+        stroke: var(--ink); stroke-width: 4; stroke-dasharray: 12 7; opacity: 0;
+      }
+      [data-composition-id="scene-03-coord-linear"] .d-label {
+        font-family: "Fredoka", sans-serif; font-size: 48px; font-weight: 700;
+        font-style: italic; fill: #222; opacity: 0;
+      }
+      [data-composition-id="scene-03-coord-linear"] .dim-h,
+      [data-composition-id="scene-03-coord-linear"] .dim-v {
+        stroke: #b45309; stroke-width: 3; stroke-dasharray: 6 4; opacity: 0;
+      }
+      [data-composition-id="scene-03-coord-linear"] .dim-fo { opacity: 0; }
+      [data-composition-id="scene-03-coord-linear"] .dim-katex { font-size: 44px; color: #92400e; }
+      /* Right panel */
+      [data-composition-id="scene-03-coord-linear"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 56px; color: var(--paper);
+        background: var(--blue); padding: 14px 48px;
+        border-radius: 24px; border: 5px solid var(--ink);
+        letter-spacing: 0.10em; opacity: 0; align-self: flex-start;
+      }
+      [data-composition-id="scene-03-coord-linear"] .text-line {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 48px; color: #222; opacity: 0;
+      }
+      [data-composition-id="scene-03-coord-linear"] .formula-block {
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 24px; box-shadow: 10px 10px 0 0 var(--ink);
+        padding: 28px 40px; display: flex; flex-direction: column; gap: 12px;
+        opacity: 0; transform: translateY(20px);
+      }
+      [data-composition-id="scene-03-coord-linear"] .formula-label {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 44px; color: var(--pink); font-weight: 700;
+      }
+      [data-composition-id="scene-03-coord-linear"] .formula-eq {
+        font-size: 42px; color: #111; line-height: 1.8;
+      }
+      [data-composition-id="scene-03-coord-linear"] .block-dist {
+        border-color: var(--blue); box-shadow: 10px 10px 0 0 var(--blue);
+      }
+      [data-composition-id="scene-03-coord-linear"] .block-dist .formula-eq { font-size: 46px; }
+      [data-composition-id="scene-03-coord-linear"] .katex { font-size: 1em; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-03-coord-linear"]';
+        var opts = { displayMode: true, throwOnError: false };
+
+        katex.render("C = \\left(\\dfrac{x_A + x_B}{2},\\; \\dfrac{y_A + y_B}{2}\\right)", document.querySelector(S + " #eq-midpoint"), opts);
+        katex.render("d = \\sqrt{(x_A - x_B)^{2} + (y_A - y_B)^{2}}", document.querySelector(S + " #eq-dist"), opts);
+        katex.render("x_A - x_B", document.querySelector(S + " #dim-label-h"), { displayMode: false, throwOnError: false });
+        katex.render("y_A - y_B", document.querySelector(S + " #dim-label-v"), { displayMode: false, throwOnError: false });
+
+        var tl = gsap.timeline({ paused: true });
+
+        // Audio: "给定两点坐标A和B，" (0 ~ 3.5s)
+        tl.from(S + " .panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.fromTo(S + " .left", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.3);
+        tl.fromTo(S + " .badge", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0.5);
+        tl.fromTo(S + " .line-twopoints", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4 }, 0.5);
+        tl.to(S + " .pt-a", { opacity: 1, duration: 0.3 }, 1.0);
+        tl.to(S + " .lbl-a", { opacity: 1, duration: 0.3 }, 1.1);
+        tl.to(S + " .pt-b", { opacity: 1, duration: 0.3 }, 1.8);
+        tl.to(S + " .lbl-b", { opacity: 1, duration: 0.3 }, 1.9);
+
+        // Audio: "中点C的坐标为横纵坐标的平均值，" (3.5 ~ 8.0s)
+        tl.to(S + " .pt-c", { opacity: 1, duration: 0.3 }, 3.5);
+        tl.to(S + " .lbl-c", { opacity: 1, duration: 0.3 }, 3.7);
+        tl.to(S + " .block-midpoint", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 3.5);
+
+        // Audio: "两点距离d等于横坐标差的平方" (8.0 ~ 11.8s)
+        tl.to(S + " .dist-line", { opacity: 1, duration: 0.5 }, 8.0);
+        tl.to(S + " .d-label", { opacity: 1, duration: 0.4 }, 8.3);
+        tl.to(S + " .block-dist", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 8.0);
+        tl.from(S + " .block-dist", { scale: 0.9, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(2)" }, 8.0);
+
+        // Show dimension lines with formula
+        tl.to(S + " .dim-h", { opacity: 1, duration: 0.4 }, 9.0);
+        tl.to(S + " .dim-fo-h", { opacity: 1, duration: 0.4 }, 9.1);
+
+        // Audio: "加上纵坐标差的平方" (9.5s)
+        tl.to(S + " .dim-v", { opacity: 1, duration: 0.4 }, 10.0);
+        tl.to(S + " .dim-fo-v", { opacity: 1, duration: 0.4 }, 10.1);
+
+        // Audio: "最后再开根号" (11.8 ~ 13.8s) — everything visible, hold
+
+        tl.to({}, { duration: 0.01 }, 13.81);
+        window.__timelines["scene-03-coord-linear"] = tl;
+      })();
+    </script>
+  </div>
+</template>

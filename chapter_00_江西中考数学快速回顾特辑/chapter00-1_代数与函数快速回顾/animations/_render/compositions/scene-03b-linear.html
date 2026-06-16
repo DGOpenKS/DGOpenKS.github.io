@@ -1,0 +1,209 @@
+<template id="scene-03b-linear-template">
+  <div data-composition-id="scene-03b-linear" data-width="1920" data-height="1080">
+    <div class="panel">
+      <div class="content">
+
+        <!-- LEFT: linear function graph -->
+        <div class="left">
+          <svg class="lin-svg" viewBox="-60 -60 620 620" width="540" height="540">
+            <g class="grid-lines">
+              <line x1="0" y1="0" x2="500" y2="0"/><line x1="0" y1="100" x2="500" y2="100"/>
+              <line x1="0" y1="200" x2="500" y2="200"/><line x1="0" y1="300" x2="500" y2="300"/>
+              <line x1="0" y1="400" x2="500" y2="400"/><line x1="0" y1="500" x2="500" y2="500"/>
+              <line x1="0" y1="0" x2="0" y2="500"/><line x1="100" y1="0" x2="100" y2="500"/>
+              <line x1="200" y1="0" x2="200" y2="500"/><line x1="300" y1="0" x2="300" y2="500"/>
+              <line x1="400" y1="0" x2="400" y2="500"/><line x1="500" y1="0" x2="500" y2="500"/>
+            </g>
+            <line class="axis" x1="-40" y1="300" x2="520" y2="300"/>
+            <line class="axis" x1="100" y1="-40" x2="100" y2="540"/>
+            <text class="axis-lbl" x="510" y="320">x</text>
+            <text class="axis-lbl" x="115" y="-15">y</text>
+            <text class="axis-lbl" x="60" y="330">O</text>
+
+            <!-- Main line through A, B: y = 0.96x + 36 -->
+            <line class="main-line" x1="-20" y1="17" x2="520" y2="535"/>
+
+            <!-- Parallel line: y = 0.96x + 136 (same slope, shifted +100, same x range as main) -->
+            <line class="parallel-line" x1="-20" y1="117" x2="520" y2="635"/>
+
+            <!-- Slope triangle: horizontal from A to (400,180), vertical to B -->
+            <line class="slope-h" x1="150" y1="180" x2="400" y2="180"/>
+            <line class="slope-v" x1="400" y1="180" x2="400" y2="420"/>
+            <foreignObject class="slope-fo slope-fo-h" x="200" y="120" width="200" height="60">
+              <span class="slope-katex" id="slope-dx"></span>
+            </foreignObject>
+            <foreignObject class="slope-fo slope-fo-v" x="415" y="240" width="200" height="60">
+              <span class="slope-katex" id="slope-dy"></span>
+            </foreignObject>
+
+            <!-- y-intercept point b: x=100, y=132 -->
+            <circle class="pt pt-b-int" cx="100" cy="132" r="10"/>
+            <text class="pt-lbl lbl-b-int" x="50" y="135">b</text>
+
+            <!-- Points A, B drawn last (on top of the line) -->
+            <circle class="pt pt-a" cx="150" cy="180" r="12"/>
+            <text class="pt-lbl lbl-a" x="155" y="160">A</text>
+            <circle class="pt pt-b" cx="400" cy="420" r="12"/>
+            <text class="pt-lbl lbl-b" x="420" y="410">B</text>
+          </svg>
+        </div>
+
+        <!-- RIGHT: progressive display -->
+        <div class="right">
+          <div class="badge">一次函数</div>
+
+          <div class="text-line line-connect">两点确定一条直线</div>
+
+          <div class="formula-block block-formula">
+            <div class="formula-eq" id="eq-linear"></div>
+          </div>
+
+          <div class="formula-block block-slope">
+            <div class="formula-label">斜率</div>
+            <div class="formula-eq" id="eq-slope"></div>
+          </div>
+
+          <div class="formula-block block-intercept">
+            <div class="formula-label">截距</div>
+            <div class="formula-eq" id="eq-intercept"></div>
+          </div>
+
+          <div class="formula-block block-parallel">
+            <div class="formula-eq parallel-text">固定 k，改变 b → 平行移动</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-03b-linear"] {
+        --bg: #fff7e8; --ink: #1a1a1a;
+        --pink: #ff1493; --blue: #0047ab;
+        --yellow: #ffe000; --green: #009b77;
+        --paper: #ffffff;
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: transparent;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: var(--ink);
+      }
+      [data-composition-id="scene-03b-linear"] .panel { position: absolute; inset: 0; background: var(--bg); }
+      [data-composition-id="scene-03b-linear"] .content {
+        position: absolute; inset: 0; display: flex; flex-direction: row;
+        align-items: center; justify-content: center; gap: 80px; padding: 60px 80px;
+      }
+      [data-composition-id="scene-03b-linear"] .left {
+        flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 28px; box-shadow: 14px 14px 0 0 var(--ink);
+        padding: 24px; opacity: 0;
+      }
+      [data-composition-id="scene-03b-linear"] .right {
+        flex: 1; display: flex; flex-direction: column; gap: 16px; min-width: 720px;
+      }
+      /* SVG */
+      [data-composition-id="scene-03b-linear"] .grid-lines line { stroke: #e8e0d0; stroke-width: 1.5; }
+      [data-composition-id="scene-03b-linear"] .axis { stroke: var(--ink); stroke-width: 3; }
+      [data-composition-id="scene-03b-linear"] .axis-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 38px; font-weight: 700; fill: #222;
+      }
+      [data-composition-id="scene-03b-linear"] .pt { stroke-width: 4; }
+      [data-composition-id="scene-03b-linear"] .pt-a { fill: var(--blue); stroke: var(--blue); }
+      [data-composition-id="scene-03b-linear"] .pt-b { fill: var(--green); stroke: var(--green); }
+      [data-composition-id="scene-03b-linear"] .pt-b-int { fill: var(--pink); stroke: var(--pink); opacity: 0; }
+      [data-composition-id="scene-03b-linear"] .pt-lbl {
+        font-family: "Fredoka", sans-serif; font-size: 42px; font-weight: 700;
+      }
+      [data-composition-id="scene-03b-linear"] .lbl-a { fill: var(--blue); }
+      [data-composition-id="scene-03b-linear"] .lbl-b { fill: var(--green); }
+      [data-composition-id="scene-03b-linear"] .lbl-b-int { fill: var(--pink); font-size: 46px; opacity: 0; }
+      [data-composition-id="scene-03b-linear"] .main-line {
+        stroke: var(--blue); stroke-width: 5; stroke-linecap: round; opacity: 0;
+      }
+      [data-composition-id="scene-03b-linear"] .slope-h, [data-composition-id="scene-03b-linear"] .slope-v {
+        stroke: #b45309; stroke-width: 3; stroke-dasharray: 6 4; opacity: 0;
+      }
+      [data-composition-id="scene-03b-linear"] .slope-fo { opacity: 0; }
+      [data-composition-id="scene-03b-linear"] .slope-katex { font-size: 40px; color: #92400e; }
+      [data-composition-id="scene-03b-linear"] .parallel-line {
+        stroke: var(--green); stroke-width: 4; stroke-linecap: round;
+        stroke-dasharray: 14 8; opacity: 0;
+      }
+      /* Right panel */
+      [data-composition-id="scene-03b-linear"] .badge {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 44px; color: var(--paper); background: var(--blue);
+        padding: 10px 36px; border-radius: 20px; border: 5px solid var(--ink);
+        letter-spacing: 0.10em; opacity: 0; align-self: flex-start;
+      }
+      [data-composition-id="scene-03b-linear"] .text-line {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 40px; color: #222; opacity: 0;
+      }
+      [data-composition-id="scene-03b-linear"] .formula-block {
+        background: var(--paper); border: 5px solid var(--ink);
+        border-radius: 20px; box-shadow: 8px 8px 0 0 var(--ink);
+        padding: 8px 28px; display: flex; flex-direction: column; gap: 4px;
+        opacity: 0; transform: translateY(20px);
+      }
+      [data-composition-id="scene-03b-linear"] .formula-label {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 36px; color: var(--pink); font-weight: 700;
+      }
+      [data-composition-id="scene-03b-linear"] .formula-eq { font-size: 38px; color: #111; line-height: 1.4; }
+      [data-composition-id="scene-03b-linear"] .parallel-text {
+        font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+        font-size: 36px; color: #222;
+      }
+      [data-composition-id="scene-03b-linear"] .katex { font-size: 1em; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-03b-linear"]';
+        var opts = { displayMode: true, throwOnError: false };
+        var inl = { displayMode: false, throwOnError: false };
+
+        katex.render("y = kx + b", document.querySelector(S + " #eq-linear"), opts);
+        katex.render("k = \\dfrac{y_B - y_A}{x_B - x_A}", document.querySelector(S + " #eq-slope"), opts);
+        katex.render("b = y_A - k \\cdot x_A", document.querySelector(S + " #eq-intercept"), opts);
+        katex.render("x_B - x_A", document.querySelector(S + " #slope-dx"), inl);
+        katex.render("y_B - y_A", document.querySelector(S + " #slope-dy"), inl);
+
+        var tl = gsap.timeline({ paused: true });
+
+        // Panel entrance
+        tl.from(S + " .panel", { scaleY: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.5)" }, 0);
+        tl.fromTo(S + " .left", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.3);
+        tl.fromTo(S + " .badge", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0.5);
+
+        // Audio: "将两点连接可以得到一条直线，这便是一次函数。" (0 ~ 4.5s)
+        tl.fromTo(S + " .line-connect", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4 }, 0.5);
+        tl.to(S + " .main-line", { opacity: 1, duration: 0.8, ease: "power2.out" }, 1.0);
+        tl.to(S + " .block-formula", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 2.5);
+
+        // Audio: "k 是斜率，等于 yB 减 yA 除以 xB 减 xA；" (4.5 ~ 10s)
+        tl.to(S + " .slope-h", { opacity: 1, duration: 0.4 }, 4.5);
+        tl.to(S + " .slope-v", { opacity: 1, duration: 0.4 }, 4.8);
+        tl.to(S + " .slope-fo-h", { opacity: 1, duration: 0.3 }, 5.0);
+        tl.to(S + " .slope-fo-v", { opacity: 1, duration: 0.3 }, 5.2);
+        tl.to(S + " .block-slope", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 5.0);
+
+        // Audio: "b 是与 y 轴的交点，等于 yA 减 k 乘 xA。" (10 ~ 14s)
+        tl.to(S + " .pt-b-int", { opacity: 1, duration: 0.4 }, 10.0);
+        tl.to(S + " .lbl-b-int", { opacity: 1, duration: 0.4 }, 10.2);
+        tl.to(S + " .block-intercept", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 10.0);
+
+        // Audio: "固定k不变，改变b，相当于垂直移动直线，移动后的直线与原直线平行。" (14 ~ 23.2s)
+        // Green line starts at the blue line position and slides down to its final position
+        tl.set(S + " .parallel-line", { attr: { y1: 17, y2: 535 } });
+        tl.to(S + " .parallel-line", { opacity: 1, duration: 0.3, ease: "power2.out" }, 15.5);
+        tl.to(S + " .parallel-line", { attr: { y1: 117, y2: 635 }, duration: 1.5, ease: "power2.inOut" }, 15.8);
+        tl.to(S + " .block-parallel", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 16.5);
+
+        tl.to({}, { duration: 0.01 }, 23.20);
+        window.__timelines["scene-03b-linear"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,81 @@
+<template id="scene-00-title-template">
+  <div data-composition-id="scene-00-title" data-width="1920" data-height="1080" data-start="0" data-duration="5.86" data-track-index="0">
+    <div class="panel">
+      <div class="stage-block"></div>
+      <div class="inner">
+        <div class="badge"><span></span>中考特辑<span></span></div>
+        <h1>
+          <span class="line"><em>中考数学</em>核心考点</span>
+          <span class="line sub">几何与综合</span>
+        </h1>
+        <div class="stroke"></div>
+        <div class="chips">
+          <div class="chip pink">条件</div>
+          <div class="chip yellow">方法</div>
+          <div class="chip green">关系式</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-00-title"] {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff;
+        position:relative; width:1920px; height:1080px; overflow:hidden;
+        background:var(--bg); font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      [data-composition-id="scene-00-title"] .panel { position:absolute; inset:0; display:grid; place-items:center; }
+      [data-composition-id="scene-00-title"] .stage-block {
+        position:absolute; inset:60px; background:var(--paper); border:6px solid var(--ink);
+        border-radius:36px; box-shadow:18px 18px 0 var(--ink); opacity:0;
+      }
+      [data-composition-id="scene-00-title"] .inner {
+        position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:32px;
+      }
+      [data-composition-id="scene-00-title"] .badge {
+        display:flex; align-items:center; gap:18px; padding:16px 40px; border:5px solid var(--ink);
+        border-radius:999px; background:var(--blue); color:var(--yellow);
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:44px; letter-spacing:.16em; opacity:0;
+      }
+      [data-composition-id="scene-00-title"] .badge span {
+        width:18px; height:18px; border-radius:50%; background:var(--pink); border:3px solid var(--ink);
+      }
+      [data-composition-id="scene-00-title"] h1 {
+        margin:0; display:flex; flex-direction:column; align-items:center; gap:8px;
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:104px; line-height:1.16;
+      }
+      [data-composition-id="scene-00-title"] .line { opacity:0; transform:translateY(34px); }
+      [data-composition-id="scene-00-title"] em { color:var(--pink); font-style:normal; margin-right:18px; }
+      [data-composition-id="scene-00-title"] .sub { color:var(--blue); font-size:78px; }
+      [data-composition-id="scene-00-title"] .stroke {
+        width:720px; height:16px; background:var(--yellow); border:4px solid var(--ink);
+        border-radius:10px; transform:scaleX(0); transform-origin:left center;
+      }
+      [data-composition-id="scene-00-title"] .chips { display:flex; gap:22px; }
+      [data-composition-id="scene-00-title"] .chip {
+        font-family:"Fredoka","Noto Sans SC",sans-serif; font-size:40px; font-weight:700;
+        padding:14px 32px; border:5px solid var(--ink); border-radius:20px; box-shadow:10px 10px 0 var(--ink); opacity:0;
+      }
+      [data-composition-id="scene-00-title"] .pink { background:var(--pink); color:#fff; }
+      [data-composition-id="scene-00-title"] .yellow { background:var(--yellow); }
+      [data-composition-id="scene-00-title"] .green { background:var(--green); color:#fff; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-00-title"]';
+        var tl = gsap.timeline({ paused:true, defaults:{ ease:"back.out(1.8)" } });
+        tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45 }, 0);
+        tl.to(S + " .stage-block", { opacity:1, duration:.55, ease:"power2.out" }, .05);
+        tl.fromTo(S + " .badge", { opacity:0, y:-48, scale:.45, rotate:-8 }, { opacity:1, y:0, scale:1, rotate:0, duration:.5 }, .22);
+        tl.to(S + " .line", { opacity:1, y:0, duration:.42, stagger:.2 }, .62);
+        tl.to(S + " .stroke", { scaleX:1, duration:.38, ease:"power3.out" }, 1.48);
+        tl.fromTo(S + " .chip", { opacity:0, y:46, scale:.55 }, { opacity:1, y:0, scale:1, duration:.42, stagger:.08 }, 1.92);
+        tl.to(S + " .chip", { scale:1.06, yoyo:true, repeat:1, duration:.16, stagger:.06 }, 3.1);
+        tl.to({}, { duration:.01 }, 6.09);
+        window.__timelines["scene-00-title"] = tl;
+      })();
+    </script>
+  </div>
+</template>

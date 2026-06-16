@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@700;900&family=ZCOOL+KuaiLe&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      [data-composition-id="root"] {
+        position: relative; width: 1920px; height: 1080px;
+        overflow: hidden; background: #000;
+        font-family: "Nunito", "Noto Sans SC", sans-serif; color: #1a1a1a;
+      }
+      .scene-host { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      data-composition-id="root"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="190.416"
+      data-track-index="0"
+    >
+      <!-- s0: 片头标题 (0.000 ~ 5.856s) -->
+      <div class="scene-host clip" data-composition-id="scene-00-title"
+        data-composition-src="compositions/scene-00-title.html"
+        data-start="0.000" data-duration="5.856" data-track-index="1"></div>
+
+      <!-- s1: 几何基础细讲 (5.856 ~ 61.128s) -->
+      <div class="scene-host clip" data-composition-id="scene-01-basics"
+        data-composition-src="compositions/scene-01-basics.html"
+        data-start="5.856" data-duration="55.272" data-track-index="1"></div>
+
+      <!-- s2: 条件入口 (61.128 ~ 89.376s) -->
+      <div class="scene-host clip" data-composition-id="scene-02-condition-map"
+        data-composition-src="compositions/scene-02-condition-map.html"
+        data-start="61.128" data-duration="28.248" data-track-index="1"></div>
+
+      <!-- s3: 综合题入口动态图 (89.376 ~ 133.632s) -->
+      <div class="scene-host clip" data-composition-id="scene-03-synthesis"
+        data-composition-src="compositions/scene-03-synthesis.html"
+        data-start="89.376" data-duration="44.256" data-track-index="1"></div>
+
+      <!-- s4: 压轴抢分 (133.632 ~ 150.816s) -->
+      <div class="scene-host clip" data-composition-id="scene-04-pressure-score"
+        data-composition-src="compositions/scene-04-pressure-score.html"
+        data-start="133.632" data-duration="17.184" data-track-index="1"></div>
+
+      <!-- s5: 易丢分 (150.816 ~ 174.552s) -->
+      <div class="scene-host clip" data-composition-id="scene-05-pitfalls"
+        data-composition-src="compositions/scene-05-pitfalls.html"
+        data-start="150.816" data-duration="23.736" data-track-index="1"></div>
+
+      <!-- s6: 结尾 (174.552 ~ 190.416s) -->
+      <div class="scene-host clip" data-composition-id="scene-06-outro"
+        data-composition-src="compositions/scene-06-outro.html"
+        data-start="174.552" data-duration="15.864" data-track-index="1"></div>
+
+      <!-- 配音 -->
+      <audio id="voice-s0" class="clip" data-start="0.000" data-duration="5.856" data-track-index="2" data-volume="1" src="assets/s0-title.mp3"></audio>
+      <audio id="voice-s1" class="clip" data-start="5.856" data-duration="55.272" data-track-index="2" data-volume="1" src="assets/s1-basics.mp3"></audio>
+      <audio id="voice-s2" class="clip" data-start="61.128" data-duration="28.248" data-track-index="2" data-volume="1" src="assets/s2-condition-map.mp3"></audio>
+      <audio id="voice-s3" class="clip" data-start="89.376" data-duration="44.256" data-track-index="2" data-volume="1" src="assets/s3-synthesis.mp3"></audio>
+      <audio id="voice-s4" class="clip" data-start="133.632" data-duration="17.184" data-track-index="2" data-volume="1" src="assets/s4-pressure-score.mp3"></audio>
+      <audio id="voice-s5" class="clip" data-start="150.816" data-duration="23.736" data-track-index="2" data-volume="1" src="assets/s5-pitfalls.mp3"></audio>
+      <audio id="voice-s6" class="clip" data-start="174.552" data-duration="15.864" data-track-index="2" data-volume="1" src="assets/s6-outro.mp3"></audio>
+
+      <!-- BGM -->
+      <audio id="bgm" class="clip" data-start="0" data-duration="190.416" data-track-index="3" data-volume="0.08" src="assets/bgm.mp3"></audio>
+
+      <!-- 字幕层 -->
+      <div id="subtitle-layer" style="position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:100;pointer-events:none;">
+        <div id="sub-text" style="display:inline-block;max-width:1500px;font-family:'ZCOOL KuaiLe','Noto Sans SC',sans-serif;font-size:40px;line-height:1.25;color:#ffffff;background:rgba(0,0,0,0.68);padding:12px 34px;border-radius:16px;opacity:0;"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        var subs = [
+          [0.000, 5.856, "三分钟，回顾中考数学核心考点：几何与综合。"],
+
+          [5.856, 8.800, "几何题先看对象。"],
+          [8.800, 14.500, "三角形先问：有没有边角相等、直角、平行线或比例关系。"],
+          [14.500, 18.500, "全等用来得到相等的边和角。"],
+          [18.500, 21.000, "相似用来得到比例。"],
+          [21.000, 24.000, "直角常把勾股和斜边中线带出来。"],
+          [24.000, 27.200, "四边形先分清类型。"],
+          [27.200, 37.300, "平行四边形看对边、对角和对角线；特殊四边形再加条件。"],
+          [37.300, 40.000, "面积题先找底和高。"],
+          [40.000, 42.700, "圆题要先连圆心。"],
+          [42.700, 49.000, "垂径定理：直径垂直于弦，会平分弦，也平分对应的弧。"],
+          [49.000, 52.400, "同弧所对的圆周角相等。"],
+          [52.400, 56.200, "同一条弧上，圆心角是圆周角的两倍。"],
+          [56.200, 61.128, "看到切线，把半径连到切点，再证垂直。"],
+
+          [61.128, 65.504, "看到中点，想到中位线、倍长中线或平行四边形。"],
+          [65.504, 70.004, "看到角平分线，想到等角、性质、全等或相似。"],
+          [70.004, 74.304, "看到直角，想到勾股、HL 和斜边中线。"],
+          [74.304, 79.504, "看到平行，想到角相等、相似和平行四边形。"],
+          [79.504, 82.900, "看到圆，先连接圆心和半径。"],
+          [82.900, 89.376, "看到切线，先连半径再证垂直。"],
+
+          [89.376, 93.504, "综合题先抓入口，但图形要跟着问题变。"],
+          [93.504, 102.004, "动点题先设变量，画出点从哪里走到哪里。"],
+          [102.004, 110.004, "面积题先找底和高，必要时用割补。"],
+          [110.004, 118.204, "最值题常转成二次函数、线段最短或三边关系。"],
+          [118.204, 125.704, "存在性问题先定分类标准，避免漏情况。"],
+          [125.704, 133.632, "函数几何综合，把图形条件转成坐标、方程或函数关系。"],
+
+          [133.632, 137.204, "压轴题不一定一次做完。"],
+          [137.204, 140.404, "第一问要稳拿。"],
+          [140.404, 143.704, "第二问先找明显关系。"],
+          [143.704, 148.304, "最后一问做不完，也要写下变量、关系式、分类或图形关系。"],
+          [148.304, 150.816, "步骤分来自有依据的数学关系。"],
+
+          [150.816, 154.504, "最容易丢分的位置要提前防住。"],
+          [154.504, 161.804, "几何题常丢在条件、辅助线、相似比例、半径和切线上。"],
+          [161.804, 168.304, "综合题常丢在变量范围、分类讨论、最值条件和单位。"],
+          [168.304, 174.552, "越到后面，越先写清设什么、求什么、条件是什么。"],
+
+          [174.552, 179.704, "几何与综合题先抓入口：条件通向方法，方法生成关系式。"],
+          [179.704, 183.704, "圆题先连圆心，综合题先设变量。"],
+          [183.704, 190.416, "压轴题做不完，也要写出关键关系，争取步骤分。"]
+        ];
+
+        var subEl = document.getElementById("sub-text");
+        subs.forEach(function(s) {
+          tl.call(function() {
+            subEl.textContent = s[2];
+            gsap.to(subEl, { opacity: 1, duration: 0.2 });
+          }, null, s[0]);
+          tl.call(function() {
+            gsap.to(subEl, { opacity: 0, duration: 0.15 });
+          }, null, Math.max(s[0] + 0.1, s[1] - 0.1));
+        });
+
+        tl.to({}, { duration: 0.01 }, 190.406);
+        window.__timelines["root"] = tl;
+      })();
+    </script>
+  </body>
+</html>

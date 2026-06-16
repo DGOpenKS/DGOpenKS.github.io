@@ -1,0 +1,84 @@
+<template id="scene-02-condition-map-template">
+  <div data-composition-id="scene-02-condition-map" data-width="1920" data-height="1080" data-start="0" data-duration="28.248" data-track-index="0">
+    <div class="panel">
+      <div class="badge">看到条件，想到方法</div>
+      <div class="map">
+        <div class="center">
+          <div class="big">条件</div>
+          <div class="small">先问它通向哪里</div>
+        </div>
+        <div class="pair p1"><b>中点</b><span>中位线 / 倍长中线 / 平行四边形</span></div>
+        <div class="pair p2"><b>角平分线</b><span>等角 / 性质 / 全等或相似</span></div>
+        <div class="pair p3"><b>直角</b><span>勾股 / HL / 斜边中线</span></div>
+        <div class="pair p4"><b>平行</b><span>角相等 / 相似 / 平行四边形</span></div>
+        <div class="pair p5"><b>圆</b><span>连圆心 / 连半径 / 作垂线</span></div>
+        <div class="pair p6"><b>切线</b><span>先连半径，再证垂直</span></div>
+        <div class="pair p7"><b>最短路径</b><span>轴对称 / 展开图 / 两点最短</span></div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-02-condition-map"] {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff;
+        position:relative; width:1920px; height:1080px; overflow:hidden; background:transparent;
+        font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      [data-composition-id="scene-02-condition-map"] .panel { position:absolute; inset:0; background:var(--bg); padding:48px 80px; }
+      [data-composition-id="scene-02-condition-map"] .badge {
+        width:max-content; margin:0 auto; padding:12px 48px; border:5px solid var(--ink);
+        border-radius:24px; background:var(--green); color:#fff; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;
+        font-size:52px; letter-spacing:.1em; opacity:0;
+      }
+      [data-composition-id="scene-02-condition-map"] .map { position:relative; height:900px; margin-top:26px; }
+      [data-composition-id="scene-02-condition-map"] .center {
+        position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.7);
+        width:360px; height:360px; border-radius:50%; border:6px solid var(--ink); background:var(--yellow);
+        box-shadow:14px 14px 0 var(--ink); display:grid; place-items:center; align-content:center; gap:12px; opacity:0;
+      }
+      [data-composition-id="scene-02-condition-map"] .big {
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:84px; color:var(--blue);
+      }
+      [data-composition-id="scene-02-condition-map"] .small { font-size:28px; font-weight:900; }
+      [data-composition-id="scene-02-condition-map"] .pair {
+        position:absolute; width:470px; min-height:118px; background:var(--paper); border:5px solid var(--ink);
+        border-radius:26px; box-shadow:10px 10px 0 var(--ink); padding:20px 26px; opacity:0; transform:translateY(30px);
+      }
+      [data-composition-id="scene-02-condition-map"] .pair::after {
+        content:""; position:absolute; width:86px; height:5px; background:var(--ink); top:56px;
+      }
+      [data-composition-id="scene-02-condition-map"] .pair b {
+        display:block; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:40px; color:var(--pink); margin-bottom:8px;
+      }
+      [data-composition-id="scene-02-condition-map"] .pair span { font-size:30px; font-weight:900; color:#333; }
+      [data-composition-id="scene-02-condition-map"] .p1 { left:70px; top:70px; } .p1::after { right:-90px; transform:rotate(30deg); transform-origin:left center; }
+      [data-composition-id="scene-02-condition-map"] .p2 { right:70px; top:70px; } .p2::after { left:-90px; transform:rotate(-30deg); transform-origin:right center; }
+      [data-composition-id="scene-02-condition-map"] .p3 { left:38px; top:340px; } .p3::after { right:-90px; }
+      [data-composition-id="scene-02-condition-map"] .p4 { right:38px; top:340px; } .p4::after { left:-90px; }
+      [data-composition-id="scene-02-condition-map"] .p5 { left:70px; bottom:100px; } .p5::after { right:-90px; transform:rotate(-30deg); transform-origin:left center; }
+      [data-composition-id="scene-02-condition-map"] .p6 { right:70px; bottom:100px; } .p6::after { left:-90px; transform:rotate(30deg); transform-origin:right center; }
+      [data-composition-id="scene-02-condition-map"] .p7 { left:50%; bottom:10px; transform:translate(-50%,30px); width:560px; text-align:center; display:none; }
+      [data-composition-id="scene-02-condition-map"] .p7::after { display:none; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-02-condition-map"]';
+        var tl = gsap.timeline({ paused:true });
+        tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45, ease:"back.out(1.5)" }, 0);
+        tl.fromTo(S + " .badge", { opacity:0, y:-28, scale:.75 }, { opacity:1, y:0, scale:1, duration:.45, ease:"back.out(1.9)" }, .3);
+        tl.to(S + " .center", { opacity:1, scale:1, duration:.6, ease:"back.out(1.8)" }, .95);
+        tl.to(S + " .p1", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 1.35);
+        tl.to(S + " .p2", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 4.55);
+        tl.to(S + " .p3", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 9.05);
+        tl.to(S + " .p4", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 13.35);
+        tl.to(S + " .p5", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 17.7);
+        tl.to(S + " .p6", { opacity:1, y:0, duration:.45, ease:"back.out(1.7)" }, 21.25);
+        tl.to(S + " .center", { scale:1.05, yoyo:true, repeat:1, duration:.18, ease:"sine.inOut" }, 22.2);
+        tl.to({}, { duration:.01 }, 28.248);
+        window.__timelines["scene-02-condition-map"] = tl;
+      })();
+    </script>
+  </div>
+</template>

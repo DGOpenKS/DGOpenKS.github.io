@@ -1,0 +1,217 @@
+<template id="scene-03-synthesis-template">
+  <div id="scene-03-synthesis" data-composition-id="scene-03-synthesis" data-width="1920" data-height="1080" data-start="0" data-duration="44.256" data-track-index="0">
+    <div class="panel">
+      <div class="left">
+        <div class="badge">综合题入口</div>
+        <div class="flow">
+          <div class="node n1">图形条件</div>
+          <div class="arrow">→</div>
+          <div class="node n2">变量 / 坐标</div>
+          <div class="arrow">→</div>
+          <div class="node n3">关系式</div>
+        </div>
+
+        <div class="diagram-board">
+          <svg class="case case-motion" viewBox="0 0 720 470" aria-label="动点题入口">
+            <line class="axis" x1="64" y1="390" x2="650" y2="390" />
+            <line class="axis" x1="112" y1="58" x2="112" y2="430" />
+            <polygon class="shape" points="150,348 565,348 472,110" />
+            <line class="path motion-path" x1="150" y1="348" x2="472" y2="110" />
+            <circle class="point" cx="150" cy="348" r="12" />
+            <circle class="point" cx="472" cy="110" r="12" />
+            <circle class="point" cx="565" cy="348" r="12" />
+            <text class="label" x="126" y="332">起点</text>
+            <text class="label" x="488" y="112">终点</text>
+            <g class="motion-marker">
+              <circle class="point hot" cx="150" cy="348" r="14" />
+              <text class="label" x="164" y="332">P(t)</text>
+            </g>
+            <text class="caption" x="150" y="438">动点题：先画路径，再设变量</text>
+          </svg>
+
+          <svg class="case case-area" viewBox="0 0 720 470" aria-label="面积题入口">
+            <polygon class="shape" points="120,360 605,360 468,110" />
+            <polygon class="fill-area" points="120,360 605,360 468,110" />
+            <line class="base" x1="120" y1="360" x2="605" y2="360" />
+            <line class="height" x1="468" y1="110" x2="468" y2="360" />
+            <path class="right-angle" d="M468 326 L502 326 L502 360" />
+            <text class="label" x="302" y="405">底</text>
+            <text class="label" x="492" y="248">高</text>
+            <text class="formula" x="158" y="90">面积 = 底 × 高 ÷ 2</text>
+            <text class="caption" x="118" y="438">面积题：图上必须看出底和高</text>
+          </svg>
+
+          <svg class="case case-extreme" viewBox="0 0 720 470" aria-label="最值题入口">
+            <text class="formula" x="118" y="58">最值 → 二次函数 / 最短路 / 三边关系</text>
+
+            <rect class="mini" x="54" y="92" width="184" height="274" rx="18" />
+            <line class="axis mini-axis" x1="82" y1="322" x2="214" y2="322" />
+            <line class="axis mini-axis" x1="104" y1="126" x2="104" y2="342" />
+            <path class="parabola" d="M86 142 C116 330, 184 330, 216 142" />
+            <circle class="point hot vertex" cx="151" cy="284" r="11" />
+            <text class="mini-title" x="88" y="124">二次函数</text>
+            <text class="label" x="118" y="360">顶点</text>
+
+            <rect class="mini" x="268" y="92" width="184" height="274" rx="18" />
+            <line class="mirror" x1="294" y1="248" x2="426" y2="248" />
+            <circle class="point" cx="310" cy="174" r="10" />
+            <circle class="point" cx="416" cy="162" r="10" />
+            <circle class="point reflect" cx="416" cy="334" r="10" />
+            <line class="dash" x1="416" y1="162" x2="416" y2="334" />
+            <polyline class="short path-broken" points="310,174 362,248 416,162" />
+            <line class="straight" x1="310" y1="174" x2="416" y2="334" />
+            <text class="mini-title" x="304" y="124">最短路</text>
+            <text class="label" x="300" y="360">折线拉直</text>
+
+            <rect class="mini" x="482" y="92" width="184" height="274" rx="18" />
+            <polygon class="shape tri-limit" points="514,292 640,292 582,162" />
+            <line class="straight" x1="514" y1="292" x2="640" y2="292" />
+            <path class="dash tri-open" d="M514 292 C560 238, 596 238, 640 292" />
+            <text class="mini-title" x="510" y="124">三边关系</text>
+            <text class="ineq" x="506" y="348">两边和 ≥ 第三边</text>
+
+            <text class="caption" x="118" y="438">最值题：先把关系转成可比较的量</text>
+          </svg>
+
+          <svg class="case case-exist" viewBox="0 0 720 470" aria-label="存在性入口">
+            <rect class="table" x="86" y="84" width="548" height="278" rx="24" />
+            <line class="table-line" x1="86" y1="176" x2="634" y2="176" />
+            <line class="table-line" x1="268" y1="84" x2="268" y2="362" />
+            <line class="table-line" x1="450" y1="84" x2="450" y2="362" />
+            <text class="type" x="134" y="144">位置 A</text>
+            <text class="type" x="318" y="144">位置 B</text>
+            <text class="type" x="500" y="144">位置 C</text>
+            <circle class="point hot" cx="178" cy="262" r="16" />
+            <circle class="point hot" cx="358" cy="238" r="16" />
+            <circle class="point hot" cx="544" cy="286" r="16" />
+            <text class="formula" x="142" y="64">先定分类标准</text>
+            <text class="caption" x="118" y="438">存在性：按位置、形状或符号分类，不重不漏</text>
+          </svg>
+
+          <svg class="case case-function" viewBox="0 0 720 470" aria-label="函数几何综合入口">
+            <line class="axis" x1="70" y1="380" x2="650" y2="380" />
+            <line class="axis" x1="120" y1="58" x2="120" y2="420" />
+            <path class="curve" d="M135 335 C230 130, 330 138, 396 221 C460 300, 540 330, 590 295" />
+            <line class="line-f" x1="132" y1="348" x2="590" y2="128" />
+            <circle class="point hot" cx="396" cy="221" r="15" />
+            <line class="dash" x1="396" y1="221" x2="396" y2="380" />
+            <line class="dash" x1="120" y1="221" x2="396" y2="221" />
+            <text class="label" x="410" y="210">P(x,y)</text>
+            <text class="formula" x="158" y="82">图形条件 → 坐标 / 方程 / 函数</text>
+            <text class="caption" x="118" y="438">函数几何：把几何关系翻译成式子</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="entry e1"><b>动点题</b><span>画出点从哪里走到哪里，再设变量。</span></div>
+        <div class="entry e2"><b>面积题</b><span>先找底和高，必要时割补。</span></div>
+        <div class="entry e3"><b>最值题</b><span>转成二次函数、最短路或三边关系。</span></div>
+        <div class="entry e4"><b>存在性问题</b><span>先定分类标准，避免漏情况。</span></div>
+        <div class="entry e5"><b>函数几何综合</b><span>把图形条件转成坐标、方程或函数关系。</span></div>
+      </div>
+    </div>
+
+    <style>
+      #scene-03-synthesis {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff;
+        position:relative; width:1920px; height:1080px; overflow:hidden; background:transparent;
+        font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      #scene-03-synthesis .panel {
+        position:absolute; inset:0; background:var(--bg); display:grid; grid-template-columns:860px 1fr; gap:52px; padding:58px 84px 86px;
+      }
+      #scene-03-synthesis .left {
+        background:var(--paper); border:5px solid var(--ink); border-radius:30px; box-shadow:14px 14px 0 var(--ink);
+        padding:34px 38px; display:flex; flex-direction:column; align-items:center; gap:26px; opacity:0; transform:translateX(-48px);
+      }
+      #scene-03-synthesis .badge {
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:50px; color:#fff; background:var(--blue);
+        padding:10px 42px; border:5px solid var(--ink); border-radius:24px;
+      }
+      #scene-03-synthesis .flow { display:flex; align-items:center; gap:12px; width:100%; justify-content:center; }
+      #scene-03-synthesis .node {
+        padding:12px 20px; border:4px solid var(--ink); border-radius:18px; font-size:28px; font-weight:900; background:#fff9c4;
+      }
+      #scene-03-synthesis .n2 { background:#eaf2ff; }
+      #scene-03-synthesis .n3 { background:#ecfdf5; }
+      #scene-03-synthesis .arrow { font-size:42px; font-weight:900; color:var(--pink); }
+      #scene-03-synthesis .diagram-board {
+        position:relative; width:720px; height:470px; background:#fbfdff; border:4px solid var(--ink); border-radius:24px; overflow:hidden;
+      }
+      #scene-03-synthesis .case { position:absolute; left:4px; top:4px; width:712px; height:462px; opacity:0; transform:translateX(36px); }
+      #scene-03-synthesis svg * { vector-effect:non-scaling-stroke; }
+      #scene-03-synthesis line, #scene-03-synthesis path, #scene-03-synthesis rect, #scene-03-synthesis polygon, #scene-03-synthesis circle {
+        stroke:var(--ink); stroke-width:5; stroke-linecap:round; stroke-linejoin:round;
+      }
+      #scene-03-synthesis .axis { stroke:#333; stroke-width:4; }
+      #scene-03-synthesis .shape { fill:#eaf2ff; stroke:var(--blue); stroke-width:6; }
+      #scene-03-synthesis .fill-area { fill:rgba(255, 20, 147, .18); stroke:var(--pink); stroke-width:4; }
+      #scene-03-synthesis .path, #scene-03-synthesis .dash { fill:none; stroke:var(--pink); stroke-width:6; stroke-dasharray:12 10; }
+      #scene-03-synthesis .point { fill:var(--green); }
+      #scene-03-synthesis .hot { fill:var(--pink); }
+      #scene-03-synthesis .base, #scene-03-synthesis .height, #scene-03-synthesis .short, #scene-03-synthesis .line-f { stroke:var(--blue); stroke-width:7; }
+      #scene-03-synthesis .right-angle { fill:none; stroke:var(--pink); stroke-width:6; }
+      #scene-03-synthesis .parabola, #scene-03-synthesis .curve { fill:none; stroke:var(--green); stroke-width:8; }
+      #scene-03-synthesis .mini { fill:#fffdf2; stroke:var(--ink); stroke-width:4; }
+      #scene-03-synthesis .mini-axis { stroke:#333; stroke-width:3.5; }
+      #scene-03-synthesis .mini-title { font-size:25px; fill:var(--blue); }
+      #scene-03-synthesis .mirror { stroke:#333; stroke-width:5; }
+      #scene-03-synthesis .reflect { fill:#fff; stroke:var(--pink); stroke-width:5; }
+      #scene-03-synthesis .straight { stroke:var(--green); stroke-width:7; }
+      #scene-03-synthesis .path-broken { fill:none; stroke:var(--blue); stroke-width:6; }
+      #scene-03-synthesis .tri-limit { fill:#eaf2ff; stroke:var(--blue); stroke-width:6; }
+      #scene-03-synthesis .tri-open { fill:none; stroke:var(--pink); stroke-width:6; stroke-dasharray:10 8; }
+      #scene-03-synthesis .ineq { font-size:23px; fill:#111; }
+      #scene-03-synthesis .table { fill:#fff9c4; }
+      #scene-03-synthesis .table-line { stroke:#333; stroke-width:4; }
+      #scene-03-synthesis text {
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-weight:700; fill:#111; stroke:none;
+      }
+      #scene-03-synthesis .label, #scene-03-synthesis .type { font-size:30px; }
+      #scene-03-synthesis .formula { font-size:34px; fill:var(--pink); }
+      #scene-03-synthesis .caption { font-size:30px; fill:#111; }
+      #scene-03-synthesis .right { display:grid; gap:18px; align-content:center; }
+      #scene-03-synthesis .entry {
+        background:var(--paper); border:5px solid var(--ink); border-radius:24px; box-shadow:10px 10px 0 var(--ink);
+        padding:22px 28px; opacity:0; transform:translateX(44px);
+      }
+      #scene-03-synthesis .entry b {
+        display:block; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:38px; color:var(--pink); margin-bottom:8px;
+      }
+      #scene-03-synthesis .entry span { font-size:28px; font-weight:900; color:#333; line-height:1.32; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const S = "#scene-03-synthesis";
+        const tl = gsap.timeline({ paused:true });
+
+        function activate(entry, diagram, at) {
+          tl.to(S + " .entry", { backgroundColor:"#ffffff", scale:1, duration:.18, ease:"power2.out" }, at)
+            .to(S + " ." + entry, { backgroundColor:"#ffe000", scale:1.03, duration:.22, ease:"back.out(1.6)" }, at + .02)
+            .to(S + " .case", { opacity:0, x:-36, duration:.32, ease:"power2.inOut" }, at)
+            .to(S + " ." + diagram, { opacity:1, x:0, duration:.48, ease:"back.out(1.5)" }, at + .12);
+        }
+
+        tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45, ease:"back.out(1.5)" }, 0)
+          .to(S + " .left", { opacity:1, x:0, duration:.6, ease:"back.out(1.7)" }, .35)
+          .from(S + " .node", { opacity:0, y:24, duration:.36, stagger:.28, ease:"back.out(1.7)" }, 1.1)
+          .to(S + " .entry", { opacity:1, x:0, duration:.42, stagger:.35, ease:"back.out(1.7)" }, 2.2);
+
+        activate("e1", "case-motion", 4.1);
+        tl.to(S + " .motion-marker", { x:322, y:-238, duration:3.8, ease:"none" }, 4.85);
+        activate("e2", "case-area", 12.6);
+        activate("e3", "case-extreme", 20.6);
+        activate("e4", "case-exist", 28.8);
+        activate("e5", "case-function", 36.3);
+        tl.to(S + " .case-function .hot", { scale:1.18, transformOrigin:"50% 50%", yoyo:true, repeat:2, duration:.45, ease:"sine.inOut" }, 37.55);
+
+        tl.to({}, { duration:.01 }, 44.256);
+        window.__timelines["scene-03-synthesis"] = tl;
+      })();
+    </script>
+  </div>
+</template>

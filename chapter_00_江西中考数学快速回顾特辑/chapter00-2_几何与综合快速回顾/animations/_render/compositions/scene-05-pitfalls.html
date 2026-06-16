@@ -1,0 +1,85 @@
+<template id="scene-05-pitfalls-template">
+  <div data-composition-id="scene-05-pitfalls" data-width="1920" data-height="1080" data-start="0" data-duration="23.736" data-track-index="0">
+    <div class="panel">
+      <div class="badge">最容易丢分的地方</div>
+      <div class="boards">
+        <section class="board geometry">
+          <h2>几何题</h2>
+          <ul>
+            <li>条件没有用完</li>
+            <li>辅助线没有目标</li>
+            <li>相似比例写反</li>
+            <li>半径和切线没连出来</li>
+          </ul>
+        </section>
+        <section class="board synthesis">
+          <h2>综合题</h2>
+          <ul>
+            <li>变量范围漏掉</li>
+            <li>分类讨论不全</li>
+            <li>最值条件没检查</li>
+            <li>单位和实际意义忘记回看</li>
+          </ul>
+        </section>
+      </div>
+      <div class="bottom">越到后面，越先写清：设什么、求什么、条件是什么。</div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-05-pitfalls"] {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff;
+        position:relative; width:1920px; height:1080px; overflow:hidden; background:transparent;
+        font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      [data-composition-id="scene-05-pitfalls"] .panel { position:absolute; inset:0; background:var(--bg); padding:60px 90px; }
+      [data-composition-id="scene-05-pitfalls"] .badge {
+        width:max-content; margin:0 auto 52px; padding:12px 48px; border:5px solid var(--ink);
+        border-radius:24px; background:var(--blue); color:#fff; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;
+        font-size:52px; letter-spacing:.1em; opacity:0;
+      }
+      [data-composition-id="scene-05-pitfalls"] .boards { display:grid; grid-template-columns:1fr 1fr; gap:52px; }
+      [data-composition-id="scene-05-pitfalls"] .board {
+        height:650px; background:var(--paper); border:5px solid var(--ink); border-radius:30px; box-shadow:14px 14px 0 var(--ink);
+        padding:42px 54px; opacity:0; transform:translateY(44px);
+      }
+      [data-composition-id="scene-05-pitfalls"] h2 {
+        margin:0 0 28px; width:max-content; padding:10px 32px; border:5px solid var(--ink); border-radius:20px;
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:54px; color:#fff;
+      }
+      [data-composition-id="scene-05-pitfalls"] .geometry h2 { background:var(--pink); }
+      [data-composition-id="scene-05-pitfalls"] .synthesis h2 { background:var(--green); }
+      [data-composition-id="scene-05-pitfalls"] ul { list-style:none; display:grid; gap:22px; padding:0; margin:0; }
+      [data-composition-id="scene-05-pitfalls"] li {
+        position:relative; padding:16px 22px 16px 64px; background:#fff9c4; border:4px solid var(--ink); border-radius:18px;
+        font-size:34px; font-weight:900; opacity:0; transform:translateX(-28px);
+      }
+      [data-composition-id="scene-05-pitfalls"] li::before {
+        content:"!"; position:absolute; left:18px; top:14px; width:34px; height:34px; display:grid; place-items:center;
+        border:3px solid var(--ink); border-radius:50%; background:var(--pink); color:#fff; font-family:"Fredoka",sans-serif;
+      }
+      [data-composition-id="scene-05-pitfalls"] .bottom {
+        position:absolute; left:250px; right:250px; bottom:58px; text-align:center; padding:20px 34px;
+        border:5px solid var(--ink); border-radius:24px; background:var(--yellow); box-shadow:12px 12px 0 var(--ink);
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:44px; opacity:0;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-05-pitfalls"]';
+        var tl = gsap.timeline({ paused:true });
+        tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45, ease:"back.out(1.5)" }, 0);
+        tl.fromTo(S + " .badge", { opacity:0, y:-28, scale:.75 }, { opacity:1, y:0, scale:1, duration:.45, ease:"back.out(1.9)" }, .35);
+        tl.to(S + " .geometry", { opacity:1, y:0, duration:.55, ease:"back.out(1.7)" }, 3.55);
+        tl.to(S + " .geometry li", { opacity:1, x:0, duration:.34, stagger:.75, ease:"back.out(1.7)" }, 4.15);
+        tl.to(S + " .synthesis", { opacity:1, y:0, duration:.55, ease:"back.out(1.7)" }, 10.85);
+        tl.to(S + " .synthesis li", { opacity:1, x:0, duration:.34, stagger:.65, ease:"back.out(1.7)" }, 11.05);
+        tl.to(S + " .bottom", { opacity:1, y:-8, duration:.5, ease:"back.out(1.8)" }, 17.6);
+        tl.to({}, { duration:.01 }, 23.736);
+        window.__timelines["scene-05-pitfalls"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,70 @@
+<template id="scene-06-outro-template">
+  <div data-composition-id="scene-06-outro" data-width="1920" data-height="1080" data-start="0" data-duration="15.864" data-track-index="0">
+    <div class="panel">
+      <div class="stage-block"></div>
+      <div class="inner">
+        <div class="badge"><span></span>本节完<span></span></div>
+        <h1>
+          <span class="line">条件通向方法</span>
+          <span class="line sub">方法生成关系式</span>
+        </h1>
+        <div class="stroke"></div>
+        <p>写出关键关系，就是在为压轴题争取步骤分。</p>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="scene-06-outro"] {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff;
+        position:relative; width:1920px; height:1080px; overflow:hidden; background:var(--bg);
+        font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      [data-composition-id="scene-06-outro"] .panel { position:absolute; inset:0; display:grid; place-items:center; }
+      [data-composition-id="scene-06-outro"] .stage-block {
+        position:absolute; inset:60px; background:var(--paper); border:6px solid var(--ink);
+        border-radius:36px; box-shadow:18px 18px 0 var(--ink); opacity:0;
+      }
+      [data-composition-id="scene-06-outro"] .inner {
+        position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:32px;
+      }
+      [data-composition-id="scene-06-outro"] .badge {
+        display:flex; align-items:center; gap:18px; padding:16px 40px; border:5px solid var(--ink);
+        border-radius:999px; background:var(--green); color:#fff;
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:44px; letter-spacing:.16em; opacity:0;
+      }
+      [data-composition-id="scene-06-outro"] .badge span {
+        width:18px; height:18px; border-radius:50%; background:var(--yellow); border:3px solid var(--ink);
+      }
+      [data-composition-id="scene-06-outro"] h1 {
+        margin:0; display:flex; flex-direction:column; align-items:center; gap:10px;
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:92px; line-height:1.15;
+      }
+      [data-composition-id="scene-06-outro"] .line { opacity:0; transform:translateY(34px); }
+      [data-composition-id="scene-06-outro"] .sub { color:var(--blue); }
+      [data-composition-id="scene-06-outro"] .stroke {
+        width:620px; height:16px; background:var(--yellow); border:4px solid var(--ink);
+        border-radius:10px; transform:scaleX(0); transform-origin:left center;
+      }
+      [data-composition-id="scene-06-outro"] p {
+        margin:0; font-size:42px; font-weight:900; color:#333; opacity:0;
+      }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var S = '[data-composition-id="scene-06-outro"]';
+        var tl = gsap.timeline({ paused:true, defaults:{ ease:"back.out(1.8)" } });
+        tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45 }, 0);
+        tl.to(S + " .stage-block", { opacity:1, duration:.55, ease:"power2.out" }, .05);
+        tl.fromTo(S + " .badge", { opacity:0, y:-48, scale:.45, rotate:-8 }, { opacity:1, y:0, scale:1, rotate:0, duration:.5 }, .22);
+        tl.to(S + " .line", { opacity:1, y:0, duration:.42, stagger:.2 }, .7);
+        tl.to(S + " .stroke", { scaleX:1, duration:.38, ease:"power3.out" }, 1.55);
+        tl.to(S + " p", { opacity:1, y:-6, duration:.4 }, 2.1);
+        tl.to({}, { duration:.01 }, 15.864);
+        window.__timelines["scene-06-outro"] = tl;
+      })();
+    </script>
+  </div>
+</template>

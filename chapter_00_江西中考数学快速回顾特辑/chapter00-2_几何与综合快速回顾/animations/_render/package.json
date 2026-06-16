@@ -1,0 +1,12 @@
+{
+  "name": "ch00-geometry-synthesis",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.56 preview",
+    "check": "npx --yes hyperframes@0.6.56 lint && npx --yes hyperframes@0.6.56 validate && npx --yes hyperframes@0.6.56 inspect",
+    "render": "npx --yes hyperframes@0.6.56 render",
+    "publish": "npx --yes hyperframes@0.6.56 publish"
+  }
+}
+

@@ -1,0 +1,271 @@
+<template id="scene-01-basics-template">
+  <div id="scene-01-basics" data-composition-id="scene-01-basics" data-width="1920" data-height="1080" data-start="0" data-duration="55.272" data-track-index="0">
+    <div class="panel">
+      <div class="badge">几何基础：先看对象</div>
+
+      <div class="overview">
+        <section class="overview-card tri-card">
+          <div class="icon">
+            <svg class="overview-symbol" viewBox="0 0 120 120" aria-hidden="true">
+              <polygon points="60,16 18,100 102,100" />
+            </svg>
+          </div>
+          <h2>三角形</h2>
+          <p>边角、直角、平行、比例</p>
+        </section>
+        <section class="overview-card quad-card">
+          <div class="icon">
+            <svg class="overview-symbol" viewBox="0 0 120 120" aria-hidden="true">
+              <polygon points="34,30 104,30 86,92 16,92" />
+            </svg>
+          </div>
+          <h2>四边形</h2>
+          <p>类型、性质、判定、面积</p>
+        </section>
+        <section class="overview-card circle-card">
+          <div class="icon">
+            <svg class="overview-symbol" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="39" />
+            </svg>
+          </div>
+          <h2>圆</h2>
+          <p>圆心、垂径、角、切线</p>
+        </section>
+      </div>
+
+      <div class="lesson">
+        <div class="stage">
+          <section class="visual visual-triangle">
+            <svg viewBox="0 0 880 600" aria-label="三角形关系图">
+              <polygon class="tri-shape" points="180,480 700,480 470,110" />
+              <line class="height tri-detail" x1="470" y1="110" x2="470" y2="480" />
+              <path class="right-mark tri-detail" d="M470 440 L510 440 L510 480" />
+              <line class="parallel tri-detail" x1="313" y1="310" x2="594" y2="310" />
+              <circle class="parallel-point tri-detail" cx="313" cy="310" r="9" />
+              <circle class="parallel-point tri-detail" cx="594" cy="310" r="9" />
+              <text x="136" y="520">A</text>
+              <text x="714" y="520">B</text>
+              <text x="486" y="100">C</text>
+              <text class="point-label tri-detail" x="288" y="300">D</text>
+              <text class="point-label tri-detail" x="606" y="300">E</text>
+              <text class="label tri-label" x="506" y="420">直角 → 勾股 / 斜边中线</text>
+              <text class="label tri-label" x="242" y="276">DE ∥ AB → 相似</text>
+              <text class="label tri-label" x="206" y="170">边角相等 → 全等</text>
+            </svg>
+          </section>
+
+          <section class="visual visual-quad">
+            <svg viewBox="0 0 880 600" aria-label="四边形分类图">
+              <polygon class="quad-shape" points="190,230 650,230 720,490 260,490" />
+              <line class="quad-detail" x1="190" y1="230" x2="720" y2="490" />
+              <line class="quad-detail" x1="650" y1="230" x2="260" y2="490" />
+              <rect class="quad-kind kind-rect" x="130" y="72" width="180" height="86" rx="16" />
+              <polygon class="quad-kind kind-rhombus" points="450,70 540,115 450,160 360,115" />
+              <rect class="quad-kind kind-square" x="632" y="72" width="86" height="86" rx="10" />
+              <line class="height-line quad-detail" x1="260" y1="490" x2="260" y2="230" />
+              <path class="right-mark quad-detail" d="M260 450 L300 450 L300 490" />
+              <text class="label quad-label" x="210" y="548">面积先找底和高</text>
+              <text class="label quad-label" x="176" y="58">矩形：直角</text>
+              <text class="label quad-label" x="386" y="58">菱形：等边</text>
+              <text class="label quad-label" x="592" y="58">正方形：都要</text>
+              <text class="label quad-label quad-summary" x="252" y="205">先分清类型，再用性质和判定</text>
+            </svg>
+          </section>
+
+          <section class="visual visual-circle">
+            <svg viewBox="0 0 880 600" aria-label="圆的核心关系图">
+              <circle class="circle-shape" cx="430" cy="305" r="205" />
+              <circle class="center circle-part" cx="430" cy="305" r="10" />
+              <text class="label circle-part" x="446" y="318">O</text>
+              <line class="radius circle-part" x1="430" y1="305" x2="623" y2="235" />
+
+              <line class="chord circle-diameter" x1="239" y1="380" x2="621" y2="380" />
+              <line class="diameter circle-diameter" x1="430" y1="100" x2="430" y2="510" />
+              <path class="right-mark circle-diameter" d="M430 340 L470 340 L470 380" />
+              <line class="tick circle-diameter" x1="335" y1="365" x2="335" y2="395" />
+              <line class="tick circle-diameter" x1="525" y1="365" x2="525" y2="395" />
+              <text class="label circle-diameter" x="116" y="552">垂径定理：垂直于弦 → 平分弦和弧</text>
+
+              <path class="arc subtended-arc circle-angle circle-same-angle" d="M264 184 A205 205 0 0 1 623 235" />
+              <circle class="arc-point circle-angle circle-same-angle" cx="264" cy="184" r="8" />
+              <circle class="arc-point circle-angle circle-same-angle" cx="623" cy="235" r="8" />
+              <line class="angle-line circle-angle circle-same-angle" x1="328" y1="483" x2="623" y2="235" />
+              <line class="angle-line circle-angle circle-same-angle" x1="328" y1="483" x2="264" y2="184" />
+              <line class="angle-line circle-angle circle-same-angle" x1="560" y1="464" x2="623" y2="235" />
+              <line class="angle-line circle-angle circle-same-angle" x1="560" y1="464" x2="264" y2="184" />
+              <path class="arc edge-arc circle-angle circle-same-angle" d="M317 432 A52 52 0 0 1 368 450" />
+              <path class="arc edge-arc circle-angle circle-same-angle" d="M529 428 A48 48 0 0 1 573 420" />
+              <text class="label circle-angle circle-same-angle" x="248" y="542">圆周角①</text>
+              <text class="label circle-angle circle-same-angle" x="528" y="532">圆周角②</text>
+              <text class="formula circle-angle circle-same-angle" x="98" y="88">同弧圆周角相等</text>
+
+              <line class="angle-line circle-angle circle-center-angle" x1="430" y1="305" x2="623" y2="235" />
+              <line class="angle-line circle-angle circle-center-angle" x1="430" y1="305" x2="264" y2="184" />
+              <path class="arc center-arc circle-angle circle-center-angle" d="M507 277 A82 82 0 0 0 364 257" />
+              <text class="label circle-angle circle-center-angle" x="528" y="190">圆心角</text>
+              <text class="formula circle-angle circle-center-angle" x="408" y="92">圆心角 = 2 × 圆周角</text>
+
+              <line class="tangent circle-tangent" x1="565" y1="75" x2="681" y2="395" />
+              <line class="radius-to-tangent circle-tangent" x1="430" y1="305" x2="623" y2="235" />
+              <path class="right-mark circle-tangent" d="M591 247 L603 279 L635 267" />
+              <text class="label circle-tangent" x="120" y="86">切线题：半径连切点，再证垂直</text>
+            </svg>
+          </section>
+        </div>
+
+        <div class="notes">
+          <section class="note note-triangle">
+            <b>三角形</b>
+            <span>全等用来得到相等的边和角；相似用来得到比例；直角常把勾股和斜边中线带出来。</span>
+          </section>
+          <section class="note note-quad">
+            <b>四边形</b>
+            <span>先判断是哪一类，再看它给了哪些性质或判定条件。</span>
+          </section>
+          <section class="note note-circle">
+            <b>圆</b>
+            <span>先连圆心。垂径、圆心角、圆周角、切线都从半径关系开始看。</span>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      #scene-01-basics {
+        --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
+        --yellow:#ffe000; --green:#009b77; --paper:#fff; --soft:#eaf2ff;
+        position:relative; width:1920px; height:1080px; overflow:hidden; background:transparent;
+        font-family:"Nunito","Noto Sans SC",sans-serif; color:var(--ink);
+      }
+      #scene-01-basics .panel { position:absolute; inset:0; background:var(--bg); padding:52px 82px; }
+      #scene-01-basics .badge {
+        width:max-content; margin:0 auto 34px; padding:12px 48px; border:5px solid var(--ink);
+        border-radius:24px; background:var(--blue); color:#fff; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif;
+        font-size:52px; letter-spacing:0; opacity:0;
+      }
+      #scene-01-basics .overview {
+        position:absolute; left:92px; right:92px; top:178px; display:grid; grid-template-columns:repeat(3,1fr); gap:34px;
+      }
+      #scene-01-basics .overview-card {
+        height:650px; background:var(--paper); border:5px solid var(--ink); border-radius:28px; box-shadow:14px 14px 0 var(--ink);
+        display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; opacity:0; transform:translateY(48px);
+      }
+      #scene-01-basics .overview-card .icon {
+        width:210px; height:210px; display:grid; place-items:center; border:6px solid var(--ink); border-radius:28px;
+        background:var(--yellow); color:var(--blue);
+      }
+      #scene-01-basics .overview-symbol {
+        width:128px; height:128px; overflow:visible;
+      }
+      #scene-01-basics .overview-symbol * {
+        fill:none; stroke:currentColor; stroke-width:10; stroke-linecap:round; stroke-linejoin:round;
+      }
+      #scene-01-basics .circle-card .icon { background:#ecfdf5; color:var(--green); }
+      #scene-01-basics .tri-card .icon { background:#eaf2ff; }
+      #scene-01-basics .quad-card .icon { background:#fff5c2; color:#b45309; }
+      #scene-01-basics h2 {
+        margin:0; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:62px; color:var(--blue);
+      }
+      #scene-01-basics p { margin:0; font-size:34px; font-weight:900; text-align:center; color:#333; }
+      #scene-01-basics .lesson {
+        position:absolute; left:82px; right:82px; top:158px; bottom:98px; display:grid; grid-template-columns:minmax(0, 1fr) 520px; gap:34px;
+        opacity:0; pointer-events:none;
+      }
+      #scene-01-basics .stage, #scene-01-basics .notes {
+        background:var(--paper); border:5px solid var(--ink); border-radius:28px; box-shadow:14px 14px 0 var(--ink);
+      }
+      #scene-01-basics .stage { position:relative; overflow:hidden; }
+      #scene-01-basics .visual { position:absolute; inset:0; display:grid; place-items:center; opacity:0; }
+      #scene-01-basics svg { width:92%; height:88%; overflow:visible; }
+      #scene-01-basics svg * { vector-effect:non-scaling-stroke; }
+      #scene-01-basics .tri-shape, #scene-01-basics .quad-shape, #scene-01-basics .circle-shape {
+        fill:#f8fbff; stroke:var(--blue); stroke-width:8; stroke-linejoin:round;
+      }
+      #scene-01-basics .quad-shape { fill:#fff8c8; stroke:#b45309; }
+      #scene-01-basics .circle-shape { fill:#f0fff8; stroke:var(--green); }
+      #scene-01-basics line, #scene-01-basics path { fill:none; stroke:var(--ink); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; }
+      #scene-01-basics .height, #scene-01-basics .parallel, #scene-01-basics .diameter, #scene-01-basics .radius-to-tangent { stroke:var(--pink); }
+      #scene-01-basics .chord, #scene-01-basics .radius, #scene-01-basics .angle-line { stroke:var(--blue); }
+      #scene-01-basics .subtended-arc { stroke:var(--green); stroke-width:8; }
+      #scene-01-basics .tangent { stroke:var(--green); stroke-width:8; }
+      #scene-01-basics .arc { stroke:var(--pink); stroke-width:7; }
+      #scene-01-basics .arc-point { fill:var(--pink); stroke:var(--ink); stroke-width:4; }
+      #scene-01-basics .quad-kind { fill:#eaf2ff; stroke:var(--ink); stroke-width:5; }
+      #scene-01-basics .kind-rhombus { fill:#ecfdf5; }
+      #scene-01-basics .kind-square { fill:#ffebf7; }
+      #scene-01-basics .label, #scene-01-basics .formula, #scene-01-basics text {
+        font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:32px; fill:#111; stroke:none; font-weight:700;
+      }
+      #scene-01-basics .formula { font-size:40px; fill:var(--pink); }
+      #scene-01-basics .parallel-point { fill:var(--pink); stroke:var(--ink); stroke-width:4; }
+      #scene-01-basics .point-label {
+        font-family:"Nunito","Noto Sans SC",sans-serif; font-size:28px; fill:var(--pink); font-weight:900;
+      }
+      #scene-01-basics .quad-summary { font-size:30px; }
+      #scene-01-basics .tri-detail, #scene-01-basics .tri-label,
+      #scene-01-basics .quad-detail, #scene-01-basics .quad-label, #scene-01-basics .quad-kind,
+      #scene-01-basics .circle-part, #scene-01-basics .circle-diameter,
+      #scene-01-basics .circle-angle, #scene-01-basics .circle-tangent {
+        opacity:0;
+      }
+      #scene-01-basics .notes {
+        display:grid; gap:18px; align-content:center; padding:28px;
+      }
+      #scene-01-basics .note {
+        min-height:188px; background:#fbfdff; border:4px solid var(--ink); border-radius:22px; padding:24px 26px;
+        opacity:.35; transform:scale(.96); box-shadow:8px 8px 0 rgba(26,26,26,.25);
+      }
+      #scene-01-basics .note b {
+        display:block; margin-bottom:12px; font-family:"ZCOOL KuaiLe","Noto Sans SC",sans-serif; font-size:44px; color:var(--pink);
+      }
+      #scene-01-basics .note span { display:block; font-size:29px; font-weight:900; line-height:1.35; color:#252525; }
+    </style>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const S = "#scene-01-basics";
+        const tl = gsap.timeline({ paused:true });
+
+        tl.addLabel("intro", 0)
+          .from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45, ease:"back.out(1.5)" }, 0)
+          .fromTo(S + " .badge", { opacity:0, y:-26, scale:.75 }, { opacity:1, y:0, scale:1, duration:.45, ease:"back.out(1.9)" }, .35)
+          .to(S + " .overview-card", { opacity:1, y:0, duration:.58, stagger:.28, ease:"back.out(1.7)" }, 1.05);
+
+        tl.addLabel("triangle", 3.2)
+          .to(S + " .overview", { opacity:0, scale:.96, duration:.4, ease:"power2.inOut" }, "triangle")
+          .to(S + " .lesson", { opacity:1, duration:.45 }, "triangle+=.05")
+          .to(S + " .visual-triangle", { opacity:1, duration:.4 }, "triangle+=.18")
+          .to(S + " .note-triangle", { opacity:1, scale:1, duration:.4, ease:"back.out(1.7)" }, "triangle+=.35")
+          .from(S + " .tri-shape", { opacity:0, scale:.92, transformOrigin:"50% 50%", duration:.8, ease:"back.out(1.5)" }, "triangle+=.45")
+          .to(S + " .tri-detail", { opacity:1, duration:.35, stagger:.45 }, "triangle+=2.4")
+          .to(S + " .tri-label", { opacity:1, duration:.35, stagger:.8 }, "triangle+=4.0");
+
+        tl.addLabel("quad", 18.1)
+          .to(S + " .visual-triangle", { opacity:0, x:-40, duration:.35, ease:"power2.in" }, "quad")
+          .to(S + " .note-triangle", { opacity:.35, scale:.96, duration:.3 }, "quad")
+          .to(S + " .visual-quad", { opacity:1, x:0, duration:.45, ease:"power2.out" }, "quad+=.2")
+          .to(S + " .note-quad", { opacity:1, scale:1, duration:.4, ease:"back.out(1.7)" }, "quad+=.35")
+          .to(S + " .quad-detail", { opacity:1, duration:.35, stagger:.45 }, "quad+=1.2")
+          .to(S + " .quad-kind", { opacity:1, duration:.35, stagger:.35 }, "quad+=3.1")
+          .to(S + " .quad-label", { opacity:1, duration:.35, stagger:.7 }, "quad+=4.5");
+
+        tl.addLabel("circle", 34.0)
+          .to(S + " .visual-quad", { opacity:0, x:-40, duration:.35, ease:"power2.in" }, "circle")
+          .to(S + " .note-quad", { opacity:.35, scale:.96, duration:.3 }, "circle")
+          .to(S + " .visual-circle", { opacity:1, x:0, duration:.45, ease:"power2.out" }, "circle+=.2")
+          .to(S + " .note-circle", { opacity:1, scale:1, duration:.4, ease:"back.out(1.7)" }, "circle+=.35")
+          .to(S + " .circle-part", { opacity:1, duration:.3, stagger:.25 }, "circle+=1.2")
+          .to(S + " .circle-diameter", { opacity:1, duration:.35, stagger:.22 }, "circle+=3.0")
+          .to(S + " .circle-diameter", { opacity:0, duration:.25 }, "circle+=8.7")
+          .to(S + " .circle-same-angle", { opacity:1, duration:.35, stagger:.04 }, "circle+=9.1")
+          .to(S + " .circle-center-angle", { opacity:1, duration:.35, stagger:.06 }, "circle+=12.3")
+          .to(S + " .circle-angle", { opacity:0, duration:.25 }, "circle+=15.95")
+          .to(S + " .circle-tangent", { opacity:1, duration:.35, stagger:.2 }, "circle+=16.35");
+
+        tl.to({}, { duration:.01 }, 55.272);
+        window.__timelines["scene-01-basics"] = tl;
+      })();
+    </script>
+  </div>
+</template>

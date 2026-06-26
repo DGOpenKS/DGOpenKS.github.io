@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-01 集合 · DGOpenKS</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f4efe7;
+  --surface:#fffaf2;
+  --surface-2:#f8f0e4;
+  --ink:#14211d;
+  --muted:#687266;
+  --soft:#958a7a;
+  --line:#ded2bf;
+  --object:#0f766e;
+  --logic:#4f46e5;
+  --range:#b7791f;
+  --good:#2f855a;
+  --warn:#c2410c;
+  --radius:14px;
+  --radius-lg:24px;
+  --shadow:0 22px 60px rgba(45,34,18,.12);
+  --shadow-soft:0 10px 28px rgba(45,34,18,.08);
+  --font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    color-scheme:dark;
+    --bg:#101815;
+    --surface:#17231f;
+    --surface-2:#111d19;
+    --ink:#f6eddc;
+    --muted:#b9ad98;
+    --soft:#857c6e;
+    --line:#314039;
+    --object:#5eead4;
+    --logic:#c4b5fd;
+    --range:#f6c35b;
+    --good:#34d399;
+    --warn:#fb923c;
+    --shadow:0 20px 60px rgba(0,0,0,.34);
+    --shadow-soft:0 8px 28px rgba(0,0,0,.28);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#ede5d6 0%,var(--bg) 38%,var(--bg));color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}
+.topbar-inner{max-width:1120px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--object);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:800;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.nav-pill:hover,.nav-pill:focus-visible{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent);outline:0}
+.hero{max-width:1120px;margin:0 auto;padding:72px 22px 46px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.86fr);gap:36px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--range);font-size:.78rem;font-weight:900;text-transform:uppercase;background:color-mix(in srgb,var(--range) 12%,transparent);border:1px solid color-mix(in srgb,var(--range) 24%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+h1{font-size:4rem;line-height:1.05;margin:0 0 18px;font-weight:900;letter-spacing:0}
+.lead{font-size:1.13rem;color:var(--muted);max-width:650px;margin:0 0 24px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:900;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .12s var(--ease),border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.btn:hover,.btn:focus-visible{transform:translateY(-1px);border-color:color-mix(in srgb,var(--object) 36%,var(--line));color:var(--object);outline:0}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.hero-visual{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border:1px solid color-mix(in srgb,var(--range) 32%,#17342d);border-radius:28px;box-shadow:var(--shadow);padding:20px;overflow:hidden}
+.set-board{min-height:360px;border-radius:20px;position:relative;background:radial-gradient(circle at 54% 45%,rgba(246,195,91,.18),transparent 34%),linear-gradient(rgba(255,250,240,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,250,240,.05) 1px,transparent 1px);background-size:auto,38px 38px,38px 38px}
+.set-board svg{position:absolute;inset:0;width:100%;height:100%}
+.set-note{position:absolute;left:22px;right:22px;bottom:18px;border:1px solid rgba(255,250,240,.18);background:rgba(255,250,240,.09);backdrop-filter:blur(10px);border-radius:16px;padding:14px}
+.set-note b{color:#f6c35b}
+main{max-width:1120px;margin:0 auto;padding:8px 22px 86px}
+.stage{display:grid;grid-template-columns:150px minmax(0,1fr);gap:26px;padding:48px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}
+.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.8rem;font-weight:900}
+.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}
+.stage-body{min-width:0}
+.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:2.25rem;line-height:1.18;margin:0 0 14px}
+h3{font-size:1.1rem;margin:0 0 10px}
+p{margin:0 0 12px}
+.subtle{color:var(--muted)}
+.panel,.concept-card,.example-card,.mistake-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}
+.panel.highlight{border-color:color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--object) 5%,var(--surface))}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.concept-card b,.example-card b,.mistake-card b{display:block;color:var(--object);margin-bottom:8px}
+.concept-card p,.example-card p,.mistake-card p{color:var(--muted);font-size:.94rem}
+.formula{font-family:var(--mono);font-weight:900;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0;overflow-x:auto}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tag{border:1px solid var(--line);border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:.76rem;font-weight:900;padding:5px 10px}
+.tag.object{color:var(--object);border-color:color-mix(in srgb,var(--object) 26%,var(--line))}
+.tag.logic{color:var(--logic);border-color:color-mix(in srgb,var(--logic) 26%,var(--line))}
+.tag.range{color:var(--range);border-color:color-mix(in srgb,var(--range) 30%,var(--line))}
+.diagram-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-soft)}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{margin-top:10px;color:var(--muted);font-size:.9rem}
+.numberline-label{font-size:12px;fill:currentColor}
+.summary{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border-radius:24px;border:1px solid color-mix(in srgb,var(--range) 30%,#17342d);box-shadow:var(--shadow);padding:26px}
+.summary .subtle{color:#d8ccb6}
+.footer{border-top:1px solid var(--line);padding:30px 22px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:920px){
+  .hero,.stage,.grid-2,.diagram-wrap{grid-template-columns:1fr}
+  h1{font-size:3rem}
+  h2{font-size:1.85rem}
+  .stage-marker{position:static;display:flex;align-items:center;gap:10px}
+  .stage-marker span{margin-bottom:0}
+}
+@media(max-width:680px){
+  .hero{padding-top:42px}
+  h1{font-size:2.25rem}
+  h2{font-size:1.55rem}
+  .grid-3{grid-template-columns:1fr}
+  .panel,.concept-card,.example-card,.mistake-card{padding:16px}
+  .hero-visual{padding:14px;border-radius:22px}
+  .set-board{min-height:320px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<nav class="topbar" aria-label="页面导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../../index.html">DGOpenKS</a>
+    <a class="nav-pill" href="#object">对象</a>
+    <a class="nav-pill" href="#relations">关系</a>
+    <a class="nav-pill" href="#operations">运算</a>
+    <a class="nav-pill" href="#examples">例题</a>
+    <a class="nav-pill" href="#mistakes">易错点</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">A-01 · 集合</div>
+    <h1>先把对象在哪个范围里说清楚。</h1>
+    <p class="lead">集合不是一堆新符号，而是高中数学正式开始时最先要建立的语言：看见一个对象，判断它是否属于某个范围；看见两个条件，判断它们得到的范围有什么关系。</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#object">开始学习</a>
+      <a class="btn" href="../../../index.html">返回首页</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-label="集合范围示意">
+    <div class="set-board">
+      <svg viewBox="0 0 420 360" role="img" aria-label="集合、元素、交集和数轴范围的示意图">
+        <rect x="34" y="34" width="352" height="208" rx="22" fill="rgba(255,250,240,.05)" stroke="rgba(255,250,240,.26)"/>
+        <text x="52" y="66" fill="#f6c35b" font-size="18" font-weight="800">全集 U</text>
+        <circle cx="166" cy="144" r="82" fill="rgba(94,234,212,.18)" stroke="#5eead4" stroke-width="2"/>
+        <circle cx="252" cy="144" r="82" fill="rgba(196,181,253,.16)" stroke="#c4b5fd" stroke-width="2"/>
+        <text x="112" y="128" fill="#fffaf0" font-size="20" font-weight="900">A</text>
+        <text x="294" y="128" fill="#fffaf0" font-size="20" font-weight="900">B</text>
+        <text x="196" y="152" fill="#f6c35b" font-size="18" font-weight="900">A∩B</text>
+        <circle cx="130" cy="168" r="5" fill="#5eead4"/>
+        <text x="114" y="193" fill="#fffaf0" font-size="14">3∈A</text>
+        <circle cx="333" cy="78" r="5" fill="#fb923c"/>
+        <text x="302" y="100" fill="#fffaf0" font-size="14">4∉A</text>
+        <line x1="72" y1="292" x2="348" y2="292" stroke="#fffaf0" stroke-width="3" stroke-linecap="round"/>
+        <line x1="210" y1="292" x2="348" y2="292" stroke="#5eead4" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="210" cy="292" r="8" fill="#17342d" stroke="#5eead4" stroke-width="4"/>
+        <text x="203" y="322" fill="#fffaf0" font-size="14">2</text>
+        <text x="250" y="270" fill="#f6c35b" font-size="16" font-weight="900">x &gt; 2</text>
+      </svg>
+      <div class="set-note"><b>要观察的事：</b>一个符号常常在问范围。元素在不在、集合包不包、条件有没有重合，后面都会反复用到。</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="stage" id="object">
+    <aside class="stage-marker"><span>1</span>Object</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">为什么从集合开始</div>
+      <h2>高中数学先问：我们正在讨论哪些对象？</h2>
+      <p class="subtle">方程的解、不等式的解集、函数的定义域、概率中的事件，都离不开“范围”。集合就是把对象和范围说清楚的语言。</p>
+      <div class="panel highlight">
+        <p>比如 $A=\{1,3,5,7\}$，它不是单纯写了四个数，而是在规定一个范围：$3\in A$，$4\notin A$。属于和不属于，判断的是“元素和集合”的关系。</p>
+      </div>
+      <div class="tag-row" aria-label="常用数集">
+        <span class="tag object">$\mathbb{N}$ 自然数集</span>
+        <span class="tag object">$\mathbb{Z}$ 整数集</span>
+        <span class="tag object">$\mathbb{Q}$ 有理数集</span>
+        <span class="tag object">$\mathbb{R}$ 实数集</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <aside class="stage-marker"><span>2</span>Represent</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">三种表示</div>
+      <h2>写法可以不同，范围必须清楚。</h2>
+      <div class="grid-3">
+        <div class="concept-card">
+          <b>列举法</b>
+          <p>直接把元素写出来，例如 $A=\{2,4,6,8\}$。适合元素不多、可以写全的集合。</p>
+        </div>
+        <div class="concept-card">
+          <b>描述法</b>
+          <p>用条件说明元素满足什么要求，例如 $\{x\in\mathbb{N}\mid x&lt;10,\ x\text{ 是偶数}\}$。</p>
+        </div>
+        <div class="concept-card">
+          <b>图示法</b>
+          <p>Venn 图看重合与包含，数轴看实数范围。图帮助判断，条件负责说清对象。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="relations">
+    <aside class="stage-marker"><span>3</span>Relation</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">集合之间的关系</div>
+      <h2>元素用 $\in$，集合之间看包含和相等。</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>子集与真子集</h3>
+          <p>如果 $A$ 中每个元素都在 $B$ 中，就记作 $A\subseteq B$。如果 $B$ 还多出至少一个元素，就记作 $A\subsetneqq B$。</p>
+          <div class="formula">A ⊆ B：A 的元素没有跑出 B</div>
+        </div>
+        <div class="panel">
+          <h3>空集、全集与相等</h3>
+          <p>$\varnothing$ 表示没有任何元素，且是任何集合的子集。补集要先确定全集 $U$。两个集合相等，就是元素完全一样。</p>
+          <div class="formula">A = B ⇔ A ⊆ B 且 B ⊆ A</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="operations">
+    <aside class="stage-marker"><span>4</span>Operate</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">范围怎样组合</div>
+      <h2>交集、并集、补集，其实是在说条件怎样合成。</h2>
+      <div class="diagram-wrap">
+        <figure class="diagram">
+          <svg viewBox="0 0 420 240" role="img" aria-label="Venn 图显示交集、并集和补集">
+            <rect x="34" y="28" width="352" height="184" rx="18" fill="none" stroke="currentColor" opacity=".22"/>
+            <circle cx="170" cy="122" r="72" fill="rgba(15,118,110,.18)" stroke="var(--object)" stroke-width="3"/>
+            <circle cx="246" cy="122" r="72" fill="rgba(79,70,229,.16)" stroke="var(--logic)" stroke-width="3"/>
+            <path d="M208 60a72 72 0 0 1 0 124a72 72 0 0 1 0-124z" fill="rgba(183,121,31,.36)"/>
+            <text x="132" y="116" fill="currentColor" font-size="20" font-weight="900">A</text>
+            <text x="280" y="116" fill="currentColor" font-size="20" font-weight="900">B</text>
+            <text x="190" y="132" fill="currentColor" font-size="18" font-weight="900">A∩B</text>
+            <text x="50" y="58" fill="currentColor" font-size="16" font-weight="900">U</text>
+          </svg>
+          <figcaption>Venn 图适合看“同时满足”“至少满足一个”“在全集中排除某部分”。</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 420 240" role="img" aria-label="数轴显示不等式解集 x 大于 2">
+            <line x1="46" y1="124" x2="374" y2="124" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <line x1="218" y1="124" x2="374" y2="124" stroke="var(--object)" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="218" cy="124" r="10" fill="var(--surface)" stroke="var(--object)" stroke-width="4"/>
+            <line x1="218" y1="104" x2="218" y2="144" stroke="currentColor" opacity=".25"/>
+            <text class="numberline-label" x="212" y="172">2</text>
+            <text x="244" y="92" fill="var(--range)" font-size="18" font-weight="900">x &gt; 2</text>
+            <text x="96" y="92" fill="currentColor" opacity=".58" font-size="14">不属于解集</text>
+            <text x="262" y="148" fill="currentColor" opacity=".58" font-size="14">属于解集</text>
+          </svg>
+          <figcaption>数轴适合看实数范围。端点是否取到，由不等号决定。</figcaption>
+        </figure>
+      </div>
+      <div class="grid-3" style="margin-top:16px">
+        <div class="concept-card"><b>$A\cap B$</b><p>同时属于 $A$ 和 $B$。对应“且”。</p></div>
+        <div class="concept-card"><b>$A\cup B$</b><p>至少属于其中一个。对应“或”。</p></div>
+        <div class="concept-card"><b>$\complement_U A$</b><p>在全集 $U$ 中，但不属于 $A$。对应“非”。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <aside class="stage-marker"><span>5</span>Range</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">连接不等式</div>
+      <h2>解不等式，最后得到的是一个集合。</h2>
+      <p class="subtle">$x+1&gt;3$ 解得 $x&gt;2$，这句话表示所有大于 $2$ 的实数构成一个解集：$\{x\in\mathbb{R}\mid x&gt;2\}$。</p>
+      <div class="panel">
+        <h3>参数问题的入口</h3>
+        <p>设 $A=\{x\in\mathbb{R}\mid x&gt;2\}$，$B=\{x\in\mathbb{R}\mid x&gt;a\}$。如果 $B\subseteq A$，那么 $B$ 这条射线不能伸到 $2$ 的左边，所以需要 $a\ge 2$。</p>
+        <p class="subtle">这里先不展开高难度参数题，只抓住一件事：参数常常是在调集合的边界。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="examples">
+    <aside class="stage-marker"><span>6</span>Examples</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">基础例题</div>
+      <h2>先练判断，再练计算。</h2>
+      <div class="grid-3">
+        <div class="example-card">
+          <b>例 1：属于吗</b>
+          <p>设 $A=\{1,3,5,7\}$。$3\in A$，$4\notin A$。这里判断的是元素与集合的关系。</p>
+        </div>
+        <div class="example-card">
+          <b>例 2：交与并</b>
+          <p>设 $A=\{1,2,3\}$，$B=\{3,4\}$。则 $A\cap B=\{3\}$，$A\cup B=\{1,2,3,4\}$。</p>
+        </div>
+        <div class="example-card">
+          <b>例 3：读数轴范围</b>
+          <p>$C=\{x\in\mathbb{R}\mid -1\le x&lt;3\}$ 表示 $-1$ 取到、$3$ 取不到的实数范围。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="mistakes">
+    <aside class="stage-marker"><span>7</span>Check</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">常见易错点</div>
+      <h2>真正要分清的是关系类型和讨论范围。</h2>
+      <div class="grid-2">
+        <div class="mistake-card"><b>把 $\in$ 和 $\subseteq$ 混用</b><p>$1\in A$ 是元素属于集合；$\{1\}\subseteq A$ 是一个集合被另一个集合包含。</p></div>
+        <div class="mistake-card"><b>忘记描述法里的来源</b><p>先看 $x$ 来自 $\mathbb{R}$、$\mathbb{Z}$ 还是 $\mathbb{N}$，再看它满足什么条件。</p></div>
+        <div class="mistake-card"><b>补集没有全集</b><p>同一个 $A$，在整数集里取补集和在实数集里取补集，结果可能完全不同。</p></div>
+        <div class="mistake-card"><b>数轴端点看反</b><p>$&gt;$ 和 $&lt;$ 不取端点，$\ge$ 和 $\le$ 取端点；方向再看不等号。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <aside class="stage-marker"><span>8</span>Next</aside>
+    <div class="stage-body">
+      <div class="summary">
+        <div class="stage-kicker">后续连接</div>
+        <h2>集合会继续长成几条主线。</h2>
+        <p class="subtle">常用逻辑用语会把“且、或、非”和交、并、补连接起来；区间会把实数集合写得更简洁；函数定义域会问哪些输入被允许；概率事件本质上也是样本空间里的集合。</p>
+        <p>这节真正要带走的是：集合训练的不是记号本身，而是把对象、范围、条件和关系说清楚。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · A-01 集合 · 高中正式内容</footer>
+</body>
+</html>

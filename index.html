@@ -3,28 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DGOpenKS · 交互式高中数学知识空间</title>
+<title>DGOpenKS · 高中数学学习系统</title>
 <style>
 :root{
   color-scheme:light;
-  --bg:#f3efe6;
-  --surface:#fffaf0;
-  --surface-2:#f8f1e3;
+  --bg:#f4efe7;
+  --surface:#fffaf2;
+  --surface-2:#f8f0e4;
   --ink:#14211d;
-  --muted:#6f756b;
-  --soft:#9c927f;
-  --line:#ded4c1;
+  --muted:#687266;
+  --soft:#958a7a;
+  --line:#ded2bf;
   --object:#0f766e;
-  --input:#0e7490;
-  --movement:#6d5bd0;
-  --parameter:#b7791f;
-  --conclusion:#2f855a;
-  --warning:#ef4444;
-  --radius-sm:8px;
-  --radius:14px;
-  --radius-lg:22px;
-  --shadow:0 24px 70px rgba(45,34,18,.13);
-  --shadow-soft:0 10px 32px rgba(45,34,18,.08);
+  --method:#5b5bd6;
+  --problem:#b7791f;
+  --practice:#2f855a;
+  --warning:#c2410c;
+  --radius:8px;
+  --radius-lg:18px;
+  --shadow:0 22px 60px rgba(45,34,18,.12);
+  --shadow-soft:0 10px 28px rgba(45,34,18,.08);
   --font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -35,133 +33,123 @@
     --bg:#101815;
     --surface:#17231f;
     --surface-2:#111d19;
-    --ink:#f4ead8;
+    --ink:#f6eddc;
     --muted:#b9ad98;
-    --soft:#7f7769;
+    --soft:#857c6e;
     --line:#314039;
     --object:#5eead4;
-    --input:#67e8f9;
-    --movement:#c4b5fd;
-    --parameter:#f6c35b;
-    --conclusion:#34d399;
-    --warning:#f87171;
-    --shadow:0 18px 60px rgba(0,0,0,.36);
-    --shadow-soft:0 8px 30px rgba(0,0,0,.28);
+    --method:#c4b5fd;
+    --problem:#f6c35b;
+    --practice:#34d399;
+    --warning:#fb923c;
+    --shadow:0 20px 60px rgba(0,0,0,.34);
+    --shadow-soft:0 8px 28px rgba(0,0,0,.28);
   }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#ede5d6 0%,var(--bg) 36%,var(--bg) 100%);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}
-button,input{font:inherit}
+body{margin:0;background:linear-gradient(180deg,#ede5d6 0%,var(--bg) 38%,var(--bg));color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
 a{color:inherit}
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}
 .topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
-.brand{font-weight:800;color:var(--object);white-space:nowrap;margin-right:10px;text-decoration:none}
-.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.brand{font-weight:900;color:var(--object);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:800;padding:5px 11px;border-radius:999px;white-space:nowrap}
 .nav-pill:hover,.nav-pill:focus-visible{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent);outline:0}
-.hero{max-width:1180px;margin:0 auto;padding:78px 22px 48px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:42px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--parameter);font-size:.78rem;font-weight:800;text-transform:uppercase;background:color-mix(in srgb,var(--parameter) 12%,transparent);border:1px solid color-mix(in srgb,var(--parameter) 24%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
-h1{font-size:4.2rem;line-height:1.06;margin:0 0 20px;font-weight:800}
-.lead{font-size:1.16rem;color:var(--muted);max-width:660px;margin:0 0 26px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:transform .12s var(--ease),background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.hero{max-width:1180px;margin:0 auto;padding:74px 22px 54px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(330px,.98fr);gap:42px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--problem);font-size:.78rem;font-weight:900;text-transform:uppercase;background:color-mix(in srgb,var(--problem) 12%,transparent);border:1px solid color-mix(in srgb,var(--problem) 24%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+h1{font-size:4rem;line-height:1.06;margin:0 0 18px;font-weight:900;letter-spacing:0}
+.lead{font-size:1.13rem;color:var(--muted);max-width:690px;margin:0 0 24px}
+.hero-actions,.action-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:900;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .12s var(--ease),border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
 .btn:hover,.btn:focus-visible{transform:translateY(-1px);border-color:color-mix(in srgb,var(--object) 36%,var(--line));color:var(--object);outline:0}
 .btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-.hero-panel{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border:1px solid color-mix(in srgb,var(--parameter) 34%,#17342d);border-radius:28px;box-shadow:var(--shadow);padding:20px;position:relative;overflow:hidden}
-.hero-panel::before{content:"";position:absolute;inset:13px;border:1px solid rgba(246,195,91,.24);border-radius:21px;pointer-events:none}
-.map-card{position:relative;min-height:440px;border-radius:20px;background:radial-gradient(circle at 50% 52%,rgba(246,195,91,.19),transparent 31%),linear-gradient(rgba(255,250,240,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,250,240,.045) 1px,transparent 1px);background-size:auto,42px 42px,42px 42px;overflow:hidden}
-.map-card svg{position:absolute;inset:0;width:100%;height:100%;opacity:.92}
-.map-node{position:absolute;z-index:1;display:flex;align-items:center;gap:10px;width:132px;min-height:58px;padding:10px 12px;text-align:left;border-radius:14px;border:1px solid rgba(255,250,240,.18);background:rgba(255,250,240,.085);color:#fffaf0;font-weight:900;line-height:1.15;box-shadow:0 14px 30px rgba(0,0,0,.18);backdrop-filter:blur(10px)}
-.node-symbol{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;background:rgba(246,195,91,.15);border:1px solid rgba(246,195,91,.28);color:#f6c35b;font-family:var(--mono);font-size:.78rem;font-weight:900}
-.map-node.core{width:160px;min-height:112px;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;text-align:center;border-color:rgba(246,195,91,.5);background:rgba(246,195,91,.15);color:#f6c35b;font-size:1.12rem}
-.map-node.core small{display:block;color:#f4dec0;font-size:.76rem;margin-top:6px}
-.map-node.n1{left:24px;top:26px}.map-node.n2{right:24px;top:26px}.map-node.n3{left:24px;bottom:26px}.map-node.n4{right:24px;bottom:26px}.map-node.n5{left:24px;top:calc(50% - 29px)}.map-node.n6{right:24px;top:calc(50% - 29px)}
-.icon-mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--object) 10%,transparent);border:1px solid color-mix(in srgb,var(--object) 22%,var(--line));color:var(--object);font-family:var(--mono);font-weight:900;margin-bottom:12px}
-.feature-card .icon-mark{background:color-mix(in srgb,var(--parameter) 12%,transparent);border-color:color-mix(in srgb,var(--parameter) 24%,var(--line));color:var(--parameter)}
-main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}
-.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:52px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}
-.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}
-.stage-marker span{display:block;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--object);margin-bottom:10px}
+.btn.small{padding:8px 12px;font-size:.83rem}
+.system-map{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border:1px solid color-mix(in srgb,var(--problem) 32%,#17342d);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:20px;overflow:hidden}
+.map-canvas{position:relative;min-height:420px;border-radius:14px;background:radial-gradient(circle at 50% 48%,rgba(246,195,91,.18),transparent 34%),linear-gradient(rgba(255,250,240,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,250,240,.05) 1px,transparent 1px);background-size:auto,38px 38px,38px 38px}
+.map-canvas svg{position:absolute;inset:0;width:100%;height:100%}
+.map-chip{position:absolute;border:1px solid rgba(255,250,240,.18);background:rgba(255,250,240,.09);backdrop-filter:blur(10px);border-radius:14px;padding:10px 12px;font-weight:900;line-height:1.25;box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.map-chip small{display:block;margin-top:4px;color:#d8ccb6;font-size:.72rem;font-weight:800}
+.map-chip.root{left:24px;bottom:24px;color:#f6c35b}
+.map-chip.knowledge{left:24px;top:24px;color:#5eead4}
+.map-chip.method{right:24px;top:24px;color:#c4b5fd}
+.map-chip.problem{right:24px;bottom:104px;color:#f6c35b}
+.map-chip.practice{right:24px;bottom:24px;color:#34d399}
+.map-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:168px;min-height:104px;border:1px solid rgba(246,195,91,.42);background:rgba(246,195,91,.14);border-radius:16px;display:grid;place-items:center;text-align:center;color:#f6c35b;font-weight:900;box-shadow:0 18px 38px rgba(0,0,0,.22)}
+.map-core span{display:block;color:#fffaf0;font-size:.82rem;margin-top:6px}
+main{max-width:1180px;margin:0 auto;padding:4px 22px 86px}
+.stage{display:grid;grid-template-columns:156px minmax(0,1fr);gap:28px;padding:50px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}
+.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.8rem;font-weight:900}
+.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}
 .stage-body{min-width:0}
 .stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;text-transform:uppercase;margin-bottom:10px}
-h2{font-size:2.35rem;line-height:1.18;margin:0 0 14px}
-h3{font-size:1.05rem;margin:0 0 10px}
+h2{font-size:2.25rem;line-height:1.18;margin:0 0 14px}
+h3{font-size:1.08rem;margin:0 0 10px}
 p{margin:0 0 12px}
 .subtle{color:var(--muted)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel,.tree-card,.module-card,.chapter-card,.step-card,.layer-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}
+.panel.highlight{border-color:color-mix(in srgb,var(--object) 32%,var(--line));background:color-mix(in srgb,var(--object) 5%,var(--surface))}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.panel,.route-card,.feature-card,.trunk-card,.module-card,.chapter-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}
-.panel.highlight{border-color:color-mix(in srgb,var(--object) 30%,var(--line));background:color-mix(in srgb,var(--object) 5%,var(--surface))}
-.status-row,.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.tag,.status{border-radius:999px;padding:5px 10px;font-size:.75rem;font-weight:900;display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--surface-2);color:var(--muted)}
-.status.open{border-color:color-mix(in srgb,var(--conclusion) 34%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,transparent);color:var(--conclusion)}
-.tag.object{border-color:color-mix(in srgb,var(--object) 24%,var(--line));color:var(--object)}
-.tag.move{border-color:color-mix(in srgb,var(--movement) 24%,var(--line));color:var(--movement)}
-.tag.param{border-color:color-mix(in srgb,var(--parameter) 28%,var(--line));color:var(--parameter)}
-.route-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
-.route-index{width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--movement) 12%,transparent);color:var(--movement);display:grid;place-items:center;font-family:var(--mono);font-weight:900}
-.feature-card b,.trunk-card b,.module-card b{display:block;color:var(--object);margin-bottom:8px}
-.feature-card p,.trunk-card p,.module-card p,.chapter-card p{color:var(--muted);font-size:.92rem}
-.trunk-card{min-height:178px}
-.trunk-card small,.module-card small{display:block;color:var(--soft);font-weight:900;text-transform:uppercase;font-size:.72rem;margin-bottom:8px}
-.trunk-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.trunk-head .icon-mark{margin:0;flex:0 0 auto}
-.trunk-head b{margin:0}
-.connection-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
-.connection-list span{font-size:.72rem;font-weight:800;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
-.chapter-card.featured{border-color:color-mix(in srgb,var(--conclusion) 34%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--conclusion) 7%,var(--surface)),var(--surface))}
-.chapter-card.bridge{border-color:color-mix(in srgb,var(--parameter) 38%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--parameter) 10%,var(--surface)),var(--surface))}
-.chapter-card.bridge .chapter-num{color:var(--parameter);background:color-mix(in srgb,var(--parameter) 12%,transparent);border-color:color-mix(in srgb,var(--parameter) 26%,var(--line))}
-.bridge-note{border:1px solid color-mix(in srgb,var(--parameter) 30%,var(--line));background:color-mix(in srgb,var(--parameter) 8%,var(--surface));border-left:4px solid var(--parameter);border-radius:14px;padding:16px;margin:18px 0;color:var(--muted)}
-.bridge-note strong{color:var(--parameter)}
-.chapter-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
-.chapter-num{font-family:var(--mono);font-weight:900;color:var(--object);background:color-mix(in srgb,var(--object) 10%,transparent);border:1px solid color-mix(in srgb,var(--object) 22%,var(--line));border-radius:999px;padding:5px 10px;white-space:nowrap}
-.chapter-title{font-size:1.32rem;font-weight:900;margin:0}
+.tree-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tree-card b,.module-card b,.chapter-card b,.step-card b,.layer-card b{display:block;color:var(--object);margin-bottom:8px}
+.tree-card p,.module-card p,.chapter-card p,.step-card p,.layer-card p{color:var(--muted);font-size:.93rem}
+.tree-card.method b{color:var(--method)}.tree-card.problem b{color:var(--problem)}.tree-card.practice b{color:var(--practice)}
+.tree-label{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1px solid color-mix(in srgb,var(--object) 24%,var(--line));background:color-mix(in srgb,var(--object) 10%,transparent);color:var(--object);font-family:var(--mono);font-weight:900;margin-bottom:12px}
+.tree-card.method .tree-label{border-color:color-mix(in srgb,var(--method) 28%,var(--line));background:color-mix(in srgb,var(--method) 10%,transparent);color:var(--method)}
+.tree-card.problem .tree-label{border-color:color-mix(in srgb,var(--problem) 30%,var(--line));background:color-mix(in srgb,var(--problem) 12%,transparent);color:var(--problem)}
+.tree-card.practice .tree-label{border-color:color-mix(in srgb,var(--practice) 28%,var(--line));background:color-mix(in srgb,var(--practice) 10%,transparent);color:var(--practice)}
+.status-row,.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag,.status{border:1px solid var(--line);border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:.75rem;font-weight:900;padding:5px 10px;display:inline-flex;align-items:center}
+.status.open{color:var(--practice);border-color:color-mix(in srgb,var(--practice) 32%,var(--line));background:color-mix(in srgb,var(--practice) 9%,transparent)}
+.status.planned{color:var(--soft);background:color-mix(in srgb,var(--line) 38%,transparent)}
+.status.root{color:var(--problem);border-color:color-mix(in srgb,var(--problem) 30%,var(--line));background:color-mix(in srgb,var(--problem) 9%,transparent)}
+.learning-path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:path}
+.step-card{position:relative;min-height:172px;text-decoration:none;color:inherit}
+.step-card::before{counter-increment:path;content:counter(path);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--object) 10%,transparent);border:1px solid color-mix(in srgb,var(--object) 24%,var(--line));color:var(--object);font-family:var(--mono);font-weight:900;margin-bottom:10px}
+.step-card.planned{background:var(--surface-2);box-shadow:none}
+.step-card.planned::before{color:var(--soft);border-color:var(--line);background:transparent}
+.chapter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.chapter-card{display:flex;flex-direction:column;gap:10px}
+.chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chapter-code{font-family:var(--mono);font-size:.78rem;font-weight:900;color:var(--object);background:color-mix(in srgb,var(--object) 10%,transparent);border:1px solid color-mix(in srgb,var(--object) 22%,var(--line));border-radius:999px;padding:4px 9px;white-space:nowrap}
+.chapter-card.fast .chapter-code{color:var(--problem);background:color-mix(in srgb,var(--problem) 10%,transparent);border-color:color-mix(in srgb,var(--problem) 26%,var(--line))}
 .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .module-card{box-shadow:none}
+.module-card.active{border-color:color-mix(in srgb,var(--object) 34%,var(--line));background:color-mix(in srgb,var(--object) 6%,var(--surface))}
 .module-card.planned{background:var(--surface-2)}
-.module-card b{display:flex;align-items:center;gap:8px}
-.module-card b::before{content:attr(data-icon);width:28px;height:28px;border-radius:9px;display:inline-grid;place-items:center;background:color-mix(in srgb,var(--parameter) 12%,transparent);border:1px solid color-mix(in srgb,var(--parameter) 22%,var(--line));color:var(--parameter);font-family:var(--mono);font-size:.82rem}
-.chapter-action{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:16px}
-.chapter-action .btn{white-space:nowrap}
-.callout{border:1px solid color-mix(in srgb,var(--conclusion) 32%,var(--line));background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-left:4px solid var(--conclusion);border-radius:14px;padding:16px}
-.callout p{margin:0}
-.callout strong{color:var(--conclusion)}
-.philosophy{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border:1px solid color-mix(in srgb,var(--parameter) 28%,#17342d);border-radius:28px;box-shadow:var(--shadow);padding:32px}
-.philosophy .subtle{color:#d8ccb6}
-.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
-@media(max-width:980px){
-  h1{font-size:3rem}
-  h2{font-size:1.85rem}
-  .hero,.stage,.grid-2{grid-template-columns:1fr}
-  .grid-3,.grid-4,.module-grid{grid-template-columns:1fr 1fr}
+.module-card small{display:block;color:var(--soft);font-size:.72rem;font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.index-tags{display:flex;flex-wrap:wrap;gap:8px}
+.index-tags .tag{font-size:.82rem;padding:7px 11px}
+.practice-layers{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.summary-band{background:linear-gradient(160deg,#17342d,#10251f);color:#fffaf0;border-radius:var(--radius-lg);border:1px solid color-mix(in srgb,var(--problem) 30%,#17342d);box-shadow:var(--shadow);padding:26px}
+.summary-band .subtle{color:#d8ccb6}
+.footer{border-top:1px solid var(--line);padding:30px 22px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:1040px){
+  .hero,.stage{grid-template-columns:1fr}
   .stage-marker{position:static;display:flex;align-items:center;gap:10px}
   .stage-marker span{margin-bottom:0}
+  .tree-grid,.learning-path,.practice-layers{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:760px){
-  .map-card{min-height:410px}
-  .map-node{width:120px}
-  .map-node.n1{left:18px;top:18px}.map-node.n2{right:18px;top:18px}.map-node.n3{left:18px;bottom:18px}.map-node.n4{right:18px;bottom:18px}.map-node.n5{left:18px;top:calc(50% - 29px)}.map-node.n6{right:18px;top:calc(50% - 29px)}
-}
-@media(max-width:620px){
   .hero{padding-top:42px}
   h1{font-size:2.25rem}
   h2{font-size:1.55rem}
-  .hero-panel{padding:14px;border-radius:22px}
-  .hero-panel::before{inset:10px;border-radius:16px}
-  .map-card{min-height:350px}
-  .map-node{width:104px;min-height:52px;padding:8px;gap:7px;border-radius:12px;font-size:.86rem}
-  .node-symbol{width:27px;height:27px;border-radius:8px;font-size:.65rem}
-  .map-node.core{width:126px;min-height:96px;font-size:1rem}
-  .map-node.n1{left:12px;top:12px}.map-node.n2{right:12px;top:12px}.map-node.n3{left:12px;bottom:12px}.map-node.n4{right:12px;bottom:12px}.map-node.n5{left:12px;top:calc(50% - 26px)}.map-node.n6{right:12px;top:calc(50% - 26px)}
-  .grid-3,.grid-4,.module-grid{grid-template-columns:1fr}
-  .panel,.route-card,.feature-card,.trunk-card,.module-card,.chapter-card{padding:16px}
-  .chapter-action{grid-template-columns:1fr}
-  .chapter-action .btn{justify-content:center}
+  .lead{font-size:1rem}
+  .system-map{padding:14px}
+  .map-canvas{min-height:390px}
+  .map-core{width:142px;min-height:88px}
+  .map-chip{font-size:.86rem;max-width:142px}
+  .grid-2,.grid-3,.grid-4,.tree-grid,.learning-path,.chapter-grid,.module-grid,.practice-layers{grid-template-columns:1fr}
+  .panel,.tree-card,.module-card,.chapter-card,.step-card,.layer-card{padding:16px}
+}
+@media(max-width:460px){
+  .map-chip.root,.map-chip.knowledge{left:14px}
+  .map-chip.method,.map-chip.problem,.map-chip.practice{right:14px}
+  .map-chip.knowledge,.map-chip.method{top:14px}
+  .map-chip.root,.map-chip.practice{bottom:14px}
+  .map-chip.problem{bottom:94px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -173,335 +161,305 @@ p{margin:0 0 12px}
 <nav class="topbar" aria-label="首页导航">
   <div class="topbar-inner">
     <a class="brand" href="#top">DGOpenKS</a>
-    <a class="nav-pill" href="#experience">体验方式</a>
-    <a class="nav-pill" href="#bridge">中考回顾</a>
-    <a class="nav-pill" href="#start">推荐起点</a>
-    <a class="nav-pill" href="#trunks">数学主干</a>
-    <a class="nav-pill" href="#chapters">章节入口</a>
-    <a class="nav-pill" href="#vision">项目理念</a>
-    <a class="nav-pill" href="https://github.com/DGOpenKS/DGOpenKS.github.io" target="_blank" rel="noreferrer">GitHub</a>
+    <a class="nav-pill" href="#path">学习顺序</a>
+    <a class="nav-pill" href="#bridge">树根能力</a>
+    <a class="nav-pill" href="#highschool">高中正式内容</a>
+    <a class="nav-pill" href="#trees">四棵树</a>
+    <a class="nav-pill" href="#method-tree">方法树</a>
+    <a class="nav-pill" href="#problem-tree">题型树</a>
+    <a class="nav-pill" href="#practice-tree">练习树</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="reveal">
-    <div class="eyebrow">Open Knowledge Space</div>
-    <h1>把数学变成可探索的空间</h1>
-    <p class="lead">视频、图像、交互模块，一起打开高中数学的结构。</p>
+  <div>
+    <div class="eyebrow">高中数学学习系统</div>
+    <h1>高中数学不是一章一章硬背，而是一张可以顺着走的知识网络。</h1>
+    <p class="lead">先用初高中衔接内容补好树根，再从集合进入高中正式内容。系统学习走知识树，遇到题目走题型树，想提升解题思想走方法树，最后通过练习树把理解转化成会做题。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#bridge">先看中考快回顾</a>
-      <a class="btn" href="chapter_01_初高中数学思维衔接/">直接进入第一章</a>
-      <a class="btn" href="#trunks">查看数学主干</a>
+      <a class="btn primary" href="#bridge">继续学习初高中衔接</a>
+      <a class="btn" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">开始高中正式内容：A-01 集合</a>
     </div>
   </div>
-  <div class="hero-panel reveal" aria-label="高中数学知识网络封面图">
-    <div class="map-card" aria-label="高中数学知识网络示意">
-      <svg viewBox="0 0 420 430" aria-hidden="true">
+  <div class="system-map" aria-label="DGOpenKS 四棵树学习系统示意">
+    <div class="map-canvas">
+      <svg viewBox="0 0 520 420" aria-hidden="true">
         <g fill="none" stroke-linecap="round">
-          <path d="M54 88 C132 34 282 34 366 88" stroke="rgba(255,250,240,.14)" stroke-width="1.3" />
-          <path d="M54 342 C132 396 282 396 366 342" stroke="rgba(255,250,240,.14)" stroke-width="1.3" />
-          <path d="M54 88 C18 170 18 260 54 342" stroke="rgba(255,250,240,.1)" stroke-width="1.3" />
-          <path d="M366 88 C402 170 402 260 366 342" stroke="rgba(255,250,240,.1)" stroke-width="1.3" />
-          <path d="M210 214 L90 58" stroke="rgba(246,195,91,.36)" stroke-width="1.5" />
-          <path d="M210 214 L330 58" stroke="rgba(246,195,91,.36)" stroke-width="1.5" />
-          <path d="M210 214 L90 372" stroke="rgba(246,195,91,.36)" stroke-width="1.5" />
-          <path d="M210 214 L330 372" stroke="rgba(246,195,91,.36)" stroke-width="1.5" />
-          <path d="M210 214 L90 214" stroke="rgba(246,195,91,.3)" stroke-width="1.3" />
-          <path d="M210 214 L330 214" stroke="rgba(246,195,91,.3)" stroke-width="1.3" />
-          <path d="M118 296 C152 256 178 226 210 214 C246 198 282 174 318 130" stroke="rgba(94,234,212,.3)" stroke-width="1.6" />
-          <path d="M92 238 C138 206 168 178 186 130 C202 88 230 68 278 74" stroke="rgba(196,181,253,.24)" stroke-width="1.5" />
+          <path d="M260 210 C170 190 115 120 86 64" stroke="rgba(94,234,212,.35)" stroke-width="2"/>
+          <path d="M260 210 C350 184 400 116 438 64" stroke="rgba(196,181,253,.32)" stroke-width="2"/>
+          <path d="M260 210 C360 230 410 280 438 316" stroke="rgba(246,195,91,.32)" stroke-width="2"/>
+          <path d="M260 210 C320 300 384 342 438 382" stroke="rgba(52,211,153,.32)" stroke-width="2"/>
+          <path d="M260 210 C168 260 116 324 86 382" stroke="rgba(246,195,91,.28)" stroke-width="2"/>
+          <path d="M80 360 C128 300 190 240 260 210 C330 180 392 120 440 58" stroke="rgba(255,250,240,.14)" stroke-width="1.3"/>
         </g>
       </svg>
-      <div class="map-node core"><div>DGOpenKS<small>知识地图</small></div></div>
-      <div class="map-node n1"><span class="node-symbol">f(x)</span><div>函数</div></div>
-      <div class="map-node n2"><span class="node-symbol">(x,y)</span><div>坐标</div></div>
-      <div class="map-node n3"><span class="node-symbol">a</span><div>参数</div></div>
-      <div class="map-node n4"><span class="node-symbol">f′</span><div>导数</div></div>
-      <div class="map-node n5"><span class="node-symbol">x∈D</span><div>约束</div></div>
-      <div class="map-node n6"><span class="node-symbol">aₙ</span><div>数列</div></div>
+      <div class="map-core">同一个学习系统<span>四个入口</span></div>
+      <div class="map-chip root">树根能力<small>衔接、变形、条件意识</small></div>
+      <div class="map-chip knowledge">知识树<small>系统学习学什么</small></div>
+      <div class="map-chip method">方法树<small>整理怎么想</small></div>
+      <div class="map-chip problem">题型树<small>遇题反查任务</small></div>
+      <div class="map-chip practice">练习树<small>把理解练成能力</small></div>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="stage" id="experience">
-    <aside class="stage-marker"><span>1</span>Experience</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">体验方式</div>
-      <h2>每一章，都是一个数学场景。</h2>
-      <p class="subtle">先理解，再操作，最后归纳。</p>
-      <div class="grid-4">
-        <div class="feature-card"><div class="icon-mark">▶</div><b>视频</b><p>建立第一印象。</p></div>
-        <div class="feature-card"><div class="icon-mark">⌖</div><b>交互</b><p>让画面回应操作。</p></div>
-        <div class="feature-card"><div class="icon-mark">⊕</div><b>图像</b><p>让关系变得可见。</p></div>
-        <div class="feature-card"><div class="icon-mark">ƒ</div><b>实验</b><p>让概念自己动起来。</p></div>
+  <section class="stage" id="path">
+    <aside class="stage-marker"><span>1</span>Path</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">推荐学习顺序</div>
+      <h2>先补树根，再进入高中正式内容。</h2>
+      <p class="subtle">已经存在的内容可以进入学习；还没创建的节点只显示规划状态，不做链接。</p>
+      <div class="learning-path" aria-label="高中数学推荐学习顺序">
+        <a class="step-card" href="#bridge">
+          <b>00 初高中衔接与树根能力</b>
+          <p>先补条件意识、变形意识、函数意识、方程与不等式意识。</p>
+          <span class="status root">已有入口</span>
+        </a>
+        <a class="step-card" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">
+          <b>A-01 集合</b>
+          <p>高中正式内容从“对象、范围、条件、关系”开始。</p>
+          <span class="status open">已开放</span>
+        </a>
+        <div class="step-card planned">
+          <b>A-02 常用逻辑用语</b>
+          <p>把“且、或、非、推出”等语言和集合关系接起来。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>A-03 充分条件、必要条件与充要条件</b>
+          <p>判断条件之间谁推出谁，避免把方向看反。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>A-04 不等关系与区间</b>
+          <p>把实数范围、端点、方向和区间表示说清。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>A-05 一元二次方程与一元二次不等式</b>
+          <p>从根、图像和解集进入高中条件控制。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>B-01 函数概念</b>
+          <p>理解一个量如何随另一个量变化。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>B-02 函数定义域</b>
+          <p>把允许输入的范围作为函数学习的第一道条件。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>B-03 函数值域</b>
+          <p>研究输出能到哪里，连接范围、图像和最值。</p>
+          <span class="status planned">规划中</span>
+        </div>
+        <div class="step-card planned">
+          <b>B-04 函数单调性</b>
+          <p>用变化方向理解函数图像和解题判断。</p>
+          <span class="status planned">规划中</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="stage" id="bridge">
-    <aside class="stage-marker"><span>2</span>Bridge</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">中考快回顾 · 特别入口</div>
-      <h2>先把初中常用工具唤醒。</h2>
-      <p class="subtle">这两页不是主线章节，而是进入高中衔接前的快速检查包。适合考前、开篇前，或发现基础工具不够顺手时回来看。</p>
-      <div class="bridge-note">
-        <p><strong>特殊标注：</strong>Chapter 00 是“快速回顾特辑”，用于唤醒代数、函数、几何与综合题入口；学完后再回到 01-05 的系统衔接主线。</p>
-      </div>
-      <div class="grid-2">
-        <div class="chapter-card bridge">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">00-1</div>
-              <h3 class="chapter-title">代数与函数快速回顾</h3>
-            </div>
-            <span class="status open">特辑</span>
+    <aside class="stage-marker"><span>2</span>Root</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">初高中衔接与树根能力</div>
+      <h2>这些不是废弃的旧章节，而是进入高中数学前要补好的树根。</h2>
+      <p class="subtle">它们负责条件意识、变形意识、函数意识、方程与不等式意识。树根越稳，后面的知识树、方法树、题型树才不会散。</p>
+      <div class="chapter-grid" aria-label="已有初高中衔接章节入口">
+        <div class="chapter-card fast">
+          <div class="chapter-meta"><span class="chapter-code">00 特辑</span><span class="status open">已开放</span></div>
+          <b>江西中考数学快速回顾特辑</b>
+          <p>进入高中衔接前的快速检查包，分代数函数与几何综合两部分。</p>
+          <div class="action-row">
+            <a class="btn small" href="00_初高中衔接知识/chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/">代数与函数</a>
+            <a class="btn small" href="00_初高中衔接知识/chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/">几何与综合</a>
           </div>
-          <p>考前唤醒符号、范围、图象、关键点和坐标公式，先稳住基础分，再寻找综合题入口。</p>
-          <div class="tag-row">
-            <span class="tag param">代数检查</span>
-            <span class="tag object">函数图象</span>
-            <span class="tag move">坐标关系</span>
-          </div>
-          <a class="btn" href="chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/">进入 00-1</a>
         </div>
-        <div class="chapter-card bridge">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">00-2</div>
-              <h3 class="chapter-title">几何与综合快速回顾</h3>
-            </div>
-            <span class="status open">特辑</span>
-          </div>
-          <p>先认图形，再选方法；把几何条件转化为长度、角、面积、坐标或方程关系。</p>
-          <div class="tag-row">
-            <span class="tag object">基本图形</span>
-            <span class="tag move">方法选择</span>
-            <span class="tag param">综合入口</span>
-          </div>
-          <a class="btn" href="chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/">进入 00-2</a>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">01</span><span class="status open">已开放</span></div>
+          <b>初高中数学思维衔接</b>
+          <p>从“算答案”转向“看对象、看结构、看条件”。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_01_初高中数学思维衔接/">进入章节</a>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">02-1</span><span class="status open">已开放</span></div>
+          <b>完全平方与平方差公式</b>
+          <p>把公式看成结构，而不是只背展开结果。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_02-1_完全平方与平方差公式/">进入章节</a>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">02-2</span><span class="status open">已开放</span></div>
+          <b>立方相关公式</b>
+          <p>用体块和符号对应理解立方和、立方差与完全立方。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_02-2_立方相关公式/">进入章节</a>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">03</span><span class="status open">已开放</span></div>
+          <b>多项式变形与因式分解</b>
+          <p>训练观察项、拆结构、反向使用公式的能力。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_03_多项式变形与因式分解/">进入章节</a>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">04</span><span class="status open">已开放</span></div>
+          <b>分式根式与条件控制</b>
+          <p>把“能不能这样变形”放回定义域和合法性中判断。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_04_分式根式与条件控制/">进入章节</a>
+        </div>
+        <div class="chapter-card">
+          <div class="chapter-meta"><span class="chapter-code">05</span><span class="status open">已开放</span></div>
+          <b>方程不等式与约束</b>
+          <p>从相等、范围、约束进入高中条件思维。</p>
+          <a class="btn small" href="00_初高中衔接知识/chapter_05_方程不等式与约束/">进入章节</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="start">
-    <aside class="stage-marker"><span>3</span>Start</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">推荐起点</div>
-      <h2>完成快速回顾后，从第一章进入。</h2>
-      <div class="chapter-card featured">
-        <div class="chapter-head">
-          <div>
-            <div class="chapter-num">01</div>
-            <h3 class="chapter-title">初高中数学思维衔接</h3>
-          </div>
-          <span class="status open">已开放</span>
+  <section class="stage" id="highschool">
+    <aside class="stage-marker"><span>3</span>High School</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">高中正式内容</div>
+      <h2>正式内容从 A-01 集合开始，十个模块构成知识树主干。</h2>
+      <div class="panel highlight">
+        <h3>A 模块已开启：A-01 集合</h3>
+        <p class="subtle">集合先把对象、范围、条件和关系说清楚。它会继续连接常用逻辑用语、区间、函数定义域和概率事件。</p>
+        <a class="btn primary" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">进入 A-01 集合</a>
+      </div>
+      <div class="module-grid" aria-label="高中正式内容十个模块">
+        <div class="module-card active"><small>A 模块 · 已开启</small><b>数学语言、集合与条件控制</b><p>集合、逻辑、条件、区间、不等关系与合法变形。</p><a class="btn small" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">进入 A-01</a></div>
+        <div class="module-card planned"><small>B 模块 · 规划中</small><b>函数、图像与变化关系</b><p>函数概念、定义域、值域、单调性、图像与应用。</p></div>
+        <div class="module-card planned"><small>C 模块 · 规划中</small><b>方程、不等式与成立条件</b><p>解集、恒成立、存在性、参数范围与条件转化。</p></div>
+        <div class="module-card planned"><small>D 模块 · 规划中</small><b>三角函数与周期变化</b><p>任意角、三角函数、恒等变形、图像性质与解三角形。</p></div>
+        <div class="module-card planned"><small>E 模块 · 规划中</small><b>数列、递推与离散变化</b><p>等差、等比、通项、求和、递推与离散变化规律。</p></div>
+        <div class="module-card planned"><small>F 模块 · 规划中</small><b>向量、复数与代数结构</b><p>用代数对象表示方向、位置、平面结构和几何意义。</p></div>
+        <div class="module-card planned"><small>G 模块 · 规划中</small><b>几何、坐标与空间关系</b><p>直线、圆、圆锥曲线、立体几何与空间向量。</p></div>
+        <div class="module-card planned"><small>H 模块 · 规划中</small><b>导数、最值与函数综合</b><p>用局部变化研究单调性、极值、最值、零点与参数。</p></div>
+        <div class="module-card planned"><small>I 模块 · 规划中</small><b>计数、概率与统计</b><p>计数、概率、随机变量、分布、统计与数据判断。</p></div>
+        <div class="module-card planned"><small>J 模块 · 规划中</small><b>综合思想、方法与建模</b><p>整理跨模块思想、建模入口和综合题连接方式。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="trees">
+    <aside class="stage-marker"><span>4</span>Four Trees</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">四棵树不是四套重复内容</div>
+      <h2>它们是同一个学习系统的不同入口。</h2>
+      <div class="tree-grid">
+        <div class="tree-card">
+          <div class="tree-label">K</div>
+          <b>知识树</b>
+          <p><strong>负责：学什么。</strong>系统学习高中数学知识点，保证高中必须学的内容不遗漏。</p>
         </div>
-        <p>从“求答案”转向“研究对象”。</p>
-        <div class="status-row">
-          <span class="tag object">动画讲解</span>
-          <span class="tag move">交互视频</span>
-          <span class="tag param">模块实验</span>
-          <span class="tag">推荐先学</span>
+        <div class="tree-card method">
+          <div class="tree-label">M</div>
+          <b>方法树</b>
+          <p><strong>负责：怎么想。</strong>整理做题时常用的解题思想，如条件控制、等价转化、分类讨论、数形结合。</p>
         </div>
-        <div class="chapter-action">
-          <div class="callout">
-            <p><strong>入口视角：</strong>先建立高中数学的对象意识。</p>
-          </div>
-          <a class="btn primary" href="chapter_01_初高中数学思维衔接/">进入第一章</a>
+        <div class="tree-card problem">
+          <div class="tree-label">T</div>
+          <b>题型树</b>
+          <p><strong>负责：题目让我做什么。</strong>遇到不会做的题时，按题目任务反查知识和方法。</p>
+        </div>
+        <div class="tree-card practice">
+          <div class="tree-label">P</div>
+          <b>练习树</b>
+          <p><strong>负责：如何练到会做题。</strong>把理解转化成解题能力，按训练目标分层推进。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="trunks">
-    <aside class="stage-marker"><span>4</span>Trunks</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">高中数学的贯穿主干</div>
-      <h2>真正反复出现的，是这些主干。</h2>
-      <p class="subtle">章节会扩展，主干会贯穿。</p>
-      <div class="grid-3">
-        <div class="trunk-card">
-          <small>Trunk 01</small><div class="trunk-head"><div class="icon-mark">ƒ</div><b>函数主干</b></div>
-          <p>输入、输出、图像、性质。</p>
-          <div class="connection-list"><span>二次函数</span><span>指数函数</span><span>对数函数</span><span>三角函数</span><span>导数</span></div>
-        </div>
-        <div class="trunk-card">
-          <small>Trunk 02</small><div class="trunk-head"><div class="icon-mark">⊕</div><b>坐标化主干</b></div>
-          <p>把图形写成代数。</p>
-          <div class="connection-list"><span>直线</span><span>圆</span><span>立体几何</span><span>圆锥曲线</span></div>
-        </div>
-        <div class="trunk-card">
-          <small>Trunk 03</small><div class="trunk-head"><div class="icon-mark">λ</div><b>参数与家族主干</b></div>
-          <p>用字母控制一族对象。</p>
-          <div class="connection-list"><span>函数变换</span><span>三角图像</span><span>圆锥曲线</span><span>导数综合</span></div>
-        </div>
-        <div class="trunk-card">
-          <small>Trunk 04</small><div class="trunk-head"><div class="icon-mark">=</div><b>方程与约束主干</b></div>
-          <p>条件限制可能性。</p>
-          <div class="connection-list"><span>方程</span><span>不等式</span><span>定义域</span><span>参数讨论</span></div>
-        </div>
-        <div class="trunk-card">
-          <small>Trunk 05</small><div class="trunk-head"><div class="icon-mark">d</div><b>变化率与优化主干</b></div>
-          <p>研究变化本身。</p>
-          <div class="connection-list"><span>单调性</span><span>极值</span><span>最值</span><span>建模</span></div>
-        </div>
-        <div class="trunk-card">
-          <small>Trunk 06</small><div class="trunk-head"><div class="icon-mark">Σ</div><b>离散与递推主干</b></div>
-          <p>研究离散变化。</p>
-          <div class="connection-list"><span>数列</span><span>递推</span><span>求和</span><span>归纳</span></div>
-        </div>
+  <section class="stage" id="method-tree">
+    <aside class="stage-marker"><span>5</span>Methods</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">方法树索引</div>
+      <h2>方法树先作为索引展示，等方法页建立后再开放链接。</h2>
+      <p class="subtle">这些标签暂时不是链接，避免把还没创建的页面做成死链。</p>
+      <div class="index-tags" aria-label="方法树第一版索引">
+        <span class="tag">条件控制</span>
+        <span class="tag">等价转化</span>
+        <span class="tag">分类讨论</span>
+        <span class="tag">数形结合</span>
+        <span class="tag">换元</span>
+        <span class="tag">配方</span>
+        <span class="tag">消元</span>
+        <span class="tag">构造函数</span>
+        <span class="tag">参数分离</span>
+        <span class="tag">单调性转化</span>
+        <span class="tag">向量化</span>
+        <span class="tag">坐标化</span>
+        <span class="tag">放缩</span>
+        <span class="tag">特殊化与一般化</span>
+        <span class="tag">归纳、递推与枚举</span>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="chapters">
-    <aside class="stage-marker"><span>5</span>Entries</aside>
-    <div class="stage-body reveal">
-      <div class="stage-kicker">章节入口</div>
-      <h2>初高中衔接五章。</h2>
-      <div class="bridge-note">
-        <p><strong>需要快速回顾？</strong>可以先进入 <a href="chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/">00-1 代数与函数</a> 或 <a href="chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/">00-2 几何与综合</a>，再回到下面五章主线。</p>
-      </div>
-      <div class="grid-2">
-        <div class="chapter-card">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">01</div>
-              <h3 class="chapter-title">初高中数学思维衔接</h3>
-            </div>
-            <span class="status open">已开放</span>
-          </div>
-          <p>动画、交互视频、模块实验已开放。</p>
-          <div class="tag-row">
-            <span class="tag object">函数意识</span>
-            <span class="tag move">对象视角</span>
-            <span class="tag param">参数意识</span>
-          </div>
-          <a class="btn" href="chapter_01_初高中数学思维衔接/">进入章节</a>
-        </div>
-        <div class="chapter-card">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">02</div>
-              <h3 class="chapter-title">乘法公式与表达式结构</h3>
-            </div>
-            <span class="status open">已开放</span>
-          </div>
-          <p>从项、因子、整体结构出发，用面积和体积图看懂乘法公式。</p>
-          <div class="tag-row">
-            <span class="tag object">公式图解</span>
-            <span class="tag move">面积体积</span>
-            <span class="tag param">公式识别</span>
-          </div>
-          <a class="btn" href="chapter_02-1_完全平方与平方差公式/">进入 02-1</a>
-          <a class="btn" href="chapter_02-2_立方相关公式/">进入 02-2</a>
-        </div>
-        <div class="chapter-card">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">03</div>
-              <h3 class="chapter-title">多项式变形与因式分解</h3>
-            </div>
-            <span class="status open">已开放</span>
-          </div>
-          <p>把加法结构变成乘法结构，读出零点、符号和最值线索。</p>
-          <div class="tag-row">
-            <span class="tag object">因式块</span>
-            <span class="tag move">零点图像</span>
-            <span class="tag param">配方法</span>
-          </div>
-          <a class="btn" href="chapter_03_多项式变形与因式分解/">进入章节</a>
-        </div>
-        <div class="chapter-card">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">04</div>
-              <h3 class="chapter-title">分式、根式与条件控制</h3>
-            </div>
-            <span class="status open">已开放</span>
-          </div>
-          <p>约分、根式、绝对值都要保留限制，变形后还要检查对象是否改变。</p>
-          <div class="tag-row">
-            <span class="tag object">挖空点</span>
-            <span class="tag move">验根</span>
-            <span class="tag param">分段</span>
-          </div>
-          <a class="btn" href="chapter_04_分式根式与条件控制/">进入章节</a>
-        </div>
-        <div class="chapter-card">
-          <div class="chapter-head">
-            <div>
-              <div class="chapter-num">05</div>
-              <h3 class="chapter-title">方程、不等式与约束</h3>
-            </div>
-            <span class="status open">已开放</span>
-          </div>
-          <p>用数轴、交点和参数理解解集、判别式与不等式范围。</p>
-          <div class="tag-row">
-            <span class="tag object">数轴解集</span>
-            <span class="tag move">交点视角</span>
-            <span class="tag param">约束意识</span>
-          </div>
-          <a class="btn" href="chapter_05_方程不等式与约束/">进入章节</a>
-        </div>
-        <div class="panel highlight">
-          <h3>衔接阶段压缩为五章。</h3>
-          <p class="subtle">少做重复复习，把公式、图像、条件和考试工具打通。</p>
-        </div>
-      </div>
-
-      <div class="stage-kicker" style="margin-top:26px">后续高中模块</div>
-      <div class="module-grid" aria-label="后续知识模块规划">
-        <div class="module-card planned"><small>Planning</small><b data-icon="∈">集合与逻辑</b><p>语言、命题、条件。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="e">指数与对数</b><p>函数族与增长。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="sin">三角</b><p>单位圆、图像、恒等变换。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="→">几何与向量</b><p>坐标化空间。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="◇">圆锥曲线</b><p>方程与图形。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="Σ">数列</b><p>离散变化。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="d">导数</b><p>变化率与优化。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="?">概率统计</b><p>不确定性。</p></div>
-        <div class="module-card planned"><small>Planning</small><b data-icon="i">复数</b><p>代数与平面。</p></div>
+  <section class="stage" id="problem-tree">
+    <aside class="stage-marker"><span>6</span>Problem Types</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">题型树索引</div>
+      <h2>题型树按“题目任务”组织，用来遇题反查。</h2>
+      <p class="subtle">当前只展示第一版题型索引，不创建题型详情页。</p>
+      <div class="index-tags" aria-label="题型树第一版索引">
+        <span class="tag">求值与化简</span>
+        <span class="tag">求定义域、值域与解析式</span>
+        <span class="tag">解方程与不等式</span>
+        <span class="tag">比较大小</span>
+        <span class="tag">求范围与最值</span>
+        <span class="tag">判断性质</span>
+        <span class="tag">零点、交点与解的个数</span>
+        <span class="tag">参数范围</span>
+        <span class="tag">恒成立与存在性</span>
+        <span class="tag">证明问题</span>
+        <span class="tag">几何计算</span>
+        <span class="tag">几何位置关系证明</span>
+        <span class="tag">数列通项与求和</span>
+        <span class="tag">概率计算</span>
+        <span class="tag">统计分析</span>
+        <span class="tag">综合应用与建模</span>
       </div>
     </div>
   </section>
 
-  <section class="stage" id="vision">
-    <aside class="stage-marker"><span>6</span>Vision</aside>
-    <div class="stage-body reveal">
-      <div class="philosophy">
-        <div class="stage-kicker">项目理念</div>
-        <h2>不是目录，是一张可以进入的数学地图。</h2>
-        <p class="subtle">从一个章节开始，逐步打开整套结构。</p>
-        <div class="grid-2">
-          <div class="panel">
-            <h3>对学习者</h3>
-            <p class="subtle">知道从哪里开始。</p>
-          </div>
-          <div class="panel">
-            <h3>对后续建设</h3>
-            <p class="subtle">新章节会挂到地图上。</p>
-          </div>
+  <section class="stage" id="practice-tree">
+    <aside class="stage-marker"><span>7</span>Practice</aside>
+    <div class="stage-body">
+      <div class="stage-kicker">练习树说明</div>
+      <h2>练习不是简单堆题，而是按训练目标分层。</h2>
+      <div class="practice-layers" aria-label="练习树分层">
+        <div class="layer-card"><b>基础检查</b><p>确认概念和符号能用。</p></div>
+        <div class="layer-card"><b>结构判断</b><p>先判断题目结构，再决定方法。</p></div>
+        <div class="layer-card"><b>题型训练</b><p>围绕同一种题目任务反复训练。</p></div>
+        <div class="layer-card"><b>方法训练</b><p>围绕同一种解题思想训练。</p></div>
+        <div class="layer-card"><b>综合提升</b><p>多个知识点、方法、题型结合。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="next">
+    <aside class="stage-marker"><span>8</span>Next</aside>
+    <div class="stage-body">
+      <div class="summary-band">
+        <div class="stage-kicker">当前可走的路线</div>
+        <h2>先从树根能力和 A-01 集合开始。</h2>
+        <p class="subtle">现在已经开放的是初高中衔接内容和高中正式内容的第一个节点 A-01 集合。方法树、题型树、练习树先作为索引和规划，后续应从核心 Markdown 开始逐步生成页面。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#bridge">回到树根能力</a>
+          <a class="btn" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">进入 A-01 集合</a>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  DGOpenKS · 交互式高中数学知识空间 · 开放知识空间
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) entry.target.classList.add('in');
-    });
-  }, { threshold: .16 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-});
-</script>
+<footer class="footer">DGOpenKS · 高中数学学习系统 · 知识树 + 方法树 + 题型树 + 练习树</footer>
 </body>
 </html>

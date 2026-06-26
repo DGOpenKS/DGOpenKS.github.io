@@ -3,20 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@700;900&family=ZCOOL+KuaiLe&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
       [data-composition-id="root"] {
         position: relative; width: 1920px; height: 1080px;
         overflow: hidden; background: #000;
-        font-family: "Nunito", "Noto Sans SC", sans-serif; color: #1a1a1a;
+        font-family: "Nunito", "Noto Sans JP", sans-serif; color: #1a1a1a;
       }
       .scene-host { position: absolute; inset: 0; width: 1920px; height: 1080px; }
     </style>
@@ -79,7 +73,7 @@
 
       <!-- 字幕层 -->
       <div id="subtitle-layer" style="position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:100;pointer-events:none;">
-        <div id="sub-text" style="display:inline-block;max-width:1500px;font-family:'ZCOOL KuaiLe','Noto Sans SC',sans-serif;font-size:40px;line-height:1.25;color:#ffffff;background:rgba(0,0,0,0.68);padding:12px 34px;border-radius:16px;opacity:0;"></div>
+        <div id="sub-text" style="display:inline-block;max-width:1500px;font-family:'Noto Sans JP',sans-serif;font-size:40px;line-height:1.25;color:#ffffff;background:rgba(0,0,0,0.68);padding:12px 34px;border-radius:16px;opacity:0;"></div>
       </div>
     </div>
 
@@ -148,6 +142,55 @@
 
         tl.to({}, { duration: 0.01 }, 190.406);
         window.__timelines["root"] = tl;
+      })();
+    </script>
+    <script>
+      (function () {
+        function linkSceneTimelines(attempt) {
+          var timelines = window.__timelines || {};
+          var root = timelines.root;
+          if (!root || root.__dgSceneTimelinesLinked) return;
+
+          var hosts = Array.prototype.slice.call(
+            document.querySelectorAll('.scene-host[data-composition-id][data-start][data-duration]')
+          );
+          if (!hosts.length) return;
+
+          var missing = hosts.filter(function(host) {
+            var id = host.getAttribute("data-composition-id");
+            var timeline = timelines[id];
+            return !timeline || timeline === root || typeof timeline.totalTime !== "function";
+          });
+
+          if (missing.length && attempt < 120) {
+            window.setTimeout(function() { linkSceneTimelines(attempt + 1); }, 50);
+            return;
+          }
+
+          root.set(hosts, { autoAlpha: 0 }, 0);
+          hosts.forEach(function(host) {
+            var id = host.getAttribute("data-composition-id");
+            var start = parseFloat(host.getAttribute("data-start")) || 0;
+            var duration = parseFloat(host.getAttribute("data-duration")) || 0;
+            var timeline = timelines[id];
+
+            root.set(host, { autoAlpha: 1 }, start);
+            if (duration > 0) {
+              root.set(host, { autoAlpha: 0 }, start + duration);
+            }
+
+            if (timeline && timeline !== root && typeof timeline.paused === "function") {
+              timeline.pause(0);
+              root.add(timeline, start);
+              timeline.paused(false);
+            }
+          });
+
+          root.__dgSceneTimelinesLinked = true;
+        }
+
+        linkSceneTimelines(0);
+        window.addEventListener("load", function() { linkSceneTimelines(0); });
       })();
     </script>
   </body>

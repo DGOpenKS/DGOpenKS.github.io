@@ -1,0 +1,2 @@
+[0619/003026.135:WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)
+[0619/003026.153:ERROR:direct_composition_support.cc(1034)] QueryInterface to IDCompositionDevice4 failed: 不支持此接口 (0x80004002)

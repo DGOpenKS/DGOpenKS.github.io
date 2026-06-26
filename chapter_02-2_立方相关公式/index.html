@@ -134,6 +134,12 @@ input[type=range]{width:100%;accent-color:var(--amber)}
 .prose-bridge{max-width:760px}
 .micro-check{display:grid;gap:8px;margin:14px 0 0;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
 .micro-check b{color:var(--blue)}
+.notice-panel{display:grid;gap:10px;margin-top:16px}
+.notice-item{display:grid;grid-template-columns:minmax(170px,.34fr) minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:13px 14px}
+.notice-item strong{color:var(--red)}
+.notice-item p{margin:0;color:var(--muted)}
+.notice-item .math{color:var(--ink)}
+.notice-tag{display:inline-flex;align-items:center;width:max-content;max-width:100%;border:1px solid #fecaca;background:#fef2f2;color:#991b1b;border-radius:999px;padding:2px 8px;font-size:.82rem;font-weight:900;margin-top:5px}
 .mistake-card p{margin-bottom:8px}
 .mistake-card p:last-child{margin-bottom:0}
 .mistake-card b{color:var(--ink)}
@@ -238,6 +244,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
   .judge-table td:nth-child(3)::before{content:"方向"}
   .judge-table .math{white-space:normal}
   .mistake-grid,.example-grid,.summary-grid,.term-grid,.coef-row{grid-template-columns:1fr}
+  .notice-item{grid-template-columns:1fr}
   .segmented{grid-template-columns:1fr}
   .cube-viewport{min-height:360px}
   .hero-actions .btn{width:100%}
@@ -255,7 +262,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     <a class="brand" href="../index.html">DGOpenKS</a>
     <a class="nav-link" href="#question">判断入口</a>
     <a class="nav-link" href="#cube">三次选择</a>
-    <a class="nav-link" href="#mistakes">易错结构</a>
+    <a class="nav-link" href="#mistakes">注意事项</a>
     <a class="nav-link" href="#derive">抵消推导</a>
     <a class="nav-link" href="#examples">例子检查</a>
     <a class="nav-link" href="#practice">自主练习</a>
@@ -341,35 +348,39 @@ input[type=range]{width:100%;accent-color:var(--amber)}
   </section>
 
   <section class="section" id="mistakes">
-    <aside class="marker"><span>2</span>易错结构</aside>
+    <aside class="marker"><span>2</span>注意事项</aside>
     <div>
-      <h2>这里最容易看错什么</h2>
-      <p class="prose-bridge">三次公式的错误，多数不是算错，而是对象看错。上一段已经看到“整体立方”会产生混合项；现在把几个常见误读逐个拆开，看错在哪里、为什么容易错、怎样检查。</p>
-      <div class="mistake-grid">
-        <article class="card mistake-card">
-          <strong>把整体立方看成分别立方</strong>
-          <p><b>错误表现：</b><span class="math">(a+b)<sup>3</sup></span> 被写成 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。</p>
-          <p><b>真正的结构：</b>这是三个相同括号相乘，中间还会出现 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。</p>
-          <p><b>检查方法：</b>先改写成 <span class="math">(a+b)(a+b)(a+b)</span>，再检查有没有漏掉混合选择。</p>
-        </article>
-        <article class="card mistake-card">
-          <strong>把差的立方看成立方的差</strong>
-          <p><b>错误表现：</b><span class="math">(a-b)<sup>3</sup></span> 被当成 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。</p>
-          <p><b>真正的结构：</b>前者是一个括号整体被立方，要展开；后者是两个完整立方相减，要分解。</p>
-          <p><b>检查方法：</b>先读出对象：“差的立方”还是“立方的差”。读法不同，下一步就不同。</p>
-        </article>
-        <article class="card mistake-card">
-          <strong>把二次因子的符号写反</strong>
-          <p><b>错误表现：</b><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 写成 <span class="math">(a+b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>。</p>
-          <p><b>真正的结构：</b>二次因子的中间项不是凭口令定符号，而是要让乘回去产生的混合项抵消。</p>
-          <p><b>检查方法：</b>立方和对应 <span class="math">-ab</span>；立方差对应 <span class="math">+ab</span>，乘回去只应剩下两个立方。</p>
-        </article>
-        <article class="card mistake-card">
-          <strong>看到三次项就套公式</strong>
-          <p><b>错误表现：</b>只因为式子里有三次项和加号，就把 <span class="math">x<sup>3</sup>+9</span> 当成立方和。</p>
-          <p><b>真正的结构：</b>当前范围内，两端都要能看成完整立方，例如 <span class="math">27=3<sup>3</sup></span> 或 <span class="math">8x<sup>3</sup>=(2x)<sup>3</sup></span>。</p>
-          <p><b>检查方法：</b>先问两端是不是完整立方；答不上来，就不能直接套本节公式。</p>
-        </article>
+      <h2>先把这几条当成注意事项</h2>
+      <p class="prose-bridge">三次公式最怕对象读错。下面不用逐条长讲，先记住几个检查点：每次动笔前，先判断自己看到的是整体立方、立方和，还是立方差。</p>
+      <div class="notice-panel" aria-label="三次公式注意事项">
+        <div class="notice-item">
+          <div>
+            <strong>整体立方不能拆开立方</strong>
+            <span class="notice-tag">(a+b)<sup>3</sup> ≠ a<sup>3</sup>+b<sup>3</sup></span>
+          </div>
+          <p>括号整体被乘三次，先写成 <span class="math">(a+b)(a+b)(a+b)</span>，检查有没有漏掉混合项。</p>
+        </div>
+        <div class="notice-item">
+          <div>
+            <strong>差的立方不等于立方的差</strong>
+            <span class="notice-tag">(a-b)<sup>3</sup> ≠ a<sup>3</sup>-b<sup>3</sup></span>
+          </div>
+          <p>前者要展开，后者要分解；读法不同，下一步就不同。</p>
+        </div>
+        <div class="notice-item">
+          <div>
+            <strong>二次因子的符号看抵消</strong>
+            <span class="notice-tag">和配 -ab，差配 +ab</span>
+          </div>
+          <p>符号不是背口令定的，乘回去时混合项必须抵消，最后只剩两个立方。</p>
+        </div>
+        <div class="notice-item">
+          <div>
+            <strong>看到三次项也要先停一下</strong>
+            <span class="notice-tag">两端先看完整立方</span>
+          </div>
+          <p>像 <span class="math">x<sup>3</sup>+9</span> 不能直接套立方和；先问两端能不能都看成完整立方。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -565,15 +576,15 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         },
         {
           id: 'split-remaining',
-          name: '切成 3 块',
-          explanation: '剩余体积被精确切成 a²(a-b)、ab(a-b)、b²(a-b) 三块，体积加起来等于 a³-b³。',
+          name: '三块分开',
+          explanation: '剩余体积先分开展示成 a²(a-b)、ab(a-b)、b²(a-b) 三块。它们互不堆叠，体积加起来等于 a³-b³。',
           visiblePieces: ['diff-a2', 'diff-ab', 'diff-b2', 'diff-void-b3'],
           highlightedTerms: ['a²(a-b)', 'ab(a-b)', 'b²(a-b)']
         },
         {
           id: 'recompose',
-          name: '重组',
-          explanation: '三块按尺寸重新拼接，让同一个方向上的厚度都变成 a-b，准备提出公因式。',
+          name: '摆出截面',
+          explanation: '三块按尺寸重新摆成同一个厚度方向：厚度都是 a-b，正面能看见 a²、ab、b² 三个截面。',
           visiblePieces: ['diff-a2', 'diff-ab', 'diff-b2'],
           highlightedTerms: ['a²', 'ab', 'b²']
         },
@@ -602,6 +613,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
           splitTransform: { position: [0, 0, 0], rotation: [0, 0, 0] },
           targetTransform: { position: [0, 0, 0], rotation: [0, 0, 0] },
           visibleStages: ['whole-a3', 'mark-b3'],
+          hideLabelStages: ['mark-b3'],
           materialRole: 'source'
         },
         {
@@ -675,6 +687,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
           targetTransform: { position: [1.5, 1.5, 1], rotation: [0, 0, 0] },
           visibleStages: ['remove-b3'],
           hideEdgeStages: ['remove-b3'],
+          hideLabelStages: ['remove-b3'],
           listLabel: '缺角整体',
           materialRole: 'shell'
         },
@@ -1151,29 +1164,29 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         },
         {
           id: 'sum-supplement',
-          name: '拆分与补项',
-          explanation: '为了把图形整理成长方体，补入两组成对抵消的体积：+a²b 与 -a²b，+ab² 与 -ab²。补项改变形状，不改变总值。',
+          name: '补入两对 0',
+          explanation: '为了整理出公共长度，先把补项单独摆成两对：+a²b 与 -a²b，+ab² 与 -ab²。每一对总和为 0，所以没有改变 a³+b³。',
           visiblePieces: ['sum-a3', 'sum-b3', 'sum-pos-a2b', 'sum-neg-a2b', 'sum-pos-ab2', 'sum-neg-ab2'],
           highlightedTerms: ['+a²b', '-a²b', '+ab²', '-ab²', '总值不变']
         },
         {
           id: 'sum-cancel',
           name: '正负相消',
-          explanation: '同形同量的一正一负会抵消：a²b 抵消一对，ab² 抵消一对。抵消后仍然只剩 a³+b³。',
+          explanation: '同形同量的一正一负成对靠近：a²b 抵消一对，ab² 抵消一对。看清这两对以后，才进入重组。',
           visiblePieces: ['sum-a3', 'sum-b3', 'sum-pos-a2b', 'sum-neg-a2b', 'sum-pos-ab2', 'sum-neg-ab2'],
           highlightedTerms: ['+a²b 与 -a²b', '+ab² 与 -ab²']
         },
         {
           id: 'sum-recompose',
-          name: '重组成长方体',
-          explanation: '把保留项和补项按同一方向排开，长度方向变成 a+b；横截面被整理成 a²、-ab、b² 三部分。',
+          name: '排出公共长度',
+          explanation: '每一行都按 a 段和 b 段排开，于是同一个方向的总长度都是 a+b；三行分别对应截面 a²、-ab、b²。',
           visiblePieces: ['sum-a3', 'sum-b3', 'sum-pos-a2b', 'sum-neg-a2b', 'sum-pos-ab2', 'sum-neg-ab2', 'sum-common-length'],
           highlightedTerms: ['公共长度 a+b', '截面 a²-ab+b²']
         },
         {
           id: 'sum-result',
           name: '得到公式',
-          explanation: '公共长度是 a+b，带符号截面是 a²-ab+b²，所以两个立方的和等于这个长方体的代数体积。',
+          explanation: '公共长度是 a+b，带符号截面是 a²-ab+b²。两对补项已经抵消，所以这个代数体积仍然等于 a³+b³。',
           visiblePieces: ['sum-a3', 'sum-b3', 'sum-pos-a2b', 'sum-neg-a2b', 'sum-pos-ab2', 'sum-neg-ab2', 'sum-common-length', 'sum-section-a2', 'sum-section-neg-ab', 'sum-section-b2'],
           highlightedTerms: ['a²', '-ab', 'b²']
         }
@@ -1436,39 +1449,173 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     return pieceDimensions(piece, a, b).reduce((total, value) => total * value, 1);
   }
 
+  function layoutItem(position, targetSize, rotation = [0, 0, 0]) {
+    return { position, rotation, targetSize };
+  }
+
+  function rowCenters(ids, dimensions, y, z, gap) {
+    const totalWidth = ids.reduce((sum, id) => sum + dimensions[id][0], 0) + gap * (ids.length - 1);
+    let cursor = -totalWidth / 2;
+    return Object.fromEntries(ids.map(id => {
+      const width = dimensions[id][0];
+      const center = cursor + width / 2;
+      cursor += width + gap;
+      return [id, [center, y, z]];
+    }));
+  }
+
+  function stackedRowY(heights, gap) {
+    const totalHeight = heights.reduce((sum, height) => sum + height, 0) + gap * (heights.length - 1);
+    let cursor = totalHeight / 2;
+    return heights.map(height => {
+      const center = cursor - height / 2;
+      cursor -= height + gap;
+      return center;
+    });
+  }
+
+  function sumLayoutDimensions(a, b, unit = 1) {
+    const au = a * unit;
+    const bu = b * unit;
+    const thin = 0.12 * unit;
+    return {
+      'sum-a3': [au, au, au],
+      'sum-b3': [bu, bu, bu],
+      'sum-pos-a2b': [bu, au, au],
+      'sum-neg-a2b': [au, au, bu],
+      'sum-pos-ab2': [au, bu, bu],
+      'sum-neg-ab2': [bu, au, bu],
+      'sum-common-length': [au + bu, thin, thin],
+      'sum-section-a2': [thin, au, au],
+      'sum-section-neg-ab': [thin, au, bu],
+      'sum-section-b2': [thin, bu, bu]
+    };
+  }
+
+  function layoutSumOfCubesStage(a, b, unit = 1, stageId = 'sum-objects') {
+    const dimensions = sumLayoutDimensions(a, b, unit);
+    const au = a * unit;
+    const bu = b * unit;
+    const total = au + bu;
+    const gap = Math.max(0.28, 0.72 * unit);
+    const zNudge = Math.max(0.16, 0.38 * unit);
+    const result = {};
+    const put = (id, position, rotation = [0, 0, 0]) => {
+      result[id] = layoutItem(position, dimensions[id], rotation);
+    };
+
+    if (stageId === 'sum-objects') {
+      const positions = rowCenters(['sum-a3', 'sum-b3'], dimensions, 0, 0, gap * 1.65);
+      put('sum-a3', positions['sum-a3']);
+      put('sum-b3', positions['sum-b3']);
+      return result;
+    }
+
+    if (stageId === 'sum-supplement' || stageId === 'sum-cancel') {
+      const rows = [
+        ['sum-a3', 'sum-b3'],
+        ['sum-pos-a2b', 'sum-neg-a2b'],
+        ['sum-pos-ab2', 'sum-neg-ab2']
+      ];
+      const rowHeights = rows.map(ids => Math.max(...ids.map(id => dimensions[id][1])));
+      const yPositions = stackedRowY(rowHeights, stageId === 'sum-cancel' ? gap * 0.8 : gap);
+      rows.forEach((ids, index) => {
+        const positions = rowCenters(
+          ids,
+          dimensions,
+          yPositions[index],
+          index === 1 ? zNudge : index === 2 ? -zNudge : 0,
+          stageId === 'sum-cancel' ? gap * 0.72 : gap
+        );
+        ids.forEach(id => put(id, positions[id]));
+      });
+      return result;
+    }
+
+    if (stageId === 'sum-recompose' || stageId === 'sum-result') {
+      const xA = -total / 2 + au / 2;
+      const xB = total / 2 - bu / 2;
+      const rowGap = Math.max(0.22, 0.58 * unit);
+      const yNeg = 0;
+      const yA2 = au + rowGap;
+      const yB2 = -(au / 2 + bu / 2 + rowGap);
+      put('sum-a3', [xA, yA2, 0]);
+      put('sum-pos-a2b', [xB, yA2, 0]);
+      put('sum-neg-a2b', [xA, yNeg, zNudge]);
+      put('sum-neg-ab2', [xB, yNeg, zNudge]);
+      put('sum-pos-ab2', [xA, yB2, -zNudge]);
+      put('sum-b3', [xB, yB2, -zNudge]);
+      put('sum-common-length', [0, yB2 - bu / 2 - Math.max(0.28, 0.7 * unit), -Math.max(0.48, 1.35 * unit)]);
+      if (stageId === 'sum-result') {
+        const sectionX = -total / 2 - Math.max(0.36, 0.82 * unit);
+        const sectionZ = -Math.max(0.62, 1.42 * unit);
+        put('sum-section-a2', [sectionX, yA2, sectionZ]);
+        put('sum-section-neg-ab', [sectionX, yNeg, sectionZ]);
+        put('sum-section-b2', [sectionX, yB2, sectionZ]);
+      }
+      return result;
+    }
+
+    return result;
+  }
+
   function layoutDifferenceTarget(a, b, unit = 1) {
     const d = Math.max(0.1, a - b);
-    const totalWidth = a + b;
-    const totalHeight = a + b;
+    const au = a * unit;
+    const bu = b * unit;
+    const du = d * unit;
+    const gap = Math.max(0.16, 0.42 * unit);
+    const totalWidth = au + bu + gap;
+    const totalHeight = au + bu + gap;
     const left = -totalWidth / 2;
     const bottom = -totalHeight / 2;
     const center = (x, y, width, height) => [
-      (x + width / 2) * unit,
-      (y + height / 2) * unit,
+      x + width / 2,
+      y + height / 2,
       0
     ];
-    const depth = d * unit;
     return {
-      'diff-a2': {
-        position: center(left, bottom + b, a, a),
-        rotation: [0, 0, 0],
-        targetSize: [a * unit, a * unit, depth]
-      },
-      'diff-ab': {
-        position: center(left, bottom, a, b),
-        rotation: [RIGHT_ANGLE, 0, 0],
-        targetSize: [a * unit, b * unit, depth]
-      },
-      'diff-b2': {
-        position: center(left + a, bottom, b, b),
-        rotation: [0, RIGHT_ANGLE, 0],
-        targetSize: [b * unit, b * unit, depth]
-      },
-      'diff-common-d': {
-        position: [0, (bottom - 0.38) * unit, -depth / 2 - 0.18],
-        rotation: [0, RIGHT_ANGLE, 0],
-        targetSize: [0.12 * unit, 0.12 * unit, depth]
-      }
+      'diff-a2': layoutItem(center(left, bottom + bu + gap, au, au), [au, au, du]),
+      'diff-ab': layoutItem(center(left, bottom, au, bu), [au, bu, du], [RIGHT_ANGLE, 0, 0]),
+      'diff-b2': layoutItem(center(left + au + gap, bottom, bu, bu), [bu, bu, du], [0, RIGHT_ANGLE, 0]),
+      'diff-common-d': layoutItem([0, bottom - Math.max(0.28, 0.7 * unit), -du / 2 - Math.max(0.14, 0.36 * unit)], [0.12 * unit, 0.12 * unit, du], [0, RIGHT_ANGLE, 0])
+    };
+  }
+
+  function layoutDifferenceSplit(a, b, unit = 1) {
+    const d = Math.max(0.1, a - b);
+    const au = a * unit;
+    const bu = b * unit;
+    const du = d * unit;
+    const dimensions = {
+      'diff-a2': [au, au, du],
+      'diff-ab': [au, du, bu],
+      'diff-b2': [du, bu, bu],
+      'diff-void-b3': [bu, bu, bu]
+    };
+    const gap = Math.max(0.2, 0.48 * unit);
+    const rightColumnWidth = Math.max(dimensions['diff-ab'][0], dimensions['diff-b2'][0], dimensions['diff-void-b3'][0]);
+    const leftX = -(dimensions['diff-a2'][0] / 2 + gap / 2);
+    const rightX = rightColumnWidth / 2 + gap / 2;
+    const rightHeights = [
+      dimensions['diff-void-b3'][1],
+      dimensions['diff-ab'][1],
+      dimensions['diff-b2'][1]
+    ];
+    const [voidY, abY, b2Y] = stackedRowY(rightHeights, gap * 0.82);
+    return {
+      'diff-a2': layoutItem([leftX, 0, 0], dimensions['diff-a2']),
+      'diff-ab': layoutItem([rightX, abY, 0], dimensions['diff-ab']),
+      'diff-b2': layoutItem([rightX, b2Y, -Math.max(0.12, 0.28 * unit)], dimensions['diff-b2']),
+      'diff-void-b3': layoutItem([rightX, voidY, Math.max(0.14, 0.36 * unit)], dimensions['diff-void-b3'])
+    };
+  }
+
+  function layoutDifferenceRemove(a, b, unit = 1) {
+    const au = a * unit;
+    const bu = b * unit;
+    return {
+      'diff-removed-b3': layoutItem([au / 2 + bu / 2 + Math.max(0.48, 1.05 * unit), -au * 0.18, -Math.max(0.18, 0.52 * unit)], [bu, bu, bu])
     };
   }
 
@@ -1524,6 +1671,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     if (missingSplitPieces.length) {
       errors.push(`split-remaining 缺少正式切分块：${missingSplitPieces.join(', ')}`);
     }
+    validateLayoutNoOverlap(scene, 'split-remaining', layoutDifferenceSplit(a, b, 1), errors);
     const remainingVolume = finalIds.reduce((total, id) => total + pieceVolume(pieceMap.get(id), a, b), 0);
     const expectedVolume = a ** 3 - b ** 3;
     if (Math.abs(remainingVolume - expectedVolume) > GEOMETRY_EPS) {
@@ -1543,6 +1691,28 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       for (let j = i + 1; j < targetBoxes.length; j += 1) {
         if (boxesOverlap(targetBoxes[i][1], targetBoxes[j][1])) {
           errors.push(`recompose 目标块发生重叠：${targetBoxes[i][0]} / ${targetBoxes[j][0]}`);
+        }
+      }
+    }
+  }
+
+  function validateLayoutNoOverlap(scene, stageId, layout, errors, options = {}) {
+    const stage = stageById(scene, stageId);
+    if (!stage) return;
+    const skipRoles = new Set(options.skipRoles || []);
+    const pieceMap = new Map(scene.pieces.map(piece => [piece.id, piece]));
+    const boxes = stage.visiblePieces
+      .map(id => {
+        const piece = pieceMap.get(id);
+        const item = layout[id];
+        if (!piece || !item || skipRoles.has(piece.role)) return null;
+        return [id, targetBox(item)];
+      })
+      .filter(Boolean);
+    for (let i = 0; i < boxes.length; i += 1) {
+      for (let j = i + 1; j < boxes.length; j += 1) {
+        if (boxesOverlap(boxes[i][1], boxes[j][1])) {
+          errors.push(`${stageId} 体块发生重叠：${boxes[i][0]} / ${boxes[j][0]}`);
         }
       }
     }
@@ -1635,6 +1805,9 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       if (!negativeCrossSection || negativeCrossSection.sign !== 'negative' || negativeCrossSection.label !== '-ab') {
         errors.push('a^3+b^3 截面缺少 -ab 负区域');
       }
+      ['sum-supplement', 'sum-cancel', 'sum-recompose', 'sum-result'].forEach(stageId => {
+        validateLayoutNoOverlap(scene, stageId, layoutSumOfCubesStage(a, b, 1, stageId), errors, { skipRoles: ['factor'] });
+      });
     }
     if (scene.validation?.requiredLabels) {
       const labels = new Set(scene.pieces.map(piece => piece.label));
@@ -2029,19 +2202,19 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     diffFactor: {
       formula: 'a<sup>3</sup> - b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)',
       chips: [
-        ['pos', '上层来自 a'],
-        ['neg', '下层来自 -b'],
-        ['mix', '中间抵消']
+        ['pos', '剩余体积'],
+        ['neg', '移除 b³'],
+        ['mix', '公共厚度 a-b']
       ],
       observe: [
         ['对象', '先看 a³-b³。'],
-        ['拆分', '再看右边因子乘开。'],
-        ['抵消', '下层负体块抵消混合项。']
+        ['拆分', '剩余体积切成三块。'],
+        ['提取', '三块共享厚度 a-b。']
       ],
       steps: [
         ['先看原始对象 a³-b³。', '它是一块 a³ 大立方，并标出要减去的 b³ 小立方；这一步还不是因式展开。'],
-        ['展开后同样有 6 个体块。', '正的 a²b、ab² 会和负的 a²b、ab² 一一对应。'],
-        ['混合体块成对抵消。', '中间两类体块消失，最后留下 a³-b³。']
+        ['把剩余体积分成三块。', '三块分别是 a²(a-b)、ab(a-b)、b²(a-b)，先分开看清楚再重组。'],
+        ['提出共同厚度 a-b。', '三个截面是 a²、ab、b²，所以得到 (a-b)(a²+ab+b²)。']
       ]
     }
   };
@@ -2192,7 +2365,20 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       const height = Math.max(1, rect.height);
       this.renderer.setSize(width, height, false);
       this.camera.aspect = width / height;
-      this.camera.position.z = width < 520 ? 8.9 : 7.8;
+      this.updateCameraDistance();
+    }
+
+    updateCameraDistance() {
+      if (!this.camera || !this.root) return;
+      const width = this.root.getBoundingClientRect().width;
+      let z = width < 520 ? 8.9 : 7.8;
+      if (this.mode === 'sumFactor') {
+        z = this.step >= 1 ? (width < 520 ? 11.8 : 10.2) : (width < 520 ? 9.6 : 8.4);
+      } else if (this.mode === 'diffFactor') {
+        z = this.step >= 3 ? (width < 520 ? 10.4 : 8.8) : (width < 520 ? 9.4 : 8.0);
+      }
+      this.camera.position.z = z;
+      this.camera.lookAt(0, 0, 0);
       this.camera.updateProjectionMatrix();
     }
 
@@ -2241,7 +2427,9 @@ input[type=range]{width:100%;accent-color:var(--amber)}
     }
 
     storyboardUnit() {
-      if (this.mode === 'sumFactor') return 0.42;
+      if (this.mode === 'sumFactor') {
+        return Math.min(0.42, 3.35 / Math.max(this.a + this.b, 1), 2.35 / Math.max(this.a, this.b, 1));
+      }
       return 2.72 / Math.max(this.a, 1);
     }
 
@@ -2271,10 +2459,29 @@ input[type=range]{width:100%;accent-color:var(--amber)}
       let rotation = [0, 0, 0];
       let scale = 1;
       const directTransform = piece.stageTransforms?.[stageId];
-      const differenceLayout = stageId === 'recompose' || stageId === 'factor-thickness'
-        ? layoutDifferenceTarget(this.a, this.b, this.storyboardUnit())
+      const unit = this.storyboardUnit();
+      const sumLayout = piece.id.startsWith('sum-')
+        ? layoutSumOfCubesStage(this.a, this.b, unit, stageId)
         : null;
-      if (directTransform) {
+      const differenceSplitLayout = stageId === 'split-remaining'
+        ? layoutDifferenceSplit(this.a, this.b, unit)
+        : null;
+      const differenceRemoveLayout = stageId === 'remove-b3'
+        ? layoutDifferenceRemove(this.a, this.b, unit)
+        : null;
+      const differenceLayout = stageId === 'recompose' || stageId === 'factor-thickness'
+        ? layoutDifferenceTarget(this.a, this.b, unit)
+        : null;
+      if (sumLayout?.[piece.id]) {
+        position = sumLayout[piece.id].position;
+        rotation = sumLayout[piece.id].rotation;
+      } else if (differenceRemoveLayout?.[piece.id]) {
+        position = differenceRemoveLayout[piece.id].position;
+        rotation = differenceRemoveLayout[piece.id].rotation;
+      } else if (differenceSplitLayout?.[piece.id]) {
+        position = differenceSplitLayout[piece.id].position;
+        rotation = differenceSplitLayout[piece.id].rotation;
+      } else if (directTransform) {
         if (directTransform.position) position = directTransform.position;
         if (directTransform.rotation) rotation = directTransform.rotation;
         if (directTransform.scale) scale = directTransform.scale;
@@ -2456,6 +2663,7 @@ input[type=range]{width:100%;accent-color:var(--amber)}
         item.mesh.visible = visible;
         item.edge.visible = visible;
       });
+      this.updateCameraDistance();
     }
 
     applyPieceStageStyle(item, stageId) {

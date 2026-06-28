@@ -22,24 +22,136 @@ Use:
 - `$gsap-motion` for GSAP timelines.
 - `$framer-motion` for React animation.
 
+## DGOpenKS Knowledge Content Design Principle
+
+This principle has priority over visual, interaction, animation, 3D, and page-layout preferences.
+
+DGOpenKS pages are not built to display technical effects. They are built to make learning simpler.
+
+The knowledge point itself is always the main path. Images, animation, 3D rendering, and interaction are supporting tools only. They exist only when they help a learner understand the current formula, concept, definition, rule, method, or structure.
+
+If the text alone cannot explain the knowledge after images and interactions are removed, the page is not ready. If a visual, animation, 3D model, or interaction does not help the learner understand the current knowledge point, it should not appear.
+
+### Formula Content
+
+Formula pages must first explain the derivation or calculation process.
+
+The learning path should be:
+
+1. Start from the left side or original expression.
+2. Write the intermediate expansion, transformation, or calculation steps.
+3. Explain why each step is valid.
+4. Arrive at the right side or final formula.
+5. Then use images, animation, or 3D models to help the learner see part of that process.
+
+3D rendering must not replace formula derivation. Interaction must not replace formula derivation. They may only help the learner see a step, structure, cancellation, grouping, boundary, or transformation that has already been explained.
+
+Core rule: first derive the formula, then use visualization to make the formula easier to see.
+
+### Concept Content
+
+Concept pages must first explain the concept itself.
+
+The learning path should be:
+
+1. What the concept is.
+2. What object or relationship it describes.
+3. What its core features are.
+4. How it differs from nearby concepts.
+5. When it should be used.
+6. Then use images, animation, or interaction to build intuition.
+
+Visuals must not be decorative. Interactions must not exist merely to make the page feel rich. They must help the learner see the concept's structure, boundary, or change process.
+
+Core rule: first explain the concept, then use visualization to build intuition.
+
+### Definition Content
+
+Definition pages must first explain meaning and boundary.
+
+The learning path should be:
+
+1. Give the definition.
+2. Unpack the key words.
+3. Show what satisfies the definition.
+4. Show what does not satisfy the definition.
+5. Provide positive examples and counterexamples.
+6. Then use images or interaction to help distinguish the boundary.
+
+Definitions are not for memorizing a sentence. They should help learners know what counts, what does not count, and why.
+
+Core rule: first explain the definition boundary, then use examples and visuals to support judgment.
+
+### Rule Or Method Content
+
+Rule and method pages must first explain conditions and operation steps.
+
+The learning path should be:
+
+1. What problem the rule solves.
+2. When the rule can be used.
+3. What steps to follow.
+4. Where errors are likely.
+5. When the rule cannot be used.
+6. Then use interaction or animation to practice judgment and operation.
+
+Interaction should not be only buttons and switching effects. Valuable interaction helps learners see when a rule applies, how to use it, and where it must not be misused.
+
+Core rule: first explain conditions and steps, then use interaction to practice judgment.
+
+### Visual, 3D, And Interaction Requirements
+
+Images, 3D, animation, and interaction must serve content. They may be used to:
+
+- make abstract ideas more concrete;
+- make formula derivations visible;
+- clarify definition boundaries;
+- make rule steps easier to operate;
+- reveal mistaken understanding;
+- make learning feel lighter.
+
+They must not be used to:
+
+- show off technical effects;
+- pile on visual effects;
+- fill space;
+- replace explanation;
+- reveal conclusions before the learner has the needed context;
+- interrupt the reading path;
+- make simple knowledge feel complex.
+
+### Required Final Check
+
+Before considering a knowledge page complete, ask:
+
+1. If images and interactions are removed, does the text itself explain the knowledge clearly?
+2. Does each image help the learner understand the current knowledge point?
+3. Does each interaction help reveal a step, structure, boundary, or change?
+4. Is the page easier to understand than plain text, not merely busier?
+5. After reading, will the learner genuinely understand the knowledge point better?
+
+If the answer is no, the page direction is wrong and must be revised before adding more effects.
+
 ## DGOpenKS Design Workflow
 
 For major HTML/blog page creation or redesign:
 
 1. Read the approved source Markdown. If no approved source Markdown exists, follow the no-approved-source branch below.
-2. Produce an HTML Derivation Plan.
-3. Check whether Markdown backflow is required.
-4. If backflow is required, report the missing source explanation before implementation. Do not modify source Markdown unless the user explicitly authorizes it.
-5. Choose the primary page type: Concept Blog Page, Formula Explainer Page, Interactive Visualization Page, Practice Lab Page, or 3D / Model Page.
-6. Use `$html-prose-adapter` to adapt source understanding into page-level learner prose.
-7. Produce an Interaction / Rendering Plan when the page includes major visualizations, practice blocks, animations, Canvas, SVG, WebGL, or 3D.
-8. Use `$design-reference-curator` when visual direction matters.
-9. Use relevant implementation skills as needed: `$formula-visualization`, `$interaction-architect`, `$math-visualization`, `$motion-design-system`, `$frontend-animation`, `$gsap-motion`, `$framer-motion`, `$performance-optimizer`.
-10. Implement the page.
-11. Self-check source fidelity, learning path, page prose quality, interaction quality, rendering quality, accessibility, responsiveness, performance, and practice feedback quality.
-12. Use `$ui-quality-reviewer` after implementation.
-13. Use `$performance-optimizer` when rendering is heavy or interactions may jank.
-14. Only then ask the user to review in browser.
+2. Identify the content type: formula, concept, definition, rule/method, or mixed.
+3. Confirm that the text-first knowledge path is clear without visuals or interactions. If it is not clear, report Markdown backflow before implementation.
+4. Produce an HTML Derivation Plan.
+5. Check whether Markdown backflow is required.
+6. If backflow is required, report the missing source explanation before implementation. Do not modify source Markdown unless the user explicitly authorizes it.
+7. Choose the primary page type: Concept Blog Page, Formula Explainer Page, Interactive Visualization Page, Practice Lab Page, or 3D / Model Page.
+8. Use `$html-prose-adapter` to adapt source understanding into page-level learner prose.
+9. Produce an Interaction / Rendering Plan when the page includes major visualizations, practice blocks, animations, Canvas, SVG, WebGL, or 3D. The plan must state which exact explanation step, structure, boundary, or operation each visual or interaction supports.
+10. Use `$design-reference-curator` when visual direction matters.
+11. Use relevant implementation skills as needed: `$formula-visualization`, `$interaction-architect`, `$math-visualization`, `$motion-design-system`, `$frontend-animation`, `$gsap-motion`, `$framer-motion`, `$performance-optimizer`.
+12. Implement the page.
+13. Self-check source fidelity, text-first knowledge clarity, learning path, page prose quality, interaction quality, rendering quality, accessibility, responsiveness, performance, and practice feedback quality.
+14. Use `$ui-quality-reviewer` after implementation.
+15. Use `$performance-optimizer` when rendering is heavy or interactions may jank.
+16. Only then ask the user to review in browser.
 
 If no approved source Markdown exists:
 

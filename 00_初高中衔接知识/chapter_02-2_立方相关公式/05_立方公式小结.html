@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立方公式小结 | DGOpenKS</title>
+<style>
+:root{--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--radius:8px;--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75}.math{font-family:Georgia,"Times New Roman",serif;font-weight:700}.topbar{position:sticky;top:0;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:920px;margin:auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}main{max-width:880px;margin:auto;padding:54px 20px 82px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:0 0 18px}h2{font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25;margin:34px 0 12px}p{color:var(--muted);margin:0 0 12px}table{width:100%;border-collapse:separate;border-spacing:0 8px;margin:18px 0}th{font-size:.8rem;color:var(--muted);text-align:left;padding:0 10px}td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px}td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius)}td:last-child{border-right:1px solid var(--line);border-radius:0 var(--radius) var(--radius) 0}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:16px 0;box-shadow:0 10px 26px rgba(15,23,42,.05)}.panel p{color:#334155}.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}.compare-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.compare-card strong,.factor-card strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:6px}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;color:var(--ink);overflow:auto;white-space:nowrap}.factor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.factor-card{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.check{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-top:16px}.check code{display:block;font:700 1rem/1.8 Consolas,monospace;color:var(--ink)}@media(max-width:620px){main{padding-left:14px;padding-right:14px}table,tbody,tr,td{display:block}thead{display:none}tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}td{border:0!important;border-radius:0!important;padding:4px 0}.math{white-space:normal}.compare,.factor-grid{grid-template-columns:1fr}.formula-line{white-space:normal}}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
+<main>
+<span class="eyebrow">02-2 / 05</span>
+<h1>立方公式小结</h1>
+<p>这一节小结立方相关公式的两类结构：展开公式和分解公式。</p>
+<table>
+<thead><tr><th>公式类型</th><th>看到的对象</th><th>变形方向</th></tr></thead>
+<tbody>
+<tr><td>和的立方</td><td><span class="math">(a+b)<sup>3</sup></span></td><td>从一个整体立方展开成四项</td></tr>
+<tr><td>差的立方</td><td><span class="math">(a-b)<sup>3</sup></span></td><td>从一个整体立方展开成四项</td></tr>
+<tr><td>立方和</td><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>从两个立方分解成两个因式</td></tr>
+<tr><td>立方差</td><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>从两个立方分解成两个因式</td></tr>
+</tbody>
+</table>
+
+<h2>展开是打开，分解是降次</h2>
+<div class="compare">
+  <div class="compare-card">
+    <strong>展开公式</strong>
+    <p>处理“括号整体被立方”。原式本来就是乘法结构，只是被压在括号和指数里。</p>
+    <div class="formula-line">(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</div>
+  </div>
+  <div class="compare-card">
+    <strong>分解公式</strong>
+    <p>处理“两个完整立方相加或相减”。目标是把三次式写回乘积。</p>
+    <div class="formula-line">a<sup>3</sup>±b<sup>3</sup> = 一次因子 × 二次因子</div>
+  </div>
+</div>
+<p>所以分解时先找一次因子，其实是在把三次式先降成一个二次因子。剩下的二次因子再通过乘回去检查、让混合项抵消来确定。</p>
+
+<h2>一次因子的判断</h2>
+<div class="panel">
+  <p>因式分解后的式子是乘积。如果某个因子等于 <span class="math">0</span>，整个乘积就等于 <span class="math">0</span>。反过来看，如果某个关系能让原式变成 <span class="math">0</span>，就提示我们：原式里可能藏着一个会在这个关系下变成 <span class="math">0</span> 的一次因子。</p>
+</div>
+<div class="factor-grid">
+  <div class="factor-card">
+    <strong>立方和</strong>
+    <p>当 <span class="math">b=-a</span> 时，<span class="math">a<sup>3</sup>+b<sup>3</sup>=0</span>。</p>
+    <div class="formula-line">b=-a ⇔ a+b=0</div>
+    <p>所以先尝试一次因子 <span class="math">a+b</span>。</p>
+  </div>
+  <div class="factor-card">
+    <strong>立方差</strong>
+    <p>当 <span class="math">a=b</span> 时，<span class="math">a<sup>3</sup>-b<sup>3</sup>=0</span>。</p>
+    <div class="formula-line">a=b ⇔ a-b=0</div>
+    <p>所以先尝试一次因子 <span class="math">a-b</span>。</p>
+  </div>
+</div>
+<p>这一步不是把完整公式猜出来，而是先找到候选的一次因子。真正确定公式，还要继续设二次因子的中间项，并乘回去检查。</p>
+
+<h2>判断顺序</h2>
+<div class="check">
+<code>它是不是一个整体被立方？</code>
+<code>它是不是两个完整立方相加？</code>
+<code>它是不是两个完整立方相减？</code>
+</div>
+<p>如果是整体被立方，就展开；如果是两个完整立方相加或相减，就分解。分解时先找一次因子完成降次，再让二次因子里的混合项在乘回去时抵消。</p>
+</main>
+</body>
+</html>

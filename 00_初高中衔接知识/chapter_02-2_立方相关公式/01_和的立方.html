@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>和的立方 | DGOpenKS</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f8fb;
+  --paper:#fff;
+  --soft:#f8fafc;
+  --ink:#111827;
+  --muted:#64748b;
+  --line:#dbe5f2;
+  --grid:#e8eef7;
+  --blue:#3b6fea;
+  --blue-soft:#eef4ff;
+  --blue-line:#c7d8ff;
+  --blue-deep:#1f4fbf;
+  --amber:#f08f3c;
+  --amber-soft:#fff4e8;
+  --amber-line:#f8cfa7;
+  --amber-deep:#b86218;
+  --purple:#8b5cf6;
+  --purple-soft:#f4f0ff;
+  --purple-line:#d8ccff;
+  --purple-deep:#6d3fce;
+  --cyan:#16a7b7;
+  --cyan-soft:#eafbfd;
+  --cyan-line:#a9edf3;
+  --cyan-deep:#08798a;
+  --radius:8px;
+  --shadow:0 14px 34px rgba(15,23,42,.08);
+  --soft-shadow:0 8px 24px rgba(15,23,42,.06);
+  --font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.72;overflow-x:hidden}
+button{font:inherit;letter-spacing:0}
+a{color:inherit}
+.math{font-family:Georgia,"Times New Roman",serif;font-weight:800;white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}
+.topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
+.eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}
+h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}
+h2{font-size:clamp(1.35rem,2.45vw,1.95rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}
+h3{font-size:1.05rem;margin:0 0 8px}
+p{margin:0 0 12px}
+.lead{max-width:880px;color:#334155;font-size:1rem;line-height:1.9}
+main{max-width:1180px;margin:auto;padding:0 20px 90px}
+.section{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;padding:54px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}
+.section-body{min-width:0}
+.prose{max-width:840px}
+.formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:18px;margin:18px 0;overflow:auto}
+.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.derivation .indent{padding-left:22px}
+.note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
+.lab{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);align-items:stretch;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);overflow:hidden;margin:22px 0 0;min-height:560px}
+.scene-wrap{position:relative;min-height:560px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
+.scene-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.scene-wrap.is-restore canvas{cursor:ew-resize}
+.scene-loader{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:900;background:rgba(248,250,252,.72);z-index:2}
+.scene-loader[hidden]{display:none}
+.scene-fallback{position:absolute;inset:0;z-index:2;display:grid;place-items:center;text-align:center;padding:28px;color:var(--muted);background:var(--soft)}
+.scene-fallback[hidden]{display:none}
+.fallback-title{display:block;color:var(--ink);font-size:1rem;font-weight:900;margin-bottom:4px}
+.fallback-stack{width:min(360px,86%);height:210px;position:relative;margin:18px auto 0}
+.fallback-face{position:absolute;border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 28px rgba(15,23,42,.12)}
+.fallback-face.one{left:78px;top:72px;width:152px;height:112px;background:rgba(59,111,234,.72);transform:skewY(7deg)}
+.fallback-face.two{left:166px;top:54px;width:114px;height:118px;background:rgba(139,92,246,.58);transform:skewY(-17deg)}
+.fallback-face.three{left:100px;top:34px;width:164px;height:76px;background:rgba(240,143,60,.58);transform:skewX(-28deg)}
+.scene-tags{position:absolute;left:12px;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none;z-index:4}
+.tag{font-size:.78rem;font-weight:900;color:#334155;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:999px;padding:4px 8px;box-shadow:0 4px 12px rgba(15,23,42,.08)}
+.tag.a3{color:var(--blue-deep);border-color:var(--blue-line);background:rgba(238,244,255,.96)}
+.tag.a2b{color:var(--amber-deep);border-color:var(--amber-line);background:rgba(255,244,232,.96)}
+.tag.ab2{color:var(--purple-deep);border-color:var(--purple-line);background:rgba(244,240,255,.96)}
+.tag.b3{color:var(--cyan-deep);border-color:var(--cyan-line);background:rgba(234,251,253,.96)}
+.scene-caption{position:absolute;left:12px;right:12px;bottom:12px;z-index:4;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:var(--radius);padding:8px 10px;color:#334155;font-weight:900;font-size:.86rem;box-shadow:0 8px 18px rgba(15,23,42,.08)}
+.panel{padding:18px;display:grid;gap:14px;align-content:start}
+.stage-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.stage-btn{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-height:44px;padding:8px 10px;font-weight:900;cursor:pointer;text-align:center}
+.stage-btn[aria-pressed=true]{border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.stage-btn:hover,.stage-btn:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.readout{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:12px;color:var(--blue-deep)}
+.readout b{display:block;margin-bottom:4px}
+.formula-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;overflow:auto}
+.formula-panel[hidden]{display:none}
+.formula-list{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.restore-tools{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px}
+.restore-tools[hidden]{display:none}
+.restore-meter{height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+.restore-meter span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .18s ease}
+.restore-text{font-size:.88rem;font-weight:900;color:#334155}
+.group-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.group-grid[hidden]{display:none}
+.count{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;text-align:center}
+.count b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem}
+.count small{display:block;color:var(--muted);font-weight:850}
+.count.a3 b{color:var(--blue)}
+.count.a2b b{color:var(--amber)}
+.count.ab2 b{color:var(--purple)}
+.count.b3 b{color:var(--cyan)}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:900px){
+  .section,.lab{grid-template-columns:minmax(0,1fr)}
+  .marker{position:static;display:flex;align-items:center;gap:10px}
+  .marker span{margin:0}
+  .lab{grid-template-columns:1fr}
+  .scene-wrap{min-height:430px}
+}
+@media(max-width:640px){
+  .hero,main{padding-left:14px;padding-right:14px}
+  .hero{padding-top:36px}
+  .hero>*{max-width:calc(100vw - 28px)}
+  h1{font-size:1.9rem}
+  .lead{font-size:1rem}
+  .formula-card,.panel{padding:14px}
+  .derivation,.formula-list,.math{white-space:normal}
+  .stage-rail,.group-grid{grid-template-columns:1fr}
+  .scene-wrap{min-height:360px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="章节导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html">DGOpenKS</a>
+    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="#calculation">展开过程</a>
+    <a class="nav-link" href="#model">立方体推导</a>
+    <a class="nav-link" href="02_差的立方.html">下一篇</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">02-2 立方相关公式 · 01</span>
+  <h1>和的立方</h1>
+  <p class="lead"><span class="math">(a+b)<sup>3</sup></span> 表示三个 <span class="math">a+b</span> 相乘。计算时先让前两个括号相乘，再把第三个括号乘进去；理解系数时，再用立方体把混合项拆开看成 8 个体积块。</p>
+</header>
+
+<main>
+  <section class="section" id="calculation">
+    <div class="marker" aria-hidden="true"><span>01</span>展开过程</div>
+    <div class="section-body">
+      <div class="prose">
+        <h2>先按平常的顺序展开</h2>
+        <p>立方就是三个相同因式相乘。手算时先算前两个括号，再乘第三个括号：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</span>
+            <span>= (a<sup>2</sup> + 2ab + b<sup>2</sup>)(a+b)</span>
+            <span>= a<sup>2</sup>(a+b) + 2ab(a+b) + b<sup>2</sup>(a+b)</span>
+            <span>= a<sup>3</sup> + a<sup>2</sup>b + 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> + b<sup>3</sup></span>
+            <span>= a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span>
+          </div>
+        </div>
+        <p>这就是最自然的计算线。后面的立方体会把 <span class="math">2a<sup>2</sup>b</span> 看成两个 <span class="math">a<sup>2</sup>b</span>，把 <span class="math">2ab<sup>2</sup></span> 看成两个 <span class="math">ab<sup>2</sup></span>，这样就能对应到 8 个小长方体。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="model">
+    <div class="marker" aria-hidden="true"><span>02</span>立方体模型</div>
+    <div class="section-body">
+      <h2>从三个因式走到立方体</h2>
+      <p class="prose">这里不是突然想到去切一个立方体。因为体积也是“长 × 宽 × 高”，三个 <span class="math">a+b</span> 可以先对应到长、宽、高三条边；每条边上都有 <span class="math">a</span> 和 <span class="math">b</span> 的分界，沿这些分界向里面切，才得到 8 个体积块。</p>
+      <div class="lab">
+        <div class="scene-wrap" id="sceneWrap">
+          <canvas id="cubeCanvas" aria-label="边长为 a+b 的立方体三维分块模型"></canvas>
+          <div class="scene-loader" id="sceneLoader">3D 模型加载中...</div>
+          <div class="scene-fallback" id="sceneFallback" hidden>
+            <div>
+              <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+              <span>仍可按右侧步骤看 8 个体积项的来源。</span>
+              <div class="fallback-stack" aria-hidden="true">
+                <span class="fallback-face one"></span>
+                <span class="fallback-face two"></span>
+                <span class="fallback-face three"></span>
+              </div>
+            </div>
+          </div>
+          <div class="scene-tags" id="sceneTags" aria-hidden="true"></div>
+          <div class="scene-caption" id="sceneCaption">完整立方体：棱长是 a+b，体积是 (a+b)³。</div>
+        </div>
+        <div class="panel">
+          <div class="stage-rail" id="stageRail" aria-label="立方体推导步骤"></div>
+          <div class="readout" id="readout">
+            <b>完整立方体</b>
+            <span>先把它看成一个整体，体积就是 <span class="math">(a+b)<sup>3</sup></span>。</span>
+          </div>
+          <div class="formula-panel" id="formulaPanel">
+            <div class="formula-list" id="formulaList"></div>
+          </div>
+          <div class="restore-tools" id="restoreTools" hidden>
+            <div class="restore-meter" aria-hidden="true"><span id="restoreMeter"></span></div>
+            <span class="restore-text" id="restoreText">按住左侧模型横向拖动，把 8 块合回立方体。</span>
+          </div>
+          <div class="group-grid" id="groupGrid" hidden>
+            <div class="count a3"><b>a<sup>3</sup></b><small>1 个</small></div>
+            <div class="count a2b"><b>a<sup>2</sup>b</b><small>3 个</small></div>
+            <div class="count ab2"><b>ab<sup>2</sup></b><small>3 个</small></div>
+            <div class="count b3"><b>b<sup>3</sup></b><small>1 个</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="summary">
+    <div class="marker" aria-hidden="true"><span>03</span>最后记住</div>
+    <div class="section-body">
+      <div class="prose">
+        <h2>本节小结</h2>
+        <p><span class="math">(a+b)<sup>3</sup></span> 是三个 <span class="math">a+b</span> 相乘。中间的两个系数 3，来自 8 个乘积中同类项的数量，也可以从立方体切分出的体积分组直接看见。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 和的立方</footer>
+
+<script src="./assets/three.min.js"></script>
+<script>
+(() => {
+  const stageData = [
+    {
+      title:'三个因式',
+      text:'(a+b)³ 有三个 a+b，体积的长、宽、高也正好是三个方向。',
+      caption:'先把三个 a+b 放到长、宽、高三条边上。',
+      tags:['长：a+b','宽：a+b','高：a+b'],
+      formula:['(a+b)³ = (a+b) × (a+b) × (a+b)'],
+      mode:'factors'
+    },
+    {
+      title:'边上分 a 和 b',
+      text:'先只在三条边上做 a | b 的标记，还没有真正切开。',
+      caption:'每条边都是 a+b，所以每条边上都有 a 和 b 的分界点。',
+      tags:['长：a | b','宽：a | b','高：a | b'],
+      formula:['长：a+b = a | b','宽：a+b = a | b','高：a+b = a | b'],
+      mode:'edgeSplit'
+    },
+    {
+      title:'三方向切分',
+      text:'现在从边上的分界点向立方体里面切。蓝、橙、紫三张切面分别对应长、宽、高。',
+      caption:'先有边上的 a | b 分界，再从分界处向里面切。',
+      tags:['蓝：长 a | b','橙：宽 a | b','紫：高 a | b'],
+      formula:['蓝色切面：长分成 a 或 b','橙色切面：宽分成 a 或 b','紫色切面：高分成 a 或 b'],
+      mode:'cuts'
+    },
+    {
+      title:'得到 8 块',
+      text:'每个方向有 2 种选择，三个方向合起来就是 2×2×2=8 个小长方体。',
+      caption:'2 × 2 × 2 = 8，先看见 8 块本身。',
+      tags:['2 × 2 × 2 = 8'],
+      formula:['2 × 2 × 2 = 8'],
+      mode:'blocks'
+    },
+    {
+      title:'拖动还原',
+      text:'切开以后，不急着一块块列体积。先拖动左侧模型，把分开的 8 块合回一个立方体，感受体积只是被重新分组。',
+      caption:'按住模型横向拖动：向右合拢，向左分开。',
+      tags:['拖动还原','8 块 -> 1 个整体'],
+      formula:['拖动：分开 -> 合拢','体积没有变，只是位置改变'],
+      mode:'restore'
+    },
+    {
+      title:'合并同类项',
+      text:'把体积相同的一类先放到一起：a³ 自成一组，a²b 有 3 个，ab² 有 3 个，b³ 自成一组。',
+      caption:'同类体块靠在一起，数量正好是 1,3,3,1。',
+      tags:['a³：1 个','a²b：3 个','ab²：3 个','b³：1 个'],
+      formula:[
+        'a³ + (a²b + a²b + a²b)',
+        '+ (ab² + ab² + ab²) + b³',
+        'a²b + a²b + a²b = 3a²b',
+        'ab² + ab² + ab² = 3ab²'
+      ],
+      mode:'combine'
+    },
+    {
+      title:'得到最终公式',
+      text:'所以和的立方公式就是四类体积的总和。',
+      caption:'最终公式对应四类体积：1,3,3,1。',
+      tags:['a³：1 个','a²b：3 个','ab²：3 个','b³：1 个'],
+      formula:['(a+b)³ = a³ + 3a²b + 3ab² + b³'],
+      mode:'final'
+    }
+  ];
+
+  const pieces = [
+    {dims:['a','a','a'], kind:'a3', name:'a³', term:'a·a·a = a³', range:[0,2.2,0,2.2,0,2.2]},
+    {dims:['a','a','b'], kind:'a2b', name:'a²b', term:'a·a·b = a²b', range:[0,2.2,0,2.2,2.2,3.4]},
+    {dims:['a','b','a'], kind:'a2b', name:'a²b', term:'a·b·a = a²b', range:[0,2.2,2.2,3.4,0,2.2]},
+    {dims:['b','a','a'], kind:'a2b', name:'a²b', term:'b·a·a = a²b', range:[2.2,3.4,0,2.2,0,2.2]},
+    {dims:['a','b','b'], kind:'ab2', name:'ab²', term:'a·b·b = ab²', range:[0,2.2,2.2,3.4,2.2,3.4]},
+    {dims:['b','a','b'], kind:'ab2', name:'ab²', term:'b·a·b = ab²', range:[2.2,3.4,0,2.2,2.2,3.4]},
+    {dims:['b','b','a'], kind:'ab2', name:'ab²', term:'b·b·a = ab²', range:[2.2,3.4,2.2,3.4,0,2.2]},
+    {dims:['b','b','b'], kind:'b3', name:'b³', term:'b·b·b = b³', range:[2.2,3.4,2.2,3.4,2.2,3.4]}
+  ];
+
+  const colors = {
+    whole:0x5f7fed,
+    a3:0x3b6fea,
+    a2b:0xf08f3c,
+    ab2:0x8b5cf6,
+    b3:0x16a7b7
+  };
+
+  const total = 3.4;
+  const half = total / 2;
+  const canvas = document.getElementById('cubeCanvas');
+  const sceneWrap = document.getElementById('sceneWrap');
+  const sceneLoader = document.getElementById('sceneLoader');
+  const sceneFallback = document.getElementById('sceneFallback');
+  const stageRail = document.getElementById('stageRail');
+  const readout = document.getElementById('readout');
+  const formulaPanel = document.getElementById('formulaPanel');
+  const formulaList = document.getElementById('formulaList');
+  const restoreTools = document.getElementById('restoreTools');
+  const restoreMeter = document.getElementById('restoreMeter');
+  const restoreText = document.getElementById('restoreText');
+  const groupGrid = document.getElementById('groupGrid');
+  const sceneTags = document.getElementById('sceneTags');
+  const sceneCaption = document.getElementById('sceneCaption');
+
+  let stage = 0;
+  let pieceIndex = 0;
+  let model = null;
+  let rendererKind = 'pending';
+
+  stageData.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'stage-btn';
+    button.dataset.stage = String(index);
+    button.setAttribute('aria-pressed', String(index === 0));
+    button.textContent = `${index + 1}. ${item.title}`;
+    stageRail.appendChild(button);
+  });
+
+  function hasWebGL() {
+    try {
+      const test = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (test.getContext('webgl') || test.getContext('experimental-webgl')));
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function makeLabelTexture(text, color) {
+    const labelCanvas = document.createElement('canvas');
+    labelCanvas.width = 512;
+    labelCanvas.height = 128;
+    const ctx = labelCanvas.getContext('2d');
+    const textColor = color === '#475569' || color === '#1f2937' ? '#020617' : color;
+    ctx.clearRect(0, 0, labelCanvas.width, labelCanvas.height);
+    ctx.shadowColor = 'rgba(15,23,42,.22)';
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 5;
+    ctx.fillStyle = 'rgba(255,255,255,.99)';
+    roundRect(ctx, 14, 14, 484, 100, 18);
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = textColor;
+    ctx.globalAlpha = .65;
+    ctx.lineWidth = 5;
+    roundRect(ctx, 14, 14, 484, 100, 18);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    const fontSize = text.length > 14 ? 40 : 56;
+    ctx.font = `900 ${fontSize}px Georgia, "Times New Roman", serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = 'rgba(255,255,255,.98)';
+    ctx.strokeText(text, 256, 66);
+    ctx.fillStyle = textColor;
+    ctx.fillText(text, 256, 66);
+    const texture = new THREE.CanvasTexture(labelCanvas);
+    texture.needsUpdate = true;
+    return texture;
+  }
+
+  function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
+  }
+
+  function addEdges(mesh, color = 0xffffff, opacity = .82) {
+    const edges = new THREE.EdgesGeometry(mesh.geometry);
+    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({
+      color,
+      transparent:true,
+      opacity
+    }));
+    mesh.add(line);
+  }
+
+  function makeRod(start, end, color, radius = .026, opacity = .95) {
+    const startVector = new THREE.Vector3(...start);
+    const endVector = new THREE.Vector3(...end);
+    const direction = endVector.clone().sub(startVector);
+    const length = direction.length();
+    const geometry = new THREE.CylinderGeometry(radius, radius, length, 14);
+    const material = new THREE.MeshBasicMaterial({
+      color,
+      transparent:true,
+      opacity,
+      depthTest:false,
+      depthWrite:false
+    });
+    const rod = new THREE.Mesh(geometry, material);
+    rod.position.copy(startVector).add(endVector).multiplyScalar(.5);
+    rod.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+    rod.renderOrder = 30;
+    return rod;
+  }
+
+  function addRectOutline(group, points, color) {
+    for (let index = 0; index < points.length; index += 1) {
+      group.add(makeRod(points[index], points[(index + 1) % points.length], color, .025, .96));
+    }
+  }
+
+  function makeSprite(text, color) {
+    const material = new THREE.SpriteMaterial({
+      map:makeLabelTexture(text, color),
+      transparent:true,
+      depthTest:false,
+      depthWrite:false
+    });
+    const sprite = new THREE.Sprite(material);
+    sprite.scale.set(1.55, .38, 1);
+    sprite.renderOrder = 80;
+    return sprite;
+  }
+
+  class CubeModel {
+    constructor(targetCanvas) {
+      this.canvas = targetCanvas;
+      this.scene = new THREE.Scene();
+      this.cameraFrustum = 8.2;
+      this.camera = new THREE.OrthographicCamera(-4.1, 4.1, 4.1, -4.1, .1, 100);
+      this.camera.position.set(5.8, 4.6, 7.6);
+      this.camera.lookAt(0, 0, 0);
+      this.renderer = new THREE.WebGLRenderer({
+        canvas:targetCanvas,
+        antialias:true,
+        alpha:true,
+        preserveDrawingBuffer:true
+      });
+      this.renderer.setClearColor(0x000000, 0);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      this.root = new THREE.Group();
+      this.root.rotation.set(0.18, 0.82, 0);
+      this.targetRotation = {x:0.18, y:0.82};
+      this.root.scale.setScalar(.8);
+      this.root.position.y = .35;
+      this.scene.add(this.root);
+      this.pieceMeshes = [];
+      this.axisGroup = new THREE.Group();
+      this.edgeGroup = new THREE.Group();
+      this.guideGroup = new THREE.Group();
+      this.labelGroup = new THREE.Group();
+      this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.drag = null;
+      this.currentStage = 0;
+      this.currentMode = 'factors';
+      this.restoreProgress = 0;
+      this.onRestoreChange = null;
+      this.buildLights();
+      this.buildWhole();
+      this.buildGuides();
+      this.buildPieces();
+      this.root.add(this.labelGroup);
+      this.bindPointer();
+      this.resize();
+      this.setStage(0);
+      this.animate();
+    }
+
+    buildLights() {
+      this.scene.add(new THREE.HemisphereLight(0xffffff, 0xdbe5f2, 1.1));
+      const key = new THREE.DirectionalLight(0xffffff, 1.55);
+      key.position.set(5, 7, 6);
+      this.scene.add(key);
+      const fill = new THREE.DirectionalLight(0xc7d8ff, .75);
+      fill.position.set(-4, 3, -5);
+      this.scene.add(fill);
+    }
+
+    buildWhole() {
+      const geometry = new THREE.BoxGeometry(total, total, total);
+      const material = new THREE.MeshPhysicalMaterial({
+        color:colors.whole,
+        transparent:true,
+        opacity:.46,
+        roughness:.58,
+        metalness:0,
+        clearcoat:.15
+      });
+      this.whole = new THREE.Mesh(geometry, material);
+      addEdges(this.whole, 0xffffff, .62);
+      this.root.add(this.whole);
+    }
+
+    buildGuides() {
+      const cut = 2.2 - half;
+      this.axisGroup.add(
+        makeRod([-half,-half,-2.18],[half,-half,-2.18],0x64748b,.02,.75),
+        makeRod([2.18,-half,-half],[2.18,half,-half],0x64748b,.02,.75),
+        makeRod([-2.18,-half,-half],[-2.18,-half,half],0x64748b,.02,.75)
+      );
+      this.edgeGroup.add(
+        makeRod([-half,-half,-2.18],[cut,-half,-2.18],0x1f4fbf,.026,.96),
+        makeRod([cut,-half,-2.18],[half,-half,-2.18],0x1f4fbf,.026,.5),
+        makeRod([cut,-half-.16,-2.18],[cut,-half+.16,-2.18],0x1f4fbf,.026,.96),
+        makeRod([2.18,-half,-half],[2.18,cut,-half],0xb86218,.026,.96),
+        makeRod([2.18,cut,-half],[2.18,half,-half],0xb86218,.026,.5),
+        makeRod([2.18,cut,-half-.16],[2.18,cut,-half+.16],0xb86218,.026,.96),
+        makeRod([-2.18,-half,-half],[-2.18,-half,cut],0x6d3fce,.026,.96),
+        makeRod([-2.18,-half,cut],[-2.18,-half,half],0x6d3fce,.026,.5),
+        makeRod([-2.18-.16,-half,cut],[-2.18+.16,-half,cut],0x6d3fce,.026,.96)
+      );
+      const guideMaterial = (color) => new THREE.MeshBasicMaterial({
+        color,
+        transparent:true,
+        opacity:.34,
+        side:THREE.DoubleSide,
+        depthTest:false,
+        depthWrite:false
+      });
+      const bladeSize = total * 1.16;
+      const xPlane = new THREE.Mesh(new THREE.PlaneGeometry(bladeSize, bladeSize), guideMaterial(0x3b6fea));
+      xPlane.rotation.y = Math.PI / 2;
+      xPlane.position.x = cut;
+      xPlane.renderOrder = 18;
+      const yPlane = new THREE.Mesh(new THREE.PlaneGeometry(bladeSize, bladeSize), guideMaterial(0xf08f3c));
+      yPlane.rotation.x = Math.PI / 2;
+      yPlane.position.y = cut;
+      yPlane.renderOrder = 19;
+      const zPlane = new THREE.Mesh(new THREE.PlaneGeometry(bladeSize, bladeSize), guideMaterial(0x8b5cf6));
+      zPlane.position.z = cut;
+      zPlane.renderOrder = 20;
+      this.guideGroup.add(xPlane, yPlane, zPlane);
+      const edge = half * 1.02;
+      addRectOutline(this.guideGroup, [
+        [cut,-edge,-edge],
+        [cut, edge,-edge],
+        [cut, edge, edge],
+        [cut,-edge, edge]
+      ], 0x1f4fbf);
+      addRectOutline(this.guideGroup, [
+        [-edge,cut,-edge],
+        [ edge,cut,-edge],
+        [ edge,cut, edge],
+        [-edge,cut, edge]
+      ], 0xb86218);
+      addRectOutline(this.guideGroup, [
+        [-edge,-edge,cut],
+        [ edge,-edge,cut],
+        [ edge, edge,cut],
+        [-edge, edge,cut]
+      ], 0x6d3fce);
+      this.root.add(this.axisGroup);
+      this.root.add(this.edgeGroup);
+      this.root.add(this.guideGroup);
+    }
+
+    buildPieces() {
+      pieces.forEach((piece, index) => {
+        const [x0,x1,y0,y1,z0,z1] = piece.range;
+        const sx = x1 - x0;
+        const sy = y1 - y0;
+        const sz = z1 - z0;
+        const cx = (x0 + x1) / 2 - half;
+        const cy = (y0 + y1) / 2 - half;
+        const cz = (z0 + z1) / 2 - half;
+        const geometry = new THREE.BoxGeometry(sx, sy, sz);
+        const material = new THREE.MeshPhysicalMaterial({
+          color:colors[piece.kind],
+          transparent:true,
+          opacity:.88,
+          roughness:.52,
+          metalness:0,
+          clearcoat:.12
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.userData = {
+          base:new THREE.Vector3(cx, cy, cz),
+          direction:new THREE.Vector3(cx, cy, cz).normalize(),
+          index,
+          kind:piece.kind
+        };
+        if (mesh.userData.direction.lengthSq() < .01) mesh.userData.direction.set(.2, .2, .2);
+        mesh.position.copy(mesh.userData.base);
+        addEdges(mesh, 0xffffff, .72);
+        this.pieceMeshes.push(mesh);
+        this.root.add(mesh);
+      });
+    }
+
+    clearLabels() {
+      while (this.labelGroup.children.length) {
+        const child = this.labelGroup.children.pop();
+        if (child.material?.map) child.material.map.dispose();
+        if (child.material) child.material.dispose();
+      }
+    }
+
+    addLabel(text, position, color = '#111827', scale = 1) {
+      const sprite = makeSprite(text, color);
+      sprite.position.copy(position);
+      sprite.scale.multiplyScalar(scale);
+      this.labelGroup.add(sprite);
+    }
+
+    groupedPosition(mesh) {
+      const offsets = {
+        a3:new THREE.Vector3(-1.05, -.72, -.78),
+        a2b:new THREE.Vector3(-.82, .82, -.42),
+        ab2:new THREE.Vector3(.82, -.82, .42),
+        b3:new THREE.Vector3(1.05, .72, .78)
+      };
+      return mesh.userData.base.clone().add(offsets[mesh.userData.kind]);
+    }
+
+    setRestoreProgress(nextProgress, notify = true) {
+      const progress = Math.max(0, Math.min(1, Number(nextProgress) || 0));
+      this.restoreProgress = progress;
+      if (notify && typeof this.onRestoreChange === 'function') {
+        this.onRestoreChange(progress);
+      }
+      if (this.currentMode === 'restore') {
+        this.setStage(this.currentStage);
+      }
+    }
+
+    setStage(nextStage) {
+      const mode = stageData[nextStage].mode;
+      this.currentStage = nextStage;
+      this.currentMode = mode;
+      this.clearLabels();
+      this.whole.visible = mode === 'factors' || mode === 'edgeSplit' || mode === 'cuts';
+      this.whole.material.opacity = mode === 'cuts' ? .13 : mode === 'edgeSplit' ? .24 : .42;
+      this.axisGroup.visible = mode === 'factors';
+      this.edgeGroup.visible = mode === 'edgeSplit' || mode === 'cuts';
+      this.guideGroup.visible = mode === 'cuts';
+      const showPieces = !['factors','edgeSplit','cuts'].includes(mode);
+      this.pieceMeshes.forEach((mesh, index) => {
+        mesh.visible = showPieces;
+        const base = mesh.userData.base;
+        const dir = mesh.userData.direction.clone();
+        const spread = mode === 'restore'
+          ? .64 * (1 - this.restoreProgress)
+          : mode === 'blocks' ? .52 : mode === 'final' ? .44 : .42;
+        if (mode === 'combine' || mode === 'final') {
+          mesh.position.copy(this.groupedPosition(mesh));
+        } else {
+          mesh.position.copy(base).add(dir.multiplyScalar(spread));
+        }
+        mesh.scale.set(1, 1, 1);
+        mesh.material.opacity = .88;
+        mesh.material.color.setHex(colors[mesh.userData.kind]);
+        if (mode === 'combine' || mode === 'final') {
+          mesh.material.opacity = .9;
+        }
+        if (mode === 'restore') {
+          mesh.material.opacity = .9;
+        }
+      });
+
+      if (mode === 'factors') {
+        this.addLabel('(a+b) × (a+b) × (a+b)', new THREE.Vector3(0, .2, 0), '#1f2937', 1.08);
+        this.addLabel('长 a+b', new THREE.Vector3(0,-1.95,-2.25), '#1f4fbf', 1.08);
+        this.addLabel('宽 a+b', new THREE.Vector3(2.3,0,-1.3), '#b86218', 1.08);
+        this.addLabel('高 a+b', new THREE.Vector3(-2.25,-1.05,.25), '#6d3fce', 1.08);
+      }
+      if (mode === 'edgeSplit') {
+        this.addLabel('先在边上标出 a | b', new THREE.Vector3(0, 2.25, 0), '#1f2937', .98);
+        this.addLabel('长 a | b', new THREE.Vector3(.15,-1.95,-2.25), '#1f4fbf', .92);
+        this.addLabel('宽 a | b', new THREE.Vector3(2.3,.1,-1.25), '#b86218', .92);
+        this.addLabel('高 a | b', new THREE.Vector3(-2.25,-1.05,.25), '#6d3fce', .92);
+      }
+      if (mode === 'cuts') {
+        this.addLabel('蓝：长 a | b', new THREE.Vector3(.15, 2.35, -2.15), '#1f4fbf', .9);
+        this.addLabel('橙：宽 a | b', new THREE.Vector3(2.25, .42, -1.35), '#b86218', .9);
+        this.addLabel('紫：高 a | b', new THREE.Vector3(-2.25, 1.95, .55), '#6d3fce', .9);
+      }
+      if (mode === 'blocks') {
+        this.addLabel('8 块', new THREE.Vector3(0, 2.35, 0), '#111827', .9);
+      }
+      if (mode === 'restore') {
+        const label = this.restoreProgress > .86 ? '已合拢' : '拖动还原';
+        this.addLabel(label, new THREE.Vector3(0, 2.4, 0), '#111827', 1.02);
+      }
+      if (mode === 'final') {
+        this.addLabel('1, 3, 3, 1', new THREE.Vector3(0, 2.4, 0), '#111827', .92);
+      }
+      this.render();
+    }
+
+    bindPointer() {
+      this.canvas.addEventListener('pointerdown', event => {
+        if (this.currentMode === 'restore') {
+          event.preventDefault();
+          this.drag = {
+            type:'restore',
+            x:event.clientX,
+            progress:this.restoreProgress
+          };
+          this.canvas.setPointerCapture(event.pointerId);
+          return;
+        }
+        this.drag = {
+          type:'rotate',
+          x:event.clientX,
+          y:event.clientY,
+          rx:this.targetRotation.x,
+          ry:this.targetRotation.y
+        };
+        this.canvas.setPointerCapture(event.pointerId);
+      });
+      this.canvas.addEventListener('pointermove', event => {
+        if (!this.drag) return;
+        const dx = event.clientX - this.drag.x;
+        if (this.drag.type === 'restore') {
+          event.preventDefault();
+          this.setRestoreProgress(this.drag.progress + dx / 280);
+          return;
+        }
+        const dy = event.clientY - this.drag.y;
+        this.targetRotation.y = this.drag.ry + dx * .008;
+        this.targetRotation.x = Math.max(-.95, Math.min(.25, this.drag.rx + dy * .006));
+      });
+      const end = event => {
+        if (!this.drag) return;
+        this.drag = null;
+        if (event.pointerId !== undefined && this.canvas.hasPointerCapture(event.pointerId)) {
+          this.canvas.releasePointerCapture(event.pointerId);
+        }
+      };
+      this.canvas.addEventListener('pointerup', end);
+      this.canvas.addEventListener('pointercancel', end);
+      window.addEventListener('resize', () => this.resize());
+    }
+
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      const width = Math.max(1, Math.round(rect.width));
+      const height = Math.max(1, Math.round(rect.height));
+      const aspect = width / height;
+      this.camera.left = -this.cameraFrustum * aspect / 2;
+      this.camera.right = this.cameraFrustum * aspect / 2;
+      this.camera.top = this.cameraFrustum / 2;
+      this.camera.bottom = -this.cameraFrustum / 2;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(width, height, false);
+      this.render();
+    }
+
+    animate() {
+      requestAnimationFrame(() => this.animate());
+      if (!this.reducedMotion && !this.drag && this.currentMode !== 'restore') {
+        this.targetRotation.y += .0016;
+      }
+      this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
+      this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
+      this.render();
+    }
+
+    render() {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  function formulaHTML(lines) {
+    return lines.map(line => `<span>${line
+      .replaceAll('³', '<sup>3</sup>')
+      .replaceAll('²', '<sup>2</sup>')
+      .replaceAll('×', '×')
+      .replaceAll('|', '<span aria-hidden="true">|</span>')}</span>`).join('');
+  }
+
+  function updateRestoreUI(progress = 0) {
+    const percent = Math.round(progress * 100);
+    restoreMeter.style.width = `${percent}%`;
+    if (percent >= 96) {
+      restoreText.textContent = '已经合回完整立方体：8 块只是重新拼回原来的体积。';
+    } else if (percent <= 4) {
+      restoreText.textContent = '按住左侧模型向右拖动，把 8 块合回立方体。';
+    } else {
+      restoreText.textContent = `已还原 ${percent}%。继续向右拖动可以合拢，向左拖动可以再分开。`;
+    }
+  }
+
+  function renderPanel() {
+    const data = stageData[stage];
+    const isRestore = data.mode === 'restore';
+    const isCombine = data.mode === 'combine';
+    const isFinal = data.mode === 'final';
+    stageRail.querySelectorAll('[data-stage]').forEach((button, index) => {
+      button.setAttribute('aria-pressed', String(index === stage));
+    });
+    readout.innerHTML = `<b>${data.title}</b><span>${data.text
+      .replaceAll('(a+b)³', '<span class="math">(a+b)<sup>3</sup></span>')
+      .replaceAll('2×2×2=8', '<span class="math">2×2×2=8</span>')
+      .replaceAll('a²b', '<span class="math">a<sup>2</sup>b</span>')
+      .replaceAll('ab²', '<span class="math">ab<sup>2</sup></span>')}</span>`;
+    formulaPanel.hidden = !data.formula?.length;
+    formulaList.innerHTML = formulaHTML(data.formula || []);
+    sceneCaption.textContent = data.caption;
+    sceneTags.innerHTML = data.tags.map((tag, index) => {
+      const kinds = isCombine || isFinal ? ['a3','a2b','ab2','b3'] : [];
+      return `<span class="tag ${kinds[index] || ''}">${tag}</span>`;
+    }).join('');
+    sceneWrap.classList.toggle('is-restore', isRestore);
+    restoreTools.hidden = !isRestore;
+    groupGrid.hidden = !(isCombine || isFinal);
+    if (isRestore) {
+      updateRestoreUI(model?.restoreProgress || 0);
+    }
+    if (model) model.setStage(stage);
+  }
+
+  function setStage(nextStage) {
+    stage = Math.max(0, Math.min(stageData.length - 1, Number(nextStage) || 0));
+    pieceIndex = 0;
+    if (stageData[stage].mode === 'restore' && model) {
+      model.setRestoreProgress(0, false);
+    }
+    renderPanel();
+  }
+
+  stageRail.addEventListener('click', event => {
+    const button = event.target.closest('[data-stage]');
+    if (!button) return;
+    setStage(Number(button.dataset.stage));
+  });
+
+  try {
+    if (!window.THREE || !hasWebGL()) throw new Error('WebGL is not available');
+    model = new CubeModel(canvas);
+    model.onRestoreChange = updateRestoreUI;
+    rendererKind = 'three';
+    sceneLoader.hidden = true;
+    sceneFallback.hidden = true;
+  } catch (error) {
+    rendererKind = 'fallback';
+    sceneLoader.hidden = true;
+    sceneFallback.hidden = false;
+    sceneWrap.classList.add('is-fallback');
+    console.warn('[DGOpenKS] cube model fallback:', error);
+  }
+
+  window.__dgCubeDerivation = {
+    getState: () => ({
+      stage,
+      stageTitle:stageData[stage].title,
+      mode:stageData[stage].mode,
+      pieceIndex,
+      piece:pieces[pieceIndex]?.term,
+      restoreProgress:model?.restoreProgress || 0,
+      renderer:rendererKind,
+      cameraType:model?.camera?.isOrthographicCamera ? 'orthographic' : 'perspective',
+      hasThree:!!window.THREE,
+      hasWebGL:hasWebGL(),
+      canvasSize:{
+        width:canvas.width,
+        height:canvas.height
+      }
+    }),
+    setStage,
+    setRestoreProgress:value => {
+      if (model) model.setRestoreProgress(value);
+    }
+  };
+
+  renderPanel();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>差的立方 | DGOpenKS</title>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
+a{color:inherit}
+.math{font-family:Georgia,"Times New Roman",serif;font-weight:800;white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}
+.topbar-inner{max-width:1080px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.hero{max-width:1080px;margin:auto;padding:42px 20px 26px}
+.eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}
+h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}
+h2{font-size:clamp(1.3rem,2.3vw,1.85rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}
+p{margin:0 0 12px}
+.lead{max-width:820px;color:#334155;font-size:1rem;line-height:1.9}
+main{max-width:1080px;margin:auto;padding:0 20px 84px}
+.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:46px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}
+.section-body{min-width:0;max-width:850px}
+.formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
+.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue);margin:14px 0}
+.compare{width:100%;border-collapse:separate;border-spacing:0 8px;margin:14px 0}
+.compare th{font-size:.78rem;color:var(--muted);text-align:left;padding:0 10px}
+.compare td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px}
+.compare td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius)}
+.compare td:last-child{border-right:1px solid var(--line);border-radius:0 var(--radius) var(--radius) 0}
+.model-lab{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(290px,.94fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:20px 0}
+.model-scene{position:relative;min-height:430px;background:linear-gradient(#e8eef7 1px,transparent 1px),linear-gradient(90deg,#e8eef7 1px,transparent 1px),var(--soft);background-size:30px 30px}
+.model-scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.model-scene canvas:active{cursor:grabbing}
+.model-loader,.model-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-weight:900;background:rgba(248,250,252,.74);z-index:2}
+.model-loader[hidden],.model-fallback[hidden],.model-control[hidden]{display:none}
+.model-tags{position:absolute;left:12px;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:3;pointer-events:none}
+.model-tags span{font-size:.78rem;font-weight:900;color:#334155;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:999px;padding:4px 8px;box-shadow:0 4px 12px rgba(15,23,42,.08)}
+.model-caption{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:var(--radius);padding:8px 10px;color:#334155;font-weight:900;font-size:.86rem;box-shadow:0 8px 18px rgba(15,23,42,.08)}
+.model-panel{padding:16px;display:grid;gap:12px;align-content:start}
+.model-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.model-step{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-height:42px;padding:8px 10px;font-weight:900;cursor:pointer}
+.model-step[aria-pressed=true],.model-step:hover,.model-step:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.model-range{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;font-weight:900;color:#334155}
+.model-range input{width:100%;accent-color:var(--blue)}
+.model-formula{display:grid;gap:7px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;overflow:auto}
+.next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:780px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
+@media(max-width:620px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.compare,tbody,tr,td{display:block}.compare thead{display:none}.compare tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.compare td{border:0!important;border-radius:0!important;padding:4px 0}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="章节导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html">DGOpenKS</a>
+    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="01_和的立方.html">和的立方</a>
+    <a class="nav-link" href="03_立方和.html">立方和</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">02-2 立方相关公式 · 02</span>
+  <h1>差的立方</h1>
+  <p class="lead"><span class="math">(a-b)<sup>3</sup></span> 表示三个 <span class="math">a-b</span> 相乘。先按普通乘法推出来，再看清为什么符号会变成“正、负、正、负”。</p>
+</header>
+
+<main>
+  <section class="section" id="calculation">
+    <div class="marker" aria-hidden="true"><span>01</span>展开过程</div>
+    <div class="section-body">
+      <h2>先按平常顺序展开</h2>
+      <p>手算时先算前两个括号，再把第三个括号乘进去：</p>
+      <div class="formula-card">
+        <div class="derivation">
+          <span>(a-b)<sup>3</sup> = (a-b)(a-b)(a-b)</span>
+          <span>= (a<sup>2</sup> - 2ab + b<sup>2</sup>)(a-b)</span>
+          <span>= a<sup>2</sup>(a-b) - 2ab(a-b) + b<sup>2</sup>(a-b)</span>
+          <span>= a<sup>3</sup> - a<sup>2</sup>b - 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> - b<sup>3</sup></span>
+          <span>= a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></span>
+        </div>
+      </div>
+      <p>这条线说明：公式不是背出来的，而是三个因式逐步相乘后合并同类项得到的。</p>
+    </div>
+  </section>
+
+  <section class="section" id="sign">
+    <div class="marker" aria-hidden="true"><span>02</span>符号来源</div>
+    <div class="section-body">
+      <h2>符号由 -b 出现的次数决定</h2>
+      <p>把 <span class="math">a-b</span> 看成 <span class="math">a+(-b)</span>，每一项都来自从三个括号里各选一个数相乘。</p>
+      <table class="compare">
+        <thead><tr><th>选到的形式</th><th>出现次数</th><th>符号</th></tr></thead>
+        <tbody>
+          <tr><td><span class="math">a · a · a</span></td><td>1 次</td><td>正</td></tr>
+          <tr><td>两个 <span class="math">a</span> 和一个 <span class="math">-b</span></td><td>3 次</td><td>负</td></tr>
+          <tr><td>一个 <span class="math">a</span> 和两个 <span class="math">-b</span></td><td>3 次</td><td>正</td></tr>
+          <tr><td><span class="math">(-b)(-b)(-b)</span></td><td>1 次</td><td>负</td></tr>
+        </tbody>
+      </table>
+      <div class="note">系数仍然是 1,3,3,1；变化的是符号。</div>
+    </div>
+  </section>
+
+  <section class="section" id="model">
+    <div class="marker" aria-hidden="true"><span>03</span>立方体模型</div>
+    <div class="section-body">
+      <h2>从 a³ 里看出正负号</h2>
+      <p>也可以把 <span class="math">(a-b)<sup>3</sup></span> 看成边长为 <span class="math">a-b</span> 的小立方体：先从边长 <span class="math">a</span> 的大立方体开始，三个方向各切掉厚度 <span class="math">b</span> 的部分。被重复减掉的重叠部分要加回，最角上的小块还要再减一次。</p>
+      <div class="model-lab" id="diffCubeModel" data-label="差的立方 inclusion-exclusion 立方体模型"></div>
+    </div>
+  </section>
+
+  <section class="section" id="difference">
+    <div class="marker" aria-hidden="true"><span>04</span>不要混淆</div>
+    <div class="section-body">
+      <h2>与立方差的区别</h2>
+      <p><span class="math">(a-b)<sup>3</sup></span> 是一个差整体被立方，要展开；<span class="math">a<sup>3</sup>-b<sup>3</sup></span> 是两个完整立方相减，要分解。</p>
+      <div class="formula-card">
+        <div class="derivation">
+          <span>(a-b)<sup>3</sup> = a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></span>
+          <span>a<sup>3</sup> - b<sup>3</sup> = (a-b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
+        </div>
+      </div>
+      <p>先问“括号整体有没有被三次方”，就不会把这两个公式混在一起。</p>
+      <a class="next" href="03_立方和.html">下一篇：立方和</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 差的立方</footer>
+<script src="./assets/three.min.js"></script>
+<script src="./assets/formula-3d-models.js"></script>
+<script>
+  DGFormulaModels.initDifferenceCube('diffCubeModel');
+</script>
+</body>
+</html>

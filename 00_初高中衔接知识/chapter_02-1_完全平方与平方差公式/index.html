@@ -404,13 +404,17 @@ function drawDiff(svg,{mini=false,aValue=5,bValue=2}={}){
   svg.appendChild(text(x+a/2,y-18,'a'));
   svg.appendChild(text(x-22,y+a/2,'a'));
   const rx=x+a+gap,ry=y+(a-finalH)/2;
-  const arrowY=ry+finalH/2;
+  const arrowY=ry+finalH+(mini?22:30);
   svg.appendChild(arrow(x+a+10,arrowY,rx-12,arrowY));
   svg.appendChild(rect(rx,ry,a,finalH,'rearrange',mini?'':'a(a-b)'));
   svg.appendChild(rect(rx+a,ry,b,finalH,'ab',mini?'':'b(a-b)'));
   svg.appendChild(outline(rx,ry,finalW,finalH,'#7c3aed',2.8));
   svg.appendChild(text(rx+finalW/2,ry-18,'a+b'));
-  svg.appendChild(text(rx-28,ry+finalH/2,'a-b'));
+  if(mini){
+    svg.appendChild(text(rx+finalW/2,ry+finalH+20,'高 a-b','dim'));
+  }else{
+    svg.appendChild(text(rx+finalW+28,ry+finalH/2,'a-b'));
+  }
   if(mini)svg.appendChild(text(rx+finalW/2,ry+finalH/2,'拼接','label'));
 }
 function drawArea(){

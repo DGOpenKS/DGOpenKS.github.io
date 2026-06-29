@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方程变形 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="chapter05.css">
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="00_解集追踪.html">上一节</a><a class="nav-link" href="02_分式根式方程.html">下一节</a></div></nav>
+<header class="hero simple"><span class="eyebrow">Chapter 05 · 01</span><h1>方程变形</h1><p class="lead">方程变形真正要守住的是解集：有些变形保持解集，有些变形会带来增根或丢失解。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>保持</div><div class="section-body">
+    <h2>安全变形只是换一种写法</h2>
+    <p>从 $2x+1=7$ 到 $2x=6$，再到 $x=3$，每一步都没有增加新解，也没有丢掉旧解。它们只是让同一个解集变得更容易看。</p>
+    <div class="formula-box">$$2x+1=7\quad \Longleftrightarrow\quad 2x=6\quad \Longleftrightarrow\quad x=3$$</div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>增根</div><div class="section-body">
+    <h2>平方可能扩大解集</h2>
+    <p>从 $x=2$ 两边平方得到 $x^2=4$，新方程多出 $x=-2$。它满足新方程，却不满足原方程。</p>
+    <div class="compare" aria-label="平方前后解集变化">
+      <div class="set-box"><span class="tag">原方程</span><div class="symbol">x=2</div><p>解集：{2}</p></div>
+      <div class="arrow">→</div>
+      <div class="set-box"><span class="tag red">平方后</span><div class="symbol">x²=4</div><p>解集：{-2, 2}</p></div>
+    </div>
+    <div class="note red">$x=-2$ 是平方后多出来的候选解，必须代回原方程筛掉。</div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>检查</div><div class="section-body">
+    <h2>可能改变解集的步骤要验回原式</h2>
+    <div class="grid">
+      <div class="card"><h3>通常安全</h3><p>两边同时加减同一个式子；两边同时乘除一个确定非零的数。</p></div>
+      <div class="card"><h3>需要检查</h3><p>两边平方；乘以含未知数的式子；约掉可能为 $0$ 的因式；根式方程平方。</p></div>
+    </div>
+    <div class="note">最后真正要记住：方程变形的目标是尽量保持原来的解集；如果某一步可能改变解集，就必须验回原式。</div>
+  </div></section>
+</main>
+<div class="pager"><a href="00_解集追踪.html">上一节：解集追踪</a><a href="02_分式根式方程.html">下一节：分式根式方程</a></div>
+<footer class="footer">DGOpenKS · 方程变形</footer>
+</body>
+</html>

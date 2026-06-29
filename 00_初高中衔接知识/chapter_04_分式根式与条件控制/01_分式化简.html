@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分式化简 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#2563eb;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--red:#dc2626;--red-soft:#fef2f2;--green:#059669;--green-soft:#ecfdf5;--amber:#d97706;--amber-soft:#fff7ed;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.82;overflow-x:hidden;max-width:100vw}.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px);max-width:100vw;overflow:hidden}.topbar-inner{width:100%;max-width:1080px;min-width:0;margin:auto;padding:10px 20px;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none}.topbar-inner::-webkit-scrollbar{display:none}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}.hero{max-width:1080px;margin:auto;padding:44px 20px 28px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,4.2vw,3rem);line-height:1.15;margin:0 0 12px}h2{font-size:clamp(1.28rem,2.2vw,1.75rem);line-height:1.28;margin:0 0 12px}h3{font-size:1.04rem;margin:0 0 8px}p{margin:0 0 12px;color:#334155}.lead{max-width:840px;color:var(--muted);font-size:1.04rem}main{max-width:1080px;margin:auto;padding:0 20px 82px}.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:44px 0;border-top:1px solid var(--line)}.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:900}.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}.section-body{min-width:0;max-width:860px}.note,.formula-line,.visual,.step,.mini-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:16px 0;max-width:100%}.note{box-shadow:none;border-left:4px solid var(--blue);background:var(--blue-soft);color:var(--blue);font-weight:800}.note.red{border-left-color:var(--red);background:var(--red-soft);color:#991b1b}.note.green{border-left-color:var(--green);background:var(--green-soft);color:#047857}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;background:var(--soft);overflow:auto}.visual{padding:14px;background:linear-gradient(#fff,#f8fafc)}.visual svg{width:100%;height:auto;display:block}.steps{display:grid;gap:10px;margin:16px 0}.step{margin:0;background:var(--soft);border-left:4px solid var(--blue-line);box-shadow:none;font-weight:800;overflow:auto}.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}.mini-card{margin:0;box-shadow:none}.mini-card b{display:block;color:var(--blue);margin-bottom:6px}.mini-card.red{border-left:4px solid var(--red);background:var(--red-soft)}.mini-card.green{border-left:4px solid var(--green);background:var(--green-soft)}.tag{display:inline-flex;width:max-content;border-radius:999px;padding:3px 8px;font-size:.75rem;font-weight:900;background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-line)}.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}.formula-line mjx-container,.step mjx-container,.note mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+@media(max-width:760px){.topbar{overflow:hidden}.topbar-inner{width:100vw;max-width:100vw;overflow-x:auto}.section,.split{grid-template-columns:1fr}.section,.section-body,.section-body *{min-width:0}.section-body{width:100%;max-width:100%;overflow:hidden}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero,main{padding-left:14px;padding-right:14px;width:100vw;max-width:100vw;overflow-x:hidden}p,.lead{max-width:100%;word-break:break-all}h1{font-size:2rem}.lead{font-size:1rem}.step{white-space:normal}}
+h1,h2,h3,p,.lead,.step,.note,.mini-card{overflow-wrap:anywhere}.note,.formula-line,.step,.mini-card{overflow-x:auto}.compact-visual svg{max-width:460px;margin:0 auto}@media(max-width:760px){h1,.lead{word-break:break-all}.hero,main{width:auto;max-width:none;overflow-x:visible}.section{width:100%;max-width:100%;overflow:visible}.section-body{width:min(calc(100dvw - 28px),360px);max-width:min(calc(100dvw - 28px),360px);overflow:visible}.section-body p,.note,.formula-line,.visual,.step,.mini-card{width:100%;max-width:min(calc(100dvw - 28px),360px)}.formula-line mjx-container,.step mjx-container,.note mjx-container{font-size:92%}}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="00_形式与条件.html">上一节</a><a class="nav-link" href="02_根式化简.html">下一节</a></div></nav>
+<header class="hero"><span class="eyebrow">Chapter 04 · 01</span><h1>分式化简</h1><p class="lead">约掉的是共同因子，不是原式条件。<br>先看原分母，再约分。<br>最后把禁点一起写出。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>问题</div><div class="section-body">
+    <h2>约分前，先问原式允许哪些值</h2>
+    <p>看这个分式：</p>
+    <div class="formula-line">$$\frac{x^2-4}{x^2-3x+2}$$</div>
+    <p>分式有意义的前提是分母不能为 $0$。</p>
+    <p>原分母可以分解为：</p>
+    <div class="formula-line">$$x^2-3x+2=(x-1)(x-2)$$</div>
+    <p>所以原式一开始就排除两个值：</p>
+    <div class="formula-line">$$x\ne1,\qquad x\ne2$$</div>
+    <div class="note">这两个值来自原式。不是化简后补上的条件。</div>
+  </div></section>
+
+  <section class="section"><div class="marker"><span>02</span>约分</div><div class="section-body">
+    <h2>共同因子可以约掉，禁点不能约掉</h2>
+    <p>现在再看式子的形状。分子是平方差：</p>
+    <div class="formula-line">$$x^2-4=(x-2)(x+2)$$</div>
+    <p>于是原分式可以写成：</p>
+    <div class="steps">
+      <div class="step">$$\frac{x^2-4}{x^2-3x+2}=\frac{(x-2)(x+2)}{(x-1)(x-2)}$$</div>
+      <div class="step">在 $x\ne2$ 的前提下，约掉共同因子 $x-2$。</div>
+      <div class="step">$$\frac{(x-2)(x+2)}{(x-1)(x-2)}=\frac{x+2}{x-1}$$</div>
+    </div>
+    <p>关键在第二行：约掉 $x-2$ 时，本来就需要 $x-2\ne0$。所以约掉它以后，$x=2$ 不能重新回到答案里。</p>
+    <div class="note green">完整结果：$$\frac{x^2-4}{x^2-3x+2}=\frac{x+2}{x-1}$$ $$x\ne1,\qquad x\ne2$$</div>
+  </div></section>
+
+  <section class="section"><div class="marker"><span>03</span>看见</div><div class="section-body">
+    <h2>两个禁点都要留在条件里</h2>
+    <p>化简后的式子只能直接看出 $x\ne1$：</p>
+    <div class="formula-line">$$\frac{x+2}{x-1}$$</div>
+    <p>但原分母里还有因子 $x-2$，所以 $x=2$ 仍然必须排除。</p>
+    <div class="visual compact-visual" aria-label="x=1 是看得见的禁点，x=2 是被约掉因子留下的禁点">
+      <svg viewBox="0 0 420 118" role="img">
+        <rect x="34" y="16" width="352" height="86" rx="10" fill="#f8fafc" stroke="#dbe5f2"/>
+        <text x="210" y="36" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">原分母限制：x≠1，x≠2</text>
+        <line x1="92" y1="64" x2="328" y2="64" stroke="#94a3b8" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="176" cy="64" r="6" fill="#fff" stroke="#dc2626" stroke-width="2.8"/>
+        <circle cx="244" cy="64" r="6" fill="#fff" stroke="#dc2626" stroke-width="2.8"/>
+        <text x="176" y="84" text-anchor="middle" fill="#dc2626" font-size="12" font-weight="800">1</text>
+        <text x="244" y="84" text-anchor="middle" fill="#d97706" font-size="12" font-weight="800">2</text>
+        <text x="176" y="55" text-anchor="middle" fill="#dc2626" font-size="10.5" font-weight="700">仍能看见</text>
+        <text x="244" y="98" text-anchor="middle" fill="#d97706" font-size="10.5" font-weight="700">容易漏掉</text>
+      </svg>
+    </div>
+    <div class="split">
+      <div class="mini-card red"><b>如果忘记 $x\ne2$</b><p>化简式会允许 $x=2$，但原分式在这里分母为 $0$。</p></div>
+      <div class="mini-card green"><b>正确理解</b><p>约分只改变外形，不能改变原式的取值范围。</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="marker"><span>04</span>边界</div><div class="section-body">
+    <h2>能约的是因子，不是项</h2>
+    <p>另一个常见错误是看见上下都有 $x$，就想把 $x$ 删掉。</p>
+    <p>例如：</p>
+    <div class="formula-line">$$\frac{x+1}{x+2}$$</div>
+    <p>这里的 $x$ 只是加法中的一项，不是整个分子和分母共同乘着的因子，所以不能约。</p>
+    <div class="split">
+      <div class="mini-card green"><span class="tag">可以约</span><p>$\dfrac{(x-2)(x+2)}{(x-1)(x-2)}$</p><p>上下有共同因子 $x-2$。</p></div>
+      <div class="mini-card red"><span class="tag">不能约</span><p>$\dfrac{x+1}{x+2}$</p><p>$x$ 只是项，不是共同因子。</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="marker"><span>05</span>检查</div><div class="section-body">
+    <h2>再用一个例子检查是否真的保留了条件</h2>
+    <p>化简：</p>
+    <div class="formula-line">$$\frac{x^2-9}{x^2-x-6}$$</div>
+    <div class="steps">
+      <div class="step">先看原分母：$$x^2-x-6=(x-3)(x+2)$$</div>
+      <div class="step">所以：$$x\ne3,\qquad x\ne-2$$</div>
+      <div class="step">再分解分子：$$x^2-9=(x-3)(x+3)$$</div>
+      <div class="step">约掉共同因子后：$$\frac{x^2-9}{x^2-x-6}=\frac{x+3}{x+2}$$ $$x\ne3,\qquad x\ne-2$$</div>
+    </div>
+    <p>化简后的分母只会提醒你 $x\ne-2$，但原来的 $x\ne3$ 仍然必须保留。</p>
+    <div class="note">最后真正要记住：分式化简不是把相同符号删掉，而是在原式允许的范围内约掉共同因子。</div>
+  </div></section>
+</main>
+<footer class="footer">DGOpenKS · 分式化简</footer>
+</body>
+</html>

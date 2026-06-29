@@ -3,285 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第五章 方程不等式与约束 | DGOpenKS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
-</script>
+<title>解集追踪 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<style>
-:root{color-scheme:light;--bg:#f6f8fb;--surface:#fff;--surface-2:#f8fafc;--ink:#0f172a;--muted:#64748b;--line:#dbe3ef;--object:#2563eb;--input:#06b6d4;--output:#8b5cf6;--parameter:#f59e0b;--movement:#7c3aed;--conclusion:#10b981;--warning:#ef4444;--radius:14px;--radius-lg:22px;--shadow:0 18px 60px rgba(15,23,42,.08);--shadow-soft:0 8px 30px rgba(15,23,42,.06);--font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;--ease:cubic-bezier(.22,1,.36,1)}
-@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#08111f;--surface:#101827;--surface-2:#0d1524;--ink:#e5edf7;--muted:#94a3b8;--line:#1e2d45;--object:#60a5fa;--input:#22d3ee;--output:#a78bfa;--parameter:#fbbf24;--movement:#c084fc;--conclusion:#34d399;--warning:#f87171;--shadow:0 18px 60px rgba(0,0,0,.36);--shadow-soft:0 8px 30px rgba(0,0,0,.28)}}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}a{color:inherit}button,input{font:inherit}
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;gap:10px;align-items:center;overflow-x:auto}.brand{font-weight:800;color:var(--object);white-space:nowrap;margin-right:10px;text-decoration:none}.nav-pill{text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}.nav-pill:hover{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent)}
-.hero{max-width:1180px;margin:0 auto;padding:68px 22px 42px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);gap:42px;align-items:center}.eyebrow{display:inline-flex;color:var(--object);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}.hero h1{font-size:clamp(2.1rem,5vw,4.5rem);line-height:1.05;margin:0 0 20px;font-weight:800}.lead{font-size:clamp(1.03rem,1.6vw,1.22rem);color:var(--muted);max-width:660px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.hero-card,.panel,.lab,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}.hero-card{position:relative;overflow:hidden;padding:22px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 92%,var(--object) 8%),var(--surface))}.hero-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,color-mix(in srgb,var(--object) 8%,transparent),transparent 40%,color-mix(in srgb,var(--conclusion) 7%,transparent));pointer-events:none}.hero-compare{position:relative;display:grid;gap:12px}.hero-card-head{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:.78rem;font-weight:900}.hero-card-head em{font-style:normal;color:var(--object);background:color-mix(in srgb,var(--object) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--object) 18%,var(--line));border-radius:999px;padding:2px 9px}.hero-row{display:grid;grid-template-columns:76px minmax(0,1fr) 64px;gap:12px;align-items:center;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--surface-2) 84%,var(--surface));padding:14px}.hero-badge{font-size:.8rem;font-weight:900;color:var(--muted)}.hero-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:9px;align-items:center}.hero-formula{min-height:68px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:var(--surface);font-family:var(--mono);font-weight:900;font-size:1.32rem;text-align:center}.hero-op{font-size:1.8rem;font-weight:900;color:var(--conclusion);line-height:1}.hero-row.inequality .hero-op{color:var(--parameter)}.hero-answer{font-family:var(--mono);font-weight:900;color:var(--ink);text-align:center}.hero-answer span{display:block;font-family:var(--font);font-size:.68rem;color:var(--muted);font-weight:800}.hero-range{grid-column:2 / 4;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}.hero-mini-line{position:relative;height:38px;border-radius:999px;background:color-mix(in srgb,var(--line) 72%,transparent);overflow:hidden}.hero-mini-line::before{content:"";position:absolute;left:12px;right:12px;top:18px;height:2px;background:var(--line)}.hero-mini-line .point{position:absolute;left:48%;top:11px;width:16px;height:16px;border-radius:50%;border:4px solid var(--object);background:var(--surface);box-shadow:0 0 0 3px color-mix(in srgb,var(--surface) 80%,transparent)}.hero-mini-line .ray{position:absolute;left:48%;right:12px;top:16px;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--object),var(--conclusion))}.hero-range-note{font-size:.82rem;color:var(--muted);font-weight:800}.hero-range-note b{color:var(--conclusion)}.balance{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;min-height:250px}.pan{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center}.pan .big{font-family:var(--mono);font-size:1.5rem;font-weight:900}.beam{height:8px;background:linear-gradient(90deg,var(--object),var(--movement));border-radius:999px;align-self:center;width:60px}.equal{font-size:2rem;font-weight:900;color:var(--conclusion)}
-main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}.stage-marker span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--object);margin-bottom:10px}.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}h2{font-size:clamp(1.55rem,2.6vw,2.55rem);line-height:1.18;margin:0 0 14px}h3{margin:0 0 10px}.subtle{color:var(--muted)}p{margin:0 0 12px}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:20px}.card b{color:var(--object)}.formula{font-family:var(--mono);font-weight:900;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}.warning{border-left:4px solid var(--warning);background:color-mix(in srgb,var(--warning) 8%,var(--surface));border-color:color-mix(in srgb,var(--warning) 30%,var(--line))}.ok{border-left:4px solid var(--conclusion);background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-color:color-mix(in srgb,var(--conclusion) 30%,var(--line))}
-.inequality-lab{display:grid;gap:14px}.ineq-lead{display:flex;justify-content:space-between;gap:14px;align-items:start;flex-wrap:wrap}.ineq-lead p{margin:0;color:var(--muted);max-width:680px}.ineq-expression{font-family:var(--mono);font-weight:900;color:var(--object);background:color-mix(in srgb,var(--object) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--object) 22%,var(--line));border-radius:999px;padding:6px 12px;white-space:nowrap}.ineq-toolbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.ineq-choice{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 10px;font-weight:900;color:var(--ink);cursor:pointer}.ineq-choice[aria-pressed=true]{border-color:color-mix(in srgb,var(--object) 38%,var(--line));background:color-mix(in srgb,var(--object) 10%,var(--surface));color:var(--object)}.number-line{--boundary:50%;position:relative;height:150px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(var(--surface-2),var(--surface));margin:4px 0 0;overflow:hidden}.axis{position:absolute;left:28px;right:28px;top:74px;height:3px;background:var(--line);border-radius:999px}.axis::before,.axis::after{position:absolute;top:12px;font-family:var(--mono);font-size:.78rem;font-weight:800;color:var(--muted)}.axis::before{content:"-5";left:-4px}.axis::after{content:"5";right:-2px}.ray{position:absolute;top:69px;height:13px;border-radius:999px;background:linear-gradient(90deg,var(--object),var(--conclusion));box-shadow:0 0 0 1px color-mix(in srgb,var(--conclusion) 16%,transparent)}.ray.to-right{left:var(--boundary);right:28px}.ray.to-left{left:28px;right:calc(100% - var(--boundary))}.tick{position:absolute;top:60px;left:var(--boundary);transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:var(--surface);border:5px solid var(--object);box-shadow:0 0 0 4px color-mix(in srgb,var(--surface) 86%,transparent)}.tick.closed{background:var(--object)}.line-label{position:absolute;left:var(--boundary);top:88px;transform:translateX(-50%);font-family:var(--mono);font-weight:900;color:var(--object);white-space:nowrap}.test-point{position:absolute;top:66px;left:50%;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;min-width:72px}.test-point::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--muted)}.test-point.keep::before{background:var(--conclusion);border-color:var(--conclusion)}.test-point.drop::before{background:var(--surface);border-color:var(--warning)}.test-point span{font-family:var(--mono);font-size:.75rem;font-weight:900;color:var(--muted);background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);border-radius:999px;padding:1px 6px;white-space:nowrap}.test-point.keep span{color:var(--conclusion);border-color:color-mix(in srgb,var(--conclusion) 35%,var(--line))}.test-point.drop span{color:var(--warning);border-color:color-mix(in srgb,var(--warning) 35%,var(--line))}.inequality-readout{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}.ineq-summary,.test-list{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px}.ineq-summary b,.test-list b{display:block;color:var(--object);margin-bottom:6px}.ineq-summary strong{color:var(--ink)}.test-list{display:grid;gap:8px}.test-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent);padding-top:8px}.test-item:first-of-type{border-top:0;padding-top:0}.test-item span{color:var(--muted)}.test-item em{font-style:normal;font-weight:900}.test-item.keep em{color:var(--conclusion)}.test-item.drop em{color:var(--warning)}.controls{display:grid;gap:12px}.control{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}.control label{display:flex;justify-content:space-between;font-weight:900;color:var(--parameter);font-size:.86rem;margin-bottom:8px}.control input{width:100%;accent-color:var(--parameter)}
-canvas{display:block;width:100%;height:400px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}.ami{display:grid;grid-template-columns:minmax(290px,.95fr) minmax(320px,1.05fr);gap:18px;align-items:start}.ami-visual{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--surface-2);overflow:hidden;padding:18px;display:grid;gap:14px}.ami-visual h3{margin:0;color:var(--object)}.ami-visual p{color:var(--muted)}.amgm-bars{display:grid;gap:10px;margin-top:4px}.amgm-bar{display:grid;grid-template-columns:64px minmax(0,1fr) 56px;gap:10px;align-items:center;font-weight:900}.amgm-bar span:first-child{color:var(--muted)}.amgm-track{height:14px;border-radius:999px;background:var(--line);overflow:hidden}.amgm-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--object),var(--input));width:40%}.amgm-bar.product .amgm-fill{background:linear-gradient(90deg,var(--parameter),var(--conclusion))}.amgm-readout{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.amgm-stat{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:10px}.amgm-stat span{display:block;color:var(--muted);font-size:.78rem;font-weight:800}.amgm-stat b{font-family:var(--mono);color:var(--ink)}.amgm-note{border-left:4px solid var(--conclusion);background:color-mix(in srgb,var(--conclusion) 8%,var(--surface));border-radius:12px;padding:12px;color:var(--ink)}.amgm-note b{color:var(--conclusion)}.amgm-steps{display:grid;gap:10px}.amgm-step{border:1px solid var(--line);border-radius:14px;background:var(--surface-2);padding:12px}.amgm-step b{display:block;color:var(--object);margin-bottom:4px}.amgm-checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.amgm-check{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:11px}.amgm-check b{display:block;color:var(--parameter);margin-bottom:2px}.footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
-@media(max-width:900px){.hero,.stage,.grid-2,.grid-3,.balance,.ami,.inequality-readout,.amgm-checklist{grid-template-columns:1fr}.stage-marker{position:static;display:flex;gap:10px;align-items:center}.stage-marker span{margin-bottom:0}.beam{width:100%;height:4px}}@media(max-width:620px){.hero{padding-top:42px}.hero-card,.panel,.lab,.card{padding:14px}.hero-card-head{align-items:flex-start;flex-direction:column}.hero-row{grid-template-columns:1fr;gap:9px}.hero-badge{color:var(--object)}.hero-answer{text-align:left}.hero-range{grid-column:auto;grid-template-columns:1fr}.hero-formula{min-height:56px;font-size:1.08rem}.hero-op{font-size:1.5rem}canvas{height:330px}.ineq-toolbar{grid-template-columns:repeat(2,1fr)}.number-line{height:138px}.test-point{min-width:20px}.test-point span{display:none}.amgm-readout{grid-template-columns:1fr}.amgm-bar{grid-template-columns:52px minmax(0,1fr) 48px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
-</style>
+<link rel="stylesheet" href="chapter05.css">
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航"><div class="topbar-inner">
   <a class="brand" href="../../index.html">DGOpenKS</a>
-  <a class="nav-pill" href="#equation">等式</a>
-  <a class="nav-pill" href="#quadratic">二次方程</a>
-  <a class="nav-pill" href="#inequality">不等式</a>
-  <a class="nav-pill" href="#ami">均值不等式</a>
+  <a class="nav-link" href="../chapter_04_分式根式与条件控制/">上一章</a>
+  <a class="nav-link" href="00_解集追踪.html">解集追踪</a>
+  <a class="nav-link" href="01_方程变形.html">方程变形</a>
+  <a class="nav-link" href="03_不等式变形.html">不等式变形</a>
 </div></nav>
-
 <header class="hero">
-  <div class="reveal">
-    <div class="eyebrow">Chapter 05</div>
-    <h1>方程、不等式与约束</h1>
-    <p class="lead">方程问“什么时候相等”，不等式问“哪些范围成立”。高中数学从这里开始不只求数，还研究条件。</p>
-    <div class="hero-actions"><a class="btn primary" href="#inequality">看不等式图像</a><a class="btn" href="../chapter_04_分式根式与条件控制/">上一章</a></div>
+  <div>
+    <span class="eyebrow">Chapter 05</span>
+    <h1>解集追踪</h1>
+    <p class="lead">这一章承接表达式条件，继续讨论方程和不等式：哪些数能真正留下来成为解，哪些数会被约束或验根筛掉。</p>
   </div>
-  <div class="hero-card reveal">
-    <div class="hero-compare" aria-label="方程与不等式对照图">
-      <div class="hero-card-head"><span>同一个表达式，两种问题</span><em>看 x 的结果</em></div>
-      <div class="hero-row equation">
-        <div class="hero-badge">方程</div>
-        <div class="hero-flow">
-          <div class="hero-formula">$2x+1$</div>
-          <div class="hero-op">=</div>
-          <div class="hero-formula">$7$</div>
-        </div>
-        <div class="hero-answer"><span>留下</span>$x=3$</div>
-      </div>
-      <div class="hero-row inequality">
-        <div class="hero-badge">不等式</div>
-        <div class="hero-flow">
-          <div class="hero-formula">$2x+1$</div>
-          <div class="hero-op">&gt;</div>
-          <div class="hero-formula">$7$</div>
-        </div>
-        <div class="hero-answer"><span>留下</span>$x>3$</div>
-        <div class="hero-range">
-          <div class="hero-mini-line" aria-hidden="true"><span class="ray"></span><span class="point"></span></div>
-          <div class="hero-range-note">方程像一个点，不等式留下<b>一段范围</b>。</div>
-        </div>
-      </div>
-    </div>
+  <div class="visual" aria-label="方程留下点，不等式留下区间">
+    <svg viewBox="0 0 680 310" role="img">
+      <rect x="34" y="36" width="612" height="238" rx="14" fill="#f8fafc" stroke="#dbe5f2"/>
+      <line x1="95" y1="112" x2="585" y2="112" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="340" cy="112" r="13" fill="#2563eb"/>
+      <text x="340" y="78" text-anchor="middle" fill="#2563eb" font-size="23" font-weight="900">方程：留下一个点</text>
+      <text x="340" y="150" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">2x+1=7  →  x=3</text>
+      <line x1="95" y1="212" x2="585" y2="212" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+      <line x1="340" y1="212" x2="585" y2="212" stroke="#059669" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="340" cy="212" r="12" fill="#fff" stroke="#059669" stroke-width="5"/>
+      <text x="438" y="194" text-anchor="middle" fill="#059669" font-size="23" font-weight="900">不等式：留下一段范围</text>
+      <text x="340" y="256" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">2x+1&gt;7  →  x&gt;3</text>
+    </svg>
   </div>
 </header>
-
 <main>
-  <section class="stage" id="equation">
-    <aside class="stage-marker"><span>1</span>Equation</aside>
-    <div class="reveal">
-      <div class="stage-kicker">等式的两种图像</div>
-      <h2>方程的解，是让两边相遇的输入。</h2>
-      <div class="grid-2">
-        <div class="card"><b>天平视角</b><p>对等式两边做同样的操作，平衡不变。这解释了移项、同乘、同除。</p></div>
-        <div class="card"><b>交点视角</b><p>$f(x)=g(x)$ 的解，就是两个图像的交点横坐标。</p></div>
-      </div>
-      <div class="card warning"><b>注意</b><p>平方、开方、约分都可能改变条件。根式方程和分式方程要验根。</p></div>
+  <section class="section"><div class="marker"><span>01</span>核心</div><div class="section-body">
+    <h2>解不是算完就结束，而是被筛选后留下来的数</h2>
+    <p>方程问哪些数让关系相等，不等式问哪些范围让关系成立，约束负责排除一开始就不能进入讨论的数。</p>
+    <div class="flow">
+      <span>先确定允许范围</span>
+      <span>再判断变形是否保持解集</span>
+      <span>再求出候选结果</span>
+      <span>最后把候选结果放回原式检查</span>
     </div>
-  </section>
-
-  <section class="stage" id="quadratic">
-    <aside class="stage-marker"><span>2</span>Quadratic</aside>
-    <div class="reveal">
-      <div class="stage-kicker">二次方程</div>
-      <h2>判别式看根的数量，韦达定理看根的关系。</h2>
-      <div class="lab">
-        <canvas id="quadCanvas" width="900" height="420" aria-label="二次方程与二次函数图像"></canvas>
-        <div class="controls">
-          <div class="control"><label><span>c</span><span id="cVal">-2</span></label><input id="cRange" type="range" min="-5" max="5" step=".5" value="-2"></div>
-        </div>
-      </div>
-      <div class="grid-3" style="margin-top:18px">
-        <div class="card"><b>判别式</b><div class="formula">$\Delta=b^2-4ac$</div><p class="subtle">大于 0 两根，等于 0 一重根，小于 0 无实根。</p></div>
-        <div class="card"><b>韦达定理</b><div class="formula">$x_1+x_2=-\frac ba,\ x_1x_2=\frac ca$</div><p class="subtle">不直接求根，也能研究根的和与积。</p></div>
-        <div class="card"><b>参数意识</b><p>参数改变时，根的数量、位置和范围都会跟着改变。</p></div>
-      </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>目录</div><div class="section-body">
+    <h2>按解集追踪的顺序阅读</h2>
+    <div class="grid">
+      <a class="lesson-card" href="00_解集追踪.html"><span class="tag">00</span><strong>解集追踪</strong><p>先把解看成被条件留下来的点或范围。</p><div class="mini-formula">点解 / 区间解 / 约束</div></a>
+      <a class="lesson-card green" href="01_方程变形.html"><span class="tag green">01</span><strong>方程变形</strong><p>看哪些变形保持解集，哪些变形会产生增根。</p><div class="mini-formula">{2} → {-2, 2}</div></a>
+      <a class="lesson-card amber" href="02_分式根式方程.html"><span class="tag amber">02</span><strong>分式根式方程</strong><p>先看约束，再平方或去分母，最后验根。</p><div class="mini-formula">约束 → 候选 → 验根</div></a>
+      <a class="lesson-card purple" href="03_不等式变形.html"><span class="tag purple">03</span><strong>不等式变形</strong><p>乘除前先判断符号，负数会让方向翻转。</p><div class="mini-formula">-3x ≥ 6 → x ≤ -2</div></a>
+      <a class="lesson-card" href="04_二次不等式.html"><span class="tag">04</span><strong>二次不等式</strong><p>零点不是答案，而是分区间的边界。</p><div class="mini-formula">(x-1)(x-3)&gt;0</div></a>
+      <a class="lesson-card red" href="05_分式不等式.html"><span class="tag red">05</span><strong>分式不等式</strong><p>分子零点和分母禁点一起分区间。</p><div class="mini-formula">零点可取，禁点必排除</div></a>
+      <a class="lesson-card" href="06_小结.html"><span class="tag">06</span><strong>小结</strong><p>把允许范围、候选结果和验回原式合成一条检查线。</p><div class="mini-formula">候选结果 ≠ 最终解</div></a>
     </div>
-  </section>
-
-  <section class="stage" id="inequality">
-    <aside class="stage-marker"><span>3</span>Inequality</aside>
-    <div class="reveal">
-      <div class="stage-kicker">不等式不是答案，是范围</div>
-      <h2>解不等式，就是在数轴上留下满足条件的一段。</h2>
-      <div class="panel inequality-lab">
-        <div class="ineq-lead">
-          <p>先不要把边界点当答案。边界点只负责把数轴切开，真正的解集是它左边或右边的一整段；严格不等号用空心点，含等号才把端点留下。</p>
-          <div class="ineq-expression" id="ineqExpr">x &gt; 3</div>
-        </div>
-        <div class="ineq-toolbar" aria-label="选择不等号方向">
-          <button class="ineq-choice" type="button" data-relation="gt" aria-pressed="true">x &gt; t</button>
-          <button class="ineq-choice" type="button" data-relation="ge" aria-pressed="false">x ≥ t</button>
-          <button class="ineq-choice" type="button" data-relation="lt" aria-pressed="false">x &lt; t</button>
-          <button class="ineq-choice" type="button" data-relation="le" aria-pressed="false">x ≤ t</button>
-        </div>
-        <div class="number-line" id="numberLine" aria-label="不等式解集数轴">
-          <div class="axis"></div>
-          <div class="ray to-right" id="ray"></div>
-          <div class="tick" id="tick" aria-hidden="true"></div>
-          <div class="line-label" id="lineLabel">t=3</div>
-          <div class="test-point drop" id="leftProbe"><span>t-1</span></div>
-          <div class="test-point drop" id="midProbe"><span>t</span></div>
-          <div class="test-point keep" id="rightProbe"><span>t+1</span></div>
-        </div>
-        <div class="control"><label><span>边界点 t</span><span id="tVal">3</span></label><input id="tRange" type="range" min="-4" max="4" step="1" value="3"></div>
-        <div class="inequality-readout">
-          <div class="ineq-summary" aria-live="polite">
-            <b id="solutionTitle">留下右边，端点不取</b>
-            <p id="solutionText">现在的解集是 <strong>x &gt; 3</strong>，也就是数轴上从 3 向右延伸的一整段。</p>
-          </div>
-          <div class="test-list" aria-live="polite">
-            <b>用三个点检查</b>
-            <div class="test-item drop" id="leftTest"><span>x=t-1</span><em>丢掉</em></div>
-            <div class="test-item drop" id="midTest"><span>x=t</span><em>丢掉</em></div>
-            <div class="test-item keep" id="rightTest"><span>x=t+1</span><em>留下</em></div>
-          </div>
-        </div>
-      </div>
-      <div class="grid-2" style="margin-top:18px">
-        <div class="card"><b>二次不等式</b><p>先看抛物线与 $x$ 轴交点，再判断图像在轴上方还是下方。</p></div>
-        <div class="card"><b>分式不等式</b><p>分子、分母零点都要上数轴；分母为 0 的点必须挖掉。</p></div>
-        <div class="card"><b>绝对值不等式</b><p>$|x-a|<r$ 表示距离小于 $r$，所以是 $a$ 附近的一段区间。</p></div>
-        <div class="card warning"><b>不等式变形</b><p>两边同乘负数，不等号方向要改变。乘含参数的式子前，要先知道正负。</p></div>
-      </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>配套</div><div class="section-body">
+    <h2>方法与练习会单独整理</h2>
+    <p>本章正文只讲理解。完整操作流程和成组训练会放在配套区域，避免把知识正文写成题库或步骤清单。</p>
+    <div class="grid">
+      <a class="entry-card" href="../../method_tree/方程不等式与解集追踪/"><span class="tag green">方法</span><strong>解集追踪方法</strong><p>整理验根、变号、零点分区间等操作流程。</p></a>
+      <a class="entry-card" href="../../practice_tree/方程不等式与解集追踪/"><span class="tag amber">练习</span><strong>解集追踪练习</strong><p>之后用于训练判断、求解、混合约束和错误诊断。</p></a>
     </div>
-  </section>
-
-  <section class="stage" id="ami">
-    <aside class="stage-marker"><span>4</span>AM-GM</aside>
-    <div class="reveal">
-      <div class="stage-kicker">均值不等式入门</div>
-      <h2>均值不等式说的是：两个非负量最平衡时，和才最小。</h2>
-      <div class="lab ami">
-        <div class="ami-visual">
-          <h3>先看 $x+\dfrac9x$</h3>
-          <p>当 $x>0$ 时，两个量 $x$ 和 $\dfrac9x$ 都是正数，而且乘积一直是 $9$。一个变小，另一个就会变大，所以它们的和不会无限小。</p>
-          <div class="control"><label><span>x</span><span id="amiXVal">3</span></label><input id="amiXRange" type="range" min="1" max="9" step=".5" value="3"></div>
-          <div class="amgm-bars" aria-label="均值不等式例子的两个正数">
-            <div class="amgm-bar"><span>x</span><div class="amgm-track"><div class="amgm-fill" id="amiXFill"></div></div><b id="amiAVal">3</b></div>
-            <div class="amgm-bar"><span>9/x</span><div class="amgm-track"><div class="amgm-fill" id="amiBFill"></div></div><b id="amiBVal">3</b></div>
-            <div class="amgm-bar product"><span>乘积</span><div class="amgm-track"><div class="amgm-fill" style="width:100%"></div></div><b>9</b></div>
-          </div>
-          <div class="amgm-readout">
-            <div class="amgm-stat"><span>当前和</span><b id="amiSum">6</b></div>
-            <div class="amgm-stat"><span>下界</span><b>2√9=6</b></div>
-            <div class="amgm-stat"><span>等号</span><b id="amiEqual">能取到</b></div>
-          </div>
-          <div class="amgm-note" id="amiNote"><b>x=3</b> 时两个量相等，和达到最小值 6。</div>
-        </div>
-        <div class="amgm-steps">
-          <div class="amgm-step">
-            <b>1. 先确认能不能用</b>
-            <p>均值不等式的常见形式要求 $a\ge0,\ b\ge0$。如果两个量不是非负数，就不能直接套。</p>
-          </div>
-          <div class="amgm-step">
-            <b>2. 公式来自一个非负平方</b>
-            <div class="formula">$(\sqrt a-\sqrt b)^2\ge0$</div>
-            <p>展开并移项，就得到 $a+b\ge2\sqrt{ab}$。它不是口令，而是平方不小于 $0$ 的结果。</p>
-          </div>
-          <div class="amgm-step">
-            <b>3. 等号条件决定最小值能不能取到</b>
-            <p>等号成立当且仅当 $a=b$。做最值题时，最后一定要检查这个条件是否满足原题约束。</p>
-          </div>
-          <div class="amgm-checklist" aria-label="使用均值不等式的检查顺序">
-            <div class="amgm-check"><b>找两个量</b><span>例如 $x$ 和 $\dfrac9x$。</span></div>
-            <div class="amgm-check"><b>看非负</b><span>题目给出 $x>0$，所以两项为正。</span></div>
-            <div class="amgm-check"><b>看乘积</b><span>$x\cdot\dfrac9x=9$ 固定。</span></div>
-            <div class="amgm-check"><b>查等号</b><span>$x=\dfrac9x$，得到 $x=3$。</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stage" id="constraint">
-    <aside class="stage-marker"><span>5</span>Constraint</aside>
-    <div class="reveal">
-      <div class="stage-kicker">约束意识</div>
-      <h2>高中数学里，很多错误不是不会算，而是忘了条件。</h2>
-      <div class="grid-3">
-        <div class="card"><b>分母</b><p>不能为 $0$。</p></div>
-        <div class="card"><b>偶次根号</b><p>根号内非负。</p></div>
-        <div class="card"><b>定义域</b><p>函数正式学习时，它就是输入的约束集合。</p></div>
-      </div>
-    </div>
-  </section>
+  </div></section>
 </main>
-
-<footer class="footer">DGOpenKS · 第五章 · 方程不等式与约束</footer>
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.16});
-  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-  const canvas=document.getElementById('quadCanvas'),ctx=canvas.getContext('2d'),cRange=document.getElementById('cRange'),cVal=document.getElementById('cVal');
-  function sx(x){return canvas.width/2+x*70} function sy(y){return canvas.height/2-y*35}
-  function drawQuad(){const c=Number(cRange.value);cVal.textContent=c;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--line');ctx.lineWidth=1;for(let x=0;x<canvas.width;x+=70){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}for(let y=0;y<canvas.height;y+=35){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--ink');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,sy(0));ctx.lineTo(canvas.width,sy(0));ctx.moveTo(sx(0),0);ctx.lineTo(sx(0),canvas.height);ctx.stroke();ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--object');ctx.lineWidth=4;ctx.beginPath();for(let px=-6;px<=6;px+=.05){const y=px*px-1+Number(c);const X=sx(px),Y=sy(y);if(px===-6)ctx.moveTo(X,Y);else ctx.lineTo(X,Y)}ctx.stroke();const delta=4-4*c;ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--conclusion');ctx.font='700 18px sans-serif';ctx.fillText('y=x^2-1+c,  Δ='+(delta.toFixed(1)),24,34)}
-  cRange.addEventListener('input',drawQuad);drawQuad();
-  const tRange=document.getElementById('tRange'),numberLine=document.getElementById('numberLine'),tick=document.getElementById('tick'),ray=document.getElementById('ray'),lineLabel=document.getElementById('lineLabel'),tVal=document.getElementById('tVal'),ineqExpr=document.getElementById('ineqExpr'),solutionTitle=document.getElementById('solutionTitle'),solutionText=document.getElementById('solutionText');
-  const relationButtons=[...document.querySelectorAll('[data-relation]')];
-  const probes={left:document.getElementById('leftProbe'),mid:document.getElementById('midProbe'),right:document.getElementById('rightProbe')};
-  const tests={left:document.getElementById('leftTest'),mid:document.getElementById('midTest'),right:document.getElementById('rightTest')};
-  const relationState={value:'gt'};
-  const relationCopy={
-    gt:{symbol:'>',direction:'right',closed:false,keep:v=>v>0,title:'留下右边，端点不取',interval:t=>`(${t}, +∞)`,plain:t=>`x > ${t}`},
-    ge:{symbol:'≥',direction:'right',closed:true,keep:v=>v>=0,title:'留下右边，端点也留下',interval:t=>`[${t}, +∞)`,plain:t=>`x ≥ ${t}`},
-    lt:{symbol:'<',direction:'left',closed:false,keep:v=>v<0,title:'留下左边，端点不取',interval:t=>`(-∞, ${t})`,plain:t=>`x < ${t}`},
-    le:{symbol:'≤',direction:'left',closed:true,keep:v=>v<=0,title:'留下左边，端点也留下',interval:t=>`(-∞, ${t}]`,plain:t=>`x ≤ ${t}`}
-  };
-  function setKeepState(element, keep){element.classList.toggle('keep',keep);element.classList.toggle('drop',!keep)}
-  function updateLine(){
-    const t=Number(tRange.value),data=relationCopy[relationState.value],pct=(t+5)/10*100;
-    tVal.textContent=t;
-    numberLine.style.setProperty('--boundary',pct+'%');
-    lineLabel.textContent='t='+t;
-    tick.classList.toggle('closed',data.closed);
-    ray.classList.toggle('to-right',data.direction==='right');
-    ray.classList.toggle('to-left',data.direction==='left');
-    ineqExpr.textContent=`x ${data.symbol} ${t}`;
-    solutionTitle.textContent=data.title;
-    solutionText.innerHTML=`现在的解集是 <strong>${data.plain(t)}</strong>，也就是 <strong>${data.interval(t)}</strong>。蓝绿色的一整段才是答案，${data.closed?'实心点表示边界点可以取。':'空心点表示边界点不取。'}`;
-    const probeData=[
-      ['left',t-1,'t-1',data.keep(-1)],
-      ['mid',t,'t',data.keep(0)],
-      ['right',t+1,'t+1',data.keep(1)]
-    ];
-    probeData.forEach(([key,value,label,keep])=>{
-      const pos=(value+5)/10*100;
-      probes[key].style.left=pos+'%';
-      probes[key].querySelector('span').textContent=`${label}=${value}`;
-      setKeepState(probes[key],keep);
-      tests[key].querySelector('span').textContent=`x=${label}=${value}`;
-      tests[key].querySelector('em').textContent=keep?'留下':'丢掉';
-      setKeepState(tests[key],keep);
-    });
-  }
-  relationButtons.forEach(button=>button.addEventListener('click',()=>{
-    relationState.value=button.dataset.relation;
-    relationButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
-    updateLine();
-  }));
-  tRange.addEventListener('input',updateLine);updateLine();
-  const amiXRange=document.getElementById('amiXRange'),amiXVal=document.getElementById('amiXVal'),amiAVal=document.getElementById('amiAVal'),amiBVal=document.getElementById('amiBVal'),amiXFill=document.getElementById('amiXFill'),amiBFill=document.getElementById('amiBFill'),amiSum=document.getElementById('amiSum'),amiEqual=document.getElementById('amiEqual'),amiNote=document.getElementById('amiNote');
-  function formatAmgmNumber(value){return Number.isInteger(value)?String(value):value.toFixed(2).replace(/\.00$/,'').replace(/0$/,'')}
-  function updateAmgm(){
-    if(!amiXRange)return;
-    const x=Number(amiXRange.value),pair=9/x,sum=x+pair,equal=Math.abs(x-pair)<1e-9;
-    amiXVal.textContent=formatAmgmNumber(x);
-    amiAVal.textContent=formatAmgmNumber(x);
-    amiBVal.textContent=formatAmgmNumber(pair);
-    amiSum.textContent=formatAmgmNumber(sum);
-    amiXFill.style.width=Math.max(8,Math.min(100,x/9*100))+'%';
-    amiBFill.style.width=Math.max(8,Math.min(100,pair/9*100))+'%';
-    amiEqual.textContent=equal?'能取到':'还没取到';
-    amiNote.innerHTML=equal?'<b>x=3</b> 时两个量相等，和达到最小值 6。':`现在两个量不相等，和是 <b>${formatAmgmNumber(sum)}</b>，仍然大于 6。等号要到 x=3 才能取到。`;
-  }
-  amiXRange.addEventListener('input',updateAmgm);updateAmgm();
-});
-</script>
+<footer class="footer">DGOpenKS · Chapter 05 · 解集追踪</footer>
 </body>
 </html>

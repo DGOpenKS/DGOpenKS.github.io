@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解集追踪 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="chapter05.css">
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="01_方程变形.html">下一节</a></div></nav>
+<header class="hero simple"><span class="eyebrow">Chapter 05 · 00</span><h1>解集追踪</h1><p class="lead">方程和不等式不是只把式子变短，而是在追踪哪些数仍然被允许留下。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>承接</div><div class="section-body">
+    <h2>条件进入方程以后，就会影响最终答案</h2>
+    <p>上一章我们学习了表达式化简中的条件：分式有分母不能为 $0$ 的限制，根式有被开方数非负的限制。这一章进一步讨论：当这些表达式出现在方程和不等式中时，哪些数能够真正留下来成为解。</p>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>点与段</div><div class="section-body">
+    <h2>方程留下点，不等式留下范围</h2>
+    <p>方程 $2x+1=7$ 的解是 $x=3$，意思是只有这个输入值能让左右两边相等。不等式 $2x+1>7$ 的解是 $x>3$，留下的是数轴上的一整段。</p>
+    <div class="visual" aria-label="方程点解和不等式区间解">
+      <svg viewBox="0 0 700 270" role="img">
+        <line x1="90" y1="92" x2="610" y2="92" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="350" cy="92" r="13" fill="#2563eb"/>
+        <text x="350" y="58" text-anchor="middle" fill="#2563eb" font-size="22" font-weight="900">x = 3</text>
+        <text x="350" y="132" text-anchor="middle" fill="#111827" font-size="20" font-weight="900">方程留下一个点</text>
+        <line x1="90" y1="194" x2="610" y2="194" stroke="#94a3b8" stroke-width="4"/>
+        <line x1="350" y1="194" x2="610" y2="194" stroke="#059669" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="350" cy="194" r="12" fill="#fff" stroke="#059669" stroke-width="5"/>
+        <text x="470" y="174" text-anchor="middle" fill="#059669" font-size="22" font-weight="900">x &gt; 3</text>
+        <text x="350" y="236" text-anchor="middle" fill="#111827" font-size="20" font-weight="900">不等式留下一段范围</text>
+      </svg>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>方法</div><div class="section-body">
+    <h2>答案要经过筛选</h2>
+    <div class="flow"><span>允许范围</span><span>变形过程</span><span>候选结果</span><span>验回原式</span><span>最终解集</span></div>
+    <div class="note">最后真正要记住：方程的解是让关系相等的输入值，不等式的解是让关系成立的范围，约束决定哪些数一开始就不能留下。</div>
+  </div></section>
+</main>
+<div class="pager"><a href="./">章节入口</a><a href="01_方程变形.html">下一节：方程变形</a></div>
+<footer class="footer">DGOpenKS · 解集追踪</footer>
+</body>
+</html>

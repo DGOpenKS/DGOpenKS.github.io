@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不等式变形 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="chapter05.css">
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="02_分式根式方程.html">上一节</a><a class="nav-link" href="04_二次不等式.html">下一节</a></div></nav>
+<header class="hero simple"><span class="eyebrow">Chapter 05 · 03</span><h1>不等式变形</h1><p class="lead">不等式变形前，先看乘除对象的符号。乘除负数会改变方向，符号不确定就不能直接操作。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>方向</div><div class="section-body">
+    <h2>乘除负数会翻转大小关系</h2>
+    <p>解不等式：</p>
+    <div class="formula-box">$$-3x\ge6$$</div>
+    <p>两边除以 $-3$，不等号方向必须改变：</p>
+    <div class="formula-box">$$x\le-2$$</div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>看见</div><div class="section-body">
+    <h2>负号会把数轴左右翻过来</h2>
+    <div class="visual" aria-label="乘以负数后不等号方向改变">
+      <svg viewBox="0 0 700 260" role="img">
+        <line x1="100" y1="86" x2="600" y2="86" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="245" cy="86" r="10" fill="#2563eb"/><circle cx="455" cy="86" r="10" fill="#059669"/>
+        <text x="245" y="52" text-anchor="middle" fill="#2563eb" font-size="22" font-weight="900">1</text>
+        <text x="455" y="52" text-anchor="middle" fill="#059669" font-size="22" font-weight="900">2</text>
+        <text x="350" y="126" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">1 &lt; 2</text>
+        <line x1="100" y1="184" x2="600" y2="184" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="245" cy="184" r="10" fill="#059669"/><circle cx="455" cy="184" r="10" fill="#2563eb"/>
+        <text x="245" y="222" text-anchor="middle" fill="#059669" font-size="22" font-weight="900">-6</text>
+        <text x="455" y="222" text-anchor="middle" fill="#2563eb" font-size="22" font-weight="900">-3</text>
+        <text x="350" y="164" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900">乘以 -3 后：-3 &gt; -6</text>
+      </svg>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>判断</div><div class="section-body">
+    <h2>符号不确定时不能直接乘除</h2>
+    <div class="grid">
+      <div class="card"><h3>方向不变</h3><p>两边加减同一个式子；两边乘除正数。</p></div>
+      <div class="card"><h3>方向改变</h3><p>两边乘除负数。</p></div>
+      <div class="card"><h3>不能直接做</h3><p>乘除 $a$、$x-1$、$x+2$ 这类符号不确定的式子。</p></div>
+      <div class="card"><h3>先分清</h3><p>如果必须处理含未知数的乘除对象，要先知道它是正、负，还是可能为 $0$。</p></div>
+    </div>
+    <div class="note">最后真正要记住：不等式变形前，要先问乘除对象的符号是否确定。</div>
+  </div></section>
+</main>
+<div class="pager"><a href="02_分式根式方程.html">上一节：分式根式方程</a><a href="04_二次不等式.html">下一节：二次不等式</a></div>
+<footer class="footer">DGOpenKS · 不等式变形</footer>
+</body>
+</html>

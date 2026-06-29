@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>等价化简小结 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#2563eb;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--green:#059669;--green-soft:#ecfdf5;--amber:#d97706;--amber-soft:#fff7ed;--purple:#7c3aed;--purple-soft:#f5f3ff;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.8;overflow-x:hidden}.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:1080px;margin:auto;padding:10px 20px;display:flex;gap:8px;align-items:center;overflow-x:auto}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}.hero{max-width:1080px;margin:auto;padding:44px 20px 26px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,4.2vw,3rem);line-height:1.15;margin:0 0 12px}h2{font-size:clamp(1.28rem,2.2vw,1.75rem);line-height:1.28;margin:0 0 12px}p{margin:0 0 12px;color:#334155}.lead{max-width:820px;color:var(--muted);font-size:1.04rem}main{max-width:1080px;margin:auto;padding:0 20px 82px}.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:44px 0;border-top:1px solid var(--line)}.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:900}.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}.section-body{min-width:0;max-width:850px}.card,.note{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:16px 0}.note{border-left:4px solid var(--blue);background:var(--blue-soft);box-shadow:none;color:var(--blue);font-weight:800}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:10px;overflow:auto}.flow{display:grid;gap:8px}.flow span{display:block;background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--blue-line);border-radius:var(--radius);padding:10px;font-weight:800;color:#334155}.next-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.next-item{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--blue-line);border-radius:var(--radius);padding:12px;font-weight:800;color:#334155}.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}@media(max-width:760px){.section,.next-grid{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero,main{padding-left:14px;padding-right:14px}h1{font-size:2rem}}
+h1,h2,p,.lead,.flow span,.next-item{overflow-wrap:anywhere}@media(max-width:760px){h1,.lead{word-break:break-all}}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="03_复合条件.html">上一节</a><a class="nav-link" href="../chapter_05_方程不等式与约束/">下一章</a></div></nav>
+<header class="hero"><span class="eyebrow">Chapter 04 · 04</span><h1>等价化简小结</h1><p class="lead">这一页只做收束：等价化简不是只看式子变简单，而是要保证形式和条件一起等价。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>三件事</div><div class="section-body">
+    <h2>本章真正要带走的结构</h2>
+    <div class="card">
+      <p><b>分式：</b>约掉的是因子，不是原分母条件。</p>
+      <div class="formula-line">$$\frac{x^2-1}{x-1}=x+1,\qquad x\ne1$$</div>
+      <p><b>根式：</b>平方和开方不能机械抵消。</p>
+      <div class="formula-line">$$\sqrt{A^2}=|A|$$</div>
+      <p><b>复合表达式：</b>每个限制都要一起保留。</p>
+      <div class="formula-line">$$\frac{\sqrt{x+2}}{x^2-1}:\quad x\ge-2,\ x\ne-1,\ x\ne1$$</div>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>流程</div><div class="section-body">
+    <h2>等价化简的检查顺序</h2>
+    <div class="flow">
+      <span>先写原式条件</span>
+      <span>再做代数变形</span>
+      <span>标出约分、开方等可能改变条件的步骤</span>
+      <span>检查条件有没有丢失或扩大</span>
+      <span>最后把结果和条件一起写出</span>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>收束</div><div class="section-body">
+    <h2>条件没有一起保留，就不是真正等价</h2>
+    <p>做完化简后，不要只看新式子是否更短，还要回到原式，确认哪些值一开始就不能代入。被约掉的因子、被开方的平方、合并在一起的限制，都可能把条件藏起来。</p>
+    <div class="note">最后真正要记住：条件没有一起保留，化简就不是真正等价。</div>
+  </div></section>
+</main>
+<footer class="footer">DGOpenKS · 等价化简小结</footer>
+</body>
+</html>

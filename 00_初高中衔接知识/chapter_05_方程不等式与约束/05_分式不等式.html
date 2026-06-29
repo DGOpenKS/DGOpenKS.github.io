@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分式不等式 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="chapter05.css">
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="04_二次不等式.html">上一节</a><a class="nav-link" href="06_小结.html">下一节</a></div></nav>
+<header class="hero simple"><span class="eyebrow">Chapter 05 · 05</span><h1>分式不等式</h1><p class="lead">分式不等式不能随便去分母。分子零点和分母禁点都要放到数轴上分区间。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>禁点</div><div class="section-body">
+    <h2>分母零点永远不能取</h2>
+    <p>看不等式：</p>
+    <div class="formula-box">$$\frac{x-1}{x+2}\ge0$$</div>
+    <p>分子零点是 $x=1$，分母禁点是 $x=-2$。分母禁点不是普通端点，而是原式没有意义的地方。</p>
+    <div class="visual" aria-label="分式不等式零点和禁点分区间">
+      <svg viewBox="0 0 700 210" role="img">
+        <line x1="80" y1="104" x2="620" y2="104" stroke="#94a3b8" stroke-width="4"/>
+        <line x1="80" y1="104" x2="260" y2="104" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+        <line x1="452" y1="104" x2="620" y2="104" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="260" cy="104" r="12" fill="#fff" stroke="#dc2626" stroke-width="5"/>
+        <circle cx="452" cy="104" r="12" fill="#059669"/>
+        <text x="260" y="142" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900">-2 禁点</text>
+        <text x="452" y="142" text-anchor="middle" fill="#059669" font-size="21" font-weight="900">1 零点</text>
+        <text x="165" y="76" text-anchor="middle" fill="#059669" font-size="18" font-weight="800">留下</text>
+        <text x="356" y="76" text-anchor="middle" fill="#dc2626" font-size="18" font-weight="800">丢掉</text>
+        <text x="536" y="76" text-anchor="middle" fill="#059669" font-size="18" font-weight="800">留下</text>
+      </svg>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>符号</div><div class="section-body">
+    <h2>每段判断整体分式符号</h2>
+    <div class="sign-list">
+      <div class="sign-row"><strong>$(-\infty,-2)$</strong><span>$x-1$：<b class="negative">负</b></span><span>$x+2$：<b class="negative">负</b></span><span>整体：<b class="positive">正</b></span></div>
+      <div class="sign-row"><strong>$(-2,1)$</strong><span>$x-1$：<b class="negative">负</b></span><span>$x+2$：<b class="positive">正</b></span><span>整体：<b class="negative">负</b></span></div>
+      <div class="sign-row"><strong>$(1,+\infty)$</strong><span>$x-1$：<b class="positive">正</b></span><span>$x+2$：<b class="positive">正</b></span><span>整体：<b class="positive">正</b></span></div>
+    </div>
+    <p>题目要求 $\ge0$，所以留下正区间和分子为 $0$ 的点。$x=1$ 可以取，$x=-2$ 永远排除。</p>
+    <div class="formula-box">$$x<-2\quad \text{或}\quad x\ge1$$</div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>整理</div><div class="section-body">
+    <h2>不是一边为 0 时，先整理</h2>
+    <p>例如 $\dfrac1{x-1}>2$，不要直接两边乘以 $x-1$。应先写成：</p>
+    <div class="formula-box">$$\frac1{x-1}-2>0$$</div>
+    <p>再通分：</p>
+    <div class="formula-box">$$\frac{3-2x}{x-1}>0$$</div>
+    <div class="note red">最后真正要记住：分式不等式里，分母零点不是普通端点，而是必须排除的禁点。</div>
+  </div></section>
+</main>
+<div class="pager"><a href="04_二次不等式.html">上一节：二次不等式</a><a href="06_小结.html">下一节：小结</a></div>
+<footer class="footer">DGOpenKS · 分式不等式</footer>
+</body>
+</html>

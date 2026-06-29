@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分式根式方程 | DGOpenKS</title>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="chapter05.css">
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="01_方程变形.html">上一节</a><a class="nav-link" href="03_不等式变形.html">下一节</a></div></nav>
+<header class="hero simple"><span class="eyebrow">Chapter 05 · 02</span><h1>分式根式方程</h1><p class="lead">分式根式方程不能只看算出的候选解，还要先看原式约束，再验回原式。</p></header>
+<main>
+  <section class="section"><div class="marker"><span>01</span>约束</div><div class="section-body">
+    <h2>平方前先看原方程允许哪些值</h2>
+    <p>解方程：</p>
+    <div class="formula-box">$$\sqrt{x+1}=x-1$$</div>
+    <p>左边有根号，所以 $x+1\ge0$。左边是平方根，结果非负，所以右边也必须非负：$x-1\ge0$。合起来得到：</p>
+    <div class="formula-box">x ≥ 1</div>
+  </div></section>
+  <section class="section"><div class="marker"><span>02</span>候选</div><div class="section-body">
+    <h2>平方得到的是候选解</h2>
+    <div class="card">
+      <div class="formula-box">$$x+1=(x-1)^2$$</div>
+      <div class="formula-box">$$x+1=x^2-2x+1$$</div>
+      <div class="formula-box">$$x^2-3x=0$$</div>
+      <div class="formula-box">$$x=0\quad \text{或}\quad x=3$$</div>
+    </div>
+  </div></section>
+  <section class="section"><div class="marker"><span>03</span>筛选</div><div class="section-body">
+    <h2>最终答案要通过原式检查</h2>
+    <div class="visual" aria-label="候选解筛选">
+      <svg viewBox="0 0 700 250" role="img">
+        <rect x="52" y="48" width="170" height="62" rx="8" fill="#eef4ff" stroke="#c7d8ff"/>
+        <text x="137" y="84" text-anchor="middle" fill="#2563eb" font-size="20" font-weight="900">约束 x ≥ 1</text>
+        <path d="M224 79 L292 79" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+        <rect x="300" y="48" width="150" height="62" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+        <text x="375" y="84" text-anchor="middle" fill="#d97706" font-size="20" font-weight="900">候选 0, 3</text>
+        <path d="M452 79 L520 79" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+        <rect x="528" y="48" width="120" height="62" rx="8" fill="#ecfdf5" stroke="#bbf7d0"/>
+        <text x="588" y="84" text-anchor="middle" fill="#059669" font-size="20" font-weight="900">留下 3</text>
+        <line x1="332" y1="154" x2="420" y2="154" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="352" cy="154" r="11" fill="#fff" stroke="#dc2626" stroke-width="5"/>
+        <circle cx="400" cy="154" r="11" fill="#059669"/>
+        <text x="352" y="192" text-anchor="middle" fill="#dc2626" font-size="20" font-weight="900">0</text>
+        <text x="400" y="192" text-anchor="middle" fill="#059669" font-size="20" font-weight="900">3</text>
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#94a3b8"/></marker></defs>
+      </svg>
+    </div>
+    <p>$x=0$ 不满足 $x\ge1$，也代不回原方程；$x=3$ 代回原方程，两边都等于 $2$。</p>
+    <div class="note green">最后真正要记住：分式方程、根式方程的答案不是算出来就结束，而是要经过原式条件筛选。</div>
+  </div></section>
+</main>
+<div class="pager"><a href="01_方程变形.html">上一节：方程变形</a><a href="03_不等式变形.html">下一节：不等式变形</a></div>
+<footer class="footer">DGOpenKS · 分式根式方程</footer>
+</body>
+</html>

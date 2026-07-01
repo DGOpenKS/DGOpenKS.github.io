@@ -58,7 +58,31 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .static-figure h3{color:var(--blue);font-size:1.2rem}
 .static-lead{max-width:880px;color:#334155}
 .cancel-map{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:10px;overflow:hidden;break-inside:avoid}
-.cube-sum-svg{display:block;width:100%;height:auto;background:#fff}
+.cube-sum-handout-identity{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.cube-sum-handout-identity span{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;font-weight:900;color:#334155}
+.cube-sum-handout-identity strong{font-family:Georgia,"Times New Roman",serif;color:var(--blue-deep)}
+.cube-sum-handout-grid{display:grid;grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr);gap:8px;align-items:stretch}
+.cube-sum-handout-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f8fbff);padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cube-sum-handout-head{display:flex;align-items:center;gap:10px}
+.cube-sum-handout-index{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-size:1.35rem;font-weight:900;flex:0 0 auto}
+.cube-sum-handout-heading{margin:0;font-size:1.05rem;line-height:1.35;color:#0f172a}
+.cube-sum-handout-visual{min-height:240px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;display:grid;place-items:center;padding:8px;overflow:hidden}
+.cube-sum-flow-svg{display:block;width:100%;height:auto;max-height:240px}
+.cube-sum-handout-caption{margin:0;color:#334155;font-size:.92rem;line-height:1.65}
+.cube-sum-handout-note{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:8px;color:#334155;font-size:.9rem;font-weight:850;line-height:1.55}
+.cube-sum-handout-arrow-line{position:relative;align-self:center;height:4px;background:#94a3b8;border-radius:999px}
+.cube-sum-handout-arrow-line::after{content:"";position:absolute;right:-2px;top:50%;transform:translateY(-50%);border-left:10px solid #94a3b8;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.cube-sum-handout-counts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cube-sum-handout-counts span{border:1px solid var(--line);border-radius:8px;background:#fff;padding:7px 8px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-weight:900;line-height:1.35}
+.cube-sum-handout-green{color:#047857}.cube-sum-handout-blue{color:#1f4fbf}.cube-sum-handout-red{color:#b91c1c}.cube-sum-handout-teal{color:#0e7490}
+.cube-sum-groups{display:grid;gap:10px}
+.cube-sum-group-row{display:grid;grid-template-columns:76px minmax(0,1fr) 44px;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:9px}
+.cube-sum-group-name{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900}
+.cube-sum-group-count{font-weight:900;color:#334155;text-align:right;white-space:nowrap}
+.cube-sum-group-svg svg{display:block;width:100%;height:auto}
+.cube-sum-handout-summary{margin-top:10px;border:1px solid var(--blue-line);border-radius:var(--radius);background:var(--blue-soft);padding:12px;text-align:center;font-weight:900;color:#0f172a}
+.cube-sum-handout-summary strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;line-height:1.55}
+.cube-sum-handout-summary p{margin:6px 0 0;color:#1f4fbf;font-size:.92rem;line-height:1.5}
 .term-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .term{min-height:76px;border:1px solid var(--line);border-radius:var(--radius);display:grid;place-items:center;text-align:center;padding:8px;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900;box-shadow:0 8px 18px rgba(15,23,42,.04)}
 .term.positive{background:var(--blue-soft);border-color:var(--blue-line);color:var(--blue-deep)}
@@ -71,8 +95,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
 @media(max-width:820px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
 @media(max-width:1180px){.title-rest{display:block}}
-@media(max-width:900px){body{max-width:100%;overflow-x:hidden}.hero,main{width:100%;max-width:100%;padding-left:14px;padding-right:14px;overflow:hidden}.hero{padding-top:36px}h1{max-width:calc(100vw - 28px);font-size:1.72rem;line-height:1.28;word-break:break-all}.lead{max-width:calc(100vw - 28px);font-size:.95rem}.section-body,.prose{max-width:100%;min-width:0}.derivation,.math{white-space:normal}.formula-card{padding:14px}.recognition,.pair-row{grid-template-columns:1fr}.term-row{grid-template-columns:repeat(2,minmax(0,1fr))}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.cancel-map{max-width:100%;overflow:hidden}.cube-sum-svg{width:100%;max-width:none}}
-@media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card{box-shadow:none}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}.cube-sum-svg{width:100%;max-width:none}}
+@media(max-width:900px){body{max-width:100%;overflow-x:hidden}.hero,main{width:100%;max-width:100%;padding-left:14px;padding-right:14px;overflow:hidden}.hero{padding-top:36px}h1{max-width:calc(100vw - 28px);font-size:1.72rem;line-height:1.28;word-break:break-all}.lead{max-width:calc(100vw - 28px);font-size:.95rem}.section-body,.prose{max-width:100%;min-width:0}.derivation,.math{white-space:normal}.formula-card{padding:14px}.recognition,.pair-row{grid-template-columns:1fr}.term-row{grid-template-columns:repeat(2,minmax(0,1fr))}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.cancel-map{max-width:100%;overflow:hidden}.cube-sum-handout-grid{grid-template-columns:1fr}.cube-sum-handout-arrow-line{height:18px;width:4px;justify-self:center}.cube-sum-handout-arrow-line::after{right:auto;left:50%;top:auto;bottom:-3px;transform:translateX(-50%);border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #94a3b8;border-bottom:0}.cube-sum-handout-visual{min-height:230px}.cube-sum-handout-counts{grid-template-columns:1fr}.cube-sum-group-row{grid-template-columns:70px minmax(0,1fr) 38px}}
+@media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card{box-shadow:none}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -145,10 +169,10 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       <div class="model-lab" id="cubeSumModel" data-label="立方和公式切割重排模型"></div>
 
       <div class="static-figure" id="print-cancel">
-        <h3>体积重排：看见共同高度</h3>
-        <p class="static-lead">先看 <span class="math">b&gt;a</span> 的情形：把小立方 <span class="math">a<sup>3</sup></span> 叠在大立方 <span class="math">b<sup>3</sup></span> 的上方角落；从 <span class="math">b<sup>3</sup></span> 的边上切下一块体积为 <span class="math">ab(b-a)</span> 的长方体，再把它搬到剩余部分上方。重排后，新立体可以按共同高度 <span class="math">a+b</span> 来计算体积。</p>
+        <h3>立方和体积重排图</h3>
+        <p class="static-lead">这张图解释的是立方和：<span class="math">a<sup>3</sup>+b<sup>3</sup></span>，不是和的立方：<span class="math">(a+b)<sup>3</sup></span>。它从两个完整立方出发：先切下一块 <span class="math">ab(b-a)</span>，再搬到剩余体上方，最后按共同高度 <span class="math">a+b</span> 和 L 形底面积写成公式。</p>
         <div class="cancel-map" aria-label="立方和公式体积重排图">
-          <svg class="cube-sum-svg" id="cubeSumHandout" viewBox="0 0 1100 680" role="img" aria-label="立方和体积重排图：a³ 叠在 b³ 上方，切下 ab(b-a) 并重排出共同高度 a+b"></svg>
+          <div class="cube-sum-handout-root" id="cubeSumHandout" role="img" aria-label="立方和体积重排图：从 a³+b³ 出发，切下 ab(b-a) 并重排成共同高度 a+b 的 L 形底面柱体"></div>
         </div>
       </div>
     </div>
@@ -181,7 +205,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   (() => {
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.getElementById('cubeSumHandout');
-    if (!svg) return;
+    if (!svg || svg.tagName.toLowerCase() !== 'svg') return;
 
     const node = (name, attrs = {}) => {
       const el = document.createElementNS(svgNS, name);
@@ -210,19 +234,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       fill:attrs.fill || '#0f172a',
       anchor:attrs.anchor || 'start'
     });
-    const point = p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-    const poly = (parent, points, fill, stroke = '#1e293b', opacity = 1) => {
-      parent.appendChild(node('polygon', {
-        points:points.map(point).join(' '),
-        fill,
-        stroke,
-        'stroke-width':1.25,
-        'stroke-linejoin':'round',
-        opacity
-      }));
-    };
     const colors = {
-      a3:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1e3a8a', text:'#1f4fbf'},
+      a3:{top:'#a5f3fc', front:'#22d3ee', side:'#0891b2', stroke:'#0e7490', text:'#0e7490'},
       b3:{top:'#a5f3fc', front:'#22d3ee', side:'#0891b2', stroke:'#0e7490', text:'#0891b2'},
       mx:{top:'#fed7aa', front:'#fb923c', side:'#ea580c', stroke:'#9a3412', text:'#c2410c'},
       my:{top:'#ddd6fe', front:'#a78bfa', side:'#7c3aed', stroke:'#5b21b6', text:'#6d28d9'},
@@ -247,42 +260,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
         'marker-end':'url(#sumArrow)'
       }));
     };
-    const project = (origin, x, y, z) => ({
-      x:origin.x + (x - y) * .72 * origin.scale,
-      y:origin.y + (x + y) * .36 * origin.scale - z * .82 * origin.scale
-    });
-    const drawIsoCuboid = (parent, origin, range, colorKey, opts = {}) => {
-      const [x0, x1, y0, y1, z0, z1] = range;
-      const off = opts.offset || [0,0,0];
-      const p = (x, y, z) => project(origin, x + off[0], y + off[1], z + off[2]);
-      const faceOpacity = opts.opacity ?? 1;
-      poly(parent, [p(x1,y0,z0), p(x1,y1,z0), p(x1,y1,z1), p(x1,y0,z1)], shade(colorKey, 'side'), colors[colorKey].stroke, faceOpacity);
-      poly(parent, [p(x0,y0,z0), p(x1,y0,z0), p(x1,y0,z1), p(x0,y0,z1)], shade(colorKey, 'front'), colors[colorKey].stroke, faceOpacity);
-      poly(parent, [p(x0,y0,z1), p(x1,y0,z1), p(x1,y1,z1), p(x0,y1,z1)], shade(colorKey, 'top'), colors[colorKey].stroke, faceOpacity);
-      if (opts.label) {
-        const c = p((x0 + x1) / 2, y0, (z0 + z1) / 2);
-        appendFormula(parent, opts.label, c.x, c.y, {size:opts.labelSize || 16, fill:colors[colorKey].text, anchor:'middle'});
-      }
-    };
     const drawLegend = (x, y, colorKey, text) => {
       svg.appendChild(node('rect', {x, y:y - 8, width:16, height:16, rx:3, fill:shade(colorKey, 'front'), stroke:colors[colorKey].stroke, 'stroke-width':1}));
       appendText(svg, text, x + 24, y, {size:13, weight:850, fill:'#334155'});
-    };
-    const drawBarCuboid = (parent, x, y, w, h, d, colorKey, label, opts = {}) => {
-      const ox = d * .52;
-      const oy = d * .32;
-      const c = colors[colorKey];
-      const ft = {x, y:y + oy};
-      const rt = {x:x + w, y:y + oy};
-      const rb = {x:x + w, y:y + oy + h};
-      const fb = {x, y:y + oy + h};
-      const bt = {x:x + ox, y};
-      const br = {x:x + w + ox, y};
-      const bs = {x:x + w + ox, y:y + h};
-      poly(parent, [rt, br, bs, rb], c.side, c.stroke, opts.opacity ?? 1);
-      poly(parent, [ft, rt, rb, fb], c.front, c.stroke, opts.opacity ?? 1);
-      poly(parent, [ft, bt, br, rt], c.top, c.stroke, opts.opacity ?? 1);
-      if (label) appendFormula(parent, label, x + w / 2 + ox * .25, y + oy + h / 2, {size:opts.size || 15, fill:opts.fill || c.text, anchor:'middle'});
     };
     const defs = node('defs');
     const arrow = node('marker', {id:'sumArrow', viewBox:'0 0 10 10', refX:8, refY:5, markerWidth:7, markerHeight:7, orient:'auto-start-reverse'});
@@ -300,9 +280,6 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       lines.forEach((line, index) => appendFormula(svg, line, x + w / 2, y + 18 + index * 22, {size:index ? 15 : 15.5, anchor:'middle', fill:index ? '#1f4fbf' : '#0f172a'}));
     };
 
-    const textBlock = (x, y, lines, color = '#334155') => {
-      lines.forEach((line, index) => appendText(svg, line, x, y + index * 23, {size:14, weight:760, fill:color}));
-    };
     const innerFrame = (x, y, w, h) => {
       svg.appendChild(node('rect', {x, y, width:w, height:h, rx:10, fill:'#fff', stroke:'#dbe5f2', 'stroke-width':1.2}));
     };
@@ -310,59 +287,111 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       svg.appendChild(node('rect', {x, y, width:72, height:30, rx:7, fill:'#fff', stroke:colors[colorKey].stroke, 'stroke-width':1.1}));
       appendFormula(svg, text, x + 36, y + 16, {size:14, fill:colors[colorKey].text, anchor:'middle'});
     };
-    const guideLine = (x1, y1, x2, y2, label, color = '#475569') => {
+    const drawSlantedPiece = (x, y, w, h, d, colorKey, label, opts = {}) => {
+      const c = colors[colorKey];
+      const dx = opts.dx ?? d * .72;
+      const dy = opts.dy ?? -d * .42;
+      const opacity = opts.opacity ?? 1;
+      const top = `${x},${y} ${x + dx},${y + dy} ${x + w + dx},${y + dy} ${x + w},${y}`;
+      const side = `${x + w},${y} ${x + w + dx},${y + dy} ${x + w + dx},${y + h + dy} ${x + w},${y + h}`;
+      const front = `${x},${y} ${x + w},${y} ${x + w},${y + h} ${x},${y + h}`;
+      if (opts.shadow) {
+        svg.appendChild(node('ellipse', {
+          cx:x + w / 2 + dx * .45,
+          cy:y + h + 14,
+          rx:Math.max(24, w * .42),
+          ry:8,
+          fill:'#0f172a',
+          opacity:.08
+        }));
+      }
+      svg.appendChild(node('polygon', {points:side, fill:shade(colorKey, 'side'), stroke:c.stroke, 'stroke-width':opts.strokeWidth || 1.35, 'stroke-linejoin':'round', opacity}));
+      svg.appendChild(node('polygon', {points:top, fill:shade(colorKey, 'top'), stroke:c.stroke, 'stroke-width':opts.strokeWidth || 1.35, 'stroke-linejoin':'round', opacity}));
+      svg.appendChild(node('polygon', {points:front, fill:shade(colorKey, 'front'), stroke:c.stroke, 'stroke-width':opts.strokeWidth || 1.35, 'stroke-linejoin':'round', opacity}));
+      if (label) {
+        appendFormula(svg, label, x + w / 2 + dx * .12, y + h / 2 + 1, {
+          size:opts.labelSize || 17,
+          fill:opts.labelFill || '#0f172a',
+          anchor:'middle'
+        });
+      }
+    };
+    const drawBracket = (x1, y1, x2, y2, label, opts = {}) => {
+      const color = opts.color || '#475569';
+      const isVertical = Math.abs(x1 - x2) < Math.abs(y1 - y2);
+      const d = isVertical
+        ? `M${x1} ${y1} V${y2} M${x1 - 9} ${y1} H${x1 + 9} M${x2 - 9} ${y2} H${x2 + 9}`
+        : `M${x1} ${y1} H${x2} M${x1} ${y1 - 9} V${y1 + 9} M${x2} ${y2 - 9} V${y2 + 9}`;
       svg.appendChild(node('path', {
-        d:`M${x1} ${y1} L${x2} ${y2}`,
+        d,
         fill:'none',
         stroke:color,
         'stroke-width':1.8,
         'stroke-linecap':'round'
       }));
-      appendFormula(svg, label, (x1 + x2) / 2, (y1 + y2) / 2 - 14, {size:14, fill:color, anchor:'middle'});
+      appendFormula(svg, label, (x1 + x2) / 2 + (opts.dx || 0), (y1 + y2) / 2 + (opts.dy || 0), {
+        size:opts.size || 14,
+        fill:color,
+        anchor:'middle'
+      });
     };
-    const drawSolidBlock = (x, y, w, h, d, colorKey, label, opts = {}) => {
-      const c = colors[colorKey];
-      const dx = opts.dx ?? d * .62;
-      const dy = opts.dy ?? -d * .38;
-      const opacity = opts.opacity ?? 1;
-      const top = [
-        {x, y},
-        {x:x + dx, y:y + dy},
-        {x:x + w + dx, y:y + dy},
-        {x:x + w, y}
-      ];
-      const side = [
-        {x:x + w, y},
-        {x:x + w + dx, y:y + dy},
-        {x:x + w + dx, y:y + h + dy},
-        {x:x + w, y:y + h}
-      ];
-      const front = [
-        {x, y},
-        {x:x + w, y},
-        {x:x + w, y:y + h},
-        {x, y:y + h}
-      ];
-      if (opts.shadow !== false) {
-        svg.appendChild(node('ellipse', {
-          cx:x + w / 2 + dx * .55,
-          cy:y + h + 18,
-          rx:Math.max(22, w * .46),
-          ry:9,
-          fill:'#0f172a',
-          opacity:.08
+    const drawLPrism = (x, y) => {
+      const armW = 72;
+      const armD = 118;
+      const square = 62;
+      const notchD = 56;
+      const totalW = armW + square;
+      const totalH = 136;
+      const capH = 36;
+      const projectPoint = (u, v) => ({x:x + u + v * .34, y:y - v * .22});
+      const down = (p, amount = totalH) => ({x:p.x, y:p.y + amount});
+      const pointList = points => points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+      const polygon = (points, fill, stroke, opacity = 1) => {
+        svg.appendChild(node('polygon', {
+          points:pointList(points),
+          fill,
+          stroke,
+          opacity,
+          'stroke-width':1.4,
+          'stroke-linejoin':'round'
         }));
-      }
-      poly(svg, side, c.side, c.stroke, opacity);
-      poly(svg, top, c.top, c.stroke, opacity);
-      poly(svg, front, c.front, c.stroke, opacity);
-      if (label) {
-        appendFormula(svg, label, x + w / 2, y + h / 2 + 2, {
-          size:opts.labelSize || 16,
-          fill:opts.labelFill || '#0f172a',
-          anchor:'middle'
-        });
-      }
+      };
+      const p00 = projectPoint(0, 0);
+      const p10 = projectPoint(armW, 0);
+      const p11 = projectPoint(armW, notchD);
+      const p21 = projectPoint(totalW, notchD);
+      const p22 = projectPoint(totalW, armD);
+      const p12 = projectPoint(armW, armD);
+      const p02 = projectPoint(0, armD);
+      const missingA = projectPoint(armW, 0);
+      const missingB = projectPoint(totalW, 0);
+      const missingC = projectPoint(totalW, notchD);
+      const missingD = projectPoint(armW, notchD);
+
+      svg.appendChild(node('ellipse', {cx:x + 86, cy:y + totalH + 14, rx:72, ry:9, fill:'#0f172a', opacity:.08}));
+      polygon([p10, p21, down(p21, totalH), down(p10, totalH)], shade('a3', 'front'), colors.a3.stroke, .96);
+      polygon([p21, p22, down(p22, totalH), down(p21, totalH)], shade('a3', 'side'), colors.a3.stroke, .96);
+      polygon([p00, p10, down(p10, capH), down(p00, capH)], shade('mz', 'front'), colors.mz.stroke, .92);
+      polygon([down(p00, capH), down(p10, capH), down(p10, totalH), down(p00, totalH)], shade('main', 'front'), colors.main.stroke, .96);
+      polygon([p00, p10, p12, p02], shade('mz', 'top'), colors.mz.stroke, .92);
+      polygon([p11, p21, p22, p12], shade('a3', 'top'), colors.a3.stroke, .96);
+      svg.appendChild(node('path', {
+        d:`M${pointList([missingA, missingB, missingC, missingD, missingA]).replaceAll(' ', ' L')}`,
+        fill:'none',
+        stroke:'#64748b',
+        'stroke-width':1.3,
+        'stroke-dasharray':'5 5',
+        'stroke-linejoin':'round'
+      }));
+      svg.appendChild(node('path', {
+        d:`M${pointList([p00, p10, p11, p21, p22, p02, p00]).replaceAll(' ', ' L')}`,
+        fill:'none',
+        stroke:'#0f172a',
+        'stroke-width':1.2,
+        'stroke-linejoin':'round',
+        opacity:.28
+      }));
+      appendText(svg, 'L 形底面', x + 86, y + totalH + 18, {size:13, weight:850, fill:'#64748b', anchor:'middle'});
     };
 
     svg.appendChild(node('rect', {x:18, y:18, width:1064, height:640, rx:16, fill:'#fff', stroke:'#cbd5e1', 'stroke-width':1.4}));
@@ -376,21 +405,24 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     innerFrame(770, 112, 270, 300);
 
     appendFormula(svg, 'b>a', 194, 150, {size:14, fill:'#64748b', anchor:'middle'});
-    drawSolidBlock(110, 244, 118, 118, 48, 'main', 'b³', {labelSize:20, opacity:.96});
-    drawSolidBlock(198, 182, 58, 58, 25, 'a3', 'a³', {labelSize:16, opacity:.96});
-    drawSolidBlock(224, 256, 44, 92, 24, 'mz', 'ab(b-a)', {labelSize:11, opacity:.9});
-    guideLine(86, 362, 206, 362, 'b', '#475569');
-    guideLine(86, 362, 86, 244, 'b', '#475569');
+    drawSlantedPiece(108, 262, 124, 124, 40, 'main', 'b³', {labelSize:19, shadow:true});
+    drawSlantedPiece(192, 262, 40, 124, 40, 'mz', '', {opacity:.9});
+    drawSlantedPiece(172, 188, 66, 66, 24, 'a3', 'a³', {labelSize:17, shadow:true});
+    svg.appendChild(node('path', {d:'M192 262 V386 M192 262 L221 245 M232 262 L261 245', fill:'none', stroke:'#991b1b', 'stroke-width':1.9, 'stroke-dasharray':'6 5'}));
+    appendFormula(svg, 'ab(b-a)', 262, 326, {size:12, fill:'#b91c1c', anchor:'middle'});
+    appendText(svg, '切块仍贴在 b³ 边上', 194, 418, {size:13, weight:850, fill:'#b91c1c', anchor:'middle'});
+    drawBracket(88, 262, 88, 386, 'b', {dx:-12, color:'#475569'});
+    drawBracket(108, 408, 232, 408, 'b', {dy:18, color:'#475569'});
     drawLegend(86, 440, 'main', '大立方 b³');
     drawLegend(210, 440, 'a3', '小立方 a³');
     drawLegend(86, 472, 'mz', '切块 ab(b-a)');
     formulaBox(84, 530, 220, 52, ['a³+b³ = 剩余体积 + 切块']);
 
-    drawSolidBlock(486, 252, 56, 124, 26, 'main', '', {opacity:.95});
-    drawSolidBlock(544, 252, 58, 92, 26, 'a3', 'a³', {labelSize:14, opacity:.96});
-    drawSolidBlock(505, 170, 124, 44, 27, 'mz', 'ab(b-a)', {labelSize:12, opacity:.9});
+    drawSlantedPiece(462, 276, 76, 124, 26, 'main', '', {opacity:.96, shadow:true});
+    drawSlantedPiece(538, 236, 68, 164, 26, 'a3', 'a³', {labelSize:15, opacity:.98, shadow:true});
+    drawSlantedPiece(466, 182, 150, 38, 24, 'mz', 'ab(b-a)', {labelSize:13, opacity:.92, shadow:true});
     svg.appendChild(node('path', {
-      d:'M626 170 C672 154 682 198 646 224',
+      d:'M626 198 C682 178 690 228 640 256',
       fill:'none',
       stroke:'#ef4444',
       'stroke-width':2.2,
@@ -403,14 +435,262 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     smallPill(632, 474, '剩余体', 'main');
     formulaBox(440, 530, 220, 58, ['切块体积 = ab(b-a)', '搬移不改变体积'], '#fff7ed');
 
-    drawSolidBlock(860, 264, 56, 114, 26, 'main', '', {opacity:.96});
-    drawSolidBlock(916, 264, 58, 114, 26, 'a3', '', {opacity:.96});
-    drawSolidBlock(860, 218, 114, 46, 26, 'mz', '', {opacity:.9});
-    drawHeightGuide(1014, 194, 378, '高 a+b');
-    appendFormula(svg, '底面积', 918, 430, {size:14, fill:'#64748b', anchor:'middle'});
-    appendFormula(svg, 'b(b-a)+a²', 918, 456, {size:17, fill:'#0f172a', anchor:'middle'});
-    appendFormula(svg, '= a²-ab+b²', 918, 482, {size:17, fill:'#1f4fbf', anchor:'middle'});
+    drawLPrism(830, 250);
+    drawHeightGuide(1012, 214, 386, '高 a+b');
+    appendFormula(svg, '底面积', 918, 438, {size:14, fill:'#64748b', anchor:'middle'});
+    appendFormula(svg, 'b(b-a)+a²', 918, 464, {size:17, fill:'#0f172a', anchor:'middle'});
+    appendFormula(svg, '= a²-ab+b²', 918, 490, {size:17, fill:'#1f4fbf', anchor:'middle'});
     formulaBox(792, 530, 228, 58, ['a³+b³ = (a+b)', '(a²-ab+b²)']);
+  })();
+
+  (() => {
+    const root = document.getElementById('cubeSumHandout');
+    if (!root || root.tagName.toLowerCase() !== 'div') return;
+
+    const A = 2;
+    const B = 5;
+    const D = B - A;
+    const palette = {
+      blue:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1d4ed8', text:'#1f4fbf'},
+      green:{top:'#bbf7d0', front:'#34d399', side:'#059669', stroke:'#047857', text:'#047857'},
+      red:{top:'#fecaca', front:'#f87171', side:'#ef4444', stroke:'#991b1b', text:'#b91c1c'},
+      gray:{top:'#e2e8f0', front:'#cbd5e1', side:'#94a3b8', stroke:'#64748b', text:'#475569'}
+    };
+
+    function iso(x, y, z, frame) {
+      return {
+        x:frame.originX + (x - y) * frame.scaleX,
+        y:frame.originY + (x + y) * frame.scaleY - z * frame.scaleZ
+      };
+    }
+
+    const pointText = point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+    const polygon = (points, fill, stroke, opacity = 1) => `
+      <polygon points="${points.map(pointText).join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="1.35" stroke-linejoin="round" opacity="${opacity}"></polygon>
+    `;
+    const label = (text, point, color = '#0f172a', size = 15, anchor = 'middle') => `
+      <text x="${point.x.toFixed(1)}" y="${point.y.toFixed(1)}" text-anchor="${anchor}" fill="${color}" font-size="${size}" font-family="Georgia, 'Times New Roman', serif" font-weight="900">${text}</text>
+    `;
+
+    function drawBox({frame, x0, x1, y0, y1, z0, z1, color, text = '', opacity = 1, textPoint = null, textSize = 16}) {
+      const p = (x, y, z) => iso(x, y, z, frame);
+      const style = palette[color];
+      const front = [p(x0,y0,z0), p(x1,y0,z0), p(x1,y0,z1), p(x0,y0,z1)];
+      const side = [p(x1,y0,z0), p(x1,y1,z0), p(x1,y1,z1), p(x1,y0,z1)];
+      const top = [p(x0,y0,z1), p(x1,y0,z1), p(x1,y1,z1), p(x0,y1,z1)];
+      const labelPoint = textPoint || p((x0 + x1) / 2, y0, (z0 + z1) / 2);
+      return `
+        <g>
+          ${polygon(side, style.side, style.stroke, opacity)}
+          ${polygon(front, style.front, style.stroke, opacity)}
+          ${polygon(top, style.top, style.stroke, opacity)}
+          ${text ? label(text, labelPoint, '#0f172a', textSize) : ''}
+        </g>
+      `;
+    }
+
+    function solidBox({x, y, sx, sy, sz, color, text = '', opacity = 1, textSize = 16, textColor = '#0f172a'}) {
+      const style = palette[color];
+      const ox = sy * .48;
+      const oy = sy * .28;
+      const p = {
+        ft:{x, y:y + oy},
+        rt:{x:x + sx, y:y + oy},
+        rb:{x:x + sx, y:y + oy + sz},
+        fb:{x, y:y + oy + sz},
+        bt:{x:x + ox, y},
+        br:{x:x + sx + ox, y},
+        bs:{x:x + sx + ox, y:y + sz},
+        bl:{x:x + ox, y:y + sz}
+      };
+      return `
+        <g opacity="${opacity}">
+          <polygon points="${[p.rt,p.br,p.bs,p.rb].map(pointText).join(' ')}" fill="${style.side}" stroke="${style.stroke}" stroke-width="1.35" stroke-linejoin="round"></polygon>
+          <polygon points="${[p.ft,p.rt,p.rb,p.fb].map(pointText).join(' ')}" fill="${style.front}" stroke="${style.stroke}" stroke-width="1.35" stroke-linejoin="round"></polygon>
+          <polygon points="${[p.ft,p.bt,p.br,p.rt].map(pointText).join(' ')}" fill="${style.top}" stroke="${style.stroke}" stroke-width="1.35" stroke-linejoin="round"></polygon>
+          ${text ? `<text x="${(x + sx / 2).toFixed(1)}" y="${(y + oy + sz / 2 + 4).toFixed(1)}" text-anchor="middle" fill="${textColor}" font-size="${textSize}" font-family="Georgia, 'Times New Roman', serif" font-weight="900">${text}</text>` : ''}
+        </g>
+      `;
+    }
+
+    function solidWorldBox({originX, originY, x0, x1, y0, y1, z0 = 0, z1, color, text = '', opacity = 1, textSize = 16}) {
+      const sx = (x1 - x0) * U;
+      const sy = (y1 - y0) * U;
+      const sz = (z1 - z0) * U;
+      const x = originX + x0 * U + y0 * U * .48;
+      const y = originY - z1 * U - y1 * U * .28;
+      return solidBox({x, y, sx, sy, sz, color, text, opacity, textSize});
+    }
+
+    const heightMark = (x, yTop, yBottom, text = '高 a+b') => `
+      <path d="M${x} ${yTop} V${yBottom} M${x - 9} ${yTop} H${x + 9} M${x - 9} ${yBottom} H${x + 9}" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round"></path>
+      <text x="${x - 12}" y="${(yTop + yBottom) / 2}" text-anchor="end" dominant-baseline="middle" fill="#475569" font-size="13" font-family="Georgia, 'Times New Roman', serif" font-weight="900">${text}</text>
+    `;
+
+    const frame = (originX = 130, originY = 166) => ({originX, originY, scaleX:16, scaleY:8, scaleZ:16});
+    const shadow = (cx = 130, cy = 222, rx = 70) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="8" fill="#0f172a" opacity=".08"></ellipse>`;
+    const U = 18;
+
+    const stepOneSvg = () => {
+      const a = A * U;
+      const b = B * U;
+      return `
+        <svg class="cube-sum-flow-svg" viewBox="40 0 220 240" role="img" aria-label="两个完整立方体 a³ 和 b³">
+          ${shadow(150, 224, 82)}
+          ${solidBox({x:78, y:72, sx:b, sy:b, sz:b, color:'green', text:'b³', opacity:.96, textSize:21})}
+          ${solidBox({x:142, y:42, sx:a, sy:a, sz:a, color:'blue', text:'a³', opacity:.98, textSize:16})}
+          ${label('b>a>0', {x:150, y:26}, '#64748b', 13)}
+          ${label('总体积：a³+b³', {x:150, y:213}, '#1f4fbf', 14)}
+        </svg>
+      `;
+    };
+
+    const stepTwoSvg = () => {
+      const ox = 78;
+      const oy = 206;
+      return `
+        <svg class="cube-sum-flow-svg" viewBox="40 0 220 240" role="img" aria-label="从 b³ 中切下一块 ab(b-a)">
+          ${shadow(150, 218, 76)}
+          ${solidWorldBox({originX:ox, originY:oy, x0:0, x1:B, y0:0, y1:B, z0:0, z1:B, color:'green', opacity:.12})}
+          ${solidWorldBox({originX:ox, originY:oy, x0:A, x1:B, y0:A, y1:B, z0:0, z1:B, color:'green', opacity:.46})}
+          ${solidWorldBox({originX:ox, originY:oy, x0:0, x1:A, y0:0, y1:B, z0:0, z1:B, color:'green', opacity:.66})}
+          ${solidWorldBox({originX:ox, originY:oy, x0:A, x1:B, y0:0, y1:A, z0:0, z1:B, color:'red', opacity:.96})}
+          ${solidWorldBox({originX:ox, originY:oy, x0:0, x1:A, y0:0, y1:A, z0:B, z1:B + A, color:'blue', text:'a³', opacity:.98, textSize:14})}
+          <path d="M116 106 L170 106 L187 96" fill="none" stroke="#991b1b" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round" stroke-linejoin="round"></path>
+          ${label('ab(b-a)', {x:141, y:154}, '#0f172a', 12)}
+          ${label('切块：a × (b-a) × b', {x:150, y:28}, '#b91c1c', 13)}
+          ${label('这是从 b³ 中切下的长方体', {x:150, y:213}, '#475569', 13)}
+        </svg>
+      `;
+    };
+
+    const stepThreeSvg = () => {
+      const a = A * U;
+      const b = B * U;
+      const d = D * U;
+      return `
+        <svg class="cube-sum-flow-svg" viewBox="40 0 220 240" role="img" aria-label="切块旋转并搬移">
+          ${shadow(150, 224, 82)}
+          ${solidBox({x:86, y:94, sx:a, sy:a, sz:b, color:'green', opacity:.95})}
+          ${solidBox({x:122, y:94, sx:d, sy:b, sz:b, color:'green', opacity:.88})}
+          ${solidBox({x:86, y:54, sx:a, sy:a, sz:a, color:'blue', text:'a³', opacity:.98, textSize:15})}
+          ${solidBox({x:122, y:52, sx:d, sy:b, sz:a, color:'red', text:'ab(b-a)', opacity:.94, textSize:12})}
+          <path d="M218 54 C254 68 252 118 218 136" fill="none" stroke="#ef4444" stroke-width="2.2" stroke-dasharray="6 5"></path>
+          <polygon points="213,128 226,136 212,143" fill="#94a3b8"></polygon>
+          ${label('旋转后看成 (b-a)×b×a', {x:150, y:28}, '#b91c1c', 13)}
+          ${label('旋转搬移，不改变体积', {x:150, y:213}, '#1f4fbf', 13)}
+        </svg>
+      `;
+    };
+
+    const stepFourSvg = () => {
+      const a = A * U;
+      const b = B * U;
+      const d = D * U;
+      return `
+        <svg class="cube-sum-flow-svg" viewBox="40 0 220 240" role="img" aria-label="共同高度 a+b 的 L 形底面柱体">
+          ${shadow(150, 224, 86)}
+          ${solidBox({x:80, y:96, sx:a, sy:a, sz:b, color:'green', opacity:.95})}
+          ${solidBox({x:116, y:96, sx:d, sy:b, sz:b, color:'green', opacity:.9})}
+          ${solidBox({x:80, y:58, sx:a, sy:a, sz:a, color:'blue', opacity:.96})}
+          ${solidBox({x:116, y:58, sx:d, sy:b, sz:a, color:'red', opacity:.94})}
+          <path d="M97 58 L134 58 L177 58 L177 148 L116 148 L116 104 L97 104 Z" fill="none" stroke="#0f172a" stroke-width="1.4" stroke-linejoin="round" opacity=".35"></path>
+          ${heightMark(258, 58, 186)}
+          ${label('a²', {x:98, y:72}, '#1f4fbf', 13)}
+          ${label('b(b-a)', {x:161, y:78}, '#047857', 13)}
+          ${label('L 形底面', {x:150, y:213}, '#475569', 13)}
+        </svg>
+      `;
+    };
+
+    const basePartSvg = (kind) => kind === 'a2'
+      ? `<svg viewBox="0 0 120 46" role="img" aria-label="底面积 a²"><rect x="34" y="8" width="42" height="30" rx="3" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1.6"></rect><text x="55" y="28" text-anchor="middle" fill="#1f4fbf" font-size="13">a²</text></svg>`
+      : `<svg viewBox="0 0 120 46" role="img" aria-label="底面积 b(b-a)"><rect x="20" y="8" width="78" height="30" rx="3" fill="#bbf7d0" stroke="#047857" stroke-width="1.6"></rect><text x="59" y="28" text-anchor="middle" fill="#047857" font-size="13">b(b-a)</text></svg>`;
+
+    const heightMiniSvg = () => `
+      <svg viewBox="0 0 120 46" role="img" aria-label="共同高度 a+b">
+        <path d="M60 8 V38 M49 8 H71 M49 38 H71" fill="none" stroke="#64748b" stroke-width="2.2"></path>
+        <text x="82" y="28" fill="#475569" font-size="13">a+b</text>
+      </svg>
+    `;
+
+    root.innerHTML = `
+      <div class="cube-sum-handout-identity">
+        <span>立方和：<strong>a³+b³</strong></span>
+        <span>不是和的立方：<strong>(a+b)³</strong></span>
+        <span>假设：<strong>b&gt;a&gt;0</strong></span>
+      </div>
+      <div class="cube-sum-handout-grid" role="img" aria-label="立方和体积重排图">
+        <article class="cube-sum-handout-card">
+          <div class="cube-sum-handout-head">
+            <span class="cube-sum-handout-index">1</span>
+            <h4 class="cube-sum-handout-heading">从两个立方体出发</h4>
+          </div>
+          <div class="cube-sum-handout-visual">${stepOneSvg()}</div>
+          <p class="cube-sum-handout-caption">画出棱长为 b 的大立方体和棱长为 a 的小立方体。它们表示两个完整立方体的体积和。</p>
+          <div class="cube-sum-handout-note">总体积：<strong>a³+b³</strong>。</div>
+        </article>
+
+        <div class="cube-sum-handout-arrow-line" aria-hidden="true"></div>
+
+        <article class="cube-sum-handout-card">
+          <div class="cube-sum-handout-head">
+            <span class="cube-sum-handout-index">2</span>
+            <h4 class="cube-sum-handout-heading">从 b³ 中切下一块</h4>
+          </div>
+          <div class="cube-sum-handout-visual">${stepTwoSvg()}</div>
+          <p class="cube-sum-handout-caption">从 b³ 中高亮一块长方体，尺寸是 a × (b-a) × b，所以体积是 <strong>ab(b-a)</strong>。</p>
+          <div class="cube-sum-handout-note">这块不是删除掉，而是后面要旋转搬移。</div>
+        </article>
+
+        <div class="cube-sum-handout-arrow-line" aria-hidden="true"></div>
+
+        <article class="cube-sum-handout-card">
+          <div class="cube-sum-handout-head">
+            <span class="cube-sum-handout-index">3</span>
+            <h4 class="cube-sum-handout-heading">旋转并搬移切块</h4>
+          </div>
+          <div class="cube-sum-handout-visual">${stepThreeSvg()}</div>
+          <p class="cube-sum-handout-caption">切块原来是 a × (b-a) × b，旋转后可看成 (b-a) × b × a，再搬到右侧长条底座上方。</p>
+          <div class="cube-sum-handout-counts">
+            <span class="cube-sum-handout-red">ab(b-a) 体积不变</span>
+            <span class="cube-sum-handout-green">剩余体保留</span>
+          </div>
+        </article>
+
+        <div class="cube-sum-handout-arrow-line" aria-hidden="true"></div>
+
+        <article class="cube-sum-handout-card">
+          <div class="cube-sum-handout-head">
+            <span class="cube-sum-handout-index">4</span>
+            <h4 class="cube-sum-handout-heading">得到共同高度 a+b</h4>
+          </div>
+          <div class="cube-sum-handout-visual">${stepFourSvg()}</div>
+          <p class="cube-sum-handout-caption">最终不是普通长方体，而是高为 a+b 的 L 形底面柱体。</p>
+          <div class="cube-sum-groups">
+            <div class="cube-sum-group-row">
+              <div class="cube-sum-group-name cube-sum-handout-blue">a²</div>
+              <div class="cube-sum-group-svg">${basePartSvg('a2')}</div>
+              <div class="cube-sum-group-count">底面</div>
+            </div>
+            <div class="cube-sum-group-row">
+              <div class="cube-sum-group-name cube-sum-handout-green">b(b-a)</div>
+              <div class="cube-sum-group-svg">${basePartSvg('strip')}</div>
+              <div class="cube-sum-group-count">底面</div>
+            </div>
+            <div class="cube-sum-group-row">
+              <div class="cube-sum-group-name cube-sum-handout-teal">a+b</div>
+              <div class="cube-sum-group-svg">${heightMiniSvg()}</div>
+              <div class="cube-sum-group-count">共同高</div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="cube-sum-handout-summary">
+        <strong>a<sup>3</sup>+b<sup>3</sup><br>= (a+b)[a<sup>2</sup>+b(b-a)]<br>= (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</strong>
+        <p>几何上先看到的是底面积 a²+b(b-a)，再把它化简成 a²-ab+b²。</p>
+      </div>
+    `;
   })();
 </script>
 </body>

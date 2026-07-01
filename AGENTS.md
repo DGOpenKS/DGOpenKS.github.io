@@ -531,6 +531,38 @@ problem -> observation -> explanation -> formula -> example -> practice -> trans
 
 This is a learning-path requirement, not a fixed visual layout template.
 
+### Textbook-Style HTML Writing Rule
+
+In this repository, "textbook-style HTML" means a source-faithful explanatory learning page with a continuous teaching spine. It does not mean a static textbook formula dump, a decorative visual showcase, or the compressed textbook pattern of definition -> formula -> example -> exercise.
+
+Use this rule as an execution summary of the HTML/blog standards below:
+
+- The first viewport must make the learning contract clear: what confusion, object, structure, or judgment this page helps the learner understand.
+- The main explanation must remain readable as a continuous path even if cards, tabs, panels, decorative styling, and interactions are removed.
+- Organize the page around the knowledge path: problem -> observation -> explanation -> derivation or definition -> worked judgment -> practice -> takeaway.
+- Formula pages must explain the derivation or calculation first, then use visuals or interaction to make a specific step, term, cancellation, grouping, boundary, or transformation easier to see.
+- Concept, definition, and rule pages must explain meaning, boundary, conditions, and operation steps before using visuals or interactions for intuition or practice.
+- Cards, callouts, controls, diagrams, and animations may support the article, but they must not replace the core prose explanation.
+- Visible page prose must be learner-facing, mathematically precise, and traceable to approved Markdown. If a clearer page requires a missing source explanation, report Markdown backflow instead of inventing the explanation in HTML.
+- Every visual or interaction needs adjacent prose that tells the learner what to observe before using it and what the observation means afterward.
+- Practice and feedback must train the current knowledge point, especially structure judgment, valid-use conditions, common mistakes, and explanation of why an answer works or fails.
+
+### Image And Rendering Accuracy Rule
+
+Images, diagrams, SVG, Canvas, WebGL, 3D models, animations, and formula renderings are valid only when they make the current knowledge point easier to understand.
+
+Use this rule as an execution summary of the Rendering Quality Standard below:
+
+- Every rendered visual must correspond to a specific explanation step, formula term, concept boundary, rule condition, example judgment, or practice feedback state.
+- Mathematical visuals must be generated from explicit mathematical objects or a documented model whenever they represent points, curves, intersections, lengths, areas, volumes, signs, transformations, or formula terms.
+- Visual state, formula state, and answer-checking state should share the same internal data model whenever practical.
+- Labels, coordinates, proportions, signs, colors, highlights, formula values, and feedback logic must agree. The page fails if any of these disagree.
+- A visual must not be decorative filler, misleadingly simplified, visually impressive but mathematically vague, or more complicated than the idea it is meant to clarify.
+- Text and labels must not cover important graph parts, formula terms, model faces, blocks, axes, controls, or feedback. Use clear spacing, captions, separate formula areas, or leader lines when needed.
+- Rendering must remain accurate and readable after responsive scaling. Mobile layouts must preserve the learning order, formula readability, diagram clarity, and usable controls.
+- If a complex rendering cannot be verified for accuracy or reliability, prefer a simpler static diagram, step diagram, table, or textual fallback that preserves the mathematical structure.
+- Heavy Canvas, WebGL, 3D, and animation must have loading, fallback, and error states. They must never be the only carrier of the core explanation.
+
 ### HTML Derivation Plan
 
 Before creating or redesigning a major HTML/blog page, produce a lightweight HTML Derivation Plan.

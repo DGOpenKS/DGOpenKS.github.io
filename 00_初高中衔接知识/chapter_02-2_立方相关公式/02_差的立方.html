@@ -54,78 +54,50 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .model-range{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;font-weight:900;color:#334155}
 .model-range input{width:100%;accent-color:var(--blue)}
 .model-formula{display:grid;gap:7px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;overflow:auto}
-.static-figure{margin:22px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;break-inside:avoid}
-.static-figure h3{color:var(--blue);font-size:1.2rem}
+.static-figure{margin:22px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;break-inside:avoid}
+.static-figure h3{color:var(--blue);font-size:1.18rem;margin-bottom:6px}
 .static-lead{max-width:880px;color:#334155}
-.diagram-scroll{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:10px;margin-top:14px;overflow:hidden}
-.difference-flow-svg{display:block;width:100%;height:auto;background:#fff}
-.print-flow{min-width:960px;display:grid;gap:12px;padding:4px}
-.flow-step{border:1px solid #cbd5e1;border-radius:8px;background:#fff;padding:14px;break-inside:avoid}
-.flow-step h4{margin:0 0 10px;font-size:1rem;line-height:1.35}
-.flow-step p{margin:0;color:#334155;font-size:.9rem;line-height:1.65}
-.flow-grid{display:grid;grid-template-columns:1fr;gap:12px}
-.flow-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.formula-pill,.choice-box,.contrast-item,.group-card,.final-box{border:1px solid var(--line);border-radius:8px;background:var(--soft)}
-.formula-pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:8px 14px;font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;font-weight:900;white-space:nowrap}
-.flow-arrow-svg{width:46px;height:22px;flex:0 0 auto}
-.contrast-list{display:grid;gap:8px;margin-top:10px}
-.contrast-item{padding:9px 10px;font-weight:900;color:#334155}
-.choice-lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
-.choice-box{padding:8px 6px;text-align:center;min-width:0}
-.choice-box strong{display:block;margin-bottom:8px;color:#475569;font-size:.84rem;white-space:nowrap}
-.choice-options{display:flex;justify-content:center;gap:8px}
-.choice-token{display:inline-flex;align-items:center;justify-content:center;min-width:40px;border:1px solid var(--blue-line);border-radius:999px;background:var(--blue-soft);padding:4px 7px;font-family:Georgia,"Times New Roman",serif;font-weight:900}
-.choice-token.neg{border-color:var(--red-line);background:var(--red-soft);color:#b91c1c}
-.choice-table-wrap{margin-top:10px;overflow:auto}
-.choice-table{width:100%;border-collapse:collapse;font-size:.86rem}
-.choice-table th,.choice-table td{border:1px solid #dbe5f2;padding:7px 8px;text-align:center;vertical-align:middle}
-.choice-table th{background:#f1f5f9;color:#334155;font-size:.78rem}
-.choice-table tbody tr.term-a3{background:#eff6ff}
-.choice-table tbody tr.term-a2b{background:#fff7ed}
-.choice-table tbody tr.term-ab2{background:#f5f3ff}
-.choice-table tbody tr.term-b3{background:#ecfeff}
-.choice-table .result-term{font-family:Georgia,"Times New Roman",serif;font-size:1.03rem;font-weight:900}
-.choice-table .sign-neg{color:#b91c1c}
-.choice-table .sign-pos{color:#166534}
-.group-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
-.group-card{padding:10px;min-height:122px;display:grid;gap:7px;align-content:start}
-.group-card h5{margin:0;font-size:.9rem}
-.group-card .pieces{font-family:Georgia,"Times New Roman",serif;font-weight:900;line-height:1.45;min-height:38px}
-.group-card .merged{border-top:1px dashed #cbd5e1;padding-top:6px;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900}
-.group-card.term-a3{border-left:4px solid var(--blue)}
-.group-card.term-a2b{border-left:4px solid var(--amber)}
-.group-card.term-ab2{border-left:4px solid var(--purple)}
-.group-card.term-b3{border-left:4px solid #0891b2}
-.sign-rule{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.sign-rule div{border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:10px;font-size:.88rem;color:#334155}
-.formula-conclusion{display:grid;gap:10px;justify-items:center;text-align:center}
-.big-formula{border:2px solid var(--blue-line);border-radius:8px;background:var(--blue-soft);padding:14px 18px;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:900;line-height:1.45}
-.final-box{padding:12px 14px;border-left:4px solid var(--blue);font-weight:900;color:#334155}
-.diagram-svg{display:block;width:100%;height:auto}
-.svg-title{font:900 20px var(--font);fill:#0f172a}
-.svg-small{font:850 13px var(--font);fill:#475569}
-.svg-formula{font:900 20px Georgia,"Times New Roman",serif;fill:#0f172a}
-.svg-label{font:900 15px var(--font);fill:#334155;text-anchor:middle;dominant-baseline:middle}
-.svg-caption{font:850 13px var(--font);fill:#475569;text-anchor:middle}
-.svg-note{font:850 15px var(--font);fill:#334155}
-.svg-equation-band{fill:#f8fafc;stroke:#dbe5f2;stroke-width:1.2}
-.svg-term-chip{fill:#fff;stroke:#cbd5e1;stroke-width:1.1}
-.svg-panel{fill:#fff;stroke:#cbd5e1;stroke-width:1.4}
-.svg-positive{fill:#eef4ff;stroke:#3b6fea}
-.svg-negative{fill:#fef2f2;stroke:#dc2626}
-.svg-return{fill:#ecfdf3;stroke:#16a34a}
-.iso-face{stroke-width:1.3;stroke-linejoin:round}
-.iso-red-front{fill:#fecaca;stroke:#dc2626}
-.iso-red-top{fill:#fee2e2;stroke:#dc2626}
-.iso-red-side{fill:#fca5a5;stroke:#dc2626}
-.iso-green-front{fill:#bbf7d0;stroke:#16a34a}
-.iso-green-top{fill:#dcfce7;stroke:#16a34a}
-.iso-green-side{fill:#86efac;stroke:#16a34a}
+.difference-handout{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:14px;overflow:hidden}
+.difference-handout-grid{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr);gap:10px;align-items:stretch}
+.difference-card{border:1px solid #dbe5f2;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f8fbff);padding:14px;display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;min-width:0}
+.difference-card-head{display:flex;align-items:center;gap:10px;min-width:0}
+.difference-index{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-size:1.15rem;font-weight:900;flex:0 0 auto}
+.difference-card h4{margin:0;color:#0f172a;font-size:1rem;line-height:1.28}
+.difference-card p{margin:0;color:#334155;font-size:.86rem;line-height:1.6}
+.difference-visual{min-height:210px;border:1px solid #d7e3f2;border-radius:var(--radius);background:#fff;display:grid;place-items:center;padding:8px;overflow:hidden}
+.difference-visual>.difference-equation,.difference-visual>.difference-term-strip{width:100%}
+.difference-cube-svg{display:block;width:100%;height:100%;min-height:190px}
+.difference-mini-svg{display:block;width:100%;height:44px}
+.difference-arrow-line{align-self:center;height:2px;background:#94a3b8;position:relative;border-radius:999px}
+.difference-arrow-line::after{content:"";position:absolute;right:-1px;top:50%;transform:translateY(-50%);border-left:11px solid #94a3b8;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.difference-note{border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:8px 10px;color:#334155;font-size:.82rem;font-weight:850;line-height:1.5}
+.difference-term-strip{display:grid;gap:8px;align-content:start}
+.difference-term{display:grid;grid-template-columns:76px minmax(0,1fr) 42px;gap:8px;align-items:center;border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:8px;min-width:0}
+.difference-term-name{font-family:Georgia,"Times New Roman",serif;font-size:.95rem;font-weight:900;white-space:nowrap}
+.difference-term-count{font-weight:900;color:#334155;text-align:right;white-space:nowrap;font-size:.82rem}
+.difference-term.remove .difference-term-name{color:#b91c1c}
+.difference-term.return .difference-term-name{color:#15803d}
+.difference-term.keep .difference-term-name{color:#1d4ed8}
+.difference-term.corner .difference-term-name{color:#b91c1c}
+.difference-equation{display:grid;gap:8px;align-content:start}
+.equation-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:8px 10px;color:#334155;font-size:.86rem;font-weight:850;line-height:1.45}
+.equation-row strong{font-family:Georgia,"Times New Roman",serif;font-size:1.02rem;color:#0f172a;white-space:nowrap}
+.equation-token{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #dbe5f2;background:#f8fafc;padding:2px 8px;font-family:Georgia,"Times New Roman",serif;font-weight:900;white-space:nowrap}
+.equation-token.keep{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.equation-token.remove{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.equation-token.return{color:#15803d;background:#ecfdf3;border-color:#bbf7d0}
+.equation-token.corner{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.difference-final{border:1px solid #bfd3ff;border-radius:var(--radius);background:var(--blue-soft);padding:11px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:900;line-height:1.55;color:#0f172a}
+.term-keep{color:#1d4ed8}
+.term-remove{color:#b91c1c}
+.term-return{color:#15803d}
+.term-corner{color:#b91c1c}
 .next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:900px){.difference-handout-grid{grid-template-columns:1fr}.difference-arrow-line{width:2px;height:24px;justify-self:center}.difference-arrow-line::after{right:50%;top:auto;bottom:-1px;transform:translateX(50%);border-left:7px solid transparent;border-right:7px solid transparent;border-top:11px solid #94a3b8;border-bottom:0}.difference-card{grid-template-rows:auto auto auto auto}.difference-visual{min-height:190px}}
 @media(max-width:820px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
-@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.compare,.compare tbody,.compare tr,.compare td{display:block}.compare thead{display:none}.compare tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.compare td{border:0!important;border-radius:0!important;padding:4px 0}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.diagram-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.diagram-svg,.difference-flow-svg{width:900px;max-width:none}}
-@media print{@page{size:A4 portrait;margin:11mm}.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:24px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab{box-shadow:none}.diagram-scroll{overflow:visible}.diagram-svg,.difference-flow-svg{width:100%;min-width:0;max-width:none}.print-flow{min-width:0;gap:8px}.flow-step{padding:10px}.choice-table{font-size:.75rem}.group-summary{gap:7px}.group-card{padding:8px}.big-formula{font-size:1.3rem}}
+@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.compare,.compare tbody,.compare tr,.compare td{display:block}.compare thead{display:none}.compare tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.compare td{border:0!important;border-radius:0!important;padding:4px 0}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.static-figure{padding:14px}.difference-handout{padding:10px}.difference-card{padding:12px}.difference-term{grid-template-columns:72px minmax(0,1fr);gap:6px}.difference-term-count{text-align:left;grid-column:1/-1}.equation-row strong{white-space:normal}}
+@media print{@page{size:A4 portrait;margin:11mm}.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:24px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab{box-shadow:none}.difference-handout{padding:10px}.difference-handout-grid{grid-template-columns:1fr;gap:8px}.difference-arrow-line{display:none}.difference-card{break-inside:avoid;padding:10px}.difference-visual{min-height:150px}.difference-cube-svg{min-height:150px}.difference-final{font-size:.96rem}}
 </style>
 </head>
 <body>
@@ -196,11 +168,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       <div class="model-lab" id="diffCubeModel" data-label="差的立方 inclusion-exclusion 立方体模型"></div>
 
       <div class="static-figure" id="print-split">
-        <h3>差的立方公式拆解图</h3>
-        <p class="static-lead">下图从边长为 <span class="math">a</span> 的大立方体出发：三个方向各去掉一层厚度为 <span class="math">b</span> 的部分，重叠处要补回，角块最后还要再减一次。</p>
-        <div class="diagram-scroll">
-          <svg class="difference-flow-svg" id="differenceChoiceFlow" viewBox="0 0 1100 650" role="img" aria-label="差的立方公式几何拆解图：从大立方体去掉三层并处理重叠"></svg>
-        </div>
+        <h3>体积拆分：减去、补回、再减</h3>
+        <p class="static-lead">先从边长为 <span class="math">a</span> 的大立方体出发：三个方向各去掉一层厚度为 <span class="math">b</span> 的部分，重叠处要补回，角块最后还要再减一次。</p>
+        <div class="difference-handout" id="differenceChoiceFlow" role="img" aria-label="差的立方公式几何拆解图：从大立方体去掉三层，补回三条重叠，再减角块"></div>
       </div>
     </div>
   </section>
@@ -230,225 +200,135 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 <script>
   DGFormulaModels.initDifferenceCube('diffCubeModel');
 
-  const choices = [
-    ['a', 'a', 'a'],
-    ['a', 'a', '-b'],
-    ['a', '-b', 'a'],
-    ['-b', 'a', 'a'],
-    ['a', '-b', '-b'],
-    ['-b', 'a', '-b'],
-    ['-b', '-b', 'a'],
-    ['-b', '-b', '-b']
-  ];
+  const blockColors = {
+    keep:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1d4ed8'},
+    remove:{top:'#fee2e2', front:'#fca5a5', side:'#ef4444', stroke:'#b91c1c'},
+    return:{top:'#dcfce7', front:'#86efac', side:'#22c55e', stroke:'#15803d'},
+    corner:{top:'#fecaca', front:'#f87171', side:'#dc2626', stroke:'#b91c1c'}
+  };
 
-  function classifyChoice(choice) {
-    const countA = choice.filter(value => value === 'a').length;
-    const countNegB = choice.filter(value => value === '-b').length;
-    const sign = countNegB % 2 === 0 ? '+' : '-';
-
-    if (countA === 3) return { type: 'a3', label: 'a³', merged: '1·a³', sign, countNegB, color: '#2563eb', fill: '#eff6ff' };
-    if (countA === 2) return { type: 'a2b', label: '-a²b', merged: '-3a²b', sign, countNegB, color: '#f97316', fill: '#fff7ed' };
-    if (countA === 1) return { type: 'ab2', label: '+ab²', merged: '+3ab²', sign, countNegB, color: '#8b5cf6', fill: '#f5f3ff' };
-    return { type: 'b3', label: '-b³', merged: '-1·b³', sign, countNegB, color: '#0891b2', fill: '#ecfeff' };
+  function cuboid(x, y, w, h, d, role) {
+    const color = blockColors[role];
+    const dx = d * .62;
+    const dy = -d * .38;
+    const top = `${x},${y} ${x + dx},${y + dy} ${x + w + dx},${y + dy} ${x + w},${y}`;
+    const side = `${x + w},${y} ${x + w + dx},${y + dy} ${x + w + dx},${y + h + dy} ${x + w},${y + h}`;
+    const front = `${x},${y} ${x + w},${y} ${x + w},${y + h} ${x},${y + h}`;
+    return `
+      <polygon points="${side}" fill="${color.side}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
+      <polygon points="${top}" fill="${color.top}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
+      <polygon points="${front}" fill="${color.front}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
+    `;
   }
 
-  const svgNS = 'http://www.w3.org/2000/svg';
-
-  function node(name, attrs = {}) {
-    const el = document.createElementNS(svgNS, name);
-    Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
-    return el;
+  function renderOverviewCubeSvg() {
+    return `
+      <svg class="difference-cube-svg" viewBox="0 0 300 220" aria-hidden="true">
+        <ellipse cx="154" cy="192" rx="72" ry="11" fill="#0f172a" opacity=".08"></ellipse>
+        ${cuboid(74, 72, 116, 116, 52, 'keep')}
+        ${cuboid(74, 46, 116, 26, 52, 'remove')}
+        ${cuboid(166, 72, 24, 116, 52, 'remove')}
+        ${cuboid(112, 72, 78, 34, 52, 'return')}
+        ${cuboid(166, 46, 24, 26, 52, 'corner')}
+        <path d="M52 72V188M44 72H60M44 188H60" fill="none" stroke="#475569" stroke-width="1.4"></path>
+        <text x="36" y="130" font-family="Georgia, Times New Roman, serif" font-size="18" font-weight="900" fill="#334155" text-anchor="middle">a</text>
+        <text x="130" y="137" font-family="Georgia, Times New Roman, serif" font-size="21" font-weight="900" fill="#0f172a" text-anchor="middle">(a-b)³</text>
+        <text x="218" y="55" font-family="Georgia, Times New Roman, serif" font-size="16" font-weight="900" fill="#b91c1c" text-anchor="middle">b</text>
+        <text x="150" y="20" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="850" fill="#475569" text-anchor="middle">先标出厚度 b 的三层，目标是留下核心体积</text>
+      </svg>
+    `;
   }
 
-  function appendText(parent, text, x, y, attrs = {}) {
-    const el = node('text', {
-      x,
-      y,
-      'font-family': attrs.family || 'Noto Sans SC, Microsoft YaHei, sans-serif',
-      'font-size': attrs.size || 16,
-      'font-weight': attrs.weight || 800,
-      fill: attrs.fill || '#0f172a',
-      'text-anchor': attrs.anchor || 'start',
-      'dominant-baseline': attrs.baseline || 'middle'
-    });
-    el.textContent = text;
-    parent.appendChild(el);
-    return el;
-  }
-
-  function appendPill(parent, x, y, w, h, text, opts = {}) {
-    const group = node('g');
-    group.appendChild(node('rect', {
-      x,
-      y,
-      width: w,
-      height: h,
-      rx: h / 2,
-      fill: opts.fill || '#f8fafc',
-      stroke: opts.stroke || '#cbd5e1',
-      'stroke-width': opts.strokeWidth || 1.2
-    }));
-    appendText(group, text, x + w / 2, y + h / 2 + 1, {
-      family: opts.family || 'Georgia, Times New Roman, serif',
-      size: opts.size || 18,
-      weight: opts.weight || 900,
-      fill: opts.textFill || '#0f172a',
-      anchor: 'middle'
-    });
-    parent.appendChild(group);
-    return group;
+  function renderMiniBlocks(role, count) {
+    const blocks = {
+      keep:[[58, 8, 34, 28, 18]],
+      remove:[[22, 13, 38, 14, 14], [66, 8, 18, 27, 14], [102, 7, 16, 30, 14]],
+      return:[[27, 14, 28, 12, 12], [69, 10, 14, 25, 12], [105, 9, 13, 27, 12]],
+      corner:[[62, 11, 24, 22, 14]]
+    }[role].slice(0, count);
+    return `
+      <svg class="difference-mini-svg" viewBox="0 0 150 44" aria-hidden="true">
+        ${blocks.map(block => cuboid(...block, role)).join('')}
+      </svg>
+    `;
   }
 
   function renderDifferenceChoiceFlow() {
-    const svg = document.getElementById('differenceChoiceFlow');
-    if (!svg) return;
-    svg.innerHTML = '';
+    const root = document.getElementById('differenceChoiceFlow');
+    if (!root) return;
+    root.innerHTML = `
+      <div class="difference-handout-grid">
+        <article class="difference-card">
+          <div class="difference-card-head">
+            <span class="difference-index">1</span>
+            <h4>先确定要留下什么</h4>
+          </div>
+          <p>从边长为 <span class="math">a</span> 的大立方体看起，三个方向各拿走厚度 <span class="math">b</span> 的层，留下的核心边长才是 <span class="math">a-b</span>。</p>
+          <div class="difference-visual">${renderOverviewCubeSvg()}</div>
+          <div class="difference-note">这一步对应目标体积：保留部分是 <strong>(a-b)<sup>3</sup></strong>。</div>
+        </article>
 
-    const defs = node('defs');
-    const arrow = node('marker', { id: 'flowArrow', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto-start-reverse' });
-    arrow.appendChild(node('path', { d: 'M0 0 L10 5 L0 10 Z', fill: '#94a3b8' }));
-    defs.appendChild(arrow);
-    svg.appendChild(defs);
+        <div class="difference-arrow-line" aria-hidden="true"></div>
 
-    const colors = {
-      keep:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1e3a8a'},
-      remove:{top:'#fee2e2', front:'#fca5a5', side:'#ef4444', stroke:'#b91c1c'},
-      return:{top:'#dcfce7', front:'#86efac', side:'#22c55e', stroke:'#15803d'},
-      corner:{top:'#fecaca', front:'#f87171', side:'#dc2626', stroke:'#991b1b'},
-      guide:{stroke:'#334155'}
-    };
-    const size = { a:64, b:28 };
-    const point = p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-    const mix = (p0, p1, t) => ({ x:p0.x + (p1.x - p0.x) * t, y:p0.y + (p1.y - p0.y) * t });
-    const gridPoint = (corners, u, v) => mix(mix(corners.p00, corners.p10, u), mix(corners.p01, corners.p11, u), v);
-    const poly = (parent, points, fill, stroke = '#1e293b', width = 1.25) => {
-      parent.appendChild(node('polygon', {
-        points:points.map(point).join(' '),
-        fill,
-        stroke,
-        'stroke-width': width,
-        'stroke-linejoin': 'round'
-      }));
-    };
-    const appendLines = (parent, lines, x, y, attrs = {}) => {
-      lines.forEach((line, index) => {
-        appendText(parent, line, x, y + index * (attrs.lineHeight || 22), attrs);
-      });
-    };
-    const drawPanel = (x, y, w, h, title, index) => {
-      svg.appendChild(node('rect', { x, y, width:w, height:h, rx:16, fill:'#fff', stroke:'#cbd5e1', 'stroke-width':1.4 }));
-      svg.appendChild(node('circle', { cx:x + 38, cy:y + 42, r:24, fill:'#3b6fea' }));
-      appendText(svg, index, x + 38, y + 44, { size:24, weight:900, fill:'#fff', anchor:'middle' });
-      appendText(svg, title, x + 72, y + 42, { size:19, weight:900, fill:'#0f172a' });
-    };
-    const drawArrow = (x1, y1, x2, y2) => {
-      svg.appendChild(node('path', { d:`M${x1} ${y1} H${x2}`, stroke:'#94a3b8', 'stroke-width':4, 'stroke-linecap':'round', 'marker-end':'url(#flowArrow)' }));
-    };
-    const drawFaceGrid = (parent, corners, uBreaks, vBreaks, roles) => {
-      for (let r = 0; r < vBreaks.length - 1; r += 1) {
-        for (let c = 0; c < uBreaks.length - 1; c += 1) {
-          const role = roles[r][c];
-          poly(parent, [
-            gridPoint(corners, uBreaks[c], vBreaks[r]),
-            gridPoint(corners, uBreaks[c + 1], vBreaks[r]),
-            gridPoint(corners, uBreaks[c + 1], vBreaks[r + 1]),
-            gridPoint(corners, uBreaks[c], vBreaks[r + 1])
-          ], colors[role].front, colors[role].stroke);
-        }
-      }
-    };
-    const drawSegmentedCube = (parent, x, y) => {
-      const w = 136;
-      const h = 136;
-      const dx = 64;
-      const dy = 38;
-      const keepRatio = .66;
-      const bRatio = 1 - keepRatio;
-      const breaks = [0, keepRatio, 1];
-      const top = { p00:{x, y}, p10:{x:x + w, y}, p01:{x:x + dx, y:y - dy}, p11:{x:x + w + dx, y:y - dy} };
-      const side = { p00:{x:x + w, y}, p10:{x:x + w + dx, y:y - dy}, p01:{x:x + w, y:y + h}, p11:{x:x + w + dx, y:y + h - dy} };
-      const front = { p00:{x, y}, p10:{x:x + w, y}, p01:{x, y:y + h}, p11:{x:x + w, y:y + h} };
-      drawFaceGrid(parent, top, breaks, breaks, [['remove','return'], ['remove','corner']]);
-      drawFaceGrid(parent, side, breaks, breaks, [['return','corner'], ['remove','return']]);
-      drawFaceGrid(parent, front, breaks, breaks, [['remove','return'], ['keep','remove']]);
-      svg.appendChild(node('path', { d:`M${x} ${y} L${x + dx} ${y - dy} L${x + w + dx} ${y - dy} L${x + w} ${y} Z M${x} ${y} V${y + h} H${x + w} L${x + w + dx} ${y + h - dy} V${y - dy} M${x + w} ${y} V${y + h}`, fill:'none', stroke:'#1e293b', 'stroke-width':1.5, 'stroke-linejoin':'round' }));
-      svg.appendChild(node('path', { d:`M${x - 22} ${y} V${y + h} M${x - 30} ${y} H${x - 14} M${x - 30} ${y + h} H${x - 14}`, fill:'none', stroke:'#334155', 'stroke-width':1.2 }));
-      appendText(parent, 'a', x - 38, y + h / 2, { family:'Georgia, Times New Roman, serif', size:18, weight:900, fill:'#334155', anchor:'middle' });
-      appendText(parent, 'b', x + w + dx - 7, y + h - dy + 28, { family:'Georgia, Times New Roman, serif', size:16, weight:900, fill:'#b91c1c', anchor:'middle' });
-    };
-    const drawCuboid = (parent, x, y, dims, role, scale = 1) => {
-      const sx = size[dims[0]] * scale;
-      const sy = size[dims[1]] * scale;
-      const sz = size[dims[2]] * scale;
-      const ox = sy * .48;
-      const oy = sy * .3;
-      const c = colors[role];
-      const ft = {x, y:y + oy};
-      const rt = {x:x + sx, y:y + oy};
-      const rb = {x:x + sx, y:y + oy + sz};
-      const fb = {x, y:y + oy + sz};
-      const bt = {x:x + ox, y};
-      const br = {x:x + sx + ox, y};
-      const bs = {x:x + sx + ox, y:y + sz};
-      const bl = {x:x + ox, y:y + sz};
-      poly(parent, [rt, br, bs, rb], c.side, c.stroke);
-      poly(parent, [ft, rt, rb, fb], c.front, c.stroke);
-      poly(parent, [ft, bt, br, rt], c.top, c.stroke);
-    };
-    const legend = (x, y) => {
-      [
-        ['keep', '最后留下的 a-b 部分'],
-        ['remove', '先减的三层 a²b'],
-        ['return', '补回的重叠 ab²'],
-        ['corner', '最后再减的 b³']
-      ].forEach(([role, text], index) => {
-        const yy = y + index * 26;
-        svg.appendChild(node('rect', { x, y:yy - 9, width:18, height:14, rx:3, fill:colors[role].front, stroke:colors[role].stroke, 'stroke-width':1 }));
-        appendText(svg, text, x + 26, yy - 1, { size:13, weight:850, fill:'#334155' });
-      });
-    };
+        <article class="difference-card">
+          <div class="difference-card-head">
+            <span class="difference-index">2</span>
+            <h4>减去、补回、再减</h4>
+          </div>
+          <p>直接减三层会把重叠棱柱减多一次；补回三条重叠后，角块又被补过头，所以最后还要再减。</p>
+          <div class="difference-visual">
+            <div class="difference-equation">
+              <div class="equation-row"><strong>a<sup>3</sup></strong><span>从整个大立方体出发</span></div>
+              <div class="equation-row"><span class="equation-token remove">-3a<sup>2</sup>b</span><span>三层厚度为 b 的部分先减去</span></div>
+              <div class="equation-row"><span class="equation-token return">+3ab<sup>2</sup></span><span>三条重叠棱柱被减多，要补回</span></div>
+              <div class="equation-row"><span class="equation-token corner">-b<sup>3</sup></span><span>角块补回过头，最后再减一次</span></div>
+            </div>
+          </div>
+          <div class="difference-note">符号不是装饰：它记录每一类体积被“减掉”或“补回”的次数。</div>
+        </article>
 
-    svg.appendChild(node('rect', { x:18, y:18, width:1064, height:610, rx:16, fill:'#fff', stroke:'#cbd5e1', 'stroke-width':1.4 }));
-    drawPanel(34, 42, 320, 540, '整体中标出要处理的部分', '1');
-    drawPanel(390, 42, 320, 540, '拆开后看见各类体积', '2');
-    drawPanel(746, 42, 320, 540, '按正负和同类体积分组', '3');
-    drawArrow(360, 312, 382, 312);
-    drawArrow(716, 312, 738, 312);
+        <div class="difference-arrow-line" aria-hidden="true"></div>
 
-    const panelOne = node('g');
-    svg.appendChild(panelOne);
-    drawSegmentedCube(panelOne, 92, 198);
-    appendLines(svg, ['从边长 a 的立方体出发，', '三条方向各截去厚度 b。'], 64, 404, { size:14, weight:850, fill:'#334155', lineHeight:22 });
-    legend(64, 470);
-
-    const panelTwo = node('g');
-    svg.appendChild(panelTwo);
-    drawCuboid(panelTwo, 430, 126, ['a','a','a'], 'keep', .72);
-    drawCuboid(panelTwo, 548, 124, ['a','a','b'], 'remove', .68);
-    drawCuboid(panelTwo, 590, 206, ['a','b','a'], 'remove', .68);
-    drawCuboid(panelTwo, 474, 252, ['b','a','a'], 'remove', .68);
-    drawCuboid(panelTwo, 552, 312, ['a','b','b'], 'return', .68);
-    drawCuboid(panelTwo, 442, 346, ['b','a','b'], 'return', .68);
-    drawCuboid(panelTwo, 620, 358, ['b','b','a'], 'return', .68);
-    drawCuboid(panelTwo, 548, 434, ['b','b','b'], 'corner', .78);
-    appendLines(svg, ['先减三层 a²b 会把重叠处多减，', '所以三条 ab² 要补回；角块 b³ 最后再减。'], 420, 500, { size:14, weight:850, fill:'#334155', lineHeight:22 });
-
-    const groupRows = [
-      { y:126, role:'keep', label:'a³', count:'1 个', dims:[['a','a','a']], sign:'+' },
-      { y:224, role:'remove', label:'-3a²b', count:'3 个', dims:[['a','a','b'], ['a','b','a'], ['b','a','a']], sign:'-' },
-      { y:322, role:'return', label:'+3ab²', count:'3 个', dims:[['a','b','b'], ['b','a','b'], ['b','b','a']], sign:'+' },
-      { y:420, role:'corner', label:'-b³', count:'1 个', dims:[['b','b','b']], sign:'-' }
-    ];
-    groupRows.forEach(row => {
-      svg.appendChild(node('rect', { x:770, y:row.y - 36, width:270, height:78, rx:10, fill:'#fff', stroke:'#dbe5f2', 'stroke-width':1.2 }));
-      appendText(svg, row.label, 790, row.y + 2, { family:'Georgia, Times New Roman, serif', size:22, weight:900, fill:colors[row.role].stroke });
-      row.dims.forEach((dims, index) => {
-        drawCuboid(svg, 870 + index * 45, row.y - 20, dims, row.role, row.dims.length === 1 ? .42 : .34);
-      });
-      appendText(svg, row.count, 1018, row.y + 2, { size:15, weight:900, fill:'#334155', anchor:'middle' });
-    });
-    svg.appendChild(node('rect', { x:770, y:522, width:270, height:48, rx:10, fill:'#eef4ff', stroke:'#c7d8ff', 'stroke-width':1.5 }));
-    appendText(svg, '(a-b)³ = a³ - 3a²b + 3ab² - b³', 905, 548, { family:'Georgia, Times New Roman, serif', size:18, weight:900, fill:'#0f172a', anchor:'middle' });
+        <article class="difference-card">
+          <div class="difference-card-head">
+            <span class="difference-index">3</span>
+            <h4>按同类体积合并</h4>
+          </div>
+          <p>最后只看同类体积的数量和符号，就得到展开式里的四项。</p>
+          <div class="difference-visual">
+            <div class="difference-term-strip">
+              <div class="difference-term keep">
+                <div class="difference-term-name">a<sup>3</sup></div>
+                ${renderMiniBlocks('keep', 1)}
+                <div class="difference-term-count">1 块</div>
+              </div>
+              <div class="difference-term remove">
+                <div class="difference-term-name">-3a<sup>2</sup>b</div>
+                ${renderMiniBlocks('remove', 3)}
+                <div class="difference-term-count">3 块</div>
+              </div>
+              <div class="difference-term return">
+                <div class="difference-term-name">+3ab<sup>2</sup></div>
+                ${renderMiniBlocks('return', 3)}
+                <div class="difference-term-count">3 块</div>
+              </div>
+              <div class="difference-term corner">
+                <div class="difference-term-name">-b<sup>3</sup></div>
+                ${renderMiniBlocks('corner', 1)}
+                <div class="difference-term-count">1 块</div>
+              </div>
+            </div>
+          </div>
+          <div class="difference-final">
+            (a-b)<sup>3</sup> =
+            <span class="term-keep">a<sup>3</sup></span>
+            <span class="term-remove">- 3a<sup>2</sup>b</span>
+            <span class="term-return">+ 3ab<sup>2</sup></span>
+            <span class="term-corner">- b<sup>3</sup></span>
+          </div>
+        </article>
+      </div>
+    `;
   }
 
   renderDifferenceChoiceFlow();

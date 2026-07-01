@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>和的立方 | DGOpenKS</title>
+<title>和的立方公式：公式推导与几何解析 | DGOpenKS</title>
 <style>
 :root{
   color-scheme:light;
@@ -50,6 +50,7 @@ a{color:inherit}
 .hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
 .eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}
 h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}
+.mobile-title-break{display:none}
 h2{font-size:clamp(1.35rem,2.45vw,1.95rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}
 h3{font-size:1.05rem;margin:0 0 8px}
 p{margin:0 0 12px}
@@ -109,9 +110,79 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .count.a2b b{color:var(--amber)}
 .count.ab2 b{color:var(--purple)}
 .count.b3 b{color:var(--cyan)}
+.static-split{margin:24px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:18px;break-inside:avoid}
+.static-split h3{color:var(--blue);font-size:1.2rem;margin-bottom:6px}
+.static-split-lead{max-width:860px;color:#334155}
+.cube-expansion-flow{margin-top:16px}
+.cube-template-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:12px;break-inside:avoid}
+.cube-template-panel{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;display:grid;grid-template-rows:auto minmax(210px,1fr) auto;gap:10px}
+.cube-template-head{display:flex;align-items:center;gap:10px}
+.cube-template-index{display:grid;place-items:center;flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900}
+.cube-template-title{margin:0;font-size:1.05rem;line-height:1.35}
+.cube-template-visual{min-height:210px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;display:grid;place-items:center;padding:8px;overflow:hidden}
+.cube-flow-svg{display:block;width:100%;height:auto;max-height:220px}
+.cube-template-caption{margin:0;color:#334155;font-size:.92rem;line-height:1.65}
+.cube-template-note{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:8px;color:#334155;font-size:.9rem;font-weight:850;line-height:1.55}
+.cube-handout-wrap{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:10px;overflow:hidden;break-inside:avoid}
+.cube-handout-grid{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1.08fr) 18px minmax(0,1fr);gap:8px;align-items:stretch}
+.cube-handout-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f8fbff);padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cube-handout-head{display:flex;align-items:center;gap:10px}
+.cube-handout-index{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-size:1.25rem;font-weight:900;flex:0 0 auto}
+.cube-handout-heading{margin:0;color:#0f172a;font-size:1rem;line-height:1.25}
+.cube-handout-visual{height:236px;border:1px solid #d6e2f0;border-radius:10px;background:#fff;display:grid;place-items:center;padding:8px;overflow:hidden}
+.cube-handout-visual--wide{height:258px}
+.cube-handout-visual .cube-flow-svg{width:100%;height:100%;max-height:none}
+.cube-handout-caption{margin:0;color:#334155;font-size:.84rem;line-height:1.55}
+.cube-handout-note{border:1px solid #dbe5f2;border-radius:10px;background:#fff;padding:8px 10px;color:#334155;font-size:.82rem;font-weight:850;line-height:1.5}
+.cube-handout-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cube-handout-counts span{border:1px solid #dbe5f2;border-radius:8px;background:#fff;padding:5px 4px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:.86rem;font-weight:900;white-space:nowrap}
+.cube-handout-groups{display:grid;gap:8px}
+.cube-handout-term{display:grid;grid-template-columns:62px minmax(0,1fr) 34px;gap:6px;align-items:center;border:1px solid #dbe5f2;border-radius:10px;background:#fff;padding:7px}
+.cube-handout-term-name{font-family:Georgia,"Times New Roman",serif;font-size:.95rem;font-weight:900;white-space:nowrap}
+.cube-handout-term-svg{height:54px;min-width:0}
+.cube-handout-term-svg .cube-flow-svg{width:100%;height:100%;max-height:none}
+.cube-handout-term-count{font-weight:900;color:#334155;text-align:right;white-space:nowrap;font-size:.82rem}
+.cube-handout-final{border:1px solid #bfd3ff;border-radius:10px;background:var(--blue-soft);padding:10px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:900;line-height:1.55}
+.cube-handout-arrow-line{align-self:center;height:2px;background:#94a3b8;position:relative;border-radius:999px}
+.cube-handout-arrow-line::after{content:"";position:absolute;right:-1px;top:50%;transform:translateY(-50%);border-left:11px solid #94a3b8;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.cube-handout-svg{display:block;width:100%;height:auto}
+.handout-panel{fill:#fff;stroke:#cbd5e1;stroke-width:1.6}
+.handout-step{fill:var(--blue)}
+.handout-step-text{font-family:var(--font);font-size:28px;font-weight:900;fill:#fff;text-anchor:middle;dominant-baseline:middle}
+.handout-title{font-family:var(--font);font-size:24px;font-weight:900;fill:#0f172a}
+.handout-copy{font-family:var(--font);font-size:14px;font-weight:850;fill:#334155}
+.handout-formula{font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:900;fill:#0f172a}
+.handout-group-title{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:900;font-style:italic;text-anchor:middle}
+.handout-label{font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:900;font-style:italic;fill:#0f172a;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.handout-small-label{font-family:Georgia,"Times New Roman",serif;font-size:14px;font-weight:900;font-style:italic;fill:#0f172a;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.handout-dim{font-family:Georgia,"Times New Roman",serif;font-size:18px;font-weight:900;fill:#0f172a}
+.handout-edge{stroke:#1e293b;stroke-width:1.5;fill:none}
+.handout-arrow{fill:#94a3b8}
+.handout-group-box{fill:#fff;stroke-width:1.6;stroke-dasharray:8 6}
+.handout-final-box{fill:#f8fbff;stroke:#bfd3ff;stroke-width:1.4}
+.handout-note-box{fill:#f8fafc;stroke:#dbe5f2;stroke-width:1.2}
+.cube-mini-groups{display:grid;gap:8px}
+.cube-mini-group{display:grid;grid-template-columns:82px minmax(0,1fr) 48px;gap:6px;align-items:center;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:6px}
+.cube-mini-label{font-family:Georgia,"Times New Roman",serif;font-size:.92rem;font-weight:900;white-space:nowrap}
+.cube-mini-svg{display:block;width:100%;height:46px}
+.cube-mini-count{font-weight:900;color:#334155;text-align:right;white-space:nowrap;font-size:.85rem}
+.cube-formula-card{border:1px solid var(--blue-line);border-radius:var(--radius);background:var(--blue-soft);padding:10px;text-align:center}
+.cube-formula-line{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1rem,1.5vw,1.22rem);font-weight:900;line-height:1.5}
+.term-a3{color:var(--blue)}.term-a2b{color:var(--amber)}.term-ab2{color:var(--purple)}.term-b3{color:var(--cyan)}
+.cube-face{stroke:#334155;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.cube-edge{stroke:#334155;stroke-width:1.25;fill:none;vector-effect:non-scaling-stroke}
+.cube-dim{font-family:Georgia,"Times New Roman",serif;font-size:15px;font-weight:900;fill:#334155}
+.cube-label{font-family:Georgia,"Times New Roman",serif;font-size:16px;font-weight:900;font-style:italic;fill:#0f172a;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.cube-cut-line{stroke:#2563eb;stroke-width:1.8;stroke-dasharray:7 6;fill:none;vector-effect:non-scaling-stroke}
+.cube-svg-caption{font-size:12px;font-weight:900;fill:#64748b}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
 @media(max-width:900px){
   .section,.lab{grid-template-columns:minmax(0,1fr)}
+  .cube-template-board{grid-template-columns:1fr}
+  .cube-template-panel{grid-template-rows:auto auto auto}
+  .cube-handout-grid{grid-template-columns:1fr}
+  .cube-handout-arrow-line{width:2px;height:24px;justify-self:center}
+  .cube-handout-arrow-line::after{right:50%;top:auto;bottom:-1px;transform:translateX(50%);border-left:7px solid transparent;border-right:7px solid transparent;border-top:11px solid #94a3b8;border-bottom:0}
   .marker{position:static;display:flex;align-items:center;gap:10px}
   .marker span{margin:0}
   .lab{grid-template-columns:1fr}
@@ -122,11 +193,29 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   .hero{padding-top:36px}
   .hero>*{max-width:calc(100vw - 28px)}
   h1{font-size:1.9rem}
+  .mobile-title-break{display:block}
   .lead{font-size:1rem}
   .formula-card,.panel{padding:14px}
   .derivation,.formula-list,.math{white-space:normal}
   .stage-rail,.group-grid{grid-template-columns:1fr}
   .scene-wrap{min-height:360px}
+  .cube-handout-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+  .cube-handout-svg{width:920px;max-width:none}
+  .cube-mini-group{grid-template-columns:86px minmax(0,1fr);gap:8px}
+  .cube-mini-count{text-align:left;grid-column:1/-1}
+}
+@media print{
+  .topbar,.stage-rail,.restore-tools{display:none!important}
+  body{background:white}
+  .hero,main{max-width:none;padding-left:0;padding-right:0}
+  .section{display:block;break-inside:avoid;padding:28px 0}
+  .marker{position:static;margin-bottom:12px}
+  .lab{break-inside:avoid}
+  .scene-wrap{min-height:360px}
+  .static-split{box-shadow:none;margin-left:0}
+  .cube-template-board{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cube-template-panel{break-inside:avoid}
+  .cube-template-visual{min-height:180px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -139,24 +228,25 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
     <a class="nav-link" href="./">章节入口</a>
-    <a class="nav-link" href="#calculation">展开过程</a>
-    <a class="nav-link" href="#model">立方体推导</a>
+    <a class="nav-link" href="#calculation">公式推导</a>
+    <a class="nav-link" href="#model">几何解析</a>
+    <a class="nav-link" href="#print-split">拆分流程图</a>
     <a class="nav-link" href="02_差的立方.html">下一篇</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 01</span>
-  <h1>和的立方</h1>
-  <p class="lead"><span class="math">(a+b)<sup>3</sup></span> 表示三个 <span class="math">a+b</span> 相乘。计算时先让前两个括号相乘，再把第三个括号乘进去；理解系数时，再用立方体把混合项拆开看成 8 个体积块。</p>
+  <h1>和的立方公式：<br class="mobile-title-break">公式推导与几何解析</h1>
+  <p class="lead">本节先从三个 <span class="math">a+b</span> 相乘推出标准展开式，再用边长为 <span class="math">a+b</span> 的立方体解释系数 <span class="math">1,3,3,1</span> 的几何来源。</p>
 </header>
 
 <main>
   <section class="section" id="calculation">
-    <div class="marker" aria-hidden="true"><span>01</span>展开过程</div>
+    <div class="marker" aria-hidden="true"><span>01</span>公式推导</div>
     <div class="section-body">
       <div class="prose">
-        <h2>先按平常的顺序展开</h2>
+        <h2>公式推导：从三个因式相乘到展开式</h2>
         <p>立方就是三个相同因式相乘。手算时先算前两个括号，再乘第三个括号：</p>
         <div class="formula-card">
           <div class="derivation">
@@ -173,9 +263,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>02</span>立方体模型</div>
+    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
     <div class="section-body">
-      <h2>从三个因式走到立方体</h2>
+      <h2>几何解析：立方体体积模型</h2>
       <p class="prose">这里不是突然想到去切一个立方体。因为体积也是“长 × 宽 × 高”，三个 <span class="math">a+b</span> 可以先对应到长、宽、高三条边；每条边上都有 <span class="math">a</span> 和 <span class="math">b</span> 的分界，沿这些分界向里面切，才得到 8 个体积块。</p>
       <div class="lab">
         <div class="scene-wrap" id="sceneWrap">
@@ -216,36 +306,588 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </div>
       </div>
+      <div class="static-split" id="print-split">
+        <h3>和的立方体积拆分图</h3>
+        <p class="static-split-lead">这张图把同一个边长为 <span class="math">a+b</span> 的立方体分成三步来看：先看整体体积，再看切出的 8 个体积块，最后按同类体积合并成公式。</p>
+        <div class="cube-expansion-flow" id="cubeExpansionFlow" aria-label="和的立方体积拆分流程图"></div>
+      </div>
     </div>
   </section>
 
   <section class="section" id="summary">
-    <div class="marker" aria-hidden="true"><span>03</span>最后记住</div>
+    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
     <div class="section-body">
       <div class="prose">
-        <h2>本节小结</h2>
+        <h2>核心结论</h2>
         <p><span class="math">(a+b)<sup>3</sup></span> 是三个 <span class="math">a+b</span> 相乘。中间的两个系数 3，来自 8 个乘积中同类项的数量，也可以从立方体切分出的体积分组直接看见。</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 和的立方</footer>
+<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 和的立方公式</footer>
 
 <script src="./assets/three.min.js"></script>
 <script>
 (() => {
+  const FLOW_A_LEN = 120;
+  const FLOW_B_LEN = 70;
+  const FLOW_TOTAL = FLOW_A_LEN + FLOW_B_LEN;
+  const FLOW_TYPES = ['a3', 'a2b', 'ab2', 'b3'];
+  const FLOW_LABELS = {a3:'a³', a2b:'a²b', ab2:'ab²', b3:'b³', whole:'(a+b)³'};
+  const FLOW_FACE_COLORS = {
+    whole:{top:'#ffffff', front:'#f8fafc', right:'#e2e8f0'},
+    a3:{top:'#bfdbfe', front:'#60a5fa', right:'#2563eb'},
+    a2b:{top:'#fed7aa', front:'#fb923c', right:'#ea580c'},
+    ab2:{top:'#ddd6fe', front:'#a78bfa', right:'#7c3aed'},
+    b3:{top:'#a5f3fc', front:'#22d3ee', right:'#0891b2'}
+  };
+
+  function classifyFlowCuboid(dims) {
+    const bCount = dims.filter(dim => dim === 'b').length;
+    return bCount === 0 ? 'a3' : bCount === 1 ? 'a2b' : bCount === 2 ? 'ab2' : 'b3';
+  }
+
+  function createFlowCuboids() {
+    const segments = [
+      {name:'a', length:FLOW_A_LEN},
+      {name:'b', length:FLOW_B_LEN}
+    ];
+    const cuboids = [];
+    let id = 0;
+    let x0 = 0;
+    for (const xSeg of segments) {
+      let y0 = 0;
+      for (const ySeg of segments) {
+        let z0 = 0;
+        for (const zSeg of segments) {
+          const dims = [xSeg.name, ySeg.name, zSeg.name];
+          const type = classifyFlowCuboid(dims);
+          cuboids.push({
+            id:`c${++id}`,
+            x:x0,
+            y:y0,
+            z:z0,
+            width:xSeg.length,
+            depth:ySeg.length,
+            height:zSeg.length,
+            dims,
+            type,
+            label:FLOW_LABELS[type],
+            group:type
+          });
+          z0 += zSeg.length;
+        }
+        y0 += ySeg.length;
+      }
+      x0 += xSeg.length;
+    }
+    return cuboids;
+  }
+
+  function projectFlowPoint(point, scale = 1) {
+    const cos = 0.8660254;
+    const sin = 0.5;
+    return {
+      x:(point.x - point.y) * cos * scale,
+      y:(point.x + point.y) * sin * scale - point.z * scale
+    };
+  }
+
+  function flowCorners(cuboid, scale) {
+    const x0 = cuboid.x;
+    const y0 = cuboid.y;
+    const z0 = cuboid.z;
+    const x1 = x0 + cuboid.width;
+    const y1 = y0 + cuboid.depth;
+    const z1 = z0 + cuboid.height;
+    return {
+      p000:projectFlowPoint({x:x0,y:y0,z:z0}, scale),
+      p100:projectFlowPoint({x:x1,y:y0,z:z0}, scale),
+      p010:projectFlowPoint({x:x0,y:y1,z:z0}, scale),
+      p110:projectFlowPoint({x:x1,y:y1,z:z0}, scale),
+      p001:projectFlowPoint({x:x0,y:y0,z:z1}, scale),
+      p101:projectFlowPoint({x:x1,y:y0,z:z1}, scale),
+      p011:projectFlowPoint({x:x0,y:y1,z:z1}, scale),
+      p111:projectFlowPoint({x:x1,y:y1,z:z1}, scale)
+    };
+  }
+
+  function polygonPoints(points) {
+    return points.map(point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(' ');
+  }
+
+  function renderFlowCuboids(cuboids, options = {}) {
+    const scale = options.scale || .72;
+    const padding = options.padding || 22;
+    const allPoints = cuboids.flatMap(cuboid => Object.values(flowCorners(cuboid, scale)));
+    const minX = Math.min(...allPoints.map(point => point.x));
+    const minY = Math.min(...allPoints.map(point => point.y));
+    const maxX = Math.max(...allPoints.map(point => point.x));
+    const maxY = Math.max(...allPoints.map(point => point.y));
+    const width = Math.max(1, maxX - minX + padding * 2);
+    const height = Math.max(1, maxY - minY + padding * 2);
+    const move = point => ({x:point.x - minX + padding, y:point.y - minY + padding});
+    const projectMoved = point => move(projectFlowPoint(point, scale));
+    const sorted = cuboids.slice().sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
+    const body = sorted.map(cuboid => {
+      const raw = flowCorners(cuboid, scale);
+      const p = Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, move(value)]));
+      const color = FLOW_FACE_COLORS[cuboid.type] || FLOW_FACE_COLORS.whole;
+      const labelPoint = move(projectFlowPoint({
+        x:cuboid.x + cuboid.width / 2,
+        y:cuboid.y + cuboid.depth / 2,
+        z:cuboid.z + cuboid.height * .58
+      }, scale));
+      const label = options.labels === false ? '' : `<text class="cube-label" x="${labelPoint.x.toFixed(1)}" y="${labelPoint.y.toFixed(1)}">${cuboid.label}</text>`;
+      return `
+        <polygon class="cube-face" points="${polygonPoints([p.p010,p.p110,p.p111,p.p011])}" fill="${color.right}"></polygon>
+        <polygon class="cube-face" points="${polygonPoints([p.p000,p.p100,p.p101,p.p001])}" fill="${color.front}"></polygon>
+        <polygon class="cube-face" points="${polygonPoints([p.p001,p.p101,p.p111,p.p011])}" fill="${color.top}"></polygon>
+        ${label}
+      `;
+    }).join('');
+    const dimensionLabels = options.dimensions ? renderFlowDimensions(projectMoved) : '';
+    const cutLines = options.cuts ? renderFlowCutLines(projectMoved) : '';
+    const caption = options.caption ? `<text class="cube-svg-caption" x="${padding}" y="${height - 8}">${options.caption}</text>` : '';
+    return `<svg class="cube-flow-svg" viewBox="0 0 ${width.toFixed(1)} ${height.toFixed(1)}" role="img" aria-label="${options.label || '立方体体积图'}">${body}${cutLines}${dimensionLabels}${caption}</svg>`;
+  }
+
+  function renderFlowCuboidsInViewport(cuboids, options = {}) {
+    const scale = options.scale || .34;
+    const width = options.width || 260;
+    const height = options.height || 72;
+    const allPoints = cuboids.flatMap(cuboid => Object.values(flowCorners(cuboid, scale)));
+    const minX = Math.min(...allPoints.map(point => point.x));
+    const minY = Math.min(...allPoints.map(point => point.y));
+    const maxX = Math.max(...allPoints.map(point => point.x));
+    const maxY = Math.max(...allPoints.map(point => point.y));
+    const contentWidth = maxX - minX;
+    const contentHeight = maxY - minY;
+    const offsetX = (width - contentWidth) / 2 - minX + (options.shiftX || 0);
+    const offsetY = (height - contentHeight) / 2 - minY + (options.shiftY || 0);
+    const move = point => ({x:point.x + offsetX, y:point.y + offsetY});
+    const sorted = cuboids.slice().sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
+    const body = sorted.map(cuboid => {
+      const raw = flowCorners(cuboid, scale);
+      const p = Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, move(value)]));
+      const color = FLOW_FACE_COLORS[cuboid.type] || FLOW_FACE_COLORS.whole;
+      return `
+        <polygon class="cube-face" points="${polygonPoints([p.p010,p.p110,p.p111,p.p011])}" fill="${color.right}"></polygon>
+        <polygon class="cube-face" points="${polygonPoints([p.p000,p.p100,p.p101,p.p001])}" fill="${color.front}"></polygon>
+        <polygon class="cube-face" points="${polygonPoints([p.p001,p.p101,p.p111,p.p011])}" fill="${color.top}"></polygon>
+      `;
+    }).join('');
+    return `<svg class="cube-flow-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${options.label || '同类体积块'}">${body}</svg>`;
+  }
+
+  function renderFlowDimensions(projectMoved) {
+    const p000 = projectMoved({x:0,y:0,z:0});
+    const p100 = projectMoved({x:FLOW_TOTAL,y:0,z:0});
+    const p010 = projectMoved({x:0,y:FLOW_TOTAL,z:0});
+    const p001 = projectMoved({x:0,y:0,z:FLOW_TOTAL});
+    return `
+      <path class="cube-edge" d="M${p000.x.toFixed(1)} ${p000.y.toFixed(1)} L${p100.x.toFixed(1)} ${p100.y.toFixed(1)}"></path>
+      <path class="cube-edge" d="M${p000.x.toFixed(1)} ${p000.y.toFixed(1)} L${p010.x.toFixed(1)} ${p010.y.toFixed(1)}"></path>
+      <path class="cube-edge" d="M${p000.x.toFixed(1)} ${p000.y.toFixed(1)} L${p001.x.toFixed(1)} ${p001.y.toFixed(1)}"></path>
+      <text class="cube-dim" x="${((p000.x + p100.x) / 2).toFixed(1)}" y="${((p000.y + p100.y) / 2 + 18).toFixed(1)}" text-anchor="middle">a+b</text>
+      <text class="cube-dim" x="${((p000.x + p010.x) / 2).toFixed(1)}" y="${((p000.y + p010.y) / 2 + 18).toFixed(1)}" text-anchor="middle">a+b</text>
+      <text class="cube-dim" x="${(p001.x - 18).toFixed(1)}" y="${((p000.y + p001.y) / 2).toFixed(1)}" text-anchor="middle">a+b</text>
+    `;
+  }
+
+  function renderFlowCutLines(projectMoved) {
+    const a = FLOW_A_LEN;
+    const t = FLOW_TOTAL;
+    const line = (p1, p2) => `<path class="cube-cut-line" d="M${p1.x.toFixed(1)} ${p1.y.toFixed(1)} L${p2.x.toFixed(1)} ${p2.y.toFixed(1)}"></path>`;
+    return [
+      line(projectMoved({x:a,y:0,z:t}), projectMoved({x:a,y:t,z:t})),
+      line(projectMoved({x:0,y:a,z:t}), projectMoved({x:t,y:a,z:t})),
+      line(projectMoved({x:0,y:0,z:a}), projectMoved({x:t,y:0,z:a})),
+      line(projectMoved({x:t,y:0,z:a}), projectMoved({x:t,y:t,z:a}))
+    ].join('');
+  }
+
+  function explodeFlowCuboids(cuboids, gap = 42) {
+    return cuboids.map(cuboid => {
+      const cx = cuboid.x + cuboid.width / 2;
+      const cy = cuboid.y + cuboid.depth / 2;
+      const cz = cuboid.z + cuboid.height / 2;
+      return {
+        ...cuboid,
+        x:cuboid.x + (cx < FLOW_TOTAL / 2 ? -gap : gap),
+        y:cuboid.y + (cy < FLOW_TOTAL / 2 ? -gap : gap),
+        z:cuboid.z + (cz < FLOW_TOTAL / 2 ? -gap * .75 : gap * .75)
+      };
+    });
+  }
+
+  function renderGroupedFlow(cuboids) {
+    return `<div class="cube-mini-groups">
+      ${FLOW_TYPES.map(type => {
+        const group = cuboids.filter(cuboid => cuboid.type === type);
+        let x = 0;
+        const laidOut = group.map(cuboid => {
+          const placed = {...cuboid, x, y:0, z:0};
+          x += cuboid.width + 26;
+          return placed;
+        });
+        const countText = type === 'a3' || type === 'b3' ? '1 块' : '3 块';
+        const coefficient = type === 'a3' || type === 'b3' ? `1·${FLOW_LABELS[type]}` : `3·${FLOW_LABELS[type]}`;
+        return `
+          <div class="cube-mini-group">
+            <div class="cube-mini-label term-${type}">${coefficient}</div>
+            ${renderFlowCuboids(laidOut, {scale:.34, padding:8, labels:false, label:`${FLOW_LABELS[type]} 分组`}).replace('class="cube-flow-svg"', 'class="cube-mini-svg"')}
+            <div class="cube-mini-count">${countText}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>`;
+  }
+
+  function renderFormulaSummary() {
+    return `<div class="cube-formula-card">
+      <div class="cube-formula-line">
+        (a+b)<sup>3</sup> =
+        <span class="term-a3">a<sup>3</sup></span> +
+        <span class="term-a2b">3a<sup>2</sup>b</span> +
+        <span class="term-ab2">3ab<sup>2</sup></span> +
+        <span class="term-b3">b<sup>3</sup></span>
+      </div>
+    </div>`;
+  }
+
+  function renderTemplatePanel(panel) {
+    return `
+      <article class="cube-template-panel">
+        <div class="cube-template-head">
+          <span class="cube-template-index">${panel.index}</span>
+          <h4 class="cube-template-title">${panel.title}</h4>
+        </div>
+        <div class="cube-template-visual ${panel.visualClass || ''}">${panel.visual}</div>
+        <p class="cube-template-caption">${panel.caption}</p>
+        <div class="cube-template-note">${panel.note}</div>
+      </article>
+    `;
+  }
+
+  function handoutBlock(x, y, type, label, options = {}) {
+    const scale = options.scale || 1;
+    const specs = {
+      whole:{w:170,h:130,ox:78,oy:-46,slope:0},
+      a3:{w:72,h:66,ox:28,oy:-18,slope:6},
+      a2b:{w:66,h:66,ox:24,oy:-16,slope:5},
+      ab2:{w:58,h:48,ox:22,oy:-15,slope:5},
+      b3:{w:42,h:38,ox:17,oy:-12,slope:4}
+    };
+    const spec = specs[type] || specs.a3;
+    const w = spec.w * scale;
+    const h = spec.h * scale;
+    const ox = spec.ox * scale;
+    const oy = spec.oy * scale;
+    const slope = spec.slope * scale;
+    const colors = FLOW_FACE_COLORS[type] || FLOW_FACE_COLORS.whole;
+    const front = `${x},${y} ${x + w},${y + slope} ${x + w},${y + h + slope} ${x},${y + h}`;
+    const top = `${x},${y} ${x + ox},${y + oy} ${x + w + ox},${y + oy + slope} ${x + w},${y + slope}`;
+    const side = `${x + w},${y + slope} ${x + w + ox},${y + oy + slope} ${x + w + ox},${y + h + oy + slope} ${x + w},${y + h + slope}`;
+    const labelClass = options.small ? 'handout-small-label' : 'handout-label';
+    const labelMarkup = label ? `<text class="${labelClass}" x="${x + w / 2}" y="${y + h * .55 + slope}">${label}</text>` : '';
+    const shadow = options.shadow === false ? '' : ' filter="url(#handoutSoftShadow)"';
+    const strokeWidth = options.small ? 1.2 : 1.55;
+    return `
+      <g${shadow}>
+        <polygon points="${side}" fill="${colors.right}" stroke="#1e293b" stroke-width="${strokeWidth}" stroke-linejoin="round"></polygon>
+        <polygon points="${top}" fill="${colors.top}" stroke="#1e293b" stroke-width="${strokeWidth}" stroke-linejoin="round"></polygon>
+        <polygon points="${front}" fill="${colors.front}" stroke="#1e293b" stroke-width="${strokeWidth}" stroke-linejoin="round"></polygon>
+        ${labelMarkup}
+      </g>
+    `;
+  }
+
+  function handoutGroup(type, x, y, title, cuboids) {
+    const group = cuboids.filter(cuboid => cuboid.type === type);
+    const color = {
+      a3:'#2563eb',
+      a2b:'#f97316',
+      ab2:'#8b5cf6',
+      b3:'#0891b2'
+    }[type];
+    const settings = {
+      a3:{boxWidth:112, boxHeight:106, positions:[[x + 26, y + 58, .68]]},
+      a2b:{boxWidth:166, boxHeight:106, positions:[[x + 16, y + 60, .48], [x + 64, y + 60, .48], [x + 112, y + 60, .48]]},
+      ab2:{boxWidth:256, boxHeight:116, positions:[[x + 34, y + 62, .58], [x + 112, y + 62, .58], [x + 190, y + 62, .58]]},
+      b3:{boxWidth:112, boxHeight:72, positions:[[x + 39, y + 50, .62]]}
+    }[type];
+    const positions = settings.positions;
+    const blocks = group.map((cuboid, index) => {
+      const [bx, by, scale] = positions[index];
+      return handoutBlock(bx, by, cuboid.type, cuboid.label, {scale, small:true});
+    }).join('');
+    return `
+      <g>
+        <text class="handout-group-title" x="${x + settings.boxWidth / 2}" y="${y + 30}" fill="${color}">${title}</text>
+        <rect class="handout-group-box" x="${x}" y="${y + 42}" width="${settings.boxWidth}" height="${settings.boxHeight}" rx="14" stroke="${color}"></rect>
+        ${blocks}
+      </g>
+    `;
+  }
+
+  function flowCountText(type) {
+    return type === 'a3' || type === 'b3' ? '1 块' : '3 块';
+  }
+
+  function pointText(point) {
+    return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
+  }
+
+  function mixPoint(p0, p1, t) {
+    return {
+      x:p0.x + (p1.x - p0.x) * t,
+      y:p0.y + (p1.y - p0.y) * t
+    };
+  }
+
+  function gridPoint(corners, u, v) {
+    const top = mixPoint(corners.p00, corners.p10, u);
+    const bottom = mixPoint(corners.p01, corners.p11, u);
+    return mixPoint(top, bottom, v);
+  }
+
+  function solidFace(points, type) {
+    const colors = FLOW_FACE_COLORS[type] || FLOW_FACE_COLORS.whole;
+    return `<polygon points="${points.map(pointText).join(' ')}" fill="${colors.front}" stroke="#1e293b" stroke-width="1.25" stroke-linejoin="round"></polygon>`;
+  }
+
+  function solidGridFace(corners, uBreaks, vBreaks, typeRows) {
+    const cells = [];
+    for (let row = 0; row < vBreaks.length - 1; row += 1) {
+      for (let col = 0; col < uBreaks.length - 1; col += 1) {
+        const u0 = uBreaks[col];
+        const u1 = uBreaks[col + 1];
+        const v0 = vBreaks[row];
+        const v1 = vBreaks[row + 1];
+        const type = typeRows[row][col];
+        const color = FLOW_FACE_COLORS[type] || FLOW_FACE_COLORS.whole;
+        const points = [
+          gridPoint(corners, u0, v0),
+          gridPoint(corners, u1, v0),
+          gridPoint(corners, u1, v1),
+          gridPoint(corners, u0, v1)
+        ];
+        cells.push(`<polygon points="${points.map(pointText).join(' ')}" fill="${color.front}" stroke="#1e293b" stroke-width="1.25" stroke-linejoin="round"></polygon>`);
+      }
+    }
+    return cells.join('');
+  }
+
+  function renderAssembledHandoutSvg() {
+    const x = 52;
+    const y = 72;
+    const w = 132;
+    const h = 132;
+    const dx = 64;
+    const dy = 36;
+    const aRatio = FLOW_A_LEN / FLOW_TOTAL;
+    const bRatio = FLOW_B_LEN / FLOW_TOTAL;
+    const uBreaks = [0, aRatio, 1];
+    const vBreaks = [0, bRatio, 1];
+    const topCorners = {
+      p00:{x, y},
+      p10:{x:x + w, y},
+      p01:{x:x + dx, y:y - dy},
+      p11:{x:x + w + dx, y:y - dy}
+    };
+    const rightCorners = {
+      p00:{x:x + w, y},
+      p10:{x:x + w + dx, y:y - dy},
+      p01:{x:x + w, y:y + h},
+      p11:{x:x + w + dx, y:y + h - dy}
+    };
+    const frontCorners = {
+      p00:{x, y},
+      p10:{x:x + w, y},
+      p01:{x, y:y + h},
+      p11:{x:x + w, y:y + h}
+    };
+    return `
+      <svg class="cube-flow-svg" viewBox="0 0 270 235" role="img" aria-label="未拆开的彩色分块立方体">
+        ${solidGridFace(topCorners, uBreaks, uBreaks, [
+          ['a2b','ab2'],
+          ['ab2','b3']
+        ])}
+        ${solidGridFace(rightCorners, uBreaks, vBreaks, [
+          ['ab2','b3'],
+          ['a2b','ab2']
+        ])}
+        ${solidGridFace(frontCorners, uBreaks, vBreaks, [
+          ['a2b','ab2'],
+          ['a3','a2b']
+        ])}
+        <path class="cube-edge" d="M${x} ${y} L${x + dx} ${y - dy} L${x + w + dx} ${y - dy} L${x + w} ${y} Z"></path>
+        <path class="cube-edge" d="M${x} ${y} L${x} ${y + h} L${x + w} ${y + h} L${x + w + dx} ${y + h - dy} L${x + w + dx} ${y - dy}"></path>
+        <path class="cube-edge" d="M${x + w} ${y} L${x + w} ${y + h}"></path>
+        <path class="cube-edge" d="M42 214 H178 M42 207 V221 M178 207 V221"></path>
+        <text class="cube-dim" x="110" y="230" text-anchor="middle">a+b</text>
+        <path class="cube-edge" d="M205 185 L252 159 M201 180 L209 190 M248 154 L256 164"></path>
+        <text class="cube-dim" x="242" y="190" text-anchor="middle">a+b</text>
+        <path class="cube-edge" d="M28 72 V204 M21 72 H35 M21 204 H35"></path>
+        <text class="cube-dim" x="14" y="140" transform="rotate(-90 14 140)" text-anchor="middle">a+b</text>
+      </svg>
+    `;
+  }
+
+  function renderSolidCuboid(x, y, dims, type, scale = 1) {
+    const size = {a:58 * scale, b:34 * scale};
+    const sx = size[dims[0]];
+    const sy = size[dims[1]];
+    const sz = size[dims[2]];
+    const ox = sy * .48;
+    const oy = sy * .28;
+    const colors = FLOW_FACE_COLORS[type] || FLOW_FACE_COLORS.whole;
+    const p = {
+      ft:{x, y:y + oy},
+      rt:{x:x + sx, y:y + oy},
+      rb:{x:x + sx, y:y + oy + sz},
+      fb:{x, y:y + oy + sz},
+      bt:{x:x + ox, y},
+      br:{x:x + sx + ox, y},
+      bs:{x:x + sx + ox, y:y + sz},
+      bl:{x:x + ox, y:y + sz}
+    };
+    return `
+      <g>
+        <polygon points="${[p.rt,p.br,p.bs,p.rb].map(pointText).join(' ')}" fill="${colors.right}" stroke="#1e293b" stroke-width="1.25" stroke-linejoin="round"></polygon>
+        <polygon points="${[p.ft,p.rt,p.rb,p.fb].map(pointText).join(' ')}" fill="${colors.front}" stroke="#1e293b" stroke-width="1.25" stroke-linejoin="round"></polygon>
+        <polygon points="${[p.ft,p.bt,p.br,p.rt].map(pointText).join(' ')}" fill="${colors.top}" stroke="#1e293b" stroke-width="1.25" stroke-linejoin="round"></polygon>
+      </g>
+    `;
+  }
+
+  function orderedHandoutCuboids(cuboids) {
+    return FLOW_TYPES.flatMap(type => cuboids.filter(cuboid => cuboid.type === type));
+  }
+
+  function renderSeparatedHandoutSvg(cuboids) {
+    const blocks = orderedHandoutCuboids(cuboids);
+    const slots = [
+      {x:16,y:18,s:.94}, {x:112,y:22,s:.94}, {x:210,y:22,s:.94},
+      {x:30,y:102,s:.94}, {x:128,y:104,s:.94}, {x:224,y:104,s:.94},
+      {x:78,y:176,s:.94}, {x:204,y:184,s:1}
+    ];
+    return `
+      <svg class="cube-flow-svg" viewBox="0 0 310 250" role="img" aria-label="拆开后的八个封闭体积块">
+        ${blocks.map((cuboid, index) => {
+          const slot = slots[index];
+          return renderSolidCuboid(slot.x, slot.y, cuboid.dims, cuboid.type, slot.s);
+        }).join('')}
+      </svg>
+    `;
+  }
+
+  function renderGroupHandoutSvg(group) {
+    const slots = group.length === 1
+      ? [{x:94,y:5,s:.72}]
+      : [{x:30,y:7,s:.68}, {x:100,y:7,s:.68}, {x:170,y:7,s:.68}];
+    return `
+      <svg class="cube-flow-svg" viewBox="0 0 245 64" role="img" aria-label="同类体积块分组">
+        ${group.map((cuboid, index) => {
+          const slot = slots[index];
+          return renderSolidCuboid(slot.x, slot.y, cuboid.dims, cuboid.type, slot.s);
+        }).join('')}
+      </svg>
+    `;
+  }
+
+  function renderHandoutTerm(type, title, cuboids) {
+    const group = cuboids.filter(cuboid => cuboid.type === type);
+    return `
+      <div class="cube-handout-term">
+        <div class="cube-handout-term-name term-${type}">${title}</div>
+        <div class="cube-handout-term-svg">${renderGroupHandoutSvg(group)}</div>
+        <div class="cube-handout-term-count">${flowCountText(type)}</div>
+      </div>
+    `;
+  }
+
+  function renderHandoutDiagram(cuboids) {
+    const assembled = renderAssembledHandoutSvg();
+    const separated = renderSeparatedHandoutSvg(cuboids);
+    return `
+      <div class="cube-handout-wrap">
+        <div class="cube-handout-grid" role="img" aria-label="和的立方体积拆分图">
+          <article class="cube-handout-card">
+            <div class="cube-handout-head">
+              <span class="cube-handout-index">1</span>
+              <h4 class="cube-handout-heading">整体中的分块</h4>
+            </div>
+            <div class="cube-handout-visual">${assembled}</div>
+            <p class="cube-handout-caption">先看一个封闭的边长为 a+b 的立方体。颜色和分割线表示三个方向都按 a 与 b 切开后，对应的体积类型。</p>
+            <div class="cube-handout-note">整体体积是 <strong>(a+b)³</strong>，还没有把它拆开。</div>
+          </article>
+
+          <div class="cube-handout-arrow-line" aria-hidden="true"></div>
+
+          <article class="cube-handout-card">
+            <div class="cube-handout-head">
+              <span class="cube-handout-index">2</span>
+              <h4 class="cube-handout-heading">按比例拆成 8 块</h4>
+            </div>
+            <div class="cube-handout-visual cube-handout-visual--wide">${separated}</div>
+            <p class="cube-handout-caption">把这三个方向的分割真正拆开，就得到 8 个封闭的小长方体。每块仍按 a 与 b 的比例画出。</p>
+            <div class="cube-handout-counts">
+              <span class="term-a3">a³ × 1</span>
+              <span class="term-a2b">a²b × 3</span>
+              <span class="term-ab2">ab² × 3</span>
+              <span class="term-b3">b³ × 1</span>
+            </div>
+          </article>
+
+          <div class="cube-handout-arrow-line" aria-hidden="true"></div>
+
+          <article class="cube-handout-card">
+            <div class="cube-handout-head">
+              <span class="cube-handout-index">3</span>
+              <h4 class="cube-handout-heading">按同类体积分组</h4>
+            </div>
+            <div class="cube-handout-groups">
+              ${renderHandoutTerm('a3', 'a³', cuboids)}
+              ${renderHandoutTerm('a2b', '3a²b', cuboids)}
+              ${renderHandoutTerm('ab2', '3ab²', cuboids)}
+              ${renderHandoutTerm('b3', 'b³', cuboids)}
+            </div>
+            <div class="cube-handout-final">
+              (a+b)<sup>3</sup> =
+              <span class="term-a3">a<sup>3</sup></span> +
+              <span class="term-a2b">3a<sup>2</sup>b</span> +
+              <span class="term-ab2">3ab<sup>2</sup></span> +
+              <span class="term-b3">b<sup>3</sup></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    `;
+  }
+
+  function mountCubeExpansionFlow() {
+    const root = document.getElementById('cubeExpansionFlow');
+    if (!root) return;
+    const cuboids = createFlowCuboids();
+    root.innerHTML = renderHandoutDiagram(cuboids);
+  }
+
+  mountCubeExpansionFlow();
+
   const stageData = [
     {
-      title:'三个因式',
-      text:'(a+b)³ 有三个 a+b，体积的长、宽、高也正好是三个方向。',
+      title:'整体体积',
+      text:'(a+b)³ 表示三个 a+b 相乘，可以对应长、宽、高三个方向。',
       caption:'先把三个 a+b 放到长、宽、高三条边上。',
       tags:['长：a+b','宽：a+b','高：a+b'],
       formula:['(a+b)³ = (a+b) × (a+b) × (a+b)'],
       mode:'factors'
     },
     {
-      title:'边上分 a 和 b',
+      title:'边长分解',
       text:'先只在三条边上做 a | b 的标记，还没有真正切开。',
       caption:'每条边都是 a+b，所以每条边上都有 a 和 b 的分界点。',
       tags:['长：a | b','宽：a | b','高：a | b'],
@@ -253,7 +895,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       mode:'edgeSplit'
     },
     {
-      title:'三方向切分',
+      title:'三向切分',
       text:'现在从边上的分界点向立方体里面切。蓝、橙、紫三张切面分别对应长、宽、高。',
       caption:'先有边上的 a | b 分界，再从分界处向里面切。',
       tags:['蓝：长 a | b','橙：宽 a | b','紫：高 a | b'],
@@ -261,7 +903,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       mode:'cuts'
     },
     {
-      title:'得到 8 块',
+      title:'八块体积',
       text:'每个方向有 2 种选择，三个方向合起来就是 2×2×2=8 个小长方体。',
       caption:'2 × 2 × 2 = 8，先看见 8 块本身。',
       tags:['2 × 2 × 2 = 8'],
@@ -269,11 +911,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       mode:'blocks'
     },
     {
-      title:'拖动还原',
+      title:'体积复原',
       text:'切开以后，不急着一块块列体积。先拖动左侧模型，把分开的 8 块合回一个立方体，感受体积只是被重新分组。',
       caption:'按住模型横向拖动：向右合拢，向左分开。',
-      tags:['拖动还原','8 块 -> 1 个整体'],
-      formula:['拖动：分开 -> 合拢','体积没有变，只是位置改变'],
+      tags:['体积复原','8 块 -> 1 个整体'],
+      formula:['复原：分块 -> 合拢','体积没有变，只是位置改变'],
       mode:'restore'
     },
     {
@@ -290,7 +932,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       mode:'combine'
     },
     {
-      title:'得到最终公式',
+      title:'标准公式',
       text:'所以和的立方公式就是四类体积的总和。',
       caption:'最终公式对应四类体积：1,3,3,1。',
       tags:['a³：1 个','a²b：3 个','ab²：3 个','b³：1 个'],
@@ -708,7 +1350,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
         this.addLabel('8 块', new THREE.Vector3(0, 2.35, 0), '#111827', .9);
       }
       if (mode === 'restore') {
-        const label = this.restoreProgress > .86 ? '已合拢' : '拖动还原';
+        const label = this.restoreProgress > .86 ? '已合拢' : '体积复原';
         this.addLabel(label, new THREE.Vector3(0, 2.4, 0), '#111827', 1.02);
       }
       if (mode === 'final') {

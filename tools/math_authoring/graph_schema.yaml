@@ -1,0 +1,109 @@
+# DGOpenKS graph / number-line schema.
+# Use this when a practice item contains a graph, number line, interval diagram,
+# hole, endpoint, function zero, or sign region.
+
+schema_version: "0.1"
+
+required_fields:
+  - type
+  - source_expression
+  - coordinate_system
+  - marks
+  - labels
+  - consistency_checks
+
+field_definitions:
+  type:
+    description: Visual representation type.
+    allowed:
+      - number_line
+      - function_graph
+      - sign_chart
+      - area_model
+      - cube_model
+
+  source_expression:
+    description: Parser-friendly expression or formula behind the visual.
+    examples:
+      - "(x - 1)/(x + 2)"
+      - "(x - 1)*(x - 3)"
+      - "sqrt((x - 2)**2)"
+
+  coordinate_system:
+    description: Graph frame or number-line range.
+    children:
+      x_min: -6
+      x_max: 6
+      y_min: -4
+      y_max: 4
+      scale: linear
+
+  marks:
+    description: Mathematical marks that must be rendered consistently.
+    item_shapes:
+      zero:
+        kind: zero
+        x: "1"
+        included: true
+        visual: solid_point
+        color_role: green
+      forbidden_point:
+        kind: forbidden_point
+        x: "-2"
+        included: false
+        visual: open_point
+        color_role: red
+      hole:
+        kind: hole
+        x: "1"
+        y: "2"
+        included: false
+        visual: open_circle
+        color_role: red
+      interval:
+        kind: interval
+        from: "-oo"
+        to: "-2"
+        included_from: false
+        included_to: false
+        sign: positive
+        visible: true
+        color_role: green
+
+  labels:
+    description: Text labels shown on the graph. Labels must not contradict marks.
+    item_shape:
+      target: "-2"
+      text: "-2 禁点"
+      color_role: red
+
+  consistency_checks:
+    description: Machine-checkable expectations.
+    supported:
+      - every forbidden_point is excluded
+      - every strict endpoint is open
+      - every non-strict included zero is solid
+      - displayed positive intervals match sign analysis
+      - graph holes match original forbidden points after cancellation
+      - axis labels do not overlap critical marks
+
+color_roles:
+  blue: main object, base expression, exploration path
+  green: valid result, kept interval, confirmed conclusion
+  amber: parameter, candidate result, controllable quantity
+  purple: transformation or correspondence
+  red: forbidden point, rejected root, missing condition, error
+  gray: axis, inactive reference, guide line
+
+number_line_acceptance:
+  - Critical points are sorted left to right by numeric value.
+  - Forbidden points are never solid.
+  - A point can be both zero and forbidden only in advanced cases; the visual must mark it as forbidden.
+  - Interval shading must match the final solution set, not just a sign test before restrictions.
+
+function_graph_acceptance:
+  - The formula used for drawing is traceable to the problem expression.
+  - Domain restrictions are visible as gaps, holes, or excluded regions.
+  - If the original object and simplified object differ at a point, the graph must show the difference.
+  - Labels must identify whether a marked point is a zero, endpoint, hole, forbidden point, or candidate root.
+

@@ -645,6 +645,65 @@ Rules:
 
 A blog page must not become a dashboard of disconnected widgets.
 
+### HTML Page And Module Naming
+
+HTML page titles and module headings should read like a coherent textbook, not like chat messages, marketing slogans, UI button labels, or implementation notes.
+
+Page titles must be concise, professional, and pointed at the knowledge object. Do not use question-style titles when a precise knowledge title is possible. Do not force the purpose, method, motivation, and conclusion into the title.
+
+Use the title to name the object, and use the subtitle or first paragraph to explain what the page studies, what confusion it resolves, and what the learner should be able to do after reading.
+
+Recommended page-title patterns:
+
+```text
+知识对象
+知识对象：核心处理方式
+知识对象：公式推导与几何解析
+知识对象：结构判断与方法选择
+```
+
+Good examples:
+
+```text
+和的立方公式：公式推导与几何解析
+多项式变形
+因式分解
+多项式结构判断
+表达式条件与等价化简
+```
+
+Avoid page titles such as:
+
+```text
+为什么要学因式分解？
+再用立方体看这两个 3
+先看懂这个式子怎么变形
+用面积分清完全平方和平方法
+```
+
+Module headings should mark a conceptual turn in the learning path, not merely describe a visible widget. Prefer professional, learner-facing headings such as:
+
+```text
+公式推导：从三个因式相乘到展开式
+几何解析：立方体体积模型
+结构判断：先看式子属于哪一类
+方法说明：从加减形式到乘积形式
+条件追踪：化简前后哪些条件要保留
+核心结论
+```
+
+Avoid overly casual, vague, or UI-like module headings such as:
+
+```text
+先别急着背
+再看看这个图
+这里你会发现答案
+为什么会这样
+点一下试试看
+```
+
+Visible learner-facing HTML should not expose design or implementation vocabulary such as "交互模块", "流程图组件", "3D 模型展示", "方法树入口", or "练习树入口" unless that wording is itself the learner-facing product concept. Prefer names such as "相关方法", "配套练习", or "继续练习这个判断".
+
 ## HTML Page Prose Standard
 
 HTML page prose is derivative learner-facing prose.
@@ -1363,6 +1422,61 @@ Motion must respect reduced-motion preferences. When motion is reduced, the page
 Heavy visual components must provide loading, fallback, and error states. If a visualization fails, the page should still provide the core explanation, a static diagram or textual fallback when possible, and a clear message instead of a blank area.
 
 WebGL or 3D components must not be the only carrier of the concept.
+
+### Printable Static Diagrams
+
+When a concept relies on 3D, animation, staged interaction, or click-through states to become understandable, the HTML page should also provide a default-visible static diagram whenever practical. This diagram should work as a printed handout: a learner should still understand the main structure after printing the page or viewing it without interaction.
+
+A printable static diagram is not decoration. It is a compact teaching diagram that preserves the core reasoning path.
+
+It must satisfy:
+
+- the main idea is visible without clicking tabs, buttons, accordions, or carousel states;
+- the diagram still makes sense in print or screenshot form;
+- the visual parts, labels, and formula terms correspond directly;
+- text must not be placed on top of images, blocks, graphs, 3D objects, or important shapes. Reserve separate caption, label, or formula areas, or use leader lines with clear whitespace;
+- labels do not cover important shapes;
+- formulas are not clipped, overflowing, or too small to read;
+- color helps recognition, but the structure is not understandable only through color;
+- the diagram shows the mathematical sequence instead of only the final formula.
+
+Recommended sequence for formula or structure diagrams:
+
+```text
+整体对象
+-> 关键拆分
+-> 得到的部分
+-> 按结构分组
+-> 写成公式或结论
+```
+
+For formula diagrams, explicitly show:
+
+- which visual part corresponds to each formula term;
+- where coefficients come from;
+- which pieces are like terms or like structures;
+- why the grouped result matches the final formula.
+
+Example standard for `(a+b)^3`:
+
+```text
+1. 整体体积
+边长为 a+b 的立方体，对应 (a+b)^3。
+
+2. 拆分为 8 块
+沿长、宽、高三个方向分别切成 a 和 b，得到 2×2×2=8 块。
+
+3. 按同类项分组
+1 个 a^3
+3 个 a^2b
+3 个 ab^2
+1 个 b^3
+
+最后得到：
+(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3
+```
+
+Do not rely on an interactive 3D model as the only explanation of a formula's visual structure. The interactive model can help exploration, but the printable static diagram should carry the visible reasoning path.
 
 ### Browser Cleanliness And Failure Conditions
 

@@ -1,0 +1,116 @@
+{
+  "id": "RATIONAL_SIMPLIFY_CONDITION_001",
+  "title": "分式化简后保留原式禁点",
+  "stage": "初高中衔接",
+  "source": {
+    "chapter": "Chapter 04 分式根式与条件控制",
+    "file": "01_分式化简.md",
+    "section": "共同因子可以约掉，禁点不能约掉"
+  },
+  "object_type": "rational_expression",
+  "task_goal": "simplify",
+  "knowledge": [
+    "分式化简",
+    "原式条件",
+    "禁点保留"
+  ],
+  "method_nodes": [
+    "04_条件控制与等价化简"
+  ],
+  "practice_nodes": [
+    "04_条件检查练习",
+    "05_综合迁移练习"
+  ],
+  "error_tags": [
+    "domain-lost",
+    "range-expanded"
+  ],
+  "stem": "化简：$$\\frac{x^2-1}{x-1}$$",
+  "answer": "$$\\frac{x^2-1}{x-1}=x+1,\\quad x\\ne1$$",
+  "solution_steps": [
+    {
+      "step": "识别对象",
+      "content": "这是含分母的表达式，先看原分母条件。"
+    },
+    {
+      "step": "判断结构",
+      "content": "分子是平方差，原式可以分解出共同因子。"
+    },
+    {
+      "step": "执行方法",
+      "content": "在 x != 1 的前提下约掉共同因子 x-1。"
+    },
+    {
+      "step": "检查条件",
+      "content": "被约掉的因子仍然留下原式禁点 x != 1。"
+    }
+  ],
+  "checks": [
+    {
+      "type": "algebra_equivalence",
+      "lhs": "(x**2 - 1)/(x - 1)",
+      "rhs": "x + 1",
+      "variables": [
+        "x"
+      ]
+    }
+  ],
+  "conditions": {
+    "original": [
+      "x != 1"
+    ],
+    "result": [
+      "x != 1"
+    ],
+    "forbidden_points": [
+      "1"
+    ],
+    "must_preserve_original": true
+  },
+  "graph": {
+    "type": "function_graph",
+    "source_expression": "(x**2 - 1)/(x - 1)",
+    "coordinate_system": {
+      "x_min": -4,
+      "x_max": 4,
+      "y_min": -2,
+      "y_max": 6,
+      "scale": "linear"
+    },
+    "marks": [
+      {
+        "kind": "hole",
+        "x": "1",
+        "y": "2",
+        "included": false,
+        "visual": "open_circle",
+        "color_role": "red"
+      }
+    ],
+    "labels": [
+      {
+        "target": "1",
+        "text": "x=1 原式无意义",
+        "color_role": "red"
+      }
+    ],
+    "consistency_checks": [
+      "graph holes match original forbidden points after cancellation"
+    ]
+  },
+  "feedback": {
+    "correct": "化简形式正确，并且保留了原式禁点。",
+    "common_errors": [
+      {
+        "tag": "domain-lost",
+        "message": "形式化简正确，但原式条件丢失。",
+        "check": "回到原分母，找所有让分母为 0 的值。"
+      },
+      {
+        "tag": "range-expanded",
+        "message": "化简式允许的值被误认为原式也允许。",
+        "check": "比较原式条件和化简后条件是否一致。"
+      }
+    ]
+  }
+}

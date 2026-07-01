@@ -1,0 +1,184 @@
+# DGOpenKS practice problem schema.
+# This is the canonical shape for future structured practice items.
+# It is a specification file, not a concrete exercise.
+
+schema_version: "0.1"
+
+required_fields:
+  - id
+  - title
+  - stage
+  - source
+  - object_type
+  - task_goal
+  - knowledge
+  - method_nodes
+  - practice_nodes
+  - error_tags
+  - stem
+  - answer
+  - solution_steps
+  - checks
+  - feedback
+
+field_definitions:
+  id:
+    description: Stable unique id.
+    example: BRIDGE_POLY_FACTOR_001
+
+  title:
+    description: Learner-facing short title.
+    example: 二次三项式因式分解
+
+  stage:
+    description: Course stage or content group.
+    allowed:
+      - 初高中衔接
+
+  source:
+    description: Traceability back to knowledge-tree content.
+    required_children:
+      - chapter
+      - file
+      - section
+
+  object_type:
+    description: What mathematical object is being handled.
+    allowed:
+      - expression
+      - equation
+      - inequality
+      - function
+      - rational_expression
+      - radical_expression
+      - parameter_family
+
+  task_goal:
+    description: What the learner is being asked to do.
+    allowed:
+      - identify_object
+      - judge_structure
+      - expand
+      - factor
+      - simplify
+      - solve_equation
+      - solve_inequality
+      - find_zeros
+      - judge_sign
+      - preserve_conditions
+      - diagnose_error
+
+  knowledge:
+    description: Knowledge points from the knowledge tree.
+    item_type: string
+
+  method_nodes:
+    description: Method-tree nodes used by the problem.
+    allowed:
+      - 01_对象识别
+      - 02_公式与结构判断
+      - 03_多项式变形与因式分解
+      - 04_条件控制与等价化简
+      - 05_方程不等式与解集追踪
+
+  method_ids:
+    description: Stable method-tree IDs from method_tree/初高中衔接知识/node_id_registry.md.
+    allowed:
+      - M_BRIDGE_001
+      - M_BRIDGE_002
+      - M_BRIDGE_003
+      - M_BRIDGE_004
+      - M_BRIDGE_005
+
+  practice_nodes:
+    description: Practice-tree nodes trained by the problem.
+    allowed:
+      - 01_对象识别练习
+      - 02_结构判断练习
+      - 03_方法执行练习
+      - 04_条件检查练习
+      - 05_综合迁移练习
+
+  practice_ids:
+    description: Stable practice-tree IDs from method_tree/初高中衔接知识/node_id_registry.md.
+    allowed:
+      - P_BRIDGE_001
+      - P_BRIDGE_002
+      - P_BRIDGE_003
+      - P_BRIDGE_004
+      - P_BRIDGE_005
+
+  error_tags:
+    description: Common error tags from method_tree/初高中衔接知识/common_error_tags.md.
+    item_type: string
+
+  error_ids:
+    description: Stable high-level error IDs from method_tree/初高中衔接知识/node_id_registry.md.
+    item_type: string
+
+  stem:
+    description: Learner-facing question text. Markdown math is allowed.
+
+  answer:
+    description: Learner-facing final answer. Conditions must be included when relevant.
+
+  solution_steps:
+    description: The reasoning path, not only calculations.
+    required_step_names:
+      - 识别对象
+      - 判断结构
+      - 执行方法
+      - 检查条件
+
+  checks:
+    description: Machine-readable checks. LaTeX is for display; checks use parser-friendly expressions.
+    item_shapes:
+      algebra_equivalence:
+        type: algebra_equivalence
+        lhs: "x**2 - 5*x + 6"
+        rhs: "(x - 2)*(x - 3)"
+        variables: ["x"]
+      equation_solution:
+        type: equation_solution
+        equation: "sqrt(x + 1) - (x - 1)"
+        variables: ["x"]
+        domain: "Reals"
+        candidate_solutions: ["0", "3"]
+        final_solutions: ["3"]
+      inequality_solution:
+        type: inequality_solution
+        expression: "(x - 1)/(x + 2)"
+        relation: ">="
+        rhs: "0"
+        variables: ["x"]
+        solution_set: "(-oo, -2) U [1, oo)"
+
+  conditions:
+    description: Conditions are separate from algebra equivalence.
+    children:
+      original:
+        description: Conditions required by the original object.
+        example: ["x != 1"]
+      result:
+        description: Conditions that must remain attached to the final expression.
+        example: ["x != 1"]
+      forbidden_points:
+        description: Values that can never enter the answer.
+        example: ["1"]
+      must_preserve_original:
+        description: True when a simplification may hide an original restriction.
+        example: true
+
+  graph:
+    description: Optional graph or number-line specification. See graph_schema.yaml.
+
+  feedback:
+    description: Feedback should identify the error layer and next check.
+    required_children:
+      - correct
+      - common_errors
+
+feedback_common_error_shape:
+  tag: domain-lost
+  message: 形式化简正确，但原式条件丢失。
+  check: 先看原分母是否为 0。

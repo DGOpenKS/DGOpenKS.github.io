@@ -3,10 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立方和 | DGOpenKS</title>
+<title>立方和公式：切割重排与因式分解 | DGOpenKS</title>
 <style>
-:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}a{color:inherit}.math{font-family:Georgia,"Times New Roman",serif;font-weight:800;white-space:nowrap}.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:1080px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}.topbar-inner::-webkit-scrollbar{display:none}.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}.hero{max-width:1080px;margin:auto;padding:42px 20px 26px}.eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}h2{font-size:clamp(1.3rem,2.3vw,1.85rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}p{margin:0 0 12px}.lead{max-width:820px;color:#334155;font-size:1rem;line-height:1.9}main{max-width:1080px;margin:auto;padding:0 20px 84px}.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:46px 0;border-top:1px solid var(--line);scroll-margin-top:70px}.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}.section-body{min-width:0;max-width:850px}.formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}.note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue);margin:14px 0}.example{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:16px 0}.model-lab{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(290px,.94fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:20px 0}.model-scene{position:relative;min-height:430px;background:linear-gradient(#e8eef7 1px,transparent 1px),linear-gradient(90deg,#e8eef7 1px,transparent 1px),var(--soft);background-size:30px 30px}.model-scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}.model-scene canvas:active{cursor:grabbing}.model-loader,.model-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-weight:900;background:rgba(248,250,252,.74);z-index:2}.model-loader[hidden],.model-fallback[hidden],.model-control[hidden]{display:none}.model-tags{position:absolute;left:12px;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:3;pointer-events:none}.model-tags span{font-size:.78rem;font-weight:900;color:#334155;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:999px;padding:4px 8px;box-shadow:0 4px 12px rgba(15,23,42,.08)}.model-caption{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:var(--radius);padding:8px 10px;color:#334155;font-weight:900;font-size:.86rem;box-shadow:0 8px 18px rgba(15,23,42,.08)}.model-panel{padding:16px;display:grid;gap:12px;align-content:start}.model-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.model-step{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-height:42px;padding:8px 10px;font-weight:900;cursor:pointer}.model-step[aria-pressed=true],.model-step:hover,.model-step:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}.model-range{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;font-weight:900;color:#334155}.model-range input{width:100%;accent-color:var(--blue)}.model-formula{display:grid;gap:7px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;overflow:auto}.next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}@media(max-width:780px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}@media(max-width:620px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}}
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--grid:#e8eef7;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--red:#dc2626;--red-soft:#fef2f2;--red-line:#fecaca;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
+a{color:inherit}
+.math{font-family:Georgia,"Times New Roman",serif;font-weight:800;white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}
+.topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
+.eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}
+h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}
+h2{font-size:clamp(1.35rem,2.45vw,1.95rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}
+h3{font-size:1.12rem;margin:0 0 8px}
+p{margin:0 0 12px}
+h1,h2,h3,p,.lead,.note,.static-lead{overflow-wrap:anywhere}
+.title-rest{display:inline}
+.lead{max-width:880px;color:#334155;font-size:1rem;line-height:1.9}
+main{max-width:1180px;margin:auto;padding:0 20px 90px}
+.section{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;padding:54px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}
+.section-body{min-width:0}
+.prose{max-width:860px}
+.formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
+.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
+.recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.recognition-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+.recognition-card strong{display:block;margin-bottom:6px}
+.model-lab{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(290px,.94fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:20px 0}
+.model-scene{position:relative;min-height:430px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
+.model-scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.model-scene canvas:active{cursor:grabbing}
+.model-loader,.model-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-weight:900;background:rgba(248,250,252,.74);z-index:2}
+.model-loader[hidden],.model-fallback[hidden],.model-control[hidden]{display:none}
+.model-tags{position:absolute;left:12px;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:3;pointer-events:none}
+.model-tags span{font-size:.78rem;font-weight:900;color:#334155;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:999px;padding:4px 8px;box-shadow:0 4px 12px rgba(15,23,42,.08)}
+.model-caption{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:var(--radius);padding:8px 10px;color:#334155;font-weight:900;font-size:.86rem;box-shadow:0 8px 18px rgba(15,23,42,.08)}
+.model-panel{padding:16px;display:grid;gap:12px;align-content:start}
+.model-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.model-step{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-height:42px;padding:8px 10px;font-weight:900;cursor:pointer}
+.model-step[aria-pressed=true],.model-step:hover,.model-step:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
+.model-range{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;font-weight:900;color:#334155}
+.model-range input{width:100%;accent-color:var(--blue)}
+.model-formula{display:grid;gap:7px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;overflow:auto}
+.static-figure{margin:22px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;break-inside:avoid}
+.static-figure h3{color:var(--blue);font-size:1.2rem}
+.static-lead{max-width:880px;color:#334155}
+.cancel-map{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:10px;overflow:hidden;break-inside:avoid}
+.cube-sum-svg{display:block;width:100%;height:auto;background:#fff}
+.term-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.term{min-height:76px;border:1px solid var(--line);border-radius:var(--radius);display:grid;place-items:center;text-align:center;padding:8px;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:900;box-shadow:0 8px 18px rgba(15,23,42,.04)}
+.term.positive{background:var(--blue-soft);border-color:var(--blue-line);color:var(--blue-deep)}
+.term.negative{background:var(--red-soft);border-color:var(--red-line);color:var(--red)}
+.pair-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pair{border:1px dashed var(--green);border-radius:var(--radius);background:var(--green-soft);padding:12px;text-align:center;font-weight:900;color:#166534}
+.result-box{border:1px solid var(--blue-line);background:var(--blue-soft);border-radius:var(--radius);padding:14px;text-align:center}
+.result-box .math{font-size:1.2rem}
+.next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:820px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
+@media(max-width:1180px){.title-rest{display:block}}
+@media(max-width:900px){body{max-width:100%;overflow-x:hidden}.hero,main{width:100%;max-width:100%;padding-left:14px;padding-right:14px;overflow:hidden}.hero{padding-top:36px}h1{max-width:calc(100vw - 28px);font-size:1.72rem;line-height:1.28;word-break:break-all}.lead{max-width:calc(100vw - 28px);font-size:.95rem}.section-body,.prose{max-width:100%;min-width:0}.derivation,.math{white-space:normal}.formula-card{padding:14px}.recognition,.pair-row{grid-template-columns:1fr}.term-row{grid-template-columns:repeat(2,minmax(0,1fr))}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.cancel-map{max-width:100%;overflow:hidden}.cube-sum-svg{width:100%;max-width:none}}
+@media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card{box-shadow:none}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}.cube-sum-svg{width:100%;max-width:none}}
 </style>
 </head>
 <body>
@@ -15,95 +81,337 @@
     <a class="brand" href="../../index.html">DGOpenKS</a>
     <a class="nav-link" href="./">章节入口</a>
     <a class="nav-link" href="02_差的立方.html">差的立方</a>
-    <a class="nav-link" href="04_立方差.html">立方差</a>
+    <a class="nav-link" href="#recognize">结构识别</a>
+    <a class="nav-link" href="#derive">公式推导</a>
+    <a class="nav-link" href="#model">几何模型</a>
+    <a class="nav-link" href="04_立方差.html">下一篇</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 03</span>
-  <h1>立方和</h1>
-  <p class="lead"><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 是两个完整立方相加，目标是分解。关键不是一眼猜出因子，而是先找到自然的一次因子，再让二次因子的中间项承担抵消任务。</p>
+  <h1>立方和公式：<span class="title-rest">切割重排与因式分解</span></h1>
+  <p class="lead"><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 是两个完整立方相加，目标是把它分解成乘积。代数上先找到一次因子 <span class="math">a+b</span>；几何上先按 <span class="math">b&gt;a</span> 来看，把小立方 <span class="math">a<sup>3</sup></span> 放到大立方 <span class="math">b<sup>3</sup></span> 上，再沿边切下体积为 <span class="math">ab(b-a)</span> 的长方体并搬到上方，让整体出现共同高度 <span class="math">a+b</span>。</p>
 </header>
 
 <main>
   <section class="section" id="recognize">
-    <div class="marker" aria-hidden="true"><span>01</span>先判断对象</div>
+    <div class="marker" aria-hidden="true"><span>01</span>结构识别</div>
     <div class="section-body">
-      <h2>两端都要是完整立方</h2>
-      <p>能用立方和公式，首先要看两端是否都能写成三次方。</p>
-      <div class="example">
-        <p><span class="math">x<sup>3</sup>+27</span> 可以看成 <span class="math">x<sup>3</sup>+3<sup>3</sup></span>，所以是立方和。</p>
-        <p><span class="math">x<sup>3</sup>+9</span> 在当前整式因式分解范围内不能直接看成立方和。</p>
+      <div class="prose">
+        <h2>结构识别：两端都要是完整立方</h2>
+        <p>能使用立方和公式，首先要看两端是否都能写成三次方。</p>
+        <div class="recognition">
+          <div class="recognition-card">
+            <strong>可以看成立方和</strong>
+            <p><span class="math">x<sup>3</sup>+27=x<sup>3</sup>+3<sup>3</sup></span></p>
+          </div>
+          <div class="recognition-card">
+            <strong>当前不能直接套用</strong>
+            <p><span class="math">x<sup>3</sup>+9</span> 不是两个可直接写出的整式立方相加。</p>
+          </div>
+        </div>
+        <p>第一步先判断对象：它是不是两个完整立方相加？</p>
       </div>
-      <p>这一步先分清对象：它不是 <span class="math">(a+b)<sup>3</sup></span>，所以不要展开成四项。</p>
     </div>
   </section>
 
   <section class="section" id="derive">
-    <div class="marker" aria-hidden="true"><span>02</span>推出公式</div>
+    <div class="marker" aria-hidden="true"><span>02</span>公式推导</div>
     <div class="section-body">
-      <h2>先找一次因子，再设中间项</h2>
-      <p>一次因子不是凭空猜出来的。先问：<span class="math">a<sup>3</sup>+b<sup>3</sup></span> 什么时候会等于 <span class="math">0</span>？</p>
-      <div class="formula-card">
-        <div class="derivation">
-          <span>如果 b = -a</span>
-          <span>a<sup>3</sup> + (-a)<sup>3</sup> = 0</span>
-          <span>b = -a，也就是 a+b = 0</span>
+      <div class="prose">
+        <h2>公式推导：设中间项并让混合项消失</h2>
+        <p>先看 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 什么时候等于 0。如果 <span class="math">b=-a</span>，原式就为 0，而 <span class="math">b=-a</span> 等价于 <span class="math">a+b=0</span>，所以先尝试一次因子 <span class="math">a+b</span>。</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
+            <span>(a+b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
+            <span>= a<sup>3</sup> + ka<sup>2</sup>b + ab<sup>2</sup> + a<sup>2</sup>b + kab<sup>2</sup> + b<sup>3</sup></span>
+            <span>= a<sup>3</sup> + (k+1)a<sup>2</sup>b + (k+1)ab<sup>2</sup> + b<sup>3</sup></span>
+            <span>k + 1 = 0，所以 k = -1</span>
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup> - ab + b<sup>2</sup>)</span>
+          </div>
         </div>
+        <div class="note">二次因子的中间项是 <span class="math">-ab</span>，因为它负责抵消乘回去时出现的两类混合项。</div>
       </div>
-      <p>所以分解时最自然先尝试的一次因子是 <span class="math">a+b</span>。这还不是最终公式，只是找到一个候选因子；接下来要乘回去检查它是否真的合适。</p>
-      <p>拿出一次因子 <span class="math">a+b</span> 后，剩下的因子应是二次式。要乘出首项 <span class="math">a<sup>3</sup></span>，二次因子的首项应是 <span class="math">a<sup>2</sup></span>；要乘出末项 <span class="math">b<sup>3</sup></span>，末项应是 <span class="math">b<sup>2</sup></span>。中间项还不知道，先写成 <span class="math">kab</span>。</p>
-      <div class="formula-card">
-        <div class="derivation">
-          <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
-          <span>(a+b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
-          <span>= a<sup>3</sup> + ka<sup>2</sup>b + ab<sup>2</sup> + a<sup>2</sup>b + kab<sup>2</sup> + b<sup>3</sup></span>
-          <span>= a<sup>3</sup> + (k+1)a<sup>2</sup>b + (k+1)ab<sup>2</sup> + b<sup>3</sup></span>
-        </div>
-      </div>
-      <p>左边只有 <span class="math">a<sup>3</sup></span> 和 <span class="math">b<sup>3</sup></span>，所以混合项必须消失：</p>
-      <div class="formula-card">
-        <div class="derivation">
-          <span>k + 1 = 0</span>
-          <span>k = -1</span>
-          <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup> - ab + b<sup>2</sup>)</span>
-        </div>
-      </div>
-      <div class="note">二次因子的中间项是 <span class="math">-ab</span>，因为它负责抵消乘回去出现的两类混合项。</div>
     </div>
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>03</span>抵消模型</div>
+    <div class="marker" aria-hidden="true"><span>03</span>几何模型</div>
     <div class="section-body">
-      <h2>把乘开后的混合项拖到一起</h2>
-      <p>右边乘开后会出现六个体积项。真正决定公式的是两对混合项：一个正的和一个负的同形体积块相互抵消，最后只剩 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。</p>
-      <div class="model-lab" id="cubeSumModel" data-label="立方和公式正负体积块抵消模型"></div>
+      <h2>几何模型：切割重排看共同高度</h2>
+      <p class="prose">直接摆两个立方体，很难看出为什么会出现因子 <span class="math">a+b</span>。图中先按 <span class="math">b&gt;a</span> 来看：把小立方 <span class="math">a<sup>3</sup></span> 放到大立方 <span class="math">b<sup>3</sup></span> 上面；从大立方沿边切下一块体积为 <span class="math">ab(b-a)</span> 的长方体，再把它搬到剩余图形的上方。这样重排后，新立体的高度就是 <span class="math">a+b</span>。</p>
+      <div class="model-lab" id="cubeSumModel" data-label="立方和公式切割重排模型"></div>
+
+      <div class="static-figure" id="print-cancel">
+        <h3>体积重排：看见共同高度</h3>
+        <p class="static-lead">先看 <span class="math">b&gt;a</span> 的情形：把小立方 <span class="math">a<sup>3</sup></span> 叠在大立方 <span class="math">b<sup>3</sup></span> 的上方角落；从 <span class="math">b<sup>3</sup></span> 的边上切下一块体积为 <span class="math">ab(b-a)</span> 的长方体，再把它搬到剩余部分上方。重排后，新立体可以按共同高度 <span class="math">a+b</span> 来计算体积。</p>
+        <div class="cancel-map" aria-label="立方和公式体积重排图">
+          <svg class="cube-sum-svg" id="cubeSumHandout" viewBox="0 0 1100 680" role="img" aria-label="立方和体积重排图：a³ 叠在 b³ 上方，切下 ab(b-a) 并重排出共同高度 a+b"></svg>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="example">
-    <div class="marker" aria-hidden="true"><span>04</span>例子检查</div>
+  <section class="section" id="summary">
+    <div class="marker" aria-hidden="true"><span>04</span>核心结论</div>
     <div class="section-body">
-      <h2>分解 x³ + 27</h2>
-      <p>先写成立方和：</p>
-      <div class="formula-card">
-        <div class="derivation">
-          <span>x<sup>3</sup> + 27 = x<sup>3</sup> + 3<sup>3</sup></span>
-          <span>= (x+3)(x<sup>2</sup> - 3x + 9)</span>
+      <div class="prose">
+        <h2>核心结论</h2>
+        <p>立方和的分解公式是：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup> + b<sup>3</sup> = (a+b)(a<sup>2</sup> - ab + b<sup>2</sup>)</span>
+          </div>
         </div>
+        <p>一次因子 <span class="math">a+b</span> 来自“当 <span class="math">a+b=0</span> 时原式为 0”；二次因子里的 <span class="math">-ab</span> 可以从混合项抵消看出，也可以从重排后的底面积看出：<span class="math">b(b-a)+a<sup>2</sup>=a<sup>2</sup>-ab+b<sup>2</sup></span>。</p>
+        <a class="next" href="04_立方差.html">下一篇：立方差</a>
       </div>
-      <p>乘回去检查时，<span class="math">3x<sup>2</sup></span> 与 <span class="math">-3x<sup>2</sup></span> 抵消，<span class="math">9x</span> 与 <span class="math">-9x</span> 抵消，最后只剩 <span class="math">x<sup>3</sup>+27</span>。</p>
-      <a class="next" href="04_立方差.html">下一篇：立方差</a>
     </div>
   </section>
 </main>
 
-<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 立方和</footer>
+<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 立方和公式</footer>
 <script src="./assets/three.min.js"></script>
 <script src="./assets/formula-3d-models.js"></script>
 <script>
   DGFormulaModels.initCubeSum('cubeSumModel');
+
+  (() => {
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('cubeSumHandout');
+    if (!svg) return;
+
+    const node = (name, attrs = {}) => {
+      const el = document.createElementNS(svgNS, name);
+      Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+      return el;
+    };
+    const appendText = (parent, text, x, y, attrs = {}) => {
+      const el = node('text', {
+        x,
+        y,
+        'font-family': attrs.family || 'Noto Sans SC, Microsoft YaHei, sans-serif',
+        'font-size': attrs.size || 16,
+        'font-weight': attrs.weight || 850,
+        fill: attrs.fill || '#0f172a',
+        'text-anchor': attrs.anchor || 'start',
+        'dominant-baseline': attrs.baseline || 'middle'
+      });
+      el.textContent = text;
+      parent.appendChild(el);
+      return el;
+    };
+    const appendFormula = (parent, text, x, y, attrs = {}) => appendText(parent, text, x, y, {
+      family:'Georgia, Times New Roman, serif',
+      size:attrs.size || 18,
+      weight:attrs.weight || 900,
+      fill:attrs.fill || '#0f172a',
+      anchor:attrs.anchor || 'start'
+    });
+    const point = p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
+    const poly = (parent, points, fill, stroke = '#1e293b', opacity = 1) => {
+      parent.appendChild(node('polygon', {
+        points:points.map(point).join(' '),
+        fill,
+        stroke,
+        'stroke-width':1.25,
+        'stroke-linejoin':'round',
+        opacity
+      }));
+    };
+    const colors = {
+      a3:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1e3a8a', text:'#1f4fbf'},
+      b3:{top:'#a5f3fc', front:'#22d3ee', side:'#0891b2', stroke:'#0e7490', text:'#0891b2'},
+      mx:{top:'#fed7aa', front:'#fb923c', side:'#ea580c', stroke:'#9a3412', text:'#c2410c'},
+      my:{top:'#ddd6fe', front:'#a78bfa', side:'#7c3aed', stroke:'#5b21b6', text:'#6d28d9'},
+      mz:{top:'#fecaca', front:'#f87171', side:'#ef4444', stroke:'#991b1b', text:'#b91c1c'},
+      main:{top:'#bbf7d0', front:'#34d399', side:'#059669', stroke:'#047857', text:'#047857'},
+      guide:{top:'#e2e8f0', front:'#cbd5e1', side:'#94a3b8', stroke:'#64748b', text:'#475569'}
+    };
+    const shade = (key, face) => colors[key][face];
+    const drawPanel = (x, y, w, h, title, index) => {
+      svg.appendChild(node('rect', {x, y, width:w, height:h, rx:16, fill:'#fff', stroke:'#cbd5e1', 'stroke-width':1.4}));
+      svg.appendChild(node('circle', {cx:x + 38, cy:y + 42, r:24, fill:'#3b6fea'}));
+      appendText(svg, index, x + 38, y + 44, {size:24, weight:900, fill:'#fff', anchor:'middle'});
+      appendText(svg, title, x + 72, y + 42, {size:19, weight:900, fill:'#0f172a'});
+    };
+    const drawArrow = (x1, y, x2) => {
+      svg.appendChild(node('path', {
+        d:`M${x1} ${y} H${x2}`,
+        fill:'none',
+        stroke:'#94a3b8',
+        'stroke-width':4,
+        'stroke-linecap':'round',
+        'marker-end':'url(#sumArrow)'
+      }));
+    };
+    const project = (origin, x, y, z) => ({
+      x:origin.x + (x - y) * .72 * origin.scale,
+      y:origin.y + (x + y) * .36 * origin.scale - z * .82 * origin.scale
+    });
+    const drawIsoCuboid = (parent, origin, range, colorKey, opts = {}) => {
+      const [x0, x1, y0, y1, z0, z1] = range;
+      const off = opts.offset || [0,0,0];
+      const p = (x, y, z) => project(origin, x + off[0], y + off[1], z + off[2]);
+      const faceOpacity = opts.opacity ?? 1;
+      poly(parent, [p(x1,y0,z0), p(x1,y1,z0), p(x1,y1,z1), p(x1,y0,z1)], shade(colorKey, 'side'), colors[colorKey].stroke, faceOpacity);
+      poly(parent, [p(x0,y0,z0), p(x1,y0,z0), p(x1,y0,z1), p(x0,y0,z1)], shade(colorKey, 'front'), colors[colorKey].stroke, faceOpacity);
+      poly(parent, [p(x0,y0,z1), p(x1,y0,z1), p(x1,y1,z1), p(x0,y1,z1)], shade(colorKey, 'top'), colors[colorKey].stroke, faceOpacity);
+      if (opts.label) {
+        const c = p((x0 + x1) / 2, y0, (z0 + z1) / 2);
+        appendFormula(parent, opts.label, c.x, c.y, {size:opts.labelSize || 16, fill:colors[colorKey].text, anchor:'middle'});
+      }
+    };
+    const drawLegend = (x, y, colorKey, text) => {
+      svg.appendChild(node('rect', {x, y:y - 8, width:16, height:16, rx:3, fill:shade(colorKey, 'front'), stroke:colors[colorKey].stroke, 'stroke-width':1}));
+      appendText(svg, text, x + 24, y, {size:13, weight:850, fill:'#334155'});
+    };
+    const drawBarCuboid = (parent, x, y, w, h, d, colorKey, label, opts = {}) => {
+      const ox = d * .52;
+      const oy = d * .32;
+      const c = colors[colorKey];
+      const ft = {x, y:y + oy};
+      const rt = {x:x + w, y:y + oy};
+      const rb = {x:x + w, y:y + oy + h};
+      const fb = {x, y:y + oy + h};
+      const bt = {x:x + ox, y};
+      const br = {x:x + w + ox, y};
+      const bs = {x:x + w + ox, y:y + h};
+      poly(parent, [rt, br, bs, rb], c.side, c.stroke, opts.opacity ?? 1);
+      poly(parent, [ft, rt, rb, fb], c.front, c.stroke, opts.opacity ?? 1);
+      poly(parent, [ft, bt, br, rt], c.top, c.stroke, opts.opacity ?? 1);
+      if (label) appendFormula(parent, label, x + w / 2 + ox * .25, y + oy + h / 2, {size:opts.size || 15, fill:opts.fill || c.text, anchor:'middle'});
+    };
+    const defs = node('defs');
+    const arrow = node('marker', {id:'sumArrow', viewBox:'0 0 10 10', refX:8, refY:5, markerWidth:7, markerHeight:7, orient:'auto-start-reverse'});
+    arrow.appendChild(node('path', {d:'M0 0 L10 5 L0 10 Z', fill:'#94a3b8'}));
+    defs.appendChild(arrow);
+    svg.appendChild(defs);
+
+    const drawHeightGuide = (x, y1, y2, label, colorKey = 'guide') => {
+      svg.appendChild(node('path', {d:`M${x} ${y1} V${y2}`, fill:'none', stroke:colors[colorKey].stroke, 'stroke-width':2.2, 'stroke-linecap':'round'}));
+      svg.appendChild(node('path', {d:`M${x - 9} ${y1} H${x + 9} M${x - 9} ${y2} H${x + 9}`, fill:'none', stroke:colors[colorKey].stroke, 'stroke-width':2.2, 'stroke-linecap':'round'}));
+      appendFormula(svg, label, x + 18, (y1 + y2) / 2, {size:16, fill:colors[colorKey].text});
+    };
+    const formulaBox = (x, y, w, h, lines, fill = '#eef4ff') => {
+      svg.appendChild(node('rect', {x, y, width:w, height:h, rx:9, fill, stroke:'#c7d8ff', 'stroke-width':1.3}));
+      lines.forEach((line, index) => appendFormula(svg, line, x + w / 2, y + 18 + index * 22, {size:index ? 15 : 15.5, anchor:'middle', fill:index ? '#1f4fbf' : '#0f172a'}));
+    };
+
+    const textBlock = (x, y, lines, color = '#334155') => {
+      lines.forEach((line, index) => appendText(svg, line, x, y + index * 23, {size:14, weight:760, fill:color}));
+    };
+    const innerFrame = (x, y, w, h) => {
+      svg.appendChild(node('rect', {x, y, width:w, height:h, rx:10, fill:'#fff', stroke:'#dbe5f2', 'stroke-width':1.2}));
+    };
+    const smallPill = (x, y, text, colorKey) => {
+      svg.appendChild(node('rect', {x, y, width:72, height:30, rx:7, fill:'#fff', stroke:colors[colorKey].stroke, 'stroke-width':1.1}));
+      appendFormula(svg, text, x + 36, y + 16, {size:14, fill:colors[colorKey].text, anchor:'middle'});
+    };
+    const guideLine = (x1, y1, x2, y2, label, color = '#475569') => {
+      svg.appendChild(node('path', {
+        d:`M${x1} ${y1} L${x2} ${y2}`,
+        fill:'none',
+        stroke:color,
+        'stroke-width':1.8,
+        'stroke-linecap':'round'
+      }));
+      appendFormula(svg, label, (x1 + x2) / 2, (y1 + y2) / 2 - 14, {size:14, fill:color, anchor:'middle'});
+    };
+    const drawSolidBlock = (x, y, w, h, d, colorKey, label, opts = {}) => {
+      const c = colors[colorKey];
+      const dx = opts.dx ?? d * .62;
+      const dy = opts.dy ?? -d * .38;
+      const opacity = opts.opacity ?? 1;
+      const top = [
+        {x, y},
+        {x:x + dx, y:y + dy},
+        {x:x + w + dx, y:y + dy},
+        {x:x + w, y}
+      ];
+      const side = [
+        {x:x + w, y},
+        {x:x + w + dx, y:y + dy},
+        {x:x + w + dx, y:y + h + dy},
+        {x:x + w, y:y + h}
+      ];
+      const front = [
+        {x, y},
+        {x:x + w, y},
+        {x:x + w, y:y + h},
+        {x, y:y + h}
+      ];
+      if (opts.shadow !== false) {
+        svg.appendChild(node('ellipse', {
+          cx:x + w / 2 + dx * .55,
+          cy:y + h + 18,
+          rx:Math.max(22, w * .46),
+          ry:9,
+          fill:'#0f172a',
+          opacity:.08
+        }));
+      }
+      poly(svg, side, c.side, c.stroke, opacity);
+      poly(svg, top, c.top, c.stroke, opacity);
+      poly(svg, front, c.front, c.stroke, opacity);
+      if (label) {
+        appendFormula(svg, label, x + w / 2, y + h / 2 + 2, {
+          size:opts.labelSize || 16,
+          fill:opts.labelFill || '#0f172a',
+          anchor:'middle'
+        });
+      }
+    };
+
+    svg.appendChild(node('rect', {x:18, y:18, width:1064, height:640, rx:16, fill:'#fff', stroke:'#cbd5e1', 'stroke-width':1.4}));
+    drawPanel(34, 42, 320, 576, '叠放两个立方', '1');
+    drawPanel(390, 42, 320, 576, '移动切块', '2');
+    drawPanel(746, 42, 320, 576, '出现共同高度', '3');
+    drawArrow(360, 330, 382);
+    drawArrow(716, 330, 738);
+    innerFrame(58, 112, 270, 300);
+    innerFrame(414, 112, 270, 300);
+    innerFrame(770, 112, 270, 300);
+
+    appendFormula(svg, 'b>a', 194, 150, {size:14, fill:'#64748b', anchor:'middle'});
+    drawSolidBlock(110, 244, 118, 118, 48, 'main', 'b³', {labelSize:20, opacity:.96});
+    drawSolidBlock(198, 182, 58, 58, 25, 'a3', 'a³', {labelSize:16, opacity:.96});
+    drawSolidBlock(224, 256, 44, 92, 24, 'mz', 'ab(b-a)', {labelSize:11, opacity:.9});
+    guideLine(86, 362, 206, 362, 'b', '#475569');
+    guideLine(86, 362, 86, 244, 'b', '#475569');
+    drawLegend(86, 440, 'main', '大立方 b³');
+    drawLegend(210, 440, 'a3', '小立方 a³');
+    drawLegend(86, 472, 'mz', '切块 ab(b-a)');
+    formulaBox(84, 530, 220, 52, ['a³+b³ = 剩余体积 + 切块']);
+
+    drawSolidBlock(486, 252, 56, 124, 26, 'main', '', {opacity:.95});
+    drawSolidBlock(544, 252, 58, 92, 26, 'a3', 'a³', {labelSize:14, opacity:.96});
+    drawSolidBlock(505, 170, 124, 44, 27, 'mz', 'ab(b-a)', {labelSize:12, opacity:.9});
+    svg.appendChild(node('path', {
+      d:'M626 170 C672 154 682 198 646 224',
+      fill:'none',
+      stroke:'#ef4444',
+      'stroke-width':2.2,
+      'stroke-dasharray':'6 5',
+      'marker-end':'url(#sumArrow)'
+    }));
+    appendText(svg, '切块搬到剩余体上方', 548, 432, {size:14, weight:850, fill:'#b91c1c', anchor:'middle'});
+    smallPill(452, 474, 'a³', 'a3');
+    smallPill(532, 474, 'ab(b-a)', 'mz');
+    smallPill(632, 474, '剩余体', 'main');
+    formulaBox(440, 530, 220, 58, ['切块体积 = ab(b-a)', '搬移不改变体积'], '#fff7ed');
+
+    drawSolidBlock(860, 264, 56, 114, 26, 'main', '', {opacity:.96});
+    drawSolidBlock(916, 264, 58, 114, 26, 'a3', '', {opacity:.96});
+    drawSolidBlock(860, 218, 114, 46, 26, 'mz', '', {opacity:.9});
+    drawHeightGuide(1014, 194, 378, '高 a+b');
+    appendFormula(svg, '底面积', 918, 430, {size:14, fill:'#64748b', anchor:'middle'});
+    appendFormula(svg, 'b(b-a)+a²', 918, 456, {size:17, fill:'#0f172a', anchor:'middle'});
+    appendFormula(svg, '= a²-ab+b²', 918, 482, {size:17, fill:'#1f4fbf', anchor:'middle'});
+    formulaBox(792, 530, 228, 58, ['a³+b³ = (a+b)', '(a²-ab+b²)']);
+  })();
 </script>
 </body>
 </html>

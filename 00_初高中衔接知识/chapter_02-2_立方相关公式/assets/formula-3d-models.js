@@ -408,6 +408,324 @@
     }
   }
 
+  class CubeSumVolumeModel extends BaseModel {
+    constructor(refs) {
+      super(refs);
+      this.cameraFrustum = 8.8;
+      this.root.rotation.set(.2, .7, 0);
+      this.targetRotation = {x:.2, y:.7};
+      this.resize();
+      this.stage = 0;
+      this.aRatio = .56;
+      this.stages = [
+        {
+          title:'叠放立方',
+          caption:'为了看清立方和，先把小立方 a³ 放到大立方 b³ 的上方角落，再沿着边标出一块体积为 ab(b-a) 的长方体。',
+          tags:['大立方 b³','小立方 a³','切块 ab(b-a)'],
+          formula:['a³+b³ = 剩余体积 + ab(b-a)']
+        },
+        {
+          title:'标出切块',
+          caption:'切下来的长方体尺寸可以看成 a、b、b-a，体积不变，仍然是 ab(b-a)。',
+          tags:['a','b','b-a'],
+          formula:['切块体积 = ab(b-a)']
+        },
+        {
+          title:'移动切块',
+          caption:'把这块长方体旋转后放到剩余图形的上面。上面补出高度 a，下面原来已有高度 b。',
+          tags:['搬移不改变体积','上面补高 a'],
+          formula:['剩余体积 + ab(b-a) = a³+b³']
+        },
+        {
+          title:'出现共同高度',
+          caption:'重排后的新立体整体高度都是 a+b。底面积由一条 b(b-a) 的长条和一个 a² 的方块组成。',
+          tags:['共同高度 a+b','底面积 b(b-a)+a²'],
+          formula:['a³+b³ = (a+b)(b(b-a)+a²)']
+        },
+        {
+          title:'写成公式',
+          caption:'底面积 b(b-a)+a² 化简为 b²-ab+a²，也就是 a²-ab+b²。',
+          tags:['高 a+b','底面积 a²-ab+b²'],
+          formula:['a³+b³ = (a+b)(a²-ab+b²)']
+        }
+      ];
+      this.buildControls();
+      this.setStage(0);
+    }
+
+    buildControls() {
+      this.stages.forEach((stage, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'model-step';
+        button.dataset.stage = String(index);
+        button.textContent = `${index + 1}. ${stage.title}`;
+        button.addEventListener('click', () => this.setStage(index));
+        this.refs.steps.appendChild(button);
+      });
+      this.refs.control.innerHTML = `
+        <label class="model-range">
+          <span>a 相对 b 的大小</span>
+          <input type="range" min="36" max="68" value="56">
+        </label>
+      `;
+      this.refs.control.querySelector('input').addEventListener('input', event => {
+        this.aRatio = Number(event.target.value) / 100;
+        this.draw();
+      });
+    }
+
+    center(range, frame) {
+      return [
+        (range[0] + range[1]) / 2 - frame[0] / 2,
+        (range[2] + range[3]) / 2 - frame[1] / 2,
+        (range[4] + range[5]) / 2 - frame[2] / 2
+      ];
+    }
+
+    box(range, frame, offset = [0,0,0]) {
+      const dimensions = [range[1] - range[0], range[3] - range[2], range[5] - range[4]];
+      const center = this.center(range, frame).map((value, index) => value + offset[index]);
+      return {dimensions, center};
+    }
+
+    setStage(index) {
+      this.stage = index;
+      this.refs.steps.querySelectorAll('.model-step').forEach((button, buttonIndex) => {
+        button.setAttribute('aria-pressed', String(buttonIndex === index));
+      });
+      this.updateText();
+      this.draw();
+    }
+
+    updateText() {
+      const data = this.stages[this.stage];
+      this.refs.caption.textContent = data.caption;
+      this.refs.tags.innerHTML = data.tags.map(tag => `<span>${supify(tag)}</span>`).join('');
+      this.refs.formula.innerHTML = data.formula.map(line => `<span>${supify(line)}</span>`).join('');
+    }
+
+    parts() {
+      const b = 3.2;
+      const a = b * this.aRatio;
+      const h = a + b;
+      const g = .22;
+      const frame = [b, b, h];
+      return {
+        a,
+        b,
+        h,
+        bigCube:this.box([0,b,0,b,0,b], frame, [-1.0,0,-.2]),
+        smallCube:this.box([b - a,b,b - a,b,b,h], frame, [-1.0,0,-.2]),
+        cut:this.box([b - a,b,0,b - a,0,b], frame, [-1.0,0,-.2]),
+        leftRemain:this.box([0,b - a,0,b,0,b], frame, [-1.0,0,-.2]),
+        cornerColumn:this.box([b - a,b,b - a,b,0,h], frame, [-1.0,0,-.2]),
+        cutAway:this.box([b - a,b,0,b - a,0,b], frame, [1.65,.05,-.2]),
+        movedSlab:this.box([0,b - a,0,b,b,h], frame, [-1.0,0,-.2]),
+        finalLeft:this.box([0,b - a,0,b,0,b], frame, [-1.0,0,-.2]),
+        finalCorner:this.box([b - a,b,b - a,b,0,h], frame, [-1.0,0,-.2]),
+        finalMoved:this.box([0,b - a,0,b,b,h], frame, [-1.0,0,-.2]),
+        cutPreview:this.box([0,b - a,0,b,b + g,b + g + a], frame, [-1.0,0,-.2])
+      };
+    }
+
+    shifted(box, offset) {
+      return box.center.map((value, index) => value + offset[index]);
+    }
+
+    drawInitial(parts) {
+      this.addBox(parts.bigCube.dimensions, parts.bigCube.center, colors.green, .32);
+      this.addBox(parts.smallCube.dimensions, parts.smallCube.center, colors.cyan, .9);
+      this.addBox(parts.cut.dimensions, parts.cut.center, colors.red, .84);
+    }
+
+    drawRemainder(parts, opacity = .82) {
+      this.addBox(parts.leftRemain.dimensions, parts.leftRemain.center, colors.green, opacity);
+      this.addBox(parts.cornerColumn.dimensions, parts.cornerColumn.center, colors.cyan, opacity);
+    }
+
+    drawFinal(parts) {
+      this.addBox(parts.finalLeft.dimensions, parts.finalLeft.center, colors.green, .82);
+      this.addBox(parts.finalCorner.dimensions, parts.finalCorner.center, colors.cyan, .9);
+      this.addBox(parts.finalMoved.dimensions, parts.finalMoved.center, colors.red, .78);
+    }
+
+    draw() {
+      this.clearDynamic();
+      const parts = this.parts();
+
+      if (this.stage === 0) {
+        this.drawInitial(parts);
+      }
+      if (this.stage === 1) {
+        this.drawRemainder(parts, .36);
+        this.addBox(parts.cutAway.dimensions, parts.cutAway.center, colors.red, .86);
+      }
+      if (this.stage === 2) {
+        this.drawRemainder(parts, .82);
+        this.addBox(parts.cutPreview.dimensions, parts.cutPreview.center, colors.red, .8);
+      }
+      if (this.stage === 3) {
+        this.drawFinal(parts);
+      }
+      if (this.stage === 4) {
+        this.drawFinal(parts);
+      }
+      this.render();
+    }
+  }
+
+  class CubeDifferenceVolumeModel extends BaseModel {
+    constructor(refs) {
+      super(refs);
+      this.cameraFrustum = 8.6;
+      this.root.rotation.set(.22, .66, 0);
+      this.targetRotation = {x:.22, y:.66};
+      this.resize();
+      this.stage = 0;
+      this.bRatio = .34;
+      this.stages = [
+        {
+          title:'大立方挖去小立方',
+          caption:'立方差先看成边长 a 的大立方体，挖去一个边长 b 的小立方体。',
+          tags:['a³','- b³'],
+          formula:['a³ - b³']
+        },
+        {
+          title:'挖去 b³',
+          caption:'小立方体从角上取走以后，剩下的体积不是一个完整立方，而是一个 L 形体积。',
+          tags:['挖去 b³','剩余体积'],
+          formula:['a³ - b³ = 剩余体积']
+        },
+        {
+          title:'切成三块',
+          caption:'把剩余的 L 形体积切成三块：一块 a²(a-b)，一块 ab(a-b)，一块 b²(a-b)。',
+          tags:['a²(a-b)','ab(a-b)','b²(a-b)'],
+          formula:['a³ - b³ = a²(a-b) + ab(a-b) + b²(a-b)']
+        },
+        {
+          title:'重排三块',
+          caption:'三块都有一条长度是 a-b 的边。把这条边朝同一方向对齐，就能把 a-b 提出来。',
+          tags:['共同厚度 a-b'],
+          formula:['a²(a-b) + ab(a-b) + b²(a-b)', '= (a-b)(a²+ab+b²)']
+        },
+        {
+          title:'得到公式',
+          caption:'所以立方差不是先做抵消，而是先看见“大立方挖小立方”的剩余体积。',
+          tags:['a³-b³','(a-b)(a²+ab+b²)'],
+          formula:['a³ - b³ = (a-b)(a²+ab+b²)']
+        }
+      ];
+      this.buildControls();
+      this.setStage(0);
+    }
+
+    buildControls() {
+      this.stages.forEach((stage, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'model-step';
+        button.dataset.stage = String(index);
+        button.textContent = `${index + 1}. ${stage.title}`;
+        button.addEventListener('click', () => this.setStage(index));
+        this.refs.steps.appendChild(button);
+      });
+      this.refs.control.innerHTML = `
+        <label class="model-range">
+          <span>b 的边长</span>
+          <input type="range" min="22" max="42" value="34">
+        </label>
+      `;
+      this.refs.control.querySelector('input').addEventListener('input', event => {
+        this.bRatio = Number(event.target.value) / 100;
+        this.draw();
+      });
+    }
+
+    center(range, size) {
+      return [
+        (range[0] + range[1]) / 2 - size / 2,
+        (range[2] + range[3]) / 2 - size / 2,
+        (range[4] + range[5]) / 2 - size / 2
+      ];
+    }
+
+    box(range, size, offset = [0,0,0]) {
+      const dimensions = [range[1] - range[0], range[3] - range[2], range[5] - range[4]];
+      const center = this.center(range, size).map((value, index) => value + offset[index]);
+      return {dimensions, center};
+    }
+
+    setStage(index) {
+      this.stage = index;
+      this.refs.steps.querySelectorAll('.model-step').forEach((button, buttonIndex) => {
+        button.setAttribute('aria-pressed', String(buttonIndex === index));
+      });
+      this.updateText();
+      this.draw();
+    }
+
+    updateText() {
+      const data = this.stages[this.stage];
+      this.refs.caption.textContent = data.caption;
+      this.refs.tags.innerHTML = data.tags.map(tag => `<span>${supify(tag)}</span>`).join('');
+      this.refs.formula.innerHTML = data.formula.map(line => `<span>${supify(line)}</span>`).join('');
+    }
+
+    drawRearranged(size, b, c, finalOnly = false) {
+      const commonX = c;
+      const large = {dimensions:[commonX, size, size], center:[0, -1.15, .88]};
+      const middle = {dimensions:[commonX, size, b], center:[0, -1.15, -1.55]};
+      const small = {dimensions:[commonX, b, b], center:[0, 1.28, -1.55]};
+      this.addBox(large.dimensions, large.center, colors.blue, finalOnly ? .86 : .78);
+      this.addBox(middle.dimensions, middle.center, colors.green, finalOnly ? .86 : .8);
+      this.addBox(small.dimensions, small.center, colors.cyan, finalOnly ? .9 : .84);
+    }
+
+    draw() {
+      this.clearDynamic();
+      const size = 3.2;
+      const b = size * this.bRatio;
+      const c = size - b;
+      const whole = this.box([0,size,0,size,0,size], size);
+      const removed = this.box([c,size,c,size,c,size], size);
+      const pieceA2 = this.box([0,c,0,size,0,size], size);
+      const pieceAB = this.box([c,size,0,c,0,size], size);
+      const pieceB2 = this.box([c,size,c,size,0,c], size);
+      const shifted = (box, offset) => box.center.map((value, index) => value + offset[index]);
+      const drawRemaining = (opacity, offsets = {}) => {
+        this.addBox(pieceA2.dimensions, shifted(pieceA2, offsets.a2 || [0,0,0]), colors.blue, opacity);
+        this.addBox(pieceAB.dimensions, shifted(pieceAB, offsets.ab || [0,0,0]), colors.green, opacity + .03);
+        this.addBox(pieceB2.dimensions, shifted(pieceB2, offsets.b2 || [0,0,0]), colors.cyan, opacity + .06);
+      };
+
+      if (this.stage === 0) {
+        this.addBox(whole.dimensions, whole.center, colors.gray, .1);
+        drawRemaining(.72);
+        this.addBox(removed.dimensions, shifted(removed, [.72,.58,.58]), colors.red, .78);
+      }
+      if (this.stage === 1) {
+        drawRemaining(.66);
+        this.addBox(removed.dimensions, shifted(removed, [1.02,.78,.78]), colors.red, .76);
+      }
+      if (this.stage === 2) {
+        drawRemaining(.78, {
+          a2:[-.18,0,0],
+          ab:[.44,-.3,0],
+          b2:[.62,.34,-.28]
+        });
+        this.addBox(removed.dimensions, shifted(removed, [1.08,.92,.92]), colors.red, .24);
+      }
+      if (this.stage === 3) {
+        this.drawRearranged(size, b, c);
+      }
+      if (this.stage === 4) {
+        this.drawRearranged(size, b, c, true);
+      }
+      this.render();
+    }
+  }
+
   function safeInit(rootId, factory) {
     const root = document.getElementById(rootId);
     if (!root) return null;
@@ -433,42 +751,10 @@
       return safeInit(rootId, refs => new DifferenceCubeModel(refs));
     },
     initCubeSum(rootId) {
-      return safeInit(rootId, refs => new SignedCancellationModel(refs, {
-        factorTag:'(a+b)(a²-ab+b²)',
-        factorLine:'a³+b³ = (a+b)(a²-ab+b²)',
-        prepareCaption:'先看右边：一个 a+b 乘上二次因子。关键是中间的 -ab 会制造负的混合项。',
-        expandedLines:[
-          '(a+b)(a²-ab+b²)',
-          '= a³ - a²b + ab² + a²b - ab² + b³'
-        ],
-        cancelLines:[
-          '-a²b + a²b = 0',
-          'ab² - ab² = 0'
-        ],
-        finalCaption:'两对混合项抵消后，只剩 a³ 和 b³。',
-        finalTag:'剩下 a³ + b³',
-        finalLine:'(a+b)(a²-ab+b²) = a³+b³',
-        negativeB:false
-      }));
+      return safeInit(rootId, refs => new CubeSumVolumeModel(refs));
     },
     initCubeDifference(rootId) {
-      return safeInit(rootId, refs => new SignedCancellationModel(refs, {
-        factorTag:'(a-b)(a²+ab+b²)',
-        factorLine:'a³-b³ = (a-b)(a²+ab+b²)',
-        prepareCaption:'先看右边：a-b 乘上二次因子。负号来自第二个因式中的 -b。',
-        expandedLines:[
-          '(a-b)(a²+ab+b²)',
-          '= a³ + a²b + ab² - a²b - ab² - b³'
-        ],
-        cancelLines:[
-          'a²b - a²b = 0',
-          'ab² - ab² = 0'
-        ],
-        finalCaption:'两对混合项抵消后，只剩 a³ 和 -b³。',
-        finalTag:'剩下 a³ - b³',
-        finalLine:'(a-b)(a²+ab+b²) = a³-b³',
-        negativeB:true
-      }));
+      return safeInit(rootId, refs => new CubeDifferenceVolumeModel(refs));
     }
   };
 })();

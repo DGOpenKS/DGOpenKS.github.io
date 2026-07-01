@@ -1,70 +1,176 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立方公式小结 | DGOpenKS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立方公式小结：对象判断与变形方向 | DGOpenKS</title>
 <style>
-:root{--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--radius:8px;--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75}.math{font-family:Georgia,"Times New Roman",serif;font-weight:700}.topbar{position:sticky;top:0;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:920px;margin:auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}main{max-width:880px;margin:auto;padding:54px 20px 82px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:0 0 18px}h2{font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25;margin:34px 0 12px}p{color:var(--muted);margin:0 0 12px}table{width:100%;border-collapse:separate;border-spacing:0 8px;margin:18px 0}th{font-size:.8rem;color:var(--muted);text-align:left;padding:0 10px}td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px}td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius)}td:last-child{border-right:1px solid var(--line);border-radius:0 var(--radius) var(--radius) 0}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:16px 0;box-shadow:0 10px 26px rgba(15,23,42,.05)}.panel p{color:#334155}.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}.compare-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.compare-card strong,.factor-card strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:6px}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;color:var(--ink);overflow:auto;white-space:nowrap}.factor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.factor-card{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.check{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-top:16px}.check code{display:block;font:700 1rem/1.8 Consolas,monospace;color:var(--ink)}@media(max-width:620px){main{padding-left:14px;padding-right:14px}table,tbody,tr,td{display:block}thead{display:none}tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}td{border:0!important;border-radius:0!important;padding:4px 0}.math{white-space:normal}.compare,.factor-grid{grid-template-columns:1fr}.formula-line{white-space:normal}}
+:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
+a{color:inherit}
+.math{font-family:Georgia,"Times New Roman",serif;font-weight:800;white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}
+.topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
+.hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
+.eyebrow{display:block;color:var(--muted);font-size:.86rem;font-weight:900;margin-bottom:8px}
+h1{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.18;margin:0 0 10px;letter-spacing:0}
+h2{font-size:clamp(1.35rem,2.45vw,1.95rem);line-height:1.25;margin:0 0 12px;letter-spacing:0}
+h3{font-size:1.12rem;margin:0 0 8px}
+p{margin:0 0 12px}
+.lead{max-width:880px;color:#334155;font-size:1rem;line-height:1.9}
+main{max-width:1180px;margin:auto;padding:0 20px 90px}
+.section{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;padding:54px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
+.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}
+.section-body{min-width:0}
+.prose{max-width:860px}
+.formula-table{width:100%;border-collapse:separate;border-spacing:0 8px;margin:18px 0}
+.formula-table th{font-size:.78rem;color:var(--muted);text-align:left;padding:0 10px}
+.formula-table td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px}
+.formula-table td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius);font-weight:900}
+.formula-table td:last-child{border-right:1px solid var(--line);border-radius:0 var(--radius) var(--radius) 0}
+.formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
+.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.two-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.concept-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.concept-card strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:8px}
+.concept-card.blue{border-color:var(--blue-line);background:var(--blue-soft)}
+.concept-card.purple{border-color:var(--purple-line);background:var(--purple-soft)}
+.concept-card.green{border-color:var(--green-line);background:var(--green-soft)}
+.flow{display:grid;gap:10px;margin:18px 0}
+.flow-step{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+.flow-step > span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900}
+.flow-step strong{display:block;margin-bottom:4px}
+.flow-step p{color:#334155}
+.check-block{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:16px 0}
+.check-line{display:block;font:800 1rem/1.8 Consolas,"Microsoft YaHei",monospace;color:var(--ink)}
+.next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:820px){.section{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.two-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.formula-table,tbody,tr,td{display:block}.formula-table thead{display:none}.formula-table tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.formula-table td{border:0!important;border-radius:0!important;padding:4px 0}.flow-step{grid-template-columns:1fr}.flow-step span{margin-bottom:4px}}
+@media print{.topbar{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.formula-card,.concept-card,.flow-step{box-shadow:none}.two-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
-<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
+<nav class="topbar" aria-label="章节导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html">DGOpenKS</a>
+    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="01_和的立方.html">和的立方</a>
+    <a class="nav-link" href="02_差的立方.html">差的立方</a>
+    <a class="nav-link" href="03_立方和.html">立方和</a>
+    <a class="nav-link" href="04_立方差.html">立方差</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">02-2 立方相关公式 · 05</span>
+  <h1>立方公式小结：对象判断与变形方向</h1>
+  <p class="lead">这一页把四个立方相关公式放在一起比较。真正要掌握的不是硬背符号，而是先判断对象，再决定展开、分解和检查方式。</p>
+</header>
+
 <main>
-<span class="eyebrow">02-2 / 05</span>
-<h1>立方公式小结</h1>
-<p>这一节小结立方相关公式的两类结构：展开公式和分解公式。</p>
-<table>
-<thead><tr><th>公式类型</th><th>看到的对象</th><th>变形方向</th></tr></thead>
-<tbody>
-<tr><td>和的立方</td><td><span class="math">(a+b)<sup>3</sup></span></td><td>从一个整体立方展开成四项</td></tr>
-<tr><td>差的立方</td><td><span class="math">(a-b)<sup>3</sup></span></td><td>从一个整体立方展开成四项</td></tr>
-<tr><td>立方和</td><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>从两个立方分解成两个因式</td></tr>
-<tr><td>立方差</td><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>从两个立方分解成两个因式</td></tr>
-</tbody>
-</table>
+  <section class="section" id="overview">
+    <div class="marker" aria-hidden="true"><span>01</span>对象总览</div>
+    <div class="section-body">
+      <div class="prose">
+        <h2>对象总览：先分清看见的式子</h2>
+        <p>同样出现三次方，处理方向可能完全不同。</p>
+        <table class="formula-table">
+          <thead><tr><th>看到的对象</th><th>公式类型</th><th>变形方向</th><th>核心动作</th></tr></thead>
+          <tbody>
+            <tr><td><span class="math">(a+b)<sup>3</sup></span></td><td>和的立方</td><td>展开</td><td>三个因式相乘，合并同类项</td></tr>
+            <tr><td><span class="math">(a-b)<sup>3</sup></span></td><td>差的立方</td><td>展开</td><td>把 <span class="math">a-b</span> 看成 <span class="math">a+(-b)</span></td></tr>
+            <tr><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>立方和</td><td>因式分解</td><td>找 <span class="math">a+b</span>，让混合项抵消</td></tr>
+            <tr><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>立方差</td><td>因式分解</td><td>找 <span class="math">a-b</span>，让混合项抵消</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-<h2>展开是打开，分解是降次</h2>
-<div class="compare">
-  <div class="compare-card">
-    <strong>展开公式</strong>
-    <p>处理“括号整体被立方”。原式本来就是乘法结构，只是被压在括号和指数里。</p>
-    <div class="formula-line">(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</div>
-  </div>
-  <div class="compare-card">
-    <strong>分解公式</strong>
-    <p>处理“两个完整立方相加或相减”。目标是把三次式写回乘积。</p>
-    <div class="formula-line">a<sup>3</sup>±b<sup>3</sup> = 一次因子 × 二次因子</div>
-  </div>
-</div>
-<p>所以分解时先找一次因子，其实是在把三次式先降成一个二次因子。剩下的二次因子再通过乘回去检查、让混合项抵消来确定。</p>
+  <section class="section" id="directions">
+    <div class="marker" aria-hidden="true"><span>02</span>变形方向</div>
+    <div class="section-body">
+      <h2>变形方向：展开是打开，分解是降次</h2>
+      <div class="two-grid">
+        <div class="concept-card blue">
+          <strong>展开公式</strong>
+          <p>处理“括号整体被立方”。原式本来就是乘法结构，只是被压在括号和指数里。</p>
+          <div class="derivation">
+            <span>(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</span>
+            <span>(a-b)<sup>3</sup> = (a-b)(a-b)(a-b)</span>
+          </div>
+        </div>
+        <div class="concept-card purple">
+          <strong>分解公式</strong>
+          <p>处理“两个完整立方相加或相减”。目标是把三次式写回乘积。</p>
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span>
+            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
+          </div>
+        </div>
+      </div>
+      <p class="prose">分解时先找一次因子，本质上是在把三次式降成一个二次因子。二次因子的中间项，再由乘回去后的混合项抵消来确定。</p>
+    </div>
+  </section>
 
-<h2>一次因子的判断</h2>
-<div class="panel">
-  <p>因式分解后的式子是乘积。如果某个因子等于 <span class="math">0</span>，整个乘积就等于 <span class="math">0</span>。反过来看，如果某个关系能让原式变成 <span class="math">0</span>，就提示我们：原式里可能藏着一个会在这个关系下变成 <span class="math">0</span> 的一次因子。</p>
-</div>
-<div class="factor-grid">
-  <div class="factor-card">
-    <strong>立方和</strong>
-    <p>当 <span class="math">b=-a</span> 时，<span class="math">a<sup>3</sup>+b<sup>3</sup>=0</span>。</p>
-    <div class="formula-line">b=-a ⇔ a+b=0</div>
-    <p>所以先尝试一次因子 <span class="math">a+b</span>。</p>
-  </div>
-  <div class="factor-card">
-    <strong>立方差</strong>
-    <p>当 <span class="math">a=b</span> 时，<span class="math">a<sup>3</sup>-b<sup>3</sup>=0</span>。</p>
-    <div class="formula-line">a=b ⇔ a-b=0</div>
-    <p>所以先尝试一次因子 <span class="math">a-b</span>。</p>
-  </div>
-</div>
-<p>这一步不是把完整公式猜出来，而是先找到候选的一次因子。真正确定公式，还要继续设二次因子的中间项，并乘回去检查。</p>
+  <section class="section" id="factor">
+    <div class="marker" aria-hidden="true"><span>03</span>因子判断</div>
+    <div class="section-body">
+      <h2>一次因子与二次因子：先找来源，再乘回检查</h2>
+      <div class="two-grid">
+        <div class="concept-card">
+          <strong>立方和的一次因子</strong>
+          <p>当 <span class="math">b=-a</span> 时，<span class="math">a<sup>3</sup>+b<sup>3</sup>=0</span>。</p>
+          <div class="derivation">
+            <span>b=-a ⇔ a+b=0</span>
+            <span>所以先尝试 a+b</span>
+          </div>
+        </div>
+        <div class="concept-card">
+          <strong>立方差的一次因子</strong>
+          <p>当 <span class="math">a=b</span> 时，<span class="math">a<sup>3</sup>-b<sup>3</sup>=0</span>。</p>
+          <div class="derivation">
+            <span>a=b ⇔ a-b=0</span>
+            <span>所以先尝试 a-b</span>
+          </div>
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="derivation">
+          <span>立方和： (a+b)(a<sup>2</sup> + kab + b<sup>2</sup>) -> k = -1</span>
+          <span>立方差： (a-b)(a<sup>2</sup> + kab + b<sup>2</sup>) -> k = 1</span>
+        </div>
+      </div>
+      <p class="prose">所以二次因子的符号不是背出来的，而是由混合项抵消决定的。</p>
+    </div>
+  </section>
 
-<h2>判断顺序</h2>
-<div class="check">
-<code>它是不是一个整体被立方？</code>
-<code>它是不是两个完整立方相加？</code>
-<code>它是不是两个完整立方相减？</code>
-</div>
-<p>如果是整体被立方，就展开；如果是两个完整立方相加或相减，就分解。分解时先找一次因子完成降次，再让二次因子里的混合项在乘回去时抵消。</p>
+  <section class="section" id="flow">
+    <div class="marker" aria-hidden="true"><span>04</span>判断流程</div>
+    <div class="section-body">
+      <h2>判断流程：看到式子后先问这几句</h2>
+      <div class="flow" aria-label="立方公式判断流程图">
+        <div class="flow-step"><span>1</span><div><strong>它是不是一个整体被立方？</strong><p>如果是 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，先展开。</p></div></div>
+        <div class="flow-step"><span>2</span><div><strong>它是不是两个完整立方相加？</strong><p>如果是 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>，用立方和分解。</p></div></div>
+        <div class="flow-step"><span>3</span><div><strong>它是不是两个完整立方相减？</strong><p>如果是 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>，用立方差分解。</p></div></div>
+        <div class="flow-step"><span>4</span><div><strong>如果都不是，先不要硬套公式。</strong><p>先看能否整理成完整立方结构，再决定下一步。</p></div></div>
+      </div>
+      <div class="check-block">
+        <span class="check-line">先判断对象 -> 再选择展开或分解 -> 最后乘回去检查</span>
+      </div>
+      <a class="next" href="./">返回章节入口</a>
+    </div>
+  </section>
 </main>
+
+<footer class="footer">DGOpenKS · 02-2 立方相关公式 · 小结</footer>
 </body>
 </html>

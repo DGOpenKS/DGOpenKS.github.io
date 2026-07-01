@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初高中衔接练习树 | DGOpenKS</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f8fb;
+  --paper:#ffffff;
+  --soft:#f8fafc;
+  --ink:#111827;
+  --muted:#64748b;
+  --line:#dbe5f2;
+  --blue:#2563eb;
+  --blue-soft:#eef4ff;
+  --green:#059669;
+  --green-soft:#ecfdf5;
+  --amber:#d97706;
+  --amber-soft:#fff7ed;
+  --purple:#7c3aed;
+  --purple-soft:#f5f3ff;
+  --red:#dc2626;
+  --red-soft:#fef2f2;
+  --shadow:0 16px 34px rgba(15,23,42,.07);
+  --radius:8px;
+  --font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.94);backdrop-filter:blur(14px)}
+.topbar-inner{max-width:1120px;margin:auto;padding:10px 20px;display:flex;gap:10px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.topbar-inner::-webkit-scrollbar{display:none}
+.brand,.nav-link{text-decoration:none;white-space:nowrap}
+.brand{font-weight:900;color:var(--blue);margin-right:8px}
+.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}
+.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:#c7d8ff}
+.hero{max-width:1120px;margin:auto;padding:40px 20px 30px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(320px,.9fr);gap:26px;align-items:center}
+.eyebrow{display:inline-flex;color:var(--green);background:var(--green-soft);border:1px solid #b7efd9;border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}
+h1{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.14;margin:0 0 12px;letter-spacing:0}
+h2{font-size:clamp(1.36rem,2.4vw,1.9rem);line-height:1.28;margin:0 0 12px}
+h3{font-size:1.08rem;line-height:1.32;margin:0 0 8px}
+p{margin:0 0 12px;color:#334155}
+.lead{max-width:760px;color:var(--muted);font-size:1.06rem}
+.hero-panel,.level-card,.type-card,.feedback-card,.link-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero-panel{padding:18px}
+.panel-title{font-weight:900;color:#334155;margin-bottom:12px}
+.ladder{display:grid;gap:8px}
+.ladder span{display:flex;align-items:center;gap:8px;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:9px 10px;font-weight:900;color:#334155}
+.ladder span::before{content:attr(data-step);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);font-size:.78rem;flex:0 0 auto}
+main{max-width:1120px;margin:auto;padding:0 20px 78px}
+.section{padding:38px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.section-head{max-width:820px;margin-bottom:18px}
+.section-head p{color:var(--muted);font-size:1rem}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.level-button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 12px;font:inherit;font-size:.9rem;font-weight:900;color:#334155;cursor:pointer}
+.level-button:hover,.level-button:focus-visible,.level-button.active{outline:0;color:var(--green);border-color:#b7efd9;background:var(--green-soft)}
+.level-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.level-card{padding:16px;display:grid;gap:10px;border-top:4px solid var(--blue);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.level-card[data-level="structure"]{border-top-color:var(--purple)}
+.level-card[data-level="method"]{border-top-color:var(--amber)}
+.level-card[data-level="condition"]{border-top-color:var(--green)}
+.level-card[data-level="transfer"]{border-top-color:var(--red)}
+.level-card.active{transform:translateY(-3px);border-color:#b7efd9;box-shadow:0 18px 38px rgba(5,150,105,.13)}
+.tag{display:inline-flex;width:max-content;border-radius:999px;padding:3px 8px;font-size:.74rem;font-weight:900;background:var(--blue-soft);color:var(--blue)}
+.tag.purple{background:var(--purple-soft);color:var(--purple)}
+.tag.amber{background:var(--amber-soft);color:var(--amber)}
+.tag.green{background:var(--green-soft);color:var(--green)}
+.tag.red{background:var(--red-soft);color:var(--red)}
+.ask{font-weight:900;color:var(--ink)}
+.small{font-size:.9rem;color:var(--muted);margin:0}
+.type-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.type-card{padding:15px;display:grid;gap:8px}
+.type-card ul{margin:0;padding-left:18px;color:#334155}
+.type-card li{margin:4px 0}
+.feedback-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px;align-items:start}
+.feedback-card{padding:16px}
+.feedback-steps{display:grid;gap:10px}
+.feedback-steps div{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:10px}
+.feedback-steps strong{display:block;color:var(--green);margin-bottom:4px}
+.note{border-left:4px solid var(--green);background:var(--green-soft);color:#047857;border-radius:var(--radius);padding:14px 16px;font-weight:900;margin:18px 0}
+.link-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.link-card{padding:18px;text-decoration:none;display:grid;gap:8px}
+.link-card:hover,.link-card:focus-visible{outline:0;border-color:#b7efd9;background:#fbfffd}
+.link-card strong{font-size:1.08rem}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+h1,h2,h3,p,.lead,.level-card,.type-card,.feedback-card,.link-card,.note{overflow-wrap:anywhere}
+@media(max-width:980px){
+  .hero,.level-grid,.type-grid,.feedback-wrap{grid-template-columns:1fr}
+  .hero{align-items:start}
+  .link-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .topbar-inner,.hero,main{padding-left:14px;padding-right:14px}
+  h1{font-size:2rem}
+  .lead{font-size:1rem}
+  .level-button{width:100%;text-align:left}
+}
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html">DGOpenKS</a>
+    <a class="nav-link" href="../../00_初高中衔接知识/">初高中衔接知识</a>
+    <a class="nav-link" href="../../method_tree/初高中衔接知识/index.html">进入方法树</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Practice Tree</span>
+    <h1>初高中衔接练习树</h1>
+    <p class="lead">练习树不是题目堆叠，而是按能力递进检查：先识别对象，再判断结构，接着执行方法，最后检查条件并迁移到综合问题。</p>
+  </div>
+  <aside class="hero-panel" aria-label="练习能力阶梯">
+    <div class="panel-title">能力阶梯</div>
+    <div class="ladder">
+      <span data-step="1">识别对象</span>
+      <span data-step="2">判断结构</span>
+      <span data-step="3">执行方法</span>
+      <span data-step="4">检查条件</span>
+      <span data-step="5">综合迁移</span>
+    </div>
+  </aside>
+</header>
+
+<main>
+  <section class="section" id="levels">
+    <div class="section-head">
+      <h2>练习先分层，问题才看得清</h2>
+      <p>一道题做错，不一定是计算能力不够。可能是对象看错了，结构没识别出来，方法执行有误，也可能是最后忘了条件和端点。</p>
+    </div>
+    <div class="toolbar" aria-label="练习层级定位">
+      <button class="level-button active" type="button" data-level="object">识别对象</button>
+      <button class="level-button" type="button" data-level="structure">判断结构</button>
+      <button class="level-button" type="button" data-level="method">执行方法</button>
+      <button class="level-button" type="button" data-level="condition">检查条件</button>
+      <button class="level-button" type="button" data-level="transfer">综合迁移</button>
+    </div>
+    <div class="level-grid">
+      <article class="level-card active" data-level="object">
+        <span class="tag">01</span>
+        <h3>识别对象</h3>
+        <p class="ask">练什么：判断当前是表达式、方程、不等式、函数对象，还是带条件表达式。</p>
+        <p class="small">反馈重点：同一个式子身份不同，目标和方法也不同。</p>
+      </article>
+      <article class="level-card" data-level="structure">
+        <span class="tag purple">02</span>
+        <h3>判断结构</h3>
+        <p class="ask">练什么：识别公因式、平方差、完全平方、立方结构、重复整体、分母和根号。</p>
+        <p class="small">反馈重点：先看结构信号，再决定能不能用对应方法。</p>
+      </article>
+      <article class="level-card" data-level="method">
+        <span class="tag amber">03</span>
+        <h3>执行方法</h3>
+        <p class="ask">练什么：展开、分解、约分、配方、通分、分区间等具体步骤。</p>
+        <p class="small">反馈重点：指出哪一步关系没有对上，而不只是说答案错了。</p>
+      </article>
+      <article class="level-card" data-level="condition">
+        <span class="tag green">04</span>
+        <h3>检查条件</h3>
+        <p class="ask">练什么：禁点、非负性、增根、丢根、端点取舍和原式条件。</p>
+        <p class="small">反馈重点：化简后的式子有值，不代表原式也允许这个值。</p>
+      </article>
+      <article class="level-card" data-level="transfer">
+        <span class="tag red">05</span>
+        <h3>综合迁移</h3>
+        <p class="ask">练什么：把因式分解、条件控制和解集追踪放到方程、函数、不等式、分式化简中。</p>
+        <p class="small">反馈重点：定位是哪一层导致最终答案错误。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="types">
+    <div class="section-head">
+      <h2>题型按结构生成，而不是只换数字</h2>
+      <p>参数化练习适合巩固熟练度，但题型必须服务当前知识点。数字不宜太大，避免计算遮住结构。</p>
+    </div>
+    <div class="type-grid">
+      <article class="type-card">
+        <span class="tag purple">公式类</span>
+        <h3>平方与立方结构</h3>
+        <ul>
+          <li>完全平方</li>
+          <li>平方差</li>
+          <li>立方展开</li>
+          <li>立方和差</li>
+        </ul>
+      </article>
+      <article class="type-card">
+        <span class="tag amber">因式分解类</span>
+        <h3>从结构选方法</h3>
+        <ul>
+          <li>提公因式</li>
+          <li>二次三项式</li>
+          <li>分组分解</li>
+          <li>整体代换</li>
+        </ul>
+      </article>
+      <article class="type-card">
+        <span class="tag green">条件控制类</span>
+        <h3>化简不丢条件</h3>
+        <ul>
+          <li>分式化简</li>
+          <li>根式化简</li>
+          <li>复合条件</li>
+        </ul>
+      </article>
+      <article class="type-card">
+        <span class="tag red">解集追踪类</span>
+        <h3>结果需要筛选</h3>
+        <ul>
+          <li>二次不等式</li>
+          <li>分式不等式</li>
+          <li>候选解检查</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="feedback">
+    <div class="section-head">
+      <h2>反馈要指出错在第几层</h2>
+      <p>好的练习反馈不只是给答案，而是告诉你应该回到哪一步重新判断。</p>
+    </div>
+    <div class="feedback-wrap">
+      <article class="feedback-card">
+        <h3>反馈基本格式</h3>
+        <div class="feedback-steps">
+          <div><strong>你现在的问题属于</strong>对象识别、结构判断、方法执行、条件检查或综合迁移。</div>
+          <div><strong>错在哪里</strong>指出具体结构或条件，而不是只说“算错了”。</div>
+          <div><strong>应该先检查</strong>回到对应方法节点重新判断。</div>
+          <div><strong>正确思路是</strong>把下一步可执行的检查方式说清楚。</div>
+        </div>
+      </article>
+      <article class="feedback-card">
+        <h3>例子</h3>
+        <p><strong>错因：漏交叉项。</strong></p>
+        <p>你把整体平方当成分别平方了。先把 <strong>(a+b)<sup>2</sup></strong> 看成两个相同括号相乘，检查两个交叉项是否都出现。</p>
+        <p><strong>错因：原式条件丢失。</strong></p>
+        <p>约分只改变表达式外形，被约掉的分母因子仍然留下禁点。</p>
+      </article>
+    </div>
+    <div class="note">练习树的目标不是把题做多，而是让你知道自己到底卡在“看对象、看结构、做方法、查条件、做迁移”的哪一层。</div>
+  </section>
+
+  <section class="section" id="next">
+    <div class="section-head">
+      <h2>练习前后都可以回到方法树</h2>
+      <p>练习树负责暴露问题，方法树负责整理判断路径。两边来回看，才能把方法变成稳定习惯。</p>
+    </div>
+    <div class="link-row">
+      <a class="link-card" href="../../method_tree/初高中衔接知识/index.html">
+        <span class="tag">Method Tree</span>
+        <strong>进入初高中衔接方法树</strong>
+        <p>回到对象识别、结构判断、方法选择、条件控制和解集追踪的总路径。</p>
+      </a>
+      <a class="link-card" href="../../00_初高中衔接知识/">
+        <span class="tag green">Knowledge Tree</span>
+        <strong>回到初高中衔接知识树</strong>
+        <p>如果某个练习反馈看不懂，先回知识章节补清楚对应概念。</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">DGOpenKS · 初高中衔接练习树</footer>
+
+<script>
+const levelButtons = document.querySelectorAll(".level-button");
+const levelItems = document.querySelectorAll("[data-level]");
+function setLevel(level){
+  levelButtons.forEach((button)=>button.classList.toggle("active", button.dataset.level === level));
+  levelItems.forEach((item)=>item.classList.toggle("active", item.dataset.level === level));
+}
+levelButtons.forEach((button)=>{
+  button.addEventListener("click", ()=>{
+    setLevel(button.dataset.level);
+    document.querySelector(`.level-card[data-level="${button.dataset.level}"]`)?.scrollIntoView({block:"nearest", behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+[
+  {
+    "id": "BRIDGE_CC_ORIGINAL_CONDITION_001",
+    "title": "先写原式条件",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "00_形式与条件.md",
+      "section": "表达式形式和成立条件"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["形式与条件", "原式条件", "分母不为 0"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_008"],
+    "error_tags": ["compound-condition-missed"],
+    "stem": "只写出原式的成立条件：$$\\frac{\\sqrt{x+2}}{x-1}$$",
+    "answer": "$$x\\ge -2,\\quad x\\ne 1$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是同时含根号和分母的表达式。"},
+      {"step": "判断结构", "content": "根号要求被开方数不小于 0，分母要求不等于 0。"},
+      {"step": "执行方法", "content": "由 x+2 >= 0 得 x >= -2；由 x-1 != 0 得 x != 1。"},
+      {"step": "检查条件", "content": "两个限制要同时满足，所以条件一起保留。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x >= -2", "x != 1"],
+      "result": ["x >= -2", "x != 1"],
+      "forbidden_points": ["1"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你同时保留了根号条件和分母条件。",
+      "common_errors": [
+        {"id": "E_BRIDGE_008", "tag": "compound-condition-missed", "message": "你只检查了一类限制。", "check": "先看每一个根号，再看每一个分母。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_ORIGINAL_CONDITION_002",
+    "title": "分母禁点来自原分母",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "原分母条件"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["分式化简", "原式条件", "禁点识别"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_004"],
+    "error_tags": ["domain-lost"],
+    "stem": "只写出原式的成立条件：$$\\frac{x+3}{x^2-4}$$",
+    "answer": "$$x\\ne 2,\\quad x\\ne -2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含分母的表达式。"},
+      {"step": "判断结构", "content": "条件来自原分母 x^2-4。"},
+      {"step": "执行方法", "content": "x^2-4=(x-2)(x+2)，所以 x 不能等于 2 或 -2。"},
+      {"step": "检查条件", "content": "两个让分母为 0 的值都要排除。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x != 2", "x != -2"],
+      "result": ["x != 2", "x != -2"],
+      "forbidden_points": ["2", "-2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你找到了原分母的两个禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_004", "tag": "domain-lost", "message": "你漏掉了一个让原分母为 0 的值。", "check": "先把原分母分解，再列出每个因子为 0 的值。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_ORIGINAL_CONDITION_003",
+    "title": "根号和分母同时限制",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "03_复合条件.md",
+      "section": "多个条件取共同范围"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["复合条件", "根式非负", "分母禁点"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_008"],
+    "error_tags": ["compound-condition-missed"],
+    "stem": "只写出原式的成立条件：$$\\frac{\\sqrt{5-x}}{x+1}$$",
+    "answer": "$$x\\le 5,\\quad x\\ne -1$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含根号和分母的表达式。"},
+      {"step": "判断结构", "content": "根号内 5-x 必须不小于 0，分母 x+1 不能为 0。"},
+      {"step": "执行方法", "content": "由 5-x >= 0 得 x <= 5；由 x+1 != 0 得 x != -1。"},
+      {"step": "检查条件", "content": "两个条件没有互相替代，必须同时写出。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x <= 5", "x != -1"],
+      "result": ["x <= 5", "x != -1"],
+      "forbidden_points": ["-1"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你同时写出了根号条件和分母禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_008", "tag": "compound-condition-missed", "message": "复合表达式中不能只看根号或只看分母。", "check": "把每个限制单独写出，再合并。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_DENOMINATOR_001",
+    "title": "多个分母因子都要排除",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "分母不能为 0"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["分式条件", "分母因子", "禁点"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_004"],
+    "error_tags": ["domain-lost"],
+    "stem": "写出分式的禁点：$$\\frac{1}{(x-2)(x+3)}$$",
+    "answer": "$$x=2\\text{ 和 }x=-3\\text{ 都是禁点}$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是分式表达式。"},
+      {"step": "判断结构", "content": "分母由两个因子相乘组成。"},
+      {"step": "执行方法", "content": "令每个分母因子分别不为 0，得到 x != 2 且 x != -3。"},
+      {"step": "检查条件", "content": "两个禁点都来自原分母，不能漏。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x != 2", "x != -3"],
+      "result": ["x != 2", "x != -3"],
+      "forbidden_points": ["2", "-3"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你把两个分母因子产生的禁点都排除了。",
+      "common_errors": [
+        {"id": "E_BRIDGE_004", "tag": "domain-lost", "message": "分母有多个因子时，每个因子都可能产生禁点。", "check": "分别检查 x-2 和 x+3 什么时候为 0。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_DENOMINATOR_002",
+    "title": "能约掉也先看原分母",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "约掉因子不等于约掉禁点"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["分式化简", "原分母条件", "禁点保留"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_004", "E_BRIDGE_010"],
+    "error_tags": ["domain-lost", "range-expanded"],
+    "stem": "化简前先写原式条件：$$\\frac{x+1}{x^2-1}$$",
+    "answer": "$$x\\ne 1,\\quad x\\ne -1$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含分母的表达式。"},
+      {"step": "判断结构", "content": "原分母 x^2-1 是平方差。"},
+      {"step": "执行方法", "content": "x^2-1=(x-1)(x+1)，所以 x != 1 且 x != -1。"},
+      {"step": "检查条件", "content": "即使后面约掉 x+1，x=-1 仍是原式禁点。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x != 1", "x != -1"],
+      "result": ["x != 1", "x != -1"],
+      "forbidden_points": ["1", "-1"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你在化简前保留了原分母的全部禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_010", "tag": "range-expanded", "message": "约分后的式子可能看不出原来的禁点。", "check": "条件必须从原分母出发，而不是从化简式出发。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_DENOMINATOR_003",
+    "title": "重复因子只产生一个禁点",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "分母禁点"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["分式条件", "重复因子", "禁点识别"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_004"],
+    "error_tags": ["domain-lost"],
+    "stem": "写出分式的禁点：$$\\frac{2x-5}{x^2-4x+4}$$",
+    "answer": "$$x=2\\text{ 是禁点}$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是分式表达式。"},
+      {"step": "判断结构", "content": "分母 x^2-4x+4 是完全平方。"},
+      {"step": "执行方法", "content": "x^2-4x+4=(x-2)^2，所以 x 不能等于 2。"},
+      {"step": "检查条件", "content": "重复因子仍然只对应禁点 x=2。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x != 2"],
+      "result": ["x != 2"],
+      "forbidden_points": ["2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你看出了重复因子对应的禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_004", "tag": "domain-lost", "message": "禁点来自分母为 0，不来自因子出现的次数。", "check": "解 (x-2)^2 != 0。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RATIONAL_SIMPLIFY_001",
+    "title": "约分后保留禁点",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "共同因子可以约掉，禁点不能约掉"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "simplify",
+    "knowledge": ["分式化简", "平方差", "禁点保留"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004", "P_BRIDGE_005"],
+    "practice_nodes": ["04_条件检查练习", "05_综合迁移练习"],
+    "error_ids": ["E_BRIDGE_004", "E_BRIDGE_010"],
+    "error_tags": ["domain-lost", "range-expanded"],
+    "stem": "化简并写出条件：$$\\frac{x^2-1}{x-1}$$",
+    "answer": "$$x+1,\\quad x\\ne 1$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是分式化简题，先写原分母条件。"},
+      {"step": "判断结构", "content": "分子 x^2-1 是平方差。"},
+      {"step": "执行方法", "content": "原式等于 ((x-1)(x+1))/(x-1)，在 x != 1 下约掉共同因子。"},
+      {"step": "检查条件", "content": "化简式是 x+1，但原式仍要求 x != 1。"}
+    ],
+    "checks": [
+      {"type": "algebra_equivalence", "lhs": "(x**2 - 1)/(x - 1)", "rhs": "x + 1", "variables": ["x"]}
+    ],
+    "conditions": {
+      "original": ["x != 1"],
+      "result": ["x != 1"],
+      "forbidden_points": ["1"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "化简形式和原式禁点都保留正确。",
+      "common_errors": [
+        {"id": "E_BRIDGE_004", "tag": "domain-lost", "message": "你约掉了 x-1，但 x=1 仍然不能代入原式。", "check": "回到原分母 x-1。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RATIONAL_SIMPLIFY_002",
+    "title": "约掉一个因子后还有分母",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "化简结果和条件一起写"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "simplify",
+    "knowledge": ["分式化简", "因式分解", "禁点保留"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004", "P_BRIDGE_005"],
+    "practice_nodes": ["04_条件检查练习", "05_综合迁移练习"],
+    "error_ids": ["E_BRIDGE_004", "E_BRIDGE_010"],
+    "error_tags": ["domain-lost", "range-expanded"],
+    "stem": "化简并写出条件：$$\\frac{x^2-4}{x^2-3x+2}$$",
+    "answer": "$$\\frac{x+2}{x-1},\\quad x\\ne 1,\\ x\\ne 2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是分式化简题。"},
+      {"step": "判断结构", "content": "分子是平方差，分母可分解为 (x-1)(x-2)。"},
+      {"step": "执行方法", "content": "原式等于 ((x-2)(x+2))/((x-1)(x-2))，在原式条件下约掉 x-2。"},
+      {"step": "检查条件", "content": "化简后分母只剩 x-1，但原式还禁止 x=2。"}
+    ],
+    "checks": [
+      {"type": "algebra_equivalence", "lhs": "(x**2 - 4)/(x**2 - 3*x + 2)", "rhs": "(x + 2)/(x - 1)", "variables": ["x"]}
+    ],
+    "conditions": {
+      "original": ["x != 1", "x != 2"],
+      "result": ["x != 1", "x != 2"],
+      "forbidden_points": ["1", "2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你既保留了化简后分母的禁点，也保留了被约掉因子的禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_004", "tag": "domain-lost", "message": "x=2 在化简后看不出来，但它来自原分母。", "check": "条件从原分母 x^2-3x+2 出发。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RATIONAL_SIMPLIFY_003",
+    "title": "被约掉的因子仍留下禁点",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "01_分式化简.md",
+      "section": "原式条件不能丢"
+    },
+    "object_type": "rational_expression",
+    "task_goal": "simplify",
+    "knowledge": ["分式化简", "因式分解", "原式条件"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004", "P_BRIDGE_005"],
+    "practice_nodes": ["04_条件检查练习", "05_综合迁移练习"],
+    "error_ids": ["E_BRIDGE_004", "E_BRIDGE_010"],
+    "error_tags": ["domain-lost", "range-expanded"],
+    "stem": "化简并写出条件：$$\\frac{x^2-9}{x^2-x-6}$$",
+    "answer": "$$\\frac{x+3}{x+2},\\quad x\\ne 3,\\ x\\ne -2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是分式化简题。"},
+      {"step": "判断结构", "content": "分子和分母都可以因式分解，并有共同因子 x-3。"},
+      {"step": "执行方法", "content": "原式等于 ((x-3)(x+3))/((x-3)(x+2))，在原式条件下约掉 x-3。"},
+      {"step": "检查条件", "content": "原分母要求 x != 3 且 x != -2，两个条件都保留。"}
+    ],
+    "checks": [
+      {"type": "algebra_equivalence", "lhs": "(x**2 - 9)/(x**2 - x - 6)", "rhs": "(x + 3)/(x + 2)", "variables": ["x"]}
+    ],
+    "conditions": {
+      "original": ["x != 3", "x != -2"],
+      "result": ["x != 3", "x != -2"],
+      "forbidden_points": ["3", "-2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你把约分和原式条件放在了一起。",
+      "common_errors": [
+        {"id": "E_BRIDGE_010", "tag": "range-expanded", "message": "只写化简式会让 x=3 被错误地允许。", "check": "比较原式和化简式的允许范围。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RADICAL_ABS_001",
+    "title": "平方根结果必须非负",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "02_根式化简.md",
+      "section": "sqrt(A^2)=|A|"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "simplify",
+    "knowledge": ["根式化简", "平方根非负", "绝对值"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_005"],
+    "error_tags": ["sqrt-absolute-missed"],
+    "stem": "化简：$$\\sqrt{(x-2)^2}$$",
+    "answer": "$$|x-2|$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是根式化简题。"},
+      {"step": "判断结构", "content": "根号里是一个整体的平方。"},
+      {"step": "执行方法", "content": "平方根结果必须非负，所以 sqrt((x-2)^2)=|x-2|。"},
+      {"step": "检查条件", "content": "不能在不知道 x-2 正负时直接写成 x-2。"}
+    ],
+    "checks": [
+      {"type": "algebra_equivalence", "lhs": "sqrt((x - 2)**2)", "rhs": "Abs(x - 2)", "variables": ["x"]}
+    ],
+    "conditions": {
+      "original": ["x in Reals"],
+      "result": ["x in Reals"],
+      "forbidden_points": [],
+      "must_preserve_original": false
+    },
+    "feedback": {
+      "correct": "你保留了平方根结果非负这个条件。",
+      "common_errors": [
+        {"id": "E_BRIDGE_005", "tag": "sqrt-absolute-missed", "message": "sqrt(A^2) 不能机械写成 A。", "check": "先写成 |A|，再根据 A 的正负判断。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RADICAL_ABS_002",
+    "title": "已知符号后再去绝对值",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "02_根式化简.md",
+      "section": "根据条件去绝对值"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "simplify",
+    "knowledge": ["根式化简", "绝对值", "条件判断"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_005"],
+    "error_tags": ["sqrt-absolute-missed"],
+    "stem": "在 $$x\\ge 3$$ 的条件下化简：$$\\sqrt{(x-2)^2}$$",
+    "answer": "$$x-2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是带条件的根式化简。"},
+      {"step": "判断结构", "content": "先得到 sqrt((x-2)^2)=|x-2|。"},
+      {"step": "执行方法", "content": "因为 x >= 3，所以 x-2 > 0，绝对值可以去掉。"},
+      {"step": "检查条件", "content": "去绝对值依赖题目给出的 x >= 3。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x >= 3"],
+      "result": ["x >= 3"],
+      "forbidden_points": [],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你先写绝对值，再利用条件判断了符号。",
+      "common_errors": [
+        {"id": "E_BRIDGE_005", "tag": "sqrt-absolute-missed", "message": "去绝对值必须有符号依据。", "check": "先判断 x-2 在给定范围内是正、负还是可能变号。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_RADICAL_ABS_003",
+    "title": "整体可以换写，但非负性不能丢",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "02_根式化简.md",
+      "section": "平方根结果非负"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "simplify",
+    "knowledge": ["根式化简", "整体平方", "绝对值"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_005"],
+    "error_tags": ["sqrt-absolute-missed"],
+    "stem": "化简：$$\\sqrt{(1-x)^2}$$",
+    "answer": "$$|1-x|$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是根式化简题。"},
+      {"step": "判断结构", "content": "根号内是整体 1-x 的平方。"},
+      {"step": "执行方法", "content": "sqrt((1-x)^2)=|1-x|。"},
+      {"step": "检查条件", "content": "|1-x| 也可以写成 |x-1|，但不能直接写成 1-x。"}
+    ],
+    "checks": [
+      {"type": "algebra_equivalence", "lhs": "sqrt((1 - x)**2)", "rhs": "Abs(1 - x)", "variables": ["x"]}
+    ],
+    "conditions": {
+      "original": ["x in Reals"],
+      "result": ["x in Reals"],
+      "forbidden_points": [],
+      "must_preserve_original": false
+    },
+    "feedback": {
+      "correct": "你把整体平方开方为绝对值。",
+      "common_errors": [
+        {"id": "E_BRIDGE_005", "tag": "sqrt-absolute-missed", "message": "直接写成 1-x 会在 x>1 时变成负数。", "check": "平方根结果必须非负。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_COMPOUND_001",
+    "title": "根号条件和禁点取交集",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "03_复合条件.md",
+      "section": "多个限制取共同范围"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["复合条件", "根式非负", "分母禁点"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_008"],
+    "error_tags": ["compound-condition-missed"],
+    "stem": "写出原式的成立条件：$$\\frac{\\sqrt{x-1}}{x-3}$$",
+    "answer": "$$x\\ge 1,\\quad x\\ne 3$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含根号和分母的表达式。"},
+      {"step": "判断结构", "content": "根号给出 x-1 >= 0，分母给出 x-3 != 0。"},
+      {"step": "执行方法", "content": "得到 x >= 1 且 x != 3。"},
+      {"step": "检查条件", "content": "x=3 虽然满足根号条件，但分母为 0，必须排除。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x >= 1", "x != 3"],
+      "result": ["x >= 1", "x != 3"],
+      "forbidden_points": ["3"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你把根号条件和分母禁点都保留了。",
+      "common_errors": [
+        {"id": "E_BRIDGE_008", "tag": "compound-condition-missed", "message": "只写 x >= 1 会把 x=3 错误保留下来。", "check": "根号条件之后还要检查分母。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_COMPOUND_002",
+    "title": "多个禁点和根号范围一起保留",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "03_复合条件.md",
+      "section": "共同范围"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["复合条件", "根式非负", "分母因子"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_008"],
+    "error_tags": ["compound-condition-missed"],
+    "stem": "写出原式的成立条件：$$\\frac{\\sqrt{4-x}}{(x-1)(x+2)}$$",
+    "answer": "$$x\\le 4,\\quad x\\ne 1,\\quad x\\ne -2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含根号和两个分母因子的表达式。"},
+      {"step": "判断结构", "content": "根号要求 4-x >= 0，两个分母因子都不能为 0。"},
+      {"step": "执行方法", "content": "得到 x <= 4，且 x != 1，x != -2。"},
+      {"step": "检查条件", "content": "三个限制要一起保留。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x <= 4", "x != 1", "x != -2"],
+      "result": ["x <= 4", "x != 1", "x != -2"],
+      "forbidden_points": ["1", "-2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你同时保留了一个范围限制和两个禁点。",
+      "common_errors": [
+        {"id": "E_BRIDGE_008", "tag": "compound-condition-missed", "message": "复合条件不是选一个写，而是全部取共同范围。", "check": "根号、每个分母因子都要检查。"}
+      ]
+    }
+  },
+  {
+    "id": "BRIDGE_CC_COMPOUND_003",
+    "title": "交集会排除边界禁点",
+    "stage": "初高中衔接",
+    "source": {
+      "chapter": "Chapter 04 分式根式与条件控制",
+      "file": "03_复合条件.md",
+      "section": "根号条件和分母条件取交集"
+    },
+    "object_type": "radical_expression",
+    "task_goal": "preserve_conditions",
+    "knowledge": ["复合条件", "根式边界", "分母禁点"],
+    "method_ids": ["M_BRIDGE_004"],
+    "method_nodes": ["04_条件控制与等价化简"],
+    "practice_ids": ["P_BRIDGE_004"],
+    "practice_nodes": ["04_条件检查练习"],
+    "error_ids": ["E_BRIDGE_008", "E_BRIDGE_004"],
+    "error_tags": ["compound-condition-missed", "domain-lost"],
+    "stem": "写出原式的成立条件：$$\\frac{\\sqrt{x+2}}{x^2-4}$$",
+    "answer": "$$x>-2,\\quad x\\ne 2$$",
+    "solution_steps": [
+      {"step": "识别对象", "content": "这是含根号和分母的表达式。"},
+      {"step": "判断结构", "content": "根号给出 x >= -2；分母 x^2-4 给出 x != -2 且 x != 2。"},
+      {"step": "执行方法", "content": "把 x >= -2 与 x != -2 合并，得到 x > -2；同时保留 x != 2。"},
+      {"step": "检查条件", "content": "x=-2 是根号边界，但也是分母禁点，所以不能取。"}
+    ],
+    "checks": [],
+    "conditions": {
+      "original": ["x >= -2", "x != -2", "x != 2"],
+      "result": ["x > -2", "x != 2"],
+      "forbidden_points": ["-2", "2"],
+      "must_preserve_original": true
+    },
+    "feedback": {
+      "correct": "你把根号边界和分母禁点合并成了正确的共同范围。",
+      "common_errors": [
+        {"id": "E_BRIDGE_008", "tag": "compound-condition-missed", "message": "x=-2 虽然让根号有意义，但会让分母为 0。", "check": "每个候选边界都要再看原分母。"}
+      ]
+    }
+  }
+]

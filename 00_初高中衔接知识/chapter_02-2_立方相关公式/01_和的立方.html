@@ -64,6 +64,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:18px;margin:18px 0;overflow:auto}
 .derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
 .derivation .indent{padding-left:22px}
+.calc-steps{display:grid;gap:0}
+.calc-step{display:grid;grid-template-columns:minmax(420px,1.08fr) minmax(260px,.92fr);gap:18px;align-items:start;border-bottom:1px solid var(--line);padding:12px 0}
+.calc-step:last-child{border-bottom:0;padding-bottom:0}
+.formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px}
 .note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
 .lab{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);align-items:stretch;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);overflow:hidden;margin:22px 0 0;min-height:560px}
 .scene-wrap{position:relative;min-height:560px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
@@ -178,6 +183,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
 @media(max-width:900px){
   .section,.lab{grid-template-columns:minmax(0,1fr)}
+  .calc-step{grid-template-columns:minmax(0,1fr);gap:6px}
+  .step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}
   .cube-template-board{grid-template-columns:1fr}
   .cube-template-panel{grid-template-rows:auto auto auto}
   .cube-handout-grid{grid-template-columns:1fr}
@@ -189,6 +196,10 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   .scene-wrap{min-height:430px}
 }
 @media(max-width:640px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .topbar-inner,.hero,main{width:100%;max-width:100vw}
+  .hero>*,.section,.section-body,.prose,.lead,.formula-card{max-width:calc(100vw - 28px)}
+  .section,.section-body,.prose,.formula-card{min-width:0;width:100%}
   .hero,main{padding-left:14px;padding-right:14px}
   .hero{padding-top:36px}
   .hero>*{max-width:calc(100vw - 28px)}
@@ -196,7 +207,10 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   .mobile-title-break{display:block}
   .lead{font-size:1rem}
   .formula-card,.panel{padding:14px}
-  .derivation,.formula-list,.math{white-space:normal}
+  .derivation,.formula-list,.formula-line,.step-note .math,.math{white-space:normal}
+  h1,h2,h3,p,.lead,.formula-line,.step-note,.step-note .math,.math{line-break:anywhere;overflow-wrap:anywhere;word-break:break-all}
+  .calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}
+  .formula-card{overflow-x:hidden}
   .stage-rail,.group-grid{grid-template-columns:1fr}
   .scene-wrap{min-height:360px}
   .cube-handout-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
@@ -230,7 +244,6 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <a class="nav-link" href="./">章节入口</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
-    <a class="nav-link" href="#print-split">拆分流程图</a>
     <a class="nav-link" href="02_差的立方.html">下一篇</a>
   </div>
 </nav>
@@ -238,7 +251,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 01</span>
   <h1>和的立方公式：<br class="mobile-title-break">公式推导与几何解析</h1>
-  <p class="lead">本节先从三个 <span class="math">a+b</span> 相乘推出标准展开式，再用边长为 <span class="math">a+b</span> 的立方体解释系数 <span class="math">1,3,3,1</span> 的几何来源。</p>
+  <p class="lead">本节先从代数运算推出 <span class="math">(a+b)<sup>3</sup></span> 的标准展开式，再用立方体的体积解释这个公式。</p>
 </header>
 
 <main>
@@ -247,17 +260,32 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <div class="prose">
         <h2>公式推导：从三个因式相乘到展开式</h2>
-        <p>立方就是三个相同因式相乘。手算时先算前两个括号，再乘第三个括号：</p>
+        <p>立方表示三个相同因式相乘。运算时先处理前两个括号，再把结果与第三个括号相乘：</p>
         <div class="formula-card">
-          <div class="derivation">
-            <span>(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</span>
-            <span>= (a<sup>2</sup> + 2ab + b<sup>2</sup>)(a+b)</span>
-            <span>= a<sup>2</sup>(a+b) + 2ab(a+b) + b<sup>2</sup>(a+b)</span>
-            <span>= a<sup>3</sup> + a<sup>2</sup>b + 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> + b<sup>3</sup></span>
-            <span>= a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span>
+          <div class="calc-steps">
+            <div class="calc-step">
+              <div class="formula-line">(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</div>
+              <p class="step-note">先把立方写成三个相同因式相乘，这是展开运算的起点。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= (a<sup>2</sup> + 2ab + b<sup>2</sup>)(a+b)</div>
+              <p class="step-note">这里使用完全平方公式计算前两个括号：<span class="math">(a+b)(a+b)=a<sup>2</sup>+2ab+b<sup>2</sup></span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>2</sup>(a+b) + 2ab(a+b) + b<sup>2</sup>(a+b)</div>
+              <p class="step-note">接着使用乘法分配律，让 <span class="math">a<sup>2</sup></span>、<span class="math">2ab</span>、<span class="math">b<sup>2</sup></span> 分别乘第三个括号。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> + a<sup>2</sup>b + 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> + b<sup>3</sup></div>
+              <p class="step-note">把三个乘积分别展开：<span class="math">a<sup>2</sup>(a+b)</span> 得到 <span class="math">a<sup>3</sup>+a<sup>2</sup>b</span>，<span class="math">2ab(a+b)</span> 得到 <span class="math">2a<sup>2</sup>b+2ab<sup>2</sup></span>，<span class="math">b<sup>2</sup>(a+b)</span> 得到 <span class="math">ab<sup>2</sup>+b<sup>3</sup></span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></div>
+              <p class="step-note">最后合并同类项：<span class="math">a<sup>2</sup>b+2a<sup>2</sup>b=3a<sup>2</sup>b</span>，<span class="math">2ab<sup>2</sup>+ab<sup>2</sup>=3ab<sup>2</sup></span>。</p>
+            </div>
           </div>
         </div>
-        <p>这就是最自然的计算线。后面的立方体会把 <span class="math">2a<sup>2</sup>b</span> 看成两个 <span class="math">a<sup>2</sup>b</span>，把 <span class="math">2ab<sup>2</sup></span> 看成两个 <span class="math">ab<sup>2</sup></span>，这样就能对应到 8 个小长方体。</p>
+        <p>通过以上代数运算，可以得到和的立方展开式。下面从几何体积的角度说明这一公式的结构来源。</p>
       </div>
     </div>
   </section>
@@ -266,7 +294,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
     <div class="section-body">
       <h2>几何解析：立方体体积模型</h2>
-      <p class="prose">这里不是突然想到去切一个立方体。因为体积也是“长 × 宽 × 高”，三个 <span class="math">a+b</span> 可以先对应到长、宽、高三条边；每条边上都有 <span class="math">a</span> 和 <span class="math">b</span> 的分界，沿这些分界向里面切，才得到 8 个体积块。</p>
+      <p class="prose">体积表示为“长 × 宽 × 高”，三个 <span class="math">a+b</span> 相乘可以对应到长、宽、高三条边；将每条边上的 <span class="math">a</span> 和 <span class="math">b</span> 进行分割，沿这些分界向里面切，就能得到 <span class="math">8</span> 个体积块。</p>
       <div class="lab">
         <div class="scene-wrap" id="sceneWrap">
           <canvas id="cubeCanvas" aria-label="边长为 a+b 的立方体三维分块模型"></canvas>
@@ -306,11 +334,6 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </div>
       </div>
-      <div class="static-split" id="print-split">
-        <h3>和的立方体积拆分图</h3>
-        <p class="static-split-lead">这张图把同一个边长为 <span class="math">a+b</span> 的立方体分成三步来看：先看整体体积，再看切出的 8 个体积块，最后按同类体积合并成公式。</p>
-        <div class="cube-expansion-flow" id="cubeExpansionFlow" aria-label="和的立方体积拆分流程图"></div>
-      </div>
     </div>
   </section>
 
@@ -319,7 +342,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <div class="prose">
         <h2>核心结论</h2>
-        <p><span class="math">(a+b)<sup>3</sup></span> 是三个 <span class="math">a+b</span> 相乘。中间的两个系数 3，来自 8 个乘积中同类项的数量，也可以从立方体切分出的体积分组直接看见。</p>
+        <p><span class="math">(a+b)<sup>3</sup></span> 是三个 <span class="math">a+b</span> 相乘。中间的 <span class="math">3a<sup>2</sup>b</span> 和 <span class="math">3ab<sup>2</sup></span>，来自 <span class="math">8</span> 个乘积中同类项的数量，也可以从立方体切分出的体积分组直接看见。</p>
       </div>
     </div>
   </section>

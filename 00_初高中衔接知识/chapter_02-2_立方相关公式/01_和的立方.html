@@ -91,23 +91,19 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .tag.ab2{color:var(--purple-deep);border-color:var(--purple-line);background:rgba(244,240,255,.96)}
 .tag.b3{color:var(--cyan-deep);border-color:var(--cyan-line);background:rgba(234,251,253,.96)}
 .scene-caption{position:absolute;left:12px;right:12px;bottom:12px;z-index:4;background:rgba(255,255,255,.98);border:1px solid #cbd8e8;border-radius:var(--radius);padding:8px 10px;color:#334155;font-weight:900;font-size:.86rem;box-shadow:0 8px 18px rgba(15,23,42,.08)}
-.panel{padding:18px;display:grid;gap:14px;align-content:start}
-.stage-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.stage-btn{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-height:44px;padding:8px 10px;font-weight:900;cursor:pointer;text-align:center}
-.stage-btn[aria-pressed=true]{border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
-.stage-btn:hover,.stage-btn:focus-visible{outline:0;border-color:var(--blue-line);background:var(--blue-soft);color:var(--blue)}
-.readout{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:12px;color:var(--blue-deep)}
-.readout b{display:block;margin-bottom:4px}
-.formula-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;overflow:auto}
-.formula-panel[hidden]{display:none}
+.static-model-sequence{display:grid;gap:18px;margin-top:22px}
+.model-step{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,.98fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);overflow:hidden;break-inside:avoid}
+.static-scene-wrap{min-height:340px;border-right:1px solid var(--line)}
+.static-scene-wrap canvas{z-index:1;cursor:grab}
+.static-scene-wrap canvas:active{cursor:grabbing}
+.model-step-copy{padding:18px;display:grid;gap:12px;align-content:start}
+.model-step-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:900;font-size:.86rem}
+.model-step-kicker b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff}
+.model-step-copy h3{font-size:1.18rem;margin:0;color:var(--ink)}
+.model-step-copy p{color:#334155;line-height:1.78}
+.static-formula{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;overflow:auto}
+.static-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .formula-list{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;white-space:nowrap}
-.restore-tools{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px}
-.restore-tools[hidden]{display:none}
-.restore-meter{height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden}
-.restore-meter span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .18s ease}
-.restore-text{font-size:.88rem;font-weight:900;color:#334155}
-.group-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.group-grid[hidden]{display:none}
 .count{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;text-align:center}
 .count b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem}
 .count small{display:block;color:var(--muted);font-weight:850}
@@ -183,6 +179,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
 @media(max-width:900px){
   .section,.lab{grid-template-columns:minmax(0,1fr)}
+  .model-step{grid-template-columns:minmax(0,1fr)}
+  .static-scene-wrap{border-right:0;border-bottom:1px solid var(--line)}
   .calc-step{grid-template-columns:minmax(0,1fr);gap:6px}
   .step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}
   .cube-template-board{grid-template-columns:1fr}
@@ -206,20 +204,21 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   h1{font-size:1.9rem}
   .mobile-title-break{display:block}
   .lead{font-size:1rem}
-  .formula-card,.panel{padding:14px}
+  .formula-card{padding:14px}
   .derivation,.formula-list,.formula-line,.step-note .math,.math{white-space:normal}
   h1,h2,h3,p,.lead,.formula-line,.step-note,.step-note .math,.math{line-break:anywhere;overflow-wrap:anywhere;word-break:break-all}
   .calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}
   .formula-card{overflow-x:hidden}
-  .stage-rail,.group-grid{grid-template-columns:1fr}
   .scene-wrap{min-height:360px}
+  .static-scene-wrap{min-height:300px}
+  .static-counts{grid-template-columns:repeat(2,1fr)}
   .cube-handout-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
   .cube-handout-svg{width:920px;max-width:none}
   .cube-mini-group{grid-template-columns:86px minmax(0,1fr);gap:8px}
   .cube-mini-count{text-align:left;grid-column:1/-1}
 }
 @media print{
-  .topbar,.stage-rail,.restore-tools{display:none!important}
+  .topbar{display:none!important}
   body{background:white}
   .hero,main{max-width:none;padding-left:0;padding-right:0}
   .section{display:block;break-inside:avoid;padding:28px 0}
@@ -295,44 +294,173 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <h2>几何解析：立方体体积模型</h2>
       <p class="prose">体积表示为“长 × 宽 × 高”，三个 <span class="math">a+b</span> 相乘可以对应到长、宽、高三条边；将每条边上的 <span class="math">a</span> 和 <span class="math">b</span> 进行分割，沿这些分界向里面切，就能得到 <span class="math">8</span> 个体积块。</p>
-      <div class="lab">
-        <div class="scene-wrap" id="sceneWrap">
-          <canvas id="cubeCanvas" aria-label="边长为 a+b 的立方体三维分块模型"></canvas>
-          <div class="scene-loader" id="sceneLoader">3D 模型加载中...</div>
-          <div class="scene-fallback" id="sceneFallback" hidden>
-            <div>
-              <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
-              <span>仍可按右侧步骤看 8 个体积项的来源。</span>
-              <div class="fallback-stack" aria-hidden="true">
-                <span class="fallback-face one"></span>
-                <span class="fallback-face two"></span>
-                <span class="fallback-face three"></span>
+      <div class="static-model-sequence" id="staticModelSequence" aria-label="和的立方几何解析静态步骤">
+        <article class="model-step" data-model-stage="0">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="整体立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="scene-tags" id="sceneTags" aria-hidden="true"></div>
-          <div class="scene-caption" id="sceneCaption">完整立方体：棱长是 a+b，体积是 (a+b)³。</div>
-        </div>
-        <div class="panel">
-          <div class="stage-rail" id="stageRail" aria-label="立方体推导步骤"></div>
-          <div class="readout" id="readout">
-            <b>完整立方体</b>
-            <span>先把它看成一个整体，体积就是 <span class="math">(a+b)<sup>3</sup></span>。</span>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>1</b>整体体积</span>
+            <h3>先看边长为 <span class="math">a+b</span> 的整体立方体</h3>
+            <p>当长、宽、高都等于 <span class="math">a+b</span> 时，整体体积就是三个 <span class="math">a+b</span> 相乘。</p>
+            <div class="static-formula">
+              <div class="formula-list"><span>(a+b)<sup>3</sup> = (a+b) × (a+b) × (a+b)</span></div>
+            </div>
           </div>
-          <div class="formula-panel" id="formulaPanel">
-            <div class="formula-list" id="formulaList"></div>
+        </article>
+
+        <article class="model-step" data-model-stage="1">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="三条边按 a 和 b 分割的立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="restore-tools" id="restoreTools" hidden>
-            <div class="restore-meter" aria-hidden="true"><span id="restoreMeter"></span></div>
-            <span class="restore-text" id="restoreText">按住左侧模型横向拖动，把 8 块合回立方体。</span>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>2</b>三边分割</span>
+            <h3>在长、宽、高三条边上标出 <span class="math">a</span> 与 <span class="math">b</span></h3>
+            <p>每条边都由 <span class="math">a</span> 和 <span class="math">b</span> 两段组成。先看清三条边上的分界，再观察体积怎样被分成几块。</p>
+            <div class="static-formula">
+              <div class="formula-list">
+                <span>长：a+b = a | b</span>
+                <span>宽：a+b = a | b</span>
+                <span>高：a+b = a | b</span>
+              </div>
+            </div>
           </div>
-          <div class="group-grid" id="groupGrid" hidden>
-            <div class="count a3"><b>a<sup>3</sup></b><small>1 个</small></div>
-            <div class="count a2b"><b>a<sup>2</sup>b</b><small>3 个</small></div>
-            <div class="count ab2"><b>ab<sup>2</sup></b><small>3 个</small></div>
-            <div class="count b3"><b>b<sup>3</sup></b><small>1 个</small></div>
+        </article>
+
+        <article class="model-step" data-model-stage="2">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="沿三条边分界向内切分的立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>3</b>沿分界切开</span>
+            <h3>从三条边的分界处向立方体内部切分</h3>
+            <p>长、宽、高三个方向都按 <span class="math">a</span> 与 <span class="math">b</span> 分成两段，立方体内部也随之形成对应的体积块。</p>
+            <div class="static-formula">
+              <div class="formula-list">
+                <span>长方向：a 或 b</span>
+                <span>宽方向：a 或 b</span>
+                <span>高方向：a 或 b</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-step" data-model-stage="3">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="八个小长方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>4</b>八个体积块</span>
+            <h3>三个方向各有两种选择，共得到 <span class="math">8</span> 个小长方体</h3>
+            <p>每个小长方体的长、宽、高都从 <span class="math">a</span> 或 <span class="math">b</span> 中选出。三个方向合起来共有 <span class="math">2×2×2</span> 种组合。</p>
+            <div class="static-formula">
+              <div class="formula-list"><span>2 × 2 × 2 = 8</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-step" data-model-stage="4">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="按同类体积分组的立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>5</b>同类体积分组</span>
+            <h3>把体积类型相同的小长方体合并观察</h3>
+            <p><span class="math">a<sup>3</sup></span> 有 1 个，<span class="math">a<sup>2</sup>b</span> 有 3 个，<span class="math">ab<sup>2</sup></span> 有 3 个，<span class="math">b<sup>3</sup></span> 有 1 个，数量正好形成 <span class="math">1,3,3,1</span>。</p>
+            <div class="static-counts">
+              <div class="count a3"><b>a<sup>3</sup></b><small>1 个</small></div>
+              <div class="count a2b"><b>a<sup>2</sup>b</b><small>3 个</small></div>
+              <div class="count ab2"><b>ab<sup>2</sup></b><small>3 个</small></div>
+              <div class="count b3"><b>b<sup>3</sup></b><small>1 个</small></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-step" data-model-stage="5">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="和的立方标准公式对应的体积分组模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>6</b>回到公式</span>
+            <h3>四类体积相加，得到和的立方公式</h3>
+            <p>整体体积等于所有小长方体体积之和。按同类体积合并后，就得到和的立方展开式。</p>
+            <div class="static-formula">
+              <div class="formula-list"><span>(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span></div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -903,63 +1031,26 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   const stageData = [
     {
       title:'整体体积',
-      text:'(a+b)³ 表示三个 a+b 相乘，可以对应长、宽、高三个方向。',
-      caption:'先把三个 a+b 放到长、宽、高三条边上。',
-      tags:['长：a+b','宽：a+b','高：a+b'],
-      formula:['(a+b)³ = (a+b) × (a+b) × (a+b)'],
       mode:'factors'
     },
     {
-      title:'边长分解',
-      text:'先只在三条边上做 a | b 的标记，还没有真正切开。',
-      caption:'每条边都是 a+b，所以每条边上都有 a 和 b 的分界点。',
-      tags:['长：a | b','宽：a | b','高：a | b'],
-      formula:['长：a+b = a | b','宽：a+b = a | b','高：a+b = a | b'],
+      title:'三边分割',
       mode:'edgeSplit'
     },
     {
-      title:'三向切分',
-      text:'现在从边上的分界点向立方体里面切。蓝、橙、紫三张切面分别对应长、宽、高。',
-      caption:'先有边上的 a | b 分界，再从分界处向里面切。',
-      tags:['蓝：长 a | b','橙：宽 a | b','紫：高 a | b'],
-      formula:['蓝色切面：长分成 a 或 b','橙色切面：宽分成 a 或 b','紫色切面：高分成 a 或 b'],
+      title:'沿分界切开',
       mode:'cuts'
     },
     {
-      title:'八块体积',
-      text:'每个方向有 2 种选择，三个方向合起来就是 2×2×2=8 个小长方体。',
-      caption:'2 × 2 × 2 = 8，先看见 8 块本身。',
-      tags:['2 × 2 × 2 = 8'],
-      formula:['2 × 2 × 2 = 8'],
+      title:'八个体积块',
       mode:'blocks'
     },
     {
-      title:'体积复原',
-      text:'切开以后，不急着一块块列体积。先拖动左侧模型，把分开的 8 块合回一个立方体，感受体积只是被重新分组。',
-      caption:'按住模型横向拖动：向右合拢，向左分开。',
-      tags:['体积复原','8 块 -> 1 个整体'],
-      formula:['复原：分块 -> 合拢','体积没有变，只是位置改变'],
-      mode:'restore'
-    },
-    {
-      title:'合并同类项',
-      text:'把体积相同的一类先放到一起：a³ 自成一组，a²b 有 3 个，ab² 有 3 个，b³ 自成一组。',
-      caption:'同类体块靠在一起，数量正好是 1,3,3,1。',
-      tags:['a³：1 个','a²b：3 个','ab²：3 个','b³：1 个'],
-      formula:[
-        'a³ + (a²b + a²b + a²b)',
-        '+ (ab² + ab² + ab²) + b³',
-        'a²b + a²b + a²b = 3a²b',
-        'ab² + ab² + ab² = 3ab²'
-      ],
+      title:'同类体积分组',
       mode:'combine'
     },
     {
       title:'标准公式',
-      text:'所以和的立方公式就是四类体积的总和。',
-      caption:'最终公式对应四类体积：1,3,3,1。',
-      tags:['a³：1 个','a²b：3 个','ab²：3 个','b³：1 个'],
-      formula:['(a+b)³ = a³ + 3a²b + 3ab² + b³'],
       mode:'final'
     }
   ];
@@ -985,35 +1076,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
   const total = 3.4;
   const half = total / 2;
-  const canvas = document.getElementById('cubeCanvas');
-  const sceneWrap = document.getElementById('sceneWrap');
-  const sceneLoader = document.getElementById('sceneLoader');
-  const sceneFallback = document.getElementById('sceneFallback');
-  const stageRail = document.getElementById('stageRail');
-  const readout = document.getElementById('readout');
-  const formulaPanel = document.getElementById('formulaPanel');
-  const formulaList = document.getElementById('formulaList');
-  const restoreTools = document.getElementById('restoreTools');
-  const restoreMeter = document.getElementById('restoreMeter');
-  const restoreText = document.getElementById('restoreText');
-  const groupGrid = document.getElementById('groupGrid');
-  const sceneTags = document.getElementById('sceneTags');
-  const sceneCaption = document.getElementById('sceneCaption');
-
-  let stage = 0;
-  let pieceIndex = 0;
-  let model = null;
+  const staticStepCards = Array.from(document.querySelectorAll('[data-model-stage]'));
+  const staticModels = [];
   let rendererKind = 'pending';
-
-  stageData.forEach((item, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'stage-btn';
-    button.dataset.stage = String(index);
-    button.setAttribute('aria-pressed', String(index === 0));
-    button.textContent = `${index + 1}. ${item.title}`;
-    stageRail.appendChild(button);
-  });
 
   function hasWebGL() {
     try {
@@ -1456,109 +1521,70 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     }
   }
 
-  function formulaHTML(lines) {
-    return lines.map(line => `<span>${line
-      .replaceAll('³', '<sup>3</sup>')
-      .replaceAll('²', '<sup>2</sup>')
-      .replaceAll('×', '×')
-      .replaceAll('|', '<span aria-hidden="true">|</span>')}</span>`).join('');
+  function showStaticFallback(card) {
+    const loader = card.querySelector('.scene-loader');
+    const fallback = card.querySelector('.scene-fallback');
+    const scene = card.querySelector('.scene-wrap');
+    if (loader) loader.hidden = true;
+    if (fallback) fallback.hidden = false;
+    if (scene) scene.classList.add('is-fallback');
   }
 
-  function updateRestoreUI(progress = 0) {
-    const percent = Math.round(progress * 100);
-    restoreMeter.style.width = `${percent}%`;
-    if (percent >= 96) {
-      restoreText.textContent = '已经合回完整立方体：8 块只是重新拼回原来的体积。';
-    } else if (percent <= 4) {
-      restoreText.textContent = '按住左侧模型向右拖动，把 8 块合回立方体。';
-    } else {
-      restoreText.textContent = `已还原 ${percent}%。继续向右拖动可以合拢，向左拖动可以再分开。`;
-    }
-  }
-
-  function renderPanel() {
-    const data = stageData[stage];
-    const isRestore = data.mode === 'restore';
-    const isCombine = data.mode === 'combine';
-    const isFinal = data.mode === 'final';
-    stageRail.querySelectorAll('[data-stage]').forEach((button, index) => {
-      button.setAttribute('aria-pressed', String(index === stage));
+  function mountStaticModels() {
+    const webglReady = !!window.THREE && hasWebGL();
+    staticStepCards.forEach(card => {
+      const stage = Math.max(0, Math.min(stageData.length - 1, Number(card.dataset.modelStage) || 0));
+      const canvas = card.querySelector('canvas');
+      const loader = card.querySelector('.scene-loader');
+      const fallback = card.querySelector('.scene-fallback');
+      if (!canvas || !webglReady) {
+        showStaticFallback(card);
+        return;
+      }
+      try {
+        const model = new CubeModel(canvas);
+        model.reducedMotion = true;
+        model.setStage(stage);
+        model.render();
+        staticModels.push({stage, title:stageData[stage].title, mode:stageData[stage].mode, model});
+        if (loader) loader.hidden = true;
+        if (fallback) fallback.hidden = true;
+      } catch (error) {
+        showStaticFallback(card);
+        console.warn('[DGOpenKS] static cube model fallback:', error);
+      }
     });
-    readout.innerHTML = `<b>${data.title}</b><span>${data.text
-      .replaceAll('(a+b)³', '<span class="math">(a+b)<sup>3</sup></span>')
-      .replaceAll('2×2×2=8', '<span class="math">2×2×2=8</span>')
-      .replaceAll('a²b', '<span class="math">a<sup>2</sup>b</span>')
-      .replaceAll('ab²', '<span class="math">ab<sup>2</sup></span>')}</span>`;
-    formulaPanel.hidden = !data.formula?.length;
-    formulaList.innerHTML = formulaHTML(data.formula || []);
-    sceneCaption.textContent = data.caption;
-    sceneTags.innerHTML = data.tags.map((tag, index) => {
-      const kinds = isCombine || isFinal ? ['a3','a2b','ab2','b3'] : [];
-      return `<span class="tag ${kinds[index] || ''}">${tag}</span>`;
-    }).join('');
-    sceneWrap.classList.toggle('is-restore', isRestore);
-    restoreTools.hidden = !isRestore;
-    groupGrid.hidden = !(isCombine || isFinal);
-    if (isRestore) {
-      updateRestoreUI(model?.restoreProgress || 0);
-    }
-    if (model) model.setStage(stage);
+    rendererKind = staticModels.length ? 'three' : 'fallback';
   }
 
-  function setStage(nextStage) {
-    stage = Math.max(0, Math.min(stageData.length - 1, Number(nextStage) || 0));
-    pieceIndex = 0;
-    if (stageData[stage].mode === 'restore' && model) {
-      model.setRestoreProgress(0, false);
-    }
-    renderPanel();
-  }
-
-  stageRail.addEventListener('click', event => {
-    const button = event.target.closest('[data-stage]');
-    if (!button) return;
-    setStage(Number(button.dataset.stage));
-  });
-
-  try {
-    if (!window.THREE || !hasWebGL()) throw new Error('WebGL is not available');
-    model = new CubeModel(canvas);
-    model.onRestoreChange = updateRestoreUI;
-    rendererKind = 'three';
-    sceneLoader.hidden = true;
-    sceneFallback.hidden = true;
-  } catch (error) {
-    rendererKind = 'fallback';
-    sceneLoader.hidden = true;
-    sceneFallback.hidden = false;
-    sceneWrap.classList.add('is-fallback');
-    console.warn('[DGOpenKS] cube model fallback:', error);
-  }
+  mountStaticModels();
 
   window.__dgCubeDerivation = {
     getState: () => ({
-      stage,
-      stageTitle:stageData[stage].title,
-      mode:stageData[stage].mode,
-      pieceIndex,
-      piece:pieces[pieceIndex]?.term,
-      restoreProgress:model?.restoreProgress || 0,
+      stages:stageData.map(item => ({title:item.title, mode:item.mode})),
+      mountedModels:staticModels.map(item => ({
+        stage:item.stage,
+        stageTitle:item.title,
+        mode:item.mode,
+        cameraType:item.model.camera?.isOrthographicCamera ? 'orthographic' : 'perspective',
+        rotation:{
+          x:Number(item.model.root.rotation.x.toFixed(4)),
+          y:Number(item.model.root.rotation.y.toFixed(4))
+        },
+        targetRotation:{
+          x:Number(item.model.targetRotation.x.toFixed(4)),
+          y:Number(item.model.targetRotation.y.toFixed(4))
+        },
+        canvasSize:{
+          width:item.model.canvas.width,
+          height:item.model.canvas.height
+        }
+      })),
       renderer:rendererKind,
-      cameraType:model?.camera?.isOrthographicCamera ? 'orthographic' : 'perspective',
       hasThree:!!window.THREE,
-      hasWebGL:hasWebGL(),
-      canvasSize:{
-        width:canvas.width,
-        height:canvas.height
-      }
-    }),
-    setStage,
-    setRestoreProgress:value => {
-      if (model) model.setRestoreProgress(value);
-    }
+      hasWebGL:hasWebGL()
+    })
   };
-
-  renderPanel();
 })();
 </script>
 </body>

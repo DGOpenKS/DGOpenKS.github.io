@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>差的立方公式：公式推导与几何解释 | DGOpenKS</title>
+<title>差的立方公式：公式推导与几何解析 | DGOpenKS</title>
 <style>
 :root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--grid:#e8eef7;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--red:#dc2626;--red-soft:#fef2f2;--red-line:#fecaca;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
@@ -32,6 +32,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .prose{max-width:860px}
 .formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
 .derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.calc-steps{display:grid;gap:0}
+.calc-step{display:grid;grid-template-columns:minmax(420px,1.08fr) minmax(260px,.92fr);gap:18px;align-items:start;border-bottom:1px solid var(--line);padding:12px 0}
+.calc-step:last-child{border-bottom:0;padding-bottom:0}
+.formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px}
 .note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
 .compare{width:100%;border-collapse:separate;border-spacing:0 8px;margin:14px 0}
 .compare th{font-size:.78rem;color:var(--muted);text-align:left;padding:0 10px}
@@ -57,6 +62,50 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .static-figure{margin:22px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;break-inside:avoid}
 .static-figure h3{color:var(--blue);font-size:1.18rem;margin-bottom:6px}
 .static-lead{max-width:880px;color:#334155}
+.diff-model-sequence{display:grid;gap:18px;margin-top:22px}
+.diff-model-step{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,.98fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;break-inside:avoid}
+.diff-scene-wrap{position:relative;min-height:340px;border-right:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
+.diff-scene-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.diff-scene-wrap canvas:active{cursor:grabbing}
+.diff-scene-loader{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:900;background:rgba(248,250,252,.72);z-index:2}
+.diff-scene-loader[hidden]{display:none}
+.diff-scene-fallback{position:absolute;inset:0;z-index:2;display:grid;place-items:center;text-align:center;padding:28px;color:var(--muted);background:var(--soft)}
+.diff-scene-fallback[hidden]{display:none}
+.diff-step-copy{padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.diff-step-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:900;font-size:.86rem}
+.diff-step-kicker b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff}
+.diff-step-copy h3{font-size:1.18rem;line-height:1.36;margin:0;color:var(--ink)}
+.diff-step-copy p{color:#334155;line-height:1.78;margin:0}
+.diff-static-formula{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;overflow:auto}
+.diff-formula-list{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.diff-static-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.diff-count{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;text-align:center}
+.diff-count b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.12rem}
+.diff-count small{display:block;color:var(--muted);font-weight:850}
+.diff-count.keep b{color:#1d4ed8}
+.diff-count.remove b,.diff-count.corner b{color:#b91c1c}
+.diff-count.return b{color:#15803d}
+.signed-model-sequence{display:grid;gap:16px;margin-top:18px}
+.signed-step{display:grid;grid-template-columns:minmax(260px,.92fr) minmax(0,1.08fr);gap:18px;align-items:stretch;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;break-inside:avoid}
+.signed-visual{min-height:190px;border:1px solid #d7e3f2;border-radius:var(--radius);background:#fff;display:grid;place-items:center;padding:12px;overflow:hidden}
+.signed-svg{display:block;width:100%;height:auto;max-height:210px}
+.signed-step-copy{min-width:0;display:grid;align-content:start;gap:8px}
+.signed-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:.84rem;font-weight:900}
+.signed-kicker b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff}
+.signed-step h3{margin:0;color:#0f172a;font-size:1.08rem;line-height:1.35}
+.signed-step p{margin:0;color:#334155;font-size:.94rem;line-height:1.75}
+.signed-formula{border:1px solid var(--blue-line);border-radius:var(--radius);background:var(--blue-soft);padding:9px 10px;font-family:Georgia,"Times New Roman",serif;font-weight:900;line-height:1.55;overflow:auto}
+.signed-choice-grid{display:grid;gap:8px;width:100%}
+.signed-choice-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px;align-items:center;border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:8px 10px;font-weight:850;color:#334155}
+.signed-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}
+.signed-product{border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:7px 8px;font-family:Georgia,"Times New Roman",serif;font-weight:900;text-align:center;white-space:nowrap}
+.signed-product.negative{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.signed-product.positive{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.signed-groups{display:grid;gap:8px;width:100%}
+.signed-group{display:grid;grid-template-columns:96px 44px minmax(0,1fr) 96px;gap:8px;align-items:center;border:1px solid #dbe5f2;border-radius:var(--radius);background:#fff;padding:8px;font-size:.86rem}
+.signed-group strong,.signed-group span:last-child{font-family:Georgia,"Times New Roman",serif;font-weight:900;white-space:nowrap}
+.signed-group.negative strong,.signed-group.negative span:last-child{color:#b91c1c}
+.signed-group.positive strong,.signed-group.positive span:last-child{color:#1d4ed8}
 .difference-handout{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:14px;overflow:hidden}
 .difference-handout-grid{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr);gap:10px;align-items:stretch}
 .difference-card{border:1px solid #dbe5f2;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#f8fbff);padding:14px;display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;min-width:0}
@@ -95,9 +144,12 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
 @media(max-width:900px){.difference-handout-grid{grid-template-columns:1fr}.difference-arrow-line{width:2px;height:24px;justify-self:center}.difference-arrow-line::after{right:50%;top:auto;bottom:-1px;transform:translateX(50%);border-left:7px solid transparent;border-right:7px solid transparent;border-top:11px solid #94a3b8;border-bottom:0}.difference-card{grid-template-rows:auto auto auto auto}.difference-visual{min-height:190px}}
-@media(max-width:820px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
-@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.compare,.compare tbody,.compare tr,.compare td{display:block}.compare thead{display:none}.compare tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.compare td{border:0!important;border-radius:0!important;padding:4px 0}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.static-figure{padding:14px}.difference-handout{padding:10px}.difference-card{padding:12px}.difference-term{grid-template-columns:72px minmax(0,1fr);gap:6px}.difference-term-count{text-align:left;grid-column:1/-1}.equation-row strong{white-space:normal}}
+@media(max-width:820px){.section,.model-lab,.signed-step{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}.calc-step{grid-template-columns:minmax(0,1fr);gap:6px}.step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}}
+@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.formula-line,.step-note .math,.math{white-space:normal}.formula-card{padding:14px}.calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}.compare,.compare tbody,.compare tr,.compare td{display:block}.compare thead{display:none}.compare tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.compare td{border:0!important;border-radius:0!important;padding:4px 0}.model-steps{grid-template-columns:1fr}.model-scene{min-height:320px}.static-figure,.signed-step{padding:14px}.signed-products{grid-template-columns:1fr}.signed-group{grid-template-columns:1fr;gap:4px}.signed-visual{min-height:150px}.difference-handout{padding:10px}.difference-card{padding:12px}.difference-term{grid-template-columns:72px minmax(0,1fr);gap:6px}.difference-term-count{text-align:left;grid-column:1/-1}.equation-row strong{white-space:normal}}
 @media print{@page{size:A4 portrait;margin:11mm}.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:24px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab{box-shadow:none}.difference-handout{padding:10px}.difference-handout-grid{grid-template-columns:1fr;gap:8px}.difference-arrow-line{display:none}.difference-card{break-inside:avoid;padding:10px}.difference-visual{min-height:150px}.difference-cube-svg{min-height:150px}.difference-final{font-size:.96rem}}
+@media(max-width:900px){.diff-model-step{grid-template-columns:minmax(0,1fr)}.diff-scene-wrap{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:640px){.diff-model-step{min-width:0}.diff-scene-wrap{min-height:300px}.diff-step-copy{padding:14px}.diff-formula-list{white-space:normal}.diff-static-counts{grid-template-columns:1fr 1fr}}
+@media print{.diff-model-step{display:block;box-shadow:none}.diff-scene-wrap{border-right:0;border-bottom:1px solid var(--line);min-height:230px}.diff-static-counts{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -107,16 +159,17 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <a class="nav-link" href="./">章节入口</a>
     <a class="nav-link" href="01_和的立方.html">和的立方</a>
     <a class="nav-link" href="#calculation">公式推导</a>
-    <a class="nav-link" href="#sign">正负号来源</a>
     <a class="nav-link" href="#model">几何解析</a>
+    <a class="nav-link" href="#summary">核心结论</a>
     <a class="nav-link" href="03_立方和.html">下一篇</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 02</span>
-  <h1>差的立方公式：公式推导与几何解释</h1>
-  <p class="lead"><span class="math">(a-b)<sup>3</sup></span> 表示三个 <span class="math">a-b</span> 相乘。本节先按乘法过程推出展开式，再解释正负号为什么是正、负、正、负。</p>
+  <h1>差的立方公式：公式推导与几何解析</h1>
+  <p class="lead">本节先从代数运算推出 <span class="math">(a-b)<sup>3</sup></span> 的标准展开式，再用立方体的体积解释这个公式。</p>
+  <p class="lead"><span class="math">(a-b)<sup>3</sup></span> 表示三个相同的因式 <span class="math">a-b</span> 相乘。理解这条公式时，需要注意正负符号的位置。</p>
 </header>
 
 <main>
@@ -125,69 +178,118 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <div class="prose">
         <h2>公式推导：从三个因式相乘到展开式</h2>
-        <p>手算时先算前两个括号，再把第三个括号乘进去：</p>
+        <p>立方表示三个相同因式相乘。运算时先处理前两个括号，再把结果与第三个括号相乘。</p>
         <div class="formula-card">
-          <div class="derivation">
-            <span>(a-b)<sup>3</sup> = (a-b)(a-b)(a-b)</span>
-            <span>= (a<sup>2</sup> - 2ab + b<sup>2</sup>)(a-b)</span>
-            <span>= a<sup>2</sup>(a-b) - 2ab(a-b) + b<sup>2</sup>(a-b)</span>
-            <span>= a<sup>3</sup> - a<sup>2</sup>b - 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> - b<sup>3</sup></span>
-            <span>= a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></span>
+          <div class="calc-steps">
+            <div class="calc-step">
+              <div class="formula-line">(a-b)<sup>3</sup> = (a-b)(a-b)(a-b)</div>
+              <p class="step-note">先把立方写成三个相同因式相乘，这是展开运算的起点。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= (a<sup>2</sup> - 2ab + b<sup>2</sup>)(a-b)</div>
+              <p class="step-note">这里使用完全平方公式计算前两个括号：<span class="math">(a-b)(a-b)=a<sup>2</sup>-2ab+b<sup>2</sup></span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>2</sup>(a-b) - 2ab(a-b) + b<sup>2</sup>(a-b)</div>
+              <p class="step-note">接着使用乘法分配律，让 <span class="math">a<sup>2</sup></span>、<span class="math">-2ab</span>、<span class="math">b<sup>2</sup></span> 分别乘第三个括号。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> - a<sup>2</sup>b - 2a<sup>2</sup>b + 2ab<sup>2</sup> + ab<sup>2</sup> - b<sup>3</sup></div>
+              <p class="step-note">把三个乘积分别展开：<span class="math">a<sup>2</sup>(a-b)</span> 得到 <span class="math">a<sup>3</sup>-a<sup>2</sup>b</span>，<span class="math">-2ab(a-b)</span> 得到 <span class="math">-2a<sup>2</sup>b+2ab<sup>2</sup></span>，<span class="math">b<sup>2</sup>(a-b)</span> 得到 <span class="math">ab<sup>2</sup>-b<sup>3</sup></span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></div>
+              <p class="step-note">最后合并同类项：<span class="math">-a<sup>2</sup>b-2a<sup>2</sup>b=-3a<sup>2</sup>b</span>，<span class="math">2ab<sup>2</sup>+ab<sup>2</sup>=3ab<sup>2</sup></span>。</p>
+            </div>
           </div>
         </div>
-        <p>这条公式不是背出来的，而是三个因式逐步相乘后合并同类项得到的。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="sign">
-    <div class="marker" aria-hidden="true"><span>02</span>正负号来源</div>
-    <div class="section-body">
-      <div class="prose">
-        <h2>正负号来源：把 a-b 看成 a+(-b)</h2>
-        <p>每一项都来自从三个括号里各选一个数相乘。系数仍然是 <span class="math">1,3,3,1</span>，改变的是正负号。</p>
-        <table class="compare">
-          <thead><tr><th>选到的形式</th><th>出现次数</th><th>正负号</th></tr></thead>
-          <tbody>
-            <tr><td><span class="math">a · a · a</span></td><td>1 次</td><td>正</td></tr>
-            <tr><td>两个 <span class="math">a</span> 和一个 <span class="math">-b</span></td><td>3 次</td><td>负</td></tr>
-            <tr><td>一个 <span class="math">a</span> 和两个 <span class="math">-b</span></td><td>3 次</td><td>正</td></tr>
-            <tr><td><span class="math">(-b)(-b)(-b)</span></td><td>1 次</td><td>负</td></tr>
-          </tbody>
-        </table>
-        <div class="note">负因子出现一次为负，出现两次为正，出现三次又为负。</div>
+        <p>通过以上代数运算，可以得到差的立方展开式。这里的系数仍然来自同类项数量；符号则由每一项中 <span class="math">-b</span> 出现的次数决定。</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>03</span>几何解析</div>
+    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
     <div class="section-body">
-      <h2>几何解析：从大立方体中保留 a-b 的部分</h2>
-      <p class="prose">把 <span class="math">(a-b)<sup>3</sup></span> 看成边长为 <span class="math">a-b</span> 的小立方体。可以先从边长为 <span class="math">a</span> 的大立方体开始，三个方向各去掉一层厚度为 <span class="math">b</span> 的部分；重叠部分要加回，角上的小立方体最后还要再减一次。</p>
-      <div class="model-lab" id="diffCubeModel" data-label="差的立方 inclusion-exclusion 立方体模型"></div>
+      <h2>几何解析：从边长为 <span class="math">a</span> 的立方体中切出 <span class="math">(a-b)<sup>3</sup></span></h2>
+      <p class="prose">可以把差的立方看成一个切割问题：先假设有一个边长为 <span class="math">a</span> 的立方体。沿长、宽、高三个方向各减去 <span class="math">b</span> 后，剩下部分的边长就是 <span class="math">a-b</span>，因此剩余体积就是 <span class="math">(a-b)<sup>3</sup></span>。</p>
+      <p class="prose">关键是把拆去的体积算清楚：先减去三片 <span class="math">a<sup>2</sup>b</span>，但这些部分有重合，必须加回三块 <span class="math">ab<sup>2</sup></span>；加回之后，最角上的 <span class="math">b<sup>3</sup></span> 又被多算了一次，所以还要再减去 <span class="math">b<sup>3</sup></span>。</p>
 
-      <div class="static-figure" id="print-split">
-        <h3>体积拆分：减去、补回、再减</h3>
-        <p class="static-lead">先从边长为 <span class="math">a</span> 的大立方体出发：三个方向各去掉一层厚度为 <span class="math">b</span> 的部分，重叠处要补回，角块最后还要再减一次。</p>
-        <div class="difference-handout" id="differenceChoiceFlow" role="img" aria-label="差的立方公式几何拆解图：从大立方体去掉三层，补回三条重叠，再减角块"></div>
+      <div class="diff-model-sequence" id="differenceStaticSequence" aria-label="差的立方几何解析四步切割">
+        <article class="diff-model-step" data-diff-stage="0">
+          <div class="diff-scene-wrap">
+            <canvas aria-label="从边长为 a 的整体正方体中看见边长 a-b 的剩余部分"></canvas>
+            <div class="diff-scene-loader">3D 模型加载中...</div>
+            <div class="diff-scene-fallback" hidden>当前浏览器没有加载 WebGL 模型，仍可阅读本步骤的体积说明。</div>
+          </div>
+          <div class="diff-step-copy">
+            <span class="diff-step-kicker"><b>1</b>从 a³ 出发</span>
+            <h3>原来的整体是边长为 <span class="math">a</span> 的立方体</h3>
+            <p>原来的整体是边长为 <span class="math">a</span> 的立方体，体积是 <span class="math">a<sup>3</sup></span>。每条边都去掉一段 <span class="math">b</span> 后，留下的内侧立方体边长就是 <span class="math">a-b</span>，我们要计算的目标体积就是 <span class="math">(a-b)<sup>3</sup></span>。</p>
+            <div class="diff-static-formula">
+              <div class="diff-formula-list"><span>a<sup>3</sup></span><span>目标体积：(a-b)<sup>3</sup></span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="diff-model-step" data-diff-stage="1">
+          <div class="diff-scene-wrap">
+            <canvas aria-label="从三个方向切去三片 a^2b 板块"></canvas>
+            <div class="diff-scene-loader">3D 模型加载中...</div>
+            <div class="diff-scene-fallback" hidden>当前浏览器没有加载 WebGL 模型，仍可阅读本步骤的体积说明。</div>
+          </div>
+          <div class="diff-step-copy">
+            <span class="diff-step-kicker"><b>2</b>减去三片</span>
+            <h3>三个方向各拆去一片 <span class="math">a<sup>2</sup>b</span></h3>
+            <p>从长、宽、高三个方向各拆去一片板块。每片板块的底面面积是 <span class="math">a<sup>2</sup></span>，厚度是 <span class="math">b</span>，体积就是 <span class="math">a<sup>2</sup>b</span>。三个方向各有一片，所以先减去 <span class="math">3a<sup>2</sup>b</span>。</p>
+            <div class="diff-static-formula">
+              <div class="diff-formula-list"><span>a<sup>3</sup> - 3a<sup>2</sup>b</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="diff-model-step" data-diff-stage="2">
+          <div class="diff-scene-wrap">
+            <canvas aria-label="加回三片板块两两重合的 ab^2 棱柱"></canvas>
+            <div class="diff-scene-loader">3D 模型加载中...</div>
+            <div class="diff-scene-fallback" hidden>当前浏览器没有加载 WebGL 模型，仍可阅读本步骤的体积说明。</div>
+          </div>
+          <div class="diff-step-copy">
+            <span class="diff-step-kicker"><b>3</b>加回重合</span>
+            <h3>两两重合的 <span class="math">ab<sup>2</sup></span> 要加回来</h3>
+            <p>刚才减去三片板块时，相邻两片板块的重合部分被重复减掉了。每个重合部分的体积是 <span class="math">ab<sup>2</sup></span>，这样的重合共有三处，所以要加回 <span class="math">3ab<sup>2</sup></span>。</p>
+            <div class="diff-static-formula">
+              <div class="diff-formula-list"><span>a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup></span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="diff-model-step" data-diff-stage="3">
+          <div class="diff-scene-wrap">
+            <canvas aria-label="再减去三片板块共同重合的 b^3 角块并得到剩余立方体"></canvas>
+            <div class="diff-scene-loader">3D 模型加载中...</div>
+            <div class="diff-scene-fallback" hidden>当前浏览器没有加载 WebGL 模型，仍可阅读本步骤的体积说明。</div>
+          </div>
+          <div class="diff-step-copy">
+            <span class="diff-step-kicker"><b>4</b>再减角块</span>
+            <h3>最后再减去共同重合的 <span class="math">b<sup>3</sup></span></h3>
+            <p>三个方向共同重合的最角上是一块体积为 <span class="math">b<sup>3</sup></span> 的小立方体。加回三块 <span class="math">ab<sup>2</sup></span> 后，这块 <span class="math">b<sup>3</sup></span> 被多算了一次，所以还要再减去 <span class="math">b<sup>3</sup></span>。</p>
+            <div class="diff-static-formula">
+              <div class="diff-formula-list"><span>(a-b)<sup>3</sup> = a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></span></div>
+            </div>
+          </div>
+        </article>
       </div>
+      <p class="prose">这个几何看法不是替代前面的代数推导，而是帮助你看见公式里的四项分别对应什么：从整体 <span class="math">a<sup>3</sup></span> 出发，减去三片 <span class="math">a<sup>2</sup>b</span>，加回三块重合的 <span class="math">ab<sup>2</sup></span>，最后再减去角上的 <span class="math">b<sup>3</sup></span>。</p>
     </div>
   </section>
 
-  <section class="section" id="difference">
-    <div class="marker" aria-hidden="true"><span>04</span>结构辨析</div>
+  <section class="section" id="summary">
+    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
     <div class="section-body">
       <div class="prose">
-        <h2>结构辨析：差的立方与立方差</h2>
-        <p><span class="math">(a-b)<sup>3</sup></span> 是一个差整体被立方，要展开；<span class="math">a<sup>3</sup>-b<sup>3</sup></span> 是两个完整立方相减，要分解。</p>
-        <div class="formula-card">
-          <div class="derivation">
-            <span>(a-b)<sup>3</sup> = a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup></span>
-            <span>a<sup>3</sup> - b<sup>3</sup> = (a-b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
-          </div>
-        </div>
-        <p>先问“括号整体有没有被三次方”，就不会把这两个公式混在一起。</p>
+        <h2>核心结论</h2>
+        <p><span class="math">(a-b)<sup>3</sup></span> 可以看成从边长为 <span class="math">a</span> 的立方体中切出边长为 <span class="math">a-b</span> 的剩余部分：先减去三片 <span class="math">a<sup>2</sup>b</span>，再加回三块重合的 <span class="math">ab<sup>2</sup></span>，最后再减去角上的 <span class="math">b<sup>3</sup></span>。</p>
         <a class="next" href="03_立方和.html">下一篇：立方和</a>
       </div>
     </div>
@@ -196,142 +298,364 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
 <footer class="footer">DGOpenKS · 02-2 立方相关公式 · 差的立方公式</footer>
 <script src="./assets/three.min.js"></script>
-<script src="./assets/formula-3d-models.js"></script>
 <script>
-  DGFormulaModels.initDifferenceCube('diffCubeModel');
+(() => {
+  const stageData = [
+    {title:'从 a³ 出发', mode:'whole'},
+    {title:'减去 3a²b', mode:'slabs'},
+    {title:'加回 3ab²', mode:'overlaps'},
+    {title:'再减 b³', mode:'corner'}
+  ];
 
-  const blockColors = {
-    keep:{top:'#bfdbfe', front:'#60a5fa', side:'#2563eb', stroke:'#1d4ed8'},
-    remove:{top:'#fee2e2', front:'#fca5a5', side:'#ef4444', stroke:'#b91c1c'},
-    return:{top:'#dcfce7', front:'#86efac', side:'#22c55e', stroke:'#15803d'},
-    corner:{top:'#fecaca', front:'#f87171', side:'#dc2626', stroke:'#b91c1c'}
+  const colors = {
+    whole:0x94a3b8,
+    keep:0x3b6fea,
+    slab:0xea4aa8,
+    overlap:0x8b5cf6,
+    corner:0xf08f3c,
+    edge:0xffffff
   };
 
-  function cuboid(x, y, w, h, d, role) {
-    const color = blockColors[role];
-    const dx = d * .62;
-    const dy = -d * .38;
-    const top = `${x},${y} ${x + dx},${y + dy} ${x + w + dx},${y + dy} ${x + w},${y}`;
-    const side = `${x + w},${y} ${x + w + dx},${y + dy} ${x + w + dx},${y + h + dy} ${x + w},${y + h}`;
-    const front = `${x},${y} ${x + w},${y} ${x + w},${y + h} ${x},${y + h}`;
-    return `
-      <polygon points="${side}" fill="${color.side}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
-      <polygon points="${top}" fill="${color.top}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
-      <polygon points="${front}" fill="${color.front}" stroke="${color.stroke}" stroke-width="1.2" stroke-linejoin="round"></polygon>
-    `;
+  const staticCards = Array.from(document.querySelectorAll('[data-diff-stage]'));
+  const mountedModels = [];
+  let rendererKind = 'pending';
+
+  function hasWebGL() {
+    try {
+      const test = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (test.getContext('webgl') || test.getContext('experimental-webgl')));
+    } catch (error) {
+      return false;
+    }
   }
 
-  function renderOverviewCubeSvg() {
-    return `
-      <svg class="difference-cube-svg" viewBox="0 0 300 220" aria-hidden="true">
-        <ellipse cx="154" cy="192" rx="72" ry="11" fill="#0f172a" opacity=".08"></ellipse>
-        ${cuboid(74, 72, 116, 116, 52, 'keep')}
-        ${cuboid(74, 46, 116, 26, 52, 'remove')}
-        ${cuboid(166, 72, 24, 116, 52, 'remove')}
-        ${cuboid(112, 72, 78, 34, 52, 'return')}
-        ${cuboid(166, 46, 24, 26, 52, 'corner')}
-        <path d="M52 72V188M44 72H60M44 188H60" fill="none" stroke="#475569" stroke-width="1.4"></path>
-        <text x="36" y="130" font-family="Georgia, Times New Roman, serif" font-size="18" font-weight="900" fill="#334155" text-anchor="middle">a</text>
-        <text x="130" y="137" font-family="Georgia, Times New Roman, serif" font-size="21" font-weight="900" fill="#0f172a" text-anchor="middle">(a-b)³</text>
-        <text x="218" y="55" font-family="Georgia, Times New Roman, serif" font-size="16" font-weight="900" fill="#b91c1c" text-anchor="middle">b</text>
-        <text x="150" y="20" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="850" fill="#475569" text-anchor="middle">先标出厚度 b 的三层，目标是留下核心体积</text>
-      </svg>
-    `;
+  function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
   }
 
-  function renderMiniBlocks(role, count) {
-    const blocks = {
-      keep:[[58, 8, 34, 28, 18]],
-      remove:[[22, 13, 38, 14, 14], [66, 8, 18, 27, 14], [102, 7, 16, 30, 14]],
-      return:[[27, 14, 28, 12, 12], [69, 10, 14, 25, 12], [105, 9, 13, 27, 12]],
-      corner:[[62, 11, 24, 22, 14]]
-    }[role].slice(0, count);
-    return `
-      <svg class="difference-mini-svg" viewBox="0 0 150 44" aria-hidden="true">
-        ${blocks.map(block => cuboid(...block, role)).join('')}
-      </svg>
-    `;
+  function labelTexture(text, color) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.shadowColor = 'rgba(15,23,42,.22)';
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 5;
+    ctx.fillStyle = 'rgba(255,255,255,.98)';
+    roundRect(ctx, 14, 14, 484, 100, 18);
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = .62;
+    ctx.lineWidth = 5;
+    roundRect(ctx, 14, 14, 484, 100, 18);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.font = `900 ${text.length > 12 ? 40 : 54}px Georgia, "Times New Roman", serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = 'rgba(255,255,255,.98)';
+    ctx.strokeText(text, 256, 66);
+    ctx.fillStyle = color;
+    ctx.fillText(text, 256, 66);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true;
+    return texture;
   }
 
-  function renderDifferenceChoiceFlow() {
-    const root = document.getElementById('differenceChoiceFlow');
-    if (!root) return;
-    root.innerHTML = `
-      <div class="difference-handout-grid">
-        <article class="difference-card">
-          <div class="difference-card-head">
-            <span class="difference-index">1</span>
-            <h4>先确定要留下什么</h4>
-          </div>
-          <p>从边长为 <span class="math">a</span> 的大立方体看起，三个方向各拿走厚度 <span class="math">b</span> 的层，留下的核心边长才是 <span class="math">a-b</span>。</p>
-          <div class="difference-visual">${renderOverviewCubeSvg()}</div>
-          <div class="difference-note">这一步对应目标体积：保留部分是 <strong>(a-b)<sup>3</sup></strong>。</div>
-        </article>
-
-        <div class="difference-arrow-line" aria-hidden="true"></div>
-
-        <article class="difference-card">
-          <div class="difference-card-head">
-            <span class="difference-index">2</span>
-            <h4>减去、补回、再减</h4>
-          </div>
-          <p>直接减三层会把重叠棱柱减多一次；补回三条重叠后，角块又被补过头，所以最后还要再减。</p>
-          <div class="difference-visual">
-            <div class="difference-equation">
-              <div class="equation-row"><strong>a<sup>3</sup></strong><span>从整个大立方体出发</span></div>
-              <div class="equation-row"><span class="equation-token remove">-3a<sup>2</sup>b</span><span>三层厚度为 b 的部分先减去</span></div>
-              <div class="equation-row"><span class="equation-token return">+3ab<sup>2</sup></span><span>三条重叠棱柱被减多，要补回</span></div>
-              <div class="equation-row"><span class="equation-token corner">-b<sup>3</sup></span><span>角块补回过头，最后再减一次</span></div>
-            </div>
-          </div>
-          <div class="difference-note">符号不是装饰：它记录每一类体积被“减掉”或“补回”的次数。</div>
-        </article>
-
-        <div class="difference-arrow-line" aria-hidden="true"></div>
-
-        <article class="difference-card">
-          <div class="difference-card-head">
-            <span class="difference-index">3</span>
-            <h4>按同类体积合并</h4>
-          </div>
-          <p>最后只看同类体积的数量和符号，就得到展开式里的四项。</p>
-          <div class="difference-visual">
-            <div class="difference-term-strip">
-              <div class="difference-term keep">
-                <div class="difference-term-name">a<sup>3</sup></div>
-                ${renderMiniBlocks('keep', 1)}
-                <div class="difference-term-count">1 块</div>
-              </div>
-              <div class="difference-term remove">
-                <div class="difference-term-name">-3a<sup>2</sup>b</div>
-                ${renderMiniBlocks('remove', 3)}
-                <div class="difference-term-count">3 块</div>
-              </div>
-              <div class="difference-term return">
-                <div class="difference-term-name">+3ab<sup>2</sup></div>
-                ${renderMiniBlocks('return', 3)}
-                <div class="difference-term-count">3 块</div>
-              </div>
-              <div class="difference-term corner">
-                <div class="difference-term-name">-b<sup>3</sup></div>
-                ${renderMiniBlocks('corner', 1)}
-                <div class="difference-term-count">1 块</div>
-              </div>
-            </div>
-          </div>
-          <div class="difference-final">
-            (a-b)<sup>3</sup> =
-            <span class="term-keep">a<sup>3</sup></span>
-            <span class="term-remove">- 3a<sup>2</sup>b</span>
-            <span class="term-return">+ 3ab<sup>2</sup></span>
-            <span class="term-corner">- b<sup>3</sup></span>
-          </div>
-        </article>
-      </div>
-    `;
+  function addEdges(mesh, color = colors.edge, opacity = .72) {
+    const edges = new THREE.EdgesGeometry(mesh.geometry);
+    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({
+      color,
+      transparent:true,
+      opacity
+    }));
+    mesh.add(line);
   }
 
-  renderDifferenceChoiceFlow();
+  function disposeObject(object) {
+    object.traverse(child => {
+      if (child.geometry) child.geometry.dispose();
+      if (child.material) {
+        if (child.material.map) child.material.map.dispose();
+        if (Array.isArray(child.material)) child.material.forEach(material => material.dispose());
+        else child.material.dispose();
+      }
+    });
+  }
+
+  class DifferenceStaticModel {
+    constructor(canvas, stage) {
+      this.canvas = canvas;
+      this.stage = stage;
+      this.scene = new THREE.Scene();
+      this.cameraFrustum = 8.4;
+      this.camera = new THREE.OrthographicCamera(-4.2, 4.2, 4.2, -4.2, .1, 100);
+      this.camera.position.set(5.7, 4.9, 7.4);
+      this.camera.lookAt(0, 0, 0);
+      this.renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias:true,
+        alpha:true,
+        preserveDrawingBuffer:true
+      });
+      this.renderer.setClearColor(0x000000, 0);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      this.root = new THREE.Group();
+      this.root.rotation.set(.22, .78, 0);
+      this.targetRotation = {x:.22, y:.78};
+      this.root.scale.setScalar(.82);
+      this.root.position.y = .25;
+      this.scene.add(this.root);
+      this.dynamic = new THREE.Group();
+      this.labels = new THREE.Group();
+      this.root.add(this.dynamic, this.labels);
+      this.drag = null;
+      this.reducedMotion = true;
+      this.buildLights();
+      this.bindPointer();
+      this.resize();
+      this.draw();
+      this.animate();
+    }
+
+    buildLights() {
+      this.scene.add(new THREE.HemisphereLight(0xffffff, 0xdbe5f2, 1.1));
+      const key = new THREE.DirectionalLight(0xffffff, 1.55);
+      key.position.set(5, 7, 6);
+      this.scene.add(key);
+      const fill = new THREE.DirectionalLight(0xc7d8ff, .72);
+      fill.position.set(-4, 3, -5);
+      this.scene.add(fill);
+    }
+
+    clear() {
+      while (this.dynamic.children.length) {
+        disposeObject(this.dynamic.children.pop());
+      }
+      while (this.labels.children.length) {
+        disposeObject(this.labels.children.pop());
+      }
+    }
+
+    center(range, size) {
+      return [
+        (range[0] + range[1]) / 2 - size / 2,
+        (range[2] + range[3]) / 2 - size / 2,
+        (range[4] + range[5]) / 2 - size / 2
+      ];
+    }
+
+    box(range, size, offset = [0,0,0]) {
+      const dimensions = [range[1] - range[0], range[3] - range[2], range[5] - range[4]];
+      const position = this.center(range, size).map((value, index) => value + offset[index]);
+      return {dimensions, position};
+    }
+
+    addBox(box, color, opacity = .86) {
+      const geometry = new THREE.BoxGeometry(box.dimensions[0], box.dimensions[1], box.dimensions[2]);
+      const material = new THREE.MeshPhysicalMaterial({
+        color,
+        transparent:true,
+        opacity,
+        roughness:.55,
+        metalness:0,
+        clearcoat:.12,
+        depthWrite:opacity > .48
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(box.position[0], box.position[1], box.position[2]);
+      addEdges(mesh, colors.edge, opacity > .5 ? .74 : .42);
+      this.dynamic.add(mesh);
+      return mesh;
+    }
+
+    addLabel(text, position, color = '#111827', scale = 1) {
+      const material = new THREE.SpriteMaterial({
+        map:labelTexture(text, color),
+        transparent:true,
+        depthTest:false,
+        depthWrite:false
+      });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(position[0], position[1], position[2]);
+      sprite.scale.set(1.62 * scale, .4 * scale, 1);
+      sprite.renderOrder = 80;
+      this.labels.add(sprite);
+    }
+
+    parts() {
+      const size = 3.2;
+      const b = .92;
+      const c = size - b;
+      return {
+        size,
+        whole:this.box([0,size,0,size,0,size], size),
+        target:this.box([0,c,0,c,0,c], size),
+        slabs:[
+          this.box([c,size,0,size,0,size], size, [.46,0,0]),
+          this.box([0,size,c,size,0,size], size, [0,.46,0]),
+          this.box([0,size,0,size,c,size], size, [0,0,.46])
+        ],
+        overlaps:[
+          this.box([c,size,c,size,0,size], size, [.48,.48,0]),
+          this.box([c,size,0,size,c,size], size, [.48,0,.48]),
+          this.box([0,size,c,size,c,size], size, [0,.48,.48])
+        ],
+        corner:this.box([c,size,c,size,c,size], size, [.56,.56,.56])
+      };
+    }
+
+    draw() {
+      this.clear();
+      const {whole, target, slabs, overlaps, corner} = this.parts();
+      if (this.stage === 0) {
+        this.addBox(whole, colors.whole, .2);
+        this.addBox(target, colors.keep, .84);
+        this.addLabel('a³', [.28, 2.12, .2], '#334155', .86);
+        this.addLabel('(a-b)³', [-.28, .12, -.08], '#1d4ed8', 1.02);
+        this.addLabel('边长 a', [1.86, .36, -1.34], '#334155', .76);
+        this.addLabel('a-b', [-1.86, -1.28, .18], '#1d4ed8', .76);
+      }
+      if (this.stage === 1) {
+        this.addBox(whole, colors.whole, .08);
+        this.addBox(target, colors.keep, .24);
+        slabs.forEach(box => this.addBox(box, colors.slab, .82));
+        this.addLabel('-3a²b', [.35, 2.08, .22], '#c02676', .94);
+      }
+      if (this.stage === 2) {
+        this.addBox(target, colors.keep, .22);
+        slabs.forEach(box => this.addBox(box, colors.slab, .25));
+        overlaps.forEach(box => this.addBox(box, colors.overlap, .88));
+        this.addLabel('+3ab²', [.42, 2.1, .22], '#6d28d9', .94);
+      }
+      if (this.stage === 3) {
+        this.addBox(whole, colors.whole, .1);
+        this.addBox(target, colors.keep, .82);
+        overlaps.forEach(box => this.addBox(box, colors.overlap, .28));
+        this.addBox(corner, colors.corner, .96);
+        this.addLabel('-b³', [1.58, 1.82, 1.12], '#b86218', .96);
+        this.addLabel('a³ - 3a²b + 3ab² - b³', [0, 2.22, .12], '#111827', .74);
+      }
+      this.render();
+    }
+
+    bindPointer() {
+      this.canvas.addEventListener('pointerdown', event => {
+        this.drag = {
+          x:event.clientX,
+          y:event.clientY,
+          rx:this.targetRotation.x,
+          ry:this.targetRotation.y
+        };
+        this.canvas.setPointerCapture(event.pointerId);
+      });
+      this.canvas.addEventListener('pointermove', event => {
+        if (!this.drag) return;
+        const dx = event.clientX - this.drag.x;
+        const dy = event.clientY - this.drag.y;
+        this.targetRotation.y = this.drag.ry + dx * .008;
+        this.targetRotation.x = Math.max(-.9, Math.min(.34, this.drag.rx + dy * .006));
+      });
+      const end = event => {
+        if (!this.drag) return;
+        this.drag = null;
+        if (event.pointerId !== undefined && this.canvas.hasPointerCapture(event.pointerId)) {
+          this.canvas.releasePointerCapture(event.pointerId);
+        }
+      };
+      this.canvas.addEventListener('pointerup', end);
+      this.canvas.addEventListener('pointercancel', end);
+      window.addEventListener('resize', () => this.resize());
+    }
+
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      const width = Math.max(1, Math.round(rect.width));
+      const height = Math.max(1, Math.round(rect.height));
+      const aspect = width / height;
+      this.camera.left = -this.cameraFrustum * aspect / 2;
+      this.camera.right = this.cameraFrustum * aspect / 2;
+      this.camera.top = this.cameraFrustum / 2;
+      this.camera.bottom = -this.cameraFrustum / 2;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(width, height, false);
+      this.render();
+    }
+
+    animate() {
+      requestAnimationFrame(() => this.animate());
+      if (!this.reducedMotion && !this.drag) {
+        this.targetRotation.y += .0012;
+      }
+      this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
+      this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
+      this.render();
+    }
+
+    render() {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  function showFallback(card) {
+    const loader = card.querySelector('.diff-scene-loader');
+    const fallback = card.querySelector('.diff-scene-fallback');
+    if (loader) loader.hidden = true;
+    if (fallback) fallback.hidden = false;
+  }
+
+  function mountModels() {
+    const ready = !!window.THREE && hasWebGL();
+    staticCards.forEach(card => {
+      const stage = Math.max(0, Math.min(stageData.length - 1, Number(card.dataset.diffStage) || 0));
+      const canvas = card.querySelector('canvas');
+      const loader = card.querySelector('.diff-scene-loader');
+      const fallback = card.querySelector('.diff-scene-fallback');
+      if (!canvas || !ready) {
+        showFallback(card);
+        return;
+      }
+      try {
+        const model = new DifferenceStaticModel(canvas, stage);
+        mountedModels.push({stage, title:stageData[stage].title, model});
+        if (loader) loader.hidden = true;
+        if (fallback) fallback.hidden = true;
+      } catch (error) {
+        showFallback(card);
+        console.warn('[DGOpenKS] difference static model fallback:', error);
+      }
+    });
+    rendererKind = mountedModels.length ? 'three' : 'fallback';
+  }
+
+  mountModels();
+
+  window.__dgDifferenceCubeStatic = {
+    getState: () => ({
+      stages:stageData,
+      renderer:rendererKind,
+      hasThree:!!window.THREE,
+      hasWebGL:hasWebGL(),
+      mountedModels:mountedModels.map(item => ({
+        stage:item.stage,
+        title:item.title,
+        canvasSize:{
+          width:item.model.canvas.width,
+          height:item.model.canvas.height
+        }
+      }))
+    })
+  };
+})();
 </script>
 </body>
 </html>

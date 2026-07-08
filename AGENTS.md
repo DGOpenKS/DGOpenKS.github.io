@@ -3,6 +3,7 @@
 Global skills are stored in `~/.agents/skills/`.
 
 Use:
+- `$dgopenks-curriculum-architect` for DGOpenKS curriculum-level planning and audits: chapter order, knowledge-point dependencies, chapter scope, method-tree coverage, practice-tree coverage, and Markdown backflow needs. Use it before core Markdown writing when a task spans multiple lessons, chapters, modules, or tree mappings. It localizes useful intelligent-textbook ideas but must not import MkDocs, mascot, MicroSim, Bloom-template, fixed concept-count, or fixed non-text-element requirements into DGOpenKS.
 - `$knowledge-essay-writer` for drafting DGOpenKS core teaching Markdown as knowledge-understanding essays.
 - `$prose-style-editor` for polishing DGOpenKS Markdown prose without changing mathematical meaning.
 - `$understanding-reviewer` for reviewing DGOpenKS Markdown understanding quality, tone, examples, and DGOpenKS fit before deriving pages or videos.
@@ -203,7 +204,8 @@ DGOpenKS 的 Markdown 是知识理解稿，不是页面需求文档。它只负�
 Use this workflow unless the user explicitly changes the standard:
 
 ```text
-Scope Check
+Curriculum / Dependency Audit (when scope spans multiple lessons or trees)
+-> Scope Check
 -> Core Markdown Draft
 -> Prose Editing
 -> Understanding Review
@@ -213,6 +215,8 @@ Scope Check
 ```
 
 Markdown defines understanding. HTML turns that understanding into an interactive learning experience. Video turns that understanding into communication content. Derived work must not become a separate knowledge source.
+
+Use `$dgopenks-curriculum-architect` for the optional curriculum/dependency audit step. This step may produce coverage tables, dependency findings, split/merge/reorder suggestions, and backflow needs, but it must not rewrite source Markdown unless the user explicitly authorizes the edit.
 
 ### 0. Scope Check
 
@@ -439,6 +443,7 @@ The 3D model standard below must not be applied to core Markdown writing. It app
 
 Use the writing skills in this order when drafting or rewriting DGOpenKS core Markdown:
 
+0. `$dgopenks-curriculum-architect` audits dependencies, scope, method-tree coverage, and practice-tree coverage first when the task spans multiple lessons, chapters, modules, or tree mappings.
 1. `$knowledge-essay-writer` drafts the knowledge-understanding article. It is responsible for scope, core question, concrete object, understanding path, and making formulas grow from objects.
 2. `$prose-style-editor` polishes the prose. It removes teacher-facing language, merges repetitive sections, shortens unclear passages, preserves mathematical structure, and keeps the article readable for learners.
 3. `$understanding-reviewer` reviews the article. It must judge whether the learner can genuinely understand the idea, not merely whether the format is present.

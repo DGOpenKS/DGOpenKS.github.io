@@ -522,28 +522,31 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
         this.addBox(target, colors.keep, .84);
         this.addLabel('a³', [.28, 2.12, .2], '#334155', .86);
         this.addLabel('(a-b)³', [-.28, .12, -.08], '#1d4ed8', 1.02);
-        this.addLabel('边长 a', [1.86, .36, -1.34], '#334155', .76);
-        this.addLabel('a-b', [-1.86, -1.28, .18], '#1d4ed8', .76);
+        this.addLabel('边长 a', [1.86, .36, -1.34], '#334155', .9);
+        this.addLabel('a-b', [-1.86, -1.28, .18], '#1d4ed8', .9);
+        this.addLabel('切去 b', [1.75, 1.55, .92], '#c02676', 1.02);
       }
       if (this.stage === 1) {
         this.addBox(whole, colors.whole, .08);
         this.addBox(target, colors.keep, .24);
         slabs.forEach(box => this.addBox(box, colors.slab, .82));
-        this.addLabel('-3a²b', [.35, 2.08, .22], '#c02676', .94);
+        this.addLabel('a×a×b', [-.98, 1.52, -1.05], '#c02676', 1.42);
+        this.addLabel('厚度 b', [1.82, .68, -1.18], '#c02676', 1.15);
       }
       if (this.stage === 2) {
         this.addBox(target, colors.keep, .22);
         slabs.forEach(box => this.addBox(box, colors.slab, .25));
         overlaps.forEach(box => this.addBox(box, colors.overlap, .88));
-        this.addLabel('+3ab²', [.42, 2.1, .22], '#6d28d9', .94);
+        this.addLabel('a×b×b', [-.95, 1.48, -1.05], '#6d28d9', 1.42);
+        this.addLabel('两条边 b', [1.65, .85, .9], '#6d28d9', 1.15);
       }
       if (this.stage === 3) {
         this.addBox(whole, colors.whole, .1);
         this.addBox(target, colors.keep, .82);
         overlaps.forEach(box => this.addBox(box, colors.overlap, .28));
         this.addBox(corner, colors.corner, .96);
-        this.addLabel('-b³', [1.58, 1.82, 1.12], '#b86218', .96);
-        this.addLabel('a³ - 3a²b + 3ab² - b³', [0, 2.22, .12], '#111827', .74);
+        this.addLabel('b×b×b', [1.72, 1.28, .32], '#b86218', 1.36);
+        this.addLabel('边长 a-b', [-1.78, -1.28, .18], '#1d4ed8', 1.12);
       }
       this.render();
     }

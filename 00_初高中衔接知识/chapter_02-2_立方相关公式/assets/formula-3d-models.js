@@ -36,12 +36,60 @@
     mesh.add(line);
   }
 
+  function drawRoundedRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
+  }
+
+  function labelTexture(text, color = '#0f172a') {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 160;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.shadowColor = 'rgba(15,23,42,.18)';
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 4;
+    ctx.fillStyle = 'rgba(255,255,255,.97)';
+    drawRoundedRect(ctx, 22, 26, 468, 108, 22);
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = .62;
+    ctx.lineWidth = 5;
+    drawRoundedRect(ctx, 22, 26, 468, 108, 22);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.font = `900 ${text.length > 3 ? 58 : 74}px Georgia, "Times New Roman", serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = 'rgba(255,255,255,.98)';
+    ctx.strokeText(text, 256, 82);
+    ctx.fillStyle = color;
+    ctx.fillText(text, 256, 82);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
+    return texture;
+  }
+
   function disposeObject(object) {
     object.traverse(child => {
       if (child.geometry) child.geometry.dispose();
       if (child.material) {
-        if (Array.isArray(child.material)) child.material.forEach(material => material.dispose());
-        else child.material.dispose();
+        const disposeMaterial = material => {
+          if (material.map) material.map.dispose();
+          material.dispose();
+        };
+        if (Array.isArray(child.material)) child.material.forEach(disposeMaterial);
+        else disposeMaterial(child.material);
       }
     });
   }
@@ -137,6 +185,85 @@
       addEdges(mesh, 0xffffff, opacity > .5 ? .78 : .48);
       this.dynamic.add(mesh);
       return mesh;
+    }
+
+    bounds(box) {
+      const [width, height, depth] = box.dimensions;
+      const center = box.center || box.position;
+      const [x, y, z] = center;
+      return {
+        x0:x - width / 2,
+        x1:x + width / 2,
+        y0:y - height / 2,
+        y1:y + height / 2,
+        z0:z - depth / 2,
+        z1:z + depth / 2
+      };
+    }
+
+    shiftedBox(box, offset = [0,0,0]) {
+      const center = box.center || box.position;
+      return {
+        dimensions:box.dimensions,
+        center:center.map((value, index) => value + offset[index])
+      };
+    }
+
+    addGuideLine(start, end, color = 0x334155, opacity = .9) {
+      const geometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(start[0], start[1], start[2]),
+        new THREE.Vector3(end[0], end[1], end[2])
+      ]);
+      const material = new THREE.LineBasicMaterial({
+        color,
+        transparent:true,
+        opacity,
+        depthTest:false,
+        depthWrite:false
+      });
+      const line = new THREE.Line(geometry, material);
+      line.renderOrder = 70;
+      this.dynamic.add(line);
+      return line;
+    }
+
+    addTextLabel(text, position, color = '#0f172a', scale = .84) {
+      const material = new THREE.SpriteMaterial({
+        map:labelTexture(text, color),
+        transparent:true,
+        depthTest:false,
+        depthWrite:false
+      });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(position[0], position[1], position[2]);
+      sprite.scale.set(1.48 * scale, .46 * scale, 1);
+      sprite.renderOrder = 82;
+      this.dynamic.add(sprite);
+      return sprite;
+    }
+
+    addDimension(start, end, label, options = {}) {
+      const color = options.color || 0x334155;
+      const labelColor = options.labelColor || '#0f172a';
+      const opacity = options.opacity ?? .95;
+      const tickAxis = options.tickAxis || [0, .14, 0];
+      const labelOffset = options.labelOffset || [0, 0, 0];
+      const tick = point => {
+        this.addGuideLine(
+          [point[0] - tickAxis[0], point[1] - tickAxis[1], point[2] - tickAxis[2]],
+          [point[0] + tickAxis[0], point[1] + tickAxis[1], point[2] + tickAxis[2]],
+          color,
+          opacity
+        );
+      };
+      this.addGuideLine(start, end, color, opacity);
+      tick(start);
+      tick(end);
+      this.addTextLabel(label, [
+        (start[0] + end[0]) / 2 + labelOffset[0],
+        (start[1] + end[1]) / 2 + labelOffset[1],
+        (start[2] + end[2]) / 2 + labelOffset[2]
+      ], labelColor, options.scale || .84);
     }
 
     bindPointer() {
@@ -533,6 +660,175 @@
       return box.center.map((value, index) => value + offset[index]);
     }
 
+    bounds(box) {
+      const [width, height, depth] = box.dimensions;
+      const [x, y, z] = box.center;
+      return {
+        x0:x - width / 2,
+        x1:x + width / 2,
+        y0:y - height / 2,
+        y1:y + height / 2,
+        z0:z - depth / 2,
+        z1:z + depth / 2
+      };
+    }
+
+    addGuideLine(start, end, color = 0x334155, opacity = .9) {
+      const geometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(start[0], start[1], start[2]),
+        new THREE.Vector3(end[0], end[1], end[2])
+      ]);
+      const material = new THREE.LineBasicMaterial({
+        color,
+        transparent:true,
+        opacity,
+        depthTest:false,
+        depthWrite:false
+      });
+      const line = new THREE.Line(geometry, material);
+      line.renderOrder = 70;
+      this.dynamic.add(line);
+      return line;
+    }
+
+    addTextLabel(text, position, color = '#0f172a', scale = .84) {
+      const material = new THREE.SpriteMaterial({
+        map:labelTexture(text, color),
+        transparent:true,
+        depthTest:false,
+        depthWrite:false
+      });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(position[0], position[1], position[2]);
+      sprite.scale.set(1.48 * scale, .46 * scale, 1);
+      sprite.renderOrder = 82;
+      this.dynamic.add(sprite);
+      return sprite;
+    }
+
+    addDimension(start, end, label, options = {}) {
+      const color = options.color || 0x334155;
+      const labelColor = options.labelColor || '#0f172a';
+      const opacity = options.opacity ?? .95;
+      const tickAxis = options.tickAxis || [0, .14, 0];
+      const labelOffset = options.labelOffset || [0, 0, 0];
+      const tick = point => {
+        this.addGuideLine(
+          [point[0] - tickAxis[0], point[1] - tickAxis[1], point[2] - tickAxis[2]],
+          [point[0] + tickAxis[0], point[1] + tickAxis[1], point[2] + tickAxis[2]],
+          color,
+          opacity
+        );
+      };
+      this.addGuideLine(start, end, color, opacity);
+      tick(start);
+      tick(end);
+      this.addTextLabel(label, [
+        (start[0] + end[0]) / 2 + labelOffset[0],
+        (start[1] + end[1]) / 2 + labelOffset[1],
+        (start[2] + end[2]) / 2 + labelOffset[2]
+      ], labelColor, options.scale || .84);
+    }
+
+    drawInitialLabels(parts) {
+      const big = this.bounds(parts.bigCube);
+      const small = this.bounds(parts.smallCube);
+      const cut = this.bounds(parts.cut);
+      this.addDimension(
+        [big.x0, big.y0 - .2, big.z0 - .18],
+        [big.x1, big.y0 - .2, big.z0 - .18],
+        'b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[0, -.24, -.04], tickAxis:[0, .14, 0]}
+      );
+      this.addDimension(
+        [small.x0, small.y1 + .18, small.z1 + .1],
+        [small.x1, small.y1 + .18, small.z1 + .1],
+        'a',
+        {color:colors.cyan, labelColor:'#0e7490', labelOffset:[0, .22, .08], tickAxis:[0, .12, 0]}
+      );
+      this.addDimension(
+        [cut.x0 - .18, cut.y0, cut.z1 + .14],
+        [cut.x0 - .18, cut.y1, cut.z1 + .14],
+        'b-a',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[-.22, 0, .1], tickAxis:[.12, 0, 0], scale:.7}
+      );
+    }
+
+    drawCutLabels(parts) {
+      const cut = this.bounds(parts.cutAway);
+      this.addDimension(
+        [cut.x0, cut.y0 - .16, cut.z0 - .16],
+        [cut.x1, cut.y0 - .16, cut.z0 - .16],
+        'a',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[0, -.22, -.04], tickAxis:[0, .12, 0]}
+      );
+      this.addDimension(
+        [cut.x0 - .18, cut.y0, cut.z0 - .16],
+        [cut.x0 - .18, cut.y1, cut.z0 - .16],
+        'b-a',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[-.22, 0, -.04], tickAxis:[.12, 0, 0], scale:.7}
+      );
+      this.addDimension(
+        [cut.x1 + .18, cut.y1 + .18, cut.z0],
+        [cut.x1 + .18, cut.y1 + .18, cut.z1],
+        'b',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[.22, .12, 0], tickAxis:[.12, 0, 0]}
+      );
+    }
+
+    drawMoveLabels(parts) {
+      const lower = this.bounds(parts.leftRemain);
+      const upper = this.bounds(parts.cutPreview);
+      this.addDimension(
+        [lower.x0 - .2, lower.y0 - .2, lower.z0],
+        [lower.x0 - .2, lower.y0 - .2, lower.z1],
+        'b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[-.2, -.12, 0], tickAxis:[.12, 0, 0]}
+      );
+      this.addDimension(
+        [upper.x1 + .18, upper.y1 + .18, upper.z0],
+        [upper.x1 + .18, upper.y1 + .18, upper.z1],
+        'a',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[.22, .12, 0], tickAxis:[.12, 0, 0]}
+      );
+      this.addDimension(
+        [upper.x0, upper.y0 - .18, upper.z0 - .16],
+        [upper.x1, upper.y0 - .18, upper.z0 - .16],
+        'b-a',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[0, -.22, -.05], tickAxis:[0, .12, 0], scale:.7}
+      );
+    }
+
+    drawFinalLabels(parts) {
+      const left = this.bounds(parts.finalLeft);
+      const corner = this.bounds(parts.finalCorner);
+      const moved = this.bounds(parts.finalMoved);
+      this.addDimension(
+        [corner.x1 + .22, corner.y1 + .2, corner.z0],
+        [corner.x1 + .22, corner.y1 + .2, corner.z1],
+        'a+b',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[.28, .12, 0], tickAxis:[.12, 0, 0], scale:.72}
+      );
+      this.addDimension(
+        [corner.x0, corner.y1 + .18, corner.z0 - .16],
+        [corner.x1, corner.y1 + .18, corner.z0 - .16],
+        'a',
+        {color:colors.cyan, labelColor:'#0e7490', labelOffset:[0, .22, -.06], tickAxis:[0, .12, 0]}
+      );
+      this.addDimension(
+        [left.x0 - .2, left.y0, left.z0 - .16],
+        [left.x0 - .2, left.y1, left.z0 - .16],
+        'b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[-.24, 0, -.06], tickAxis:[.12, 0, 0]}
+      );
+      this.addDimension(
+        [moved.x0, moved.y0 - .2, moved.z0 - .16],
+        [moved.x1, moved.y0 - .2, moved.z0 - .16],
+        'b-a',
+        {color:colors.green, labelColor:'#047857', labelOffset:[0, -.24, -.06], tickAxis:[0, .12, 0], scale:.7}
+      );
+    }
+
     drawInitial(parts) {
       this.addBox(parts.bigCube.dimensions, parts.bigCube.center, colors.green, .32);
       this.addBox(parts.smallCube.dimensions, parts.smallCube.center, colors.cyan, .9);
@@ -556,20 +852,25 @@
 
       if (this.stage === 0) {
         this.drawInitial(parts);
+        this.drawInitialLabels(parts);
       }
       if (this.stage === 1) {
         this.drawRemainder(parts, .36);
         this.addBox(parts.cutAway.dimensions, parts.cutAway.center, colors.red, .86);
+        this.drawCutLabels(parts);
       }
       if (this.stage === 2) {
         this.drawRemainder(parts, .82);
         this.addBox(parts.cutPreview.dimensions, parts.cutPreview.center, colors.red, .8);
+        this.drawMoveLabels(parts);
       }
       if (this.stage === 3) {
         this.drawFinal(parts);
+        this.drawFinalLabels(parts);
       }
       if (this.stage === 4) {
         this.drawFinal(parts);
+        this.drawFinalLabels(parts);
       }
       this.render();
     }
@@ -587,25 +888,25 @@
       this.stages = [
         {
           title:'大立方挖去小立方',
-          caption:'立方差先看成边长 a 的大立方体，挖去一个边长 b 的小立方体。',
+          caption:'立方差先看成边长 a 的大立方体，挖去一个边长 b 的小立方体。图中的边长标注用来区分 a 和 b。',
           tags:['a³','- b³'],
           formula:['a³ - b³']
         },
         {
           title:'挖去 b³',
-          caption:'小立方体从角上取走以后，剩下的体积不是一个完整立方，而是一个 L 形体积。',
+          caption:'小立方体从角上取走以后，剩下的体积不是一个完整立方，而是一个 L 形体积；剩余边上会出现长度 a-b。',
           tags:['挖去 b³','剩余体积'],
           formula:['a³ - b³ = 剩余体积']
         },
         {
           title:'切成三块',
-          caption:'把剩余的 L 形体积切成三块：一块 a²(a-b)，一块 ab(a-b)，一块 b²(a-b)。',
+          caption:'把剩余的 L 形体积切成三块。看边长标注：三块都有一条边是 a-b，另外两条边分别组成 a²、ab、b²。',
           tags:['a²(a-b)','ab(a-b)','b²(a-b)'],
           formula:['a³ - b³ = a²(a-b) + ab(a-b) + b²(a-b)']
         },
         {
           title:'重排三块',
-          caption:'三块都有一条长度是 a-b 的边。把这条边朝同一方向对齐，就能把 a-b 提出来。',
+          caption:'三块都有一条长度是 a-b 的边。把这条边朝同一方向对齐，就能把 a-b 作为共同厚度提出来。',
           tags:['共同厚度 a-b'],
           formula:['a²(a-b) + ab(a-b) + b²(a-b)', '= (a-b)(a²+ab+b²)']
         },
@@ -682,6 +983,117 @@
       this.addBox(small.dimensions, small.center, colors.cyan, finalOnly ? .9 : .84);
     }
 
+    drawDifferenceStartLabels(whole, removedBox) {
+      const outer = this.bounds(whole);
+      const removed = this.bounds(removedBox);
+      this.addDimension(
+        [outer.x0, outer.y0 - .2, outer.z0 - .18],
+        [outer.x1, outer.y0 - .2, outer.z0 - .18],
+        'a',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[0, -.24, -.05], tickAxis:[0, .14, 0]}
+      );
+      this.addDimension(
+        [removed.x0, removed.y1 + .18, removed.z1 + .1],
+        [removed.x1, removed.y1 + .18, removed.z1 + .1],
+        'b',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[0, .22, .08], tickAxis:[0, .12, 0]}
+      );
+    }
+
+    drawDifferenceRemainderLabels(pieceA2, pieceAB, removedBox) {
+      const a2 = this.bounds(pieceA2);
+      const ab = this.bounds(pieceAB);
+      const removed = this.bounds(removedBox);
+      this.addDimension(
+        [a2.x0, a2.y0 - .18, a2.z0 - .16],
+        [a2.x1, a2.y0 - .18, a2.z0 - .16],
+        'a-b',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[0, -.24, -.05], tickAxis:[0, .12, 0], scale:.72}
+      );
+      this.addDimension(
+        [ab.x0 - .18, ab.y0, ab.z0 - .16],
+        [ab.x0 - .18, ab.y1, ab.z0 - .16],
+        'a-b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[-.24, 0, -.05], tickAxis:[.12, 0, 0], scale:.72}
+      );
+      this.addDimension(
+        [removed.x1 + .18, removed.y1 + .18, removed.z0],
+        [removed.x1 + .18, removed.y1 + .18, removed.z1],
+        'b',
+        {color:colors.red, labelColor:'#b91c1c', labelOffset:[.22, .12, 0], tickAxis:[.12, 0, 0]}
+      );
+    }
+
+    drawDifferenceSplitLabels(pieceA2, pieceAB, pieceB2) {
+      const a2 = this.bounds(pieceA2);
+      const ab = this.bounds(pieceAB);
+      const b2 = this.bounds(pieceB2);
+      this.addDimension(
+        [a2.x0, a2.y0 - .2, a2.z0 - .18],
+        [a2.x1, a2.y0 - .2, a2.z0 - .18],
+        'a-b',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[0, -.26, -.05], tickAxis:[0, .12, 0], scale:.72}
+      );
+      this.addDimension(
+        [ab.x0 - .18, ab.y0, ab.z0 - .18],
+        [ab.x0 - .18, ab.y1, ab.z0 - .18],
+        'a-b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[-.24, 0, -.05], tickAxis:[.12, 0, 0], scale:.72}
+      );
+      this.addDimension(
+        [b2.x1 + .16, b2.y1 + .16, b2.z0],
+        [b2.x1 + .16, b2.y1 + .16, b2.z1],
+        'a-b',
+        {color:colors.cyan, labelColor:'#0e7490', labelOffset:[.24, .12, 0], tickAxis:[.12, 0, 0], scale:.72}
+      );
+      this.addDimension(
+        [ab.x0, ab.y0 - .2, ab.z0 - .16],
+        [ab.x1, ab.y0 - .2, ab.z0 - .16],
+        'b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[0, -.24, -.05], tickAxis:[0, .12, 0], scale:.72}
+      );
+      this.addDimension(
+        [b2.x0, b2.y1 + .18, b2.z0 - .16],
+        [b2.x1, b2.y1 + .18, b2.z0 - .16],
+        'b',
+        {color:colors.cyan, labelColor:'#0e7490', labelOffset:[0, .22, -.05], tickAxis:[0, .12, 0], scale:.72}
+      );
+    }
+
+    drawDifferenceRearrangedLabels(size, b, c) {
+      const commonX = c;
+      const large = {dimensions:[commonX, size, size], center:[0, -1.15, .88]};
+      const middle = {dimensions:[commonX, size, b], center:[0, -1.15, -1.55]};
+      const small = {dimensions:[commonX, b, b], center:[0, 1.28, -1.55]};
+      const largeBounds = this.bounds(large);
+      const middleBounds = this.bounds(middle);
+      const smallBounds = this.bounds(small);
+      this.addDimension(
+        [largeBounds.x0, largeBounds.y1 + .2, largeBounds.z1 + .08],
+        [largeBounds.x1, largeBounds.y1 + .2, largeBounds.z1 + .08],
+        'a-b',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[0, .24, .06], tickAxis:[0, .12, 0], scale:.72}
+      );
+      this.addDimension(
+        [largeBounds.x0 - .2, largeBounds.y0, largeBounds.z1 + .12],
+        [largeBounds.x0 - .2, largeBounds.y1, largeBounds.z1 + .12],
+        'a',
+        {color:colors.blue, labelColor:'#1f4fbf', labelOffset:[-.24, 0, .08], tickAxis:[.12, 0, 0]}
+      );
+      this.addDimension(
+        [middleBounds.x1 + .2, middleBounds.y1 + .16, middleBounds.z0],
+        [middleBounds.x1 + .2, middleBounds.y1 + .16, middleBounds.z1],
+        'b',
+        {color:colors.green, labelColor:'#047857', labelOffset:[.24, .12, 0], tickAxis:[.12, 0, 0]}
+      );
+      this.addDimension(
+        [smallBounds.x1 + .2, smallBounds.y0, smallBounds.z1 + .12],
+        [smallBounds.x1 + .2, smallBounds.y1, smallBounds.z1 + .12],
+        'b',
+        {color:colors.cyan, labelColor:'#0e7490', labelOffset:[.24, 0, .08], tickAxis:[.12, 0, 0]}
+      );
+    }
+
     draw() {
       this.clearDynamic();
       const size = 3.2;
@@ -702,25 +1114,37 @@
       if (this.stage === 0) {
         this.addBox(whole.dimensions, whole.center, colors.gray, .1);
         drawRemaining(.72);
-        this.addBox(removed.dimensions, shifted(removed, [.72,.58,.58]), colors.red, .78);
+        const removedShifted = this.shiftedBox(removed, [.72,.58,.58]);
+        this.addBox(removedShifted.dimensions, removedShifted.center, colors.red, .78);
+        this.drawDifferenceStartLabels(whole, removedShifted);
       }
       if (this.stage === 1) {
         drawRemaining(.66);
-        this.addBox(removed.dimensions, shifted(removed, [1.02,.78,.78]), colors.red, .76);
+        const removedShifted = this.shiftedBox(removed, [1.02,.78,.78]);
+        this.addBox(removedShifted.dimensions, removedShifted.center, colors.red, .76);
+        this.drawDifferenceRemainderLabels(pieceA2, pieceAB, removedShifted);
       }
       if (this.stage === 2) {
-        drawRemaining(.78, {
+        const offsets = {
           a2:[-.18,0,0],
           ab:[.44,-.3,0],
           b2:[.62,.34,-.28]
-        });
+        };
+        drawRemaining(.78, offsets);
         this.addBox(removed.dimensions, shifted(removed, [1.08,.92,.92]), colors.red, .24);
+        this.drawDifferenceSplitLabels(
+          this.shiftedBox(pieceA2, offsets.a2),
+          this.shiftedBox(pieceAB, offsets.ab),
+          this.shiftedBox(pieceB2, offsets.b2)
+        );
       }
       if (this.stage === 3) {
         this.drawRearranged(size, b, c);
+        this.drawDifferenceRearrangedLabels(size, b, c);
       }
       if (this.stage === 4) {
         this.drawRearranged(size, b, c, true);
+        this.drawDifferenceRearrangedLabels(size, b, c);
       }
       this.render();
     }

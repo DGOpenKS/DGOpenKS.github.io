@@ -1436,6 +1436,16 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       }
       if (mode === 'blocks') {
         this.addLabel('8 块', new THREE.Vector3(0, 2.35, 0), '#111827', .9);
+        this.addLabel('a×a×a', new THREE.Vector3(-2.18, 1.62, -1.1), '#1f4fbf', 1.08);
+        this.addLabel('a×a×b', new THREE.Vector3(-.7, 2.02, .35), '#b86218', 1.02);
+        this.addLabel('a×b×b', new THREE.Vector3(.92, -1.85, .9), '#6d3fce', 1.02);
+        this.addLabel('b×b×b', new THREE.Vector3(2.1, 1.35, 1.12), '#0e7490', 1.08);
+      }
+      if (mode === 'combine') {
+        this.addLabel('a×a×a', new THREE.Vector3(-2.18, 1.55, -1.02), '#1f4fbf', 1.02);
+        this.addLabel('a×a×b', new THREE.Vector3(-.68, 1.98, .34), '#b86218', .98);
+        this.addLabel('a×b×b', new THREE.Vector3(.9, -1.78, .86), '#6d3fce', .98);
+        this.addLabel('b×b×b', new THREE.Vector3(2.08, 1.28, 1.08), '#0e7490', 1.02);
       }
       if (mode === 'restore') {
         const label = this.restoreProgress > .86 ? '已合拢' : '体积复原';
@@ -1443,6 +1453,10 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       }
       if (mode === 'final') {
         this.addLabel('1, 3, 3, 1', new THREE.Vector3(0, 2.4, 0), '#111827', .92);
+        this.addLabel('a×a×a', new THREE.Vector3(-2.18, 1.55, -1.02), '#1f4fbf', 1.02);
+        this.addLabel('a×a×b', new THREE.Vector3(-.68, 1.98, .34), '#b86218', .98);
+        this.addLabel('a×b×b', new THREE.Vector3(.9, -1.78, .86), '#6d3fce', .98);
+        this.addLabel('b×b×b', new THREE.Vector3(2.08, 1.28, 1.08), '#0e7490', 1.02);
       }
       this.render();
     }

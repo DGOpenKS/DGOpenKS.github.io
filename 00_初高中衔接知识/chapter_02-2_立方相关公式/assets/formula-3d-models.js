@@ -1114,9 +1114,8 @@
       if (this.stage === 0) {
         this.addBox(whole.dimensions, whole.center, colors.gray, .1);
         drawRemaining(.72);
-        const removedShifted = this.shiftedBox(removed, [.72,.58,.58]);
-        this.addBox(removedShifted.dimensions, removedShifted.center, colors.red, .78);
-        this.drawDifferenceStartLabels(whole, removedShifted);
+        this.addBox(removed.dimensions, removed.center, colors.red, .78);
+        this.drawDifferenceStartLabels(whole, removed);
       }
       if (this.stage === 1) {
         drawRemaining(.66);

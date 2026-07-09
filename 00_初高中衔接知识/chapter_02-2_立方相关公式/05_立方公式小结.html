@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立方公式小结：对象判断与变形方向 | DGOpenKS</title>
+<title>立方公式小结：先判断对象，再决定变形 | DGOpenKS</title>
 <style>
 :root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
@@ -32,17 +32,22 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .prose{max-width:860px}
 .formula-table{width:100%;border-collapse:separate;border-spacing:0 8px;margin:18px 0}
 .formula-table th{font-size:.78rem;color:var(--muted);text-align:left;padding:0 10px}
-.formula-table td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px}
+.formula-table td{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 10px;vertical-align:top}
 .formula-table td:first-child{border-left:1px solid var(--line);border-radius:var(--radius) 0 0 var(--radius);font-weight:900}
 .formula-table td:last-child{border-right:1px solid var(--line);border-radius:0 var(--radius) var(--radius) 0}
 .formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
-.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:800;line-height:1.55;white-space:nowrap}
 .two-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
 .concept-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
 .concept-card strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:8px}
 .concept-card.blue{border-color:var(--blue-line);background:var(--blue-soft)}
 .concept-card.purple{border-color:var(--purple-line);background:var(--purple-soft)}
 .concept-card.green{border-color:var(--green-line);background:var(--green-soft)}
+.calc-steps{display:grid;gap:0}
+.calc-step{display:grid;grid-template-columns:minmax(360px,.95fr) minmax(270px,1.05fr);gap:18px;align-items:start;border-bottom:1px solid var(--line);padding:12px 0}
+.calc-step:last-child{border-bottom:0;padding-bottom:0}
+.formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px}
 .flow{display:grid;gap:10px;margin:18px 0}
 .flow-step{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
 .flow-step > span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900}
@@ -52,8 +57,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .check-line{display:block;font:800 1rem/1.8 Consolas,"Microsoft YaHei",monospace;color:var(--ink)}
 .next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
-@media(max-width:820px){.section{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.two-grid{grid-template-columns:1fr}}
-@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.9rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.formula-table,tbody,tr,td{display:block}.formula-table thead{display:none}.formula-table tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.formula-table td{border:0!important;border-radius:0!important;padding:4px 0}.flow-step{grid-template-columns:1fr}.flow-step span{margin-bottom:4px}}
+@media(max-width:820px){.section,.calc-step{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.two-grid{grid-template-columns:1fr}.step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}}
+@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.78rem}.derivation,.formula-line,.step-note .math,.math{white-space:normal}.calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}.formula-card{padding:14px}.formula-table,tbody,tr,td{display:block}.formula-table thead{display:none}.formula-table tr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px}.formula-table td{border:0!important;border-radius:0!important;padding:4px 0}.flow-step{grid-template-columns:1fr}.flow-step span{margin-bottom:4px}}
 @media print{.topbar{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.formula-card,.concept-card,.flow-step{box-shadow:none}.two-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
@@ -71,100 +76,268 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 05</span>
-  <h1>立方公式小结：对象判断与变形方向</h1>
-  <p class="lead">这一页把四个立方相关公式放在一起比较。真正要掌握的不是硬背符号，而是先判断对象，再决定展开、分解和检查方式。</p>
+  <h1>立方公式小结：先判断对象，再决定变形</h1>
+  <p class="lead">立方相关公式容易混淆，关键在于先看清式子的对象。</p>
+  <p class="lead">看到三次方时，先问一句：这是一个整体被立方，还是两个完整立方在相加或相减？</p>
 </header>
 
 <main>
   <section class="section" id="overview">
-    <div class="marker" aria-hidden="true"><span>01</span>对象总览</div>
+    <div class="marker" aria-hidden="true"><span>00</span>对象判断</div>
     <div class="section-body">
       <div class="prose">
-        <h2>对象总览：先分清看见的式子</h2>
-        <p>同样出现三次方，处理方向可能完全不同。</p>
         <table class="formula-table">
-          <thead><tr><th>看到的对象</th><th>公式类型</th><th>变形方向</th><th>核心动作</th></tr></thead>
+          <thead><tr><th>看到的式子</th><th>它在说什么</th><th>变形方向</th></tr></thead>
           <tbody>
-            <tr><td><span class="math">(a+b)<sup>3</sup></span></td><td>和的立方</td><td>展开</td><td>三个因式相乘，合并同类项</td></tr>
-            <tr><td><span class="math">(a-b)<sup>3</sup></span></td><td>差的立方</td><td>展开</td><td>把 <span class="math">a-b</span> 看成 <span class="math">a+(-b)</span></td></tr>
-            <tr><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>立方和</td><td>因式分解</td><td>找 <span class="math">a+b</span>，让混合项抵消</td></tr>
-            <tr><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>立方差</td><td>因式分解</td><td>找 <span class="math">a-b</span>，让混合项抵消</td></tr>
+            <tr><td><span class="math">(a+b)<sup>3</sup></span></td><td>一个和整体被立方</td><td>展开</td></tr>
+            <tr><td><span class="math">(a-b)<sup>3</sup></span></td><td>一个差整体被立方</td><td>展开</td></tr>
+            <tr><td><span class="math">a<sup>3</sup>+b<sup>3</sup></span></td><td>两个完整立方相加</td><td>因式分解</td></tr>
+            <tr><td><span class="math">a<sup>3</sup>-b<sup>3</sup></span></td><td>两个完整立方相减</td><td>因式分解</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <section class="section" id="directions">
-    <div class="marker" aria-hidden="true"><span>02</span>变形方向</div>
+  <section class="section" id="expand">
+    <div class="marker" aria-hidden="true"><span>01</span>展开</div>
     <div class="section-body">
-      <h2>变形方向：展开是打开，分解是降次</h2>
-      <div class="two-grid">
-        <div class="concept-card blue">
-          <strong>展开公式</strong>
-          <p>处理“括号整体被立方”。原式本来就是乘法结构，只是被压在括号和指数里。</p>
+      <div class="prose">
+        <h2>1. 整体被立方时，要把乘法展开</h2>
+        <p><span class="math">(a+b)<sup>3</sup></span> 的意思是三个相同因式相乘：</p>
+        <div class="formula-card">
           <div class="derivation">
             <span>(a+b)<sup>3</sup> = (a+b)(a+b)(a+b)</span>
+          </div>
+        </div>
+        <p>所以和的立方要做的是展开。先乘开，再合并同类项：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>(a+b)<sup>3</sup> = a<sup>3</sup>+3a<sup>2</sup>b+3ab<sup>2</sup>+b<sup>3</sup></span>
+          </div>
+        </div>
+        <p><span class="math">(a-b)<sup>3</sup></span> 也是一样，只是每个因式里都有 <span class="math">-b</span>：</p>
+        <div class="formula-card">
+          <div class="derivation">
             <span>(a-b)<sup>3</sup> = (a-b)(a-b)(a-b)</span>
           </div>
         </div>
-        <div class="concept-card purple">
-          <strong>分解公式</strong>
-          <p>处理“两个完整立方相加或相减”。目标是把三次式写回乘积。</p>
+        <p>乘开以后，符号由 <span class="math">-b</span> 出现的次数决定：</p>
+        <div class="formula-card">
           <div class="derivation">
-            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span>
-            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
+            <span>(a-b)<sup>3</sup> = a<sup>3</sup>-3a<sup>2</sup>b+3ab<sup>2</sup>-b<sup>3</sup></span>
           </div>
         </div>
+        <p>这一类公式的核心是：从乘积出发，展开成多项式。</p>
       </div>
-      <p class="prose">分解时先找一次因子，本质上是在把三次式降成一个二次因子。二次因子的中间项，再由乘回去后的混合项抵消来确定。</p>
     </div>
   </section>
 
   <section class="section" id="factor">
-    <div class="marker" aria-hidden="true"><span>03</span>因子判断</div>
+    <div class="marker" aria-hidden="true"><span>02</span>分解</div>
     <div class="section-body">
-      <h2>一次因子与二次因子：先找来源，再乘回检查</h2>
-      <div class="two-grid">
-        <div class="concept-card">
-          <strong>立方和的一次因子</strong>
-          <p>当 <span class="math">b=-a</span> 时，<span class="math">a<sup>3</sup>+b<sup>3</sup>=0</span>。</p>
+      <div class="prose">
+        <h2>2. 两个立方相加或相减时，要写成乘积</h2>
+        <p><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 和 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 已经是两个立方项放在一起。这里要做的是因式分解，把三次式写成因子相乘。</p>
+        <p>立方和写成：</p>
+        <div class="formula-card">
           <div class="derivation">
-            <span>b=-a ⇔ a+b=0</span>
-            <span>所以先尝试 a+b</span>
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span>
           </div>
         </div>
-        <div class="concept-card">
-          <strong>立方差的一次因子</strong>
-          <p>当 <span class="math">a=b</span> 时，<span class="math">a<sup>3</sup>-b<sup>3</sup>=0</span>。</p>
+        <p>立方差写成：</p>
+        <div class="formula-card">
           <div class="derivation">
-            <span>a=b ⇔ a-b=0</span>
-            <span>所以先尝试 a-b</span>
+            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
           </div>
         </div>
-      </div>
-      <div class="formula-card">
-        <div class="derivation">
-          <span>立方和： (a+b)(a<sup>2</sup> + kab + b<sup>2</sup>) -> k = -1</span>
-          <span>立方差： (a-b)(a<sup>2</sup> + kab + b<sup>2</sup>) -> k = 1</span>
+        <p>为什么要写成乘积？因为乘积形式能把隐藏的因子看出来。</p>
+        <p>比如解方程：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>x<sup>3</sup>-8 = 0</span>
+          </div>
         </div>
+        <p>写成：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>x<sup>3</sup>-2<sup>3</sup> = 0</span>
+          </div>
+        </div>
+        <p>再分解：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>(x-2)(x<sup>2</sup>+2x+4) = 0</span>
+          </div>
+        </div>
+        <p>这时就能先看见：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>x-2 = 0</span>
+          </div>
+        </div>
+        <p>所以：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>x = 2</span>
+          </div>
+        </div>
+        <p>乘积形式的作用是让我们能使用“乘积为 <span class="math">0</span>”这个结构。它也能帮助约分、化简和继续分解。单看 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 或 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>，这些因子关系不明显；写成乘积后，一次因子和二次因子就分开了。</p>
       </div>
-      <p class="prose">所以二次因子的符号不是背出来的，而是由混合项抵消决定的。</p>
+    </div>
+  </section>
+
+  <section class="section" id="linear-factor">
+    <div class="marker" aria-hidden="true"><span>03</span>一次因子</div>
+    <div class="section-body">
+      <div class="prose">
+        <h2>3. 为什么能先找 <span class="math">a+b</span> 或 <span class="math">a-b</span></h2>
+        <p>找一次因子时，先看原式什么时候会变成 <span class="math">0</span>。</p>
+        <p>对立方差：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>-b<sup>3</sup></span>
+          </div>
+        </div>
+        <p>当 <span class="math">a=b</span> 时：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>-b<sup>3</sup> = 0</span>
+          </div>
+        </div>
+        <p>而 <span class="math">a=b</span> 可以写成：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a-b = 0</span>
+          </div>
+        </div>
+        <p>这说明 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 里有一个很自然的候选因子：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a-b</span>
+          </div>
+        </div>
+        <p>对立方和：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup></span>
+          </div>
+        </div>
+        <p>当 <span class="math">b=-a</span> 时：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup> = a<sup>3</sup>+(-a)<sup>3</sup> = 0</span>
+          </div>
+        </div>
+        <p>而 <span class="math">b=-a</span> 可以写成：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a+b = 0</span>
+          </div>
+        </div>
+        <p>这说明 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 里有一个很自然的候选因子：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a+b</span>
+          </div>
+        </div>
+        <p>这就是因式定理的简单用法：如果一个式子在某个一次式等于 0 时也变成 0，这个一次式就可以作为因子候选。候选因子找到以后，还要乘回去检查。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quadratic-factor">
+    <div class="marker" aria-hidden="true"><span>04</span>二次因子</div>
+    <div class="section-body">
+      <div class="prose">
+        <h2>4. 二次因子怎样确定</h2>
+        <p>一次因子确定后，剩下的因子应该是二次式。</p>
+        <p>先看立方和：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span>
+          </div>
+        </div>
+        <p>这里 <span class="math">a<sup>2</sup></span> 用来和前面的 <span class="math">a</span> 乘出 <span class="math">a<sup>3</sup></span>，<span class="math">b<sup>2</sup></span> 用来和前面的 <span class="math">b</span> 乘出 <span class="math">b<sup>3</sup></span>。中间项先写成 <span class="math">kab</span>。</p>
+        <p>乘开右边：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>(a+b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span>
+            <span>= a<sup>3</sup>+(k+1)a<sup>2</sup>b+(k+1)ab<sup>2</sup>+b<sup>3</sup></span>
+          </div>
+        </div>
+        <p>左边 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>，所以：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>k+1 = 0</span>
+          </div>
+        </div>
+        <p>于是：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>k = -1</span>
+          </div>
+        </div>
+        <p>得到：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span>
+          </div>
+        </div>
+        <p>再看立方差：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span>
+          </div>
+        </div>
+        <p>乘开右边：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>(a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span>
+            <span>= a<sup>3</sup>+(k-1)a<sup>2</sup>b+(1-k)ab<sup>2</sup>-b<sup>3</sup></span>
+          </div>
+        </div>
+        <p>左边 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>，所以：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>k-1 = 0</span>
+          </div>
+        </div>
+        <p>于是：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>k = 1</span>
+          </div>
+        </div>
+        <p>得到：</p>
+        <div class="formula-card">
+          <div class="derivation">
+            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
+          </div>
+        </div>
+        <p>二次因子的中间项由乘回去时的混合项抵消决定。</p>
+      </div>
     </div>
   </section>
 
   <section class="section" id="flow">
-    <div class="marker" aria-hidden="true"><span>04</span>判断流程</div>
+    <div class="marker" aria-hidden="true"><span>05</span>判断顺序</div>
     <div class="section-body">
-      <h2>判断流程：看到式子后先问这几句</h2>
-      <div class="flow" aria-label="立方公式判断流程图">
-        <div class="flow-step"><span>1</span><div><strong>它是不是一个整体被立方？</strong><p>如果是 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，先展开。</p></div></div>
-        <div class="flow-step"><span>2</span><div><strong>它是不是两个完整立方相加？</strong><p>如果是 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>，用立方和分解。</p></div></div>
-        <div class="flow-step"><span>3</span><div><strong>它是不是两个完整立方相减？</strong><p>如果是 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>，用立方差分解。</p></div></div>
-        <div class="flow-step"><span>4</span><div><strong>如果都不是，先不要硬套公式。</strong><p>先看能否整理成完整立方结构，再决定下一步。</p></div></div>
+      <div class="prose">
+        <h2>5. 最后按这个顺序判断</h2>
+        <p>看到立方相关式子时，可以这样判断：</p>
       </div>
       <div class="check-block">
-        <span class="check-line">先判断对象 -> 再选择展开或分解 -> 最后乘回去检查</span>
+        <span class="check-line">1. 先判断：一个整体被立方吗？</span>
+        <span class="check-line">   (a+b)^3 或 (a-b)^3 -> 展开。</span>
+        <span class="check-line">2. 再判断：两个完整立方相加吗？</span>
+        <span class="check-line">   a^3+b^3 -> 找 a+b，再确定二次因子。</span>
+        <span class="check-line">3. 再判断：两个完整立方相减吗？</span>
+        <span class="check-line">   a^3-b^3 -> 找 a-b，再确定二次因子。</span>
+        <span class="check-line">4. 最后乘回去检查。</span>
+      </div>
+      <div class="prose">
+        <p>最后真正要记住的是：先判断对象，再决定展开还是分解；分解时先找让原式变成 <span class="math">0</span> 的一次因子，再用乘回去确定二次因子。</p>
       </div>
       <a class="next" href="./">返回章节入口</a>
     </div>

@@ -243,64 +243,73 @@ The Scope Check may be internal, but its decision should control the Markdown.
 
 ### Writing Flow
 
-Prefer this learner-facing order:
+Choose the writing flow from the knowledge type. Do not force every Markdown into the same long article pattern.
+
+For formula derivation articles, especially identities such as `和的立方` and `差的立方`, prefer:
 
 ```text
-problem -> object -> observation -> structure -> formula -> check -> practice
+object -> algebraic derivation -> structural explanation -> visual/geometric interpretation -> core conclusion
 ```
 
-Do not begin by piling up formulas. Before a core formula first appears, the article should already provide:
+The algebraic derivation is the main path. Geometry, visualization, examples, and practice may support it, but they must not replace the derivation.
 
-1. a concrete object or problem;
-2. an observation about that object;
-3. a reason the formula is needed.
+For concept, definition, rule, and method articles, use a broader flow when needed:
 
-The formula should feel like it grows out of the object and observation, not like a rule pasted in from a textbook.
+```text
+problem -> object -> observation -> boundary or condition -> structure -> example/check -> takeaway
+```
+
+Do not begin with an unsupported formula dump. The opening should still identify the object being studied and what understanding will change, but formula-centered articles may state the target expression early when the article is explicitly about deriving that formula.
 
 ### Article Structure
 
-The structure below is an internal writing order, not a required set of visible headings. Final Markdown headings should be learner-facing and should name the understanding problem being solved.
+The structure below is a guide, not a template to preserve mechanically. Final Markdown headings should fit the article type and name real learning turns.
 
-Do not expose stiff template headings such as `Concept Development`, `Learning Difficulties`, or `Key Examples` when a clearer learner-facing heading is possible.
+For formula derivation articles, use the concise shape demonstrated by `01_和的立方.md` and `02_差的立方.md`:
 
-Preferred external article shape:
+```markdown
+# 知识对象：公式推导与几何解析
+
+Opening paragraph:
+State the formula object, the transformation direction, and the main thing to understand.
+
+## 1. 公式推导：从原式到展开式或分解式
+
+Write the original expression.
+Show every necessary intermediate algebraic step.
+Explain why each transformation is valid.
+Each displayed formula step must have adjacent prose explaining what changed in that step and why the step is valid. This applies to derived HTML pages as well as core Markdown.
+Combine like terms or determine missing coefficients.
+Arrive at the final formula.
+Briefly state where coefficients and signs come from.
+
+## 2. 几何解析 / 结构解释：看见公式里的项
+
+Use a concrete model only after the formula has been derived.
+Explain what the whole object is, how it is split, removed, added back, grouped, or rearranged.
+Tie each visual or structural part to a formula term.
+Make clear that the visual explanation supports the derivation instead of replacing it.
+
+## 3. 核心结论
+
+Summarize the formula and the one structural reason the learner should remember.
+```
+
+For concept, definition, rule, or method articles, use a wider shape only when the content needs it:
 
 ```markdown
 # Title
 
 ## 1. 先看懂这件事
-
-State the core idea in learner-facing language.
-
 ## 2. 先从一个具体对象看起
-
-Start from an object, expression, diagram, quantity relation, or concrete problem.
-
 ## 3. 这里最容易看错什么
-
-When difficulty and error-prone points are the same structural issue, combine them here.
-For each important error, explain what the wrong answer is, why it is tempting, what structure is missing, and how to check it.
-
 ## 4. 顺着结构推出公式或概念
-
-Move from object to observation to structure to formula or concept.
-
 ## 5. 用例子检查理解
-
-Use examples to show judgment and reasoning, not just procedures.
-
 ## 6. 换几个练习再判断
-
-Include focused practice families when useful. Practice may be merged into the example section if that reads more naturally.
-
-## 7. 以后会在哪里用到
-
-Briefly connect to later knowledge without expanding into a new lesson.
-
-## 8. 最后真正要记住的是
-
-End with one sentence about the understanding the learner should carry away.
+## 7. 最后真正要记住的是
 ```
+
+Examples, practice, and error sections are optional in short formula derivation articles. Add them only when they reveal a necessary structure, prevent a common misunderstanding, or train a judgment that the article itself depends on.
 
 ### Template Instruction Boundary
 
@@ -342,17 +351,17 @@ Concept explanations must land on mathematical structure, not only on intuition,
 
 ### Formula And Structure Article Refinement Rules
 
-For formula-centered or algebraic-structure Markdown, begin from a concrete conflict, common mistake, or judgment problem whenever possible, rather than an abstract announcement of the topic.
+For formula-centered or algebraic-structure Markdown, choose the opening by the formula's job. If the article is a derivation article, it may begin directly from the formula object and transformation direction, as in `和的立方` and `差的立方`. If the article is a judgment or method article, begin from a concrete conflict, common mistake, or decision problem.
 
 The opening scope must match the full article. If a formula, variant, reverse use, or object is introduced later, it should either appear in the initial scope or be clearly marked as a secondary extension.
 
-Formula classification should support learner judgment. Prefer short comparison tables or compact blocks that answer:
+Formula classification should support learner judgment when the article requires learners to choose among similar forms. Prefer short comparison tables or compact blocks that answer:
 
 - what form is being seen;
 - what should be checked first;
 - whether the next action is expansion, factorization, transformation, or rejection of the formula.
 
-When deriving formulas, prefer showing how the formula is discovered from structure, not only verifying it after it is stated. Verification by multiplying back is useful, but important formulas should also explain how the unknown part is determined. For example, set an unknown middle coefficient, require cancellation or matching, and then solve for that coefficient.
+When deriving formulas, show the calculation or structural process from the original expression to the final formula. For expansion formulas, write the repeated factors, apply distributive multiplication, and combine like terms. For factorization formulas, explain how the factor or unknown part is determined, for example by setting an unknown middle coefficient and requiring cancellation or matching.
 
 Avoid repeated derivations. A formula's source should be fully developed once. Later appearances should summarize, compare, apply, or check the formula instead of repeating the same explanation.
 
@@ -360,11 +369,11 @@ State mathematical scope carefully. When a claim depends on the current learning
 
 Use Markdown math syntax for core formulas and derivation equations, such as inline `$...$` or block `$$...$$`. Use code blocks mainly for structure tables, question families, judgment prompts, or plain-text comparison patterns.
 
-If a variant formula is introduced, include at least one example or practice family for it. Do not introduce a sign variant, transformed object, reverse-use formula, or look-alike structure without giving the learner a chance to check that structure.
+If a variant formula is introduced, provide either a derivation, a compact structural comparison, or at least one example or practice family for it. Do not introduce a sign variant, transformed object, reverse-use formula, or look-alike structure without giving the learner a way to check that structure.
 
 Visualization notes inside final learner-facing Markdown must be learner-facing. Avoid authoring notes such as "this section should use a diagram." Prefer prose such as "if this is shown with a diagram, you should notice..." or "the diagram helps reveal..." If a note is only for later HTML, visualization, or interaction design, keep it clearly separated as an authoring note and do not mix it into the learner-facing article.
 
-When an article repeatedly asks the learner to "judge the structure first," provide a final executable judgment method, such as a table or checklist. The learner should know what to ask before applying the formula.
+When an article repeatedly asks the learner to "judge the structure first," provide a final executable judgment method, such as a table or checklist. Do not force such a table into a short derivation article unless formula choice is part of the learning goal.
 
 For multi-formula articles, control cognitive load by making each formula's role explicit: which one expands, which one factors, which one checks structure, and which look-alike forms cannot use the formula directly.
 
@@ -373,6 +382,8 @@ For multi-formula articles, control cognitive load by making each formula's role
 Examples should reveal structure, train judgment, or prevent a specific misunderstanding. They should not merely demonstrate procedures.
 
 Practice must serve the current understanding goal. It should train structure recognition before calculation.
+
+Examples and practice are not mandatory in every core Markdown. For concise formula derivation articles, such as the standard `和的立方` / `差的立方` pattern, the article may stop after derivation, geometric/structural explanation, and core conclusion if those are sufficient for understanding.
 
 When practical, practice should include:
 
@@ -455,29 +466,32 @@ Use the writing skills in this order when drafting or rewriting DGOpenKS core Ma
 Before a Markdown is accepted as a core knowledge source, it must satisfy:
 
 1. The core learning question is single and clear.
-2. The opening states what understanding should change.
-3. The core formula or concept grows from an object, observation, and structure.
-4. Error-prone points explain structural causes, not just wrong answers.
-5. Examples show judgment and reasoning, not just procedure.
-6. Practice trains structure recognition before calculation.
-7. Randomizable practice is described as question families and checks, not implementation.
-8. The language is learner-facing, not teacher-facing.
-9. The Markdown contains no HTML, CSS, JS, UI, animation, video, or 3D implementation details.
-10. Visualization notes, if present, are teaching intentions only.
-11. The article does not over-expand into a later lesson.
-12. The ending returns to the final understanding.
-13. For formula or structure articles, the opening scope matches all formulas, variants, and reverse uses introduced later.
-14. Important formulas are derived from structure, not only verified after being stated.
-15. If the article requires structure judgment, it gives an executable judgment table, checklist, or decision method.
-16. Core formulas and derivation equations use Markdown math syntax unless a code block is intentionally used for a plain-text structure pattern.
+2. The opening identifies the object being studied and what understanding should change.
+3. The article type is appropriate: formula derivation, concept, definition, rule/method, or mixed.
+4. For formula derivation articles, the original expression, intermediate calculation steps, reasons for each transformation, final formula, and coefficient/sign source are clear.
+5. Every displayed formula step has a corresponding explanation nearby. A formula chain without step-by-step explanation is not accepted.
+6. For formula derivation articles, geometric or visual explanation appears only after the formula path is clear, and every visual part corresponds to a formula term or structure.
+7. For concept, definition, rule, and method articles, boundaries, conditions, examples, and errors are explained when they are part of the understanding goal.
+8. Error-prone points, if included, explain structural causes, not just wrong answers.
+9. Examples, if included, show judgment and reasoning, not just procedure.
+10. Practice, if included, trains the current understanding goal and stays at the level of question families, checks, and feedback intentions.
+11. The language is learner-facing, not teacher-facing.
+12. The Markdown contains no HTML, CSS, JS, UI, animation, video, or 3D implementation details.
+13. Visualization notes, if present, are teaching intentions only.
+14. The article does not over-expand into a later lesson.
+15. The ending returns to the final understanding.
+16. For formula or structure articles, the opening scope matches all formulas, variants, and reverse uses introduced later.
+17. If the article requires structure judgment, it gives an executable judgment table, checklist, or decision method.
+18. Core formulas and derivation equations use Markdown math syntax unless a code block is intentionally used for a plain-text structure pattern.
 
 Additional review question:
 
 ```text
-If all formulas were removed, could a learner still roughly explain what problem this knowledge solves?
+For formula derivation articles: if the geometric or visual section were removed, could the algebraic text still derive the formula clearly?
+For concept, definition, rule, and method articles: if formulas or visuals were removed, could a learner still roughly explain what problem this knowledge solves?
 ```
 
-If the answer is no, the article is still too formula-driven and must be revised.
+If the answer is no, revise the core explanation before adding more examples, visuals, or derived page features.
 
 ### Common Failure Types
 
@@ -487,11 +501,13 @@ Reject or revise Markdown that falls into these patterns:
 - Teacher lesson-plan voice: "help students master..." instead of explaining to the learner.
 - Page requirement writing: buttons, cards, animation, interaction, layout, or implementation.
 - Formula pile-up: formulas appear before object, observation, and structure.
+- Visual-first formula writing: geometry, 3D, or interaction explains the formula before the algebraic derivation is clear.
 - Scope mismatch: the opening promises one object, but later introduces extra formulas, variants, or reverse uses without framing them.
 - Verification-only derivation: a formula is stated and checked, but the article does not explain how its missing part or structure is found.
+- Forced long-template writing: a short formula derivation article is padded with unnecessary misconceptions, examples, practice, transfer sections, or interaction intentions.
 - Judgment without method: the article repeatedly says "judge the structure first" but gives no executable judgment table, checklist, or decision path.
 - Error list only: wrong answers are listed without structural causes or checks.
-- Exercise pile-up: many questions appear without training judgment.
+- Exercise pile-up: many questions appear without training judgment, or exercises are added to a derivation article without a clear learning need.
 - Unsupported variant: a sign variant, transformed object, or reverse-use formula appears without an example or focused practice.
 - Over-expansion: too many later ideas are packed into one Markdown.
 - Empty metaphor: vivid language appears without mathematical structure.
@@ -962,6 +978,8 @@ What learning action will the learner take after clicking?
 ### Headings
 
 Section headings should mark conceptual turns, not only UI sections.
+
+For derived HTML/blog pages, main content section headings should preserve the approved Markdown section titles by default, including numbering when the Markdown uses numbered headings. Shorter labels may be used for navigation pills, side markers, breadcrumbs, or compact UI affordances, but they must not replace the learner-facing section heading unless the user explicitly asks for adapted headings.
 
 Weak headings:
 

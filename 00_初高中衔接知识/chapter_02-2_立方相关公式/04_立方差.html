@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立方差公式：几何拆分与因式分解 | DGOpenKS</title>
+<title>立方差公式：公式推导与几何解析 | DGOpenKS</title>
 <style>
 :root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--grid:#e8eef7;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--red:#dc2626;--red-soft:#fef2f2;--red-line:#fecaca;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
@@ -32,6 +32,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .prose{max-width:860px}
 .formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:18px 0;overflow:auto}
 .derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.calc-steps{display:grid;gap:0}
+.calc-step{display:grid;grid-template-columns:minmax(420px,1.08fr) minmax(260px,.92fr);gap:18px;align-items:start;border-bottom:1px solid var(--line);padding:12px 0}
+.calc-step:last-child{border-bottom:0;padding-bottom:0}
+.formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
+.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px}
 .note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
 .recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
 .recognition-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
@@ -52,6 +57,19 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .model-range{display:grid;gap:8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;font-weight:900;color:#334155}
 .model-range input{width:100%;accent-color:var(--blue)}
 .model-formula{display:grid;gap:7px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:800;line-height:1.55;overflow:auto}
+.cube-diff-model-sequence{display:grid;gap:18px;margin-top:22px}
+.cube-diff-model-step{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,.98fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;break-inside:avoid}
+.cube-diff-scene-wrap{position:relative;min-height:340px;border-right:1px solid var(--line);background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
+.cube-diff-static-render{height:100%;min-height:340px}
+.cube-diff-static-render .model-scene{min-height:340px;height:100%;background:transparent}
+.cube-diff-static-render .model-panel,.cube-diff-static-render .model-tags,.cube-diff-static-render .model-caption{display:none}
+.cube-diff-step-copy{padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.cube-diff-step-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:900;font-size:.86rem}
+.cube-diff-step-kicker b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff}
+.cube-diff-step-copy h3{font-size:1.18rem;line-height:1.36;margin:0;color:var(--ink)}
+.cube-diff-step-copy p{margin:0;color:#334155;line-height:1.78}
+.cube-diff-static-formula{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:10px;overflow:auto}
+.cube-diff-formula-list{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-weight:900;line-height:1.55;white-space:nowrap}
 .static-figure{margin:22px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;break-inside:avoid}
 .static-figure h3{color:var(--blue);font-size:1.2rem}
 .static-lead{max-width:880px;color:#334155}
@@ -67,9 +85,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .result-box .math{font-size:1.2rem}
 .next{display:inline-flex;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
-@media(max-width:820px){.section,.model-lab{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}}
-@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.68rem}.derivation,.math{white-space:normal}.formula-card{padding:14px}.recognition,.pair-row{grid-template-columns:1fr}.term-row{grid-template-columns:repeat(2,minmax(0,1fr))}.model-steps{grid-template-columns:1fr}.model-scene{min-height:360px}.cancel-map{overflow-x:auto;-webkit-overflow-scrolling:touch}.cube-difference-svg{width:900px;max-width:none}}
-@media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card{box-shadow:none}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}.cube-difference-svg{width:100%;max-width:none}}
+@media(max-width:820px){.section,.model-lab,.cube-diff-model-step{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.model-scene{min-height:360px}.cube-diff-scene-wrap{border-right:0;border-bottom:1px solid var(--line)}.calc-step{grid-template-columns:minmax(0,1fr);gap:6px}.step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}}
+@media(max-width:640px){.hero,main{padding-left:14px;padding-right:14px}.hero{padding-top:36px}h1{font-size:1.68rem}.derivation,.formula-line,.step-note .math,.math{white-space:normal}.calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}.formula-card{padding:14px}.recognition,.pair-row{grid-template-columns:1fr}.term-row{grid-template-columns:repeat(2,minmax(0,1fr))}.model-steps{grid-template-columns:1fr}.model-scene,.cube-diff-static-render .model-scene{min-height:320px}.cube-diff-scene-wrap,.cube-diff-static-render{min-height:320px}.cube-diff-formula-list{white-space:normal}.cancel-map{overflow-x:auto;-webkit-overflow-scrolling:touch}.cube-difference-svg{width:900px;max-width:none}}
+@media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card,.cube-diff-model-step{box-shadow:none}.cube-diff-model-step{display:block}.cube-diff-scene-wrap{border-right:0;border-bottom:1px solid var(--line);min-height:230px}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}.cube-difference-svg{width:100%;max-width:none}}
 </style>
 </head>
 <body>
@@ -78,81 +96,128 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <a class="brand" href="../../index.html">DGOpenKS</a>
     <a class="nav-link" href="./">章节入口</a>
     <a class="nav-link" href="03_立方和.html">立方和</a>
-    <a class="nav-link" href="#recognize">结构识别</a>
-    <a class="nav-link" href="#derive">公式推导</a>
-    <a class="nav-link" href="#model">几何拆分</a>
+    <a class="nav-link" href="#calculation">公式推导</a>
+    <a class="nav-link" href="#model">几何解析</a>
     <a class="nav-link" href="05_立方公式小结.html">小结</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 04</span>
-  <h1>立方差公式：几何拆分与因式分解</h1>
-  <p class="lead"><span class="math">a<sup>3</sup>-b<sup>3</sup></span> 是边长为 <span class="math">a</span> 的大立方体挖去边长为 <span class="math">b</span> 的小立方体。先看这个剩余体积，再把它拆成三块，得到乘积形式。</p>
+  <h1>立方差公式：公式推导与几何解析</h1>
+  <p class="lead">本节先从代数运算推出 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的标准分解式，再用立方体的体积拆分解释这个公式。</p>
+  <p class="lead"><span class="math">a<sup>3</sup>-b<sup>3</sup></span> 表示两个完整立方相减。目标是把它写成乘积形式。</p>
 </header>
 
 <main>
-  <section class="section" id="recognize">
-    <div class="marker" aria-hidden="true"><span>01</span>结构识别</div>
+  <section class="section" id="calculation">
+    <div class="marker" aria-hidden="true"><span>01</span>公式推导</div>
     <div class="section-body">
       <div class="prose">
-        <h2>结构识别：两端都要是完整立方</h2>
-        <p>立方差要求两端都能写成三次方，系数和常数也要一起看。</p>
-        <div class="recognition">
-          <div class="recognition-card">
-            <strong>完整立方结构</strong>
-            <p><span class="math">8x<sup>3</sup>-125=(2x)<sup>3</sup>-5<sup>3</sup></span></p>
-          </div>
-          <div class="recognition-card">
-            <strong>先确定整体</strong>
-            <p>这里的 <span class="math">a</span> 是整个 <span class="math">2x</span>，不是单独的 <span class="math">x</span>。</p>
-          </div>
-        </div>
-        <p>第一步先判断对象：它是不是两个完整立方相减？</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="derive">
-    <div class="marker" aria-hidden="true"><span>02</span>公式推导</div>
-    <div class="section-body">
-      <div class="prose">
-        <h2>公式推导：设中间项并让混合项消失</h2>
-        <p>先看 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 什么时候等于 0。当 <span class="math">a=b</span> 时原式为 0，而 <span class="math">a=b</span> 等价于 <span class="math">a-b=0</span>，所以先尝试一次因子 <span class="math">a-b</span>。</p>
+        <h2>公式推导：从一次因子到分解式</h2>
+        <p>立方差要分解的是两个完整立方相减，例如 <span class="math">8x<sup>3</sup>-125=(2x)<sup>3</sup>-5<sup>3</sup></span>。先确认两端都能写成三次方，再看 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 什么时候等于 0。</p>
+        <p>当 <span class="math">a=b</span> 时原式为 0，而 <span class="math">a=b</span> 等价于 <span class="math">a-b=0</span>，所以先尝试一次因子 <span class="math">a-b</span>，再通过乘回去检查剩下的二次因子。</p>
         <div class="formula-card">
-          <div class="derivation">
-            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
-            <span>(a-b)(a<sup>2</sup> + kab + b<sup>2</sup>)</span>
-            <span>= a<sup>3</sup> + ka<sup>2</sup>b + ab<sup>2</sup> - a<sup>2</sup>b - kab<sup>2</sup> - b<sup>3</sup></span>
-            <span>= a<sup>3</sup> + (k-1)a<sup>2</sup>b + (1-k)ab<sup>2</sup> - b<sup>3</sup></span>
-            <span>k - 1 = 0，所以 k = 1</span>
-            <span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
+          <div class="calc-steps">
+            <div class="calc-step">
+              <div class="formula-line">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup> + kab + b<sup>2</sup>)</div>
+              <p class="step-note">先尝试一次因子 <span class="math">a-b</span>。剩下的应是二次式：首项用 <span class="math">a<sup>2</sup></span> 才能乘出 <span class="math">a<sup>3</sup></span>；末项用 <span class="math">b<sup>2</sup></span>，配合前面的 <span class="math">-b</span> 才能乘出 <span class="math">-b<sup>3</sup></span>。未知的中间项先写成 <span class="math">kab</span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">(a-b)(a<sup>2</sup> + kab + b<sup>2</sup>)</div>
+              <p class="step-note">接下来用乘回去检查这个候选分解，把右边完整乘开并和 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 对照。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> + ka<sup>2</sup>b + ab<sup>2</sup> - a<sup>2</sup>b - kab<sup>2</sup> - b<sup>3</sup></div>
+              <p class="step-note">这里使用乘法分配律：<span class="math">a</span> 去乘二次因子的三项，<span class="math">-b</span> 也去乘二次因子的三项，所以出现六个乘积项。来自 <span class="math">-b</span> 的三项都带负号。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">= a<sup>3</sup> + (k-1)a<sup>2</sup>b + (1-k)ab<sup>2</sup> - b<sup>3</sup></div>
+              <p class="step-note">把同类混合项合并：<span class="math">ka<sup>2</sup>b-a<sup>2</sup>b</span> 合成 <span class="math">(k-1)a<sup>2</sup>b</span>，<span class="math">ab<sup>2</sup>-kab<sup>2</sup></span> 合成 <span class="math">(1-k)ab<sup>2</sup></span>。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">k - 1 = 0，1 - k = 0，所以 k = 1</div>
+              <p class="step-note">左边原式只有 <span class="math">a<sup>3</sup></span> 和 <span class="math">-b<sup>3</sup></span>，没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。因此两类混合项的系数必须为 0。</p>
+            </div>
+            <div class="calc-step">
+              <div class="formula-line">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup> + ab + b<sup>2</sup>)</div>
+              <p class="step-note">把 <span class="math">k=1</span> 代回二次因子，就得到立方差分解公式。中间的 <span class="math">+ab</span> 负责让乘回去时出现的两类混合项正好抵消。</p>
+            </div>
           </div>
         </div>
-        <div class="note">二次因子的三项都是正的，是因为这样乘回去时两类混合项正好抵消。</div>
+        <p>通过以上代数运算，可以得到立方差分解式。下面从几何体积的角度说明 <span class="math">a-b</span> 怎样成为共同长度。</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>03</span>几何拆分</div>
+    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
     <div class="section-body">
-      <h2>几何拆分：大立方体挖去小立方体</h2>
-      <p class="prose">从边长为 <span class="math">a</span> 的大立方体里挖去边长为 <span class="math">b</span> 的小立方体，剩下的 L 形体积可以切成三块。三块都有共同厚度 <span class="math">a-b</span>，这就是一次因子出现的几何来源。</p>
-      <div class="model-lab" id="cubeDifferenceModel" data-label="立方差公式大立方挖去小立方模型"></div>
+      <h2>几何解析：边长怎样对应到因子</h2>
+      <p class="prose">从边长为 <span class="math">a</span> 的大立方体里挖去边长为 <span class="math">b</span> 的小立方体，剩下的是一个 L 形体积。下面按四步看：先看原来的体积，挖去 <span class="math">b<sup>3</sup></span>，把剩余体积分成三块，再把共同长度 <span class="math">a-b</span> 提出来。</p>
+      <div class="cube-diff-model-sequence" id="cubeDifferenceStaticSequence" aria-label="立方差几何解析静态步骤">
+        <article class="cube-diff-model-step" data-cube-diff-stage="0">
+          <div class="cube-diff-scene-wrap">
+            <div class="cube-diff-static-render" id="cubeDifferenceStage0" data-label="大立方体和待挖去小立方体"></div>
+          </div>
+          <div class="cube-diff-step-copy">
+            <span class="cube-diff-step-kicker"><b>1</b>原始体积</span>
+            <h3>先看边长为 <span class="math">a</span> 的大立方体</h3>
+            <p>大立方体体积是 <span class="math">a<sup>3</sup></span>，角上要挖去边长为 <span class="math">b</span> 的小立方体。图中的边长标注用来区分 <span class="math">a</span> 和 <span class="math">b</span>。</p>
+            <div class="cube-diff-static-formula">
+              <div class="cube-diff-formula-list"><span>a<sup>3</sup>-b<sup>3</sup></span></div>
+            </div>
+          </div>
+        </article>
 
-      <div class="static-figure" id="print-cancel">
-        <h3>立方差几何拆解图</h3>
-        <p class="static-lead">下图先画出 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的几何对象，再把剩余体积切成三块，并重排成共同厚度为 <span class="math">a-b</span> 的结构。</p>
-        <div class="cancel-map" aria-label="立方差公式几何拆解图">
-          <svg class="cube-difference-svg" id="cubeDifferenceHandout" viewBox="0 0 1100 650" role="img" aria-label="立方差公式图：大立方挖去小立方并重排成因式分解"></svg>
-        </div>
+        <article class="cube-diff-model-step" data-cube-diff-stage="1">
+          <div class="cube-diff-scene-wrap">
+            <div class="cube-diff-static-render" id="cubeDifferenceStage1" data-label="挖去 b³ 后的剩余体积"></div>
+          </div>
+          <div class="cube-diff-step-copy">
+            <span class="cube-diff-step-kicker"><b>2</b>挖去小立方</span>
+            <h3>从角上挖去边长为 <span class="math">b</span> 的小立方体</h3>
+            <p>挖去以后，剩余体积的边上出现长度 <span class="math">a-b</span>。这个长度是后面提取一次因子的关键。</p>
+            <div class="cube-diff-static-formula">
+              <div class="cube-diff-formula-list"><span>剩余体积 = a<sup>3</sup>-b<sup>3</sup></span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cube-diff-model-step" data-cube-diff-stage="2">
+          <div class="cube-diff-scene-wrap">
+            <div class="cube-diff-static-render" id="cubeDifferenceStage2" data-label="剩余体积切成三块"></div>
+          </div>
+          <div class="cube-diff-step-copy">
+            <span class="cube-diff-step-kicker"><b>3</b>切成三块</span>
+            <h3>把剩余的 L 形体积分成三块</h3>
+            <p>三块都带有一条长度 <span class="math">a-b</span> 的边；另外两条边分别组成 <span class="math">a<sup>2</sup></span>、<span class="math">ab</span>、<span class="math">b<sup>2</sup></span>。</p>
+            <div class="cube-diff-static-formula">
+              <div class="cube-diff-formula-list"><span>a<sup>3</sup>-b<sup>3</sup> = a<sup>2</sup>(a-b)+ab(a-b)+b<sup>2</sup>(a-b)</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cube-diff-model-step" data-cube-diff-stage="3">
+          <div class="cube-diff-scene-wrap">
+            <div class="cube-diff-static-render" id="cubeDifferenceStage3" data-label="三块重排并对齐共同长度 a-b"></div>
+          </div>
+          <div class="cube-diff-step-copy">
+            <span class="cube-diff-step-kicker"><b>4</b>对齐并写成公式</span>
+            <h3>把共同长度 <span class="math">a-b</span> 对齐，再提成一次因子</h3>
+            <p>重排只改变位置，不改变体积。三块对齐后，共同厚度是 <span class="math">a-b</span>，剩下的面积合起来是 <span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span>，所以剩余体积可以写成乘积形式。</p>
+            <div class="cube-diff-static-formula">
+              <div class="cube-diff-formula-list"><span>a<sup>2</sup>(a-b)+ab(a-b)+b<sup>2</sup>(a-b)</span><span>= (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span><span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></div>
+            </div>
+          </div>
+        </article>
       </div>
+      <p class="prose">这个几何看法帮助你看见公式里的两个因子分别对应什么：<span class="math">a-b</span> 是三块剩余体积共有的长度，<span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span> 是共同长度之外的面积结构。</p>
     </div>
   </section>
 
   <section class="section" id="summary">
-    <div class="marker" aria-hidden="true"><span>04</span>核心结论</div>
+    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
     <div class="section-body">
       <div class="prose">
         <h2>核心结论</h2>
@@ -173,7 +238,34 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 <script src="./assets/three.min.js"></script>
 <script src="./assets/formula-3d-models.js"></script>
 <script>
-  DGFormulaModels.initCubeDifference('cubeDifferenceModel');
+  (() => {
+    const cards = Array.from(document.querySelectorAll('[data-cube-diff-stage]'));
+    const mountedModels = [];
+
+    cards.forEach(card => {
+      const stage = Math.max(0, Math.min(4, Number(card.dataset.cubeDiffStage) || 0));
+      const root = card.querySelector('.cube-diff-static-render');
+      if (!root || !root.id || !window.DGFormulaModels) return;
+
+      const model = DGFormulaModels.initCubeDifference(root.id);
+      if (!model) return;
+
+      model.reducedMotion = true;
+      model.setStage(stage);
+      mountedModels.push({
+        stage,
+        id:root.id,
+        renderer:root.dataset.renderer || 'three'
+      });
+    });
+
+    window.__dgCubeDifferenceStatic = {
+      getState: () => ({
+        stages:cards.map(card => Number(card.dataset.cubeDiffStage) || 0),
+        mountedModels
+      })
+    };
+  })();
 
   (() => {
     const svgNS = 'http://www.w3.org/2000/svg';

@@ -47,6 +47,7 @@
   }
 
   function labelTexture(text, color = '#0f172a') {
+    if (window.DGDimensionLabels) return window.DGDimensionLabels.texture(text, color);
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 160;
@@ -78,6 +79,16 @@
     texture.magFilter = THREE.LinearFilter;
     texture.needsUpdate = true;
     return texture;
+  }
+
+  function dimensionColor(label, fallback) {
+    const colorsBySymbol = {
+      'a':'#2563eb',
+      'b':'#d97706',
+      'a-b':'#7c3aed',
+      'a+b':'#334155'
+    };
+    return colorsBySymbol[label] || fallback;
   }
 
   function disposeObject(object) {
@@ -236,15 +247,15 @@
       });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(position[0], position[1], position[2]);
-      sprite.scale.set(1.48 * scale, .46 * scale, 1);
+      sprite.scale.set(...(window.DGDimensionLabels ? window.DGDimensionLabels.spriteSize(scale, text) : [1.48 * scale, .46 * scale, 1]));
       sprite.renderOrder = 82;
       this.dynamic.add(sprite);
       return sprite;
     }
 
     addDimension(start, end, label, options = {}) {
-      const color = options.color || 0x334155;
-      const labelColor = options.labelColor || '#0f172a';
+      const color = dimensionColor(label, options.color || 0x334155);
+      const labelColor = dimensionColor(label, options.labelColor || '#0f172a');
       const opacity = options.opacity ?? .95;
       const tickAxis = options.tickAxis || [0, .14, 0];
       const labelOffset = options.labelOffset || [0, 0, 0];
@@ -700,15 +711,15 @@
       });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(position[0], position[1], position[2]);
-      sprite.scale.set(1.48 * scale, .46 * scale, 1);
+      sprite.scale.set(...(window.DGDimensionLabels ? window.DGDimensionLabels.spriteSize(scale, text) : [1.48 * scale, .46 * scale, 1]));
       sprite.renderOrder = 82;
       this.dynamic.add(sprite);
       return sprite;
     }
 
     addDimension(start, end, label, options = {}) {
-      const color = options.color || 0x334155;
-      const labelColor = options.labelColor || '#0f172a';
+      const color = dimensionColor(label, options.color || 0x334155);
+      const labelColor = dimensionColor(label, options.labelColor || '#0f172a');
       const opacity = options.opacity ?? .95;
       const tickAxis = options.tickAxis || [0, .14, 0];
       const labelOffset = options.labelOffset || [0, 0, 0];

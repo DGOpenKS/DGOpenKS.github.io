@@ -2,18 +2,25 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>因式分解 | DGOpenKS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>因式分解：把多项式写成因子的乘积 | DGOpenKS</title>
+<link rel="stylesheet" href="assets/chapter03.css">
 <style>
-:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--blue:#2563eb;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--green:#059669;--green-soft:#ecfdf5;--amber:#d97706;--amber-soft:#fff7ed;--red:#dc2626;--red-soft:#fef2f2;--radius:8px;--shadow:0 10px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.8;overflow-x:hidden}.math{font-family:Georgia,"Times New Roman",serif;font-weight:800}.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:1080px;margin:auto;padding:10px 20px;display:flex;gap:8px;align-items:center;overflow-x:auto}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}.hero{max-width:1080px;margin:auto;padding:44px 20px 26px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,4.2vw,3rem);line-height:1.15;margin:0 0 12px}h2{font-size:clamp(1.28rem,2.2vw,1.75rem);line-height:1.28;margin:0 0 12px}p{margin:0 0 12px;color:#334155}.lead{max-width:820px;color:var(--muted);font-size:1.04rem}main{max-width:1080px;margin:auto;padding:0 20px 82px}.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:70px}.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:900}.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}.section-body{min-width:0;max-width:850px}.card,.note{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:16px 0}.note{border-left:4px solid var(--green);background:var(--green-soft);box-shadow:none}.wrong{border-left:4px solid var(--red);background:var(--red-soft);box-shadow:none}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;color:var(--ink);overflow:auto;white-space:nowrap}.steps,.method-list{display:grid;gap:8px}.step,.method-item{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--blue-line);border-radius:var(--radius);padding:10px;font-family:Georgia,"Times New Roman",serif;font-weight:800;overflow:auto}.method-item{font-family:var(--font);font-weight:700}.zero-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin:16px 0}.zero-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-weight:800}.arrow{text-align:center;color:var(--blue);font-weight:900}.next{display:inline-flex;margin-top:8px;background:var(--ink);color:white;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:900}.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}@media(max-width:760px){.section,.zero-grid{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.arrow{transform:rotate(90deg)}.hero,main{padding-left:14px;padding-right:14px}h1{font-size:2rem}.formula-line{white-space:normal}}
-</style>
-<style>
-.method-item b{display:block;color:var(--blue);font-size:1.02rem;margin-bottom:3px}
-.method-item p{margin:0 0 6px;color:#334155}
-.method-item .formula-line{white-space:normal;font-size:1rem;margin-top:3px}
-.cross-grid{display:grid;grid-template-columns:repeat(2,minmax(54px,1fr));gap:6px;max-width:220px;margin:8px 0}
-.cross-grid span{display:grid;place-items:center;min-height:34px;border:1px solid var(--blue-line);border-radius:var(--radius);background:#fff;font-family:Georgia,"Times New Roman",serif;font-weight:900}
+.table-wrap{margin:18px 0;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow)}
+.factor-table{width:100%;min-width:680px;border-collapse:collapse;text-align:left}
+.factor-table th,.factor-table td{padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+.factor-table caption{padding:13px 15px;text-align:left;background:var(--blue-soft);color:var(--blue);font-weight:900}
+.factor-table tr:last-child td{border-bottom:0}
+.factor-table th{background:var(--soft);color:var(--ink);font-size:.88rem}
+.factor-table td{color:var(--text)}
+.factor-table .equation{font-size:1rem;white-space:nowrap}
+.factor-table .match{background:var(--green-soft)}
+.subsection{margin-top:34px}
+.subsection>h3{display:flex;align-items:center;gap:9px}
+.subsection>h3 span{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--purple-soft);color:var(--purple);font-size:.78rem}
+.method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:18px 0}
+.method-grid .pair:last-child{grid-column:1/-1}
+@media(max-width:700px){.method-grid{grid-template-columns:1fr}.method-grid .pair:last-child{grid-column:auto}.factor-table th,.factor-table td{padding:11px 12px}}
 </style>
 </head>
 <body>
@@ -21,110 +28,251 @@
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
     <a class="nav-link" href="./">章节入口</a>
-    <a class="nav-link" href="01_多项式变形.html">上一节</a>
-    <a class="nav-link" href="03_多项式结构判断.html">下一节</a>
+    <a class="nav-link" href="01_多项式变形.html">上一节：多项式变形</a>
+    <a class="nav-link" href="03_多项式结构判断.html">下一节：结构判断</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">Chapter 03 · 02</span>
-  <h1>因式分解</h1>
-  <p class="lead">这一节讲因式分解的意义和基本方法。它不是套一个方法名称，而是把原来加起来的多项式，重新看成乘起来的因子。</p>
+  <h1>因式分解：把多项式写成因子的乘积</h1>
+  <p class="lead">因式分解把多项式的加法形式还原为因子的乘积。本节说明它的含义和常用方法，并重点讲清二次项系数不为 1 时，怎样用交叉乘积确定两个一次因式。</p>
+  <div class="learning-contract"><b>本节主线：</b>先理解因式分解是展开的逆过程，再认识常用方法，最后用“二次项、一次项、常数项同时对应”完成十字相乘。</div>
 </header>
 
 <main>
-  <section class="section">
-    <div class="marker"><span>01</span>核心转换</div>
+  <section class="section" id="definition">
+    <div class="marker"><span>01</span>基本含义</div>
     <div class="section-body">
-      <h2>从加法结构到乘法结构</h2>
-      <div class="note"><p><span class="math">加法结构 → 乘法结构。</span> 乘积形式能让“等于 0”和“降次”变得直接。</p></div>
-      <div class="card"><div class="formula-line">(x+2)(x+3)=x²+5x+6</div></div>
-      <p>展开是从乘法到加法；因式分解反过来，寻找这个加法式子的乘法来源。</p>
-      <div class="card"><div class="formula-line">x²+5x+6=(x+2)(x+3)</div></div>
-    </div>
-  </section>
+      <h2>1. 什么是因式分解</h2>
+      <p>观察多项式 <span class="math">x<sup>2</sup>-x-12</span>。它可以从两个一次因式的乘积展开得到。</p>
 
-  <section class="section">
-    <div class="marker"><span>02</span>降次作用</div>
-    <div class="section-body">
-      <h2>乘积形式的作用</h2>
-      <p>看方程 <span class="math">x²+5x+6=0</span>。分解以后，二次问题会拆成两个一次问题。</p>
-      <div class="zero-grid" aria-label="因式分解降次过程">
-        <div class="zero-box">x²+5x+6=0</div>
-        <div class="arrow">→</div>
-        <div class="zero-box">(x+2)(x+3)=0</div>
-        <div class="arrow">→</div>
-        <div class="zero-box">x=-2 或 x=-3</div>
+      <div class="derivation" aria-label="从乘法展开到因式分解">
+        <div class="derivation-step">
+          <span>1</span>
+          <div><span class="equation">(x+3)(x-4)</span><p>从两个一次因式的乘积开始。</p></div>
+        </div>
+        <div class="derivation-step">
+          <span>2</span>
+          <div><span class="equation">=x<sup>2</sup>-4x+3x-12</span><p>按照分配律逐项相乘。</p></div>
+        </div>
+        <div class="derivation-step">
+          <span>3</span>
+          <div><span class="equation">=x<sup>2</sup>-x-12</span><p>合并同类项，得到多项式的加法形式。</p></div>
+        </div>
       </div>
-      <p>一个乘积等于 <span class="math">0</span>，只可能是至少有一个因子等于 <span class="math">0</span>。</p>
+
+      <div class="formula-card">
+        <span class="equation">x<sup>2</sup>-x-12=(x+3)(x-4)</span>
+        <p>因式分解沿展开的反方向，把多项式还原为几个整式因子的乘积。</p>
+      </div>
+
+      <p>因式分解不改变原多项式的值。分解完成后，应把各因式重新相乘；展开后能够回到原式，分解结果才成立。</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="marker"><span>03</span>找因子</div>
+  <section class="section" id="methods">
+    <div class="marker"><span>02</span>常用方法</div>
     <div class="section-body">
-      <h2>通过“等于 0”找因子的原因</h2>
-      <p>如果某个值会让原式变成 <span class="math">0</span>，它就暗示原式里可能藏着一个对应的一次因子。</p>
-      <div class="card">
-        <div class="steps">
-          <div class="step">当 x=-2 时，x²+5x+6=4-10+6=0</div>
-          <div class="step">x=-2 等价于 x+2=0</div>
-          <div class="step">所以原式里可能有因子 x+2</div>
+      <h2>2. 因式分解的常用方法</h2>
+      <p>不同方法对应不同的结构信号。方法名称不是选择依据，多项式已经显出的公因式、公式、二次三项式、分组或重复整体，才决定从哪里开始。</p>
+
+      <div class="method-grid">
+        <article class="pair green">
+          <span class="label green">提公因式法</span>
+          <h3>先找每一项共同拥有的因子</h3>
+          <span class="equation">6x<sup>2</sup>-9x=3x(2x-3)</span>
+          <p>依据分配律 <span class="math">ab+ac=a(b+c)</span>，把各项的共同因子提到括号外。</p>
+        </article>
+
+        <article class="pair purple">
+          <span class="label purple">公式法</span>
+          <h3>把乘法公式反向使用</h3>
+          <span class="equation">x<sup>2</sup>-25=(x-5)(x+5)</span>
+          <p>平方差、完全平方、立方和与立方差都可以反向分解，但项、系数和符号必须完整匹配。</p>
+        </article>
+
+        <article class="pair amber">
+          <span class="label amber">十字相乘法</span>
+          <h3>还原二次三项式的两个一次因式</h3>
+          <span class="equation">x<sup>2</sup>+7x+12=(x+3)(x+4)</span>
+          <p>首项系数为 1 时，两个数的和对应一次项系数，积对应常数项；首项系数不为 1 时，还要检查交叉乘积。</p>
+        </article>
+
+        <article class="pair">
+          <span class="label">分组分解法</span>
+          <h3>分组后制造共同因式</h3>
+          <span class="equation">ax+ay+bx+by=(a+b)(x+y)</span>
+          <p>分组的目的不是把各项任意分开，而是让各组提取公因式后出现相同的因式。</p>
+        </article>
+
+        <article class="pair purple">
+          <span class="label purple">整体代换与配方</span>
+          <h3>先显出熟悉的平方或二次结构</h3>
+          <span class="equation">(x+1)<sup>2</sup>-5(x+1)+6=(x-1)(x-2)</span>
+          <span class="equation">x<sup>2</sup>+6x+5=(x+3)<sup>2</sup>-4=(x+1)(x+5)</span>
+          <p>重复整体应当保留；配方则先形成完整平方，再检查能否继续分解。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cross-multiplication">
+    <div class="marker"><span>03</span>非首一情形</div>
+    <div class="section-body">
+      <h2>3. 二次项系数不为 1 的十字相乘法</h2>
+      <p>对于一般的二次三项式 <span class="math">ax<sup>2</sup>+bx+c</span>，若它能分解成两个一次因式，可以先设</p>
+
+      <div class="formula-card">
+        <span class="equation">ax<sup>2</sup>+bx+c=(mx+n)(px+q)</span>
+      </div>
+
+      <p>将右边展开，观察二次项、一次项和常数项分别从哪里产生。</p>
+
+      <div class="derivation">
+        <div class="derivation-step">
+          <span>1</span>
+          <div><span class="equation">(mx+n)(px+q)</span><p>两个一次因式相乘。</p></div>
+        </div>
+        <div class="derivation-step">
+          <span>2</span>
+          <div><span class="equation">=mpx<sup>2</sup>+mqx+npx+nq</span><p><span class="math">mqx</span> 与 <span class="math">npx</span> 是两个交叉乘积。</p></div>
+        </div>
+        <div class="derivation-step">
+          <span>3</span>
+          <div><span class="equation">=mpx<sup>2</sup>+(mq+np)x+nq</span><p>合并两个交叉乘积，得到一次项。</p></div>
+        </div>
+      </div>
+
+      <div class="representation-grid" aria-label="十字相乘必须满足的三个条件">
+        <article class="representation">
+          <span class="label">二次项</span>
+          <b class="equation">mp=a</b>
+          <p>两个一次项的系数相乘，必须得到二次项系数。</p>
+        </article>
+        <article class="representation amber">
+          <span class="label amber">一次项</span>
+          <b class="equation">mq+np=b</b>
+          <p>两个交叉乘积的和，必须得到一次项系数。</p>
+        </article>
+        <article class="representation green">
+          <span class="label green">常数项</span>
+          <b class="equation">nq=c</b>
+          <p>两个常数因子相乘，必须得到原式的常数项。</p>
+        </article>
+      </div>
+
+      <div class="subsection">
+        <h3><span>01</span>先列出因数配对</h3>
+        <p>分解 <span class="math">6x<sup>2</sup>+11x+3</span>。二次项和常数项分别可以拆成：</p>
+        <div class="formula-card">
+          <span class="equation">6x<sup>2</sup>=6x·x=3x·2x</span>
+          <span class="equation">3=1·3</span>
+        </div>
+        <p>二次项有两种拆法，常数因子又可以交换位置。下一步要比较不同排列产生的一次项。</p>
+      </div>
+
+      <div class="subsection">
+        <h3><span>02</span>用交叉乘积核对一次项</h3>
+        <div class="table-wrap">
+          <table class="factor-table">
+            <caption>不同因数排列产生的一次项比较</caption>
+            <thead>
+              <tr><th scope="col">尝试的两个因式</th><th scope="col">两个交叉乘积</th><th scope="col">交叉乘积的和</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="equation">(6x+1)(x+3)</span></td><td><span class="math">18x</span> 与 <span class="math">x</span></td><td><span class="math">19x</span></td></tr>
+              <tr><td><span class="equation">(6x+3)(x+1)</span></td><td><span class="math">6x</span> 与 <span class="math">3x</span></td><td><span class="math">9x</span></td></tr>
+              <tr class="match"><td><span class="equation">(3x+1)(2x+3)</span></td><td><span class="math">9x</span> 与 <span class="math">2x</span></td><td><span class="math">11x</span>，与原式匹配</td></tr>
+              <tr><td><span class="equation">(3x+3)(2x+1)</span></td><td><span class="math">3x</span> 与 <span class="math">6x</span></td><td><span class="math">9x</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>只有第三种排列的交叉乘积之和等于 <span class="math">11x</span>，所以因式的位置由一次项确定。</p>
+      </div>
+
+      <div class="subsection">
+        <h3><span>03</span>写出结果并展开验证</h3>
+        <div class="derivation">
+          <div class="derivation-step">
+            <span>1</span>
+            <div><span class="equation">6x<sup>2</sup>+11x+3=(3x+1)(2x+3)</span><p>二次项、常数项和交叉乘积已经同时匹配。</p></div>
+          </div>
+          <div class="derivation-step">
+            <span>2</span>
+            <div><span class="equation">(3x+1)(2x+3)=6x<sup>2</sup>+9x+2x+3</span><p>将两个一次因式完整展开。</p></div>
+          </div>
+          <div class="derivation-step">
+            <span>3</span>
+            <div><span class="equation">=6x<sup>2</sup>+11x+3</span><p>展开后回到原式，分解成立。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3><span>04</span>常数项为负时先判断符号</h3>
+        <p>分解 <span class="math">6x<sup>2</sup>-x-2</span>。常数项为负，所以两个常数因子异号。取</p>
+        <div class="formula-card"><span class="equation">(3x-2)(2x+1)</span></div>
+        <p>两个交叉乘积的和为</p>
+        <div class="formula-card"><span class="equation">3x·1+(-2)·2x=3x-4x=-x</span></div>
+        <p>一次项与原式对应，因此</p>
+        <div class="derivation">
+          <div class="derivation-step"><span>1</span><div><span class="equation">6x<sup>2</sup>-x-2=(3x-2)(2x+1)</span><p>根据交叉乘积确定符号和位置。</p></div></div>
+          <div class="derivation-step"><span>2</span><div><span class="equation">(3x-2)(2x+1)=6x<sup>2</sup>+3x-4x-2</span><p>展开两个一次因式。</p></div></div>
+          <div class="derivation-step"><span>3</span><div><span class="equation">=6x<sup>2</sup>-x-2</span><p>展开后回到原式。</p></div></div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3><span>05</span>完整操作顺序</h3>
+        <div class="decision-list">
+          <div class="decision"><span>1</span><div><b>先查公因式</b><p>三项有公因式时，先提出，再处理括号内的二次三项式。</p></div></div>
+          <div class="decision"><span>2</span><div><b>拆分二次项</b><p>把 <span class="math">ax<sup>2</sup></span> 写成两个一次单项式的乘积。</p></div></div>
+          <div class="decision"><span>3</span><div><b>拆分常数项</b><p>把 <span class="math">c</span> 写成两个常数因子的乘积，并判断符号。</p></div></div>
+          <div class="decision"><span>4</span><div><b>核对交叉乘积</b><p>调整位置和符号，使两个交叉乘积的和等于 <span class="math">bx</span>。</p></div></div>
+          <div class="decision"><span>5</span><div><b>展开验证</b><p>二次项、一次项和常数项全部回到原式，分解才成立。</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="marker"><span>04</span>常用方法</div>
+  <section class="section" id="purpose">
+    <div class="marker"><span>04</span>最终目的</div>
     <div class="section-body">
-      <h2>因式分解的常用方法</h2>
-      <p>方法不要背成一串名字。先看多项式露出了什么结构，再选择对应的方法。</p>
-      <div class="card">
-        <div class="method-list">
-          <div class="method-item"><b>提公因式法</b><p>每一项都有共同部分，先把共同因子提出来。</p><div class="formula-line">2x²+10x+12=2(x²+5x+6)=2(x+2)(x+3)</div></div>
-          <div class="method-item"><b>公式法</b><p>先判断是否真的长成公式左边，比如平方差、完全平方、立方和、立方差。</p><div class="formula-line">x²-9=(x-3)(x+3)</div><div class="formula-line">x³+8=(x+2)(x²-2x+4)</div></div>
-          <div class="method-item"><b>十字相乘法</b><p>常用来分解二次三项式。直乘检查二次项和常数项，交叉乘检查一次项。</p><div class="cross-grid"><span>mx</span><span>n</span><span>px</span><span>q</span></div><div class="formula-line">(mx+n)(px+q)=mpx²+(mq+np)x+nq</div><p>首项系数为 1 时，找 m+n=p、mn=q。</p><div class="formula-line">x²+7x+12=(x+3)(x+4)</div><p>首项系数不为 1 时，要同时检查交叉乘积。</p><div class="formula-line">2x²+7x+3=(2x+1)(x+3)</div><div class="formula-line">2x·3+1·x=7x</div></div>
-          <div class="method-item"><b>分组分解法</b><p>四项式可以分组，但目标是让两组出现同一个括号。</p><div class="formula-line">ax+ay+bx+by=(a+b)(x+y)</div></div>
-          <div class="method-item"><b>整体代换法</b><p>同一个整体反复出现时，先把它临时看成一个对象。</p><div class="formula-line">(x+1)²-5(x+1)+6=(x-1)(x-2)</div></div>
-          <div class="method-item"><b>配方法</b><p>先补成完整平方，再看能不能继续写成平方差。</p><div class="formula-line">x²+6x+5=(x+3)²-4=(x+1)(x+5)</div></div>
-        </div>
-      </div>
-      <p>很多题不是只用一种方法。常见顺序是：先提公因式，再看公式、十字相乘或配方；如果有重复整体，先把整体保留下来。</p>
-    </div>
-  </section>
+      <h2>4. 因式分解的目的</h2>
+      <p>因式分解的目的，是把多项式中隐藏的乘法结构显现出来。多项式写成乘积以后，因子的组成和使多项式等于 0 的取值都会变得更直接。</p>
 
-  <section class="section">
-    <div class="marker"><span>05</span>检查习惯</div>
-    <div class="section-body">
-      <h2>分解以后必须能乘回去</h2>
-      <div class="card">
-        <div class="steps">
-          <div class="step">(x+2)(x+3)=x²+3x+2x+6</div>
-          <div class="step">=x²+5x+6</div>
-        </div>
+      <div class="formula-card">
+        <span class="equation">x<sup>2</sup>-x-12=(x+3)(x-4)</span>
+        <p>乘积形式直接显出两个一次因子 <span class="math">x+3</span> 和 <span class="math">x-4</span>。</p>
       </div>
-      <div class="card wrong">
-        <p>反例：<span class="math">(x+1)(x+6)=x²+7x+6</span>，虽然常数项是 <span class="math">6</span>，但一次项错了。</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="marker"><span>06</span>例题检查</div>
-    <div class="section-body">
-      <h2>分解 x² - x - 12</h2>
-      <div class="card">
-        <div class="steps">
-          <div class="step">需要 m+n=-1，mn=-12</div>
-          <div class="step">3+(-4)=-1，3·(-4)=-12</div>
-          <div class="step">x²-x-12=(x+3)(x-4)</div>
-        </div>
+      <div class="representation-grid">
+        <article class="representation">
+          <span class="label">看见因子</span>
+          <b>还原乘法来源</b>
+          <p>原来分散在各项中的乘法关系被重新组织为几个因子的乘积。</p>
+        </article>
+        <article class="representation green">
+          <span class="label green">继续应用</span>
+          <b>为后续问题提供入口</b>
+          <p>乘积形式为方程求解、分式约分、符号判断和函数零点研究提供基础。</p>
+        </article>
+        <article class="representation purple">
+          <span class="label purple">检查结果</span>
+          <b>最终必须乘回原式</b>
+          <p>能显出因子并且展开后回到原式，才是有效的因式分解。</p>
+        </article>
       </div>
-      <a class="next" href="03_多项式结构判断.html">下一节：多项式结构判断</a>
+
+      <div class="summary-card">
+        <p><b>核心结论：</b>因式分解把加法形式还原为乘法形式。选择方法时先观察结构；使用十字相乘法时，二次项、交叉乘积形成的一次项和常数项必须同时对应。</p>
+      </div>
+      <a class="next" href="03_多项式结构判断.html">继续学习：怎样选择分解方法</a>
     </div>
   </section>
 </main>
-<footer class="footer">DGOpenKS · Chapter 03-2</footer>
+
+<footer class="footer">DGOpenKS · Chapter 03-2 · 因式分解</footer>
 </body>
 </html>

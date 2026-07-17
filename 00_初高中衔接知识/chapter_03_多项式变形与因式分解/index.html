@@ -1,16 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>多项式变形与因式分解 | DGOpenKS</title><link rel="stylesheet" href="assets/chapter03.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从整式乘法的逆运算理解因式分解，并进一步学习二次三项式的十字相乘法。">
+  <title>Chapter 03 因式分解与十字相乘法 | DGOpenKS</title>
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="assets/chapter03.css">
+</head>
 <body>
-<nav class="topbar" aria-label="章节导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="../chapter_02-2_立方相关公式/">上一章</a><a class="nav-link" href="01_多项式变形.html">多项式变形</a><a class="nav-link" href="02_因式分解.html">因式分解</a><a class="nav-link" href="03_多项式结构判断.html">结构判断</a><a class="nav-link" href="../chapter_04_分式根式与条件控制/">下一章</a></div></nav>
-<header class="hero"><span class="eyebrow">Chapter 03</span><h1>多项式变形与因式分解</h1><p class="lead">本章沿着一条连续主线展开：保持等值地改写多项式，找回展开前的乘法结构，再依据式子的结构选择分解入口。</p><div class="learning-contract"><b>章节目标：</b>理解变形的依据，掌握因式分解的乘法来源，形成稳定的结构判断顺序。</div></header>
-<main>
-  <section class="section"><div class="marker"><span>01</span>学习路径</div><div class="section-body"><h2>从等值改写到结构判断</h2><div class="rule-list"><div class="rule"><span>1</span><div><b>保持等值</b><p>新写法展开后能够回到原式。</p></div></div><div class="rule"><span>2</span><div><b>找回乘法</b><p>把加法结构改写成因子的乘积。</p></div></div><div class="rule"><span>3</span><div><b>选择入口</b><p>公因式、公式、二次三项式、重复整体与分组各有适用条件。</p></div></div></div></div></section>
-  <section class="section"><div class="marker"><span>02</span>三个小节</div><div class="section-body"><h2>按理解顺序阅读</h2><div class="lesson-grid">
-    <a class="lesson-card" href="01_多项式变形.html"><span class="label">03-1</span><strong>多项式变形</strong><p>同一个多项式的不同写法，分别显出各项、因子和平方结构。</p><span class="equation">x<sup>2</sup>+6x+5=(x+1)(x+5)</span></a>
-    <a class="lesson-card green" href="02_因式分解.html"><span class="label green">03-2</span><strong>因式分解</strong><p>由乘法展开反向确定因子，并用乘回原式完成检查。</p><span class="equation">x<sup>2</sup>-x-12=(x+3)(x-4)</span></a>
-    <a class="lesson-card amber" href="03_多项式结构判断.html"><span class="label amber">03-3</span><strong>多项式结构判断</strong><p>依据结构信号选择第一步，形成稳定的分解顺序。</p><span class="equation">公因式 → 公式 → 三项式 → 整体 → 分组</span></a>
-  </div></div></section>
-  <section class="section"><div class="marker"><span>03</span>统一检查</div><div class="section-body"><h2>每次变形都回到原式</h2><div class="summary-card"><p>所有方法最终服从同一标准：改写前后保持相等，新的写法显出所需结构，分解结果能够乘回原式。</p></div></div></section>
-</main><footer class="footer">DGOpenKS · Chapter 03 · 多项式变形与因式分解</footer>
-</body></html>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="章节导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../index.html">DGOpenKS</a>
+      <a class="nav-link" href="../chapter_02-2_立方相关公式/">上一章</a>
+      <a class="nav-link" href="01_因式分解.html">因式分解</a>
+      <a class="nav-link" href="02_十字相乘法.html">十字相乘法</a>
+      <a class="nav-link" href="../chapter_04_分式根式与条件控制/">下一章</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Chapter 03</span>
+    <h1>因式分解与十字相乘法</h1>
+    <p class="lead">本章从整式乘法的反方向理解因式分解，再从两个一次因式的展开推导十字相乘法。学习的重点不是记住括号，而是说明每个因式从哪里来，并用展开检查结果。</p>
+    <div class="learning-contract"><strong>本章学习任务：</strong>先理解“多项式怎样写成因式的乘积”，再掌握“二次三项式怎样找到两个一次因式”。</div>
+  </header>
+
+  <main id="main">
+    <section class="section" aria-labelledby="chapter-spine">
+      <div class="marker"><span>01</span>知识主线</div>
+      <div class="section-body">
+        <h2 id="chapter-spine">从乘法展开，沿相反方向找回因式</h2>
+        <p>整式乘法把因式的乘积展开成多项式；因式分解把多项式还原成因式的乘积。十字相乘法继续处理其中一类具体对象：二次三项式。</p>
+        <div class="direction-map" aria-label="整式乘法与因式分解的相反方向">
+          <div class="direction-node"><b>因式的乘积</b><span>$(x-2)(x-3)$</span></div>
+          <div class="direction-arrow"><span>整式乘法</span><strong>⇄</strong><span>因式分解</span></div>
+          <div class="direction-node"><b>多项式</b><span>$x^2-5x+6$</span></div>
+        </div>
+        <p class="purpose">两篇内容共用同一个检查方法：把分解结果重新展开，二次项、一次项和常数项都回到原式，分解才成立。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="lesson-list">
+      <div class="marker"><span>02</span>本章内容</div>
+      <div class="section-body">
+        <h2 id="lesson-list">按知识来源依次阅读</h2>
+        <p>第一篇建立因式分解的概念和基本方法，第二篇专门推导二次三项式的十字相乘法。</p>
+        <div class="lesson-grid">
+          <a class="lesson-card" href="01_因式分解.html">
+            <span class="tag">概念与方法</span>
+            <strong>01 因式分解</strong>
+            <p>理解整式乘法的逆向关系，学习提公因式法、公式法以及分解结果的检查。</p>
+            <div class="equation-card">$$x^2-5x+6=(x-2)(x-3)$$</div>
+          </a>
+          <a class="lesson-card" href="02_十字相乘法.html">
+            <span class="tag">两类计算</span>
+            <strong>02 十字相乘法</strong>
+            <p>首项系数为 1 时找积与和；首项系数不为 1 时检查交叉乘积。</p>
+            <div class="equation-card">$$(mx+n)(px+q)=mpx^2+(mq+np)x+nq$$</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reading-order">
+      <div class="marker"><span>03</span>阅读顺序</div>
+      <div class="section-body">
+        <h2 id="reading-order">每一步都能说明依据</h2>
+        <div class="step-list">
+          <div class="step"><span>1</span><p>先从乘法展开出发，确认分解是沿相反方向恢复乘积。</p></div>
+          <div class="step"><span>2</span><p>用分配律和乘法公式说明提公因式法、公式法为什么成立。</p></div>
+          <div class="step"><span>3</span><p>对二次三项式比较系数，找到两个一次因式中的各项。</p></div>
+          <div class="step"><span>4</span><p>最后把所有因式乘回去，检查是否完整得到原多项式。</p></div>
+        </div>
+        <a class="next-link" href="01_因式分解.html">开始学习因式分解 <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">DGOpenKS · Chapter 03 · 因式分解与十字相乘法</footer>
+</body>
+</html>

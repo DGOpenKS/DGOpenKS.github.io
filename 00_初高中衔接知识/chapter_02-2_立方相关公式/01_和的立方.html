@@ -359,7 +359,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
         <article class="model-step" data-model-stage="2">
           <div class="scene-wrap static-scene-wrap">
-            <canvas aria-label="沿三条边分界向内切分的立方体模型"></canvas>
+            <canvas aria-label="按长方向分界切开第一刀的立方体模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
             <div class="scene-fallback" hidden>
               <div>
@@ -374,9 +374,68 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
             </div>
           </div>
           <div class="model-step-copy">
-            <span class="model-step-kicker"><b>3</b>沿分界切开</span>
-            <h3>从三条边的分界处向立方体内部切分</h3>
-            <p>长、宽、高三个方向都按 <span class="math">a</span> 与 <span class="math">b</span> 分成两段，立方体内部也随之形成对应的体积块。</p>
+            <span class="model-step-kicker"><b>3.1</b>第一刀</span>
+            <h3>先按长方向的分界向内切开</h3>
+            <p>第一刀穿过长方向上 <span class="math">a</span> 与 <span class="math">b</span> 的分界，整个立方体先被分成 <span class="math">2</span> 个体积块，并沿切口稍微分开。</p>
+            <div class="static-formula">
+              <div class="formula-list">
+                <span>长方向：a 或 b</span>
+                <span>1 × 2 = 2</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-step" data-model-stage="3">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="保留第一刀并按宽方向分界切开第二刀的立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>3.2</b>第二刀</span>
+            <h3>保留第一刀，再按宽方向切开</h3>
+            <p>第二刀穿过宽方向上 <span class="math">a</span> 与 <span class="math">b</span> 的分界。两个方向各分成两段，于是形成 <span class="math">4</span> 个体积块，并沿两条切口分开。</p>
+            <div class="static-formula">
+              <div class="formula-list">
+                <span>长方向：a 或 b</span>
+                <span>宽方向：a 或 b</span>
+                <span>2 × 2 = 4</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-step" data-model-stage="4">
+          <div class="scene-wrap static-scene-wrap">
+            <canvas aria-label="保留前两刀并按高方向分界切开第三刀的立方体模型"></canvas>
+            <div class="scene-loader">3D 模型加载中...</div>
+            <div class="scene-fallback" hidden>
+              <div>
+                <strong class="fallback-title">当前浏览器没有加载 WebGL 模型</strong>
+                <span>仍可阅读本步骤的体积说明。</span>
+                <div class="fallback-stack" aria-hidden="true">
+                  <span class="fallback-face one"></span>
+                  <span class="fallback-face two"></span>
+                  <span class="fallback-face three"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="model-step-copy">
+            <span class="model-step-kicker"><b>3.3</b>第三刀</span>
+            <h3>保留前两刀，最后按高方向切开</h3>
+            <p>第三刀穿过高方向上 <span class="math">a</span> 与 <span class="math">b</span> 的分界。三个方向都切完后，体积块沿三条切口小幅分开，下一步再去掉切面并进一步展开计数。</p>
             <div class="static-formula">
               <div class="formula-list">
                 <span>长方向：a 或 b</span>
@@ -387,7 +446,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </article>
 
-        <article class="model-step" data-model-stage="3">
+        <article class="model-step" data-model-stage="5">
           <div class="scene-wrap static-scene-wrap">
             <canvas aria-label="八个小长方体模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
@@ -413,7 +472,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </article>
 
-        <article class="model-step" data-model-stage="4">
+        <article class="model-step" data-model-stage="6">
           <div class="scene-wrap static-scene-wrap">
             <canvas aria-label="按同类体积分组的立方体模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
@@ -442,9 +501,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </article>
 
-        <article class="model-step" data-model-stage="5">
+        <article class="model-step" data-model-stage="7">
           <div class="scene-wrap static-scene-wrap">
-            <canvas aria-label="和的立方标准公式对应的体积分组模型"></canvas>
+            <canvas aria-label="八个体积块按一个、三个、三个、一个平铺的和的立方模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
             <div class="scene-fallback" hidden>
               <div>
@@ -460,8 +519,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>6</b>回到公式</span>
-            <h3>四类体积相加，得到和的立方公式</h3>
-            <p>整体体积等于所有小长方体体积之和。按同类体积合并后，就得到和的立方展开式。</p>
+            <h3>把八个体积块按同类平铺，再读出公式</h3>
+            <p>将同类体积块调整到相同朝向并平铺，可以直接数出 <span class="math">1,3,3,1</span>。四组体积按顺序相加，就得到和的立方展开式。</p>
             <div class="static-formula">
               <div class="formula-list"><span>(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span></div>
             </div>
@@ -1045,8 +1104,19 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       mode:'edgeSplit'
     },
     {
-      title:'沿分界切开',
-      mode:'cuts'
+      title:'第一刀：长方向',
+      mode:'cuts',
+      cutCount:1
+    },
+    {
+      title:'第二刀：宽方向',
+      mode:'cuts',
+      cutCount:2
+    },
+    {
+      title:'第三刀：高方向',
+      mode:'cuts',
+      cutCount:3
     },
     {
       title:'八个体积块',
@@ -1209,13 +1279,16 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       this.root = new THREE.Group();
       this.root.rotation.set(0.18, 0.82, 0);
       this.targetRotation = {x:0.18, y:0.82};
-      this.root.scale.setScalar(.8);
+      this.root.scale.setScalar(1);
       this.root.position.y = .35;
       this.scene.add(this.root);
       this.pieceMeshes = [];
       this.axisGroup = new THREE.Group();
       this.edgeGroup = new THREE.Group();
       this.guideGroup = new THREE.Group();
+      this.cutPlaneGroups = [];
+      this.cutPieceGroups = [];
+      this.finalLayoutGroup = new THREE.Group();
       this.labelGroup = new THREE.Group();
       this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       this.drag = null;
@@ -1226,7 +1299,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       this.buildLights();
       this.buildWhole();
       this.buildGuides();
+      this.buildCutPieces();
       this.buildPieces();
+      this.buildFinalLayout();
       this.root.add(this.labelGroup);
       this.bindPointer();
       this.resize();
@@ -1297,29 +1372,76 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       const zPlane = new THREE.Mesh(new THREE.PlaneGeometry(bladeSize, bladeSize), guideMaterial(0x8b5cf6));
       zPlane.position.z = cut;
       zPlane.renderOrder = 20;
-      this.guideGroup.add(xPlane, yPlane, zPlane);
+      const xCutGroup = new THREE.Group();
+      const yCutGroup = new THREE.Group();
+      const zCutGroup = new THREE.Group();
+      xCutGroup.add(xPlane);
+      yCutGroup.add(yPlane);
+      zCutGroup.add(zPlane);
       const edge = half * 1.02;
-      addRectOutline(this.guideGroup, [
+      addRectOutline(xCutGroup, [
         [cut,-edge,-edge],
         [cut, edge,-edge],
         [cut, edge, edge],
         [cut,-edge, edge]
       ], 0x1f4fbf);
-      addRectOutline(this.guideGroup, [
+      addRectOutline(yCutGroup, [
         [-edge,cut,-edge],
         [ edge,cut,-edge],
         [ edge,cut, edge],
         [-edge,cut, edge]
       ], 0xb86218);
-      addRectOutline(this.guideGroup, [
+      addRectOutline(zCutGroup, [
         [-edge,-edge,cut],
         [ edge,-edge,cut],
         [ edge, edge,cut],
         [-edge, edge,cut]
       ], 0x6d3fce);
+      this.cutPlaneGroups = [xCutGroup, yCutGroup, zCutGroup];
+      this.guideGroup.add(...this.cutPlaneGroups);
       this.root.add(this.axisGroup);
       this.root.add(this.edgeGroup);
       this.root.add(this.guideGroup);
+    }
+
+    buildCutPieces() {
+      const splitSegments = [
+        {start:0, end:2.2, direction:-1},
+        {start:2.2, end:total, direction:1}
+      ];
+      const wholeSegment = [{start:0, end:total, direction:0}];
+      const separation = .32;
+      [1, 2].forEach(cutCount => {
+        const group = new THREE.Group();
+        const xSegments = splitSegments;
+        const ySegments = cutCount === 2 ? splitSegments : wholeSegment;
+        xSegments.forEach(xSegment => {
+          ySegments.forEach(ySegment => {
+            const sx = xSegment.end - xSegment.start;
+            const sy = ySegment.end - ySegment.start;
+            const geometry = new THREE.BoxGeometry(sx, sy, total);
+            const material = new THREE.MeshPhysicalMaterial({
+              color:colors.whole,
+              transparent:true,
+              opacity:.68,
+              roughness:.56,
+              metalness:0,
+              clearcoat:.14
+            });
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.position.set(
+              (xSegment.start + xSegment.end) / 2 - half + xSegment.direction * separation / 2,
+              (ySegment.start + ySegment.end) / 2 - half + ySegment.direction * separation / 2,
+              0
+            );
+            addEdges(mesh, 0xffffff, .78);
+            group.add(mesh);
+          });
+        });
+        group.visible = false;
+        this.cutPieceGroups.push(group);
+        this.root.add(group);
+      });
     }
 
     buildPieces() {
@@ -1353,6 +1475,34 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
         this.pieceMeshes.push(mesh);
         this.root.add(mesh);
       });
+    }
+
+    buildFinalLayout() {
+      const layout = [
+        {kind:'a3', dimensions:[2.2,2.2,2.2], positions:[[-4,0,0]]},
+        {kind:'a2b', dimensions:[2.2,1.2,2.2], positions:[[-1.35,-1.45,0],[-1.35,0,0],[-1.35,1.45,0]]},
+        {kind:'ab2', dimensions:[2.2,1.2,1.2], positions:[[1.35,-1.45,0],[1.35,0,0],[1.35,1.45,0]]},
+        {kind:'b3', dimensions:[1.2,1.2,1.2], positions:[[3.8,0,0]]}
+      ];
+      layout.forEach(group => {
+        group.positions.forEach(position => {
+          const geometry = new THREE.BoxGeometry(...group.dimensions);
+          const material = new THREE.MeshPhysicalMaterial({
+            color:colors[group.kind],
+            transparent:true,
+            opacity:.92,
+            roughness:.5,
+            metalness:0,
+            clearcoat:.14
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.set(...position);
+          addEdges(mesh, 0xffffff, .78);
+          this.finalLayoutGroup.add(mesh);
+        });
+      });
+      this.finalLayoutGroup.visible = false;
+      this.root.add(this.finalLayoutGroup);
     }
 
     clearLabels() {
@@ -1394,6 +1544,13 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       this.addTermSymbol('b3', 'b³', '#16a7b7', new THREE.Vector3(.48, .58, .4));
     }
 
+    addFinalLayoutLabels() {
+      this.addLabel('a³ × 1', new THREE.Vector3(-4, -2.55, .9), '#3b6fea', .86);
+      this.addLabel('a²b × 3', new THREE.Vector3(-1.35, -2.55, .9), '#d97706', .86);
+      this.addLabel('ab² × 3', new THREE.Vector3(1.35, -2.55, .9), '#7c3aed', .86);
+      this.addLabel('b³ × 1', new THREE.Vector3(3.8, -2.55, .9), '#0891a6', .86);
+    }
+
     groupedPosition(mesh) {
       const offsets = {
         a3:new THREE.Vector3(-1.05, -.72, -.78),
@@ -1416,24 +1573,37 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     }
 
     setStage(nextStage) {
-      const mode = stageData[nextStage].mode;
+      const stage = stageData[nextStage];
+      const mode = stage.mode;
+      const cutCount = stage.cutCount || 0;
       this.currentStage = nextStage;
       this.currentMode = mode;
       this.clearLabels();
-      this.whole.visible = mode === 'factors' || mode === 'edgeSplit' || mode === 'cuts';
-      this.whole.material.opacity = mode === 'cuts' ? .13 : mode === 'edgeSplit' ? .24 : .42;
+      this.root.scale.setScalar(mode === 'final' ? .9 : 1);
+      this.root.position.y = mode === 'final' ? .18 : .35;
+      this.whole.visible = mode === 'factors' || mode === 'edgeSplit';
+      this.whole.material.opacity = mode === 'edgeSplit' ? .24 : .42;
       this.axisGroup.visible = mode === 'factors';
       this.edgeGroup.visible = mode === 'edgeSplit' || mode === 'cuts';
       this.guideGroup.visible = mode === 'cuts';
-      const showPieces = !['factors','edgeSplit','cuts'].includes(mode);
+      this.cutPlaneGroups.forEach((group, index) => {
+        group.visible = mode === 'cuts' && index < cutCount;
+      });
+      this.cutPieceGroups.forEach((group, index) => {
+        group.visible = mode === 'cuts' && cutCount === index + 1;
+      });
+      this.finalLayoutGroup.visible = mode === 'final';
+      const showPieces = mode === 'cuts'
+        ? cutCount === 3
+        : !['factors','edgeSplit','final'].includes(mode);
       this.pieceMeshes.forEach((mesh, index) => {
         mesh.visible = showPieces;
         const base = mesh.userData.base;
         const dir = mesh.userData.direction.clone();
         const spread = mode === 'restore'
           ? .64 * (1 - this.restoreProgress)
-          : mode === 'blocks' ? .52 : mode === 'final' ? .44 : .42;
-        if (mode === 'combine' || mode === 'final') {
+          : mode === 'blocks' ? .52 : mode === 'cuts' ? .24 : .42;
+        if (mode === 'combine') {
           mesh.position.copy(this.groupedPosition(mesh));
         } else {
           mesh.position.copy(base).add(dir.multiplyScalar(spread));
@@ -1441,7 +1611,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
         mesh.scale.set(1, 1, 1);
         mesh.material.opacity = .88;
         mesh.material.color.setHex(colors[mesh.userData.kind]);
-        if (mode === 'combine' || mode === 'final') {
+        if (mode === 'combine') {
           mesh.material.opacity = .9;
         }
         if (mode === 'restore') {
@@ -1469,7 +1639,10 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       if (mode === 'restore') {
       }
       if (mode === 'final') {
-        this.addBlockTermSymbols();
+        this.root.rotation.set(.12, .42, 0);
+        this.targetRotation.x = .12;
+        this.targetRotation.y = .42;
+        this.addFinalLayoutLabels();
       }
       this.render();
     }

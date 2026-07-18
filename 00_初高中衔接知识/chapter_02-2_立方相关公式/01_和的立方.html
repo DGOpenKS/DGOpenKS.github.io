@@ -61,14 +61,17 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}
 .section-body{min-width:0}
 .prose{max-width:840px}
+#calculation .prose{max-width:920px}
 .formula-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:18px;margin:18px 0;overflow:auto}
 .derivation{display:grid;gap:7px;font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
 .derivation .indent{padding-left:22px}
 .calc-steps{display:grid;gap:0}
-.calc-step{display:grid;grid-template-columns:minmax(420px,1.08fr) minmax(260px,.92fr);gap:18px;align-items:start;border-bottom:1px solid var(--line);padding:12px 0}
+.calc-step{display:grid;grid-template-columns:minmax(400px,1fr) minmax(330px,1fr);gap:18px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}
 .calc-step:last-child{border-bottom:0;padding-bottom:0}
 .formula-line{font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:800;line-height:1.55;white-space:nowrap}
-.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px}
+.step-note{margin:0;color:#475569;font-size:.92rem;line-height:1.72;border-left:3px solid var(--blue-line);padding-left:12px;text-wrap:balance;word-break:normal;overflow-wrap:break-word;line-break:strict}
+.prose p:not(.step-note),.model-step-copy p,.cube-template-caption,.cube-handout-caption{text-wrap:pretty;word-break:normal;overflow-wrap:break-word;line-break:strict}
+#summary .prose p{text-wrap:balance}
 .note{border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:var(--radius);padding:13px 15px;color:var(--blue-deep);margin:14px 0}
 .lab{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);align-items:stretch;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);overflow:hidden;margin:22px 0 0;min-height:560px}
 .scene-wrap{position:relative;min-height:560px;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--soft);background-size:30px 30px}
@@ -177,12 +180,14 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .cube-cut-line{stroke:#2563eb;stroke-width:1.8;stroke-dasharray:7 6;fill:none;vector-effect:non-scaling-stroke}
 .cube-svg-caption{font-size:12px;font-weight:900;fill:#64748b}
 .footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:980px){
+  .calc-step{grid-template-columns:minmax(0,1fr);gap:8px}
+  .step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:8px}
+}
 @media(max-width:900px){
   .section,.lab{grid-template-columns:minmax(0,1fr)}
   .model-step{grid-template-columns:minmax(0,1fr)}
   .static-scene-wrap{border-right:0;border-bottom:1px solid var(--line)}
-  .calc-step{grid-template-columns:minmax(0,1fr);gap:6px}
-  .step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:7px}
   .cube-template-board{grid-template-columns:1fr}
   .cube-template-panel{grid-template-rows:auto auto auto}
   .cube-handout-grid{grid-template-columns:1fr}
@@ -205,10 +210,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   .mobile-title-break{display:block}
   .lead{font-size:1rem}
   .formula-card{padding:14px}
-  .derivation,.formula-list,.formula-line,.step-note .math,.math{white-space:normal}
-  h1,h2,h3,p,.lead,.formula-line,.step-note,.step-note .math,.math{line-break:anywhere;overflow-wrap:anywhere;word-break:break-all}
+  .derivation,.formula-list,.math{white-space:normal}
+  h1,h2,h3,p,.lead,.step-note{line-break:strict;overflow-wrap:break-word;word-break:normal}
+  .formula-line,.step-note .math{white-space:nowrap;line-break:normal;overflow-wrap:normal;word-break:normal}
   .calc-steps,.calc-step,.formula-line,.step-note{min-width:0;max-width:100%;width:100%}
-  .formula-card{overflow-x:hidden}
+  .formula-card{overflow-x:auto}
   .scene-wrap{min-height:360px}
   .static-scene-wrap{min-height:300px}
   .static-counts{grid-template-columns:repeat(2,1fr)}

@@ -334,9 +334,9 @@ body{
 .hero{
   position:relative;
   display:flex;
-  min-height:510px;
+  min-height:auto;
   max-width:1180px;
-  padding:5.8rem 20px 5rem;
+  padding:5rem 20px 2.75rem;
   flex-direction:column;
   justify-content:center;
 }
@@ -344,7 +344,7 @@ body{
 .hero::after{
   position:absolute;
   right:20px;
-  bottom:5.1rem;
+  bottom:2.85rem;
   width:min(34vw,390px);
   height:1px;
   background:linear-gradient(90deg,transparent,var(--blue-line));
@@ -408,7 +408,7 @@ main{
 }
 
 .section{
-  grid-template-columns:150px minmax(0,790px);
+  grid-template-columns:150px minmax(0,920px);
   justify-content:center;
   gap:clamp(1.5rem,5vw,4.5rem);
   padding:clamp(4.7rem,9vw,8rem) 0;
@@ -416,8 +416,10 @@ main{
   scroll-margin-top:78px;
 }
 
-#model.section{
-  grid-template-columns:150px minmax(0,920px);
+@media(min-width:901px){
+  #calculation.section{padding-top:3.75rem;padding-bottom:3.5rem}
+  #model.section{padding-top:3.5rem;padding-bottom:3.5rem}
+  #summary.section{padding-top:3.5rem}
 }
 
 .marker{
@@ -626,7 +628,7 @@ main{
 }
 
 @media(max-width:900px){
-  .hero{min-height:430px;padding-top:4.5rem}
+  .hero{min-height:auto;padding-top:4.5rem}
   .hero::after{display:none}
   .section,#model.section{grid-template-columns:110px minmax(0,1fr);gap:2rem}
   .model-step{grid-template-columns:1fr}
@@ -851,7 +853,7 @@ main{
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>3.3</b>第三刀</span>
             <h3>最后沿高度方向切开</h3>
-            <p>第三刀在高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。此时，长、宽、高三个方向都已完成切分；下一步把体积块分开，再按类型计数。</p>
+            <p>第三刀在高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。此时三个方向都已完成切分；下一步把体积块分开，再按类型计数。</p>
             <div class="static-formula">
               <div class="formula-list">
                 <span>长方向：a 或 b</span>
@@ -880,7 +882,7 @@ main{
           </div>
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>4</b>八个体积块</span>
-            <h3>三个方向各有两种选择，共得到 <span class="math">8</span> 个小长方体</h3>
+            <h3>这样就得到八个小长方体</h3>
             <p>每个小长方体的长、宽、高都从 <span class="math">a</span> 或 <span class="math">b</span> 中选出。三个方向合起来共有 <span class="math">2×2×2</span> 种组合。</p>
             <div class="static-formula">
               <div class="formula-list"><span>2 × 2 × 2 = 8</span></div>

@@ -1,27 +1,27 @@
 <template id="scene-04-pressure-score-template">
-  <div data-composition-id="scene-04-pressure-score" data-width="1920" data-height="1080" data-start="0" data-duration="17.184" data-track-index="0">
-    <div class="panel">
-      <div class="badge">压轴题抢分策略</div>
-      <div class="steps">
-        <section class="step s1">
-          <div class="num">1</div>
-          <h2>第 1 问</h2>
-          <p>确保完成，稳住基础分。</p>
+  <div data-hf-id="hf-wrh2" data-composition-id="scene-04-pressure-score" data-width="1920" data-height="1080" data-start="0" data-duration="17.184" data-track-index="0">
+    <div data-hf-id="hf-owjm" class="panel">
+      <div data-hf-id="hf-k8d7" class="badge">压轴题抢分策略</div>
+      <div data-hf-id="hf-70xd" class="steps">
+        <section data-hf-id="hf-gd22" class="step s1">
+          <div data-hf-id="hf-1dhv" class="num">1</div>
+          <h2 data-hf-id="hf-qvkc">第 1 问</h2>
+          <p data-hf-id="hf-vxvu">确保完成，稳住基础分。</p>
         </section>
-        <section class="step s2">
-          <div class="num">2</div>
-          <h2>第 2 问</h2>
-          <p>先找明显关系，不要被最后一问拖住。</p>
+        <section data-hf-id="hf-cey1" class="step s2">
+          <div data-hf-id="hf-0z6u" class="num">2</div>
+          <h2 data-hf-id="hf-dwxp">第 2 问</h2>
+          <p data-hf-id="hf-9jy3">先找明显关系，不要被最后一问拖住。</p>
         </section>
-        <section class="step s3">
-          <div class="num">3</div>
-          <h2>最后一问</h2>
-          <p>写出变量、关系式、分类或图形关系。</p>
+        <section data-hf-id="hf-bna8" class="step s3">
+          <div data-hf-id="hf-0kvt" class="num">3</div>
+          <h2 data-hf-id="hf-0pzj">最后一问</h2>
+          <p data-hf-id="hf-6a4j">写出变量、关系式、分类或图形关系。</p>
         </section>
       </div>
-      <div class="score">
-        <span>步骤分来自：</span>
-        <b>有依据的数学关系</b>
+      <div data-hf-id="hf-a672" class="score">
+        <span data-hf-id="hf-yvf1">有依据的关系</span>
+        <b data-hf-id="hf-lptp">→ 步骤分</b>
       </div>
     </div>
 
@@ -30,13 +30,13 @@
         --bg:#fff7e8; --ink:#1a1a1a; --pink:#ff1493; --blue:#0047ab;
         --yellow:#ffe000; --green:#009b77; --paper:#fff;
         position:relative; width:1920px; height:1080px; overflow:hidden; background:transparent;
-        font-family:"Nunito","Noto Sans JP",sans-serif; color:var(--ink);
+        font-family:"Noto Sans JP",sans-serif; font-weight:700; color:var(--ink);
       }
       [data-composition-id="scene-04-pressure-score"] .panel { position:absolute; inset:0; background:var(--bg); padding:60px 90px; }
       [data-composition-id="scene-04-pressure-score"] .badge {
         width:max-content; margin:0 auto 56px; padding:12px 48px; border:5px solid var(--ink);
         border-radius:24px; background:var(--pink); color:#fff; font-family:"Noto Sans JP",sans-serif;
-        font-size:52px; letter-spacing:.1em; opacity:0;
+        font-size:52px; font-weight:700; letter-spacing:.1em; opacity:0;
       }
       [data-composition-id="scene-04-pressure-score"] .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
       [data-composition-id="scene-04-pressure-score"] .step {
@@ -49,15 +49,15 @@
         background:var(--yellow); color:var(--blue); font-family:"Nunito",sans-serif; font-size:78px; font-weight:900;
       }
       [data-composition-id="scene-04-pressure-score"] h2 {
-        margin:0; font-family:"Noto Sans JP",sans-serif; font-size:58px; color:var(--blue);
+        margin:0; font-family:"Noto Sans JP",sans-serif; font-size:58px; font-weight:700; color:var(--blue);
       }
-      [data-composition-id="scene-04-pressure-score"] p { margin:0; font-size:34px; font-weight:900; color:#333; line-height:1.45; }
+      [data-composition-id="scene-04-pressure-score"] p { margin:0; font-size:34px; font-weight:700; color:#333; line-height:1.45; }
       [data-composition-id="scene-04-pressure-score"] .score {
         position:absolute; left:330px; right:330px; bottom:138px; padding:20px 34px; border:5px solid var(--ink);
         border-radius:24px; background:var(--green); color:#fff; box-shadow:12px 12px 0 var(--ink);
-        text-align:center; font-family:"Noto Sans JP",sans-serif; font-size:46px; opacity:0;
+        text-align:center; font-family:"Noto Sans JP",sans-serif; font-size:46px; font-weight:700; opacity:0;
       }
-      [data-composition-id="scene-04-pressure-score"] .score b { color:var(--yellow); margin-left:18px; }
+      [data-composition-id="scene-04-pressure-score"] .score b { color:var(--yellow); font-weight:700; margin-left:18px; }
     </style>
 
     <script>
@@ -67,13 +67,13 @@
         var tl = gsap.timeline({ paused:true });
         tl.from(S + " .panel", { scaleY:0, transformOrigin:"50% 50%", duration:.45, ease:"back.out(1.5)" }, 0);
         tl.fromTo(S + " .badge", { opacity:0, y:-28, scale:.75 }, { opacity:1, y:0, scale:1, duration:.45, ease:"back.out(1.9)" }, .35);
-        tl.to(S + " .s1", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 2.75);
-        tl.to(S + " .s1 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 3.2);
-        tl.to(S + " .s2", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 5.85);
-        tl.to(S + " .s2 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 6.3);
-        tl.to(S + " .s3", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 9.05);
-        tl.to(S + " .s3 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 9.5);
-        tl.to(S + " .score", { opacity:1, y:-8, duration:.38, ease:"back.out(1.8)" }, 13.9);
+        tl.to(S + " .s1", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 3.09);
+        tl.to(S + " .s1 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 3.5);
+        tl.to(S + " .s2", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 4.56);
+        tl.to(S + " .s2 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 4.97);
+        tl.to(S + " .s3", { opacity:1, y:0, duration:.38, ease:"back.out(1.7)" }, 6.69);
+        tl.to(S + " .s3 .num", { scale:1.08, yoyo:true, repeat:1, duration:.16 }, 7.1);
+        tl.to(S + " .score", { opacity:1, y:-8, duration:.38, ease:"back.out(1.8)" }, 13.7);
         tl.to({}, { duration:.01 }, 17.184);
         window.__timelines["scene-04-pressure-score"] = tl;
       })();

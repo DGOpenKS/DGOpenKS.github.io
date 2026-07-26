@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="从一个被化简隐藏的禁点出发，理解表达式形式与成立条件为什么必须一起保留。">
+  <meta name="description" content="从一个被化简结果隐藏的禁点出发，理解表达式形式与有意义范围为什么必须一起保留。">
   <title>形式与条件：式子变了，允许的值不能变 | DGOpenKS</title>
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
@@ -28,7 +28,7 @@
     <div class="hero-copy">
       <span class="eyebrow">Chapter 04 · 00</span>
       <h1>形式与条件</h1>
-      <p class="lead">一个式子被化简以后，外形可能更短，但原来不允许代入的值不能因此重新出现。本节从一个被约分藏起来的禁点出发，分清“形式相同”和“代数对象等价”。</p>
+      <p class="lead">一个式子被化简以后，外形可能更短，但原来不允许代入的值不能因此重新出现。本节从一个被化简结果隐藏的禁点出发，分清“形式相同”和“表达式对象等价”。</p>
       <div class="learning-contract"><span><strong>读完后，你应该能解释：</strong>为什么 $\dfrac{x^2-1}{x-1}$ 不能只写成不带条件的 $x+1$，以及化简时应当先检查什么。</span></div>
     </div>
     <div class="hero-stage" aria-label="原分式化简后必须保留 x 不等于 1">
@@ -160,7 +160,7 @@
           <div class="check-row"><span>3</span><div><strong>新形式藏起了什么？</strong><p>检查是否有禁点、边界或符号信息不再显示。</p></div></div>
           <div class="check-row"><span>4</span><div><strong>最终结果是否把条件写全？</strong><p>形式与原式条件要一起到达最后一行。</p></div></div>
         </div>
-        <div class="note verified"><strong>本节结论：</strong>代数对象由表达式形式和成立条件共同组成。外形变简单，而允许范围没有被悄悄扩大，才是真正的等价化简。</div>
+        <div class="note verified"><strong>本节结论：</strong>表达式对象由表达式形式和有意义范围共同组成。等价化简要求两个形式在原式允许范围内取值相等，并保留原式限制。</div>
         <div class="next-callout">
           <p><strong>下一节：</strong>把这个原则用于分式，分清哪些结构能约、哪些禁点必须留下。</p>
           <a class="next-link" href="01_分式化简.html">进入分式化简</a>

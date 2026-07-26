@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>第一章 初高中数学思维衔接 | DGOpenKS v2</title>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -189,8 +190,9 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .reflection-item{background:color-mix(in srgb,var(--object) 6%,var(--surface));border:1px solid color-mix(in srgb,var(--object) 18%,var(--line));border-radius:14px;padding:14px;font-size:.88rem;color:var(--muted)}
 .reflection-item b{display:block;color:var(--object);font-size:1rem;margin-bottom:6px}
 .footer{border-top:1px solid var(--line);padding:34px 22px;text-align:center;color:var(--muted);font-size:.86rem}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(18px)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
 @media(max-width:900px){
   .hero,.stage,.grid-2,.compare,.reflection-grid{grid-template-columns:1fr}
   .canvas-panel.stage-lab{display:block}
@@ -434,7 +436,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="familyTitle">$y = a(x-h)^2 + k$</div>
-            <p class="subtle" id="familyPrompt">先用顶点式理解：$a$ 控制开口，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。</p>
+            <p class="subtle" id="familyPrompt">先用顶点式理解：$a$ 的正负控制开口方向，$|a|$ 控制开口宽窄，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。</p>
           </div>
           <div class="legend">
             <span><i class="dot ref"></i>参考对象</span>
@@ -480,7 +482,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             </div>
           </div>
           <div class="callout">
-            <p><strong>一般式的新视角：</strong>$b$ 不只是“中间那一项”。当 $a\neq0$ 时，它会和 $a$ 一起决定对称轴 $x=-\frac{b}{2a}$；$c$ 是图像与 y 轴的交点。</p>
+            <p><strong>一般式的新视角：</strong>$b$ 不只是“中间那一项”。当 $a\neq0$ 时，它会和 $a$ 一起决定对称轴 $x=-\frac{b}{2a}$；$c$ 是纵截距，图像与 $y$ 轴的交点是 $(0,c)$。</p>
           </div>
         </div>
         <div class="timeline">
@@ -1050,7 +1052,7 @@ function updateFamilyUI(){
   if(familyState.mode === 'standard'){
     if(_lastFamilyMode !== 'standard'){
       document.getElementById('familyTitle').innerHTML = '$y = ax^2 + bx + c$';
-      document.getElementById('familyPrompt').innerHTML = '再看一般式：$a$ 影响开口，$c$ 是 y 轴交点，$b$ 会和 $a$ 一起决定对称轴 $x=-\\frac{b}{2a}$。';
+      document.getElementById('familyPrompt').innerHTML = '再看一般式：$a$ 的正负影响开口方向，$|a|$ 影响开口宽窄；$c$ 是纵截距，图像与 $y$ 轴的交点是 $(0,c)$；$b$ 会和 $a$ 一起决定对称轴 $x=-\\frac{b}{2a}$。';
       if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
     }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.stdA)}x² ${signed(familyState.stdB)}x ${signed(familyState.stdC)}`;
@@ -1065,7 +1067,7 @@ function updateFamilyUI(){
   } else {
     if(_lastFamilyMode !== 'vertex'){
       document.getElementById('familyTitle').innerHTML = '$y = a(x-h)^2 + k$';
-      document.getElementById('familyPrompt').innerHTML = '先用顶点式理解：$a$ 控制开口，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。';
+      document.getElementById('familyPrompt').innerHTML = '先用顶点式理解：$a$ 的正负控制开口方向，$|a|$ 控制开口宽窄，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。';
       if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
     }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.a)}(x${familyState.h >= 0 ? '-' : '+'}${pretty(Math.abs(familyState.h))})²${familyState.k >= 0 ? '+' : '-'}${pretty(Math.abs(familyState.k))}`;

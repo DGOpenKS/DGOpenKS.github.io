@@ -78,14 +78,36 @@
             <line data-hf-id="hf-48lr" class="table-line" x1="86" y1="176" x2="634" y2="176" />
             <line data-hf-id="hf-4dr5" class="table-line" x1="268" y1="84" x2="268" y2="362" />
             <line data-hf-id="hf-kylf" class="table-line" x1="450" y1="84" x2="450" y2="362" />
-            <text data-hf-id="hf-aw1e" class="type" x="134" y="144">位置 A</text>
-            <text data-hf-id="hf-n33z" class="type" x="318" y="144">位置 B</text>
-            <text data-hf-id="hf-21od" class="type" x="500" y="144">位置 C</text>
-            <circle data-hf-id="hf-05fv" class="point hot" cx="178" cy="262" r="16" />
-            <circle data-hf-id="hf-7r0w" class="point hot" cx="358" cy="238" r="16" />
-            <circle data-hf-id="hf-mcnw" class="point hot" cx="544" cy="286" r="16" />
-            <text data-hf-id="hf-vimo" class="formula" x="142" y="64">先定分类标准</text>
-            <text data-hf-id="hf-0dd4" class="caption" x="118" y="438">存在性：按位置、形状或符号分类，不重不漏</text>
+            <text data-hf-id="hf-aw1e" class="type" x="177" y="144" text-anchor="middle">P 在 A 点左侧</text>
+            <text data-hf-id="hf-n33z" class="type" x="359" y="144" text-anchor="middle">P 在线段 AB 上</text>
+            <text data-hf-id="hf-21od" class="type" x="541" y="144" text-anchor="middle">P 在 B 点右侧</text>
+
+            <line data-hf-id="hf-6h1a" class="position-line" x1="106" y1="270" x2="248" y2="270" />
+            <circle data-hf-id="hf-f7ko" class="point endpoint" cx="168" cy="270" r="8" />
+            <circle data-hf-id="hf-jv20" class="point endpoint" cx="222" cy="270" r="8" />
+            <circle data-hf-id="hf-05fv" class="point hot" cx="120" cy="270" r="13" />
+            <text data-hf-id="hf-74y4" class="position-label hot-label" x="120" y="235" text-anchor="middle">P</text>
+            <text data-hf-id="hf-uetq" class="position-label" x="168" y="315" text-anchor="middle">A</text>
+            <text data-hf-id="hf-4wb8" class="position-label" x="222" y="315" text-anchor="middle">B</text>
+
+            <line data-hf-id="hf-x0wn" class="position-line" x1="288" y1="270" x2="430" y2="270" />
+            <circle data-hf-id="hf-jmn0" class="point endpoint" cx="300" cy="270" r="8" />
+            <circle data-hf-id="hf-ow7t" class="point endpoint" cx="418" cy="270" r="8" />
+            <circle data-hf-id="hf-7r0w" class="point hot" cx="359" cy="270" r="13" />
+            <text data-hf-id="hf-zaca" class="position-label hot-label" x="359" y="235" text-anchor="middle">P</text>
+            <text data-hf-id="hf-s5rk" class="position-label" x="300" y="315" text-anchor="middle">A</text>
+            <text data-hf-id="hf-98m4" class="position-label" x="418" y="315" text-anchor="middle">B</text>
+
+            <line data-hf-id="hf-fc7h" class="position-line" x1="470" y1="270" x2="612" y2="270" />
+            <circle data-hf-id="hf-j7ly" class="point endpoint" cx="482" cy="270" r="8" />
+            <circle data-hf-id="hf-vk9e" class="point endpoint" cx="536" cy="270" r="8" />
+            <circle data-hf-id="hf-mcnw" class="point hot" cx="594" cy="270" r="13" />
+            <text data-hf-id="hf-pib6" class="position-label hot-label" x="594" y="235" text-anchor="middle">P</text>
+            <text data-hf-id="hf-vcjd" class="position-label" x="482" y="315" text-anchor="middle">A</text>
+            <text data-hf-id="hf-am5q" class="position-label" x="536" y="315" text-anchor="middle">B</text>
+
+            <text data-hf-id="hf-vimo" class="formula" x="360" y="64" text-anchor="middle">先定分类标准</text>
+            <text data-hf-id="hf-0dd4" class="caption" x="360" y="430" text-anchor="middle">存在性：按位置、形状或符号分类，不重不漏</text>
           </svg>
 
           <svg data-hf-id="hf-mpds" class="case case-function" viewBox="0 0 720 470" aria-label="函数几何综合入口">
@@ -96,7 +118,7 @@
             <circle data-hf-id="hf-j33b" class="point hot" cx="396" cy="221" r="15" />
             <line data-hf-id="hf-sged" class="dash" x1="396" y1="221" x2="396" y2="380" />
             <line data-hf-id="hf-c3vs" class="dash" x1="120" y1="221" x2="396" y2="221" />
-            <text data-hf-id="hf-0ps9" class="label" x="410" y="210">P(x,y)</text>
+            <text data-hf-id="hf-0ps9" class="label" x="470" y="245">P(x,y)</text>
             <text data-hf-id="hf-svyc" class="formula" x="158" y="82">图形条件 → 坐标 / 方程 / 函数</text>
             <text data-hf-id="hf-bsqo" class="caption" x="118" y="438">函数几何：把几何关系翻译成式子</text>
           </svg>
@@ -166,6 +188,12 @@
       #scene-03-synthesis .ineq { font-size:23px; fill:#111; }
       #scene-03-synthesis .table { fill:#fff9c4; }
       #scene-03-synthesis .table-line { stroke:#333; stroke-width:4; }
+      #scene-03-synthesis .case-exist .type { font-size:24px; }
+      #scene-03-synthesis .position-line { stroke:#333; stroke-width:5; }
+      #scene-03-synthesis .endpoint { fill:var(--green); }
+      #scene-03-synthesis .position-label { font-size:25px; }
+      #scene-03-synthesis .hot-label { fill:var(--pink); }
+      #scene-03-synthesis .case-exist .caption { font-size:27px; }
       #scene-03-synthesis text {
         font-family:"Noto Sans JP",sans-serif; font-weight:700; fill:#111; stroke:none;
       }

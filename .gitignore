@@ -5,7 +5,7 @@ hyperframes-*.tgz
 # Local video sandbox and render outputs
 video/sandbox/
 video/**/renders/
-*.mp4
+**/_render/renders/
 
 # Review screenshots
 *-review.png
@@ -19,10 +19,22 @@ _backup*/
 
 # Local development environments
 .venv/
+venv/
 node_modules/
 .DS_Store
+.vscode/
+.idea/
+__pycache__/
+*.pyc
 test-results/
 playwright-report/
+coverage/
+.pytest_cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
 
 # Generated HyperFrames inspection caches
 **/_render/.thumbnails/

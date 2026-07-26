@@ -37,10 +37,14 @@ Use `$hyperframes` after a storyboard exists.
 Recommended commands inside the HyperFrames composition directory:
 
 ```bash
-npx hyperframes preview
 npx hyperframes lint
-npx hyperframes render index.html
+npx hyperframes check
+npx hyperframes preview
+npx hyperframes render --quality high --output out.mp4
 ```
+
+`check` is the required final validation gate. Open the final Studio preview and
+approve the assembled timeline before rendering.
 
 ## Recommended Directory Structure
 

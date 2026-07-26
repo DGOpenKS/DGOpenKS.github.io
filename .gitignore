@@ -16,3 +16,15 @@ chapter02-full-review.png
 # Local backups
 _backup*/
 **/_backup*/
+
+# Local development environments
+.venv/
+node_modules/
+.DS_Store
+test-results/
+playwright-report/
+
+# Generated HyperFrames inspection caches
+**/_render/.thumbnails/
+**/_render/.waveform-cache/
+**/_render/snapshots/

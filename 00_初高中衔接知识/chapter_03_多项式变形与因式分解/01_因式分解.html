@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="从整式乘法的逆运算理解因式分解，学习提公因式法、公式法及分解结果的检查。">
-  <title>因式分解：概念、依据与基本方法 | DGOpenKS</title>
+  <meta name="description" content="从整式乘法的逆向变形出发，说明乘积形式的作用和因式分解的基本方法。">
+  <title>因式分解 | DGOpenKS</title>
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="assets/chapter03.css">
@@ -14,169 +14,175 @@
   <nav class="topbar" aria-label="章节导航">
     <div class="topbar-inner">
       <a class="brand" href="../../index.html">DGOpenKS</a>
-      <a class="nav-link" href="./">章节入口</a>
-      <a class="nav-link" href="01_因式分解.html" aria-current="page">因式分解</a>
-      <a class="nav-link" href="02_十字相乘法.html">下一节：十字相乘法</a>
+      <a class="nav-link" href="./">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html" aria-current="page">01 因式分解</a>
+      <a class="nav-link" href="02_十字相乘法.html">02 十字相乘法</a>
+      <a class="nav-link" href="03_求根公式法.html">03 求根公式法</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <span class="eyebrow">Chapter 03 · 01</span>
-    <h1>因式分解：概念、依据与基本方法</h1>
-    <p class="lead">从整式乘法的反方向出发，把一个多项式写成几个整式的积。每一种分解都要说明乘法依据，并且能够重新展开回原式。</p>
-    <div class="learning-contract"><strong>本节学习任务：</strong>理解因式分解与整式乘法的逆向关系，掌握提公因式法和公式法，并看清乘积形式在解方程、分式约分中的作用。</div>
+  <header class="hero lesson-hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Chapter 03 · 01</span>
+      <h1>因式分解</h1>
+      <p class="lead">因式分解是整式乘法的逆向变形。它把多项式化成几个整式的积，使原式中的因式、零点和符号结构显现出来。</p>
+    </div>
+    <div class="hero-stage" aria-label="多项式与乘积的等价形式">
+      <span class="stage-label">多项式</span>
+      <div class="stage-expression">$$x^2-5x+6$$</div>
+      <div class="stage-arrow"><span>因式分解</span></div>
+      <div class="stage-expression factor">$$(x-2)(x-3)$$</div>
+      <p class="stage-note">加法结构 → 乘法结构</p>
+    </div>
   </header>
 
   <main id="main">
     <section class="section" id="definition" aria-labelledby="definition-title">
-      <div class="marker"><span>01</span>概念</div>
+      <div class="marker"><span>01</span>逆向变形</div>
       <div class="section-body">
-        <h2 id="definition-title">1. 因式分解：从多项式到乘积</h2>
-        <p>先计算两个一次式的乘积。使用分配律展开，再合并同类项：</p>
-        <div class="equation-card">
+        <h2 id="definition-title">1. 从整式乘法到因式分解</h2>
+        <p class="section-intro">把一个多项式化成几个整式的积，称为把这个多项式因式分解，也称为分解因式。</p>
+
+        <p>将两个一次式相乘：</p>
+        <div class="equation-card" data-tone="blue">
           $$\begin{aligned}
           (x-2)(x-3)
-          &=x^2-3x-2x+6\\
-          &=x^2-5x+6.
+          &amp;=x^2-3x-2x+6\\
+          &amp;=x^2-5x+6.
           \end{aligned}$$
         </div>
-        <p>这个运算把两个因式的乘积展开成了一个多项式。反过来，由</p>
-        <div class="equation-card">$$(x-2)(x-3)=x^2-5x+6$$</div>
-        <p>可以写出</p>
-        <div class="equation-card">$$x^2-5x+6=(x-2)(x-3).$$</div>
-        <p><strong>把一个多项式化成几个整式的积的形式，这种变形称为因式分解。</strong></p>
+        <p>第一步根据分配律展开乘积，第二步合并同类项。将这个恒等关系反向书写，得到</p>
+        <div class="equation-card" data-tone="green">$$x^2-5x+6=(x-2)(x-3).$$</div>
 
-        <div class="direction-map" aria-label="整式乘法和因式分解方向相反">
-          <div class="direction-node"><b>因式的乘积</b><span>$(x-2)(x-3)$</span></div>
+        <div class="direction-map" aria-label="整式乘法与因式分解的方向">
+          <div class="direction-node"><b>乘积</b><span>$(x-2)(x-3)$</span></div>
           <div class="direction-arrow"><span>整式乘法</span><strong>⇄</strong><span>因式分解</span></div>
           <div class="direction-node"><b>多项式</b><span>$x^2-5x+6$</span></div>
         </div>
-        <p class="purpose">因式分解只改变多项式的形式，不改变多项式的值。分解结果能否展开回原式，是判断因式分解是否正确的基本依据。</p>
-      </div>
-    </section>
+        <p>整式乘法与因式分解表示同一个恒等关系，变形方向相反。因式分解只改变式子的结构，保持式子的值不变。</p>
 
-    <section class="section" id="common-factor" aria-labelledby="common-factor-title">
-      <div class="marker"><span>02</span>公因式</div>
-      <div class="section-body">
-        <h2 id="common-factor-title">2. 提公因式法：反向使用分配律</h2>
-        <p>分配律可以写成</p>
-        <div class="equation-card">$$a(b+c)=ab+ac.$$</div>
-        <p>从右向左使用分配律，就得到</p>
-        <div class="equation-card">$$ab+ac=a(b+c).$$</div>
-        <p>右边的 $a$ 同时是左边两项的因式，称为这两项的公因式。把公因式写到括号外，这种方法称为提公因式法。</p>
-
-        <div class="example">
-          <h3>例：分解 $6x^2-9x$</h3>
-          <div class="step-list">
-            <div class="step"><span>1</span><p><strong>确定公因式。</strong>系数 $6$ 和 $9$ 的公因数是 $3$，两项都含有字母 $x$，所以提出 $3x$。</p></div>
-            <div class="step"><span>2</span><div><p><strong>计算括号内的两项。</strong></p><div class="equation-card">$$6x^2\div3x=2x,\qquad -9x\div3x=-3.$$</div></div></div>
-            <div class="step"><span>3</span><div><p><strong>写出分解结果。</strong></p><div class="equation-card">$$6x^2-9x=3x(2x-3).$$</div></div></div>
-          </div>
-          <div class="note verified"><strong>乘回检查：</strong> $3x(2x-3)=6x^2-9x$，展开结果与原式相同。</div>
+        <div class="definition-checks" aria-label="因式分解的判定条件">
+          <div><strong>原式是多项式</strong><p>确定变形对象。</p></div>
+          <div><strong>结果是整体乘积</strong><p>结果写成几个整式的积。</p></div>
+          <div><strong>展开后等于原式</strong><p>检验恒等关系。</p></div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="formula" aria-labelledby="formula-title">
-      <div class="marker"><span>03</span>公式法</div>
-      <div class="section-body">
-        <h2 id="formula-title">3. 公式法：反向使用乘法公式</h2>
-        <p>乘法公式也可以从展开式向乘积形式反向使用。平方差公式为</p>
-        <div class="direction-map" aria-label="平方差公式的展开和分解方向">
-          <div class="direction-node"><b>乘积形式</b><span>$(A-B)(A+B)$</span></div>
-          <div class="direction-arrow"><span>展开</span><strong>⇄</strong><span>分解</span></div>
-          <div class="direction-node"><b>平方差</b><span>$A^2-B^2$</span></div>
+        <div class="boundary-grid">
+          <article class="boundary-card invalid">
+            <h3>没有完成因式分解</h3>
+            <div class="equation-card">$$x^2+5x+6=x(x+5)+6$$</div>
+            <p>右边仍含加法，未写成整体乘积。</p>
+          </article>
+          <article class="boundary-card valid">
+            <h3>完成因式分解</h3>
+            <div class="equation-card">$$x^2-9=(x-3)(x+3)$$</div>
+            <p>右边是两个整式的积，展开后等于原式。</p>
+          </article>
         </div>
-        <p>因此，平方差的分解式是</p>
-        <div class="equation-card">$$A^2-B^2=(A-B)(A+B).$$</div>
-
-        <div class="example">
-          <h3>例：分解 $x^2-25$</h3>
-          <p>原式中的两项分别是 $x$ 与 $5$ 的平方，并且两项相减，所以原式符合平方差结构：</p>
-          <div class="equation-card">$$x^2-25=x^2-5^2.$$</div>
-          <p>使用平方差公式，得到</p>
-          <div class="equation-card">$$x^2-25=(x-5)(x+5).$$</div>
-          <p>将右边展开：</p>
-          <div class="equation-card">
-            $$\begin{aligned}
-            (x-5)(x+5)
-            &=x^2+5x-5x-25\\
-            &=x^2-25.
-            \end{aligned}$$
-          </div>
-          <p>两个一次项相互抵消，展开结果回到原式。</p>
-        </div>
-        <p class="purpose">完全平方公式、立方和公式和立方差公式也可以反向用于因式分解。使用公式时，原式的项、系数和符号必须与公式的展开式完整对应。</p>
       </div>
     </section>
 
     <section class="section" id="uses" aria-labelledby="uses-title">
-      <div class="marker"><span>04</span>作用</div>
+      <div class="marker"><span>02</span>乘积形式</div>
       <div class="section-body">
-        <h2 id="uses-title">4. 因式分解的作用</h2>
-        <p>多项式写成乘积形式以后，各个因式可以分别参与后续运算。因式分解常用于解方程和分式约分。</p>
+        <h2 id="uses-title">2. 乘积形式的作用</h2>
+        <p class="section-intro">因式分解的主要使用情形包括确定零点、识别共同因子和判断符号。</p>
+
         <div class="application-grid">
           <article class="application-card">
-            <h3>4.1 解方程</h3>
-            <p>先把 $x^2-x-6$ 分解为 $(x-3)(x+2)$：</p>
-            <div class="equation-card">$$x^2-x-6=0\Longrightarrow(x-3)(x+2)=0.$$</div>
-            <p>乘积为 $0$，至少有一个因式为 $0$：</p>
-            <div class="equation-card">$$x-3=0\quad\text{或}\quad x+2=0.$$</div>
-            <p>因此，原方程的解为</p>
-            <div class="equation-card">$$x=3\quad\text{或}\quad x=-2.$$</div>
-            <p>二次方程由此转化为两个一次方程。</p>
+            <h3>确定零点</h3>
+            <div class="equation-card">$$x^2-5x+6=0$$</div>
+            <p>因式分解后，方程化为 $(x-2)(x-3)=0$。因此，$x=2$ 或 $x=3$。</p>
           </article>
-
           <article class="application-card">
-            <h3>4.2 分式约分</h3>
-            <p>先把分子分解：</p>
-            <div class="equation-card">$$x^2-5x+6=(x-2)(x-3).$$</div>
-            <p>原分式化为</p>
-            <div class="equation-card">$$\frac{(x-2)(x-3)}{x-2}.$$</div>
-            <p>当 $x\ne2$ 时，可以约去公因式 $x-2$：</p>
-            <div class="equation-card">$$\frac{x^2-5x+6}{x-2}=x-3,\qquad x\ne2.$$</div>
-            <p>取值限制将在下一章进一步说明。</p>
+            <h3>识别共同因子</h3>
+            <div class="equation-card">$$\frac{x^2-4}{x-2}=\frac{(x-2)(x+2)}{x-2}$$</div>
+            <p>乘积形式显示出分子与分母的共同因子 $x-2$。约分条件将在分式一章中讨论。</p>
+          </article>
+          <article class="application-card">
+            <h3>判断符号</h3>
+            <div class="equation-card">$$(x-2)(x-3)$$</div>
+            <p>整体的符号由两个因式的符号共同决定。$x=2$ 和 $x=3$ 是因式符号可能改变的位置。</p>
           </article>
         </div>
+
+        <table class="comparison-table">
+          <thead><tr><th>任务</th><th>适用形式</th></tr></thead>
+          <tbody>
+            <tr><td>观察次数和系数、合并同类项</td><td>展开式</td></tr>
+            <tr><td>确定零点</td><td>乘积式</td></tr>
+            <tr><td>判断符号</td><td>乘积式</td></tr>
+            <tr><td>识别共同因子</td><td>乘积式</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="section" id="complete" aria-labelledby="complete-title">
-      <div class="marker"><span>05</span>分解到底</div>
+    <section class="section" id="methods" aria-labelledby="methods-title">
+      <div class="marker"><span>03</span>结构判断</div>
       <div class="section-body">
-        <h2 id="complete-title">5. 分解必须进行到底</h2>
-        <p>因式分解的结果必须是几个整式的积。例如：</p>
-        <div class="equation-card">$$x^2+5x+6=x(x+5)+6$$</div>
-        <div class="note warning">虽然等号成立，但右边仍是和的形式，所以这不是因式分解。</div>
+        <h2 id="methods-title">3. 基本方法</h2>
+        <p class="section-intro">因式分解的方法由多项式的结构决定。</p>
 
-        <p>在当前学习范围内，如果分解后得到的因式还能继续分解，就应继续进行：</p>
-        <div class="step-list">
-          <div class="step"><span>1</span><div><p>先提出公因数 $2$：</p><div class="equation-card">$$2x^2-8=2(x^2-4).$$</div></div></div>
-          <div class="step"><span>2</span><div><p>括号内仍是平方差：</p><div class="equation-card">$$x^2-4=(x-2)(x+2).$$</div></div></div>
-          <div class="step"><span>3</span><div><p>写出完整结果：</p><div class="equation-card">$$2x^2-8=2(x-2)(x+2).$$</div></div></div>
-        </div>
-        <p>把右边乘回去：</p>
-        <div class="equation-card">
-          $$\begin{aligned}
-          2(x-2)(x+2)
-          &=2(x^2-4)\\
-          &=2x^2-8.
-          \end{aligned}$$
-        </div>
-        <div class="note verified">展开结果与原式相同，说明分解完整且正确。</div>
-      </div>
-    </section>
+        <table class="comparison-table">
+          <thead><tr><th>结构特征</th><th>方法</th></tr></thead>
+          <tbody>
+            <tr><td>各项含有共同因式</td><td>提公因式法</td></tr>
+            <tr><td>符合乘法公式的展开结构</td><td>公式法</td></tr>
+            <tr><td>二次三项式可写成两个一次因式的积</td><td>十字相乘法</td></tr>
+            <tr><td>二次三项式的因数关系不容易确定</td><td>求根公式法</td></tr>
+          </tbody>
+        </table>
 
-    <section class="section" id="summary" aria-labelledby="summary-title">
-      <div class="marker"><span>06</span>核心结论</div>
-      <div class="section-body">
-        <h2 id="summary-title">6. 核心结论</h2>
-        <div class="summary-card">
-          <p><strong>因式分解</strong>是把一个多项式化成几个整式的积。它与整式乘法方向相反，分解结果必须能够展开回原式。</p>
-          <p>提公因式法来自分配律的反向使用，公式法来自乘法公式的反向使用。乘积形式可以进一步用于解方程、分式约分和其他代数运算。</p>
-          <p>对于没有公因式、又不能直接使用公式的二次三项式，需要进一步寻找两个一次因式。</p>
+        <h3>3.1 提公因式法</h3>
+        <p>分配律 $a(b+c)=ab+ac$ 反向书写为</p>
+        <div class="equation-card" data-tone="green">$$ab+ac=a(b+c).$$</div>
+        <p>右边的 $a$ 是左边两项的公因式。提公因式法逆向使用分配律，将各项共有的因式写到括号外。</p>
+
+        <div class="example">
+          <h3>例：分解 $6x^2-9x$</h3>
+          <div class="step-list">
+            <div class="step"><span>1</span><div><strong>确定公因式</strong><p>$6$ 和 $9$ 的最大公因数是 $3$，两项都含有 $x$，所以公因式为 $3x$。</p></div></div>
+            <div class="step"><span>2</span><div><strong>逐项相除</strong><div class="equation-card">$$\begin{aligned}6x^2\div3x&amp;=2x,\\-9x\div3x&amp;=-3.\end{aligned}$$</div></div></div>
+            <div class="step"><span>3</span><div><strong>写成乘积</strong><div class="equation-card" data-tone="green">$$6x^2-9x=3x(2x-3).$$</div></div></div>
+          </div>
+          <div class="note verified"><strong>检验：</strong>$3x(2x-3)=6x^2-9x$。</div>
         </div>
-        <a class="next-link" href="02_十字相乘法.html">继续学习十字相乘法 <span aria-hidden="true">→</span></a>
+
+        <h3>3.2 公式法</h3>
+        <p>乘法公式可以反向用于因式分解。平方差公式反向书写为</p>
+        <div class="equation-card" data-tone="green">$$A^2-B^2=(A-B)(A+B).$$</div>
+
+        <div class="example">
+          <h3>例：分解 $x^2-25$</h3>
+          <div class="split-trace">
+            <div class="split-line">$x^2-25$</div>
+            <div class="split-line">$x^2-5^2$</div>
+            <div class="split-line">$A=x,\ B=5$</div>
+            <div class="split-line">$(x-5)(x+5)$</div>
+          </div>
+          <p>展开右边时，$+5x$ 与 $-5x$ 相互抵消，结果为 $x^2-25$。</p>
+        </div>
+        <div class="note warning"><strong>结构条件：</strong>$x^2+25$ 是两个平方的和，不符合平方差结构。</div>
+
+        <h3>3.3 连续分解与检验</h3>
+        <p>同一个多项式可能需要连续使用多种方法。</p>
+        <div class="split-trace">
+          <div class="split-line">$2x^2-8$</div>
+          <div class="split-line">$2(x^2-4)$　提取公因数 $2$</div>
+          <div class="split-line">$2(x^2-2^2)$　识别平方差</div>
+          <div class="split-line">$2(x-2)(x+2)$　完成分解</div>
+        </div>
+
+        <div class="decision-path" aria-label="因式分解的基本顺序">
+          <div class="decision-row"><span>1</span><strong>检查各项公因式</strong><em>有公因式时先提取</em></div>
+          <div class="decision-row"><span>2</span><strong>检查剩余部分的公式结构</strong><em>完整匹配后使用</em></div>
+          <div class="decision-row"><span>3</span><strong>检查各因式能否继续分解</strong><em>继续处理可分因式</em></div>
+          <div class="decision-row"><span>4</span><strong>展开最终结果</strong><em>与原式比较</em></div>
+        </div>
+
+        <div class="note"><strong>范围：</strong>本章主要研究整系数多项式的常见因式分解。“分解到底”是指每个非常数因式都不能再写成次数更低的整系数多项式的积。</div>
+        <a class="next-link" href="02_十字相乘法.html">下一节：十字相乘法 <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>

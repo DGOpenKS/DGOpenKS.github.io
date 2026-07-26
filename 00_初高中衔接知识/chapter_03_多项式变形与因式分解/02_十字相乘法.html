@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="区分首项系数为一与不为一的二次三项式，理解积与和、交叉乘积的对应关系。">
-  <title>十字相乘法：首项系数为 1 与不为 1 | DGOpenKS</title>
+  <meta name="description" content="说明十字相乘法的适用范围、系数依据、操作步骤和检验方法。">
+  <title>十字相乘法 | DGOpenKS</title>
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="assets/chapter03.css">
@@ -14,155 +14,151 @@
   <nav class="topbar" aria-label="章节导航">
     <div class="topbar-inner">
       <a class="brand" href="../../index.html">DGOpenKS</a>
-      <a class="nav-link" href="./">章节入口</a>
-      <a class="nav-link" href="01_因式分解.html">上一节：因式分解</a>
-      <a class="nav-link" href="02_十字相乘法.html" aria-current="page">十字相乘法</a>
+      <a class="nav-link" href="./">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
+      <a class="nav-link" href="02_十字相乘法.html" aria-current="page">02 十字相乘法</a>
+      <a class="nav-link" href="03_求根公式法.html">03 求根公式法</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <span class="eyebrow">Chapter 03 · 02</span>
-    <h1>十字相乘法：首项系数为 1 与不为 1</h1>
-    <p class="lead">首项系数为 $1$ 时，寻找“积等于常数项、和等于一次项系数”的两个数；首项系数不为 $1$ 时，还要拆分二次项，并检查两个交叉乘积的和。</p>
-    <div class="learning-contract"><strong>本节学习任务：</strong>分清两种二次三项式，分别掌握“找积与和”和“检查交叉乘积”两种计算过程。</div>
+  <header class="hero lesson-hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Chapter 03 · 02</span>
+      <h1>十字相乘法</h1>
+      <p class="lead">十字相乘法同时拆分二次项和常数项，再用两个交叉乘积的和确定一次项。</p>
+    </div>
+    <div class="hero-stage" aria-label="十字相乘法从中间项拆分到因式分解">
+      <span class="stage-label">寻找一次项的拆法</span>
+      <div class="stage-expression">$$x^2+5x+6$$</div>
+      <div class="stage-arrow"><span>$5x=2x+3x$</span></div>
+      <div class="stage-expression">$$x(x+2)+3(x+2)$$</div>
+      <div class="stage-arrow"><span>提取共同括号</span></div>
+      <div class="stage-expression factor">$$(x+2)(x+3)$$</div>
+    </div>
   </header>
 
   <main id="main">
-    <section class="section" id="monic" aria-labelledby="monic-title">
-      <div class="marker"><span>01</span>首项为 1</div>
+    <section class="section" id="scope" aria-labelledby="scope-title">
+      <div class="marker"><span>01</span>适用范围</div>
       <div class="section-body">
-        <h2 id="monic-title">1. 首项系数为 1：找积与和</h2>
-        <p>先展开两个一次因式的乘积：</p>
-        <div class="equation-card">
-          $$\begin{aligned}
-          (x+m)(x+n)
-          &=x^2+nx+mx+mn\\
-          &=x^2+(m+n)x+mn.
-          \end{aligned}$$
-        </div>
-        <p>如果 $x^2+px+q$ 可以分解为 $(x+m)(x+n)$，那么对应的系数必须相等：</p>
-        <div class="coefficient-grid" aria-label="首项系数为一时的系数对应">
-          <div><b>二次项</b>$x\cdot x=x^2$</div>
-          <div><b>一次项</b>$m+n=p$</div>
-          <div><b>常数项</b>$mn=q$</div>
-        </div>
-        <p class="purpose">因此，需要找到两个数，使它们的积等于常数项，和等于一次项系数。</p>
-
-        <div class="example">
-          <h3>例：分解 $x^2+5x+6$</h3>
-          <div class="step-list">
-            <div class="step"><span>1</span><div><p><strong>根据常数项 $6$ 列出因数配对。</strong></p><div class="equation-card">$$1\times6=6,\qquad 2\times3=6.$$</div></div></div>
-            <div class="step"><span>2</span><p><strong>检查两数之和。</strong>$1+6=7$，不能得到一次项系数 $5$；$2+3=5$，符合要求。</p></div>
-            <div class="step"><span>3</span><div><p><strong>写出两个一次因式。</strong></p><div class="equation-card">$$x^2+5x+6=(x+2)(x+3).$$</div></div></div>
-            <div class="step"><span>4</span><div><p><strong>展开验证。</strong></p><div class="equation-card">$$\begin{aligned}(x+2)(x+3)&=x^2+3x+2x+6\\&=x^2+5x+6.\end{aligned}$$</div></div></div>
-          </div>
-          <div class="note verified">展开结果与原式相同，所以分解正确。</div>
-        </div>
-
-        <div class="note">
-          <strong>符号补充：</strong>常数项为正时，两个数同号；常数项为负时，两个数异号。例如
-          $$(-3)\times2=-6,\qquad -3+2=-1,$$
-          所以
-          $$x^2-x-6=(x-3)(x+2).$$
-          符号判断只能缩小因数配对的范围，最后仍要检查两数之和。
-        </div>
+        <h2 id="scope-title">1. 二次三项式的因式分解</h2>
+        <p class="section-intro">对于 $ax^2+bx+c\ (a\ne0)$，当各项没有可提取的公因式，并且不能直接使用已学乘法公式时，可以检查它能否写成两个一次因式的积。</p>
+        <div class="equation-card" data-tone="blue">$$ax^2+bx+c=(mx+n)(px+q)$$</div>
+        <p>在本章整系数因式分解的范围内，$m,n,p,q$ 均取整数。</p>
+        <p>例如，$x^2+5x+6$ 没有公因式，也不符合平方差或完全平方结构，但可以写成</p>
+        <div class="equation-card" data-tone="green">$$x^2+5x+6=(x+2)(x+3).$$</div>
+        <p>十字相乘法从二次项、一次项和常数项的系数中确定两个一次因式。若不存在同时满足三项系数关系的整数因数组合，该多项式在当前范围内不能用十字相乘法分解。</p>
       </div>
     </section>
 
-    <section class="section" id="non-monic" aria-labelledby="non-monic-title">
-      <div class="marker"><span>02</span>首项不为 1</div>
+    <section class="section" id="basis" aria-labelledby="basis-title">
+      <div class="marker"><span>02</span>系数依据</div>
       <div class="section-body">
-        <h2 id="non-monic-title">2. 首项系数不为 1：检查交叉乘积</h2>
-        <p>对于一般的二次三项式 $ax^2+bx+c$，如果它能分解成两个一次因式，可以设</p>
-        <div class="equation-card">$$ax^2+bx+c=(mx+n)(px+q).$$</div>
-        <p>将右边展开：</p>
-        <div class="equation-card">
+        <h2 id="basis-title">2. 交叉乘积与系数对应</h2>
+        <p class="section-intro">十字相乘法建立在两个一次因式的乘法展开上。四个乘积分别决定二次项、一次项和常数项。</p>
+        <div class="equation-card compact-equation" data-tone="blue">
           $$\begin{aligned}
           (mx+n)(px+q)
           &=mpx^2+mqx+npx+nq\\
           &=mpx^2+(mq+np)x+nq.
           \end{aligned}$$
         </div>
-        <p>与原式比较，必须同时满足：</p>
-        <div class="coefficient-grid" aria-label="一般二次三项式的三组系数对应">
+        <p>第一步根据分配律得到四个乘积，第二步合并两个一次项 $mqx$ 和 $npx$。</p>
+        <div class="product-grid" aria-label="两个一次因式展开后的四个乘积">
+          <div class="product-cell quadratic"><div><small>$mx\times px$</small>$mpx^2$</div></div>
+          <div class="product-cell linear"><div><small>$mx\times q$</small>$mqx$</div></div>
+          <div class="product-cell linear"><div><small>$n\times px$</small>$npx$</div></div>
+          <div class="product-cell constant"><div><small>$n\times q$</small>$nq$</div></div>
+        </div>
+        <p>若 $ax^2+bx+c=(mx+n)(px+q)$，三组系数必须同时满足：</p>
+        <div class="coefficient-grid" aria-label="二次三项式与两个一次因式的系数对应">
           <div><b>二次项</b>$mp=a$</div>
           <div><b>一次项</b>$mq+np=b$</div>
           <div><b>常数项</b>$nq=c$</div>
         </div>
+        <p>$mq$ 与 $np$ 由交叉相乘得到。十字排列用于寻找合适的因数组合，展开检验用于确认三个系数全部对应。</p>
+      </div>
+    </section>
 
-        <figure class="cross-visual">
-          <figcaption>
-            <h3>交叉乘积决定一次项</h3>
-            <p>$mp=a$ 保证二次项正确，$nq=c$ 保证常数项正确；中间的一次项来自两条交叉相乘路径。</p>
-          </figcaption>
-          <div class="cross-equations" aria-hidden="true">
-            <div class="cross-row"><span class="cross-term">$mx$</span><span class="cross-arrow">↘</span><span class="cross-term">$q$</span><span class="equals">$=$</span><span class="cross-result">$mqx$</span></div>
-            <div class="cross-row"><span class="cross-term">$n$</span><span class="cross-arrow">↗</span><span class="cross-term">$px$</span><span class="equals">$=$</span><span class="cross-result">$npx$</span></div>
+    <section class="section" id="method" aria-labelledby="method-title">
+      <div class="marker"><span>03</span>方法步骤</div>
+      <div class="section-body">
+        <h2 id="method-title">3. 基本方法与步骤</h2>
+        <p class="section-intro">分解 $ax^2+bx+c$ 时，先拆分二次项和常数项，再用交叉乘积检查一次项。</p>
+        <div class="decision-path" aria-label="十字相乘法的操作步骤">
+          <div class="decision-row"><span>1</span><strong>拆分二次项与常数项</strong><em>$ax^2=mx\cdot px$，$c=nq$</em></div>
+          <div class="decision-row"><span>2</span><strong>计算两个交叉乘积</strong><em>得到 $mqx$ 与 $npx$</em></div>
+          <div class="decision-row"><span>3</span><strong>调整因数的位置和符号</strong><em>使两项之和等于 $bx$</em></div>
+          <div class="decision-row"><span>4</span><strong>写出因式并展开检验</strong><em>核对三个系数</em></div>
+        </div>
+
+        <h3>3.1 首项系数为 1</h3>
+        <p>当首项系数为 $1$ 时，分解 $x^2+px+q$ 需要找到两个整数 $m,n$，使</p>
+        <div class="equation-card" data-tone="blue">$$m+n=p,\qquad mn=q.$$</div>
+        <table class="comparison-table">
+          <thead><tr><th>常数项 $q$</th><th>$m,n$ 的符号</th><th>一次项系数的检查</th></tr></thead>
+          <tbody>
+            <tr><td>$q\gt0$</td><td>同号</td><td>两数之和的符号与 $p$ 相同</td></tr>
+            <tr><td>$q\lt0$</td><td>异号</td><td>两数之和等于 $p$</td></tr>
+          </tbody>
+        </table>
+        <div class="example">
+          <h3>分解 $x^2+5x+6$</h3>
+          <p>$2\times3=6$，并且 $2+3=5$，所以选择 $2$ 与 $3$。</p>
+          <div class="split-trace" aria-label="首项系数为一时的分解过程">
+            <div class="split-line">$x^2+5x+6$</div>
+            <div class="split-line">$x^2+2x+3x+6$　拆开中间项</div>
+            <div class="split-line">$x(x+2)+3(x+2)$　分组提公因式</div>
+            <div class="split-line">$(x+2)(x+3)$　完成分解</div>
           </div>
-          <div class="cross-total">$$mqx+npx=(mq+np)x,\qquad mq+np=b.$$</div>
-        </figure>
+        </div>
 
+        <h3>3.2 首项系数不为 1</h3>
         <div class="example">
-          <h3>例：分解 $6x^2+11x+3$</h3>
-          <p>第一步，拆分二次项和常数项：</p>
-          <div class="equation-card">$$6x^2=3x\cdot2x,\qquad 3=1\cdot3.$$</div>
-          <p>第二步，组成两个一次因式，并检查交叉乘积。尝试</p>
-          <div class="equation-card">$$(3x+1)(2x+3).$$</div>
-          <p>两个交叉乘积分别为 $9x$ 和 $2x$，它们的和是 $11x$：</p>
-          <div class="equation-card">$$3x\cdot3=9x,\qquad 1\cdot2x=2x,\qquad 9x+2x=11x.$$</div>
-          <p>因此：</p>
-          <div class="equation-card">$$6x^2+11x+3=(3x+1)(2x+3).$$</div>
-          <p>展开验证：</p>
-          <div class="equation-card">$$\begin{aligned}(3x+1)(2x+3)&=6x^2+9x+2x+3\\&=6x^2+11x+3.\end{aligned}$$</div>
-          <div class="note verified">展开结果与原式相同，分解成立。</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="steps" aria-labelledby="steps-title">
-      <div class="marker"><span>03</span>步骤与检查</div>
-      <div class="section-body">
-        <h2 id="steps-title">3. 十字相乘法的步骤与检查</h2>
-        <div class="step-list">
-          <div class="step"><span>1</span><p>如果三项有公因式，先提出公因式。</p></div>
-          <div class="step"><span>2</span><p>把二次项 $ax^2$ 分成两个一次单项式的乘积。</p></div>
-          <div class="step"><span>3</span><p>把常数项 $c$ 分成两个因数的乘积。</p></div>
-          <div class="step"><span>4</span><p>调整因数的位置和符号，使两个交叉乘积的和等于一次项 $bx$。</p></div>
-          <div class="step"><span>5</span><p>写出两个一次因式，并将结果展开回原式进行验证。</p></div>
+          <h3>分解 $6x^2+11x+3$</h3>
+          <p>把二次项拆成 $3x\cdot2x$，把常数项拆成 $1\cdot3$。</p>
+          <div class="cross-board" aria-label="3x 与 3、1 与 2x 交叉相乘">
+            <div class="cross-node">$3x$</div>
+            <div class="cross-node">$1$</div>
+            <div class="cross-node">$2x$</div>
+            <div class="cross-node">$3$</div>
+          </div>
+          <div class="cross-results" aria-label="两个交叉乘积及其和">
+            <span>$3x\times3=9x$</span>
+            <span>$1\times2x=2x$</span>
+            <span>$9x+2x=11x$</span>
+          </div>
+          <p>两个交叉乘积的和等于原式的一次项，因此可以写成</p>
+          <div class="equation-card" data-tone="green">$$6x^2+11x+3=(3x+1)(2x+3).$$</div>
+          <p>完整的拆项分组过程为</p>
+          <div class="split-trace">
+            <div class="split-line">$6x^2+11x+3$</div>
+            <div class="split-line">$6x^2+9x+2x+3$　按交叉乘积拆项</div>
+            <div class="split-line">$3x(2x+3)+1(2x+3)$　分组</div>
+            <div class="split-line">$(3x+1)(2x+3)$　提取共同括号</div>
+          </div>
         </div>
 
-        <div class="example">
-          <h3>只对上二次项和常数项还不够</h3>
-          <p>乘积 $(3x+3)(2x+1)$ 的二次项是 $6x^2$，常数项是 $3$，但展开后得到</p>
-          <div class="equation-card">$$\begin{aligned}(3x+3)(2x+1)&=6x^2+3x+6x+3\\&=6x^2+9x+3.\end{aligned}$$</div>
-          <div class="note warning">一次项为 $9x$，不是 $11x$，所以它不是 $6x^2+11x+3$ 的正确分解。</div>
+        <h3>3.3 检验与适用边界</h3>
+        <p>检验时应同时核对二次项、一次项和常数项。若将 $6x^2+11x+3$ 写成 $(3x+3)(2x+1)$，三个位置分别为：</p>
+        <div class="coefficient-grid">
+          <div><b>二次项</b>$3x\cdot2x=6x^2$</div>
+          <div><b>交叉项</b>$3x+6x=9x$</div>
+          <div><b>常数项</b>$3\cdot1=3$</div>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="range" aria-labelledby="range-title">
-      <div class="marker"><span>04</span>适用范围</div>
-      <div class="section-body">
-        <h2 id="range-title">4. 十字相乘法的适用范围</h2>
-        <p>并不是每个二次三项式都能在整数范围内分解成两个整系数一次因式。例如：</p>
-        <div class="equation-card">$$x^2+x+1.$$</div>
-        <p>若它能写成 $(x+m)(x+n)$，则整数 $m,n$ 应满足</p>
+        <p>交叉项为 $9x$，与原式的 $11x$ 不同。展开后得到</p>
+        <div class="equation-card" data-tone="amber">
+          $$\begin{aligned}
+          (3x+3)(2x+1)
+          &=6x^2+3x+6x+3\\
+          &=6x^2+9x+3.
+          \end{aligned}$$
+        </div>
+        <p>对于 $x^2+x+1$，若它能写成 $(x+m)(x+n)$，整数 $m,n$ 必须满足</p>
         <div class="equation-card">$$mn=1,\qquad m+n=1.$$</div>
-        <p>乘积为 $1$ 的整数对是 $1,1$ 或 $-1,-1$，它们的和分别是 $2$ 和 $-2$，都不等于 $1$。</p>
-        <div class="note warning">因此，在整数因式分解的范围内，$x^2+x+1$ 不能分解成两个整系数一次因式。因数组合不满足全部对应条件时，不能强行写成乘积。</div>
-      </div>
-    </section>
-
-    <section class="section" id="summary" aria-labelledby="summary-title">
-      <div class="marker"><span>05</span>核心结论</div>
-      <div class="section-body">
-        <h2 id="summary-title">5. 核心结论</h2>
-        <div class="summary-card">
-          <p><strong>首项系数为 $1$：</strong>找到积等于常数项、和等于一次项系数的两个数。</p>
-          <p><strong>首项系数不为 $1$：</strong>同时拆分二次项和常数项，并使两个交叉乘积的和等于一次项。</p>
-          <p>分解完成后，必须展开检查。二次项、一次项和常数项全部与原式对应，因式分解才成立。</p>
-        </div>
-        <a class="next-link" href="./">返回 Chapter 03 <span aria-hidden="true">→</span></a>
+        <p>乘积为 $1$ 的整数配对，其和只能为 $2$ 或 $-2$，无法得到 $1$。因此，$x^2+x+1$ 在整系数因式分解范围内不能分成两个一次因式。</p>
+        <div class="note"><strong>判定标准：</strong>二次项、交叉项和常数项的系数全部对应，分解结果才成立。</div>
+        <a class="next-link" href="03_求根公式法.html">下一节：求根公式法 <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>

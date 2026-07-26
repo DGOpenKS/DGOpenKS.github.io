@@ -39,6 +39,15 @@ coverage/
 *.tmp
 *.temp
 
+# Local validation tooling
+/.node-version
+/package.json
+/package-lock.json
+/playwright.config.js
+/requirements-dev.txt
+/tests/
+/tools/
+
 # Generated HyperFrames inspection caches
 **/_render/.thumbnails/
 **/_render/.waveform-cache/

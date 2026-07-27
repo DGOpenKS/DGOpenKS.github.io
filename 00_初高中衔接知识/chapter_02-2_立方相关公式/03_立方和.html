@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>立方和公式：因式分解与几何解析 | DGOpenKS</title>
 <style>
-:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--grid:#e8eef7;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--red:#dc2626;--red-soft:#fef2f2;--red-line:#fecaca;--radius:8px;--shadow:0 14px 34px rgba(15,23,42,.08);--soft-shadow:0 8px 24px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
@@ -97,6 +96,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.formula-card,.cube-sum-model-step,.recognition-card{box-shadow:none}.cube-sum-model-step{display:block}.cube-sum-scene-wrap{border-right:0;border-bottom:1px solid var(--line);min-height:230px}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
+<link rel="stylesheet" href="./assets/formula-page-standard.css">
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
@@ -114,7 +114,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 03</span>
   <h1>立方和公式：<br class="mobile-title-break">因式分解与几何解析</h1>
-  <p class="lead"><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 表示两个立方相加。先通过乘法确定两个因子，再用立方体的切割重排理解它们的来源。</p>
+  <p class="lead">本节先通过代数运算确定 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 的两个因子，再用立方体的切割重排解释这个公式。</p>
 </header>
 
 <main>
@@ -123,7 +123,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <div class="prose">
         <h2>公式推导：从一次因子到分解式</h2>
-        <p>立方和要把两个立方的和 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 写成乘积形式。先从当原式<span class="math">=0</span>时中寻找到一次因子，再用未知系数确定剩下的二次因子。</p>
+        <p>立方和要把两个立方的和 <span class="math">a<sup>3</sup>+b<sup>3</sup></span> 写成乘积形式。先根据原式等于 <span class="math">0</span> 时的条件寻找一次因子，再用未知系数确定剩下的二次因子。</p>
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
@@ -148,7 +148,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
             </div>
             <div class="calc-step">
               <div class="formula-line">k+1=0，所以 k=-1</div>
-              <p class="step-note">原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失则系数必须为 <span class="math">0</span>。</p>
+              <p class="step-note">原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失，则系数必须为 <span class="math">0</span>。</p>
             </div>
             <div class="calc-step">
               <div class="formula-line">a<sup>3</sup>+b<sup>3</sup> = (a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</div>
@@ -203,7 +203,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           <div class="cube-sum-step-copy">
             <span class="cube-sum-step-kicker"><b>3</b>搬到上方</span>
             <h3>把切下的长方体搬到剩余立体图形的上方</h3>
-            <p>搬动只改变位置，不改变体积。重排后，上方增加的高度是 <span class="math">a</span>，下方原有的高度是 <span class="math">b</span>，因此新立体图形的共同高度是 <span class="math">a+b</span>。</p>
+            <p>搬动只改变位置，不改变体积。把切下的长方体旋转后放到剩余部分较低一侧的上方，这一侧上方补出的高度是 <span class="math">a</span>，下方原有的高度是 <span class="math">b</span>；另一侧原本也高 <span class="math">a+b</span>，因此重排后的新立体图形处处具有共同高度 <span class="math">a+b</span>。此时，两部分的底面互不重叠，可以合并计算总底面积。</p>
             <div class="cube-sum-static-formula">
               <div class="cube-sum-formula-list"><span>共同高度 = a+b</span></div>
             </div>

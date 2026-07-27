@@ -5,36 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>和的立方公式：公式推导与几何解析 | DGOpenKS</title>
 <style>
-:root{
-  color-scheme:light;
-  --bg:#f6f8fb;
-  --paper:#fff;
-  --soft:#f8fafc;
-  --ink:#111827;
-  --muted:#64748b;
-  --line:#dbe5f2;
-  --grid:#e8eef7;
-  --blue:#3b6fea;
-  --blue-soft:#eef4ff;
-  --blue-line:#c7d8ff;
-  --blue-deep:#1f4fbf;
-  --amber:#f08f3c;
-  --amber-soft:#fff4e8;
-  --amber-line:#f8cfa7;
-  --amber-deep:#b86218;
-  --purple:#8b5cf6;
-  --purple-soft:#f4f0ff;
-  --purple-line:#d8ccff;
-  --purple-deep:#6d3fce;
-  --cyan:#16a7b7;
-  --cyan-soft:#eafbfd;
-  --cyan-line:#a9edf3;
-  --cyan-deep:#08798a;
-  --radius:8px;
-  --shadow:0 14px 34px rgba(15,23,42,.08);
-  --soft-shadow:0 8px 24px rgba(15,23,42,.06);
-  --font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.72;overflow-x:hidden}
@@ -252,38 +222,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
-<style id="chapter03-visual-theme">
-:root{
-  --bg:#f4f2ec;
-  --paper:#fffdf8;
-  --soft:#f7f5ef;
-  --ink:#17202f;
-  --muted:#6f7885;
-  --line:#dcd9d0;
-  --grid:#e5e0d6;
-  --blue:#176b87;
-  --blue-soft:#e8f4f6;
-  --blue-line:#acd6dd;
-  --blue-deep:#104b62;
-  --amber:#a35f18;
-  --amber-soft:#fff2dc;
-  --amber-line:#ebc58e;
-  --amber-deep:#7d4812;
-  --purple:#7155a3;
-  --purple-soft:#f1edf9;
-  --purple-line:#d4c7e9;
-  --purple-deep:#523b7d;
-  --cyan:#2f765d;
-  --cyan-soft:#e9f5ef;
-  --cyan-line:#add4c2;
-  --cyan-deep:#245c49;
-  --radius:20px;
-  --shadow:0 24px 70px rgba(23,32,47,.1);
-  --soft-shadow:0 1px 2px rgba(23,32,47,.05),0 10px 28px rgba(23,32,47,.06);
-  --font:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --serif:"Noto Serif SC","Songti SC","STSong",serif;
-}
-
+<style id="formula-page-standard-layout">
 html{scroll-padding-top:78px}
 body{
   background:
@@ -442,7 +381,7 @@ main{
 }
 
 .prose{max-width:790px;color:#3f4b5c}
-#calculation .prose{max-width:790px}
+#calculation .prose{max-width:920px}
 #model > .section-body > .prose{max-width:920px}
 
 .formula-card{
@@ -455,8 +394,8 @@ main{
 }
 
 .calc-step{
-  grid-template-columns:minmax(300px,.95fr) minmax(280px,1.05fr);
-  gap:1.5rem;
+  grid-template-columns:minmax(400px,1fr) minmax(330px,1fr);
+  gap:18px;
   padding:1.15rem 0;
   border-color:var(--line);
 }
@@ -469,25 +408,13 @@ main{
   line-height:1.76;
 }
 
-@media(min-width:1024px){
-  .calc-step{
-    grid-template-columns:19.125rem minmax(0,1fr);
-    column-gap:.75rem;
-  }
-
-  .calc-step .step-note{
-    white-space:nowrap;
-    text-wrap:nowrap;
-  }
-}
-
 .static-model-sequence{gap:1.5rem;margin-top:2rem}
 
 .model-step{
   grid-template-columns:minmax(0,1.04fr) minmax(310px,.96fr);
   border-color:var(--line);
   border-radius:24px;
-  background:rgba(255,253,248,.95);
+  background:var(--paper);
   box-shadow:var(--soft-shadow);
 }
 
@@ -638,7 +565,7 @@ main{
   .topbar-inner{width:calc(100% - 1rem);min-height:56px}
   .brand{margin-right:.4rem}
   .nav-link{padding:.38rem .58rem}
-  .hero,main{width:min(100% - 1.25rem,1180px);max-width:none;padding-left:0;padding-right:0}
+  .hero,main{width:100%;max-width:100vw;padding-left:14px;padding-right:14px}
   .hero{min-height:auto;padding-top:3.4rem;padding-bottom:3.8rem}
   .hero>*{max-width:100%}
   h1{font-size:clamp(2.35rem,12vw,3.45rem)}
@@ -659,6 +586,7 @@ main{
   .formula-card,.model-step,.summary-panel,.static-split,.cube-template-board,.cube-handout-wrap{box-shadow:none}
 }
 </style>
+<link rel="stylesheet" href="./assets/formula-page-standard.css">
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
@@ -667,6 +595,7 @@ main{
     <a class="nav-link" href="./">章节入口</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
+    <a class="nav-link" href="#summary">核心结论</a>
     <a class="nav-link" href="02_差的立方.html">下一篇</a>
   </div>
 </nav>
@@ -717,7 +646,7 @@ main{
     <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
     <div class="section-body">
       <h2>几何解析：立方体体积模型</h2>
-      <p class="prose">长、宽、高都为 <span class="math">a+b</span> 时，立方体的体积就是 <span class="math">(a+b)<sup>3</sup></span>。沿每条边上 <span class="math">a</span> 与 <span class="math">b</span> 的分界向内切，就会得到 <span class="math">8</span> 个体积块。</p>
+      <p class="prose">当 <span class="math">a&gt;0</span>、<span class="math">b&gt;0</span> 时，可以把 <span class="math">a</span> 和 <span class="math">b</span> 看作两段长度。长、宽、高都为 <span class="math">a+b</span> 的立方体，体积就是 <span class="math">(a+b)<sup>3</sup></span>。分别在长度、宽度和高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开，就会得到 <span class="math">8</span> 个体积块。</p>
       <div class="static-model-sequence" id="staticModelSequence" aria-label="和的立方几何解析静态步骤">
         <article class="model-step" data-model-stage="0">
           <div class="scene-wrap static-scene-wrap">
@@ -823,7 +752,7 @@ main{
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>3.2</b>第二刀</span>
             <h3>再沿宽度方向切开</h3>
-            <p>第二刀在宽度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。两个方向各分成两段，于是形成 <span class="math">4</span> 个体积块，并沿两条切口分开。</p>
+            <p>第二刀在宽度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。两个方向各分成两段，于是形成 <span class="math">4</span> 个体积块。</p>
             <div class="static-formula">
               <div class="formula-list">
                 <span>长方向：a 或 b</span>
@@ -853,7 +782,7 @@ main{
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>3.3</b>第三刀</span>
             <h3>最后沿高度方向切开</h3>
-            <p>第三刀在高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。此时三个方向都已完成切分；下一步把体积块分开，再按类型计数。</p>
+            <p>第三刀在高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开。此时三个方向都已完成切分，得到了八个体积块。</p>
             <div class="static-formula">
               <div class="formula-list">
                 <span>长方向：a 或 b</span>
@@ -892,7 +821,7 @@ main{
 
         <article class="model-step" data-model-stage="6">
           <div class="scene-wrap static-scene-wrap">
-            <canvas aria-label="按同类体积分组的立方体模型"></canvas>
+            <canvas aria-label="按体积类型分类计数的体积块模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
             <div class="scene-fallback" hidden>
               <div>
@@ -908,7 +837,7 @@ main{
           </div>
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>5</b>同类体积分组</span>
-            <h3>把体积类型相同的小长方体合并观察</h3>
+            <h3>按体积类型对八个体积块分类计数</h3>
             <p><span class="math">a<sup>3</sup></span> 有 1 个，<span class="math">a<sup>2</sup>b</span> 有 3 个，<span class="math">ab<sup>2</sup></span> 有 3 个，<span class="math">b<sup>3</sup></span> 有 1 个，数量正好形成 <span class="math">1,3,3,1</span>。</p>
             <div class="static-counts">
               <div class="count a3"><b>a<sup>3</sup></b><small>1 个</small></div>
@@ -921,7 +850,7 @@ main{
 
         <article class="model-step" data-model-stage="7">
           <div class="scene-wrap static-scene-wrap">
-            <canvas aria-label="八个体积块按一个、三个、三个、一个平铺的和的立方模型"></canvas>
+            <canvas aria-label="八个体积块按一个、三个、三个、一个分类排列的和的立方模型"></canvas>
             <div class="scene-loader">3D 模型加载中...</div>
             <div class="scene-fallback" hidden>
               <div>
@@ -937,8 +866,8 @@ main{
           </div>
           <div class="model-step-copy">
             <span class="model-step-kicker"><b>6</b>回到公式</span>
-            <h3>把八个体积块按同类平铺，再读出公式</h3>
-            <p>把同类体积块平铺在一起，就能数出 <span class="math">1,3,3,1</span>。四组体积相加，就得到和的立方展开式。</p>
+            <h3>把八个体积块分类排列，再读出公式</h3>
+            <p>把同类体积块分类排列，就能数出 <span class="math">1,3,3,1</span>。四组体积相加，就得到和的立方展开式。</p>
             <div class="static-formula">
               <div class="formula-list"><span>(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span></div>
             </div>

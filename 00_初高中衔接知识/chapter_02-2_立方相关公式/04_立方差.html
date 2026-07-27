@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>立方差公式：因式分解与几何解析 | DGOpenKS</title>
 <style>
-:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--grid:#e8eef7;--blue:#3b6fea;--blue-soft:#eef4ff;--blue-line:#c7d8ff;--blue-deep:#1f4fbf;--amber:#f08f3c;--amber-soft:#fff4e8;--amber-line:#f8cfa7;--purple:#8b5cf6;--purple-soft:#f4f0ff;--purple-line:#d8ccff;--green:#16a34a;--green-soft:#ecfdf3;--green-line:#bbf7d0;--red:#dc2626;--red-soft:#fef2f2;--red-line:#fecaca;--radius:8px;--shadow:0 14px 34px rgba(15,23,42,.08);--soft-shadow:0 8px 24px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden}
@@ -104,6 +103,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media print{.topbar,.model-steps,.model-range{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.static-figure,.formula-card,.model-lab,.recognition-card,.cube-diff-model-step{box-shadow:none}.cube-diff-model-step{display:block}.cube-diff-scene-wrap{border-right:0;border-bottom:1px solid var(--line);min-height:230px}.term-row{grid-template-columns:repeat(6,minmax(0,1fr))}.cube-difference-svg{width:100%;max-width:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
+<link rel="stylesheet" href="./assets/formula-page-standard.css">
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
@@ -113,14 +113,15 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <a class="nav-link" href="03_立方和.html">立方和</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
-    <a class="nav-link" href="05_立方公式小结.html">小结</a>
+    <a class="nav-link" href="#summary">核心结论</a>
+    <a class="nav-link" href="05_立方公式小结.html">下一篇</a>
   </div>
 </nav>
 
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 04</span>
   <h1>立方差公式：<br class="mobile-title-break">因式分解与几何解析</h1>
-  <p class="lead"><span class="math">a<sup>3</sup>-b<sup>3</sup></span> 表示两个立方相减。先通过乘法确定两个因子，再从立方体的体积拆分理解它们的来源。</p>
+  <p class="lead">本节先通过代数运算确定 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的两个因子，再用立方体的体积拆分解释这个公式。</p>
 </header>
 
 <main>
@@ -129,7 +130,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
     <div class="section-body">
       <div class="prose">
         <h2>公式推导：从一次因子到分解式</h2>
-        <p>立方差要把两个立方的差 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 写成乘积形式。先从当原式<span class="math">=0</span>时中寻找到一次因子，再用未知系数确定剩下的二次因子。</p>
+        <p>立方差要把两个立方的差 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 写成乘积形式。先根据原式等于 <span class="math">0</span> 时的条件寻找一次因子，再用未知系数确定剩下的二次因子。</p>
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
@@ -154,7 +155,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
             </div>
             <div class="calc-step">
               <div class="formula-line">k-1=0，1-k=0，所以 k=1</div>
-              <p class="step-note">原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失则系数必须为 <span class="math">0</span>。</p>
+              <p class="step-note">原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项抵消则系数为 <span class="math">0</span>。</p>
             </div>
             <div class="calc-step">
               <div class="formula-line">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</div>

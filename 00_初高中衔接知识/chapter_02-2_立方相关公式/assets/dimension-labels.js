@@ -1,4 +1,5 @@
-(() => {
+import * as THREE from './vendor/three-r160/three.module.min.js?v=20260731-esm';
+
   const CANVAS_HEIGHT = 200;
 
   function roundedRect(ctx, x, y, width, height, radius) {
@@ -55,5 +56,4 @@
     return [width * scale, .70 * scale, 1];
   }
 
-  window.DGDimensionLabels = {texture, spriteSize};
-})();
+export const DGDimensionLabels = {texture, spriteSize};

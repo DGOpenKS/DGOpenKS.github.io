@@ -1,4 +1,6 @@
-(() => {
+import * as THREE from './vendor/three-r160/three.module.min.js?v=20260731-esm';
+import {DGDimensionLabels} from './dimension-labels.js?v=20260731-esm';
+
   const colors = {
     blue:0x3b6fea,
     blueDeep:0x1f4fbf,
@@ -47,7 +49,7 @@
   }
 
   function labelTexture(text, color = '#0f172a') {
-    if (window.DGDimensionLabels) return window.DGDimensionLabels.texture(text, color);
+    if (DGDimensionLabels) return DGDimensionLabels.texture(text, color);
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 160;
@@ -250,7 +252,7 @@
       });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(position[0], position[1], position[2]);
-      sprite.scale.set(...(window.DGDimensionLabels ? window.DGDimensionLabels.spriteSize(scale, text) : [1.48 * scale, .46 * scale, 1]));
+      sprite.scale.set(...DGDimensionLabels.spriteSize(scale, text));
       sprite.renderOrder = 82;
       this.dynamic.add(sprite);
       return sprite;
@@ -753,7 +755,7 @@
       });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(position[0], position[1], position[2]);
-      sprite.scale.set(...(window.DGDimensionLabels ? window.DGDimensionLabels.spriteSize(scale, text) : [1.48 * scale, .46 * scale, 1]));
+      sprite.scale.set(...DGDimensionLabels.spriteSize(scale, text));
       sprite.renderOrder = 82;
       this.dynamic.add(sprite);
       return sprite;
@@ -1207,7 +1209,7 @@
     if (!root) return null;
     const refs = buildLab(root, {label:root.getAttribute('data-label') || '公式三维模型'});
     try {
-      if (!window.THREE || !hasWebGL()) throw new Error('WebGL is not available');
+      if (!hasWebGL()) throw new Error('WebGL is not available');
       const model = factory(refs);
       refs.loader.hidden = true;
       refs.fallback.hidden = true;
@@ -1222,7 +1224,7 @@
     }
   }
 
-  window.DGFormulaModels = {
+export const DGFormulaModels = {
     initDifferenceCube(rootId) {
       return safeInit(rootId, refs => new DifferenceCubeModel(refs));
     },
@@ -1232,5 +1234,4 @@
     initCubeDifference(rootId) {
       return safeInit(rootId, refs => new CubeDifferenceVolumeModel(refs));
     }
-  };
-})();
+};

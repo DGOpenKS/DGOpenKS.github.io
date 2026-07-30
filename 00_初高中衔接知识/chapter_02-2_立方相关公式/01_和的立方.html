@@ -94,7 +94,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 .count.b3 b{color:var(--cyan)}
 .static-split{margin:24px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--soft-shadow);padding:18px;break-inside:avoid}
 .static-split h3{color:var(--blue);font-size:1.2rem;margin-bottom:6px}
-.static-split-lead{max-width:860px;color:#334155}
+.static-split-lead{max-width:820px;color:#334155}
 .cube-expansion-flow{margin-top:16px}
 .cube-template-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:12px;break-inside:avoid}
 .cube-template-panel{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);padding:12px;display:grid;grid-template-rows:auto minmax(210px,1fr) auto;gap:10px}
@@ -162,7 +162,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   .calc-step{grid-template-columns:minmax(0,1fr);gap:8px}
   .step-note{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:8px}
 }
-@media(max-width:900px){
+@media(max-width:1023px){
   .section,.lab{grid-template-columns:minmax(0,1fr)}
   .model-step{grid-template-columns:minmax(0,1fr)}
   .static-scene-wrap{border-right:0;border-bottom:1px solid var(--line)}
@@ -316,7 +316,7 @@ h1,h2{
 }
 
 h1{
-  max-width:900px;
+  max-width:1023px;
   margin-bottom:1.1rem;
   font-size:clamp(2.4rem,5vw,4.25rem);
   font-weight:700;
@@ -355,7 +355,7 @@ main{
   scroll-margin-top:78px;
 }
 
-@media(min-width:901px){
+@media(min-width:1024px){
   #calculation.section{padding-top:3.75rem;padding-bottom:3.5rem}
   #model.section{padding-top:3.5rem;padding-bottom:3.5rem}
   #summary.section{padding-top:3.5rem}
@@ -554,7 +554,7 @@ main{
   .calc-step{grid-template-columns:minmax(0,1fr)}
 }
 
-@media(max-width:900px){
+@media(max-width:1023px){
   .hero{min-height:auto;padding-top:4.5rem}
   .hero::after{display:none}
   .section,#model.section{grid-template-columns:110px minmax(0,1fr);gap:2rem}
@@ -586,7 +586,7 @@ main{
   .formula-card,.model-step,.summary-panel,.static-split,.cube-template-board,.cube-handout-wrap{box-shadow:none}
 }
 </style>
-<link rel="stylesheet" href="./assets/formula-page-standard.css">
+<link rel="stylesheet" href="../assets/learning-page-system.css">
 <style id="sum-cube-mobile-layout">
 h2.marker{
   margin:0;
@@ -1190,9 +1190,10 @@ h2.marker{
 
 <footer class="footer">DGOpenKS · 02-2 立方相关公式 · 和的立方公式</footer>
 
-<script src="./assets/three.min.js"></script>
-<script src="./assets/dimension-labels.js"></script>
-<script>
+<script type="module">
+import * as THREE from './assets/vendor/three-r160/three.module.min.js?v=20260731-esm';
+import {DGDimensionLabels} from './assets/dimension-labels.js?v=20260731-esm';
+
 (() => {
   const FLOW_A_LEN = 120;
   const FLOW_B_LEN = 70;
@@ -1814,7 +1815,7 @@ h2.marker{
   }
 
   function makeLabelTexture(text, color) {
-    if (window.DGDimensionLabels) return window.DGDimensionLabels.texture(text, color);
+    return DGDimensionLabels.texture(text, color);
     const labelCanvas = document.createElement('canvas');
     labelCanvas.width = 512;
     labelCanvas.height = 128;
@@ -1902,7 +1903,7 @@ h2.marker{
       depthWrite:false
     });
     const sprite = new THREE.Sprite(material);
-    sprite.scale.set(...(window.DGDimensionLabels ? window.DGDimensionLabels.spriteSize(1, text) : [1.55, .38, 1]));
+    sprite.scale.set(...DGDimensionLabels.spriteSize(1, text));
     sprite.renderOrder = 80;
     return sprite;
   }
@@ -2421,7 +2422,7 @@ h2.marker{
   }
 
   function mountStaticModels() {
-    const webglReady = !!window.THREE && hasWebGL();
+    const webglReady = hasWebGL();
     staticStepCards.forEach(card => {
       const canvas = card.querySelector('canvas');
       if (canvas && !canvas.hasAttribute('tabindex')) canvas.tabIndex = 0;
@@ -2497,7 +2498,8 @@ h2.marker{
         }
       })),
       renderer:rendererKind,
-      hasThree:!!window.THREE,
+      hasThree:THREE.REVISION === '160',
+      threeRevision:THREE.REVISION,
       hasWebGL:hasWebGL()
     })
   };

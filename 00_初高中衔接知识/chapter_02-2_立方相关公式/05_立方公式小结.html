@@ -63,18 +63,207 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media print{.topbar{display:none!important}body{background:white}.hero,main{max-width:none;padding-left:0;padding-right:0}.section{display:block;break-inside:avoid;padding:28px 0}.marker{position:static;margin-bottom:12px}.structure,.equation-block{box-shadow:none}.structure-grid,.compare,.formula-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <link rel="stylesheet" href="./assets/formula-page-standard.css">
+<style id="summary-mobile-layout">
+@media(max-width:640px){
+  body{
+    font-size:16px;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+
+  .hero{
+    width:calc(100% - 2rem);
+    padding:2.15rem 0 2.35rem;
+  }
+
+  .hero h1 br{
+    display:none;
+  }
+
+  .hero .title-unit{
+    display:inline-block;
+    white-space:nowrap;
+  }
+
+  .eyebrow{
+    margin-bottom:.85rem;
+    font-size:.7rem;
+  }
+
+  .lead{
+    font-size:.96rem;
+    line-height:1.72;
+  }
+
+  main{
+    padding-bottom:2.5rem;
+  }
+
+  .section{
+    gap:.75rem;
+    padding:2.25rem 0;
+  }
+
+  .marker{
+    gap:.5rem;
+    margin:0 0 .1rem;
+    font-size:.7rem;
+  }
+
+  .marker span{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+    font-size:.82rem;
+    box-shadow:0 1px 2px rgba(23,32,47,.05);
+  }
+
+  h2{
+    margin-bottom:.65rem;
+    font-size:1.45rem;
+    line-height:1.3;
+    text-wrap:pretty;
+  }
+
+  h3{
+    margin:.35rem 0;
+    font-size:1rem;
+  }
+
+  .mobile-heading-unit{
+    display:block;
+  }
+
+  .prose{
+    font-size:.95rem;
+    line-height:1.72;
+  }
+
+  .prose p{
+    margin-bottom:.65rem;
+  }
+
+  .prose p .math{
+    white-space:nowrap;
+  }
+
+  .structure-grid,
+  .compare,
+  .formula-list,
+  .reasoning,
+  .flow{
+    gap:.65rem;
+    margin:.85rem 0;
+  }
+
+  .structure{
+    padding:.9rem;
+  }
+
+  .structure .equation{
+    margin:.45rem 0;
+    font-size:1.02rem;
+  }
+
+  .direction{
+    padding:.18rem .5rem;
+    font-size:.7rem;
+  }
+
+  .equation-block{
+    margin:.85rem 0;
+    padding:.85rem;
+  }
+
+  .equation-block .equation{
+    font-size:1rem;
+    line-height:1.6;
+  }
+
+  .compare-item{
+    padding:.8rem .9rem;
+  }
+
+  .compare-item .equation{
+    margin:.35rem 0;
+    font-size:.98rem;
+    line-height:1.55;
+  }
+
+  .reasoning{
+    gap:0;
+  }
+
+  .reasoning-row{
+    gap:.4rem;
+    padding:.75rem 0;
+  }
+
+  .conditions{
+    margin:.85rem 0;
+    padding:.85rem .9rem .85rem 2rem;
+  }
+
+  .conditions li{
+    margin:.25rem 0;
+  }
+
+  .purpose{
+    margin:.85rem 0;
+    padding:.3rem 0 .3rem .75rem;
+  }
+
+  .formula-list{
+    gap:.5rem;
+  }
+
+  .formula-list article{
+    padding:.75rem .85rem;
+  }
+
+  .formula-list .equation{
+    font-size:.94rem;
+    line-height:1.5;
+  }
+
+  .flow{
+    gap:0;
+  }
+
+  .flow-step{
+    grid-template-columns:30px minmax(0,1fr);
+    gap:.65rem;
+    padding:.75rem 0;
+  }
+
+  .flow-step>span{
+    width:28px;
+    height:28px;
+    font-size:.82rem;
+  }
+
+  .summary-panel{
+    padding:1rem;
+  }
+
+  .footer{
+    padding:1.65rem 1rem;
+  }
+}
+</style>
+<script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
-<nav class="topbar" aria-label="章节导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="02_差的立方.html">差的立方</a><a class="nav-link" href="03_立方和.html">立方和</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
+<nav class="topbar" aria-label="章节导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="02_差的立方.html">差的立方</a><a class="nav-link" href="03_立方和.html">立方和</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
 <header class="hero"><span class="eyebrow">02-2 立方相关公式 · 05</span><h1><span class="title-unit">立方公式小结：</span><br><span class="title-unit">先判断结构，</span><span class="title-unit">再决定变形</span></h1><p class="lead">四个立方公式分成两类：整体的立方用于展开，两个立方的和或差用于因式分解。先判断对象，再决定变形方向。</p></header>
 <main>
-<section class="section" id="structure"><div class="marker" aria-hidden="true"><span>01</span>结构判断</div><div class="prose"><h2>判断三次方作用的对象</h2><p>判断立方结构时，首先要确定三次方作用的对象。</p><div class="structure-grid"><article class="structure"><span class="direction">展开成多项式</span><h3>整体的立方</h3><span class="equation">(a+b)<sup>3</sup>，(a-b)<sup>3</sup></span><p>括号整体的三次方，表示三个相同因式相乘。</p></article><article class="structure factor"><span class="direction">分解成因式乘积</span><h3>两个立方的和或差</h3><span class="equation">a<sup>3</sup>+b<sup>3</sup>，a<sup>3</sup>-b<sup>3</sup></span><p>两个完整立方相加或相减，需要寻找一次因子。</p></article></div><p><span class="math">(a+b)<sup>3</sup></span> 表示三个相同的 <span class="math">a+b</span> 相乘，<span class="math">a<sup>3</sup>+b<sup>3</sup></span> 表示两个立方相加。虽然它们都含有加号和三次方，但三次方作用的对象不同，后续变形方向也不同。</p></div></section>
-<section class="section" id="expand"><div class="marker" aria-hidden="true"><span>02</span>整体的立方</div><div class="prose"><h2>整体的立方：拆成三个相同因式</h2><p>括号整体的三次方表示三个相同因式相乘：</p><div class="equation-block"><span class="equation">(a±b)<sup>3</sup> = (a±b)(a±b)(a±b)</span></div><p>顺着乘法展开并合并同类项，得到：</p><div class="compare"><article class="compare-item"><h3>和的立方</h3><span class="equation">(a+b)<sup>3</sup> = a<sup>3</sup>+3a<sup>2</sup>b+3ab<sup>2</sup>+b<sup>3</sup></span></article><article class="compare-item"><h3>差的立方</h3><span class="equation">(a-b)<sup>3</sup> = a<sup>3</sup>-3a<sup>2</sup>b+3ab<sup>2</sup>-b<sup>3</sup></span></article></div><p>两个公式的四项结构相同，系数都是 <span class="math">1,3,3,1</span>。和的立方中各项都为正；差的立方中，<span class="math">-b</span> 参与相乘的次数决定各项符号，因此符号依次为正、负、正、负。</p><p class="purpose">这一类公式的方向是从三个相同因式的乘积变成四项多项式。</p></div></section>
-<section class="section" id="linear-factor"><div class="marker" aria-hidden="true"><span>03</span>利用 0</div><div class="prose"><h2>为什么可以通过原式为 0 寻找一次因子</h2><p>因式分解的目标是把一个多项式写成几个因式的乘积。如果多项式 <span class="math">P(a)</span> 含有一次因子 <span class="math">a-r</span>，就可以写成：</p><div class="equation-block"><span class="equation">P(a)=(a-r)Q(a)</span></div><p>当 <span class="math">a=r</span> 时，一次因子 <span class="math">a-r</span> 等于 <span class="math">0</span>，整个乘积也等于 <span class="math">0</span>。所以，若 <span class="math">a-r</span> 是 <span class="math">P(a)</span> 的因子，必然有 <span class="math">P(r)=0</span>。</p><p>反过来，多项式除以 <span class="math">a-r</span> 时，余数就是 <span class="math">P(r)</span>。如果找到 <span class="math">P(r)=0</span>，余数为 <span class="math">0</span>，说明 <span class="math">P(a)</span> 可以被 <span class="math">a-r</span> 整除，因此 <span class="math">a-r</span> 就是它的一次因子。</p><div class="equation-block"><span class="equation">P(r)=0 ⟺ a-r 是 P(a) 的因子</span></div><p>这就是因式定理。</p><p class="purpose">这里把原式暂时设为 <span class="math">0</span>，是为了观察哪些取值会使它为 <span class="math">0</span>，再由这个取值写出对应的一次因子。原多项式本身仍然保持不变。</p><h3>什么时候适合使用</h3><ol class="conditions"><li>当前目标是因式分解。</li><li>原式可以看作某个字母的多项式，其他字母暂时看作已知量。</li><li>我们正在寻找形如 <span class="math">a-r</span> 的一次因子。</li></ol><p>如果任务是展开 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，直接按乘法展开即可；如果多项式各项已经有明显的公因式，先提取公因式更直接。当我们需要继续因式分解，并且要寻找一次因子时，再考察原式在什么条件下等于 <span class="math">0</span>。</p></div></section>
-<section class="section" id="factor"><div class="marker" aria-hidden="true"><span>04</span>两个立方</div><div class="prose"><h2>两个立方的和或差：先找一次因子</h2><p><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 和 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的目标是写成因式乘积。一次因子可以根据使原式等于 <span class="math">0</span> 的取值寻找。</p><div class="reasoning"><div class="reasoning-row"><div><span class="equation">a<sup>3</sup>+b<sup>3</sup></span></div><p>当 <span class="math">a=-b</span> 时，原式与 <span class="math">a+b</span> 同时为 <span class="math">0</span>，可以尝试一次因子 <span class="math">a+b</span>。</p></div><div class="reasoning-row"><div><span class="equation">a<sup>3</sup>-b<sup>3</sup></span></div><p>当 <span class="math">a=b</span> 时，原式与 <span class="math">a-b</span> 同时为 <span class="math">0</span>，可以尝试一次因子 <span class="math">a-b</span>。</p></div></div><p>找到一次因子后，剩下的因子应是二次式。先统一写成 <span class="math">a<sup>2</sup>+kab+b<sup>2</sup></span>，再通过乘法展开确定 <span class="math">k</span>。</p><div class="reasoning"><div class="reasoning-row"><div><span class="equation">(a+b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span></div><p><span class="math">=a<sup>3</sup>+(k+1)a<sup>2</sup>b+(k+1)ab<sup>2</sup>+b<sup>3</sup></span>。原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失，则系数必须为 <span class="math">0</span>，所以 <span class="math">k=-1</span>。</p></div><div class="reasoning-row"><div><span class="equation">(a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span></div><p><span class="math">=a<sup>3</sup>+(k-1)a<sup>2</sup>b+(1-k)ab<sup>2</sup>-b<sup>3</sup></span>。原式同样没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失，则系数必须为 <span class="math">0</span>，所以 <span class="math">k=1</span>。</p></div></div><div class="compare"><article class="compare-item"><h3>立方和</h3><span class="equation">a<sup>3</sup>+b<sup>3</sup>=(a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span></article><article class="compare-item"><h3>立方差</h3><span class="equation">a<sup>3</sup>-b<sup>3</sup>=(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></article></div><p class="purpose">这一类公式的方向是从两个立方的和或差变成两个因式的乘积。</p></div></section>
-<section class="section" id="formulas"><div class="marker" aria-hidden="true"><span>05</span>公式比较</div><div class="prose"><h2>四个公式放在一起比较</h2><div class="formula-list"><article><p>和的立方 · 展开</p><span class="equation">(a+b)<sup>3</sup>=a<sup>3</sup>+3a<sup>2</sup>b+3ab<sup>2</sup>+b<sup>3</sup></span></article><article><p>差的立方 · 展开</p><span class="equation">(a-b)<sup>3</sup>=a<sup>3</sup>-3a<sup>2</sup>b+3ab<sup>2</sup>-b<sup>3</sup></span></article><article><p>立方和 · 因式分解</p><span class="equation">a<sup>3</sup>+b<sup>3</sup>=(a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span></article><article><p>立方差 · 因式分解</p><span class="equation">a<sup>3</sup>-b<sup>3</sup>=(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></article></div><p>这里最需要分清的是 <span class="math">(a+b)<sup>3</sup></span> 与 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。前者的三次方作用于整个括号，展开后有四项；后者由两个立方相加，分解后得到两个因式。</p></div></section>
-<section class="section" id="flow"><div class="marker" aria-hidden="true"><span>06</span>判断流程</div><div class="prose"><h2>结构判断流程</h2><div class="flow"><div class="flow-step"><span>1</span><p><strong>看三次方是否写在括号外。</strong>如果是 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，就把括号整体写成三个相同因式，再展开并合并同类项。</p></div><div class="flow-step"><span>2</span><p><strong>看是否需要因式分解，并寻找一次因子。</strong>若各项有明显的公因式，先提取公因式。若没有明显的公因式，可以把原式看作某个字母的多项式，尝试考察哪个取值使原式为 <span class="math">0</span>，再写出对应的一次因子。</p></div><div class="flow-step"><span>3</span><p><strong>对立方和与立方差确定一次因子。</strong>对于 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>，取 <span class="math">a=-b</span>，可以确定一次因子 <span class="math">a+b</span>；对于 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>，取 <span class="math">a=b</span>，可以确定一次因子 <span class="math">a-b</span>。</p></div><div class="flow-step"><span>4</span><p><strong>检查变形结果。</strong>展开公式要检查四项是否完整、系数是否为 <span class="math">1,3,3,1</span>、符号是否来自实际乘法。分解公式要把两个因式乘回去，检查混合项是否抵消，最终是否只剩原来的两个立方。</p></div></div></div></section>
-<section class="section" id="conclusion"><div class="marker" aria-hidden="true"><span>07</span>核心结论</div><div class="prose"><h2>核心结论</h2><div class="summary-panel conclusion"><p>判断立方公式时，先确定三次方作用的对象。整体的立方沿乘法展开，两个立方的和或差沿因式分解处理。寻找一次因子时，可以把原式看作某个字母的多项式，通过使原式为 <span class="math">0</span> 的取值找到对应的一次因子。公式的系数和符号都来自乘法结构，可以通过展开或乘回去检查。</p></div></div></section>
+<section class="section" id="structure"><h2 class="marker"><span aria-hidden="true">01</span>结构判断</h2><div class="prose"><p>判断立方结构时，首先要确定三次方作用的对象。</p><div class="structure-grid"><article class="structure"><span class="direction">展开成多项式</span><h3>整体的立方</h3><span class="equation">(a+b)<sup>3</sup>，(a-b)<sup>3</sup></span><p>括号整体的三次方，表示三个相同因式相乘。</p></article><article class="structure factor"><span class="direction">分解成因式乘积</span><h3>两个立方的和或差</h3><span class="equation">a<sup>3</sup>+b<sup>3</sup>，a<sup>3</sup>-b<sup>3</sup></span><p>两个完整立方相加或相减，需要寻找一次因子。</p></article></div><p><span class="math">(a+b)<sup>3</sup></span> 表示三个相同的 <span class="math">a+b</span> 相乘，<span class="math">a<sup>3</sup>+b<sup>3</sup></span> 表示两个立方相加。虽然它们都含有加号和三次方，但三次方作用的对象不同，后续变形方向也不同。</p></div></section>
+<section class="section" id="expand"><h2 class="marker"><span aria-hidden="true">02</span>整体的立方</h2><div class="prose"><p>括号整体的三次方表示三个相同因式相乘：</p><div class="equation-block"><span class="equation">(a±b)<sup>3</sup> = (a±b)(a±b)(a±b)</span></div><p>顺着乘法展开并合并同类项，得到：</p><div class="compare"><article class="compare-item"><h3>和的立方</h3><span class="equation">(a+b)<sup>3</sup> = a<sup>3</sup>+3a<sup>2</sup>b+3ab<sup>2</sup>+b<sup>3</sup></span></article><article class="compare-item"><h3>差的立方</h3><span class="equation">(a-b)<sup>3</sup> = a<sup>3</sup>-3a<sup>2</sup>b+3ab<sup>2</sup>-b<sup>3</sup></span></article></div><p>两个公式的四项结构相同，系数都是 <span class="math">1,3,3,1</span>。和的立方中各项都为正；差的立方中，<span class="math">-b</span> 参与相乘的次数决定各项符号，因此符号依次为正、负、正、负。</p><p class="purpose">这一类公式的方向是从三个相同因式的乘积变成四项多项式。</p></div></section>
+<section class="section" id="linear-factor"><h2 class="marker"><span aria-hidden="true">03</span>利用 0</h2><div class="prose"><p>因式分解的目标是把一个多项式写成几个因式的乘积。如果多项式 <span class="math">P(a)</span> 含有一次因子 <span class="math">a-r</span>，就可以写成：</p><div class="equation-block"><span class="equation">P(a)=(a-r)Q(a)</span></div><p>当 <span class="math">a=r</span> 时，一次因子 <span class="math">a-r</span> 等于 <span class="math">0</span>，整个乘积也等于 <span class="math">0</span>。所以，若 <span class="math">a-r</span> 是 <span class="math">P(a)</span> 的因子，必然有 <span class="math">P(r)=0</span>。</p><p>反过来，多项式除以 <span class="math">a-r</span> 时，余数就是 <span class="math">P(r)</span>。如果找到 <span class="math">P(r)=0</span>，余数为 <span class="math">0</span>，说明 <span class="math">P(a)</span> 可以被 <span class="math">a-r</span> 整除，因此 <span class="math">a-r</span> 就是它的一次因子。</p><div class="equation-block"><span class="equation">P(r)=0 ⟺ a-r 是 P(a) 的因子</span></div><p>这就是因式定理。</p><p class="purpose">这里把原式暂时设为 <span class="math">0</span>，是为了观察哪些取值会使它为 <span class="math">0</span>，再由这个取值写出对应的一次因子。原多项式本身仍然保持不变。</p><h3>什么时候适合使用</h3><ol class="conditions"><li>当前目标是因式分解。</li><li>原式可以看作某个字母的多项式，其他字母暂时看作已知量。</li><li>我们正在寻找形如 <span class="math">a-r</span> 的一次因子。</li></ol><p>如果任务是展开 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，直接按乘法展开即可；如果多项式各项已经有明显的公因式，先提取公因式更直接。当我们需要继续因式分解，并且要寻找一次因子时，再考察原式在什么条件下等于 <span class="math">0</span>。</p></div></section>
+<section class="section" id="factor"><h2 class="marker"><span aria-hidden="true">04</span>两个立方</h2><div class="prose"><p><span class="math">a<sup>3</sup>+b<sup>3</sup></span> 和 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的目标是写成因式乘积。一次因子可以根据使原式等于 <span class="math">0</span> 的取值寻找。</p><div class="reasoning"><div class="reasoning-row"><div><span class="equation">a<sup>3</sup>+b<sup>3</sup></span></div><p>当 <span class="math">a=-b</span> 时，原式与 <span class="math">a+b</span> 同时为 <span class="math">0</span>，可以尝试一次因子 <span class="math">a+b</span>。</p></div><div class="reasoning-row"><div><span class="equation">a<sup>3</sup>-b<sup>3</sup></span></div><p>当 <span class="math">a=b</span> 时，原式与 <span class="math">a-b</span> 同时为 <span class="math">0</span>，可以尝试一次因子 <span class="math">a-b</span>。</p></div></div><p>找到一次因子后，剩下的因子应是二次式。先统一写成 <span class="math">a<sup>2</sup>+kab+b<sup>2</sup></span>，再通过乘法展开确定 <span class="math">k</span>。</p><div class="reasoning"><div class="reasoning-row"><div><span class="equation">(a+b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span></div><p><span class="math">=a<sup>3</sup>+(k+1)a<sup>2</sup>b+(k+1)ab<sup>2</sup>+b<sup>3</sup></span>。原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失，则系数必须为 <span class="math">0</span>，所以 <span class="math">k=-1</span>。</p></div><div class="reasoning-row"><div><span class="equation">(a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)</span></div><p><span class="math">=a<sup>3</sup>+(k-1)a<sup>2</sup>b+(1-k)ab<sup>2</sup>-b<sup>3</sup></span>。原式同样没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项消失，则系数必须为 <span class="math">0</span>，所以 <span class="math">k=1</span>。</p></div></div><div class="compare"><article class="compare-item"><h3>立方和</h3><span class="equation">a<sup>3</sup>+b<sup>3</sup>=(a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span></article><article class="compare-item"><h3>立方差</h3><span class="equation">a<sup>3</sup>-b<sup>3</sup>=(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></article></div><p class="purpose">这一类公式的方向是从两个立方的和或差变成两个因式的乘积。</p></div></section>
+<section class="section" id="formulas"><h2 class="marker"><span aria-hidden="true">05</span>公式比较</h2><div class="prose"><div class="formula-list"><article><p>和的立方 · 展开</p><span class="equation">(a+b)<sup>3</sup>=a<sup>3</sup>+3a<sup>2</sup>b+3ab<sup>2</sup>+b<sup>3</sup></span></article><article><p>差的立方 · 展开</p><span class="equation">(a-b)<sup>3</sup>=a<sup>3</sup>-3a<sup>2</sup>b+3ab<sup>2</sup>-b<sup>3</sup></span></article><article><p>立方和 · 因式分解</p><span class="equation">a<sup>3</sup>+b<sup>3</sup>=(a+b)(a<sup>2</sup>-ab+b<sup>2</sup>)</span></article><article><p>立方差 · 因式分解</p><span class="equation">a<sup>3</sup>-b<sup>3</sup>=(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></article></div><p>这里最需要分清的是 <span class="math">(a+b)<sup>3</sup></span> 与 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>。前者的三次方作用于整个括号，展开后有四项；后者由两个立方相加，分解后得到两个因式。</p></div></section>
+<section class="section" id="flow"><h2 class="marker"><span aria-hidden="true">06</span>判断流程</h2><div class="prose"><div class="flow"><div class="flow-step"><span>1</span><p><strong>看三次方是否写在括号外。</strong>如果是 <span class="math">(a+b)<sup>3</sup></span> 或 <span class="math">(a-b)<sup>3</sup></span>，就把括号整体写成三个相同因式，再展开并合并同类项。</p></div><div class="flow-step"><span>2</span><p><strong>看是否需要因式分解，并寻找一次因子。</strong>若各项有明显的公因式，先提取公因式。若没有明显的公因式，可以把原式看作某个字母的多项式，尝试考察哪个取值使原式为 <span class="math">0</span>，再写出对应的一次因子。</p></div><div class="flow-step"><span>3</span><p><strong>对立方和与立方差确定一次因子。</strong>对于 <span class="math">a<sup>3</sup>+b<sup>3</sup></span>，取 <span class="math">a=-b</span>，可以确定一次因子 <span class="math">a+b</span>；对于 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>，取 <span class="math">a=b</span>，可以确定一次因子 <span class="math">a-b</span>。</p></div><div class="flow-step"><span>4</span><p><strong>检查变形结果。</strong>展开公式要检查四项是否完整、系数是否为 <span class="math">1,3,3,1</span>、符号是否来自实际乘法。分解公式要把两个因式乘回去，检查混合项是否抵消，最终是否只剩原来的两个立方。</p></div></div></div></section>
+<section class="section" id="conclusion"><h2 class="marker"><span aria-hidden="true">07</span>核心结论</h2><div class="prose"><div class="summary-panel conclusion"><p>判断立方公式时，先确定三次方作用的对象。整体的立方沿乘法展开，两个立方的和或差沿因式分解处理。寻找一次因子时，可以把原式看作某个字母的多项式，通过使原式为 <span class="math">0</span> 的取值找到对应的一次因子。公式的系数和符号都来自乘法结构，可以通过展开或乘回去检查。</p></div></div></section>
 </main>
 <footer class="footer">DGOpenKS · 02-2 立方相关公式 · 小结</footer>
 </body>

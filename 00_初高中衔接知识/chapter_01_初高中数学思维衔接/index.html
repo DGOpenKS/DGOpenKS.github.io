@@ -7,7 +7,7 @@
 <script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&amp;family=Noto+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet">
 <script>
 MathJax = {
   tex: { inlineMath:[['$','$'],['\\(','\\)']], displayMath:[['$$','$$'],['\\[','\\]']] },
@@ -18,91 +18,74 @@ MathJax = {
 <style>
 :root{
   color-scheme:light;
-  --bg:#f6f8fb;
-  --surface:#ffffff;
-  --surface-2:#f8fafc;
-  --ink:#0f172a;
-  --muted:#64748b;
-  --soft:#94a3b8;
-  --line:#dbe3ef;
-  --axis:#334155;
-  --grid:#e6edf5;
-  --object:#2563eb;
-  --input:#06b6d4;
-  --output:#8b5cf6;
-  --parameter:#f59e0b;
-  --movement:#7c3aed;
-  --conclusion:#10b981;
-  --warning:#ef4444;
-  --reference:#94a3b8;
-  --radius-sm:8px;
-  --radius:14px;
-  --radius-lg:22px;
-  --shadow:0 18px 60px rgba(15,23,42,.08);
-  --shadow-soft:0 8px 30px rgba(15,23,42,.06);
+  --bg:#f4f2ec;
+  --surface:#fffdf8;
+  --surface-2:#f7f5ef;
+  --ink:#17202f;
+  --muted:#6f7885;
+  --soft:#98a0aa;
+  --line:#dcd9d0;
+  --axis:#3f4b5c;
+  --grid:#e5e0d6;
+  --object:#176b87;
+  --input:#2f8794;
+  --output:#7155a3;
+  --parameter:#a35f18;
+  --movement:#7155a3;
+  --conclusion:#2f765d;
+  --warning:#b54a43;
+  --reference:#8a919b;
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-lg:20px;
+  --shadow:0 20px 56px rgba(23,32,47,.09);
+  --shadow-soft:0 1px 2px rgba(23,32,47,.05),0 9px 24px rgba(23,32,47,.055);
   --font:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:'Noto Serif SC',"Songti SC","STSong",serif;
   --mono:"SFMono-Regular","Cascadia Code","Consolas",monospace;
+  --page-max:1180px;
+  --reading-max:920px;
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-concept:cubic-bezier(.45,0,.2,1);
 }
-@media(prefers-color-scheme:dark){
-  :root{
-    color-scheme:dark;
-    --bg:#08111f;
-    --surface:#101827;
-    --surface-2:#0d1524;
-    --ink:#e5edf7;
-    --muted:#94a3b8;
-    --soft:#64748b;
-    --line:#1e2d45;
-    --axis:#cbd5e1;
-    --grid:#1d2b3f;
-    --object:#60a5fa;
-    --input:#22d3ee;
-    --output:#a78bfa;
-    --parameter:#fbbf24;
-    --movement:#c084fc;
-    --conclusion:#34d399;
-    --warning:#f87171;
-    --reference:#64748b;
-    --shadow:0 18px 60px rgba(0,0,0,.36);
-    --shadow-soft:0 8px 30px rgba(0,0,0,.28);
-  }
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.75;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 3%,rgba(23,107,135,.08),transparent 27rem),
+    radial-gradient(circle at 90% 20%,rgba(113,85,163,.06),transparent 25rem),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  line-height:1.78;
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
 button,input{font:inherit}
 a{color:inherit}
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent)}
-.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(244,242,236,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,195,184,.8)}
+.topbar-inner{width:min(var(--page-max),calc(100% - 2rem));min-height:62px;margin:0 auto;padding:0;display:flex;align-items:center;gap:.35rem;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
-.brand{font-weight:800;color:var(--object);letter-spacing:.02em;white-space:nowrap;margin-right:10px}
-.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
-.nav-pill:hover,.nav-pill.active{color:var(--object);background:color-mix(in srgb,var(--object) 9%,transparent);border-color:color-mix(in srgb,var(--object) 18%,transparent)}
-.hero{max-width:1180px;margin:0 auto;padding:70px 22px 42px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:42px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--object);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--object) 9%,transparent);border:1px solid color-mix(in srgb,var(--object) 18%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:18px}
-.hero h1{font-size:clamp(2.1rem,5vw,4.6rem);line-height:1.05;letter-spacing:0;margin:0 0 20px;font-weight:800}
-.hero .lead{font-size:clamp(1.03rem,1.6vw,1.25rem);color:var(--muted);max-width:650px;margin:0 0 26px}
+.brand{font-weight:900;color:#104b62;letter-spacing:.08em;white-space:nowrap;margin-right:auto}
+.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:800;padding:.42rem .72rem;border-radius:999px;white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.nav-pill:hover,.nav-pill.active{color:#104b62;background:var(--surface);border-color:var(--line)}
+.hero{max-width:var(--page-max);margin:0 auto;padding:4.5rem 20px 2.7rem;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:#104b62;font-size:.75rem;font-weight:900;letter-spacing:.13em;margin-bottom:1.15rem}
+.eyebrow::before{width:28px;height:2px;background:var(--object);content:""}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4.7vw,4rem);line-height:1.08;letter-spacing:0;margin:0 0 1.1rem;font-weight:700;text-wrap:balance}
+.hero .lead{font-size:clamp(1.04rem,1.7vw,1.22rem);line-height:1.86;color:#3f4b5c;max-width:760px;margin:0 0 1.5rem}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .12s var(--ease),background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
 .btn:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--object) 36%,var(--line));color:var(--object)}
-.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:18px}
-.thinking-switch{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
-.thought{border:1px solid var(--line);background:var(--surface-2);border-radius:16px;padding:18px;min-height:170px;min-width:0}
-.thought small{display:block;color:var(--muted);font-weight:800;margin-bottom:10px}
-.thought .formula{font-family:var(--mono);font-size:clamp(.86rem,2.6vw,1.18rem);color:var(--ink);margin:12px 0;white-space:nowrap}
-.thought.answer{border-color:color-mix(in srgb,var(--reference) 34%,var(--line))}
-.thought.object{border-color:color-mix(in srgb,var(--object) 38%,var(--line));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--object) 12%,transparent)}
-.arrow-shift{height:44px;width:44px;border-radius:999px;background:color-mix(in srgb,var(--movement) 12%,transparent);color:var(--movement);display:grid;place-items:center;font-weight:900}
-main{max-width:1180px;margin:0 auto;padding:8px 22px 90px}
-.stage{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:58px 0;border-top:1px solid color-mix(in srgb,var(--line) 72%,transparent)}
-.stage-marker{position:sticky;top:58px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:800}
-.stage-marker span{display:block;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--object);margin-bottom:10px}
+.btn.primary{background:#104b62;color:#fffdf8;border-color:#104b62}
+main{width:min(var(--page-max),calc(100% - 2rem));max-width:none;margin:0 auto;padding:8px 0 6rem}
+.stage{display:grid;grid-template-columns:150px minmax(0,var(--reading-max));justify-content:center;gap:clamp(1.5rem,5vw,4.5rem);padding:3.5rem 0;border-top:1px solid var(--line);scroll-margin-top:78px}
+.stage-marker{position:sticky;top:92px;align-self:start;color:#104b62;font-size:.8rem;font-weight:900;letter-spacing:.05em}
+.stage-marker span{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--surface);border:1px solid #acd6dd;color:#104b62;margin-bottom:.75rem;font-family:var(--serif);font-size:1rem;box-shadow:var(--shadow-soft)}
 .stage-body{min-width:0}
-.stage-kicker{color:var(--object);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-h2{font-size:clamp(1.55rem,2.6vw,2.55rem);line-height:1.18;margin:0 0 14px;letter-spacing:0}
+.stage-kicker{display:none}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.24;margin:0 0 .9rem;letter-spacing:0;text-wrap:balance}
 h3{font-size:1.05rem;margin:0 0 10px}
 p{margin:0 0 12px}
 .subtle{color:var(--muted)}
@@ -110,9 +93,10 @@ p{margin:0 0 12px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:22px}
 .anim-embed{position:relative;width:100%;max-width:800px;margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-soft);background:#000}
 .anim-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-actions{display:flex;justify-content:center;margin-top:14px}
 .panel.tight{padding:16px}
 .equation-card{border-radius:18px;padding:22px;background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--line)}
-.big-formula{font-family:var(--mono);font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.2;margin:16px 0;color:var(--ink)}
+.big-formula{max-width:100%;font-family:var(--mono);font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.2;margin:16px 0;color:var(--ink);overflow-x:auto}
 .answer-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
 .answer-chip{border:1px solid color-mix(in srgb,var(--conclusion) 34%,var(--line));background:color-mix(in srgb,var(--conclusion) 10%,transparent);color:var(--conclusion);border-radius:999px;padding:8px 12px;font-weight:900}
 .question-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
@@ -193,67 +177,78 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .reveal{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .reveal{opacity:0;transform:translateY(18px)}
 .js .reveal.in{opacity:1;transform:translateY(0)}
+@media(min-width:901px){
+  .stage-marker{
+    display:grid;
+    width:100%;
+    min-height:108px;
+    max-width:150px;
+    padding:.9rem .8rem 1rem 1rem;
+    justify-items:center;
+    align-content:start;
+    gap:.75rem;
+    border-left:3px solid var(--object);
+    border-radius:0 var(--radius) var(--radius) 0;
+    background:linear-gradient(90deg,rgba(232,244,246,.94),rgba(232,244,246,.32) 76%,transparent);
+    text-align:center;
+  }
+  .stage-marker span{margin:0}
+}
 @media(max-width:900px){
   .hero,.stage,.grid-2,.compare,.reflection-grid{grid-template-columns:1fr}
   .canvas-panel.stage-lab{display:block}
   .canvas-panel.stage-lab canvas{position:static;min-height:0;margin:14px 0}
-  .stage-marker{position:static;display:flex;align-items:center;gap:10px}
+  .stage-marker{position:static;display:flex;align-items:center;gap:10px;padding:.75rem 1rem;border-left:3px solid var(--object);border-radius:0 var(--radius) var(--radius) 0;background:linear-gradient(90deg,rgba(232,244,246,.94),rgba(232,244,246,.32) 76%,transparent)}
   .stage-marker span{margin-bottom:0}
-  .thinking-switch{grid-template-columns:1fr}
-  .arrow-shift{justify-self:center;transform:rotate(90deg)}
   .question-strip,.control-grid,.stat-grid,.lens-grid,.transfer-grid,.reflection-list{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){
-  .hero{padding-top:42px}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .topbar-inner{width:calc(100% - 1rem)}
+  .hero{width:100%;padding:3rem 20px 2.25rem}
+  .hero h1{font-size:2.15rem}
+  main{width:calc(100% - 2rem)}
   .question-strip,.control-grid,.stat-grid,.lens-grid,.transfer-grid,.reflection-list{grid-template-columns:1fr}
   .path-steps{display:grid;grid-template-columns:1fr}
   .path-steps span:not(:last-child)::after{content:"";display:none}
   .panel,.canvas-panel{padding:14px}
+  .stage{padding:2.25rem 0}
+  .stage-marker{font-size:.76rem}
+  .anim-embed{aspect-ratio:4/3}
+  .question-btn,.mode-tab,.btn{min-height:44px}
+  .canvas-title,.mini-formula{max-width:100%;overflow-x:auto}
   canvas{height:330px}
+  h1,h2,h3,p,.lead{word-break:normal;overflow-wrap:break-word;line-break:strict}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
+<script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
-    <a class="nav-pill active" href="#stage1">1 熟悉问题</a>
-    <a class="nav-pill" href="#stage2">2 变成对象</a>
-    <a class="nav-pill" href="#stage3">3 关系视角</a>
+    <a class="nav-pill active" href="#stage1">1 方程与函数</a>
+    <a class="nav-pill" href="#stage2">2 完整关系</a>
+    <a class="nav-pill" href="#stage3">3 三种形式</a>
     <a class="nav-pill" href="#stage4">4 参数家族</a>
     <a class="nav-pill" href="#stage5">5 定义域</a>
-    <a class="nav-pill" href="#stage6">6 反思</a>
+    <a class="nav-pill" href="#stage6">6 核心结论</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="reveal">
-    <div class="eyebrow">Chapter 01 · Thinking Transition</div>
-    <h1>从“求答案”到“研究对象”</h1>
-    <p class="lead">我们会从一道熟悉的方程出发，先得到答案，再发现答案不够用；接着把式子看成函数对象，继续研究它的关系、参数和定义域。真正要学的，不是某个技巧，而是一种新的数学视角。</p>
+    <div class="eyebrow">第一章 · 初高中数学思维衔接</div>
+    <h1>从“求答案”到<br>“研究对象”</h1>
+    <p class="lead">面对同一个二次式，先从方程中求出使它等于 0 的 x，再把它写成函数，继续研究零点、正负、最值、变化、参数和定义域。初中的求解方法没有消失，而是成为研究完整对象的起点。</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#stage1">开始体验</a>
-      <a class="btn" href="animations/_render/animation.html">▶ 观看动画讲解</a>
+      <a class="btn primary" href="#stage1">从方程开始</a>
+      <a class="btn" href="#stage0">观看动画讲解</a>
       <a class="btn" href="../../index.html">返回目录</a>
-    </div>
-  </div>
-  <div class="hero-card reveal">
-    <div class="thinking-switch" aria-label="思维转变示意">
-      <div class="thought answer">
-        <small>初中习惯</small>
-        <div class="formula">x² - 4x + 3 = 0</div>
-        <p>问题通常是：答案是多少？</p>
-      </div>
-      <div class="arrow-shift">→</div>
-      <div class="thought object">
-        <small>高中视角</small>
-        <div class="formula">y = x² - 4x + 3</div>
-        <p>问题变成：这个对象有什么性质？</p>
-      </div>
     </div>
   </div>
 </header>
@@ -262,41 +257,44 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   <div class="throughline reveal" aria-label="本章主线">
     <b>本章主线</b>
     <div class="path-steps">
-      <span>答案</span>
-      <span>对象</span>
-      <span>关系</span>
+      <span>方程</span>
+      <span>函数</span>
+      <span>三种形式</span>
       <span>参数家族</span>
       <span>定义域</span>
-      <span>数学姿态</span>
+      <span>核心结论</span>
     </div>
   </div>
 
   <section class="stage" id="stage0">
-    <aside class="stage-marker"><span>▶</span>Animated Intro</aside>
+    <aside class="stage-marker"><span>▶</span>动画讲解</aside>
     <div class="stage-body reveal">
       <div class="stage-kicker">动画讲解</div>
-      <h2>先用一段动画，看懂这一章。</h2>
-      <p class="subtle" style="margin:0 0 18px">下面是带语音讲解的动画版本。播放到“开口·对称轴”时，可以点击抛物线上的点查看坐标。</p>
+      <h2>从方程答案到函数对象</h2>
+      <p class="subtle" style="margin:0 0 18px">动画沿着本章主线展开。播放到“开口·对称轴”时，可以点击抛物线上的点查看坐标。</p>
       <div class="anim-embed">
         <iframe src="animations/_render/animation.html"
                 title="第一章动画讲解"
-                loading="lazy"
+                loading="eager"
                 allow="autoplay"
                 allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="btn" href="animations/_render/animation.html">单独打开动画</a>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage1">
-    <aside class="stage-marker"><span>1</span>Familiar Ground</aside>
+    <aside class="stage-marker"><span>1</span>方程与函数</aside>
     <div class="stage-body reveal">
-      <div class="stage-kicker">熟悉的地面</div>
-      <h2>先站在你已经会的地方。</h2>
+      <div class="stage-kicker">同一个二次式，两类问题</div>
+      <h2>先解方程，再看这个答案说明了什么。</h2>
       <div class="grid-2">
         <div class="equation-card">
-          <p class="subtle">一道很像初中题目的问题：</p>
+          <p class="subtle">先求哪些 x 能让这个二次式等于 0：</p>
           <div class="big-formula" id="juniorEquation">$x^2 - 4x + 3 = 0$</div>
-          <p id="juniorPrompt">你可能会很自然地想：分解因式，找到两个答案，然后结束。</p>
+          <p id="juniorPrompt">把左边写成 $(x-1)(x-3)$，由乘积等于 0 可得 $x=1$ 或 $x=3$。</p>
           <div class="answer-row">
             <button class="btn primary" type="button" id="solveBtn">求出答案</button>
             <button class="btn" type="button" id="randomProblemBtn">换一道熟悉的问题</button>
@@ -304,46 +302,43 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           </div>
         </div>
         <div class="panel">
-          <h3>高中会怎么问？</h3>
-          <p>初中问：“这个方程的答案是多少？”高中会把同一个式子变成一个函数，再继续追问它的结构。</p>
+          <h3>把同一个式子写成函数</h3>
+          <p>方程已经解完，但同一个式子还可以表示定义域内全部输入与输出之间的关系。</p>
           <div class="big-formula" id="seniorFunction" style="font-size:1.35rem">$y = x^2 - 4x + 3$</div>
-          <p id="seniorPrompt" class="subtle">你现在不一定完全明白这些问题，但可以先尝试：它在哪里为正？哪里为负？顶点在哪里？如果只研究一段 x，结论会不会变？</p>
-          <div class="callout">
-            <p><strong>本章目标：</strong>不是学一个更难的技巧，而是换一种看数学的眼睛。</p>
-          </div>
+          <p id="seniorPrompt" class="subtle">$x=1$ 和 $x=3$ 现在是函数的零点。接下来还可以研究正负、顶点、最值、变化趋势以及定义域带来的影响。</p>
         </div>
       </div>
       <div class="bridge">
-        <b>下一问：两个答案够了吗？</b>
-        <p>现在我们已经得到答案。但如果问题不是“什么时候等于 0”，而是“什么时候大于 0、小于 0、达到极值”，两个答案就不够了。于是，同一个式子需要被看成一个完整对象。</p>
+        <b>下一问：零点之外，还能研究什么？</b>
+        <p>$x=1$ 和 $x=3$ 不再只是方程的两个解，它们还是图像与 x 轴交点的横坐标。把式子看成函数后，正负、最值和变化趋势也进入了研究范围。</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage2">
-    <aside class="stage-marker"><span>2</span>Equation To Object</aside>
+    <aside class="stage-marker"><span>2</span>完整关系</aside>
     <div class="stage-body reveal">
-      <div class="stage-kicker">同一个式子，身份变了</div>
-      <h2>当等号右边不再是 0，它变成了一个可以研究的对象。</h2>
+      <div class="stage-kicker">从两个解到完整关系</div>
+      <h2>函数研究的是定义域内全部输入与输出之间的关系。</h2>
       <div class="lens-grid">
         <div class="lens-card">
-          <b>初中视角：求一个答案</b>
-          <p>把式子变成方程，目标是找到让它等于 0 的 x。答案很明确，但问题也很快结束。</p>
+          <b>方程回答什么</b>
+          <p>$x^2-4x+3=0$ 只问哪些 x 能让二次式的值等于 0，答案是 $x=1$ 或 $x=3$。</p>
         </div>
         <div class="lens-card">
-          <b>高中视角：研究一个对象</b>
-          <p>把式子看成函数，目标变成理解整条关系：零点、正负、最值、变化趋势都属于这个对象。</p>
+          <b>函数继续研究什么</b>
+          <p>写成 $f(x)=x^2-4x+3$ 后，零点、正负、最值和变化趋势都属于同一个函数。</p>
         </div>
         <div class="lens-card">
-          <b>新问题：性质从哪里来？</b>
-          <p>答案不再只是两个数，而是图像、符号、区间和变化共同讲出的结构。</p>
+          <b>两种问题怎样相连</b>
+          <p>方程的解就是函数的零点。求解没有被丢掉，而是成为研究函数结构的第一步。</p>
         </div>
       </div>
       <div class="canvas-panel stage-lab">
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="objectTitle">$y = x^2 - 4x + 3$</div>
-            <p class="subtle" id="objectPrompt">点击下面的问题。注意：曲线没有变，变化的是我们提问的方式。</p>
+            <p class="subtle" id="objectPrompt">切换下面的问题。函数没有改变，改变的是我们要从它身上读出的性质。</p>
           </div>
           <div class="legend">
             <span><i class="dot"></i>当前对象</span>
@@ -362,81 +357,81 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
         </div>
         <div class="stat-grid">
           <div class="stat"><b>当前问题</b><span id="questionLabel">求零点</span></div>
-          <div class="stat"><b>对象</b><span>整条曲线</span></div>
-          <div class="stat"><b>已知答案</b><span id="answerStat">x=1,3</span></div>
-          <div class="stat"><b>新视角</b><span id="insightStat">答案只是对象的一部分</span></div>
+          <div class="stat"><b>研究对象</b><span>定义域内的完整函数</span></div>
+          <div class="stat"><b>当前结论</b><span id="answerStat">x=1,3</span></div>
+          <div class="stat"><b>结构提示</b><span id="insightStat">零点只是函数性质的一部分</span></div>
         </div>
       </div>
       <div class="bridge">
-        <b>下一问：这种变化只发生在二次函数里吗？</b>
-        <p>刚才我们看到，零点、正负、顶点和变化趋势都来自同一条曲线。高中数学不只是多问几个问题，而是把一个答案放回一整条关系中理解。</p>
+        <b>下一问：怎样更快看出这些性质？</b>
+        <p>零点、正负、顶点和变化趋势都属于同一个函数，但不一定能从同一种写法中直接看清。接下来把它改写成不同形式，比较每种形式揭示的结构。</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage3">
-    <aside class="stage-marker"><span>3</span>Answer To Relation</aside>
+    <aside class="stage-marker"><span>3</span>三种形式</aside>
     <div class="stage-body reveal">
-      <div class="stage-kicker">从答案到关系</div>
-      <h2>高中数学关心的，不只是两个根，而是整条关系。</h2>
-      <p class="subtle">下面这些例子不是为了增加难度，而是为了说明同一种思维迁移：从一个具体答案，走向一个可研究的对象或关系。</p>
+      <div class="stage-kicker">同一个函数，不同形式</div>
+      <h2>函数没有改变，但不同写法会让不同性质显现出来。</h2>
+      <p class="subtle">一般式、因式形式和顶点形式表示的是同一个函数。选择写法时，不是只追求“最简”，而是看当前需要判断哪一种性质。</p>
       <div class="transfer-grid">
         <div class="transfer-card">
-          <small>方程 → 函数</small>
-          <div class="mini-formula">$x^2-4x+3=0$</div>
-          <p>初中问：解是多少？</p>
-          <p><strong>高中问：</strong>$y=x^2-4x+3$ 这条关系有什么性质？</p>
+          <small>一般式</small>
+          <div class="mini-formula">$f(x)=x^2-4x+3$</div>
+          <p>系数是 $a=1$、$b=-4$、$c=3$。</p>
+          <p><strong>更容易看出：</strong>系数信息、纵截距以及代数运算关系。</p>
         </div>
         <div class="transfer-card">
-          <small>一个点 → 一条关系</small>
-          <div class="mini-formula">$(2,3)$ → $y=x+1$</div>
-          <p>初中可能只看一个点的位置。</p>
-          <p><strong>高中问：</strong>哪些点满足同一条关系？这条关系如何变化？</p>
+          <small>因式形式</small>
+          <div class="mini-formula">$f(x)=(x-1)(x-3)$</div>
+          <p>由两个因式为 0，可得 $x=1$、$x=3$。</p>
+          <p><strong>更容易看出：</strong>零点以及由零点划分的正负区间。</p>
         </div>
         <div class="transfer-card">
-          <small>一个价格 → 一个模型</small>
-          <div class="mini-formula">3 支笔多少钱？ → $y=2x$</div>
-          <p>初中问：买 3 支的总价。</p>
-          <p><strong>高中问：</strong>数量 x 和总价 y 之间是什么函数关系？</p>
+          <small>顶点形式</small>
+          <div class="mini-formula">$f(x)=(x-2)^2-1$</div>
+          <p>$(x-2)^2$ 最小为 0，所以函数最小值为 $-1$。</p>
+          <p><strong>更容易看出：</strong>顶点、对称轴、最值和变化趋势。</p>
         </div>
       </div>
       <div class="compare">
         <div class="compare-card old">
-          <h3>初中问题 / answer view</h3>
-          <p id="pairOld">解方程 $x^2 - 4x + 3 = 0$，求 $x$。</p>
-          <p class="subtle" id="pairOldNote">目标是得到两个具体答案。</p>
+          <h3>当前问题</h3>
+          <p id="pairOld">已知 $f(x)=x^2-4x+3$，判断函数的零点和正负。</p>
+          <p class="subtle" id="pairOldNote">需要看清哪些位置使两个因式为 0 或改变符号。</p>
         </div>
         <div class="compare-card new">
-          <h3>高中问题 / object view</h3>
-          <p id="pairNew">研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？顶点和极值在哪里？</p>
-          <p class="subtle" id="pairNewNote">同一个式子变成整条函数对象。</p>
+          <h3>更合适的写法</h3>
+          <p id="pairNew">$f(x)=(x-1)(x-3)$</p>
+          <p class="subtle" id="pairNewNote">因式形式直接显出两个零点，并把数轴分成三个符号区间。</p>
         </div>
       </div>
-      <div class="thinking-shift" id="pairShift"><p><strong>思维变化：</strong>从“求两个答案”变成“研究整个函数对象”。</p></div>
+      <div class="thinking-shift" id="pairShift"><p><strong>选择依据：</strong>研究零点和正负时，因式形式比一般式更直接。</p></div>
       <div class="compare-switch">
         <span class="pair-index" id="pairIndex">1 / 5</span>
-        <button class="btn" type="button" id="nextPairBtn">换一组问题</button>
+        <button class="btn" type="button" id="nextPairBtn">换一种性质</button>
       </div>
       <div class="callout">
-        <p><strong>关键转变：</strong>答案仍然重要，但它不再是终点。它是理解对象结构的一扇门。</p>
+        <p><strong>关键理解：</strong>三种形式没有改变函数，只是分别把系数、零点或顶点等性质放到了更容易观察的位置。</p>
       </div>
       <div class="bridge">
-        <b>下一问：如果数字变了，性质还会怎样变？</b>
-        <p>当我们会研究一个具体函数后，自然会追问：如果式子里的数字变了，这些性质还会怎样变化？这时，数字不再只是数字，它们变成了控制一类函数的参数。</p>
+        <b>下一问：把具体数字换成参数，会发生什么？</b>
+        <p>$f(x)=x^2-4x+3$ 只是二次函数家族中的一个成员。把具体数字换成参数后，就能研究这一族函数怎样随参数变化。</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage4">
-    <aside class="stage-marker"><span>4</span>Parameter Family</aside>
+    <aside class="stage-marker"><span>4</span>参数家族</aside>
     <div class="stage-body reveal">
-      <div class="stage-kicker">参数不是数字，是控制器</div>
-      <h2>参数控制的不是一道题，而是一整个函数家族。</h2>
+      <div class="stage-kicker">从一个函数到一族函数</div>
+      <h2>参数改变时，改变的是函数家族中的具体成员。</h2>
       <div class="canvas-panel stage-lab">
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="familyTitle">$y = a(x-h)^2 + k$</div>
-            <p class="subtle" id="familyPrompt">先用顶点式理解：$a$ 的正负控制开口方向，$|a|$ 控制开口宽窄，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。</p>
+            <p class="subtle" id="familyPrompt">当 $a\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。拖动琥珀色顶点，观察整条曲线怎样移动。</p>
           </div>
           <div class="legend">
             <span><i class="dot ref"></i>参考对象</span>
@@ -482,7 +477,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             </div>
           </div>
           <div class="callout">
-            <p><strong>一般式的新视角：</strong>$b$ 不只是“中间那一项”。当 $a\neq0$ 时，它会和 $a$ 一起决定对称轴 $x=-\frac{b}{2a}$；$c$ 是纵截距，图像与 $y$ 轴的交点是 $(0,c)$。</p>
+            <p><strong>一般式中的系数：</strong>当 $a\neq0$ 时，$a$ 和 $b$ 共同决定对称轴 $x=-\frac{b}{2a}$；$c=f(0)$ 是纵截距，图像与 $y$ 轴的交点是 $(0,c)$。</p>
           </div>
         </div>
         <div class="timeline">
@@ -493,26 +488,26 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <div class="stat"><b>当前公式</b><span id="familyFormula">y=(x-1)²-1</span></div>
           <div class="stat"><b>顶点</b><span id="vertexStat">(1,-1)</span></div>
           <div class="stat"><b>开口</b><span id="openStat">向上</span></div>
-          <div class="stat"><b>控制含义</b><span>参数决定对象形状</span></div>
+          <div class="stat"><b>参数作用</b><span>位置与形状随参数改变</span></div>
         </div>
       </div>
       <div class="bridge">
         <b>下一问：公式确定了，对象就完整了吗？</b>
-        <p>参数告诉我们公式怎样变化，但一个函数对象还没有说完。同一个表达式，如果只研究不同的 x 范围，值域、极值和单调性都可能改变。</p>
+        <p>参数说明函数家族怎样变化，但要确定当前研究的具体函数，还必须说明允许哪些 x 进入讨论。同一个表达式配上不同定义域，会得到不同的性质。</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage5">
-    <aside class="stage-marker"><span>5</span>Domain Matters</aside>
+    <aside class="stage-marker"><span>5</span>定义域</aside>
     <div class="stage-body reveal">
-      <div class="stage-kicker">定义域和值域</div>
-      <h2>函数不是只有公式，还要说清楚“研究哪一段”。</h2>
+      <div class="stage-kicker">定义域决定研究范围</div>
+      <h2>表达式和定义域共同确定当前研究的函数。</h2>
       <div class="canvas-panel stage-lab">
         <div class="canvas-head">
           <div>
             <div class="canvas-title">$y = x^2 - 4x + 3$，但只研究一段 x</div>
-            <p class="subtle">青色表示输入范围，也就是定义域；紫色表示这段输入产生的输出范围，也就是值域。移动端点，看结论如何改变。</p>
+            <p class="subtle">青色表示允许输入的 x，也就是定义域；紫色表示这些输入产生的函数值，也就是值域。移动端点，比较值域、最值和单调性怎样改变。</p>
           </div>
           <div class="legend">
             <span><i class="dot ref"></i>完整函数</span>
@@ -533,7 +528,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             <input id="domainMax" type="range" min="-3" max="5" step="0.1" value="4">
           </div>
           <div class="control">
-            <label>重置 <span>canonical</span></label>
+            <label>重置 <span>默认区间</span></label>
             <button class="btn" type="button" id="resetDomain">回到 [-1,4]</button>
           </div>
         </div>
@@ -544,43 +539,43 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <div class="stat"><b>结论</b><span id="domainConclusion">顶点在区间内，最小值由顶点给出</span></div>
         </div>
         <div class="callout" id="domainCallout">
-          <p><strong>高中视角：</strong>一个完整的研究对象常常是“表达式 + 定义域”。定义域变了，值域、最值、单调性都可能改变。</p>
+          <p><strong>具体比较：</strong>在全体实数上，函数的值域是 $[-1,+\infty)$；若把定义域限制为 $[-1,1]$，函数在该区间上递减，值域变为 $[0,8]$。</p>
         </div>
       </div>
       <div class="bridge">
-        <b>最后一问：这些变化合起来训练什么？</b>
-        <p>到这里，函数已经不只是一个式子了。它至少包含表达式、变量关系、参数结构和定义域。现在可以回头看：高中数学到底在训练什么？</p>
+        <b>最后一问：研究一个式子时，应该依次确认什么？</b>
+        <p>到这里，同一个二次式已经连接起方程、函数的不同形式、参数家族和定义域。最后把这些内容整理成可执行的判断顺序。</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="stage6">
-    <aside class="stage-marker"><span>6</span>Reflection</aside>
+    <aside class="stage-marker"><span>6</span>核心结论</aside>
     <div class="stage-body reveal">
       <div class="reflection">
-        <div class="stage-kicker">最后留下的，不是一个技巧</div>
-        <h2>你正在学习一种新的数学姿态。</h2>
-        <p class="subtle">以后看到一个式子，不要只急着算。先问：它是什么对象？变量怎样变化？参数控制什么？定义域在哪里？哪些性质才是问题真正关心的？这不是把初中方法丢掉，而是在它上面长出更高一层的视角。</p>
+        <div class="stage-kicker">从答案走向结构</div>
+        <h2>求出答案是第一步，理解对象的结构才是完整研究。</h2>
+        <p class="subtle">面对一个数学式子，先确认它是表达式、方程还是函数；再根据问题选择能显露结构的形式；遇到参数时判断它控制什么；最后确认定义域，避免把只在某个范围内成立的结论误用到别处。</p>
         <div class="reflection-grid">
           <div class="reflection-block">
-            <small class="subtle">初中常问</small>
-            <p>我怎样得到答案？</p>
+            <small class="subtle">方程问题</small>
+            <p>哪些 x 能让式子的值等于 0？</p>
           </div>
           <div class="reflection-arrow">→</div>
           <div class="reflection-block">
-            <small class="subtle">高中开始问</small>
-            <p>我正在研究什么对象，它有什么性质？</p>
+            <small class="subtle">函数问题</small>
+            <p>定义域内的全部输入和输出呈现什么结构？</p>
           </div>
         </div>
         <div class="reflection-list">
-          <div class="reflection-item"><b>1</b>这个式子能不能看成一个对象？</div>
-          <div class="reflection-item"><b>2</b>它的输入和输出是什么关系？</div>
-          <div class="reflection-item"><b>3</b>哪些量会变，哪些性质保持不变？</div>
-          <div class="reflection-item"><b>4</b>参数改变时，对象如何改变？</div>
-          <div class="reflection-item"><b>5</b>研究范围改变时，结论会不会改变？</div>
+          <div class="reflection-item"><b>1</b>当前研究的是表达式、方程还是函数？</div>
+          <div class="reflection-item"><b>2</b>三种形式分别显露哪些性质？</div>
+          <div class="reflection-item"><b>3</b>参数怎样改变函数的位置和形状？</div>
+          <div class="reflection-item"><b>4</b>允许输入哪些 x？</div>
+          <div class="reflection-item"><b>5</b>定义域怎样影响值域、最值和单调性？</div>
         </div>
         <div class="callout">
-          <p><strong>本章的真正结论：</strong>从今天开始，看到一个数学式子，不要只问“怎么算”，也要问：“我正在研究什么？”数学不是从答案开始结束，而是从对象、关系、变化和结构中展开。</p>
+          <p><strong>本章的核心结论：</strong>一般式保留系数信息，因式形式揭示零点和正负，顶点形式揭示最值和变化；定义域决定这些性质在哪些输入上成立。</p>
         </div>
       </div>
     </div>
@@ -588,7 +583,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
 </main>
 
 <footer class="footer">
-  DGOpenKS · Chapter 01 v2 prototype · 从答案到对象
+  DGOpenKS · 第一章 · 从答案到对象
 </footer>
 
 <script>
@@ -625,43 +620,43 @@ const problemState = { index: 0, ...problemCases[0] };
 const relationPairs = [
   {
     caseIndex:0,
-    old:'解方程 $x^2 - 4x + 3 = 0$，求 $x$。',
-    oldNote:'目标是得到两个具体答案。',
-    next:'研究函数 $y=x^2-4x+3$：它什么时候为 0？什么时候为正？什么时候为负？顶点和极值在哪里？',
-    nextNote:'同一个式子变成整条函数对象。',
-    shift:'从“求两个答案”变成“研究整个函数对象”。'
+    old:'已知 $f(x)=x^2-4x+3$，判断函数的零点和正负。',
+    oldNote:'需要看清哪些位置使两个因式为 0 或改变符号。',
+    next:'$f(x)=(x-1)(x-3)$',
+    nextNote:'因式形式直接显出两个零点，并把数轴分成三个符号区间。',
+    shift:'研究零点和正负时，因式形式比一般式更直接。'
   },
   {
     caseIndex:0,
-    old:'当 $x=2$ 时，求 $y=x^2-4x+3$ 的值。',
-    oldNote:'目标是算出一个点的输出值。',
-    next:'当 $x$ 不断变化时，$y$ 如何变化？图像告诉我们什么？',
-    nextNote:'一个点扩展为输入和输出之间的一整条关系。',
-    shift:'从“算一个点”变成“观察一整条关系”。'
+    old:'已知 $f(x)=x^2-4x+3$，判断顶点、最小值和变化趋势。',
+    oldNote:'需要把平方结构显露出来。',
+    next:'$f(x)=(x-2)^2-1$',
+    nextNote:'顶点形式直接给出顶点 $(2,-1)$、最小值 $-1$ 和对称轴 $x=2$。',
+    shift:'研究顶点、最值和变化时，先配方得到顶点形式。'
   },
   {
     caseIndex:3,
-    old:'把 $y=x^2$ 的图像向右平移 2 个单位，再向下平移 1 个单位，写出解析式。',
-    oldNote:'目标是完成一次图像变换。',
-    next:'研究 $y=a(x-h)^2+k$：参数 $a,h,k$ 分别如何控制一类函数？',
-    nextNote:'参数不只是数字，而是控制一个函数家族的旋钮。',
-    shift:'从“完成一次变换”变成“理解参数如何控制一类对象”。'
+    old:'研究 $f(x)=0.5x^2-2x+1$ 的顶点和开口。',
+    oldNote:'一般式给出了系数，但顶点位置还不直观。',
+    next:'$f(x)=0.5(x-2)^2-1$',
+    nextNote:'配方后可直接看出顶点是 $(2,-1)$，且图像开口向上。',
+    shift:'同一个函数可以改写，改写只改变观察结构的难易。'
   },
   {
     caseIndex:1,
-    old:'判断 $x=1$ 是否满足方程 $2x^2-5x+2=0$。',
-    oldNote:'目标是验证一个给定数字。',
-    next:'给定一个区间，研究函数在这个区间上的最大值、最小值、单调性和取值范围。',
-    nextNote:'条件限制会改变我们正在研究的对象。',
-    shift:'从“验证一个数”变成“研究对象在条件限制下的性质”。'
+    old:'研究 $f(x)=2x^2-5x+2$ 的零点。',
+    oldNote:'先寻找能够还原原式的两个一次因式。',
+    next:'$f(x)=(2x-1)(x-2)$',
+    nextNote:'因式形式说明零点是 $\\frac{1}{2}$ 和 $2$。',
+    shift:'需要零点时，因式形式把方程求解与函数性质直接连接起来。'
   },
   {
     caseIndex:5,
-    old:'求抛物线 $y=-x^2+4x-1$ 与 x 轴的交点。',
-    oldNote:'目标是找图上的两个点。',
-    next:'研究交点、正负区间、顶点和对称轴之间的关系。',
-    nextNote:'点、区间、顶点和对称轴共同组成图像结构。',
-    shift:'从“找图上的点”变成“理解图像结构中的关系”。'
+    old:'研究 $f(x)=-x^2+4x-1$ 的最大值。',
+    oldNote:'需要先看清平方项何时取得最小值。',
+    next:'$f(x)=-(x-2)^2+3$',
+    nextNote:'因为 $-(x-2)^2\\leq0$，所以函数在 $x=2$ 时取得最大值 $3$。',
+    shift:'开口向下时，顶点形式会把最大值及其取得位置直接显露出来。'
   }
 ];
 const pairState = { index: 0 };
@@ -927,11 +922,11 @@ function setQuestion(q){
   const positiveText = intervalText(true);
   const negativeText = intervalText(false);
   const text = {
-    zeros:['求零点',rootText,'答案是曲线与 x 轴的交点'],
-    positive:['判断正值区间',positiveText,'图像在 x 轴上方'],
-    negative:['判断负值区间',negativeText,'图像在 x 轴下方'],
-    minimum:[`寻找${extremumName(problemA())}`,`顶点 (${pretty(vx)},${pretty(vy)})`,'极值性质来自整个对象'],
-    change:['观察变化','点沿曲线移动','x 与 y 是一组关系']
+    zeros:['求零点',rootText,'零点是图像与 x 轴交点的横坐标'],
+    positive:['判断正值区间',positiveText,'函数值为正时，图像在 x 轴上方'],
+    negative:['判断负值区间',negativeText,'函数值为负时，图像在 x 轴下方'],
+    minimum:[`寻找${extremumName(problemA())}`,`顶点 (${pretty(vx)},${pretty(vy)})`,'顶点形式更容易显出最值'],
+    change:['观察变化','点沿曲线移动','函数研究全部输入与输出之间的关系']
   }[q];
   document.getElementById('questionLabel').textContent = text[0];
   document.getElementById('answerStat').textContent = text[1];
@@ -945,8 +940,8 @@ function updateProblemUI(){
   document.getElementById('objectTitle').innerHTML = `$${problemFunction()}$`;
   document.getElementById('answerChip').hidden = true;
   document.getElementById('answerChip').innerHTML = problemState.roots.length ? problemState.rootLabels.map(label => `$x=${label}$`).join(' 或 ') : '没有实数解';
-  document.getElementById('juniorPrompt').textContent = '你可能会很自然地想：分解因式，找到两个答案，然后结束。';
-  document.getElementById('seniorPrompt').textContent = '高中会把同一个式子继续追问：它在哪里为正？哪里为负？顶点在哪里？如果只研究一段 x，结论会不会变？';
+  document.getElementById('juniorPrompt').textContent = '先分析这个方程，求出能让左边等于 0 的全部实数解。';
+  document.getElementById('seniorPrompt').textContent = '把左边写成函数后，还可以继续研究零点、正负、顶点、变化趋势以及定义域带来的影响。';
   setQuestion(objectState.question);
   updateDomainUI();
   if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
@@ -964,7 +959,7 @@ function updateRelationPair(syncGraph = true){
   document.getElementById('pairOldNote').textContent = pair.oldNote;
   document.getElementById('pairNew').innerHTML = pair.next;
   document.getElementById('pairNewNote').textContent = pair.nextNote;
-  document.getElementById('pairShift').innerHTML = `<p><strong>思维变化：</strong>${pair.shift}</p>`;
+  document.getElementById('pairShift').innerHTML = `<p><strong>选择依据：</strong>${pair.shift}</p>`;
   document.getElementById('pairIndex').textContent = `${pairState.index + 1} / ${relationPairs.length}`;
   if(syncGraph && typeof pair.caseIndex === 'number'){
     problemState.index = pair.caseIndex;
@@ -1052,7 +1047,7 @@ function updateFamilyUI(){
   if(familyState.mode === 'standard'){
     if(_lastFamilyMode !== 'standard'){
       document.getElementById('familyTitle').innerHTML = '$y = ax^2 + bx + c$';
-      document.getElementById('familyPrompt').innerHTML = '再看一般式：$a$ 的正负影响开口方向，$|a|$ 影响开口宽窄；$c$ 是纵截距，图像与 $y$ 轴的交点是 $(0,c)$；$b$ 会和 $a$ 一起决定对称轴 $x=-\\frac{b}{2a}$。';
+      document.getElementById('familyPrompt').innerHTML = '在一般式中，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄；$c=f(0)$ 是纵截距；$a$ 和 $b$ 共同决定对称轴 $x=-\\frac{b}{2a}$。';
       if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
     }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.stdA)}x² ${signed(familyState.stdB)}x ${signed(familyState.stdC)}`;
@@ -1067,7 +1062,7 @@ function updateFamilyUI(){
   } else {
     if(_lastFamilyMode !== 'vertex'){
       document.getElementById('familyTitle').innerHTML = '$y = a(x-h)^2 + k$';
-      document.getElementById('familyPrompt').innerHTML = '先用顶点式理解：$a$ 的正负控制开口方向，$|a|$ 控制开口宽窄，$h,k$ 控制顶点。拖动琥珀色顶点，观察整条曲线一起移动。';
+      document.getElementById('familyPrompt').innerHTML = '当 $a\\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。拖动琥珀色顶点，观察整条曲线怎样移动。';
       if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
     }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.a)}(x${familyState.h >= 0 ? '-' : '+'}${pretty(Math.abs(familyState.h))})²${familyState.k >= 0 ? '+' : '-'}${pretty(Math.abs(familyState.k))}`;

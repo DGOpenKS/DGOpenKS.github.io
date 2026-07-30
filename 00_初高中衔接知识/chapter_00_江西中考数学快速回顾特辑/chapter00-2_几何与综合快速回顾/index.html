@@ -9,29 +9,32 @@ MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <style>
-:root{color-scheme:light;--bg:#f6f8fb;--paper:#fff;--soft:#f8fafc;--ink:#111827;--muted:#64748b;--line:#dbe5f2;--axis:#94a3b8;--grid:#e8eef7;--blue:#2563eb;--cyan:#0891b2;--amber:#d97706;--green:#059669;--red:#dc2626;--purple:#7c3aed;--shadow:0 18px 55px rgba(15,23,42,.08);--soft-shadow:0 8px 26px rgba(15,23,42,.06);--font:"Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Cascadia Code","Consolas","SFMono-Regular",monospace}
+:root{color-scheme:light;--bg:#f4f2ec;--paper:#fffdf8;--soft:#f7f5ef;--ink:#17202f;--text:#3f4b5c;--muted:#6f7885;--line:#dcd9d0;--axis:#98a0aa;--grid:#e5e0d6;--blue:#176b87;--blue-deep:#104b62;--blue-soft:#e8f4f6;--blue-line:#acd6dd;--cyan:#2f8794;--amber:#a35f18;--green:#2f765d;--red:#b54a43;--purple:#7155a3;--shadow:0 20px 56px rgba(23,32,47,.09);--soft-shadow:0 1px 2px rgba(23,32,47,.05),0 9px 24px rgba(23,32,47,.055);--font:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:"Noto Serif SC","Songti SC","STSong",serif;--mono:Georgia,"Times New Roman",serif;--page-max:1180px;--reading-max:920px;--radius-sm:10px;--radius:16px;--radius-lg:20px}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.72}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;background:radial-gradient(circle at 12% 3%,rgba(23,107,135,.08),transparent 27rem),radial-gradient(circle at 90% 20%,rgba(113,85,163,.06),transparent 25rem),var(--bg);color:var(--ink);font-family:var(--font);line-height:1.78;overflow-x:hidden;text-rendering:optimizeLegibility}
 a{color:inherit}
-.topbar{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:1160px;margin:0 auto;padding:10px 20px;display:flex;gap:10px;align-items:center;overflow:auto;scrollbar-width:none}
+:where(a,button,[tabindex],.method-table):focus-visible{outline:3px solid rgba(23,107,135,.48);outline-offset:3px}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(244,242,236,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,195,184,.8)}
+.topbar-inner{width:min(var(--page-max),calc(100% - 2rem));min-height:62px;margin:0 auto;padding:0;display:flex;gap:.35rem;align-items:center;overflow:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
-.brand{font-weight:900;color:var(--blue);white-space:nowrap;margin-right:8px}
-.nav{font-size:.86rem;text-decoration:none;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 11px;white-space:nowrap;font-weight:800}
-.nav:hover,.nav:focus-visible{outline:0;color:var(--blue);background:#eff6ff;border-color:#bfdbfe}
-.hero{max-width:1160px;margin:0 auto;padding:58px 20px 34px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,420px);gap:30px;align-items:center}
-.eyebrow{display:inline-flex;color:var(--blue);background:#eff6ff;border:1px solid #bfdbfe;border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:16px}
-h1{font-size:clamp(2.15rem,5vw,4.2rem);line-height:1.06;margin:0 0 18px;letter-spacing:0}
-.lead{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
-.hero-card,.card,.method-table,.footer-nav,.diagram-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}
-.hero-card b,.card b,.diagram-card b{display:block;color:var(--blue);margin-bottom:8px}
-.hero-card svg{display:block;width:100%;height:auto}
-main{max-width:1160px;margin:0 auto;padding:0 20px 76px}
-.section{display:grid;grid-template-columns:140px minmax(0,1fr);gap:26px;padding:42px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
-.marker{position:sticky;top:72px;align-self:start;color:var(--muted);font-size:.83rem;font-weight:900}
-.marker span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);background:var(--paper);border-radius:50%;color:var(--blue);margin-bottom:8px}
-h2{font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.2;margin:0 0 12px}
+.brand{font-weight:900;color:var(--blue-deep);white-space:nowrap;margin-right:auto;letter-spacing:.08em}
+.nav{font-size:.8rem;text-decoration:none;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:.42rem .72rem;white-space:nowrap;font-weight:800}
+.nav:hover,.nav:focus-visible{color:var(--blue-deep);background:var(--paper);border-color:var(--line)}
+.hero{max-width:var(--page-max);margin:0 auto;padding:4.5rem 20px 2.7rem;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;width:max-content;align-items:center;gap:.6rem;color:var(--blue-deep);font-size:.75rem;font-weight:900;letter-spacing:.13em;margin-bottom:1.15rem}
+.eyebrow::before{width:28px;height:2px;background:var(--blue);content:""}
+h1,h2{font-family:var(--serif);text-wrap:balance}
+h1{max-width:900px;font-size:clamp(2.4rem,4.7vw,4rem);line-height:1.08;margin:0 0 1.1rem;letter-spacing:0;font-weight:700}
+.lead{font-size:clamp(1.04rem,1.7vw,1.22rem);line-height:1.86;color:var(--text);max-width:820px;margin:0}
+.hero-card{display:none}
+.card,.method-table,.footer-nav,.diagram-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.card b,.diagram-card b{display:block;color:var(--blue-deep);margin-bottom:8px}
+main{width:min(var(--page-max),calc(100% - 2rem));max-width:none;margin:0 auto;padding:0 0 6rem}
+.section{display:grid;grid-template-columns:150px minmax(0,var(--reading-max));justify-content:center;gap:clamp(1.5rem,5vw,4.5rem);padding:3.5rem 0;border-top:1px solid var(--line);scroll-margin-top:78px}
+.marker{position:sticky;top:92px;align-self:start;color:var(--blue-deep);font-size:.8rem;font-weight:900;letter-spacing:.05em}
+.marker span{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--blue-line);background:var(--paper);border-radius:50%;color:var(--blue-deep);margin-bottom:.75rem;font-family:var(--serif);font-size:1rem;box-shadow:var(--soft-shadow)}
+h2{font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.24;margin:0 0 .9rem}
 h3{font-size:1.05rem;margin:0 0 8px}
 p{margin:0 0 12px}
 .subtle{color:var(--muted)}
@@ -39,44 +42,50 @@ p{margin:0 0 12px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .shape-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
 .diagram-card{box-shadow:var(--soft-shadow);display:grid;grid-template-rows:auto auto 1fr;gap:10px}
-.diagram-card svg{width:100%;height:auto;display:block;background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--line);border-radius:10px}
+.diagram-card svg{width:100%;height:auto;display:block;background:linear-gradient(180deg,var(--paper),var(--soft));border:1px solid var(--line);border-radius:var(--radius-sm)}
 .property-list{margin:0;padding-left:18px;color:var(--muted)}
 .property-list li{margin:4px 0}
-.note{background:#f0fdf4;border-left:4px solid var(--green);border-radius:10px;padding:12px 14px;color:#065f46;margin-top:14px}
-.warn{border-left:4px solid var(--red);background:#fff7f7}
-.ok{border-left:4px solid var(--green);background:#f0fdf4}
+.note{background:#e9f5ef;border-left:4px solid var(--green);border-radius:var(--radius-sm);padding:12px 14px;color:#245b48;margin-top:14px}
+.warn{border-left:4px solid var(--red);background:#fbefec}
+.ok{border-left:4px solid var(--green);background:#e9f5ef}
 .method-table{box-shadow:var(--soft-shadow);overflow:auto}
 table{border-collapse:collapse;width:100%;min-width:760px}
 th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--blue);background:var(--soft)}
+th{color:var(--blue-deep);background:var(--soft)}
 tr:last-child td{border-bottom:0}
 .step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start}
-.step-num{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#eff6ff;color:var(--blue);font-family:var(--mono);font-weight:900}
+.step-num{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--blue-line);border-radius:50%;background:var(--blue-soft);color:var(--blue-deep);font-family:var(--serif);font-weight:900}
 .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .pill{display:inline-flex;border:1px solid var(--line);background:var(--soft);color:var(--muted);border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:900}
 .svg-grid{stroke:var(--grid);stroke-width:1;vector-effect:non-scaling-stroke}
 .svg-axis{stroke:var(--axis);stroke-width:1.8;vector-effect:non-scaling-stroke}
-.shape-line{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.shape-line{fill:none;stroke:var(--blue);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .shape-line.thin{stroke-width:2.4}
-.aux-line{fill:none;stroke:#7c3aed;stroke-width:2.4;stroke-dasharray:6 6;stroke-linecap:round;vector-effect:non-scaling-stroke}
-.measure-line{fill:none;stroke:#d97706;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.green-line{fill:none;stroke:#059669;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.shape-fill{fill:rgba(37,99,235,.08)}
-.circle-fill{fill:rgba(8,145,178,.07)}
-.point{stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
-.label{font-size:12px;font-weight:900;fill:#64748b;font-family:var(--font)}
-.label-blue{font-size:12px;font-weight:900;fill:#2563eb;font-family:var(--font)}
-.label-purple{font-size:12px;font-weight:900;fill:#7c3aed;font-family:var(--font)}
-.label-amber{font-size:12px;font-weight:900;fill:#d97706;font-family:var(--font)}
-.label-bg{fill:rgba(255,255,255,.92);stroke:#dbe5f2;stroke-width:.8}
+.aux-line{fill:none;stroke:var(--purple);stroke-width:2.4;stroke-dasharray:6 6;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.measure-line{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.green-line{fill:none;stroke:var(--green);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.shape-fill{fill:rgba(23,107,135,.08)}
+.circle-fill{fill:rgba(47,135,148,.07)}
+.point{stroke:var(--paper);stroke-width:2;vector-effect:non-scaling-stroke}
+.label{font-size:12px;font-weight:900;fill:var(--muted);font-family:var(--font)}
+.label-blue{font-size:12px;font-weight:900;fill:var(--blue-deep);font-family:var(--font)}
+.label-purple{font-size:12px;font-weight:900;fill:var(--purple);font-family:var(--font)}
+.label-amber{font-size:12px;font-weight:900;fill:var(--amber);font-family:var(--font)}
+.label-bg{fill:rgba(255,253,248,.92);stroke:var(--line);stroke-width:.8}
 .footer-nav{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:18px}
-.btn{border:1px solid var(--line);background:var(--ink);color:white;border-radius:999px;padding:10px 15px;font-weight:900;text-decoration:none;display:inline-flex}
-.btn.secondary{background:var(--paper);color:var(--ink)}
+.btn{min-height:44px;border:1px solid var(--blue-deep);background:var(--blue-deep);color:var(--paper);border-radius:999px;padding:10px 15px;font-weight:900;text-decoration:none;display:inline-flex;align-items:center}
+.btn.secondary{background:var(--paper);color:var(--blue-deep)}
+@media(min-width:901px){
+  .marker{display:grid;width:100%;min-height:108px;max-width:150px;padding:.9rem .8rem 1rem 1rem;justify-items:center;align-content:start;gap:.75rem;border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;background:linear-gradient(90deg,rgba(232,244,246,.94),rgba(232,244,246,.32) 76%,transparent);text-align:center}
+  .marker span{margin:0}
+}
 @media(max-width:1040px){.shape-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:880px){.hero,.section,.grid-2,.grid-3{grid-template-columns:1fr}.marker{position:static;display:flex;gap:10px;align-items:center}.marker span{margin:0}.hero{padding-top:42px}.footer-nav{align-items:flex-start;flex-direction:column}}
+@media(max-width:900px){.section,.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}.section>*{min-width:0}.marker{position:static;display:flex;width:auto;max-width:100%;gap:10px;align-items:center;padding:.75rem 1rem;border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;background:linear-gradient(90deg,rgba(232,244,246,.94),rgba(232,244,246,.32) 76%,transparent)}.marker span{margin:0}.footer-nav{align-items:flex-start;flex-direction:column}}
 @media(max-width:680px){.shape-grid{grid-template-columns:1fr}}
-@media(max-width:620px){main,.hero{padding-left:14px;padding-right:14px}h1{font-size:2.25rem}.hero-card,.card,.method-table,.footer-nav,.diagram-card{padding:14px}.lead{font-size:1rem}.nav{font-size:.8rem}}
+@media(max-width:640px){html,body{width:100%;max-width:100%;overflow-x:hidden}.topbar-inner{width:calc(100% - 1rem)}main{width:calc(100% - 2rem)}.hero{width:100%;padding:3rem 20px 2.25rem}h1{font-size:2.15rem}.section{padding:2.25rem 0}.card,.method-table,.footer-nav,.diagram-card{padding:14px}.lead{font-size:1rem}.nav{font-size:.8rem}h1,h2,h3,p,.lead{word-break:normal;overflow-wrap:break-word;line-break:strict}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+<script src="../../assets/sequence-nav.js" defer></script>
 </head>
 <body>
 <header class="topbar">
@@ -219,7 +228,7 @@ tr:last-child td{border-bottom:0}
         <article class="card warn"><b>综合题</b><p class="subtle">变量范围、分类讨论、最值条件、单位和实际意义是否检查完整。</p></article>
       </div>
       <div class="footer-nav">
-        <a class="btn secondary" href="../chapter00-1_代数与函数快速回顾/">返回 00-1 代数与函数</a>
+        <a class="btn secondary" href="../chapter00-1_代数与函数快速回顾/index.html">返回 00-1 代数与函数</a>
         <div><b>考前一句话</b><p class="subtle">条件通向方法，方法生成关系式；压轴题先写出能确定的关系。</p></div>
       </div>
     </div>
@@ -246,26 +255,26 @@ function addLabel(svg,x,y,text,cls='label',anchor='middle'){
   return group;
 }
 
-function addPoint(svg,x,y,fill='#2563eb',r=5){
+function addPoint(svg,x,y,fill='#176b87',r=5){
   svg.appendChild(el('circle',{class:'point',cx:x,cy:y,r,fill}));
 }
 
 function drawHeroMap(){
   const svg=document.querySelector('#heroMap');
   svg.innerHTML='';
-  svg.appendChild(el('rect',{x:16,y:18,width:328,height:184,rx:18,fill:'#f8fafc',stroke:'#dbe5f2'}));
+  svg.appendChild(el('rect',{x:16,y:18,width:328,height:184,rx:18,fill:'#f7f5ef',stroke:'#dcd9d0'}));
   const nodes=[
-    {x:72,y:68,t:'图形',c:'#2563eb'},
-    {x:180,y:68,t:'条件',c:'#7c3aed'},
-    {x:288,y:68,t:'关系',c:'#059669'},
-    {x:180,y:150,t:'方法',c:'#d97706'}
+    {x:72,y:68,t:'图形',c:'#176b87'},
+    {x:180,y:68,t:'条件',c:'#7155a3'},
+    {x:288,y:68,t:'关系',c:'#2f765d'},
+    {x:180,y:150,t:'方法',c:'#a35f18'}
   ];
   [['72,68','180,68'],['180,68','288,68'],['180,82','180,134'],['288,82','194,138']].forEach(pair=>{
     const [a,b]=pair.map(s=>s.split(',').map(Number));
-    svg.appendChild(el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#94a3b8','stroke-width':2,'stroke-linecap':'round'}));
+    svg.appendChild(el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#98a0aa','stroke-width':2,'stroke-linecap':'round'}));
   });
   nodes.forEach(n=>{
-    svg.appendChild(el('circle',{cx:n.x,cy:n.y,r:34,fill:'#fff',stroke:n.c,'stroke-width':3}));
+    svg.appendChild(el('circle',{cx:n.x,cy:n.y,r:34,fill:'#fffdf8',stroke:n.c,'stroke-width':3}));
     addLabel(svg,n.x,n.y,n.t,'label-blue');
   });
   addLabel(svg,180,28,'先判断图形，再提取关系','label', 'middle');
@@ -276,12 +285,12 @@ function drawTriangle(){
   svg.innerHTML='';
   const A={x:56,y:160}, B={x:248,y:160}, C={x:56,y:48};
   const M={x:(A.x+C.x)/2,y:(A.y+C.y)/2}, N={x:(B.x+C.x)/2,y:(B.y+C.y)/2};
-  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`,class:'shape-fill',stroke:'#2563eb','stroke-width':4,'stroke-linejoin':'round'}));
+  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`,class:'shape-fill',stroke:'#176b87','stroke-width':4,'stroke-linejoin':'round'}));
   svg.appendChild(el('line',{class:'green-line',x1:M.x,y1:M.y,x2:N.x,y2:N.y}));
   svg.appendChild(el('path',{class:'measure-line',d:`M ${A.x} ${A.y} L ${A.x+24} ${A.y} L ${A.x+24} ${A.y-24}`}));
   svg.appendChild(el('path',{class:'aux-line',d:`M ${C.x} ${C.y} L ${A.x} ${A.y}`}));
   svg.appendChild(el('path',{class:'aux-line',d:`M ${C.x} ${C.y} L ${B.x} ${B.y}`}));
-  [A,B,C,M,N].forEach((p,i)=>addPoint(svg,p.x,p.y,i<3?'#2563eb':'#059669',i<3?5:4));
+  [A,B,C,M,N].forEach((p,i)=>addPoint(svg,p.x,p.y,i<3?'#176b87':'#2f765d',i<3?5:4));
   addLabel(svg,50,176,'A','label');
   addLabel(svg,252,176,'B','label');
   addLabel(svg,56,30,'C','label');
@@ -294,13 +303,13 @@ function drawQuadrilateral(){
   svg.innerHTML='';
   const A={x:62,y:54}, B={x:238,y:54}, C={x:238,y:160}, D={x:62,y:160};
   const center={x:(A.x+C.x)/2,y:(A.y+C.y)/2};
-  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y} ${D.x},${D.y}`,class:'shape-fill',stroke:'#2563eb','stroke-width':4,'stroke-linejoin':'round'}));
+  svg.appendChild(el('polygon',{points:`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y} ${D.x},${D.y}`,class:'shape-fill',stroke:'#176b87','stroke-width':4,'stroke-linejoin':'round'}));
   svg.appendChild(el('line',{class:'aux-line',x1:A.x,y1:A.y,x2:C.x,y2:C.y}));
   svg.appendChild(el('line',{class:'aux-line',x1:B.x,y1:B.y,x2:D.x,y2:D.y}));
   svg.appendChild(el('path',{class:'measure-line',d:`M ${A.x+16} ${A.y} L ${A.x+16} ${A.y+16} L ${A.x} ${A.y+16}`}));
   svg.appendChild(el('line',{class:'green-line',x1:92,y1:39,x2:208,y2:39}));
   svg.appendChild(el('line',{class:'green-line',x1:92,y1:175,x2:208,y2:175}));
-  [A,B,C,D,center].forEach((p,i)=>addPoint(svg,p.x,p.y,i===4?'#059669':'#2563eb',i===4?4:5));
+  [A,B,C,D,center].forEach((p,i)=>addPoint(svg,p.x,p.y,i===4?'#2f765d':'#176b87',i===4?4:5));
   addLabel(svg,150,28,'对边平行 / 相等','label-blue');
   addLabel(svg,150,106,'对角线','label-purple');
   addLabel(svg,88,82,'矩形直角','label-amber','start');
@@ -312,13 +321,13 @@ function drawCircle(){
   const O={x:150,y:108}, r=58;
   const T={x:150,y:50};
   const L={x:82,y:132}, R={x:218,y:132};
-  svg.appendChild(el('circle',{cx:O.x,cy:O.y,r,class:'circle-fill',stroke:'#0891b2','stroke-width':4}));
-  svg.appendChild(el('line',{class:'shape-line thin',x1:L.x,y1:L.y,x2:R.x,y2:R.y,stroke:'#2563eb'}));
+  svg.appendChild(el('circle',{cx:O.x,cy:O.y,r,class:'circle-fill',stroke:'#2f8794','stroke-width':4}));
+  svg.appendChild(el('line',{class:'shape-line thin',x1:L.x,y1:L.y,x2:R.x,y2:R.y,stroke:'#176b87'}));
   svg.appendChild(el('line',{class:'measure-line',x1:40,y1:T.y,x2:260,y2:T.y}));
   svg.appendChild(el('line',{class:'green-line',x1:O.x,y1:O.y,x2:T.x,y2:T.y}));
   svg.appendChild(el('line',{class:'aux-line',x1:O.x,y1:O.y,x2:O.x,y2:132}));
   svg.appendChild(el('path',{class:'measure-line',d:`M ${T.x+14} ${T.y} L ${T.x+14} ${T.y+14} L ${T.x} ${T.y+14}`}));
-  [O,T,L,R].forEach((p,i)=>addPoint(svg,p.x,p.y,i===1?'#d97706':i===0?'#059669':'#2563eb',i<2?5:4));
+  [O,T,L,R].forEach((p,i)=>addPoint(svg,p.x,p.y,i===1?'#a35f18':i===0?'#2f765d':'#176b87',i<2?5:4));
   addLabel(svg,150,128,'O','label');
   addLabel(svg,184,65,'半径垂直切线','label-blue','start');
   addLabel(svg,150,158,'垂径定理入口','label-purple');

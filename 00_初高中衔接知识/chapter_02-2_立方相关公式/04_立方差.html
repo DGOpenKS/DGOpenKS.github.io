@@ -104,12 +104,13 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 <link rel="stylesheet" href="./assets/formula-page-standard.css">
+<script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
-    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="index.html">章节入口</a>
     <a class="nav-link" href="03_立方和.html">立方和</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
@@ -126,10 +127,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
 <main>
   <section class="section" id="calculation">
-    <div class="marker" aria-hidden="true"><span>01</span>公式推导</div>
+    <h2 class="marker"><span aria-hidden="true">01</span>公式推导</h2>
     <div class="section-body">
       <div class="prose">
-        <h2>公式推导：从一次因子到分解式</h2>
         <p>立方差要把两个立方的差 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 写成乘积形式。先根据原式等于 <span class="math">0</span> 时的条件寻找一次因子，再用未知系数确定剩下的二次因子。</p>
         <div class="formula-card">
           <div class="calc-steps">
@@ -169,9 +169,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
+    <h2 class="marker"><span aria-hidden="true">02</span>几何解析</h2>
     <div class="section-body">
-      <h2>几何解析：把剩余体积拆成三块</h2>
       <p class="prose note">在几何模型中，取 <span class="math">a&gt;b&gt;0</span>，这样 <span class="math">a</span>、<span class="math">b</span>、<span class="math">a-b</span> 都可以表示立体图形的边长。但是对于代数式并没有要求。</p>
       <p class="prose">立方差可以看作一个体积拆分问题。从边长为 <span class="math">a</span> 的大立方体中挖去边长为 <span class="math">b</span> 的小立方体，剩余立体图形的体积就是 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。把剩余体积拆成三块，可以看见它们共有的长度 <span class="math">a-b</span>。</p>
       <div class="cube-diff-model-sequence" id="cubeDifferenceStaticSequence" aria-label="立方差几何解析静态步骤">
@@ -236,11 +235,13 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   </section>
 
   <section class="section" id="summary">
-    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
+    <h2 class="marker"><span aria-hidden="true">03</span>核心结论</h2>
     <div class="section-body">
-      <h2>核心结论</h2>
       <div class="summary-panel">
-        <div class="summary-formula">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</div>
+        <div class="summary-formula is-split">
+          <span class="summary-formula-left">a<sup>3</sup>-b<sup>3</sup> =</span>
+          <span class="summary-formula-right">(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
+        </div>
         <div class="summary-paths">
           <div class="summary-path">
             <span class="summary-path-index">1</span>

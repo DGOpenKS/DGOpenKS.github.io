@@ -170,12 +170,13 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 <link rel="stylesheet" href="./assets/formula-page-standard.css">
+<script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
-    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="index.html">章节入口</a>
     <a class="nav-link" href="01_和的立方.html">和的立方</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
@@ -192,10 +193,9 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 
 <main>
   <section class="section" id="calculation">
-    <div class="marker" aria-hidden="true"><span>01</span>公式推导</div>
+    <h2 class="marker"><span aria-hidden="true">01</span>公式推导</h2>
     <div class="section-body">
       <div class="prose">
-        <h2>公式推导：从三个因式相乘到展开式</h2>
         <p>立方表示三个相同因式相乘。运算时先处理前两个括号，再把结果与第三个括号相乘。</p>
         <div class="formula-card">
           <div class="calc-steps">
@@ -227,9 +227,8 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
+    <h2 class="marker"><span aria-hidden="true">02</span>几何解析</h2>
     <div class="section-body">
-      <h2>几何解析：从边长为 <span class="math">a</span> 的立方体中切出 <span class="math">(a-b)<sup>3</sup></span></h2>
       <p class="prose note">在几何模型中，取 <span class="math">a&gt;b&gt;0</span>，这样 <span class="math">a</span>、<span class="math">b</span>、<span class="math">a-b</span> 都可以表示立方体的边长。但是对于代数式并没有要求。</p>
       <p class="prose">差的立方可以看作一个体积切割问题。从边长为 <span class="math">a</span> 的立方体出发，沿长、宽、高三个方向各减去 <span class="math">b</span>，剩下部分就是边长都是 <span class="math">a-b</span> 的立方体。</p>
       <p class="prose">而在拆去的过程中：先减去三片 <span class="math">a<sup>2</sup>b</span>，但这些部分有重合，必须加回三块 <span class="math">ab<sup>2</sup></span>；加回之后，最角上的 <span class="math">b<sup>3</sup></span> 又被多算了一次，所以还要再减去 <span class="math">b<sup>3</sup></span>。</p>
@@ -246,7 +245,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
             <h3>整体是边长为 <span class="math">a</span> 的立方体</h3>
             <p>整体是边长为 <span class="math">a</span> 的立方体，体积是 <span class="math">a<sup>3</sup></span>。每条边都减去一段 <span class="math">b</span> 后，留下的内侧立方体边长就是 <span class="math">a-b</span>，我们要计算的目标体积就是 <span class="math">(a-b)<sup>3</sup></span>。</p>
             <div class="diff-static-formula">
-              <div class="diff-formula-list"><span>a<sup>3</sup></span><span>目标体积：(a-b)<sup>3</sup></span></div>
+              <div class="diff-formula-list"><span>原本体积：a<sup>3</sup></span><span>目标体积：(a-b)<sup>3</sup></span></div>
             </div>
           </div>
         </article>
@@ -305,12 +304,12 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   </section>
 
   <section class="section" id="summary">
-    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
+    <h2 class="marker"><span aria-hidden="true">03</span>核心结论</h2>
     <div class="section-body">
-      <h2>核心结论</h2>
       <div class="summary-panel">
-        <div class="summary-formula" aria-label="差的立方公式">
-          (a-b)<sup>3</sup> = <span class="term-a3">a<sup>3</sup></span> - <span class="term-a2b">3a<sup>2</sup>b</span> + <span class="term-ab2">3ab<sup>2</sup></span> - <span class="term-b3">b<sup>3</sup></span>
+        <div class="summary-formula is-split" aria-label="差的立方公式">
+          <span class="summary-formula-left">(a-b)<sup>3</sup> =</span>
+          <span class="summary-formula-right"><span class="term-a3">a<sup>3</sup></span> - <span class="term-a2b">3a<sup>2</sup>b</span> + <span class="term-ab2">3ab<sup>2</sup></span> - <span class="term-b3">b<sup>3</sup></span></span>
         </div>
         <div class="summary-paths">
           <div class="summary-path">
@@ -444,11 +443,11 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
       this.renderer = new THREE.WebGLRenderer({
         canvas,
         antialias:true,
-        alpha:true,
-        preserveDrawingBuffer:true
+        alpha:true
       });
       this.renderer.setClearColor(0x000000, 0);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const pixelRatioCap = window.matchMedia('(max-width: 640px)').matches ? 1.5 : 2;
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelRatioCap));
       this.root = new THREE.Group();
       this.root.rotation.set(.22, .78, 0);
       this.targetRotation = {x:.22, y:.78};

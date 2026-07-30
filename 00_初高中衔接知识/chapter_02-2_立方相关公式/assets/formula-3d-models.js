@@ -108,7 +108,7 @@
   function buildLab(root, options) {
     root.innerHTML = `
       <div class="model-scene">
-        <canvas aria-label="${options.label}"></canvas>
+        <canvas tabindex="0" aria-label="${options.label}"></canvas>
         <div class="model-loader">3D 模型加载中...</div>
         <div class="model-fallback" hidden>当前浏览器没有加载 WebGL 模型，仍可阅读右侧公式步骤。</div>
         <div class="model-tags" aria-hidden="true"></div>
@@ -144,11 +144,11 @@
       this.renderer = new THREE.WebGLRenderer({
         canvas:refs.canvas,
         antialias:true,
-        alpha:true,
-        preserveDrawingBuffer:true
+        alpha:true
       });
       this.renderer.setClearColor(0x000000, 0);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const pixelRatioCap = window.matchMedia('(max-width: 640px)').matches ? 1.5 : 2;
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelRatioCap));
       this.root = new THREE.Group();
       this.root.rotation.set(.28, .78, 0);
       this.targetRotation = {x:.28, y:.78};
@@ -157,10 +157,13 @@
       this.scene.add(this.root);
       this.drag = null;
       this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.animationFrame = 0;
+      this.isVisible = !('IntersectionObserver' in window);
+      this.visibilityObserver = null;
       this.buildLights();
       this.bindPointer();
       this.resize();
-      this.animate();
+      this.observeVisibility();
     }
 
     buildLights() {
@@ -303,7 +306,38 @@
       };
       this.refs.canvas.addEventListener('pointerup', end);
       this.refs.canvas.addEventListener('pointercancel', end);
+      this.refs.canvas.addEventListener('keydown', event => {
+        const step = .12;
+        if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === 'ArrowLeft') this.targetRotation.y -= step;
+        if (event.key === 'ArrowRight') this.targetRotation.y += step;
+        if (event.key === 'ArrowUp') this.targetRotation.x = Math.max(-.9, this.targetRotation.x - step);
+        if (event.key === 'ArrowDown') this.targetRotation.x = Math.min(.35, this.targetRotation.x + step);
+        this.root.rotation.set(this.targetRotation.x, this.targetRotation.y, 0);
+        this.render();
+      });
       window.addEventListener('resize', () => this.resize());
+    }
+
+    observeVisibility() {
+      if (!('IntersectionObserver' in window)) {
+        this.isVisible = true;
+        this.animate();
+        return;
+      }
+      this.visibilityObserver = new IntersectionObserver(entries => {
+        const nextVisible = entries.some(entry => entry.isIntersecting);
+        if (nextVisible === this.isVisible) return;
+        this.isVisible = nextVisible;
+        if (nextVisible) {
+          this.animate();
+        } else if (this.animationFrame) {
+          cancelAnimationFrame(this.animationFrame);
+          this.animationFrame = 0;
+        }
+      }, {rootMargin:'240px 0px'});
+      this.visibilityObserver.observe(this.refs.canvas);
     }
 
     resize() {
@@ -321,13 +355,21 @@
     }
 
     animate() {
-      requestAnimationFrame(() => this.animate());
-      if (!this.reducedMotion && !this.drag) {
-        this.targetRotation.y += .0012;
-      }
-      this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
-      this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
-      this.render();
+      if (!this.isVisible || this.animationFrame) return;
+      const tick = () => {
+        if (!this.isVisible) {
+          this.animationFrame = 0;
+          return;
+        }
+        if (!this.reducedMotion && !this.drag) {
+          this.targetRotation.y += .0012;
+        }
+        this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
+        this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
+        this.render();
+        this.animationFrame = requestAnimationFrame(tick);
+      };
+      this.animationFrame = requestAnimationFrame(tick);
     }
 
     render() {

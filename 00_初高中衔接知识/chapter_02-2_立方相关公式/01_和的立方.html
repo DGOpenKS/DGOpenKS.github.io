@@ -587,12 +587,296 @@ main{
 }
 </style>
 <link rel="stylesheet" href="./assets/formula-page-standard.css">
+<style id="sum-cube-mobile-layout">
+h2.marker{
+  margin:0;
+  color:var(--muted);
+  font-family:var(--font-sans);
+  font-size:.76rem;
+  font-weight:900;
+  line-height:1.4;
+  letter-spacing:.05em;
+  text-wrap:wrap;
+}
+
+@media(max-width:640px){
+  body{
+    font-size:16px;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+
+  .hero{
+    width:calc(100% - 2rem);
+    padding:2.15rem 0 2.35rem;
+  }
+
+  .hero .mobile-title-break{
+    display:block;
+  }
+
+  .eyebrow{
+    margin-bottom:.85rem;
+    font-size:.7rem;
+  }
+
+  .lead{
+    font-size:.96rem;
+    line-height:1.72;
+  }
+
+  main{
+    padding-bottom:2.5rem;
+  }
+
+  .section,
+  #model.section{
+    gap:.75rem;
+    padding:2.25rem 0;
+  }
+
+  .marker{
+    gap:.5rem;
+    margin:0 0 .1rem;
+    font-size:.7rem;
+  }
+
+  .marker span{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+    font-size:.82rem;
+    box-shadow:0 1px 2px rgba(23,32,47,.05);
+  }
+
+  h2{
+    margin-bottom:.65rem;
+    font-size:1.45rem;
+    line-height:1.3;
+    text-wrap:pretty;
+  }
+
+  h2.marker{
+    margin:0 0 .1rem;
+    font-size:.7rem;
+    line-height:1.4;
+    text-wrap:wrap;
+  }
+
+  h3,
+  .model-step-copy h3{
+    margin:0;
+    font-size:1.08rem;
+    line-height:1.42;
+    text-wrap:pretty;
+  }
+
+  .mobile-heading-unit{
+    display:block;
+  }
+
+  .prose,
+  .model-step-copy,
+  .summary-path p{
+    font-size:.95rem;
+    line-height:1.72;
+  }
+
+  .prose p,
+  .lead,
+  .model-step-copy p,
+  .step-note,
+  .summary-path p{
+    margin-bottom:.65rem;
+    text-wrap:pretty;
+    word-break:normal;
+    overflow-wrap:normal;
+    line-break:strict;
+    hanging-punctuation:allow-end;
+  }
+
+  .formula-card{
+    margin:.9rem 0;
+    padding:0;
+    overflow:visible;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+  }
+
+  .calc-steps{
+    gap:.65rem;
+  }
+
+  .calc-step{
+    gap:.55rem;
+    padding:.85rem;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:var(--paper);
+    box-shadow:var(--soft-shadow);
+  }
+
+  .calc-step:last-child{
+    padding-bottom:.85rem;
+    border-bottom:1px solid var(--line);
+  }
+
+  .formula-line{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    font-size:clamp(.88rem,3.8vw,.98rem);
+    line-height:1.55;
+    letter-spacing:-.01em;
+    scrollbar-width:none;
+  }
+
+  .formula-line::-webkit-scrollbar{
+    display:none;
+  }
+
+  .step-note{
+    width:100%;
+    margin:0;
+    padding:.55rem 0 0;
+    border-top:1px dashed var(--blue-line);
+    border-left:0;
+    font-size:.9rem;
+    line-height:1.65;
+    text-align:left;
+    text-wrap:wrap;
+    overflow-wrap:break-word;
+  }
+
+  .mobile-note-math{
+    display:inline;
+    width:auto;
+    max-width:none;
+    margin:0;
+    white-space:normal;
+  }
+
+  .static-model-sequence{
+    gap:1rem;
+    margin-top:1rem;
+  }
+
+  .model-step{
+    border-radius:20px;
+  }
+
+  .static-scene-wrap{
+    min-height:300px;
+  }
+
+  .model-step-copy{
+    gap:.65rem;
+    padding:1rem;
+  }
+
+  .model-step-kicker{
+    font-size:.72rem;
+  }
+
+  .model-step-kicker b{
+    width:30px;
+    height:30px;
+  }
+
+  .model-step-copy p{
+    margin:0;
+    line-height:1.68;
+  }
+
+  .static-formula{
+    padding:.7rem .8rem;
+  }
+
+  .formula-list{
+    gap:.35rem;
+    font-size:.92rem;
+    line-height:1.5;
+  }
+
+  .static-counts{
+    gap:.45rem;
+  }
+
+  .count{
+    padding:.6rem .35rem;
+  }
+
+  .count b{
+    font-size:1rem;
+  }
+
+  .count small{
+    font-size:.72rem;
+  }
+
+  .summary-panel{
+    padding:1rem;
+  }
+
+  .summary-panel::after{
+    display:none;
+  }
+
+  .summary-formula{
+    display:grid;
+    gap:.15rem;
+    padding-bottom:.85rem;
+    overflow:visible;
+    font-size:1rem;
+    line-height:1.5;
+    text-align:center;
+    white-space:normal;
+  }
+
+  .summary-formula-left,
+  .summary-formula-right{
+    white-space:nowrap;
+  }
+
+  .summary-paths{
+    gap:.85rem;
+    padding-top:.85rem;
+  }
+
+  .summary-path{
+    grid-template-columns:30px minmax(0,1fr);
+    gap:.65rem;
+  }
+
+  .summary-path-index{
+    width:30px;
+    height:30px;
+    font-size:.8rem;
+  }
+
+  .summary-path h3{
+    font-size:.96rem;
+  }
+
+  .summary-path p{
+    margin:0;
+  }
+
+  .footer{
+    padding:1.65rem 1rem;
+  }
+}
+</style>
+<script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="../../index.html">DGOpenKS</a>
-    <a class="nav-link" href="./">章节入口</a>
+    <a class="nav-link" href="index.html">章节入口</a>
     <a class="nav-link" href="#calculation">公式推导</a>
     <a class="nav-link" href="#model">几何解析</a>
     <a class="nav-link" href="#summary">核心结论</a>
@@ -608,10 +892,9 @@ main{
 
 <main>
   <section class="section" id="calculation">
-    <div class="marker" aria-hidden="true"><span>01</span>公式推导</div>
+    <h2 class="marker"><span aria-hidden="true">01</span>公式推导</h2>
     <div class="section-body">
       <div class="prose">
-        <h2>公式推导：从三个因式相乘到展开式</h2>
         <p>立方表示三个相同因式相乘。运算时先处理前两个括号，再把结果与第三个括号相乘：</p>
         <div class="formula-card">
           <div class="calc-steps">
@@ -633,7 +916,7 @@ main{
             </div>
             <div class="calc-step">
               <div class="formula-line">= a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></div>
-              <p class="step-note">最后合并同类项：<span class="math">a<sup>2</sup>b+2a<sup>2</sup>b=3a<sup>2</sup>b</span>，<span class="math">2ab<sup>2</sup>+ab<sup>2</sup>=3ab<sup>2</sup></span>。</p>
+              <p class="step-note">最后合并同类项：<span class="mobile-note-math"><span class="math">a<sup>2</sup>b+2a<sup>2</sup>b=3a<sup>2</sup>b</span>，</span><span class="mobile-note-math"><span class="math">2ab<sup>2</sup>+ab<sup>2</sup>=3ab<sup>2</sup></span>。</span></p>
             </div>
           </div>
         </div>
@@ -643,9 +926,8 @@ main{
   </section>
 
   <section class="section" id="model">
-    <div class="marker" aria-hidden="true"><span>02</span>几何解析</div>
+    <h2 class="marker"><span aria-hidden="true">02</span>几何解析</h2>
     <div class="section-body">
-      <h2>几何解析：立方体体积模型</h2>
       <p class="prose">当 <span class="math">a&gt;0</span>、<span class="math">b&gt;0</span> 时，可以把 <span class="math">a</span> 和 <span class="math">b</span> 看作两段长度。长、宽、高都为 <span class="math">a+b</span> 的立方体，体积就是 <span class="math">(a+b)<sup>3</sup></span>。分别在长度、宽度和高度方向的 <span class="math">a</span> 与 <span class="math">b</span> 分界处切开，就会得到 <span class="math">8</span> 个体积块。</p>
       <div class="static-model-sequence" id="staticModelSequence" aria-label="和的立方几何解析静态步骤">
         <article class="model-step" data-model-stage="0">
@@ -878,12 +1160,12 @@ main{
   </section>
 
   <section class="section" id="summary">
-    <div class="marker" aria-hidden="true"><span>03</span>核心结论</div>
+    <h2 class="marker"><span aria-hidden="true">03</span>核心结论</h2>
     <div class="section-body">
-      <h2>核心结论</h2>
       <div class="summary-panel">
-        <div class="summary-formula" aria-label="和的立方公式">
-          (a+b)<sup>3</sup> = <span class="term-a3">a<sup>3</sup></span> + <span class="term-a2b">3a<sup>2</sup>b</span> + <span class="term-ab2">3ab<sup>2</sup></span> + <span class="term-b3">b<sup>3</sup></span>
+        <div class="summary-formula is-split" aria-label="和的立方公式">
+          <span class="summary-formula-left">(a+b)<sup>3</sup> =</span>
+          <span class="summary-formula-right"><span class="term-a3">a<sup>3</sup></span> + <span class="term-a2b">3a<sup>2</sup>b</span> + <span class="term-ab2">3ab<sup>2</sup></span> + <span class="term-b3">b<sup>3</sup></span></span>
         </div>
         <div class="summary-paths">
           <div class="summary-path">
@@ -1636,11 +1918,11 @@ main{
       this.renderer = new THREE.WebGLRenderer({
         canvas:targetCanvas,
         antialias:true,
-        alpha:true,
-        preserveDrawingBuffer:true
+        alpha:true
       });
       this.renderer.setClearColor(0x000000, 0);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const pixelRatioCap = window.matchMedia('(max-width: 640px)').matches ? 1.5 : 2;
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelRatioCap));
       this.root = new THREE.Group();
       this.root.rotation.set(0.18, 0.82, 0);
       this.targetRotation = {x:0.18, y:0.82};
@@ -1661,6 +1943,10 @@ main{
       this.currentMode = 'factors';
       this.restoreProgress = 0;
       this.onRestoreChange = null;
+      this.animationFrame = 0;
+      this.isVisible = !('IntersectionObserver' in window);
+      this.visibilityObserver = null;
+      if (!this.canvas.hasAttribute('tabindex')) this.canvas.tabIndex = 0;
       this.buildLights();
       this.buildWhole();
       this.buildGuides();
@@ -1671,7 +1957,7 @@ main{
       this.bindPointer();
       this.resize();
       this.setStage(0);
-      this.animate();
+      this.observeVisibility();
     }
 
     buildLights() {
@@ -2054,7 +2340,38 @@ main{
       };
       this.canvas.addEventListener('pointerup', end);
       this.canvas.addEventListener('pointercancel', end);
+      this.canvas.addEventListener('keydown', event => {
+        const step = .12;
+        if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === 'ArrowLeft') this.targetRotation.y -= step;
+        if (event.key === 'ArrowRight') this.targetRotation.y += step;
+        if (event.key === 'ArrowUp') this.targetRotation.x = Math.max(-.95, this.targetRotation.x - step);
+        if (event.key === 'ArrowDown') this.targetRotation.x = Math.min(.25, this.targetRotation.x + step);
+        this.root.rotation.set(this.targetRotation.x, this.targetRotation.y, 0);
+        this.render();
+      });
       window.addEventListener('resize', () => this.resize());
+    }
+
+    observeVisibility() {
+      if (!('IntersectionObserver' in window)) {
+        this.isVisible = true;
+        this.animate();
+        return;
+      }
+      this.visibilityObserver = new IntersectionObserver(entries => {
+        const nextVisible = entries.some(entry => entry.isIntersecting);
+        if (nextVisible === this.isVisible) return;
+        this.isVisible = nextVisible;
+        if (nextVisible) {
+          this.animate();
+        } else if (this.animationFrame) {
+          cancelAnimationFrame(this.animationFrame);
+          this.animationFrame = 0;
+        }
+      }, {rootMargin:'240px 0px'});
+      this.visibilityObserver.observe(this.canvas);
     }
 
     resize() {
@@ -2072,13 +2389,21 @@ main{
     }
 
     animate() {
-      requestAnimationFrame(() => this.animate());
-      if (!this.reducedMotion && !this.drag && this.currentMode !== 'restore') {
-        this.targetRotation.y += .0016;
-      }
-      this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
-      this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
-      this.render();
+      if (!this.isVisible || this.animationFrame) return;
+      const tick = () => {
+        if (!this.isVisible) {
+          this.animationFrame = 0;
+          return;
+        }
+        if (!this.reducedMotion && !this.drag && this.currentMode !== 'restore') {
+          this.targetRotation.y += .0016;
+        }
+        this.root.rotation.x += (this.targetRotation.x - this.root.rotation.x) * .08;
+        this.root.rotation.y += (this.targetRotation.y - this.root.rotation.y) * .08;
+        this.render();
+        this.animationFrame = requestAnimationFrame(tick);
+      };
+      this.animationFrame = requestAnimationFrame(tick);
     }
 
     render() {
@@ -2098,6 +2423,12 @@ main{
   function mountStaticModels() {
     const webglReady = !!window.THREE && hasWebGL();
     staticStepCards.forEach(card => {
+      const canvas = card.querySelector('canvas');
+      if (canvas && !canvas.hasAttribute('tabindex')) canvas.tabIndex = 0;
+    });
+    const mountCard = card => {
+      if (card.dataset.modelMounted === 'true') return;
+      card.dataset.modelMounted = 'true';
       const stage = Math.max(0, Math.min(stageData.length - 1, Number(card.dataset.modelStage) || 0));
       const canvas = card.querySelector('canvas');
       const loader = card.querySelector('.scene-loader');
@@ -2112,14 +2443,34 @@ main{
         model.setStage(stage);
         model.render();
         staticModels.push({stage, title:stageData[stage].title, mode:stageData[stage].mode, model});
+        rendererKind = 'three';
         if (loader) loader.hidden = true;
         if (fallback) fallback.hidden = true;
       } catch (error) {
         showStaticFallback(card);
         console.warn('[DGOpenKS] static cube model fallback:', error);
       }
-    });
-    rendererKind = staticModels.length ? 'three' : 'fallback';
+    };
+
+    if (!webglReady) {
+      staticStepCards.forEach(mountCard);
+      rendererKind = 'fallback';
+      return;
+    }
+
+    rendererKind = 'pending';
+    if ('IntersectionObserver' in window) {
+      const mountObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          mountCard(entry.target);
+          mountObserver.unobserve(entry.target);
+        });
+      }, {rootMargin:'640px 0px'});
+      staticStepCards.forEach(card => mountObserver.observe(card));
+    } else {
+      staticStepCards.forEach(mountCard);
+    }
   }
 
   mountStaticModels();

@@ -870,6 +870,37 @@ h2.marker{
   }
 }
 </style>
+<style id="paragraph-typography-system">
+.prose > p:not(.step-note),
+p.prose,
+.step-note,
+.model-step-copy p,
+.summary-path p,
+.note,
+.cube-template-caption,
+.cube-handout-caption{
+  text-align:justify;
+  text-align-last:start;
+  text-wrap:pretty;
+  line-break:strict;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+@media(min-width:1024px){
+  .calc-step{
+    grid-template-columns:minmax(360px,.88fr) minmax(390px,1.12fr);
+  }
+}
+
+@media(max-width:1023px){
+  .calc-step .step-note{
+    text-align:left;
+    text-align-last:auto;
+    text-wrap:wrap;
+  }
+}
+</style>
 <script src="../assets/sequence-nav.js?v=20260801-1" defer></script>
 </head>
 <body>

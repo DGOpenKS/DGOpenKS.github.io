@@ -596,6 +596,35 @@ h2.marker span{
 </style>
 <link rel="stylesheet" href="../assets/learning-page-system.css">
 <script src="../assets/sequence-nav.js" defer></script>
+<style id="paragraph-typography-system">
+.prose > p:not(.step-note),
+.step-note,
+.visual-copy p,
+.structure-note p,
+.error-card p,
+.summary-copy p{
+  text-align:justify;
+  text-align-last:start;
+  text-wrap:pretty;
+  line-break:strict;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+@media(min-width:1024px){
+  .calc-step{
+    grid-template-columns:minmax(360px,.88fr) minmax(390px,1.12fr);
+  }
+}
+
+@media(max-width:1023px){
+  .calc-step .step-note{
+    text-align:left;
+    text-align-last:auto;
+    text-wrap:wrap;
+  }
+}
+</style>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航"><div class="topbar-inner">

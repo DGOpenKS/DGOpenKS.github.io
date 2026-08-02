@@ -104,6 +104,35 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260801-1">
+<style id="paragraph-typography-system">
+.prose > p:not(.step-note),
+p.prose,
+.step-note,
+.cube-diff-step-copy p,
+.summary-path p,
+.note{
+  text-align:justify;
+  text-align-last:start;
+  text-wrap:pretty;
+  line-break:strict;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+@media(min-width:1024px){
+  .calc-step{
+    grid-template-columns:minmax(360px,.88fr) minmax(390px,1.12fr);
+  }
+}
+
+@media(max-width:1023px){
+  .calc-step .step-note{
+    text-align:left;
+    text-align-last:auto;
+    text-wrap:wrap;
+  }
+}
+</style>
 <script src="../assets/sequence-nav.js?v=20260801-1" defer></script>
 </head>
 <body>
@@ -147,7 +176,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
             </div>
             <div class="calc-step">
               <div class="formula-line">(a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)<br>= a<sup>3</sup>+ka<sup>2</sup>b+ab<sup>2</sup>-a<sup>2</sup>b-kab<sup>2</sup>-b<sup>3</sup></div>
-              <p class="step-note">让 <span class="math">a</span> 和 <span class="math">-b</span> 分别乘二次因子的三项，共得到六项。来自 <span class="math">-b</span> 的三项都带负号。</p>
+              <p class="step-note">让 <span class="math">a</span> 和 <span class="math">-b</span> 分别乘二次因子的三项，共得到六项；<span class="math">-b</span> 乘出的三项均带负号。</p>
             </div>
             <div class="calc-step">
               <div class="formula-line">= a<sup>3</sup>+(k-1)a<sup>2</sup>b+(1-k)ab<sup>2</sup>-b<sup>3</sup></div>
@@ -230,7 +259,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
           </div>
         </article>
       </div>
-      <p class="prose">几何角度能够帮助我们看见两个因子的结构来源：<span class="math">a-b</span> 是三块剩余体积共有的长度，<span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span> 是与这条共同长度相乘的面积之和。</p>
+      <p class="prose">几何角度能帮助我们看见两个因子的来源：<span class="math">a-b</span> 是三块剩余体积共有的长度，<span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span> 是与它相乘的面积之和。</p>
     </div>
   </section>
 
@@ -265,10 +294,12 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 </main>
 
 <footer class="footer">DGOpenKS · 02-2 立方相关公式 · 立方差公式</footer>
-<script type="module">
-  import {DGFormulaModels} from './assets/formula-3d-models.js?v=20260731-esm';
-
+<script src="./assets/formula-3d-models.bundle.js?v=20260802-local"></script>
+<script>
   (() => {
+    const DGFormulaModels = window.DGFormula3DBundle?.DGFormulaModels;
+    if (!DGFormulaModels) return;
+
     const cards = Array.from(document.querySelectorAll('[data-cube-diff-stage]'));
     const mountedModels = [];
 

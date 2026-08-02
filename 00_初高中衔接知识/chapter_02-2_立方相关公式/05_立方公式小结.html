@@ -251,6 +251,36 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
   }
 }
 </style>
+<style id="paragraph-typography-system">
+.lead,
+.prose > p,
+.structure p,
+.reasoning-row p,
+.formula-list p,
+.flow-step p,
+.conclusion p{
+  text-align:justify;
+  text-align-last:start;
+  text-wrap:pretty;
+  line-break:strict;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+
+@media(min-width:1024px){
+  .reasoning-row{
+    grid-template-columns:minmax(250px,.88fr) minmax(0,1.12fr);
+  }
+}
+
+@media(max-width:820px){
+  .reasoning-row p{
+    text-align:left;
+    text-align-last:auto;
+    text-wrap:wrap;
+  }
+}
+</style>
 <script src="../assets/sequence-nav.js?v=20260801-1" defer></script>
 </head>
 <body>

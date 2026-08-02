@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="推导一元二次方程求根公式，说明判别式、系数代入顺序以及由根写出因式的方法。">
+  <title>求根公式法：由根写出因式 | DGOpenKS</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260802-1">
+  <script src="../assets/sequence-nav.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="章节导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../index.html">DGOpenKS</a>
+      <a class="nav-link" href="index.html">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解法</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘法</a>
+      <a class="nav-link" href="04_求根公式法.html" aria-current="page">04 求根公式法</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Chapter 03 · 04</span>
+    <h1>求根公式法：<br><span class="title-continuation">由根写出因式</span></h1>
+    <p class="lead">十字相乘的配对过多或合理配对全部失败时，可以先求二次方程的根，再由根写出一次因式。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" aria-labelledby="derive-title">
+      <h2 class="marker" id="derive-title"><span aria-hidden="true">01</span>公式推导</h2>
+      <div class="section-body prose">
+        <p class="section-intro">把含 $x$ 的部分配成完全平方，再逐步解出 $x$。</p>
+
+        <p>从一般一元二次方程开始：</p>
+        <div class="math-block" data-tone="blue">
+          $$ax^2+bx+c=0\qquad(a\ne0).$$
+        </div>
+        <p>$a\ne0$ 保证方程是二次方程，也保证最后能够除以 $2a$。</p>
+
+        <div class="calc-flow derivation-flow" aria-label="一元二次方程求根公式的推导过程">
+          <div class="calc-row">
+            <div>$$4a^2x^2+4abx+4ac=0$$</div>
+            <p>方程两边同时乘以 $4a$，前两项具备完全平方的前两部分。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$4a^2x^2+4abx+b^2=b^2-4ac$$</div>
+            <p>把 $4ac$ 移到右边，并在两边同时加上 $b^2$。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$(2ax+b)^2=b^2-4ac$$</div>
+            <p>左边符合完全平方公式，右边记作判别式 $\Delta=b^2-4ac$。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$2ax+b=\mathbin{\substack{+\\[0.1em]-}}\sqrt{\Delta}$$</div>
+            <p>当 $\Delta\ge0$ 时开平方，得到上、下两个可能值。</p>
+          </div>
+          <div class="calc-row is-result">
+            <div>$$x=\frac{-b\mathbin{\substack{+\\[0.1em]-}}\sqrt{\Delta}}{2a}$$</div>
+            <p>把 $b$ 移到右边，再除以 $2a$，得到求根公式。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="delta-title">
+      <h2 class="marker" id="delta-title"><span aria-hidden="true">02</span>判别式与因式</h2>
+      <div class="section-body prose">
+        <p class="section-intro">判别式先说明实数根的数量，也给出实数范围内的分解边界。</p>
+
+        <div class="delta-comparison" aria-label="判别式的三种情况">
+          <div><strong>$\Delta>0$</strong><span>两个不同的实数根</span><span>两个不同的一次因式</span></div>
+          <div><strong>$\Delta=0$</strong><span>两个相等的实数根</span><span>同一个一次因式的平方</span></div>
+          <div><strong>$\Delta&lt;0$</strong><span>没有实数根</span><span>不能分解成实系数一次因式的乘积</span></div>
+        </div>
+
+        <p>当 $\Delta\ge0$ 时，两个实数根分别为</p>
+        <div class="root-pair">
+          <div>
+            <small>上面的加号</small>
+            $$x_1=\frac{-b+\sqrt{\Delta}}{2a}$$
+          </div>
+          <div>
+            <small>下面的减号</small>
+            $$x_2=\frac{-b-\sqrt{\Delta}}{2a}$$
+          </div>
+        </div>
+
+        <p>先计算根的和与积，再看它们怎样恢复原式的三个系数。</p>
+        <div class="calc-flow" aria-label="两个根与二次三项式系数的对应过程">
+          <div class="calc-row">
+            <div>$$\begin{aligned}
+            x_1+x_2
+            &amp;=\frac{-b+\sqrt{\Delta}}{2a}+\frac{-b-\sqrt{\Delta}}{2a}\\
+            &amp;=-\frac ba
+            \end{aligned}$$</div>
+            <p>相加时根式项互相抵消，根的和确定一次项系数。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$\begin{aligned}
+            x_1x_2
+            &amp;=\frac{(-b+\sqrt{\Delta})(-b-\sqrt{\Delta})}{4a^2}\\
+            &amp;=\frac{b^2-\Delta}{4a^2}\\
+            &amp;=\frac{b^2-(b^2-4ac)}{4a^2}\\
+            &amp;=\frac ca
+            \end{aligned}$$</div>
+            <p>相乘时分子使用平方差公式，根的积确定常数项。</p>
+          </div>
+          <div class="calc-row is-result">
+            <div>$$\begin{aligned}
+            a(x-x_1)(x-x_2)
+            &amp;=a\left[x^2-(x_1+x_2)x+x_1x_2\right]\\
+            &amp;=ax^2-a\left(-\frac ba\right)x+a\cdot\frac ca\\
+            &amp;=ax^2+bx+c
+            \end{aligned}$$</div>
+            <p>首项系数 $a$ 保留在外面，乘回后依次恢复二次项、一次项和常数项。</p>
+          </div>
+        </div>
+
+        <div class="math-block" data-tone="green">
+          $$ax^2+bx+c=a(x-x_1)(x-x_2).$$
+        </div>
+        <p>根 $x_i$ 对应因式 $x-x_i$。当 $\Delta=0$ 时，$x_1=x_2=x_0$，乘积写成 $a(x-x_0)^2$。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <h2 class="marker" id="steps-title"><span aria-hidden="true">03</span>固定步骤</h2>
+      <div class="section-body prose">
+        <p class="section-intro">先固定系数与判别式，再处理根和因式，可以减少符号错误。</p>
+
+        <ol class="decision-list">
+          <li><strong>整理标准形式</strong><span>写成 $ax^2+bx+c=0$。</span></li>
+          <li><strong>识别三个系数</strong><span>按位置连同正负号写出 $a,b,c$。</span></li>
+          <li><strong>计算判别式</strong><span>先计算 $\Delta=b^2-4ac$。</span></li>
+          <li><strong>判断实数边界</strong><span>若 $\Delta&lt;0$，就在当前实数范围内停止。</span></li>
+          <li><strong>分别求根</strong><span>当 $\Delta\ge0$ 时，把上、下两个符号分开计算并约分。</span></li>
+          <li><strong>写出因式</strong><span>写成 $a(x-x_1)(x-x_2)$。</span></li>
+          <li><strong>整理并检查</strong><span>需要时化成整系数因式，再乘回原式。</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="example-title">
+      <h2 class="marker" id="example-title"><span aria-hidden="true">04</span>完整示例</h2>
+      <div class="section-body prose">
+        <p class="section-intro">分解 $12x^2+11x-5$，重点看系数的负号、两个根和分数因式的整理。</p>
+
+        <p>先令原式等于零，并准确识别系数：</p>
+        <div class="coefficient-strip" aria-label="十二x平方加十一x减五等于零的三个系数">
+          <span>$$a=12$$</span>
+          <span>$$b=11$$</span>
+          <span data-sign="negative">$$c=-5$$</span>
+        </div>
+
+        <p>计算判别式。$c=-5$，代入时要保留负号：</p>
+        <div class="calc-flow compact-flow">
+          <div class="calc-row"><div>$$\Delta=11^2-4\times12\times(-5)$$</div><p>代入 $a=12$、$b=11$、$c=-5$。</p></div>
+          <div class="calc-row is-result"><div>$$\Delta=121+240=361=19^2$$</div><p>$\Delta>0$，方程有两个不同的实数根。</p></div>
+        </div>
+
+        <p>代入求根公式，并把两个符号分开计算：</p>
+        <div class="root-pair">
+          <div>
+            <small>上面的加号</small>
+            $$x_1=\frac{-11+19}{24}=\frac13$$
+          </div>
+          <div>
+            <small>下面的减号</small>
+            $$x_2=\frac{-11-19}{24}=-\frac54$$
+          </div>
+        </div>
+
+        <aside class="method-note" aria-labelledby="root-sign-note-title">
+          <span class="method-note-icon" aria-hidden="true">!</span>
+          <div>
+            <strong id="root-sign-note-title">符号提示</strong>
+            <p>根 $x_i$ 对应因式 $x-x_i$。因此根 $-\dfrac54$ 对应的因式是 $x+\dfrac54$。</p>
+          </div>
+        </aside>
+
+        <p>由根写出因式，再把分数因式整理成整系数因式：</p>
+        <div class="calc-flow">
+          <div class="calc-row">
+            <div>$$12\left(x-\frac13\right)\left(x+\frac54\right)$$</div>
+            <p>首项系数 $12$ 保留在乘积外。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$12\cdot\frac{3x-1}{3}\cdot\frac{4x+5}{4}$$</div>
+            <p>把两个括号分别写成分式。</p>
+          </div>
+          <div class="calc-row is-result">
+            <div>$$(3x-1)(4x+5)$$</div>
+            <p>$12$ 与分母 $3\cdot4$ 抵消，得到整系数因式。</p>
+          </div>
+        </div>
+
+        <div class="math-block" data-tone="green">
+          $$12x^2+11x-5=(3x-1)(4x+5).$$
+        </div>
+        <p>展开右边得到 $12x^2+11x-5$，三个系数全部恢复。</p>
+        <p>对于整系数二次三项式，若 $\Delta&gt;0$ 但不是完全平方数，两个根会含有根式，仍然可以在实数范围内写成 $a(x-x_1)(x-x_2)$。当 $\Delta&lt;0$ 时，不能在实数范围内分解成两个一次因式。</p>
+
+        <div class="route-formula" aria-label="求根公式法的判断路线">
+          <span>识别系数</span><b>→</b><span>计算判别式</span><b>→</b><span>求出两个根</span><b>→</b><span>写出因式</span><b>→</b><span>乘回检查</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="前后页导航">
+    <a href="03_十字相乘法.html">← 十字相乘法</a>
+    <a href="index.html">返回 Chapter 03 →</a>
+  </nav>
+
+  <footer class="footer">DGOpenKS · Chapter 03-4 · 求根公式法</footer>
+</body>
+</html>

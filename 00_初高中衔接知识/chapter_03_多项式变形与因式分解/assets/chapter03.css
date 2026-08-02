@@ -231,7 +231,7 @@
 
 .calc-row > div {
   min-width: 0;
-  overflow-x: auto;
+  overflow: visible;
   color: var(--ink);
   text-align: center;
 }
@@ -484,7 +484,7 @@
 .root-pair > div {
   min-width: 0;
   padding: .9rem;
-  overflow-x: auto;
+  overflow: visible;
   border-top: 3px solid var(--blue);
   background: rgba(255, 255, 255, .45);
   text-align: center;
@@ -530,6 +530,11 @@
   .math-block {
     margin: 1rem 0;
     padding: .75rem .6rem;
+  }
+
+  .calc-row > div mjx-container[display="true"],
+  .root-pair > div mjx-container[display="true"] {
+    font-size: .88em;
   }
 
   .decision-list li {
@@ -592,6 +597,11 @@
 
   .cross-grid {
     gap: 1.8rem 1.4rem;
+  }
+
+  .calc-row > div mjx-container[display="true"],
+  .root-pair > div mjx-container[display="true"] {
+    font-size: .8em;
   }
 }
 

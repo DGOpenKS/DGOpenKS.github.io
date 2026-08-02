@@ -8,6 +8,47 @@
   display: inline-block;
 }
 
+.method-note {
+  display: grid;
+  grid-template-columns: 1.65rem minmax(0, 1fr);
+  gap: .75rem;
+  align-items: start;
+  margin: 1rem 0 1.35rem;
+  padding: .85rem 1rem .9rem .85rem;
+  border: 1px solid var(--amber-line);
+  border-left: 4px solid var(--amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: rgba(255, 242, 220, .72);
+}
+
+.method-note-icon {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #fff;
+  font-size: .92rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.method-note strong {
+  display: block;
+  margin: 0 0 .18rem;
+  color: var(--amber-deep);
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+.method-note p {
+  margin: 0;
+  color: #67461f;
+  line-height: 1.72;
+}
+
 .math-block {
   min-width: 0;
   margin: 1.2rem 0;
@@ -481,6 +522,11 @@
 }
 
 @media (max-width: 640px) {
+  .method-note {
+    gap: .6rem;
+    padding: .8rem .8rem .85rem .7rem;
+  }
+
   .math-block {
     margin: 1rem 0;
     padding: .75rem .6rem;
@@ -551,6 +597,7 @@
 
 @media print {
   .math-block,
+  .method-note,
   .root-pair > div {
     background: transparent;
   }

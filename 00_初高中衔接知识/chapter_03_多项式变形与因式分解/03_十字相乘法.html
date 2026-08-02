@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解十字相乘的交叉和，掌握首项系数为1和不为1的分解方法，并判断何时停止试配。">
+  <title>十字相乘法：用交叉和确定因式 | DGOpenKS</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260731-4">
+  <script src="../assets/sequence-nav.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="章节导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../index.html">DGOpenKS</a>
+      <a class="nav-link" href="index.html">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解法</a>
+      <a class="nav-link" href="03_十字相乘法.html" aria-current="page">03 十字相乘法</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式法</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Chapter 03 · 03</span>
+    <h1>十字相乘法：<br><span class="title-continuation">用交叉和确定因式</span></h1>
+    <p class="lead">十字相乘是在整数因数配对较少时能够快速识别两个一次因式的方法。二次项、交叉和与常数项必须同时对应。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" aria-labelledby="structure-title">
+      <h2 class="marker" id="structure-title"><span aria-hidden="true">01</span>交叉结构</h2>
+      <div class="section-body prose">
+        <p class="section-intro">先展开一般形式，三个判断条件就会直接出现。</p>
+
+        <div class="calc-flow" aria-label="两个一次因式相乘的展开过程">
+          <div class="calc-row">
+            <div>$$(mx+n)(px+q)$$</div>
+            <p>从两个一次因式开始，首项与常数项分别对应原式的两端。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$mpx^2+mqx+npx+nq$$</div>
+            <p>使用分配律得到四个乘积，中间两个是交叉项。</p>
+          </div>
+          <div class="calc-row is-result">
+            <div>$$mpx^2+(mq+np)x+nq$$</div>
+            <p>合并两个一次项，交叉乘积 $mq$ 与 $np$ 的和决定一次项系数。</p>
+          </div>
+        </div>
+
+        <div class="coefficient-map" aria-label="三个系数与因数乘积的对应关系">
+          <div><small>二次项</small><strong>$mp=a$</strong></div>
+          <div><small>一次项</small><strong>$mq+np=b$</strong></div>
+          <div><small>常数项</small><strong>$nq=c$</strong></div>
+        </div>
+        <p>三个位置全部对应，才能写成 $(mx+n)(px+q)$。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="monic-title">
+      <h2 class="marker" id="monic-title"><span aria-hidden="true">02</span>首项为 1</h2>
+      <div class="section-body prose">
+        <p class="section-intro">两个一次因式的首项都是 $x$，所以只需检查两个数的和与积。</p>
+
+        <div class="math-block" data-tone="blue">
+          $$(x+m)(x+n)=x^2+(m+n)x+mn.$$
+        </div>
+        <p>分解 $x^2+bx+c$ 时，需要满足</p>
+        <div class="math-block">
+          $$m+n=b,\qquad mn=c.$$
+        </div>
+
+        <p>对于 $x^2-7x+12$，$-3$ 与 $-4$ 的积为 $12$、和为 $-7$：</p>
+        <div class="comparison-lines" aria-label="十二的因数配对与一次项系数">
+          <div><span>$(-3)\times(-4)=12$</span><b>$-3+(-4)=-7$</b><em>积与和都符合</em></div>
+        </div>
+        <div class="math-block" data-tone="green">
+          $$x^2-7x+12=(x-3)(x-4).$$
+        </div>
+        <p>$c>0$ 时两个数同号，$c<0$ 时两个数异号；最后仍要用它们的和检查 $b$。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="nonmonic-title">
+      <h2 class="marker" id="nonmonic-title"><span aria-hidden="true">03</span>首项不为 1</h2>
+      <div class="section-body prose">
+        <p class="section-intro">这时要同时拆分 $a$ 与 $c$，再用交叉和筛选排列。</p>
+        <aside class="method-note" aria-labelledby="nonmonic-note-title">
+          <span class="method-note-icon" aria-hidden="true">!</span>
+          <div>
+            <strong id="nonmonic-note-title">方法提示</strong>
+            <p>因数配对、排列和符号的组合会明显增加。只有当因数配对较少、交叉关系容易看出时，才适合使用十字相乘；如果需要检查很多组合，应及时转向判别式和求根公式。</p>
+          </div>
+        </aside>
+
+        <div class="math-block" data-tone="blue">
+          $$ax^2+bx+c=(mx+n)(px+q)$$
+        </div>
+        <p>要找到整数 $m,n,p,q$，必须同时满足</p>
+        <div class="math-block">
+          $$mp=a,\qquad nq=c,\qquad mq+np=b.$$
+        </div>
+
+        <ol>
+          <li>先提出原式的公因式；必要时先提出负号，使二次项系数为正。</li>
+          <li>列出 $a$ 的正因数配对，作为 $m,p$ 的候选。</li>
+          <li>列出 $c$ 的整数因数配对，作为 $n,q$ 的候选。$c&gt;0$ 时二者同号，$c&lt;0$ 时二者异号。</li>
+          <li>把每组常数因数交换位置，分别计算 $mq+np$。两种排列的交叉和可能不同。</li>
+          <li>交叉和等于 $b$ 时写出两个因式，再展开检查。</li>
+        </ol>
+        <p>当二次项系数为正且 $c&gt;0$ 时，可以根据 $b$ 的正负先确定两个常数的共同符号；当 $c&lt;0$ 时，要检查正、负号的两种位置。最终都以 $mq+np=b$ 为准。</p>
+
+        <p>分解 $6x^2+11x+3$。$6$ 的正因数配对是 $6\times1$、$3\times2$，$3$ 的正因数配对只有 $1\times3$。依次检查常数因数的两种排列：</p>
+        <div class="comparison-lines" aria-label="二次项与常数项因数配对的交叉和比较">
+          <div><span>$(6x+1)(x+3)$</span><b>$18x+x=19x$</b><em>不符合</em></div>
+          <div><span>$(6x+3)(x+1)$</span><b>$6x+3x=9x$</b><em>不符合</em></div>
+          <div class="is-match"><span>$(3x+1)(2x+3)$</span><b>$9x+2x=11x$</b><em>符合</em></div>
+          <div><span>$(3x+3)(2x+1)$</span><b>$3x+6x=9x$</b><em>不符合</em></div>
+        </div>
+
+        <p>第三组的交叉和等于原式的一次项。对应的十字结构为：</p>
+        <figure class="cross-diagram">
+          <div class="cross-grid" aria-label="三x和一、二x和三的交叉相乘">
+            <span>$3x$</span><span>$1$</span>
+            <span>$2x$</span><span>$3$</span>
+          </div>
+          <figcaption>
+            <span>$3x\times3=9x$</span>
+            <span>$1\times2x=2x$</span>
+            <strong>$9x+2x=11x$</strong>
+          </figcaption>
+        </figure>
+
+        <p>交叉和正好得到原式的一次项，因此</p>
+        <div class="math-block" data-tone="green">
+          $$6x^2+11x+3=(3x+1)(2x+3).$$
+        </div>
+        <p>展开右边得到 $6x^2+9x+2x+3$，三个系数都能恢复。</p>
+
+        <p>把 $a$ 与 $c$ 的合理整数配对、符号和排列全部检查后仍得不到 $b$，说明在当前整数范围内无法用十字相乘得到两个一次因式。配对数量很多时，也可以直接转向判别式和求根公式。</p>
+
+        <p>同一个整式反复出现时，可以先把它看成整体。令 $T=x+1$：</p>
+        <div class="math-block" data-tone="purple">
+          $$\begin{aligned}
+          T^2-5T+6&amp;=(T-2)(T-3),\\
+          (x+1)^2-5(x+1)+6&amp;=(x-1)(x-2).
+          \end{aligned}$$
+        </div>
+        <p>完成外层分解后再换回原来的整式，可以避免过早展开。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="boundary-title">
+      <h2 class="marker" id="boundary-title"><span aria-hidden="true">04</span>使用与停止</h2>
+      <div class="section-body prose">
+        <p class="section-intro">因数配对少、交叉和容易比较时使用；试配成本明显增加时及时停止。</p>
+
+        <div class="boundary-split">
+          <div>
+            <p><strong>适合使用</strong></p>
+            <ul>
+              <li>已经提出公因式，是整系数二次三项式；</li>
+              <li>$a$ 与 $c$ 的因数配对较少；</li>
+              <li>各组交叉和可以快速与 $b$ 比较。</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>及时停止</strong></p>
+            <ul>
+              <li>因数配对很多，组合数量明显增加；</li>
+              <li>合理的整数配对全部失败；</li>
+              <li>需要判断实数范围内的分解情况。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="summary-panel">
+          <div class="math-block" data-tone="green">
+            $$\begin{aligned}
+            a=1:&\qquad m+n=b,\quad mn=c;\\
+            a\ne1:&\qquad mp=a,\quad mq+np=b,\quad nq=c.
+            \end{aligned}$$
+          </div>
+          <p>合理配对全部失败或组合过多时，第四篇使用判别式和求根公式继续判断。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="前后页导航">
+    <a href="02_分组分解法.html">← 分组分解法</a>
+    <a href="04_求根公式法.html">求根公式法 →</a>
+  </nav>
+
+  <footer class="footer">DGOpenKS · Chapter 03-3 · 十字相乘法</footer>
+</body>
+</html>

@@ -3,89 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="从整式乘法的逆运算理解因式分解，并学习二次三项式的十字相乘法与求根公式法。">
-  <title>Chapter 03 多项式变形与因式分解 | DGOpenKS</title>
-  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <meta name="description" content="从乘积结构开始学习因式分解，再依次掌握分组分解、十字相乘和求根公式法。">
+  <title>多项式变形与因式分解 | DGOpenKS</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-  <link rel="stylesheet" href="assets/chapter03.css">
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260731-4">
+  <script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
+
   <nav class="topbar" aria-label="章节导航">
     <div class="topbar-inner">
       <a class="brand" href="../../index.html">DGOpenKS</a>
-      <a class="nav-link" href="../chapter_02-2_立方相关公式/">上一章</a>
-      <a class="nav-link" href="01_因式分解.html">因式分解</a>
-      <a class="nav-link" href="02_十字相乘法.html">十字相乘法</a>
-      <a class="nav-link" href="03_求根公式法.html">求根公式法</a>
-      <a class="nav-link" href="../chapter_04_分式根式与条件控制/">下一章</a>
+      <a class="nav-link" href="../chapter_02-2_立方相关公式/index.html">上一章</a>
+      <a class="nav-link" href="index.html" aria-current="page">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解法</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘法</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式法</a>
+      <a class="nav-link" href="../chapter_04_分式根式与条件控制/index.html">下一章</a>
     </div>
   </nav>
 
   <header class="hero">
     <span class="eyebrow">Chapter 03</span>
     <h1>多项式变形与因式分解</h1>
-    <p class="lead">本章从整式乘法的反方向理解因式分解，再分别学习十字相乘法和求根公式法。每种方法都要说明因式的来源，并通过展开检查结果。</p>
+    <p class="lead">看到一个多项式，先判断它的结构，再选择分解方法。本章从乘积结构与基本方法出发，依次进入分组分解、十字相乘和求根公式。</p>
   </header>
 
   <main id="main">
-    <section class="section" aria-labelledby="chapter-spine">
-      <div class="marker"><span>01</span>知识主线</div>
-      <div class="section-body">
-        <h2 id="chapter-spine">从乘法展开，沿相反方向找回因式</h2>
-        <p>整式乘法把因式的乘积展开成多项式；因式分解把多项式还原成因式的乘积。十字相乘法和求根公式法继续处理其中一类具体对象：二次三项式。</p>
-        <div class="direction-map" aria-label="整式乘法与因式分解的相反方向">
-          <div class="direction-node"><b>因式的乘积</b><span>$(x-2)(x-3)$</span></div>
-          <div class="direction-arrow"><span>整式乘法</span><strong>⇄</strong><span>因式分解</span></div>
-          <div class="direction-node"><b>多项式</b><span>$x^2-5x+6$</span></div>
+    <section class="section" aria-labelledby="direction-title">
+      <div class="marker"><span>01</span>变形方向</div>
+      <div class="section-body prose">
+        <h2 id="direction-title">从展开多项式，回到因式的乘积</h2>
+        <p class="section-intro">整式乘法和因式分解处理的是同一个恒等关系，只是变形方向相反。</p>
+
+        <div class="formula-bridge" aria-label="整式乘法与因式分解的相反方向">
+          <div>
+            <small>因式的乘积</small>
+            $$(x-2)(x-3)$$
+          </div>
+          <div class="bridge-arrows">
+            <span>整式乘法 →</span>
+            <span>← 因式分解</span>
+          </div>
+          <div>
+            <small>展开后的多项式</small>
+            $$x^2-5x+6$$
+          </div>
         </div>
-        <p class="purpose">三篇内容共用同一个检查方法：把分解结果重新展开，二次项、一次项和常数项都回到原式，分解才成立。</p>
+
+        <p>向右展开时使用分配律并合并同类项；向左分解时恢复乘积结构。两个方向都不改变式子的值。</p>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="lesson-list">
-      <div class="marker"><span>02</span>本章内容</div>
-      <div class="section-body">
-        <h2 id="lesson-list">按知识来源依次阅读</h2>
-        <p>第一篇建立因式分解的概念和基本方法，第二篇说明十字相乘法，第三篇推导求根公式法。</p>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="01_因式分解.html">
-            <span class="tag">概念与方法</span>
-            <strong>01 因式分解</strong>
-            <p>理解整式乘法的逆向关系，学习提公因式法、公式法以及分解结果的检查。</p>
-            <div class="equation-card">$$x^2-5x+6=(x-2)(x-3)$$</div>
+    <section class="section" aria-labelledby="lessons-title">
+      <div class="marker"><span>02</span>四篇内容</div>
+      <div class="section-body prose">
+        <h2 id="lessons-title">按理解顺序阅读</h2>
+        <p class="section-intro">先看懂乘积结构，再学习分组与两种二次三项式的分解方法。</p>
+
+        <div class="boundary-split">
+          <a class="lesson-item" href="01_因式分解.html">
+            <span class="lesson-tag">基础</span>
+            <strong>因式分解</strong>
+            <p>看清乘积结构，先处理公因式和公式。</p>
+            <div class="lesson-formula">公因式 → 完整公式</div>
           </a>
-          <a class="lesson-card" href="02_十字相乘法.html">
-            <span class="tag">两类计算</span>
-            <strong>02 十字相乘法</strong>
-            <p>首项系数为 1 时找积与和；首项系数不为 1 时检查交叉乘积。</p>
-            <div class="equation-card">$$(mx+n)(px+q)=mpx^2+(mq+np)x+nq$$</div>
+          <a class="lesson-item" href="02_分组分解法.html">
+            <span class="lesson-tag" data-tone="amber">分组</span>
+            <strong>分组分解法</strong>
+            <p>让不同部分产生相同的完整括号。</p>
+            <div class="lesson-formula">共同括号 → 共同因式</div>
           </a>
-          <a class="lesson-card" href="03_求根公式法.html">
-            <span class="tag">通用方法</span>
-            <strong>03 求根公式法</strong>
-            <p>由配方法推出求根公式，再根据两个实数根写出二次三项式的因式。</p>
-            <div class="equation-card">$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$</div>
+          <a class="lesson-item" href="03_十字相乘法.html">
+            <span class="lesson-tag">巧法</span>
+            <strong>十字相乘法</strong>
+            <p>比较交叉项，快速确定因式。</p>
+            <div class="lesson-formula">$mq+np=b$</div>
+          </a>
+          <a class="lesson-item" href="04_求根公式法.html">
+            <span class="lesson-tag" data-tone="purple">通法</span>
+            <strong>求根公式法</strong>
+            <p>先求根，再由根写出因式。</p>
+            <div class="lesson-formula">$\Delta=b^2-4ac$</div>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="reading-order">
-      <div class="marker"><span>03</span>阅读顺序</div>
-      <div class="section-body">
-        <h2 id="reading-order">每一步都能说明依据</h2>
-        <div class="step-list">
-          <div class="step"><span>1</span><p>先从乘法展开出发，确认分解是沿相反方向恢复乘积。</p></div>
-          <div class="step"><span>2</span><p>用分配律和乘法公式说明提公因式法、公式法为什么成立。</p></div>
-          <div class="step"><span>3</span><p>对二次三项式比较系数，找到两个一次因式中的各项。</p></div>
-          <div class="step"><span>4</span><p>因数关系不明显时，用求根公式确定根，再由根写出因式。</p></div>
-          <div class="step"><span>5</span><p>最后把所有因式乘回去，检查是否完整得到原多项式。</p></div>
+    <section class="section" aria-labelledby="route-title">
+      <div class="marker"><span>03</span>判断主线</div>
+      <div class="section-body prose">
+        <h2 id="route-title">每次分解都沿同一条路线</h2>
+        <p class="section-intro">先处理最明显的结构，可以减少后面无效的尝试。</p>
+
+        <ol class="decision-list">
+          <li><strong>检查公因式</strong><span>每一项是否含有同一个数、字母或整式？</span></li>
+          <li><strong>检查完整公式结构</strong><span>项数、指数、系数和符号是否全部匹配？</span></li>
+          <li><strong>尝试分组</strong><span>四项或更多项能否通过分组产生同一个括号？</span></li>
+          <li><strong>判断二次三项式</strong><span>因数配对较少时，使用十字相乘快速识别。</span></li>
+          <li><strong>必要时转向求根公式</strong><span>试配不经济或失败时，用判别式和根确定因式。</span></li>
+          <li><strong>乘回原式</strong><span>检查二次项、一次项和常数项是否全部恢复。</span></li>
+        </ol>
+
+        <div class="summary-panel">
+          <p>因式分解从结构判断开始。结果整体成为整式的乘积，并且乘回去恒等于原式，分解才真正完成。</p>
         </div>
-        <a class="next-link" href="01_因式分解.html">开始学习因式分解 <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
+
+  <nav class="pager" aria-label="章节前后导航">
+    <a href="../chapter_02-2_立方相关公式/index.html">← 立方相关公式</a>
+    <a href="01_因式分解.html">因式分解 →</a>
+  </nav>
 
   <footer class="footer">DGOpenKS · Chapter 03 · 多项式变形与因式分解</footer>
 </body>

@@ -386,7 +386,6 @@ h2.marker{
 }
 
 .section-intro{
-  max-width:800px;
   margin-bottom:1.5rem;
   color:var(--body);
   font-size:1.03rem;

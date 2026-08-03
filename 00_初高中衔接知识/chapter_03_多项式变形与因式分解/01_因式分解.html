@@ -41,11 +41,10 @@
 
   <main id="main">
     <section class="section" aria-labelledby="product-title">
-      <h2 class="marker" id="product-title"><span aria-hidden="true">01</span>乘积结构</h2>
+      <h2 class="marker" id="product-title"><span aria-hidden="true">01</span>先展开，再还原</h2>
       <div class="section-body prose">
-        <p class="section-intro">因式分解沿着整式乘法的反方向进行，变形前后的两个式子始终恒等。</p>
+        <p class="section-intro">为了更好地理解因式分解，先把两个相乘的因式展开：</p>
 
-        <p>先使用分配律展开，再合并同类项：</p>
         <div class="math-block" data-tone="blue">
           $$\begin{aligned}
           (2x-3)(x+4)
@@ -53,40 +52,28 @@
           &amp;=2x^2+5x-12.
           \end{aligned}$$
         </div>
-        <p>把同一个恒等关系反向书写，就得到：</p>
-        <div class="formula-bridge" role="img" aria-label="二次三项式经过因式分解变为两个一次因式的乘积">
-          <div>
-            <small>三个项通过加减连接</small>
-            $$2x^2+5x-12$$
-          </div>
-          <div class="bridge-arrows">
-            <strong>因式分解</strong>
-            <span aria-hidden="true">→</span>
-          </div>
-          <div>
-            <small>两个因式通过乘法连接</small>
-            $$(2x-3)(x+4)$$
-          </div>
+        <p>经过展开，两个因式相乘的结构变成了由若干项通过加减连接的结构，而这种结构是我们常见的形式。</p>
+
+        <p>因式分解，就是把这种加减结构重新变成一开始的相乘结构：</p>
+        <div class="math-block" data-tone="green">
+          $$\begin{aligned}
+          2x^2+5x-12
+          &amp;=2x^2+8x-3x-12\\
+          &amp;=(2x^2+8x)-(3x+12)\\
+          &amp;=2x(x+4)-3(x+4)\\
+          &amp;=(2x-3)(x+4).
+          \end{aligned}$$
         </div>
+        <p>原式重新变成了两个整式相乘的形式，其中 $2x-3$ 和 $x+4$ 都叫作因式。</p>
 
-        <p>看等式两边，最明显的变化是连接方式不同。</p>
-
-        <p>左边的 $2x^2+5x-12$ 由三个单项式组成：$2x^2$、$5x$、$-12$。这些项通过加减连接。</p>
-
-        <p>右边的 $(2x-3)(x+4)$ 由两个整式组成：$2x-3$ 和 $x+4$。这两个整式通过乘法连接，每一个参与相乘的整式都叫作因式。因式可以是单项式，也可以是多项式。例如，在 $3x(x-2)$ 中，$3x$ 是单项式因式，$x-2$ 是多项式因式。</p>
-
-        <p>因式分解，就是把多项式的加减形式化成若干整式相乘的形式。</p>
-
-        <p>判断是否已经完成因式分解，要看整个式子是否成为乘积。例如，$x(2x+5)-12$ 中仍有减法连接，整个式子还没有化成乘积。</p>
-
-        <p>把各因式乘回去能够恢复原式，才能确认变形正确。本篇先观察整系数因式；二次三项式需要在实数范围内继续分解时，可以使用第四篇的求根公式法。</p>
+        <p>为了更好地进行因式分解，我们通常会用到多种不同的方法。面对一个多项式，通常先检查各项是否含有公因式。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="common-title">
       <h2 class="marker" id="common-title"><span aria-hidden="true">02</span>公因式</h2>
       <div class="section-body prose">
-        <p class="section-intro">先把每一项共有的部分完整提出，可以降低式子的复杂程度，并让后面的结构显现。</p>
+        <p class="section-intro">公因式是多项式中每一项都含有的共同部分。先把它完整提出，可以降低式子的复杂程度，并让后面的结构显现。</p>
 
         <ol class="decision-list">
           <li><strong>检查数字</strong><span>取各项系数的最大公因数。</span></li>
@@ -110,13 +97,14 @@
           \end{aligned}$$
         </div>
         <p>两项都含有完整因式 $x-2$，提出以后再整理另一个括号。</p>
+        <p>提出公因式以后，式子会变得更简单，也可能出现熟悉的公式结构。接下来要检查剩余部分能否继续使用公式分解。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="formula-title">
       <h2 class="marker" id="formula-title"><span aria-hidden="true">03</span>公式法</h2>
       <div class="section-body prose">
-        <p class="section-intro">平方与立方相关公式已经在前一章完成推导；这里沿因式分解方向识别并使用它们。</p>
+        <p class="section-intro">平方与立方相关公式已经在前一章完成推导。沿因式分解方向使用这些公式时，要完整检查项数、指数、系数和符号。</p>
 
         <ol class="decision-list">
           <li><strong>$A^2-B^2$</strong><span>两项都是平方，中间是减号，可分解为 $(A-B)(A+B)$。</span></li>
@@ -136,13 +124,14 @@
             <p>括号内是 $(2x)^2-5^2$，继续使用平方差公式。</p>
           </div>
         </div>
+        <p>公因式和公式可以连续使用。得到乘积以后，还要继续检查每一个因式，判断分解是否已经达到题目需要的位置。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="next-title">
       <h2 class="marker" id="next-title"><span aria-hidden="true">04</span>继续判断</h2>
       <div class="section-body prose">
-        <p class="section-intro">直接计算因式分解与把因式分解用于其他问题，停止的位置取决于当前目标。</p>
+        <p class="section-intro">因式分解进行到什么程度，取决于当前目标。</p>
 
         <div class="boundary-split completion-split">
           <div>

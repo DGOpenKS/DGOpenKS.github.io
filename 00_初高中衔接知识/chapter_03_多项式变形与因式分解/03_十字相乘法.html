@@ -65,7 +65,7 @@
           <div><small>一次项</small><strong>$mq+np=b$</strong></div>
           <div><small>常数项</small><strong>$nq=c$</strong></div>
         </div>
-        <p>三个位置全部对应，才能写成 $(mx+n)(px+q)$。</p>
+        <p>三个位置全部对应，才能写成 $(mx+n)(px+q)$。先从首项系数为 $1$ 的情况开始，此时二次项的因数配对已经确定。</p>
       </div>
     </section>
 
@@ -90,13 +90,14 @@
           $$x^2-7x+12=(x-3)(x-4).$$
         </div>
         <p>$c>0$ 时两个数同号，$c<0$ 时两个数异号；最后仍要用它们的和检查 $b$。</p>
+        <p>首项系数为 $1$ 时，只需寻找符合条件的常数因数配对；当首项系数不为 $1$ 时，还要同时拆分二次项系数。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="nonmonic-title">
       <h2 class="marker" id="nonmonic-title"><span aria-hidden="true">03</span>首项不为 1</h2>
       <div class="section-body prose">
-        <p class="section-intro">这时要同时拆分 $a$ 与 $c$，再用交叉和筛选排列。</p>
+        <p class="section-intro">当 $a\ne1$ 时，第一节得到的三个对应关系仍然成立。区别在于，二次项系数 $a$ 也可能有多组因数配对，所以要同时安排 $a$ 与 $c$，再用交叉和筛选。</p>
         <aside class="method-note" aria-labelledby="nonmonic-note-title">
           <span class="method-note-icon" aria-hidden="true">!</span>
           <div>
@@ -105,24 +106,14 @@
           </div>
         </aside>
 
-        <div class="math-block" data-tone="blue">
-          $$ax^2+bx+c=(mx+n)(px+q)$$
-        </div>
-        <p>要找到整数 $m,n,p,q$，必须同时满足</p>
-        <div class="math-block">
-          $$mp=a,\qquad nq=c,\qquad mq+np=b.$$
-        </div>
-
         <ol>
           <li>先提出原式的公因式；必要时先提出负号，使二次项系数为正。</li>
-          <li>列出 $a$ 的正因数配对，作为 $m,p$ 的候选。</li>
-          <li>列出 $c$ 的整数因数配对，作为 $n,q$ 的候选。$c&gt;0$ 时二者同号，$c&lt;0$ 时二者异号。</li>
-          <li>把每组常数因数交换位置，分别计算 $mq+np$。两种排列的交叉和可能不同。</li>
-          <li>交叉和等于 $b$ 时写出两个因式，再展开检查。</li>
+          <li>列出 $a$ 的正因数配对和 $c$ 的整数因数配对，作为首项和常数项的候选。</li>
+          <li>安排因数的位置和符号，计算 $mq+np$。$c&gt;0$ 时两个常数同号，可以根据 $b$ 的正负确定共同符号；$c&lt;0$ 时两个常数异号。交换位置可能改变交叉和。</li>
+          <li>交叉和等于 $b$ 时，写成 $(mx+n)(px+q)$，再展开检查。</li>
         </ol>
-        <p>当二次项系数为正且 $c&gt;0$ 时，可以根据 $b$ 的正负先确定两个常数的共同符号；当 $c&lt;0$ 时，要检查正、负号的两种位置。最终都以 $mq+np=b$ 为准。</p>
 
-        <p>分解 $6x^2+11x+3$。$6$ 的正因数配对是 $6\times1$、$3\times2$，$3$ 的正因数配对只有 $1\times3$。依次检查常数因数的两种排列：</p>
+        <p>分解 $6x^2+11x+3$。$6$ 的正因数配对是 $6\times1$、$3\times2$，$3$ 的正因数配对只有 $1\times3$。由于一次项系数为正，两个常数都取正号。依次检查常数因数的两种排列：</p>
         <div class="comparison-lines" aria-label="二次项与常数项因数配对的交叉和比较">
           <div><span>$(6x+1)(x+3)$</span><b>$18x+x=19x$</b><em>不符合</em></div>
           <div><span>$(6x+3)(x+1)$</span><b>$6x+3x=9x$</b><em>不符合</em></div>
@@ -151,7 +142,7 @@
 
         <p>把 $a$ 与 $c$ 的合理整数配对、符号和排列全部检查后仍得不到 $b$，说明在当前整数范围内无法用十字相乘得到两个一次因式。配对数量很多时，也可以直接转向判别式和求根公式。</p>
 
-        <p>同一个整式反复出现时，可以先把它看成整体。令 $T=x+1$：</p>
+        <p>同一个整式反复出现时，可以先把它看成一个字母，按相同方法分解，最后再换回原来的整式。令 $T=x+1$：</p>
         <div class="math-block" data-tone="purple">
           $$\begin{aligned}
           T^2-5T+6&amp;=(T-2)(T-3),\\
@@ -159,6 +150,7 @@
           \end{aligned}$$
         </div>
         <p>完成外层分解后再换回原来的整式，可以避免过早展开。</p>
+        <p>无论直接处理 $x$，还是先把重复整式看成整体，都要先判断因数配对是否值得继续试配。</p>
       </div>
     </section>
 

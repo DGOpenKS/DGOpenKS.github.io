@@ -16,7 +16,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260731-4">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260804-2">
   <script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
@@ -36,14 +36,14 @@
   <header class="hero">
     <span class="eyebrow">Chapter 03 · 03</span>
     <h1>十字相乘法：<br><span class="title-continuation">用交叉和确定因式</span></h1>
-    <p class="lead">十字相乘是在整数因数配对较少时能够快速识别两个一次因式的方法。二次项、交叉和与常数项必须同时对应。</p>
+    <p class="lead">二次三项式已经检查过公因式，又不符合完整公式时，还要判断它能否写成两个一次因式的乘积。整数因数配对较少时，可以用交叉和快速判断。</p>
   </header>
 
   <main id="main">
     <section class="section" aria-labelledby="structure-title">
       <h2 class="marker" id="structure-title"><span aria-hidden="true">01</span>交叉结构</h2>
       <div class="section-body prose">
-        <p class="section-intro">先展开一般形式，三个判断条件就会直接出现。</p>
+        <p class="section-intro">一个二次三项式怎样还原成两个一次因式？先展开一般形式，三个判断条件会直接出现。</p>
 
         <div class="calc-flow" aria-label="两个一次因式相乘的展开过程">
           <div class="calc-row">
@@ -72,7 +72,7 @@
     <section class="section" aria-labelledby="monic-title">
       <h2 class="marker" id="monic-title"><span aria-hidden="true">02</span>首项为 1</h2>
       <div class="section-body prose">
-        <p class="section-intro">两个一次因式的首项都是 $x$，所以只需检查两个数的和与积。</p>
+        <p class="section-intro">首项系数为 $1$ 时，两个一次因式的首项已经确定为 $x$。此时只需寻找两个整数，使它们的和与积分别对应一次项和常数项。</p>
 
         <div class="math-block" data-tone="blue">
           $$(x+m)(x+n)=x^2+(m+n)x+mn.$$
@@ -90,38 +90,50 @@
           $$x^2-7x+12=(x-3)(x-4).$$
         </div>
         <p>$c>0$ 时两个数同号，$c<0$ 时两个数异号；最后仍要用它们的和检查 $b$。</p>
-        <p>首项系数为 $1$ 时，只需寻找符合条件的常数因数配对；当首项系数不为 $1$ 时，还要同时拆分二次项系数。</p>
+        <p>首项系数为 $1$ 时，只需寻找符合条件的常数因数配对；首项系数不为 $1$ 时，两个交叉项还要同时满足和为 $b$、积为 $ac$，可以利用这个关系拆分中间项。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="nonmonic-title">
       <h2 class="marker" id="nonmonic-title"><span aria-hidden="true">03</span>首项不为 1</h2>
       <div class="section-body prose">
-        <p class="section-intro">当 $a\ne1$ 时，第一节得到的三个对应关系仍然成立。区别在于，二次项系数 $a$ 也可能有多组因数配对，所以要同时安排 $a$ 与 $c$，再用交叉和筛选。</p>
-        <aside class="method-note" aria-labelledby="nonmonic-note-title">
-          <span class="method-note-icon" aria-hidden="true">!</span>
-          <div>
-            <strong id="nonmonic-note-title">方法提示</strong>
-            <p>因数配对、排列和符号的组合会明显增加。只有当因数配对较少、交叉关系容易看出时，才适合使用十字相乘；如果需要检查很多组合，应及时转向判别式和求根公式。</p>
+        <p class="section-intro">当 $a\ne1$ 时，直接提出首项系数会使后两项出现分数：</p>
+        <div class="math-block">
+          $$ax^2+bx+c=a\left(x^2+\frac ba x+\frac ca\right).$$
+        </div>
+        <p>如果 $a$ 是所有项的公因数，它应当在开始时完整提出；其余情况下，这种写法只把原来的因数安排转移到了分数处理中。</p>
+
+        <p>第一节中的两个交叉乘积 $mq$ 与 $np$，它们的和等于 $b$，积等于 $ac$：</p>
+        <div class="math-block" data-tone="blue">
+          $$mq+np=b,\qquad (mq)(np)=(mp)(nq)=ac.$$
+        </div>
+        <p>因此可以先寻找两个整数 $r,s$，使 $r+s=b$、$rs=ac$，再用 $rx+sx$ 拆开中间项，通过分组还原两个一次因式。</p>
+
+        <p>分解 $6x^2+11x+3$。先计算 $ac$，再寻找积为 $18$、和为 $11$ 的两个整数：</p>
+        <div class="calc-flow" aria-label="六x平方加十一x加三拆分中间项的过程">
+          <div class="calc-row">
+            <div>$$ac=6\times3=18$$</div>
+            <p>首项系数与常数项的乘积是 $18$。</p>
           </div>
-        </aside>
-
-        <ol>
-          <li>先提出原式的公因式；必要时先提出负号，使二次项系数为正。</li>
-          <li>列出 $a$ 的正因数配对和 $c$ 的整数因数配对，作为首项和常数项的候选。</li>
-          <li>安排因数的位置和符号，计算 $mq+np$。$c&gt;0$ 时两个常数同号，可以根据 $b$ 的正负确定共同符号；$c&lt;0$ 时两个常数异号。交换位置可能改变交叉和。</li>
-          <li>交叉和等于 $b$ 时，写成 $(mx+n)(px+q)$，再展开检查。</li>
-        </ol>
-
-        <p>分解 $6x^2+11x+3$。$6$ 的正因数配对是 $6\times1$、$3\times2$，$3$ 的正因数配对只有 $1\times3$。由于一次项系数为正，两个常数都取正号。依次检查常数因数的两种排列：</p>
-        <div class="comparison-lines" aria-label="二次项与常数项因数配对的交叉和比较">
-          <div><span>$(6x+1)(x+3)$</span><b>$18x+x=19x$</b><em>不符合</em></div>
-          <div><span>$(6x+3)(x+1)$</span><b>$6x+3x=9x$</b><em>不符合</em></div>
-          <div class="is-match"><span>$(3x+1)(2x+3)$</span><b>$9x+2x=11x$</b><em>符合</em></div>
-          <div><span>$(3x+3)(2x+1)$</span><b>$3x+6x=9x$</b><em>不符合</em></div>
+          <div class="calc-row">
+            <div>$$9\times2=18,\qquad 9+2=11$$</div>
+            <p>选择 $9$ 和 $2$，它们同时满足积与和的条件。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$6x^2+11x+3=6x^2+9x+2x+3$$</div>
+            <p>把中间项 $11x$ 拆成 $9x+2x$。</p>
+          </div>
+          <div class="calc-row">
+            <div>$$=3x(2x+3)+(2x+3)$$</div>
+            <p>前两项提出 $3x$，后两项提出 $1$，两组得到相同括号。</p>
+          </div>
+          <div class="calc-row is-result">
+            <div>$$=(3x+1)(2x+3)$$</div>
+            <p>提出共同括号，得到两个一次因式。</p>
+          </div>
         </div>
 
-        <p>第三组的交叉和等于原式的一次项。对应的十字结构为：</p>
+        <p>得到的两个一次因式仍然符合十字相乘的交叉结构：</p>
         <figure class="cross-diagram">
           <div class="cross-grid" aria-label="三x和一、二x和三的交叉相乘">
             <span>$3x$</span><span>$1$</span>
@@ -133,60 +145,54 @@
             <strong>$9x+2x=11x$</strong>
           </figcaption>
         </figure>
+        <p>两条交叉线分别得到 $9x$ 与 $2x$，相加正好恢复中间项 $11x$。这说明拆中间项与十字相乘使用的是同一个交叉关系。</p>
 
-        <p>交叉和正好得到原式的一次项，因此</p>
-        <div class="math-block" data-tone="green">
-          $$6x^2+11x+3=(3x+1)(2x+3).$$
-        </div>
-        <p>展开右边得到 $6x^2+9x+2x+3$，三个系数都能恢复。</p>
-
-        <p>把 $a$ 与 $c$ 的合理整数配对、符号和排列全部检查后仍得不到 $b$，说明在当前整数范围内无法用十字相乘得到两个一次因式。配对数量很多时，也可以直接转向判别式和求根公式。</p>
-
-        <p>同一个整式反复出现时，可以先把它看成一个字母，按相同方法分解，最后再换回原来的整式。令 $T=x+1$：</p>
-        <div class="math-block" data-tone="purple">
-          $$\begin{aligned}
-          T^2-5T+6&amp;=(T-2)(T-3),\\
-          (x+1)^2-5(x+1)+6&amp;=(x-1)(x-2).
-          \end{aligned}$$
-        </div>
-        <p>完成外层分解后再换回原来的整式，可以避免过早展开。</p>
-        <p>无论直接处理 $x$，还是先把重复整式看成整体，都要先判断因数配对是否值得继续试配。</p>
+        <aside class="method-note" aria-labelledby="nonmonic-note-title">
+          <span class="method-note-icon" aria-hidden="true">!</span>
+          <div>
+            <strong id="nonmonic-note-title">计算前先整理</strong>
+            <p>原式有公因式时先完整提出；含有分数时，先通分或提出数值因数，把括号内整理成系数为整数的形式。</p>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section class="section" aria-labelledby="boundary-title">
-      <h2 class="marker" id="boundary-title"><span aria-hidden="true">04</span>使用与停止</h2>
+      <h2 class="marker" id="boundary-title"><span aria-hidden="true">04</span>何时转向公式法</h2>
       <div class="section-body prose">
-        <p class="section-intro">因数配对少、交叉和容易比较时使用；试配成本明显增加时及时停止。</p>
+        <p class="section-intro">再看 $12x^2+11x-5$。它的 $ac=-60$，寻找积为 $-60$、和为 $11$ 的两个整数，需要从多组正负因数中筛选。</p>
 
-        <div class="boundary-split">
-          <div>
-            <p><strong>适合使用</strong></p>
-            <ul>
-              <li>已经提出公因式，是整系数二次三项式；</li>
-              <li>$a$ 与 $c$ 的因数配对较少；</li>
-              <li>各组交叉和可以快速与 $b$ 比较。</li>
-            </ul>
-          </div>
-          <div>
-            <p><strong>及时停止</strong></p>
-            <ul>
-              <li>因数配对很多，组合数量明显增加；</li>
-              <li>合理的整数配对全部失败；</li>
-              <li>需要判断实数范围内的分解情况。</li>
-            </ul>
-          </div>
+        <div class="math-block" data-tone="blue">
+          $$60=1\times60=2\times30=3\times20=4\times15=5\times12=6\times10.$$
         </div>
+        <p>因数配对越多，十字相乘需要检查的组合就越多。合理的整数配对全部失败，说明原式不能在当前整数范围内写成两个一次因式；要判断实数范围内能否分解，还需要判别式。</p>
 
-        <div class="summary-panel">
-          <div class="math-block" data-tone="green">
+        <div class="summary-panel method-summary">
+          <div class="method-summary-formula" aria-label="十字相乘两种情况的核心关系">
             $$\begin{aligned}
             a=1:&\qquad m+n=b,\quad mn=c;\\
-            a\ne1:&\qquad mp=a,\quad mq+np=b,\quad nq=c.
+            a\ne1:&\qquad r+s=b,\quad rs=ac.
             \end{aligned}$$
           </div>
-          <p>合理配对全部失败或组合过多时，第四篇使用判别式和求根公式继续判断。</p>
+          <div class="method-summary-paths">
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">1</span>
+              <div>
+                <h3>什么时候使用</h3>
+                <p>已经提出公因式，又不符合完整公式，并且 $ac$ 的因数配对较少时，十字相乘通常能快速找到两个一次因式。</p>
+              </div>
+            </div>
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">2</span>
+              <div>
+                <h3>什么时候换方法</h3>
+                <p>因数配对明显增多、合理的整数配对全部失败，或者需要判断实数范围内的分解情况时，转向判别式和求根公式。</p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <p>第四篇继续处理 $12x^2+11x-5$，说明怎样使用<a href="04_求根公式法.html">判别式和求根公式</a>稳定地写出因式。</p>
       </div>
     </section>
   </main>

@@ -213,6 +213,94 @@
   color: var(--body);
 }
 
+.formula-condition-list li {
+  grid-template-columns: 38px minmax(380px, .8fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.formula-condition-list strong {
+  min-width: 0;
+  font-size: clamp(.72rem, 1.15vw, 1rem);
+  white-space: nowrap;
+}
+
+.formula-condition-list li > span {
+  padding-left: 1rem;
+  border-left: 2px solid var(--blue-line);
+}
+
+.method-summary {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.method-summary::after {
+  position: absolute;
+  top: -92px;
+  right: -72px;
+  width: 220px;
+  height: 220px;
+  border: 38px solid rgba(47, 118, 93, .06);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.method-summary-formula {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 1rem;
+  border-bottom: 1px solid var(--cyan-line);
+  color: var(--ink);
+}
+
+.method-summary-formula mjx-container[display="true"] {
+  margin: .2em 0 !important;
+}
+
+.method-summary-paths {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  padding-top: 1rem;
+}
+
+.method-summary-path {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: .7rem;
+  align-items: start;
+}
+
+.method-summary-path-index {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--cyan-line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--cyan-deep);
+  font-family: var(--font-serif);
+  font-weight: 900;
+}
+
+.method-summary-path h3 {
+  margin: .05rem 0 .25rem;
+  color: var(--cyan-deep);
+  font-size: 1rem;
+}
+
+.method-summary-path p {
+  margin: 0;
+  color: var(--body);
+  font-size: .94rem;
+  line-height: 1.75;
+}
+
 .calc-flow {
   display: grid;
   margin: 1.4rem 0;
@@ -543,6 +631,30 @@
 
   .decision-list li span {
     grid-column: 2;
+  }
+
+  .formula-condition-list li > span {
+    padding-top: .55rem;
+    padding-left: 0;
+    border-top: 2px solid var(--blue-line);
+    border-left: 0;
+  }
+
+  .method-summary {
+    padding: 1rem;
+  }
+
+  .method-summary::after {
+    display: none;
+  }
+
+  .method-summary-paths {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .9rem;
+  }
+
+  .method-summary-formula mjx-container[display="true"] {
+    font-size: .9em;
   }
 
   .comparison-lines > div {

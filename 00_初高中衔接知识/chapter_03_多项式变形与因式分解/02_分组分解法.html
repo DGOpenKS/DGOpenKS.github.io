@@ -16,7 +16,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260731-4">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260804-2">
   <script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
@@ -36,16 +36,18 @@
   <header class="hero">
     <span class="eyebrow">Chapter 03 · 02</span>
     <h1>分组分解法：<br><span class="title-continuation">制造共同因式</span></h1>
-    <p class="lead">多项式没有整体公因式时，可以先分组，让各组产生相同的完整括号，再把这个共同括号提出。</p>
+    <p class="lead">多项式没有整体公因式，也不直接符合乘法公式时，可以尝试分组，让各组分别提出公因式后产生同一个完整括号。</p>
   </header>
 
   <main id="main">
     <section class="section" aria-labelledby="common-title">
       <h2 class="marker" id="common-title"><span aria-hidden="true">01</span>共同括号</h2>
       <div class="section-body prose">
-        <p class="section-intro">分组的目标是把原式整理成几个含有同一括号的部分。</p>
-
-        <p>分组分解的基础仍是分配律：</p>
+        <p class="section-intro">上一篇留下的 $3x^3-6x^2+5x-10$，没有整体公因式，也不直接符合公式，但前两项和后两项分别含有共同部分。</p>
+        <div class="math-block" data-tone="blue">
+          $$3x^3-6x^2+5x-10.$$
+        </div>
+        <p>把能够分别提出公因式的项放在一起，就有机会让各组出现同一个括号。这个过程来自分配律：</p>
         <div class="formula-bridge" role="img" aria-label="两个含有相同括号的部分提出共同因式">
           <div>
             <small>两个部分含有同一括号</small>
@@ -60,25 +62,14 @@
             $$(A+B)(P+Q)$$
           </div>
         </div>
-        <p>两个部分都含有 $A+B$，所以可以把它提出。面对四项或更多项时，先寻找能够形成这种结构的分组。</p>
-        <p>看清分组要得到共同括号以后，下一步是判断哪些项应该放在同一组。</p>
+        <p>两个部分都含有 $A+B$，所以可以把它提出。分组的目标就是把原式整理成这种含有共同括号的结构。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="choose-title">
       <h2 class="marker" id="choose-title"><span aria-hidden="true">02</span>选择分组</h2>
       <div class="section-body prose">
-        <p class="section-intro">先观察哪些项容易分别提出公因式，再检查各组能否得到相同括号。</p>
-
-        <ol class="decision-list">
-          <li><strong>观察各项</strong><span>寻找能够分别提出公因式的项。</span></li>
-          <li><strong>安排分组</strong><span>选择有机会产生相同括号的组合。</span></li>
-          <li><strong>检查项与符号</strong><span>每一项都要保留，换序和加括号不能改变符号。</span></li>
-          <li><strong>统一括号</strong><span>两个括号只差整体负号时，从其中一组提出负号。</span></li>
-          <li><strong>继续检查</strong><span>提出共同括号后，再判断每个因式。</span></li>
-        </ol>
-
-        <p>分解 $3x^3-6x^2+5x-10$：</p>
+        <p class="section-intro">回到这个多项式。前两项都含有 $3x^2$，后两项都含有 $5$，因此先按前两项和后两项分组。</p>
         <div class="calc-flow" aria-label="三x三次方减六x平方加五x减十的分组分解步骤">
           <div class="calc-row">
             <div>$$3x^3-6x^2+5x-10$$</div>
@@ -97,15 +88,22 @@
             <p>提出共同括号 $x-2$，原式成为两个整式的乘积。</p>
           </div>
         </div>
-        <p>各组无法形成同一个完整括号时，当前分组不能完成分解，应重新判断结构。</p>
-        <p>分组成功只说明共同因式已经出现。把它提出以后，还要继续检查剩余因式。</p>
+        <p>计算中真正决定分组是否成功的是共同括号 $x-2$。分组没有固定位置，选择时先看哪些项容易分别提出公因式，再检查提出以后能否得到完全相同的括号。</p>
+
+        <ol class="decision-list">
+          <li><strong>保留所有项</strong><span>换序和加括号不能改变原式中的符号。</span></li>
+          <li><strong>比较各组括号</strong><span>括号完全相同时，才能把它作为共同因式提出。</span></li>
+          <li><strong>处理整体负号</strong><span>两个括号只差负号时，从其中一组提出负号使它们一致。</span></li>
+        </ol>
+
+        <p>几种自然分组都不能产生相同括号时，当前式子不适合继续使用分组分解。分组成功以后，还要检查剩余因式。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="continue-title">
       <h2 class="marker" id="continue-title"><span aria-hidden="true">03</span>继续分解</h2>
       <div class="section-body prose">
-        <p class="section-intro">有些式子在分组前还要先提出整体公因式，分组后也可能继续使用公式。</p>
+        <p class="section-intro">共同括号提出以后，分解还可能没有结束；有些式子在分组前也要先提出整体公因式。下面把这些步骤放在同一个式子中看。</p>
 
         <div class="calc-flow" aria-label="六x三次方加六x平方减二十四x减二十四的连续分解步骤">
           <div class="calc-row">
@@ -130,20 +128,40 @@
           $$6x^3+6x^2-24x-24=6(x+1)(x-2)(x+2).$$
         </div>
         <p>这个过程依次使用提公因式、分组和平方差公式。最后乘回原式，可以确认分解正确。</p>
-        <p>这个例子把提公因式、分组和公式连接在了一起。下面把整个过程整理成一条判断路线。</p>
+        <p>这个例子说明，分组可以处在一连串分解步骤的中间。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="route-title">
-      <h2 class="marker" id="route-title"><span aria-hidden="true">04</span>判断路线</h2>
+      <h2 class="marker" id="route-title"><span aria-hidden="true">04</span>分组的边界</h2>
       <div class="section-body prose">
-        <p class="section-intro">分组方式可以变化，成功的分组都要落到同一个完整因式上。</p>
+        <p class="section-intro">分组能否继续，取决于局部结构能否形成同一个完整括号。</p>
 
-        <div class="route-formula" aria-label="分组分解的判断路线">
-          <span>分组</span><b>→</b><span>各组提出公因式</span><b>→</b><span>形成相同括号</span><b>→</b><span>提出共同因式</span><b>→</b><span>继续检查</span>
+        <div class="summary-panel method-summary">
+          <div class="method-summary-formula" aria-label="分组分解的核心关系">
+            $$P(A+B)+Q(A+B)=(A+B)(P+Q).$$
+          </div>
+          <div class="method-summary-paths">
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">1</span>
+              <div>
+                <h3>什么时候使用</h3>
+                <p>多项式没有整体公因式，也不直接符合公式，但部分项分别提出公因式后能够产生同一个括号时，可以使用分组分解。</p>
+              </div>
+            </div>
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">2</span>
+              <div>
+                <h3>怎样判断成功</h3>
+                <p>各组提出公因式后必须出现同一个完整括号。括号无法统一时，当前分组无效；提出共同括号后，还要继续检查剩余因式。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p>括号无法完全相同时，当前分组不能完成因式分解。</p>
-        <p>如果继续得到整系数二次三项式，并且因数配对较少，可以使用<a href="03_十字相乘法.html">下一篇的十字相乘法</a>继续分解。</p>
+
+        <p>共同括号提出以后，若剩余部分是系数为整数的二次三项式，又不符合完整公式，下一步就要判断它能否还原成两个一次因式。</p>
+
+        <p>第三篇将从这个问题出发，使用<a href="03_十字相乘法.html">十字相乘</a>寻找二次三项式中的两个一次因式。</p>
       </div>
     </section>
   </main>

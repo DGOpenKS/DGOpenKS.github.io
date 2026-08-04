@@ -16,7 +16,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260731-4">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260802-1">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260804-2">
   <script src="../assets/sequence-nav.js" defer></script>
 </head>
 <body>
@@ -36,16 +36,15 @@
   <header class="hero">
     <span class="eyebrow">Chapter 03 · 04</span>
     <h1>求根公式法：<br><span class="title-continuation">由根写出因式</span></h1>
-    <p class="lead">十字相乘的配对过多或合理配对全部失败时，可以先求二次方程的根，再由根写出一次因式。</p>
+    <p class="lead">十字相乘的配对过多，或者需要判断实数范围内能否分解时，可以先求对应二次方程的根，再由根写出一次因式。</p>
   </header>
 
   <main id="main">
     <section class="section" aria-labelledby="derive-title">
       <h2 class="marker" id="derive-title"><span aria-hidden="true">01</span>公式推导</h2>
       <div class="section-body prose">
-        <p class="section-intro">把含 $x$ 的部分配成完全平方，再逐步解出 $x$。</p>
-
-        <p>从一般一元二次方程开始：</p>
+        <p class="section-intro">第三篇最后留下了 $12x^2+11x-5$。十字相乘需要从 $ac=-60$ 的多组因数中筛选，求根公式则从 $a,b,c$ 出发，按照固定步骤计算根。</p>
+        <p>为了得到这条计算路径，先从一般一元二次方程出发，把含 $x$ 的部分配成完全平方，再逐步解出 $x$：</p>
         <div class="math-block" data-tone="blue">
           $$ax^2+bx+c=0\qquad(a\ne0).$$
         </div>
@@ -151,7 +150,7 @@
           <li><strong>判断实数边界</strong><span>若 $\Delta&lt;0$，就在当前实数范围内停止。</span></li>
           <li><strong>分别求根</strong><span>当 $\Delta\ge0$ 时，把上、下两个符号分开计算并约分。</span></li>
           <li><strong>写出因式</strong><span>写成 $a(x-x_1)(x-x_2)$。</span></li>
-          <li><strong>整理并检查</strong><span>需要时化成整系数因式，再乘回原式。</span></li>
+          <li><strong>整理并检查</strong><span>需要时化成系数为整数的因式，再乘回原式。</span></li>
         </ol>
         <p>步骤确定以后，下面通过一个完整例子，把识别系数、计算判别式、求根和写出因式连接起来。</p>
       </div>
@@ -160,7 +159,7 @@
     <section class="section" aria-labelledby="example-title">
       <h2 class="marker" id="example-title"><span aria-hidden="true">04</span>完整示例</h2>
       <div class="section-body prose">
-        <p class="section-intro">分解 $12x^2+11x-5$，重点看系数的负号、两个根和分数因式的整理。</p>
+        <p class="section-intro">现在回到 $12x^2+11x-5$。按照刚才得到的固定步骤，依次识别系数、计算判别式、求根并写出因式。</p>
 
         <p>先令原式等于零，并准确识别系数：</p>
         <div class="coefficient-strip" aria-label="十二x平方加十一x减五等于零的三个系数">
@@ -195,7 +194,7 @@
           </div>
         </aside>
 
-        <p>由根写出因式，再把分数因式整理成整系数因式：</p>
+        <p>由根写出因式，再把分数因式整理成系数为整数的因式：</p>
         <div class="calc-flow">
           <div class="calc-row">
             <div>$$12\left(x-\frac13\right)\left(x+\frac54\right)$$</div>
@@ -207,7 +206,7 @@
           </div>
           <div class="calc-row is-result">
             <div>$$(3x-1)(4x+5)$$</div>
-            <p>$12$ 与分母 $3\cdot4$ 抵消，得到整系数因式。</p>
+            <p>$12$ 与分母 $3\cdot4$ 抵消，得到系数为整数的因式。</p>
           </div>
         </div>
 
@@ -215,12 +214,28 @@
           $$12x^2+11x-5=(3x-1)(4x+5).$$
         </div>
         <p>展开右边得到 $12x^2+11x-5$，三个系数全部恢复。</p>
-        <p>对于整系数二次三项式，若 $\Delta&gt;0$ 但不是完全平方数，两个根会含有根式，仍然可以在实数范围内写成 $a(x-x_1)(x-x_2)$。当 $\Delta&lt;0$ 时，不能在实数范围内分解成两个一次因式。</p>
 
-        <div class="route-formula" aria-label="求根公式法的判断路线">
-          <span>识别系数</span><b>→</b><span>计算判别式</span><b>→</b><span>求出两个根</span><b>→</b><span>写出因式</span><b>→</b><span>乘回检查</span>
+        <div class="summary-panel method-summary">
+          <div class="method-summary-formula" aria-label="判别式与由根写出因式的核心关系">
+            $$\Delta=b^2-4ac,\qquad ax^2+bx+c=a(x-x_1)(x-x_2).$$
+          </div>
+          <div class="method-summary-paths">
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">1</span>
+              <div>
+                <h3>判别式决定分解边界</h3>
+                <p>当 $\Delta\ge0$ 时，可以在实数范围内由根写出一次因式；当 $\Delta&gt;0$ 且不是完全平方数时，因式通常含有根式；当 $\Delta&lt;0$ 时，不能在实数范围内分解成两个一次因式。</p>
+              </div>
+            </div>
+            <div class="method-summary-path">
+              <span class="method-summary-path-index">2</span>
+              <div>
+                <h3>按固定步骤写出因式</h3>
+                <p>因数配对增多或需要判断实数分解时，从 $a,b,c$ 出发计算判别式，求出两个根，再写成 $a(x-x_1)(x-x_2)$，最后乘回原式检查。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p>从判别式判断根的情况，再由根写出因式，就完成了求根公式法的整个过程。</p>
       </div>
     </section>
   </main>

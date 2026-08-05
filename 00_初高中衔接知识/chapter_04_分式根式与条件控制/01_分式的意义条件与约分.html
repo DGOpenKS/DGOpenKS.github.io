@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="分母非零是分式成立的前提；约分只改变形式，原分母留下的禁点始终保留。">
+  <title>分式的意义、条件与约分 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
+</head>
+<body class="chapter04-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html" aria-current="page">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html">04 根式运算</a><a class="nav-link" href="05_分母有理化.html">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04 · 第 1 节 / 共七节</span>
+    <h1>分式的意义、条件与约分</h1>
+    <p class="lead">为什么 $\dfrac{x^2-1}{x-1}$ 约分成 $x+1$ 后，$x=1$ 仍然不能代入？先了解分式意义和基本的约分规则。</p>
+  </header>
+  <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
+  <div class="marker"><span>01</span>分式意义</div>
+  <div class="section-body prose">
+    <h2 id="section-1-title">1. 分式的意义</h2>
+    <p>普通分数表示两个数相除。进入代数以后，分子、分母中可以出现字母和整式。分式仍然表示除法，因此分母不能为 $0$；分子、分母含有共同因子时，可以在非零条件下约分。</p>
+<p>分式的一般形式是：</p>
+<div class="equation-card">$$
+\frac AB
+$$</div>
+<p>其中 $A$、$B$ 是整式，并且分母 $B$ 中含有字母。分数线表示除法，所以分母必须满足：</p>
+<div class="equation-card">$$
+B\ne0
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac{x+1}{x-2}
+$$</div>
+<p>原分母不能为 $0$，因此：</p>
+<div class="equation-card">$$
+x-2\ne0
+$$</div>
+<p>也就是：</p>
+<div class="equation-card">$$
+x\ne2
+$$</div>
+<p>$x=2$ 不能代入原式。这个限制来自原分母，并且在后面的变形中始终保留。</p>
+  </div>
+</section><section class="section" id="section-2" aria-labelledby="section-2-title">
+  <div class="marker"><span>02</span>约分规则</div>
+  <div class="section-body prose">
+    <h2 id="section-2-title">2. 约分</h2>
+    <p>普通分数的约分可以写成：</p>
+<div class="equation-card">$$
+\frac24
+=
+\frac{2\cdot1}{2\cdot2}
+=
+\frac12
+$$</div>
+<p>这里把分子、分母同时除以共同因数 $2$，分数的值没有改变。</p>
+<p>一般地，在 $B\ne0$、$C\ne0$ 时：</p>
+<div class="equation-card">$$
+\frac{AC}{BC}=\frac AB
+$$</div>
+<p>约分约去的是分子、分母中的共同乘法因子。共同因子必须非零，因为约去 $C$ 实际上使用了：</p>
+<div class="equation-card">$$
+\frac CC=1
+$$</div>
+<p>加减中的一项不是整个式子的因子。例如：</p>
+<div class="equation-card">$$
+\frac{x(x+1)}x=x+1,
+\qquad x\ne0
+$$</div>
+<p>这里的 $x$ 是分子、分母的共同因子，可以约去。而在：</p>
+<div class="equation-card">$$
+\frac{x+1}{x}
+$$</div>
+<p>中，分子里的 $x$ 只是 $x+1$ 中的一项，不能与分母的 $x$ 约分。</p>
+  </div>
+</section><section class="section" id="section-3" aria-labelledby="section-3-title">
+  <div class="marker"><span>03</span>字母分式</div>
+  <div class="section-body prose">
+    <h2 id="section-3-title">3. 含字母的分式约分</h2>
+    <p>含字母的分式在约分前先写出原分母条件，再寻找共同因子。</p>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac{6x^2}{9x}
+$$</div>
+<p>原分母要求 $x\ne0$。分子、分母都含有共同因子 $3x$：</p>
+<div class="equation-card">$$
+\frac{6x^2}{9x}
+=
+\frac{3x\cdot2x}{3x\cdot3}
+$$</div>
+<p>在 $x\ne0$ 的条件下，可以约去 $3x$：</p>
+<div class="equation-card">$$
+\frac{6x^2}{9x}
+=
+\frac{2x}{3},
+\qquad x\ne0
+$$</div>
+<p>多项式中看不见共同因子时，先进行因式分解。例如：</p>
+<div class="equation-card">$$
+\frac{x^2-1}{x-1}
+$$</div>
+<p>原分母要求 $x\ne1$。分子使用平方差公式分解：</p>
+<div class="equation-card">$$
+x^2-1=(x-1)(x+1)
+$$</div>
+<p>在 $x\ne1$ 的条件下：</p>
+<div class="equation-card">$$
+\frac{x^2-1}{x-1}
+=
+\frac{(x-1)(x+1)}{x-1}
+=
+x+1
+$$</div>
+<p>完整结果是：</p>
+<div class="equation-card">$$
+\frac{x^2-1}{x-1}
+=x+1,
+\qquad x\ne1
+$$</div>
+<p>共同因子 $x-1$ 已经从化简形式中消失，但原分母产生的条件 $x\ne1$ 不能消失。</p>
+  </div>
+</section><section class="section" id="summary" aria-labelledby="summary-title">
+  <div class="marker"><span>04</span>核心结论</div>
+  <div class="section-body prose">
+    <h2 id="summary-title">回到开头的问题</h2>
+    <div class="summary-panel">
+      <div class="summary-formula">$$\frac{x^2-1}{x-1}=x+1,\qquad x\ne1$$</div>
+      <p>$x=1$ 会使原分母等于 $0$，所以原式在 $x=1$ 时没有意义。约分只是在 $x\ne1$ 的条件下改变式子的形式，不能把原分母留下的禁点重新变成允许值。</p>
+    </div>
+  </div>
+</section></main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="02_分式的四则运算.html">下一篇 · 分式的四则运算 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 分式的意义、条件与约分</footer>
+</body>
+</html>

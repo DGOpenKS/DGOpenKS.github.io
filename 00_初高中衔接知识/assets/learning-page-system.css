@@ -594,24 +594,35 @@ h2.marker{
 }
 
 .pager{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
   width:min(var(--page-max),calc(100% - 2rem));
   margin:0 auto 3rem;
-  justify-content:space-between;
   gap:.75rem;
-  flex-wrap:wrap;
 }
 
 .pager a{
-  padding:.55rem .85rem;
+  display:flex;
+  min-width:0;
+  min-height:48px;
+  align-items:center;
+  justify-content:center;
+  padding:.7rem 1rem;
   border:1px solid var(--line);
   border-radius:var(--radius-pill);
   background:var(--paper);
   color:var(--muted);
   font-size:.86rem;
   font-weight:900;
+  line-height:1.35;
+  text-align:center;
   text-decoration:none;
 }
+
+.pager-prev{grid-column:1}
+.pager-home{grid-column:2}
+.pager-next{grid-column:3}
 
 .pager a:hover,
 .pager a:focus-visible{
@@ -711,6 +722,16 @@ h2.marker{
     font-size:16px;
     -webkit-text-size-adjust:100%;
     text-size-adjust:100%;
+  }
+
+  .pager{
+    grid-template-columns:minmax(0,1fr);
+    width:min(var(--page-max),calc(100% - 1.75rem));
+  }
+
+  .pager a{
+    grid-column:1;
+    width:100%;
   }
 
   .topbar{

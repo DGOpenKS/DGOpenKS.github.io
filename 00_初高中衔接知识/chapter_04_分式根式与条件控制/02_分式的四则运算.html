@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="乘除按照因子结构处理，加减先统一分母；每一种运算都同时保留原式条件。">
+  <title>分式的四则运算 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
+</head>
+<body class="chapter04-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html" aria-current="page">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html">04 根式运算</a><a class="nav-link" href="05_分母有理化.html">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04 · 第 2 节 / 共七节</span>
+    <h1>分式的四则运算</h1>
+    <p class="lead">为什么分式乘法可以直接处理分子、分母，加法却必须先通分？区别来自乘除结构与加减结构。</p>
+  </header>
+  <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
+  <div class="marker"><span>01</span>分式乘法</div>
+  <div class="section-body prose">
+    <h2 id="section-1-title">1. 分式的乘法</h2>
+    <p>比较下面两个式子：</p>
+<div class="equation-card">$$
+\frac1x\cdot\frac1y
+\qquad\text{和}\qquad
+\frac1x+\frac1y
+$$</div>
+<p>它们都在把两个分式合到一起，但乘法可以直接得到 $\dfrac1{xy}$，加法却不能写成 $\dfrac2{xy}$ 之前就结束，更不能把分子、分母分别相加。</p>
+<p>乘法和加法具有不同的运算结构。分式运算要同时处理两件事：根据运算符号选择正确结构，并保留每个原分母产生的限制。</p>
+<p>普通分数相乘时，两个除法合在一起：</p>
+<div class="equation-card">$$
+\frac AB\cdot\frac CD
+=
+\frac{AC}{BD}
+$$</div>
+<p>含字母的分式沿用同样的结构，但必须先满足：</p>
+<div class="equation-card">$$
+B\ne0,\qquad D\ne0
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
+$$</div>
+<p>两个原分母要求：</p>
+<div class="equation-card">$$
+x\ne0,\qquad y\ne0
+$$</div>
+<p>相乘以后，把分子、分母看成因式乘积：</p>
+<div class="equation-card">$$
+\frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
+=
+\frac{12xy^2}{18x^2y}
+=
+\frac{2y}{3x}
+$$</div>
+<p>因此完整结果是：</p>
+<div class="equation-card">$$
+\frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
+=
+\frac{2y}{3x},\qquad x\ne0,\ y\ne0
+$$</div>
+<p>乘法的核心是形成新的乘法因子。先观察因子再约分，通常比先把所有部分展开更容易看清结构。</p>
+  </div>
+</section><section class="section" id="section-2" aria-labelledby="section-2-title">
+  <div class="marker"><span>02</span>分式除法</div>
+  <div class="section-body prose">
+    <h2 id="section-2-title">2. 分式的除法</h2>
+    <p>除以一个非零分式，等于乘这个分式的倒数：</p>
+<div class="equation-card">$$
+\frac AB\div\frac CD
+=
+\frac AB\cdot\frac DC
+=
+\frac{AD}{BC}
+$$</div>
+<p>除了原来的两个分母非零，还必须保证除式 $\dfrac CD$ 不等于 $0$。因此需要：</p>
+<div class="equation-card">$$
+B\ne0,\qquad D\ne0,\qquad C\ne0
+$$</div>
+<p>$D\ne0$ 保证除式有意义，$C\ne0$ 保证除式不是 $0$，也保证它的倒数有意义。</p>
+<p>因此，一个分式不等于 $0$，需要同时满足分子非零、分母非零：</p>
+<div class="equation-card">$$
+\frac CD\ne0
+\Longleftrightarrow
+C\ne0,\quad D\ne0
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac x3\div\frac{2x}{5}
+$$</div>
+<p>除式不能为 $0$，所以 $x\ne0$。在这个条件下：</p>
+<div class="equation-card">$$
+\frac x3\div\frac{2x}{5}
+=
+\frac x3\cdot\frac5{2x}
+=
+\frac56
+$$</div>
+<p>结果 $\dfrac56$ 已经看不见 $x$，但 $x\ne0$ 仍然属于原式条件。</p>
+  </div>
+</section><section class="section" id="section-3" aria-labelledby="section-3-title">
+  <div class="marker"><span>03</span>分式加减</div>
+  <div class="section-body prose">
+    <h2 id="section-3-title">3. 分式的加减</h2>
+    <p>加减法是在合并同一种单位。普通分数 $\dfrac12$ 和 $\dfrac13$ 的单位不同，必须先写成相同分母：</p>
+<div class="equation-card">$$
+\frac12+\frac13
+=
+\frac36+\frac26
+=
+\frac56
+$$</div>
+<p>分式也是如此。同分母时，可以直接合并分子：</p>
+<div class="equation-card">$$
+\frac AC\pm\frac BC
+=
+\frac{A\pm B}{C},\qquad C\ne0
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac{x+2}{x-1}-\frac3{x-1}
+=
+\frac{x-1}{x-1}
+=1,\qquad x\ne1
+$$</div>
+<p>虽然最终结果是 $1$，原分母留下的 $x\ne1$ 仍不能删除。</p>
+<p>异分母加减时，要先把各分母写成因式乘积，再寻找能够被所有分母整除的最简公分母。</p>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac1{x-1}+\frac1{x+1}
+$$</div>
+<p>原式先要求：</p>
+<div class="equation-card">$$
+x\ne1,\qquad x\ne-1
+$$</div>
+<p>两个分母没有共同因式，公分母可以取 $(x-1)(x+1)$：</p>
+<div class="equation-card">$$
+\begin{aligned}
+\frac1{x-1}+\frac1{x+1}
+&=\frac{x+1}{(x-1)(x+1)}
++\frac{x-1}{(x-1)(x+1)}\\
+&=\frac{2x}{x^2-1}
+\end{aligned}
+$$</div>
+<p>通分时，分母乘了什么，整个分子也必须乘同一个因子。这样做本质上是在乘一个等于 $1$ 的分式，因此没有改变原分式的值。</p>
+  </div>
+</section><section class="section" id="section-4" aria-labelledby="section-4-title">
+  <div class="marker"><span>04</span>公分母</div>
+  <div class="section-body prose">
+    <h2 id="section-4-title">4. 最简公分母</h2>
+    <p>如果分母是 $x^2-1$ 和 $x-1$，不能只把它们机械相乘。先分解：</p>
+<div class="equation-card">$$
+x^2-1=(x-1)(x+1)
+$$</div>
+<p>就会发现 $x^2-1$ 已经包含因子 $x-1$，因此最简公分母可以直接取：</p>
+<div class="equation-card">$$
+(x-1)(x+1)
+$$</div>
+<p>寻找公分母不是比较式子长短，而是检查每个分母需要哪些因子，以及每个因子需要出现多少次。</p>
+  </div>
+</section><section class="section" id="section-5" aria-labelledby="section-5-title">
+  <div class="marker"><span>05</span>混合运算</div>
+  <div class="section-body prose">
+    <h2 id="section-5-title">5. 分式的混合运算</h2>
+    <p>看下面的式子：</p>
+<div class="equation-card">$$
+\left(\frac{x}{x-1}-\frac1{x-1}\right)
+\div
+\frac{x+1}{x}
+$$</div>
+<p>在开始计算前，先记录条件。</p>
+<p>前两个分式要求：</p>
+<div class="equation-card">$$
+x\ne1
+$$</div>
+<p>除式 $\dfrac{x+1}{x}$ 的分母要求 $x\ne0$；除式本身还不能等于 $0$，所以：</p>
+<div class="equation-card">$$
+x+1\ne0
+$$</div>
+<p>也就是 $x\ne-1$。原式的全部条件为：</p>
+<div class="equation-card">$$
+x\ne1,\qquad x\ne0,\qquad x\ne-1
+$$</div>
+<p>现在先处理括号内的同分母减法：</p>
+<div class="equation-card">$$
+\frac{x}{x-1}-\frac1{x-1}
+=
+\frac{x-1}{x-1}
+=1
+$$</div>
+<p>再把除法改写成乘倒数：</p>
+<div class="equation-card">$$
+1\div\frac{x+1}{x}
+=
+1\cdot\frac{x}{x+1}
+=
+\frac{x}{x+1}
+$$</div>
+<p>所以完整结果是：</p>
+<div class="equation-card">$$
+\left(\frac{x}{x-1}-\frac1{x-1}\right)
+\div
+\frac{x+1}{x}
+=
+\frac{x}{x+1},\qquad x\ne-1,0,1
+$$</div>
+<p>化简后的分式自身只会排除 $x=-1$，但原式还排除了 $x=0$ 和 $x=1$。如果只看最后一行的分母，就会把原式不允许的值重新放回来。</p>
+  </div>
+</section><section class="section" id="section-6" aria-labelledby="section-6-title">
+  <div class="marker"><span>06</span>繁分式</div>
+  <div class="section-body prose">
+    <h2 id="section-6-title">6. 繁分式</h2>
+    <p>分子或分母本身还含有分式时，大分数线仍然表示除法。例如：</p>
+<div class="equation-card">$$
+\frac{\dfrac1x+\dfrac1y}{\dfrac1x-\dfrac1y}
+$$</div>
+<p>处理它时，先分别整理大分数线的上方和下方，再把整个式子看成一次除法。开始前需要记录：</p>
+<div class="equation-card">$$
+x\ne0,\qquad y\ne0,\qquad \frac1x-\frac1y\ne0
+$$</div>
+<p>最后一个条件等价于 $x\ne y$。分别通分后：</p>
+<div class="equation-card">$$
+\frac1x+\frac1y=\frac{x+y}{xy},
+\qquad
+\frac1x-\frac1y=\frac{y-x}{xy}
+$$</div>
+<p>于是：</p>
+<div class="equation-card">$$
+\frac{\dfrac1x+\dfrac1y}{\dfrac1x-\dfrac1y}
+=
+\frac{x+y}{xy}\div\frac{y-x}{xy}
+=
+\frac{x+y}{y-x}
+$$</div>
+<p>完整条件仍然是：</p>
+<div class="equation-card">$$
+x\ne0,\qquad y\ne0,\qquad x\ne y
+$$</div>
+<p>繁分式没有新的运算法则，它只是把通分、除法和条件检查叠在同一个表达式中。</p>
+  </div>
+</section><section class="section" id="section-7" aria-labelledby="section-7-title">
+  <div class="marker"><span>07</span>运算顺序</div>
+  <div class="section-body prose">
+    <h2 id="section-7-title">7. 分式运算的统一顺序</h2>
+    <ol class="decision-path"><li>先记录所有原分母非零的条件</li><li>识别当前是乘、除、加还是减</li><li>除法额外检查除式非零，再改写成乘倒数</li><li>加减先分解分母，再寻找最简公分母</li><li>乘除把各部分整理成乘法因子</li><li>完成运算后再约分和化简</li><li>在最终形式旁保留运算前的全部限制</li></ol>
+  </div>
+</section><section class="section" id="summary" aria-labelledby="summary-title">
+  <div class="marker"><span>08</span>核心结论</div>
+  <div class="section-body prose">
+    <h2 id="summary-title">回到开头的问题</h2>
+    <div class="summary-panel">
+      <p>分式乘法把分子、分母分别组成新的乘积，所以可以直接处理因子；分式加减是在合并同一种分数单位，因此必须先得到共同分母。无论使用哪一种运算，原分母和除式产生的全部限制都要保留到最终结果中。</p>
+    </div>
+  </div>
+</section></main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-prev" href="01_分式的意义条件与约分.html">← 上一篇 · 分式的意义、条件与约分</a><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="03_二次根式的意义与化简.html">下一篇 · 二次根式的意义与化简 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 分式的四则运算</footer>
+</body>
+</html>

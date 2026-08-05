@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="从原分母条件出发理解分式化简，学会只约共同因子并保留被约因子留下的禁点。">
-  <title>分式化简：约掉因子，保留禁点 | DGOpenKS</title>
+  <meta name="description" content="突出分式的分母非零特点，从原分母条件出发，只约共同因子并保留被约因子留下的禁点。">
+  <title>分式的特点与化简：分母非零，只约因子 | DGOpenKS</title>
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-  <link rel="stylesheet" href="assets/chapter04.css">
-  <script src="assets/chapter04.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="assets/chapter04.js?v=20260731-ch04" defer></script>
+<script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
   <nav class="topbar" aria-label="章节导航">
     <div class="topbar-inner">
       <a class="brand" href="../../index.html">DGOpenKS</a>
-      <a class="nav-link" href="./">Chapter 04</a>
-      <a class="nav-link" href="00_形式与条件.html">00 形式与条件</a>
+      <a class="nav-link" href="index.html">Chapter 04</a>
       <a class="nav-link" href="01_分式化简.html" aria-current="page">01 分式化简</a>
       <a class="nav-link" href="02_根式化简.html">02 根式化简</a>
       <a class="nav-link" href="03_复合条件.html">03 复合条件</a>
@@ -24,20 +25,10 @@
     </div>
   </nav>
 
-  <header class="hero lesson-hero">
-    <div class="hero-copy">
-      <span class="eyebrow">Chapter 04 · 01</span>
-      <h1>分式化简</h1>
-      <p class="lead">约分不是把上下相同的符号删掉，而是在原式有意义的范围内约去共同乘法因子。因子可以离开式子的外形，它在原分母中留下的禁点不能离开条件。</p>
-      <div class="learning-contract"><span><strong>读完后，你应该能判断：</strong>何时可以约分、为什么项不能约，以及怎样把化简结果与原分母的全部禁点一起写出。</span></div>
-    </div>
-    <div class="hero-stage" aria-label="共同因子 x 减 2 被约掉，禁点 x 等于 2 被保留">
-      <span class="stage-label">共同因子消失 · 原式禁点保留</span>
-      <div class="stage-expression">$$\frac{(x-2)(x+2)}{(x-1)(x-2)}$$</div>
-      <div class="stage-arrow"><span>约去 $x-2$</span></div>
-      <div class="stage-expression result">$$\frac{x+2}{x-1},\qquad x\ne1,\ x\ne2$$</div>
-      <p class="stage-note">约分以 $x-2\ne0$ 为前提，因此 $x=2$ 仍然是禁点。</p>
-    </div>
+  <header class="hero">
+    <span class="eyebrow">Chapter 04 · 01</span>
+    <h1>分式的特点与化简</h1>
+    <p class="lead">同一个因子从分子、分母中约掉以后，它造成的禁点为什么仍要保留？关键不在于“上下出现相同符号”，而在于共同部分是不是完整因子，以及约分时它是否非零。</p>
   </header>
 
   <main id="main">
@@ -46,7 +37,11 @@
       <div class="section-body">
         <span class="kicker">先决定哪些值不能进来</span>
         <h2 id="original-domain-title">1. 约分前，先看原分母</h2>
-        <p class="section-intro">看见分式时，第一步不是找相同符号，而是记录原式的允许范围。这个范围以后即使不再显示，也必须保留。</p>
+        <p class="section-intro">形如 $\dfrac AB$ 的分式首先要求 $B\ne0$。看见分式时，第一步不是找相同符号，而是记录原式的允许范围。</p>
+
+        <p>分式约分的依据可以写成：</p>
+        <div class="equation-card">$$\frac{AC}{BC}=\frac AB,\qquad B\ne0,\ C\ne0$$</div>
+        <p>这里约去 $C$，是因为在 $C\ne0$ 时有 $\dfrac CC=1$。因此，共同因子即使从外形中消失，它作为原分母一部分产生的禁点仍然要保留。</p>
 
         <p>要化简的分式是：</p>
         <div class="equation-card" data-tone="blue">$$\frac{x^2-4}{x^2-3x+2}$$</div>
@@ -75,19 +70,23 @@
         <p>于是原分式变为：</p>
         <div class="equation-card" data-tone="blue">$$\frac{x^2-4}{x^2-3x+2}=\frac{(x-2)(x+2)}{(x-1)(x-2)}$$</div>
 
-        <div class="factor-map" aria-label="分子与分母的共同因子 x 减 2">
-          <div class="factor-side">
-            <strong>分子因子</strong>
-            <span class="factor-chip cancelled">$x-2$</span>
-            <span class="factor-chip">$x+2$</span>
+        <p class="visual-prompt">先比较上下两组因子。红色因子在分子、分母中完整对应；其余因子没有对应关系，不能一起约去。</p>
+        <figure class="formula-figure">
+          <div class="factor-map" aria-label="分子与分母的共同因子 x 减 2">
+            <div class="factor-side">
+              <strong>分子因子</strong>
+              <span class="factor-chip cancelled">$x-2$</span>
+              <span class="factor-chip">$x+2$</span>
+            </div>
+            <div class="factor-arrow" aria-hidden="true">⇄</div>
+            <div class="factor-side">
+              <strong>分母因子</strong>
+              <span class="factor-chip">$x-1$</span>
+              <span class="factor-chip cancelled">$x-2$</span>
+            </div>
           </div>
-          <div class="factor-arrow" aria-hidden="true">⇄</div>
-          <div class="factor-side">
-            <strong>分母因子</strong>
-            <span class="factor-chip">$x-1$</span>
-            <span class="factor-chip cancelled">$x-2$</span>
-          </div>
-        </div>
+          <figcaption>对应关系说明可以约去的是共同因子 $x-2$；红色删除线只表示式子外形中的约去，不表示禁点 $x=2$ 被取消。</figcaption>
+        </figure>
         <p>在 $x\ne2$ 的前提下，$x-2$ 不为 $0$，所以共同因子可以约去：</p>
         <div class="equation-card" data-tone="green">$$\frac{x^2-4}{x^2-3x+2}=\frac{x+2}{x-1},\qquad x\ne1,\ x\ne2$$</div>
       </div>
@@ -138,18 +137,6 @@
         </div>
         <p>取 $x=1$ 检查：原式 $\dfrac{x+1}{x+2}=\dfrac23$。如果错误地删掉上下的 $x$，会得到 $\dfrac12$，数值已经改变。</p>
 
-        <div class="practice-lab" data-practice="fraction">
-          <div class="lab-header">
-            <h3>判断练习：先看结构，再决定能否约</h3>
-            <p>每题只检查一个核心判断：共同因子、加法中的项，或约分后必须保留的禁点。</p>
-          </div>
-          <div class="lab-body">
-            <p class="practice-question" data-practice-question tabindex="-1"></p>
-            <div class="answer-list" data-answer-list></div>
-            <div class="feedback" data-practice-feedback aria-live="polite"></div>
-            <div class="practice-actions"><button class="next-button" type="button" data-next-question>换一题</button></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -165,7 +152,7 @@
           <div class="step"><span class="step-index">2</span><div><h3>分解分子</h3><p>用平方差公式写出 $x^2-9=(x-3)(x+3)$。</p></div></div>
           <div class="step"><span class="step-index">3</span><div><h3>在条件下约分</h3><p>当 $x\ne3$ 时约去共同因子 $x-3$，并保留原分母的两个禁点。</p></div></div>
         </div>
-        <div class="equation-card" data-tone="green">$$\frac{x^2-9}{x^2-x-6}=\frac{(x-3)(x+3)}{(x-3)(x+2)}=\frac{x+3}{x+2},\qquad x\ne3,\ x\ne-2$$</div>
+        <div class="equation-card" data-tone="green">$$\begin{aligned}\frac{x^2-9}{x^2-x-6}&=\frac{(x-3)(x+3)}{(x-3)(x+2)}\\&=\frac{x+3}{x+2}\\&\text{且 }x\ne3,\ x\ne-2\end{aligned}$$</div>
 
         <div class="check-path" aria-label="分式化简检查顺序">
           <div class="check-row"><span>1</span><div><strong>先写原分母的禁点</strong></div></div>
@@ -174,14 +161,12 @@
           <div class="check-row"><span>4</span><div><strong>把原式全部禁点带到最终结果</strong></div></div>
         </div>
         <div class="note verified"><strong>本节结论：</strong>分式化简改变的是式子的外形，不会把原式不允许的值重新变成允许值。</div>
-        <div class="next-callout">
-          <p><strong>下一节：</strong>根式里的条件不表现为禁点，而表现为开方结果必须非负。</p>
-          <a class="next-link" href="02_根式化简.html">进入根式化简</a>
-        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">DGOpenKS · Chapter 04 · 分式化简</footer>
+  <nav class="pager" aria-label="文章导航"><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="02_根式化简.html">下一篇 · 根式化简 →</a></nav>
+
+  <footer class="footer">DGOpenKS · Chapter 04 · 分式的特点与化简</footer>
 </body>
 </html>

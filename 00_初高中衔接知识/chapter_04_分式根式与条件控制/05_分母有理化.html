@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="分母有理化通过乘以一个等于 1 的分式改变形式；单根式与两项和差需要不同的乘数。">
+  <title>分母有理化 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
+</head>
+<body class="chapter04-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html">04 根式运算</a><a class="nav-link" href="05_分母有理化.html" aria-current="page">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04 · 第 5 节 / 共七节</span>
+    <h1>分母有理化</h1>
+    <p class="lead">怎样改变 $\dfrac1{\sqrt3}$ 的分母，又不改变整个分式的值？分母有理化的依据是乘以一个等于 $1$ 的分式。</p>
+  </header>
+  <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
+  <div class="marker"><span>01</span>等值变形</div>
+  <div class="section-body prose">
+    <h2 id="section-1-title">1. 乘以 $1$ 的等值变形</h2>
+    <p>看下面这个分式：</p>
+<div class="equation-card">$$
+\frac1{\sqrt3}
+$$</div>
+<p>分母有理化要把分母写成不含根号的形式，同时保持整个分式的值不变。</p>
+<p>关键不是背诵“上下同乘根号”，而是找到一个等于 $1$ 的分式。分子、分母同时乘同一个非零式子，整个分式的值不变；选择什么式子，则由分母的结构决定。</p>
+<p>因为 $\sqrt3\ne0$，所以：</p>
+<div class="equation-card">$$
+\frac{\sqrt3}{\sqrt3}=1
+$$</div>
+<p>原式可以写成：</p>
+<div class="equation-card">$$
+\frac1{\sqrt3}
+=
+\frac1{\sqrt3}\cdot\frac{\sqrt3}{\sqrt3}
+=
+\frac{\sqrt3}{3}
+$$</div>
+<p>分母中的根号消失了，但分式的值没有改变。这个过程称为分母有理化。</p>
+<p>分母有理化的本质是：选择一个合适的非零式子，使分母经过乘法后变成不含根号的式子，同时让整个分式只乘以 $1$。</p>
+  </div>
+</section><section class="section" id="section-2" aria-labelledby="section-2-title">
+  <div class="marker"><span>02</span>单根式</div>
+  <div class="section-body prose">
+    <h2 id="section-2-title">2. 单个根式分母</h2>
+    <p>对于 $B>0$，$\sqrt B$ 有意义且非零，因此：</p>
+<div class="equation-card">$$
+\frac{A}{\sqrt B}
+=
+\frac{A}{\sqrt B}\cdot\frac{\sqrt B}{\sqrt B}
+=
+\frac{A\sqrt B}{B}
+$$</div>
+<p>这里乘 $\sqrt B$ 是因为：</p>
+<div class="equation-card">$$
+\sqrt B\cdot\sqrt B=B
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\sqrt{\frac12}
+=
+\frac1{\sqrt2}
+=
+\frac{\sqrt2}{2}
+$$</div>
+<p>现在被开方数中不再含分母，最终分母中也没有根号。</p>
+<p>如果分母是 $k\sqrt B$，其中 $k\ne0$、$B>0$，通常只需乘以 $\sqrt B$，不必机械地把整个分母再乘一次。</p>
+  </div>
+</section><section class="section" id="section-3" aria-labelledby="section-3-title">
+  <div class="marker"><span>03</span>共轭式</div>
+  <div class="section-body prose">
+    <h2 id="section-3-title">3. 两项和差与共轭式</h2>
+    <p>如果分母是 $\sqrt5-2$，只乘 $\sqrt5$ 并不能消去整个分母中的根号。这里需要利用平方差公式：</p>
+<div class="equation-card">$$
+(u-v)(u+v)=u^2-v^2
+$$</div>
+<p>$u-v$ 与 $u+v$ 称为一对共轭式。它们相乘时，中间的交叉项抵消，只剩两个平方。</p>
+<p>因此：</p>
+<div class="equation-card">$$
+\frac1{\sqrt5-2}
+$$</div>
+<p>可以乘以：</p>
+<div class="equation-card">$$
+\frac{\sqrt5+2}{\sqrt5+2}
+$$</div>
+<p>由于 $\sqrt5+2>0$，这个分式确实等于 $1$。于是：</p>
+<div class="equation-card">$$
+\begin{aligned}
+\frac1{\sqrt5-2}
+&=\frac1{\sqrt5-2}\cdot
+\frac{\sqrt5+2}{\sqrt5+2}\\
+&=\frac{\sqrt5+2}{(\sqrt5)^2-2^2}\\
+&=\sqrt5+2
+\end{aligned}
+$$</div>
+<p>同样地：</p>
+<div class="equation-card">$$
+\frac1{\sqrt3+\sqrt2}
+=
+\frac{\sqrt3-\sqrt2}{3-2}
+=
+\sqrt3-\sqrt2
+$$</div>
+<p>共轭式不是一个孤立技巧，它只是平方差公式在根式分母中的使用。</p>
+  </div>
+</section><section class="section" id="section-4" aria-labelledby="section-4-title">
+  <div class="marker"><span>04</span>非零条件</div>
+  <div class="section-body prose">
+    <h2 id="section-4-title">4. 所乘式的非零条件</h2>
+    <p>分子、分母同乘一个式子时，这个式子必须非零，否则得到的不是乘以 $1$。</p>
+<p>例如，分母是：</p>
+<div class="equation-card">$$
+\sqrt2+\sqrt2
+$$</div>
+<p>它形式上是两项和，但对应的“共轭式” $\sqrt2-\sqrt2$ 等于 $0$，不能用：</p>
+<div class="equation-card">$$
+\frac{\sqrt2-\sqrt2}{\sqrt2-\sqrt2}
+$$</div>
+<p>因为这是 $\dfrac00$，不是 $1$。</p>
+<p>正确做法是先合并同类根式：</p>
+<div class="equation-card">$$
+\sqrt2+\sqrt2=2\sqrt2
+$$</div>
+<p>再按单个根式分母处理：</p>
+<div class="equation-card">$$
+\frac1{2\sqrt2}
+=
+\frac{\sqrt2}{4}
+$$</div>
+<p>这说明“看到两项就乘共轭”并不是可靠方法。必须先化简并判断结构，再确认所乘的式子非零。</p>
+  </div>
+</section><section class="section" id="section-5" aria-labelledby="section-5-title">
+  <div class="marker"><span>05</span>字母条件</div>
+  <div class="section-body prose">
+    <h2 id="section-5-title">5. 含字母分母的原式条件</h2>
+    <p>看：</p>
+<div class="equation-card">$$
+\frac1{\sqrt x-1}
+$$</div>
+<p>原式首先要求根式有意义：</p>
+<div class="equation-card">$$
+x\ge0
+$$</div>
+<p>整个分母还不能为 $0$：</p>
+<div class="equation-card">$$
+\sqrt x-1\ne0
+$$</div>
+<p>也就是：</p>
+<div class="equation-card">$$
+x\ne1
+$$</div>
+<p>在这些条件下，共轭式 $\sqrt x+1$ 始终大于 $0$，可以作为非零乘数：</p>
+<div class="equation-card">$$
+\frac1{\sqrt x-1}
+=
+\frac{\sqrt x+1}{x-1},\qquad x\ge0,\ x\ne1
+$$</div>
+<p>有理化以后，新的分母 $x-1$ 仍能排除 $x=1$。即使某些变形使原来的限制不再明显，也必须把原式条件保留下来。</p>
+  </div>
+</section><section class="section" id="section-6" aria-labelledby="section-6-title">
+  <div class="marker"><span>06</span>处理顺序</div>
+  <div class="section-body prose">
+    <h2 id="section-6-title">6. 分母有理化的顺序</h2>
+    <ol class="decision-path"><li>先写原分母有意义且非零的条件</li><li>先化简分母，判断它的真实结构</li><li>单个根式因子考虑乘相应根式</li><li>两项根式和差考虑平方差与共轭式</li><li>确认所乘的式子非零，构成的分式确实等于 1</li><li>完成乘法并化简</li><li>在结果旁保留原式条件</li></ol>
+  </div>
+</section><section class="section" id="summary" aria-labelledby="summary-title">
+  <div class="marker"><span>07</span>核心结论</div>
+  <div class="section-body prose">
+    <h2 id="summary-title">回到开头的问题</h2>
+    <div class="summary-panel">
+      <div class="summary-formula">$$\frac1{\sqrt3}=\frac1{\sqrt3}\cdot\frac{\sqrt3}{\sqrt3}=\frac{\sqrt3}{3}$$</div>
+      <p>分母有理化是在非零条件下乘以一个等于 $1$ 的分式。单个根式分母通常乘相应根式，两项和差根据平方差选择非零共轭式；分母结构决定乘什么，非零条件保证分式的值不变。</p>
+    </div>
+  </div>
+</section></main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-prev" href="04_根式的四则运算.html">← 上一篇 · 根式的四则运算</a><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="06_根式与分数指数幂.html">下一篇 · 根式与分数指数幂 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 分母有理化</footer>
+</body>
+</html>

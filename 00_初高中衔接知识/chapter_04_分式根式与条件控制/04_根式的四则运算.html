@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="根式乘除依靠乘积和商的结构，加减依靠同类根式结构，两类规则不能混用。">
+  <title>根式的四则运算 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
+</head>
+<body class="chapter04-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html" aria-current="page">04 根式运算</a><a class="nav-link" href="05_分母有理化.html">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04 · 第 4 节 / 共七节</span>
+    <h1>根式的四则运算</h1>
+    <p class="lead">为什么 $\sqrt2\sqrt3=\sqrt6$，但 $\sqrt2+\sqrt3\ne\sqrt5$？不同运算符号对应不同的代数结构。</p>
+  </header>
+  <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
+  <div class="marker"><span>01</span>根式乘法</div>
+  <div class="section-body prose">
+    <h2 id="section-1-title">1. 根式的乘法</h2>
+    <p>下面两种写法看起来只换了一个运算符：</p>
+<div class="equation-card">$$
+\sqrt2\cdot\sqrt3=\sqrt6
+$$</div>
+<div class="equation-card">$$
+\sqrt2+\sqrt3\ne\sqrt5
+$$</div>
+<p>乘法可以按照乘积结构合并被开方数，加法则只能按照同类项结构合并系数。把两种结构分开，才能避免把乘法规则错误地用到加法中。</p>
+<p>根式没有一条适用于所有运算的万能规则。乘除依靠乘积和商的结构，加减依靠同类项的结构。开始计算前，必须先看清运算符号和根式形式。</p>
+<p>当 $a\ge0$、$b\ge0$ 时，$\sqrt a$、$\sqrt b$ 都是非负数，它们的乘积也非负。这个乘积的平方是：</p>
+<div class="equation-card">$$
+(\sqrt a\sqrt b)^2
+=
+(\sqrt a)^2(\sqrt b)^2
+=ab
+$$</div>
+<p>因此，$\sqrt a\sqrt b$ 正是 $ab$ 的算术平方根：</p>
+<div class="equation-card">$$
+\sqrt a\sqrt b=\sqrt{ab},\qquad a\ge0,\ b\ge0
+$$</div>
+<p>例如：</p>
+<div class="equation-card">$$
+\sqrt8\cdot\sqrt2
+=
+\sqrt{16}
+=4
+$$</div>
+<p>根号外的系数仍按普通乘法处理：</p>
+<div class="equation-card">$$
+2\sqrt3\cdot3\sqrt2
+=
+6\sqrt6
+$$</div>
+<p>公式的条件不能省略。在实数范围内，如果某个被开方数为负，相应的二次根式本身就没有意义，也就不能使用这条乘法规则。</p>
+  </div>
+</section><section class="section" id="section-2" aria-labelledby="section-2-title">
+  <div class="marker"><span>02</span>根式除法</div>
+  <div class="section-body prose">
+    <h2 id="section-2-title">2. 根式的除法</h2>
+    <p>当 $a\ge0$、$b>0$ 时：</p>
+<div class="equation-card">$$
+\frac{\sqrt a}{\sqrt b}
+=
+\sqrt{\frac ab}
+$$</div>
+<p>$b>0$ 同时保证两件事：$\sqrt b$ 有意义，而且 $\sqrt b\ne0$，可以作为分母。</p>
+<p>例如：</p>
+<div class="equation-card">$$
+\frac{\sqrt{12}}{\sqrt3}
+=
+\sqrt4
+=2
+$$</div>
+<p>如果只有 $b\ge0$，那么 $b=0$ 仍有可能出现。此时 $\sqrt b=0$，除法没有意义，所以除法条件必须收紧为 $b>0$。</p>
+  </div>
+</section><section class="section" id="section-3" aria-labelledby="section-3-title">
+  <div class="marker"><span>03</span>根式加减</div>
+  <div class="section-body prose">
+    <h2 id="section-3-title">3. 根式的加减</h2>
+    <p>普通代数中：</p>
+<div class="equation-card">$$
+2x+3x=5x
+$$</div>
+<p>这里合并的是相同字母项前面的系数。根式加减使用同样的结构：只有化简后根指数相同、被开方数也相同的根式，才能合并系数。</p>
+<p>这样的根式称为同类二次根式。例如：</p>
+<div class="equation-card">$$
+2\sqrt3+5\sqrt3=7\sqrt3
+$$</div>
+<p>一般地：</p>
+<div class="equation-card">$$
+a\sqrt m+b\sqrt m=(a+b)\sqrt m
+$$</div>
+<p>被开方数不同的根式，不能直接合并：</p>
+<div class="equation-card">$$
+\sqrt2+\sqrt3
+$$</div>
+<p>已经是最简形式。把它写成 $\sqrt5$ 会改变数值。取平方就能看见差别：</p>
+<div class="equation-card">$$
+(\sqrt2+\sqrt3)^2
+=
+5+2\sqrt6
+\ne5
+$$</div>
+<p>所以：</p>
+<div class="equation-card">$$
+\sqrt2+\sqrt3\ne\sqrt{2+3}
+$$</div>
+<p>乘法可以合并被开方数，是因为平方根的乘积结构成立；加法没有这样的结构，不能照搬乘法规则。</p>
+  </div>
+</section><section class="section" id="section-4" aria-labelledby="section-4-title">
+  <div class="marker"><span>04</span>先化简</div>
+  <div class="section-body prose">
+    <h2 id="section-4-title">4. 加减前的根式化简</h2>
+    <p>有些根式表面上被开方数不同，化简后才会显出同类结构。例如：</p>
+<div class="equation-card">$$
+\sqrt8+\sqrt{18}
+$$</div>
+<p>先分别化简：</p>
+<div class="equation-card">$$
+\sqrt8=2\sqrt2,
+\qquad
+\sqrt{18}=3\sqrt2
+$$</div>
+<p>现在两个根式都含有 $\sqrt2$，可以合并系数：</p>
+<div class="equation-card">$$
+\sqrt8+\sqrt{18}
+=
+2\sqrt2+3\sqrt2
+=5\sqrt2
+$$</div>
+<p>因此，根式加减的第一步通常不是急着合并，而是先把各根式化到最简，再判断是否同类。</p>
+  </div>
+</section><section class="section" id="section-5" aria-labelledby="section-5-title">
+  <div class="marker"><span>05</span>运算律</div>
+  <div class="section-body prose">
+    <h2 id="section-5-title">5. 根式与代数运算律</h2>
+    <p>根式表示实数，所以仍然遵守分配律：</p>
+<div class="equation-card">$$
+\sqrt2(\sqrt3+1)
+=
+\sqrt6+\sqrt2
+$$</div>
+<p>也可以进入已经学过的乘法公式。例如：</p>
+<div class="equation-card">$$
+(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)
+=
+(\sqrt3)^2-(\sqrt2)^2
+=1
+$$</div>
+<p>平方差公式没有改变，变化的只是公式中的对象从字母或整数变成了根式。</p>
+<p>需要注意的是，使用公式前仍要把根式看成完整的整体。不能因为根号中出现加减，就擅自把它拆开。</p>
+  </div>
+</section><section class="section" id="section-6" aria-labelledby="section-6-title">
+  <div class="marker"><span>06</span>混合运算</div>
+  <div class="section-body prose">
+    <h2 id="section-6-title">6. 根式的混合运算</h2>
+    <p>看：</p>
+<div class="equation-card">$$
+\frac{\sqrt8+\sqrt{18}}{\sqrt2}
+$$</div>
+<p>分母 $\sqrt2$ 非零，所以原式有意义。分子是根式加法，先分别化简：</p>
+<div class="equation-card">$$
+\sqrt8+\sqrt{18}
+=
+2\sqrt2+3\sqrt2
+=5\sqrt2
+$$</div>
+<p>再进行除法：</p>
+<div class="equation-card">$$
+\frac{5\sqrt2}{\sqrt2}=5
+$$</div>
+<p>这个过程没有把加法错误地放进同一个根号，而是先按同类根式结构合并，再按根式除法处理。</p>
+<p>如果根式中含有字母，开始前还要先写出每个被开方数非负以及每个分母非零的条件。运算可以改变式子的外形，原式条件仍要保留。</p>
+  </div>
+</section><section class="section" id="section-7" aria-labelledby="section-7-title">
+  <div class="marker"><span>07</span>运算顺序</div>
+  <div class="section-body prose">
+    <h2 id="section-7-title">7. 根式运算的统一顺序</h2>
+    <ol class="decision-path"><li>先确认所有二次根式在实数范围内有意义</li><li>看清当前是乘除还是加减</li><li>乘法检查两个被开方数非负，再按乘积结构处理</li><li>除法额外检查分母对应的根式非零</li><li>加减先把各根式化到最简</li><li>只合并同类根式的系数</li><li>混合运算继续遵守原有运算顺序和代数公式</li><li>最后检查结果是否最简，并保留原式条件</li></ol>
+  </div>
+</section><section class="section" id="summary" aria-labelledby="summary-title">
+  <div class="marker"><span>08</span>核心结论</div>
+  <div class="section-body prose">
+    <h2 id="summary-title">回到开头的问题</h2>
+    <div class="summary-panel">
+      <div class="summary-formula">$$\sqrt a\sqrt b=\sqrt{ab},\qquad p\sqrt m+q\sqrt m=(p+q)\sqrt m$$</div>
+      <p>根式乘除依靠乘积和商的结构，因此可以处理被开方数；根式加减依靠同类项结构，只能合并同类根式前面的系数。运算前先确认根式有意义，加减前先把各根式化到最简。</p>
+    </div>
+  </div>
+</section></main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-prev" href="03_二次根式的意义与化简.html">← 上一篇 · 二次根式的意义与化简</a><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="05_分母有理化.html">下一篇 · 分母有理化 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 根式的四则运算</footer>
+</body>
+</html>

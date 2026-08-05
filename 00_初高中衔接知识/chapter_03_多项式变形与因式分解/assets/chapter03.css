@@ -1,7 +1,7 @@
 /*
  * Chapter 03 local styles
  * Only polynomial structure diagrams and local explanatory layouts live here.
- * Public layout and visual tokens come from learning-page-system.css.
+ * Public layout and visual tokens come from learning-page-system.css?v=20260805-2.
  */
 
 .title-continuation {
@@ -587,6 +587,12 @@
   .formula-bridge,
   .calc-row {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .calc-row > div {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .bridge-arrows {

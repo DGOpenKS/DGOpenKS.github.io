@@ -18,8 +18,9 @@
     {path:"chapter_02-2_立方相关公式/05_立方公式小结.html",title:"05 立方公式小结",menu:"chapter_02-2_立方相关公式/index.html",menuTitle:"Chapter 02-2"},
     {path:"chapter_03_多项式变形与因式分解/index.html",title:"Chapter 03 多项式变形与因式分解",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_03_多项式变形与因式分解/01_因式分解.html",title:"01 因式分解",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
-    {path:"chapter_03_多项式变形与因式分解/02_十字相乘法.html",title:"02 十字相乘法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
-    {path:"chapter_03_多项式变形与因式分解/03_求根公式法.html",title:"03 求根公式法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
+    {path:"chapter_03_多项式变形与因式分解/02_分组分解法.html",title:"02 分组分解法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
+    {path:"chapter_03_多项式变形与因式分解/03_十字相乘法.html",title:"03 十字相乘法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
+    {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_04_分式根式与条件控制/index.html",title:"Chapter 04 分式根式与条件控制",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
     {path:"chapter_04_分式根式与条件控制/01_分式化简.html",title:"01 分式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
     {path:"chapter_04_分式根式与条件控制/02_根式化简.html",title:"02 根式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
@@ -35,56 +36,146 @@
     {path:"chapter_05_方程不等式与约束/06_小结.html",title:"06 全章小结",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"}
   ];
 
+  const chapters=[
+    {
+      prefix:"chapter_00_江西中考数学快速回顾特辑/",
+      title:"Chapter 00",
+      home:"chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/index.html",
+      pages:[
+        {path:"chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/index.html",title:"00-2 几何与综合"}
+      ]
+    },
+    {
+      prefix:"chapter_01_初高中数学思维衔接/",
+      title:"Chapter 01",
+      home:"chapter_01_初高中数学思维衔接/index.html",
+      pages:[]
+    },
+    {
+      prefix:"chapter_02-1_完全平方与平方差公式/",
+      title:"Chapter 02-1",
+      home:"chapter_02-1_完全平方与平方差公式/index.html",
+      pages:[]
+    },
+    {
+      prefix:"chapter_02-2_立方相关公式/",
+      title:"Chapter 02-2",
+      home:"chapter_02-2_立方相关公式/index.html",
+      pages:[
+        {path:"chapter_02-2_立方相关公式/01_和的立方.html",title:"01 和的立方"},
+        {path:"chapter_02-2_立方相关公式/02_差的立方.html",title:"02 差的立方"},
+        {path:"chapter_02-2_立方相关公式/03_立方和.html",title:"03 立方和"},
+        {path:"chapter_02-2_立方相关公式/04_立方差.html",title:"04 立方差"},
+        {path:"chapter_02-2_立方相关公式/05_立方公式小结.html",title:"05 公式小结"}
+      ]
+    },
+    {
+      prefix:"chapter_03_多项式变形与因式分解/",
+      title:"Chapter 03",
+      home:"chapter_03_多项式变形与因式分解/index.html",
+      pages:[
+        {path:"chapter_03_多项式变形与因式分解/01_因式分解.html",title:"01 因式分解"},
+        {path:"chapter_03_多项式变形与因式分解/02_分组分解法.html",title:"02 分组分解"},
+        {path:"chapter_03_多项式变形与因式分解/03_十字相乘法.html",title:"03 十字相乘"},
+        {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式"}
+      ]
+    },
+    {
+      prefix:"chapter_04_分式根式与条件控制/",
+      title:"Chapter 04",
+      home:"chapter_04_分式根式与条件控制/index.html",
+      pages:[
+        {path:"chapter_04_分式根式与条件控制/01_分式的意义条件与约分.html",title:"01 分式基础"},
+        {path:"chapter_04_分式根式与条件控制/02_分式的四则运算.html",title:"02 分式运算"},
+        {path:"chapter_04_分式根式与条件控制/03_二次根式的意义与化简.html",title:"03 根式基础"},
+        {path:"chapter_04_分式根式与条件控制/04_根式的四则运算.html",title:"04 根式运算"},
+        {path:"chapter_04_分式根式与条件控制/05_分母有理化.html",title:"05 分母有理化"},
+        {path:"chapter_04_分式根式与条件控制/06_根式与分数指数幂.html",title:"06 分数指数"},
+        {path:"chapter_04_分式根式与条件控制/07_复合条件与等价化简.html",title:"07 复合条件"}
+      ]
+    }
+  ];
+
   const currentPath=decodeURIComponent(window.location.pathname);
+
+  function topbarLink(className,label,path,isCurrent){
+    const anchor=document.createElement("a");
+    anchor.className=className;
+    anchor.href=new URL(path,root).href;
+    anchor.textContent=label;
+    if(isCurrent)anchor.setAttribute("aria-current","page");
+    return anchor;
+  }
+
+  function normalizeTopbar(){
+    const topbar=document.querySelector(".topbar");
+    const chapter=chapters.find((item)=>currentPath.includes("/"+item.prefix));
+    if(!topbar||!chapter)return;
+
+    const currentItem=[{path:chapter.home},...chapter.pages]
+      .find((item)=>currentPath.endsWith("/"+item.path));
+    const inner=document.createElement("div");
+    inner.className="topbar-inner";
+    inner.append(topbarLink("brand","DGOpenKS","../index.html",false));
+    inner.append(topbarLink(
+      "nav-link",
+      chapter.title,
+      chapter.home,
+      !currentItem||currentItem.path===chapter.home
+    ));
+    chapter.pages.forEach((page)=>{
+      inner.append(topbarLink(
+        "nav-link",
+        page.title,
+        page.path,
+        currentItem?.path===page.path
+      ));
+    });
+    topbar.replaceChildren(inner);
+    const currentLink=inner.querySelector('[aria-current="page"]');
+    if(currentLink){
+      requestAnimationFrame(()=>{
+        inner.scrollLeft=Math.max(
+          0,
+          currentLink.offsetLeft-(inner.clientWidth-currentLink.offsetWidth)/2
+        );
+      });
+    }
+  }
+
+  normalizeTopbar();
+
   const index=sequence.findIndex((item)=>currentPath.endsWith("/"+item.path));
   if(index<0)return;
 
+  // 新标准页面已经在 HTML 中写明完整的页底导航。
+  // 保留静态结构，避免脚本再次替换成另一套按钮和文案。
+  if(document.querySelector("body > .pager"))return;
+
   const style=document.createElement("link");
   style.rel="stylesheet";
-  style.href=new URL("sequence-nav.css",script.src).href;
+  style.href=new URL("sequence-nav.css?v=20260805-4",script.src).href;
   document.head.appendChild(style);
 
-  const current=sequence[index];
-  const previous=index>0
-    ?{...sequence[index-1],eyebrow:"上一篇"}
-    :{path:"../index.html",title:"DGOpenKS 总目录",eyebrow:"返回目录"};
-  const next=index<sequence.length-1
-    ?{...sequence[index+1],eyebrow:"下一篇"}
-    :{path:"../index.html",title:"返回 DGOpenKS 总目录",eyebrow:"完成学习"};
+  const previous=index>0?sequence[index-1]:null;
+  const next=index<sequence.length-1?sequence[index+1]:null;
 
-  function link(kind,item){
+  function link(kind,item,label){
     const anchor=document.createElement("a");
-    anchor.className="sequence-nav__link sequence-nav__link--"+kind;
+    anchor.className="pager-"+kind;
     anchor.href=new URL(item.path,root).href;
-    const copy=document.createElement("span");
-    copy.className="sequence-nav__copy";
-    const eyebrow=document.createElement("span");
-    eyebrow.className="sequence-nav__eyebrow";
-    eyebrow.textContent=item.eyebrow;
-    const title=document.createElement("strong");
-    title.className="sequence-nav__title";
-    title.textContent=item.title;
-    copy.append(eyebrow,title);
-    const arrow=document.createElement("span");
-    arrow.className="sequence-nav__arrow";
-    arrow.setAttribute("aria-hidden","true");
-    arrow.textContent=kind==="prev"?"←":kind==="next"?"→":"";
-    if(kind==="prev")anchor.append(arrow,copy);
-    else anchor.append(copy,arrow);
+    anchor.textContent=label;
     return anchor;
   }
 
   const nav=document.createElement("nav");
-  nav.className="sequence-nav";
+  nav.className="pager";
   nav.dataset.sequenceNavigation="";
-  nav.setAttribute("aria-label","连续阅读导航");
-  nav.append(
-    link("prev",previous),
-    link("menu",{path:current.menu,title:current.menuTitle,eyebrow:"章节入口"}),
-    link("next",next)
-  );
+  nav.setAttribute("aria-label","章节导航");
+  if(previous)nav.append(link("prev",previous,"← 上一章 · "+previous.title));
+  nav.append(link("home",{path:"../index.html"},"返回知识首页"));
+  if(next)nav.append(link("next",next,"下一章 · "+next.title+" →"));
 
-  document.querySelectorAll("body > .pager").forEach((pager)=>pager.remove());
   const footer=document.querySelector("body > footer.footer");
   document.body.insertBefore(nav,footer||null);
 })();

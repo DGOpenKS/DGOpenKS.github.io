@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="复合表达式先从内到外收集条件并取交集，再在共同允许范围内化简，隐藏的限制仍要保留。">
+  <title>复合条件与等价化简 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
+</head>
+<body class="chapter04-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html">04 根式运算</a><a class="nav-link" href="05_分母有理化.html">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html" aria-current="page">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04 · 第 7 节 / 共七节</span>
+    <h1>复合条件与等价化简</h1>
+    <p class="lead">面对嵌套根号、根式分母和可约因子，应当先化简还是先找条件？正确顺序是先收集原式条件，再在共同允许范围内变形。</p>
+  </header>
+  <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
+  <div class="marker"><span>01</span>内层根式</div>
+  <div class="section-body prose">
+    <h2 id="section-1-title">1. 最内层根式的条件</h2>
+    <p>前面分别处理了分式条件、根式条件以及各种运算规则。真正容易漏条件的情形，是这些结构同时出现在一个表达式中。</p>
+<p>看下面的式子：</p>
+<div class="equation-card">$$
+E(x)=
+\frac{(x-1)\sqrt{3-\sqrt{x+1}}}
+{(x-1)\sqrt{x+2}}
+$$</div>
+<p>分子、分母都有因子 $x-1$，似乎可以立刻约去；式子里又有三个根号，其中一个还套在另一个根号里。如果先化简再寻找条件，很可能把 $x=1$ 重新放进结果；如果只检查最外层根号，又会漏掉内层根式的限制。</p>
+<p>面对复合表达式，可靠的方法不是“先算起来再说”，而是先拆开结构层级，建立原式的允许范围，然后只在这个范围内变形。</p>
+<p>表达式中最内层的根式是：</p>
+<div class="equation-card">$$
+\sqrt{x+1}
+$$</div>
+<p>它有意义要求：</p>
+<div class="equation-card">$$
+x+1\ge0
+$$</div>
+<p>也就是：</p>
+<div class="equation-card">$$
+x\ge-1
+$$</div>
+<p>只有内层根式已经有意义，才能继续把它当成一个实数，检查外层的 $\sqrt{3-\sqrt{x+1}}$。</p>
+  </div>
+</section><section class="section" id="section-2" aria-labelledby="section-2-title">
+  <div class="marker"><span>02</span>外层根式</div>
+  <div class="section-body prose">
+    <h2 id="section-2-title">2. 外层根式的条件</h2>
+    <p>外层根式要求整个被开方数非负：</p>
+<div class="equation-card">$$
+3-\sqrt{x+1}\ge0
+$$</div>
+<p>也就是：</p>
+<div class="equation-card">$$
+\sqrt{x+1}\le3
+$$</div>
+<p>在已经知道 $x\ge-1$ 的范围内，左边非负，右边也非负，可以对两边平方：</p>
+<div class="equation-card">$$
+x+1\le9
+$$</div>
+<p>所以：</p>
+<div class="equation-card">$$
+x\le8
+$$</div>
+<p>内层和外层条件合在一起，暂时得到：</p>
+<div class="equation-card">$$
+-1\le x\le8
+$$</div>
+<p>嵌套根号必须从内向外检查。跳过内层，外层表达式本身就可能还没有实数意义。</p>
+  </div>
+</section><section class="section" id="section-3" aria-labelledby="section-3-title">
+  <div class="marker"><span>03</span>根式分母</div>
+  <div class="section-body prose">
+    <h2 id="section-3-title">3. 根式分母的非零条件</h2>
+    <p>分母中含有：</p>
+<div class="equation-card">$$
+\sqrt{x+2}
+$$</div>
+<p>如果它只作为普通根式出现，只需满足 $x+2\ge0$。但它现在是分母的乘法因子，不仅要有意义，还不能等于 $0$。</p>
+<p>因此：</p>
+<div class="equation-card">$$
+\sqrt{x+2}\ne0
+$$</div>
+<p>结合被开方数非负，可以直接写成：</p>
+<div class="equation-card">$$
+x+2>0
+$$</div>
+<p>也就是：</p>
+<div class="equation-card">$$
+x>-2
+$$</div>
+<p>这里从“非负”收紧为“严格为正”，不是因为根号出现在分母里就机械改变符号，而是因为这个根式本身构成了分母因子，必须非零。</p>
+<p>如果分母是 $\sqrt A-1$，就不能直接把条件写成 $A>0$。正确检查是：</p>
+<div class="equation-card">$$
+A\ge0,
+\qquad
+\sqrt A-1\ne0
+$$</div>
+<p>第二个条件等价于 $A\ne1$。判断时必须检查整个分母，而不是只看见分母里有根号。</p>
+  </div>
+</section><section class="section" id="section-4" aria-labelledby="section-4-title">
+  <div class="marker"><span>04</span>普通分母</div>
+  <div class="section-body prose">
+    <h2 id="section-4-title">4. 普通分母因子的条件</h2>
+    <p>原分母还有因子：</p>
+<div class="equation-card">$$
+x-1
+$$</div>
+<p>所以还要求：</p>
+<div class="equation-card">$$
+x\ne1
+$$</div>
+<p>现在，原式产生的条件已经全部找到：</p>
+<div class="equation-card">$$
+\begin{cases}
+x\ge-1,\\
+x\le8,\\
+x>-2,\\
+x\ne1.
+\end{cases}
+$$</div>
+<p>其中 $x\ge-1$ 已经能够保证 $x>-2$，所以取共同范围后得到：</p>
+<div class="equation-card">$$
+x\in[-1,1)\cup(1,8]
+$$</div>
+<p>复合条件不是把所有不等式依次写下来就结束，而是要取它们的交集，得到能够同时让全部结构成立的范围。</p>
+  </div>
+</section><section class="section" id="section-5" aria-labelledby="section-5-title">
+  <div class="marker"><span>05</span>允许范围</div>
+  <div class="section-body prose">
+    <h2 id="section-5-title">5. 共同允许范围内的约分</h2>
+    <p>原式分子、分母都有因子 $x-1$。现在已经记录 $x\ne1$，所以在原式允许范围内，$x-1$ 确定非零，可以约去：</p>
+<div class="equation-card">$$
+E(x)
+=
+\frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}}
+$$</div>
+<p>完整结论必须写成：</p>
+<div class="equation-card">$$
+E(x)
+=
+\frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}},
+\qquad
+x\in[-1,1)\cup(1,8]
+$$</div>
+<p>化简后的式子自身在 $x=1$ 时有意义，但原式在 $x=1$ 时出现了 $\dfrac00$。因此，约分后的形式不能替代原式条件。</p>
+<p>如果还要对分母 $\sqrt{x+2}$ 有理化，也必须继续在这个共同范围内进行：</p>
+<div class="equation-card">$$
+\frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}}
+=
+\frac{\sqrt{3-\sqrt{x+1}}\sqrt{x+2}}{x+2}
+$$</div>
+<p>这里 $x>-2$ 已由原式范围保证，因此所乘的 $\dfrac{\sqrt{x+2}}{\sqrt{x+2}}$ 确实等于 $1$。无论外形怎样继续变化，$x\ne1$ 仍然不能删除。</p>
+<div class="ledger-lab" aria-labelledby="ledger-07-title">
+  <div class="ledger-heading"><span>检查顺序</span><h3 id="ledger-07-title">复合条件的七个步骤</h3></div>
+  <p>从上往下检查并保留每一步得到的条件，最后再进行约分和化简。</p>
+  <ol class="ledger-states">
+    <li><strong>最内层根式</strong><span>$x+1\ge0$，所以 $x\ge-1$。</span></li>
+    <li><strong>外层根式</strong><span>$3-\sqrt{x+1}\ge0$，所以 $x\le8$。</span></li>
+    <li><strong>根式分母</strong><span>$\sqrt{x+2}&gt;0$，所以 $x&gt;-2$。</span></li>
+    <li><strong>普通分母因子</strong><span>$x-1\ne0$，所以 $x\ne1$。</span></li>
+    <li><strong>条件交集</strong><span>$-1\le x\le8$ 且 $x\ne1$。</span></li>
+    <li><strong>允许范围内约分</strong><span>约去 $x-1$，但 $x\ne1$ 继续保留。</span></li>
+    <li><strong>最终记录</strong><span>化简形式与原式范围同时写出。</span></li>
+  </ol>
+</div>
+<p class="visual-interpretation">条件账本把原式中的限制逐层累积。约分发生在条件交集已经确定之后，因此不会把 $x=1$ 重新放回允许范围。</p>
+
+  </div>
+</section><section class="section" id="section-6" aria-labelledby="section-6-title">
+  <div class="marker"><span>06</span>等价化简</div>
+  <div class="section-body prose">
+    <h2 id="section-6-title">6. 条件检查与化简</h2>
+    <p>条件检查确定可以进入原式的值。化简则在这些允许的值上，把式子写成更便于观察或运算的形式。</p>
+<p>如果只做条件检查，就还没有完成需要的代数变形；如果只做化简，就可能在变形中扩大原式范围。真正的等价化简必须把这两部分同时保留下来：</p>
+<ol class="decision-path"><li>等价化简 = 形式上的等值变形 + 原式允许范围的一致</li></ol>
+<p>这里的“一致”不是要求化简式自身天然排除所有禁点，而是要求最终陈述明确带着原式条件，使新形式只在原式允许范围内代表原对象。</p>
+  </div>
+</section><section class="section" id="section-7" aria-labelledby="section-7-title">
+  <div class="marker"><span>07</span>条件账本</div>
+  <div class="section-body prose">
+    <h2 id="section-7-title">7. 复合表达式的条件账本</h2>
+    <p>可以把整个过程整理成一条稳定的检查链：</p>
+<ol class="decision-path"><li>识别分式、根式、嵌套和可能约去的因子</li><li>从最内层根号开始，逐层记录被开方数非负</li><li>检查每一个完整分母以及分母中的乘法因子非零</li><li>把全部条件取交集，得到原式允许范围</li><li>只在共同范围内选择约分、根式运算或有理化</li><li>标记在变形中消失或不再明显的条件</li><li>比较化简形式自身范围与原式范围</li><li>同时写出最终形式和原式条件</li></ol>
+  </div>
+</section><section class="section" id="summary" aria-labelledby="summary-title">
+  <div class="marker"><span>08</span>核心结论</div>
+  <div class="section-body prose">
+    <h2 id="summary-title">回到开头的问题</h2>
+    <div class="summary-panel">
+      <div class="summary-formula">$$E(x)=\frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}},\qquad x\in[-1,1)\cup(1,8]$$</div>
+      <p>面对嵌套根号、根式分母和可约因子时，应先从内到外收集成立条件并取交集，再在共同允许范围内化简。因子约去以后，原式留下的 $x\ne1$ 仍然必须写进最终结论。</p>
+    </div>
+  </div>
+</section></main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-prev" href="06_根式与分数指数幂.html">← 上一篇 · 根式与分数指数幂</a><a class="pager-home" href="index.html">返回章节首页</a><a class="pager-next" href="../chapter_05_方程不等式与约束/index.html">下一章 · 方程、不等式与约束 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 复合条件与等价化简</footer>
+</body>
+</html>

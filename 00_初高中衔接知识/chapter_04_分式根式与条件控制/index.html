@@ -1,104 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Chapter 04 从表达式的有意义范围出发，学习分式禁点、根式非负、复合条件与等价化简。">
-  <title>Chapter 04 · 分式根式与条件控制 | DGOpenKS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="第四章以七节内容建立分式、根式与复合表达式的条件控制和等价化简方法。">
+  <title>Chapter 04 · 分式、根式与条件控制 | DGOpenKS</title>
+  <link rel="icon" href="data:,">
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-  <link rel="stylesheet" href="assets/chapter04.css">
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260805-2">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <script src="../assets/sequence-nav.js?v=20260805-6" defer></script>
 </head>
-<body>
+<body class="chapter04-page chapter04-index">
   <a class="skip-link" href="#main">跳到正文</a>
-  <nav class="topbar" aria-label="章节导航">
-    <div class="topbar-inner">
-      <a class="brand" href="../../index.html">DGOpenKS</a>
-      <a class="nav-link" href="../chapter_03_多项式变形与因式分解/">上一章</a>
-      <a class="nav-link" href="./" aria-current="page">Chapter 04</a>
-      <a class="nav-link" href="00_形式与条件.html">00 形式与条件</a>
-      <a class="nav-link" href="01_分式化简.html">01 分式</a>
-      <a class="nav-link" href="02_根式化简.html">02 根式</a>
-      <a class="nav-link" href="03_复合条件.html">03 复合条件</a>
-      <a class="nav-link" href="04_等价化简小结.html">04 小结</a>
-      <a class="nav-link" href="../chapter_05_方程不等式与约束/">下一章</a>
-    </div>
-  </nav>
-
-  <header class="hero lesson-hero">
-    <div class="hero-copy">
-      <span class="eyebrow">初高中衔接 · Chapter 04</span>
-      <h1>分式、根式与条件控制</h1>
-      <p class="lead">多项式变形主要改变式子的结构；进入分式和根式后，还要追踪式子在哪里有意义。本章建立一条贯穿后续方程与不等式的原则：形式可以化简，原式条件不能丢。</p>
-      <div class="learning-contract"><span><strong>这一章解决一个核心问题：</strong>怎样让表达式的形式与有意义范围在每一步变形中保持一致。</span></div>
-    </div>
-    <div class="hero-stage" aria-label="表达式对象由表达式形式和有意义范围共同组成">
-      <span class="stage-label">Chapter 04 核心关系</span>
-      <div class="stage-expression">表达式形式</div>
-      <div class="stage-arrow"><span>共同组成</span></div>
-      <div class="stage-expression result">有意义范围</div>
-      <p class="stage-note">式子变短只是第一层；允许范围没有被扩大，才是真正等价。</p>
-    </div>
+  <nav class="topbar" aria-label="第四章导航"><div class="topbar-inner"><a class="brand" href="../../index.html">DGOpenKS</a><a class="nav-link" href="index.html" aria-current="page">Chapter 04</a><a class="nav-link" href="01_分式的意义条件与约分.html">01 分式基础</a><a class="nav-link" href="02_分式的四则运算.html">02 分式运算</a><a class="nav-link" href="03_二次根式的意义与化简.html">03 根式基础</a><a class="nav-link" href="04_根式的四则运算.html">04 根式运算</a><a class="nav-link" href="05_分母有理化.html">05 分母有理化</a><a class="nav-link" href="06_根式与分数指数幂.html">06 分数指数</a><a class="nav-link" href="07_复合条件与等价化简.html">07 复合条件</a></div></nav>
+  <header class="hero">
+    <span class="eyebrow">初高中衔接 · Chapter 04</span>
+    <h1>分式、根式与条件控制</h1>
+    <p class="lead">表达式进入分式与根式以后，形式和允许范围必须同时处理。本章沿分式线、根式线和综合线，建立“先确认条件，再进行合法变形”的完整路径。</p>
   </header>
-
   <main id="main">
-    <section class="section" id="path" aria-labelledby="path-title">
-      <div class="marker"><span>01</span>学习路径</div>
-      <div class="section-body">
-        <span class="kicker">从一个禁点走向完整检查法</span>
-        <h2 id="path-title">五个学习转折，围绕同一条条件主线</h2>
-        <p class="section-intro">章节顺序不是把分式、根式并排列出，而是逐步增加条件复杂度：先看单个禁点，再处理不同来源的限制，最后形成稳定的检查方法。</p>
-
-        <div class="chapter-path" aria-label="Chapter 04 五节学习顺序">
-          <div class="path-node"><b>形式与条件</b><small>对象边界</small></div>
-          <div class="path-node"><b>分式化简</b><small>保留禁点</small></div>
-          <div class="path-node"><b>根式化简</b><small>保持非负</small></div>
-          <div class="path-node"><b>复合条件</b><small>取共同范围</small></div>
-          <div class="path-node"><b>等价化简</b><small>完整检查</small></div>
+    <section class="section" aria-labelledby="core-title">
+      <div class="marker"><span>01</span>本章主线</div>
+      <div class="section-body prose">
+        <h2 id="core-title">先判断条件，再进行变形</h2>
+        <p>分母不能为 $0$，二次根式的被开方数不能为负，根式位于分母时还必须保证整个分母非零。式子的外形可以在运算与化简中改变，原式产生的条件不能消失。</p>
+        <div class="equation-card result">$$\text{代数表达式对象}=\text{表达式形式}+\text{允许范围}$$</div>
+        <div class="learning-lines" aria-label="第四章三条学习线">
+          <div><strong>分式线 · 01—02</strong><span>从分母禁点进入约分和四则运算。</span></div>
+          <div><strong>根式线 · 03—06</strong><span>从非负边界进入化简、运算、有理化和分数指数。</span></div>
+          <div><strong>综合线 · 07</strong><span>把全部条件放进同一条检查链。</span></div>
         </div>
       </div>
     </section>
-
-    <section class="section" id="lessons" aria-labelledby="lessons-title">
-      <div class="marker"><span>02</span>章节目录</div>
-      <div class="section-body">
-        <span class="kicker">按顺序进入每一个判断</span>
-        <h2 id="lessons-title">先写条件，再做变形</h2>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="00_形式与条件.html">
-            <span class="lesson-number">00 · CONCEPT</span>
-            <h3>形式与条件</h3>
-            <p>用 $\dfrac{x^2-1}{x-1}$ 的隐藏禁点理解：表达式对象不只有外形。</p>
-          </a>
-          <a class="lesson-card" href="01_分式化简.html">
-            <span class="lesson-number">01 · METHOD</span>
-            <h3>分式化简</h3>
-            <p>只约共同乘法因子，并把原分母留下的全部禁点带到最终结果。</p>
-          </a>
-          <a class="lesson-card" href="02_根式化简.html">
-            <span class="lesson-number">02 · STRUCTURE</span>
-            <h3>根式化简</h3>
-            <p>从平方隐藏符号出发，理解 $\sqrt{A^2}=|A|$ 为什么必须保持非负。</p>
-          </a>
-          <a class="lesson-card" href="03_复合条件.html">
-            <span class="lesson-number">03 · INTERSECTION</span>
-            <h3>复合条件</h3>
-            <p>逐一检查根号与分母，把范围、禁点和边界合成共同允许范围。</p>
-          </a>
-          <a class="lesson-card" href="04_等价化简小结.html">
-            <span class="lesson-number">04 · REVIEW</span>
-            <h3>等价化简小结</h3>
-            <p>用“原式—变形—结果”三轮检查，把形式与条件一起保留到最后。</p>
-          </a>
-        </div>
-        <div class="next-callout">
-          <p><strong>建议从第 00 节开始：</strong>先建立“形式 + 条件”的对象观，再进入具体化简。</p>
-          <a class="next-link" href="00_形式与条件.html">开始 Chapter 04</a>
-        </div>
+    <section class="section" aria-labelledby="journey-title">
+      <div class="marker"><span>02</span>七篇内容</div>
+      <div class="section-body prose">
+        <h2 id="journey-title">按理解顺序阅读</h2>
+        <p>先学习分式，再学习二次根式；掌握各自的运算以后，继续进入分母有理化、分数指数和复合条件。</p>
+        <div class="chapter-journey"><a class="journey-item" href="01_分式的意义条件与约分.html"><span class="journey-number">01</span><div><small>概念页 · 全章起点</small><h3>分式的意义、条件与约分</h3><p>分式何时有意义，约分后哪些条件仍要保留。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="02_分式的四则运算.html"><span class="journey-number">02</span><div><small>方法页 · 承接 01</small><h3>分式的四则运算</h3><p>乘除、加减和繁分式分别遵守什么结构。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="03_二次根式的意义与化简.html"><span class="journey-number">03</span><div><small>概念页 · 分式线之后进入根式线</small><h3>二次根式的意义与化简</h3><p>非负性怎样控制二次根式的意义与化简。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="04_根式的四则运算.html"><span class="journey-number">04</span><div><small>方法页 · 承接 03</small><h3>根式的四则运算</h3><p>乘除结构与同类根式结构怎样分开使用。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="05_分母有理化.html"><span class="journey-number">05</span><div><small>公式方法页 · 承接 04</small><h3>分母有理化</h3><p>怎样改变根式分母而保持整个分式的值。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="06_根式与分数指数幂.html"><span class="journey-number">06</span><div><small>衔接扩展 · 承接 05 · 衔接扩展</small><h3>根式与分数指数幂</h3><p>根式怎样进入统一的指数语言。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a><a class="journey-item" href="07_复合条件与等价化简.html"><span class="journey-number">07</span><div><small>综合页 · 汇合分式线与根式线</small><h3>复合条件与等价化简</h3><p>分式、根式和嵌套层级怎样共同确定允许范围。</p></div><span class="journey-arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="boundary-title">
+      <div class="marker"><span>03</span>章节边界</div>
+      <div class="section-body prose">
+        <h2 id="boundary-title">本章处理表达式，下一章处理方程与不等式</h2>
+        <p>第三章的因式分解、平方差和乘法公式是本章的重要工具。本章研究表达式的意义、运算、化简和成立条件；分式方程、根式方程、不等式求解与验根留到第五章。</p>
+        <p>整章最终形成的稳定判断是：先确认对象在哪些值上成立，再在这个范围内选择合法变形；写出结果时，化简形式和原式条件缺一不可。</p>
       </div>
     </section>
   </main>
-
-  <footer class="footer">DGOpenKS · Chapter 04 · 分式根式与条件控制</footer>
+  <nav class="pager" aria-label="章节导航"><a class="pager-prev" href="../chapter_03_多项式变形与因式分解/index.html">← 上一章 · 多项式变形与因式分解</a><a class="pager-next" href="01_分式的意义条件与约分.html">开始第一篇 · 分式的意义、条件与约分 →</a></nav>
+  <footer class="footer">DGOpenKS · Chapter 04 · 分式、根式与条件控制</footer>
 </body>
 </html>

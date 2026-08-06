@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>立方差公式：因式分解与几何解析 | DGOpenKS</title>
+<script>
+window.MathJax = {
+  loader: { load: ['[tex]/html'] },
+  tex: {
+    packages: { '[+]': ['html'] },
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -149,7 +161,7 @@ p.prose,
 <header class="hero">
   <span class="eyebrow">02-2 立方相关公式 · 04</span>
   <h1>立方差公式：<br class="mobile-title-break">因式分解与几何解析</h1>
-  <p class="lead">本节先通过代数运算确定 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 的两个因子，再用立方体的体积拆分解释这个公式。</p>
+  <p class="lead">本节先通过代数运算确定 <span class="math">$a^{3}-b^{3}$</span> 的两个因子，再用立方体的体积拆分解释这个公式。</p>
 </header>
 
 <main>
@@ -157,40 +169,40 @@ p.prose,
     <h2 class="marker"><span aria-hidden="true">01</span>公式推导</h2>
     <div class="section-body">
       <div class="prose">
-        <p>立方差要把两个立方的差 <span class="math">a<sup>3</sup>-b<sup>3</sup></span> 写成乘积形式。先根据原式等于 <span class="math">0</span> 时的条件寻找一次因子，再用未知系数确定剩下的二次因子。</p>
+        <p>立方差要把两个立方的差 <span class="math">$a^{3}-b^{3}$</span> 写成乘积形式。先根据原式等于 <span class="math">$0$</span> 时的条件寻找一次因子，再用未知系数确定剩下的二次因子。</p>
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
-              <div class="formula-line">a<sup>3</sup>-b<sup>3</sup></div>
+              <div class="formula-line">$$a^{3}-b^{3}$$</div>
               <p class="step-note">目标是把这个立方差写成两个因子的乘积。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a=b ⇒ a<sup>3</sup>-b<sup>3</sup>=0<br>a=b ⇒ a-b=0</div>
-              <p class="step-note">当 <span class="math">a=b</span> 时，原式与 <span class="math">a-b</span> 同时为 <span class="math">0</span>。这提示我们先尝试把 <span class="math">a-b</span> 作为一次因子，再用乘法展开确认。</p>
+              <div class="formula-line">$$\begin{aligned} a=b \Rightarrow a^{3}-b^{3}=0 \\ a=b \Rightarrow a-b=0 \end{aligned}$$</div>
+              <p class="step-note">当 <span class="math">$a=b$</span> 时，原式与 <span class="math">$a-b$</span> 同时为 <span class="math">$0$</span>。这提示我们先尝试把 <span class="math">$a-b$</span> 作为一次因子，再用乘法展开确认。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)</div>
-              <p class="step-note">剩下的应是二次式。首项必须是 <span class="math">a<sup>2</sup></span>，末项必须是 <span class="math">b<sup>2</sup></span>，中间项的未知系数先记作 <span class="math">k</span>。</p>
+              <div class="formula-line">$$a^{3}-b^{3} = (a-b)(a^{2}+kab+b^{2})$$</div>
+              <p class="step-note">剩下的应是二次式。首项必须是 <span class="math">$a^{2}$</span>，末项必须是 <span class="math">$b^{2}$</span>，中间项的未知系数先记作 <span class="math">$k$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">(a-b)(a<sup>2</sup>+kab+b<sup>2</sup>)<br>= a<sup>3</sup>+ka<sup>2</sup>b+ab<sup>2</sup>-a<sup>2</sup>b-kab<sup>2</sup>-b<sup>3</sup></div>
-              <p class="step-note">让 <span class="math">a</span> 和 <span class="math">-b</span> 分别乘二次因子的三项，共得到六项；<span class="math">-b</span> 乘出的三项均带负号。</p>
+              <div class="formula-line">$$\begin{aligned} (a-b)(a^{2}+kab+b^{2}) \\ = a^{3}+ka^{2}b+ab^{2}-a^{2}b-kab^{2}-b^{3} \end{aligned}$$</div>
+              <p class="step-note">让 <span class="math">$a$</span> 和 <span class="math">$-b$</span> 分别乘二次因子的三项，共得到六项；<span class="math">$-b$</span> 乘出的三项均带负号。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">= a<sup>3</sup>+(k-1)a<sup>2</sup>b+(1-k)ab<sup>2</sup>-b<sup>3</sup></div>
-              <p class="step-note">合并同类项：两类混合项的系数分别变成 <span class="math">k-1</span> 和 <span class="math">1-k</span>。</p>
+              <div class="formula-line">$$= a^{3}+(k-1)a^{2}b+(1-k)ab^{2}-b^{3}$$</div>
+              <p class="step-note">合并同类项：两类混合项的系数分别变成 <span class="math">$k-1$</span> 和 <span class="math">$1-k$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">k-1=0，1-k=0，所以 k=1</div>
-              <p class="step-note">原式没有 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span>。要让两类混合项抵消则系数为 <span class="math">0</span>。</p>
+              <div class="formula-line">$$\begin{aligned} k-1=0，1-k=0，\text{所以} k=1 \end{aligned}$$</div>
+              <p class="step-note">原式没有 <span class="math">$a^{2}b$</span> 和 <span class="math">$ab^{2}$</span>。要让两类混合项抵消则系数为 <span class="math">$0$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</div>
-              <p class="step-note">把 <span class="math">k=1</span> 代回二次因子，得到立方差的分解公式。中间的 <span class="math">+ab</span> 使乘回去时出现的两类混合项正好抵消。</p>
+              <div class="formula-line">$$a^{3}-b^{3} = (a-b)(a^{2}+ab+b^{2})$$</div>
+              <p class="step-note">把 <span class="math">$k=1$</span> 代回二次因子，得到立方差的分解公式。中间的 <span class="math">$+ab$</span> 使乘回去时出现的两类混合项正好抵消。</p>
             </div>
           </div>
         </div>
-        <div class="note">二次因子中的 <span class="math">+ab</span> 使乘回去时出现的 <span class="math">a<sup>2</sup>b</span> 和 <span class="math">ab<sup>2</sup></span> 分别抵消，只留下 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。</div>
+        <div class="note">二次因子中的 <span class="math">$+ab$</span> 使乘回去时出现的 <span class="math">$a^{2}b$</span> 和 <span class="math">$ab^{2}$</span> 分别抵消，只留下 <span class="math">$a^{3}-b^{3}$</span>。</div>
       </div>
     </div>
   </section>
@@ -198,8 +210,8 @@ p.prose,
   <section class="section" id="model">
     <h2 class="marker"><span aria-hidden="true">02</span>几何解析</h2>
     <div class="section-body">
-      <p class="prose note">在几何模型中，取 <span class="math">a&gt;b&gt;0</span>，这样 <span class="math">a</span>、<span class="math">b</span>、<span class="math">a-b</span> 都可以表示立体图形的边长。但是对于代数式并没有要求。</p>
-      <p class="prose">立方差可以看作一个体积拆分问题。从边长为 <span class="math">a</span> 的大立方体中挖去边长为 <span class="math">b</span> 的小立方体，剩余立体图形的体积就是 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。把剩余体积拆成三块，可以看见它们共有的长度 <span class="math">a-b</span>。</p>
+      <p class="prose note">在几何模型中，取 <span class="math">$a>b>0$</span>，这样 <span class="math">$a$</span>、<span class="math">$b$</span>、<span class="math">$a-b$</span> 都可以表示立体图形的边长。但是对于代数式并没有要求。</p>
+      <p class="prose">立方差可以看作一个体积拆分问题。从边长为 <span class="math">$a$</span> 的大立方体中挖去边长为 <span class="math">$b$</span> 的小立方体，剩余立体图形的体积就是 <span class="math">$a^{3}-b^{3}$</span>。把剩余体积拆成三块，可以看见它们共有的长度 <span class="math">$a-b$</span>。</p>
       <div class="cube-diff-model-sequence" id="cubeDifferenceStaticSequence" aria-label="立方差几何解析静态步骤">
         <article class="cube-diff-model-step" data-cube-diff-stage="0">
           <div class="cube-diff-scene-wrap">
@@ -208,9 +220,9 @@ p.prose,
           <div class="cube-diff-step-copy">
             <span class="cube-diff-step-kicker"><b>1</b>挖去小立方体</span>
             <h3>从大立方体中挖去小立方体</h3>
-            <p>大立方体的体积是 <span class="math">a<sup>3</sup></span>，挖去的小立方体体积是 <span class="math">b<sup>3</sup></span>，所以剩余体积是 <span class="math">a<sup>3</sup>-b<sup>3</sup></span>。</p>
+            <p>大立方体的体积是 <span class="math">$a^{3}$</span>，挖去的小立方体体积是 <span class="math">$b^{3}$</span>，所以剩余体积是 <span class="math">$a^{3}-b^{3}$</span>。</p>
             <div class="cube-diff-static-formula">
-              <div class="cube-diff-formula-list"><span>a<sup>3</sup>-b<sup>3</sup></span></div>
+              <div class="cube-diff-formula-list"><span>$a^{3}-b^{3}$</span></div>
             </div>
           </div>
         </article>
@@ -222,9 +234,9 @@ p.prose,
           <div class="cube-diff-step-copy">
             <span class="cube-diff-step-kicker"><b>2</b>拆成三块</span>
             <h3>把剩余的 L 形立体图形拆成三块</h3>
-            <p>三块长方体都有一条长度为 <span class="math">a-b</span> 的边。另外两条边组成的面积分别是 <span class="math">a<sup>2</sup></span>、<span class="math">ab</span>、<span class="math">b<sup>2</sup></span>。</p>
+            <p>三块长方体都有一条长度为 <span class="math">$a-b$</span> 的边。另外两条边组成的面积分别是 <span class="math">$a^{2}$</span>、<span class="math">$ab$</span>、<span class="math">$b^{2}$</span>。</p>
             <div class="cube-diff-static-formula">
-              <div class="cube-diff-formula-list"><span>共同长度 = a-b</span></div>
+              <div class="cube-diff-formula-list"><span>$\begin{aligned} \text{共同长度} = a-b \end{aligned}$</span></div>
             </div>
           </div>
         </article>
@@ -236,9 +248,9 @@ p.prose,
           <div class="cube-diff-step-copy">
             <span class="cube-diff-step-kicker"><b>3</b>三块相加</span>
             <h3>把三块长方体的体积相加</h3>
-            <p>三块体积分别是 <span class="math">a<sup>2</sup>(a-b)</span>、<span class="math">ab(a-b)</span>、<span class="math">b<sup>2</sup>(a-b)</span>，它们合起来就是原来的剩余体积。</p>
+            <p>三块体积分别是 <span class="math">$a^{2}(a-b)$</span>、<span class="math">$ab(a-b)$</span>、<span class="math">$b^{2}(a-b)$</span>，它们合起来就是原来的剩余体积。</p>
             <div class="cube-diff-static-formula">
-              <div class="cube-diff-formula-list"><span>a<sup>3</sup>-b<sup>3</sup> = a<sup>2</sup>(a-b)+ab(a-b)+b<sup>2</sup>(a-b)</span></div>
+              <div class="cube-diff-formula-list"><span>$a^{3}-b^{3} = a^{2}(a-b)+ab(a-b)+b^{2}(a-b)$</span></div>
             </div>
           </div>
         </article>
@@ -249,15 +261,15 @@ p.prose,
           </div>
           <div class="cube-diff-step-copy">
             <span class="cube-diff-step-kicker"><b>4</b>提取共同长度</span>
-            <h3>提取三块共有的长度 <span class="math">a-b</span></h3>
-            <p>三个乘积都含有因子 <span class="math">a-b</span>。把它提出来，另外两条边组成的面积相加，得到 <span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span>。</p>
+            <h3>提取三块共有的长度 <span class="math">$a-b$</span></h3>
+            <p>三个乘积都含有因子 <span class="math">$a-b$</span>。把它提出来，另外两条边组成的面积相加，得到 <span class="math">$a^{2}+ab+b^{2}$</span>。</p>
             <div class="cube-diff-static-formula">
-              <div class="cube-diff-formula-list"><span>a<sup>2</sup>(a-b)+ab(a-b)+b<sup>2</sup>(a-b)</span><span>= (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span><span>a<sup>3</sup>-b<sup>3</sup> = (a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span></div>
+              <div class="cube-diff-formula-list"><span>$a^{2}(a-b)+ab(a-b)+b^{2}(a-b)$</span><span>$= (a-b)(a^{2}+ab+b^{2})$</span><span>$a^{3}-b^{3} = (a-b)(a^{2}+ab+b^{2})$</span></div>
             </div>
           </div>
         </article>
       </div>
-      <p class="prose">几何角度能帮助我们看见两个因子的来源：<span class="math">a-b</span> 是三块剩余体积共有的长度，<span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span> 是与它相乘的面积之和。</p>
+      <p class="prose">几何角度能帮助我们看见两个因子的来源：<span class="math">$a-b$</span> 是三块剩余体积共有的长度，<span class="math">$a^{2}+ab+b^{2}$</span> 是与它相乘的面积之和。</p>
     </div>
   </section>
 
@@ -266,22 +278,22 @@ p.prose,
     <div class="section-body">
       <div class="summary-panel">
         <div class="summary-formula is-split">
-          <span class="summary-formula-left">a<sup>3</sup>-b<sup>3</sup> =</span>
-          <span class="summary-formula-right">(a-b)(a<sup>2</sup>+ab+b<sup>2</sup>)</span>
+          <span class="summary-formula-left">$a^{3}-b^{3} =$</span>
+          <span class="summary-formula-right">$(a-b)(a^{2}+ab+b^{2})$</span>
         </div>
         <div class="summary-paths">
           <div class="summary-path">
             <span class="summary-path-index">1</span>
             <div>
               <h3>代数路径</h3>
-              <p><span class="math">a-b</span> 是可以尝试的一次因子，二次因子中的 <span class="math">+ab</span> 使乘积里的两类混合项正好抵消。</p>
+              <p><span class="math">$a-b$</span> 是可以尝试的一次因子，二次因子中的 <span class="math">$+ab$</span> 使乘积里的两类混合项正好抵消。</p>
             </div>
           </div>
           <div class="summary-path">
             <span class="summary-path-index">2</span>
             <div>
               <h3>几何路径</h3>
-              <p><span class="math">a-b</span> 是三块剩余体积共有的长度，<span class="math">a<sup>2</sup>+ab+b<sup>2</sup></span> 是另外两条边组成的面积之和。</p>
+              <p><span class="math">$a-b$</span> 是三块剩余体积共有的长度，<span class="math">$a^{2}+ab+b^{2}$</span> 是另外两条边组成的面积之和。</p>
             </div>
           </div>
         </div>

@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>02-2 立方相关公式 | DGOpenKS</title>
+<script>
+window.MathJax = {
+  loader: { load: ['[tex]/html'] },
+  tex: {
+    packages: { '[+]': ['html'] },
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.8;overflow-x:hidden}.math{font-family:Georgia,"Times New Roman",serif;font-weight:800}.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(246,248,251,.92);backdrop-filter:blur(14px)}.topbar-inner{max-width:1080px;margin:auto;padding:10px 20px;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none}.topbar-inner::-webkit-scrollbar{display:none}.brand,.nav-link{text-decoration:none;white-space:nowrap}.brand{font-weight:900;color:var(--blue);margin-right:8px}.nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}.nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}.hero{max-width:1080px;margin:auto;padding:44px 20px 26px}.eyebrow{display:inline-flex;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:900;margin-bottom:14px}h1{font-size:clamp(2rem,4.2vw,3rem);line-height:1.15;margin:0 0 12px}h2{font-size:clamp(1.28rem,2.2vw,1.75rem);line-height:1.28;margin:0 0 12px}p{margin:0 0 12px;color:#334155}.lead{max-width:820px;color:var(--muted);font-size:1.04rem}main{max-width:1080px;margin:auto;padding:0 20px 82px}.section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:70px}.marker{position:sticky;top:70px;align-self:start;color:var(--muted);font-size:.82rem;font-weight:900}.marker span{display:grid;place-items:center;width:36px;height:36px;background:var(--paper);border:1px solid var(--line);border-radius:50%;color:var(--blue);margin-bottom:8px}.section-body{min-width:0;max-width:850px}.card,.note{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:16px 0}.note{border-left:4px solid var(--blue);background:var(--blue-soft);box-shadow:none;color:var(--blue)}.path-grid,.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.path-card,.lesson-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px;min-width:0}.path-card b,.lesson-card strong{color:var(--ink);font-size:1.05rem}.path-card p,.lesson-card p{margin:0;color:var(--muted)}.lesson-card{text-decoration:none;border-top:4px solid var(--blue);transition:border-color .18s ease,transform .18s ease}.lesson-card:hover,.lesson-card:focus-visible{outline:0;transform:translateY(-2px);border-color:var(--blue-line)}.lesson-card.green{border-top-color:var(--green)}.lesson-card.amber{border-top-color:var(--amber)}.lesson-card.purple{border-top-color:var(--purple)}.tag{display:inline-flex;width:max-content;border-radius:999px;padding:3px 8px;font-size:.75rem;font-weight:900;background:var(--blue-soft);color:var(--blue)}.tag.green{background:var(--green-soft);color:var(--green)}.tag.amber{background:var(--amber-soft);color:var(--amber)}.tag.purple{background:var(--purple-soft);color:var(--purple)}.formula-line{font-family:Georgia,"Times New Roman",serif;font-weight:800;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:9px 10px;overflow:auto;white-space:nowrap}.check-list{display:grid;gap:8px}.check-list span{display:block;background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--blue-line);border-radius:var(--radius);padding:10px;font-weight:800;color:#334155}.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:.86rem}@media(max-width:820px){.section,.path-grid,.lesson-grid{grid-template-columns:1fr}.marker{position:static;display:flex;align-items:center;gap:10px}.marker span{margin:0}.hero,main{padding-left:14px;padding-right:14px}h1{font-size:2rem}.formula-line,.math{white-space:normal}}
 </style>
@@ -55,9 +67,9 @@
       <h2>先判断对象，再选择公式</h2>
       <p>立方相关公式容易混，是因为它们看起来都带三次方。真正要先分清的是：现在看到的是一个整体的三次方，还是两个立方项的和或差。</p>
       <div class="path-grid">
-        <div class="path-card"><b>整体被立方</b><p class="math">(a+b)<sup>3</sup>，(a-b)<sup>3</sup></p></div>
-        <div class="path-card"><b>两个立方相加</b><p class="math">a<sup>3</sup>+b<sup>3</sup></p></div>
-        <div class="path-card"><b>两个立方相减</b><p class="math">a<sup>3</sup>-b<sup>3</sup></p></div>
+        <div class="path-card"><b>整体被立方</b><p class="math">$(a+b)^{3}，(a-b)^{3}$</p></div>
+        <div class="path-card"><b>两个立方相加</b><p class="math">$a^{3}+b^{3}$</p></div>
+        <div class="path-card"><b>两个立方相减</b><p class="math">$a^{3}-b^{3}$</p></div>
       </div>
     </div>
   </section>
@@ -68,10 +80,10 @@
       <h2>按理解顺序阅读</h2>
       <p>先展开，再分解，最后用小结把四类式子的判断顺序合在一起。</p>
       <div class="lesson-grid">
-        <a class="lesson-card" href="01_和的立方.html"><span class="tag">展开</span><strong>和的立方</strong><p>先写清三个括号相乘的过程，再用立方体看见 1,3,3,1。</p><div class="formula-line">(a+b)<sup>3</sup></div></a>
-        <a class="lesson-card" href="02_差的立方.html"><span class="tag">展开</span><strong>差的立方</strong><p>按乘法过程展开，重点看清负号怎样进入每一项。</p><div class="formula-line">(a-b)<sup>3</sup></div></a>
-        <a class="lesson-card green" href="03_立方和.html"><span class="tag green">分解</span><strong>立方和</strong><p>先找一次因子，再让展开后的混合项抵消。</p><div class="formula-line">a<sup>3</sup>+b<sup>3</sup></div></a>
-        <a class="lesson-card amber" href="04_立方差.html"><span class="tag amber">分解</span><strong>立方差</strong><p>识别完整立方，理解二次因子的符号来源。</p><div class="formula-line">a<sup>3</sup>-b<sup>3</sup></div></a>
+        <a class="lesson-card" href="01_和的立方.html"><span class="tag">展开</span><strong>和的立方</strong><p>先写清三个括号相乘的过程，再用立方体看见 1,3,3,1。</p><div class="formula-line">$$(a+b)^{3}$$</div></a>
+        <a class="lesson-card" href="02_差的立方.html"><span class="tag">展开</span><strong>差的立方</strong><p>按乘法过程展开，重点看清负号怎样进入每一项。</p><div class="formula-line">$$(a-b)^{3}$$</div></a>
+        <a class="lesson-card green" href="03_立方和.html"><span class="tag green">分解</span><strong>立方和</strong><p>先找一次因子，再让展开后的混合项抵消。</p><div class="formula-line">$$a^{3}+b^{3}$$</div></a>
+        <a class="lesson-card amber" href="04_立方差.html"><span class="tag amber">分解</span><strong>立方差</strong><p>识别完整立方，理解二次因子的符号来源。</p><div class="formula-line">$$a^{3}-b^{3}$$</div></a>
         <a class="lesson-card purple" href="05_立方公式小结.html"><span class="tag purple">小结</span><strong>立方公式小结</strong><p>用一张判断表区分展开与分解，避免把四个公式混在一起。</p><div class="formula-line">先判断对象，再选公式</div></a>
       </div>
     </div>

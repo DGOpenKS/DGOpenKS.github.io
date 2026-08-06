@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>完全平方与平方差：从展开到分解 | DGOpenKS</title>
+<script>
+window.MathJax = {
+  loader: { load: ['[tex]/html'] },
+  tex: {
+    packages: { '[+]': ['html'] },
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <style>
 :root{
   color-scheme:light;
@@ -640,7 +652,7 @@ h2.marker span{
   <span class="eyebrow">02-1 乘法公式与因式分解</span>
   <h1>完全平方与平方差：<br>从展开到分解</h1>
   <p class="lead">本节依次推出和的平方、差的平方与平方差公式的拆解过程，再用面积图看清公式结构。</p>
-  <p class="scope-note">面积图中取 <span class="math">a&gt;b&gt;0</span>，只是为了方便画图；三条公式本身在 <span class="math">a</span>、<span class="math">b</span> 取任意实数时都成立。</p>
+  <p class="scope-note">面积图中取 <span class="math">$a>b>0$</span>，只是为了方便画图；三条公式本身在 <span class="math">$a$</span>、<span class="math">$b$</span> 取任意实数时都成立。</p>
 </header>
 
 <main>
@@ -654,16 +666,16 @@ h2.marker span{
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
-              <div class="formula-line">(a+b)<sup>2</sup> = (a+b)(a+b)</div>
+              <div class="formula-line">$$(a+b)^{2} = (a+b)(a+b)$$</div>
               <p class="step-note">把平方写成两个相同括号相乘。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">(a+b)(a+b) = a<sup>2</sup> + ab + ab + b<sup>2</sup></div>
-              <p class="step-note">逐项相乘，出现两块相同的 <span class="math">ab</span>。</p>
+              <div class="formula-line">$$(a+b)(a+b) = a^{2} + ab + ab + b^{2}$$</div>
+              <p class="step-note">逐项相乘，出现两块相同的 <span class="math">$ab$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a<sup>2</sup> + ab + ab + b<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></div>
-              <p class="step-note">两个 <span class="math">ab</span> 合并为 <span class="math">2ab</span>。</p>
+              <div class="formula-line">$$a^{2} + ab + ab + b^{2} = a^{2} + 2ab + b^{2}$$</div>
+              <p class="step-note">两个 <span class="math">$ab$</span> 合并为 <span class="math">$2ab$</span>。</p>
             </div>
           </div>
         </div>
@@ -696,16 +708,16 @@ h2.marker span{
             </svg>
           </div>
           <div class="visual-copy">
-            <strong>边长为（a+b）的正方形的面积</strong>
+            <strong>边长为 <span class="math">$a+b$</span> 的正方形的面积</strong>
             <p>一块蓝色正方形、两块棕色长方形和一块绿色正方形正好拼满整个正方形。</p>
             <div class="visual-key">
-              <div class="key-item"><span class="key-dot"></span><span>蓝色正方形：面积为 <span class="math">a<sup>2</sup></span></span></div>
-              <div class="key-item"><span class="key-dot amber"></span><span>两块棕色长方形：每块面积为 <span class="math">ab</span></span></div>
-              <div class="key-item"><span class="key-dot green"></span><span>绿色正方形：面积为 <span class="math">b<sup>2</sup></span></span></div>
+              <div class="key-item"><span class="key-dot"></span><span>蓝色正方形：面积为 <span class="math">$a^{2}$</span></span></div>
+              <div class="key-item"><span class="key-dot amber"></span><span>两块棕色长方形：每块面积为 <span class="math">$ab$</span></span></div>
+              <div class="key-item"><span class="key-dot green"></span><span>绿色正方形：面积为 <span class="math">$b^{2}$</span></span></div>
             </div>
           </div>
         </div>
-        <div class="conclusion-card"><div class="conclusion-formula">(a+b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></div></div>
+        <div class="conclusion-card"><div class="conclusion-formula">$$(a+b)^{2} = a^{2} + 2ab + b^{2}$$</div></div>
       </div>
     </div>
   </section>
@@ -720,16 +732,16 @@ h2.marker span{
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
-              <div class="formula-line">(a-b)<sup>2</sup> = (a-b)(a-b)</div>
+              <div class="formula-line">$$(a-b)^{2} = (a-b)(a-b)$$</div>
               <p class="step-note">差的平方仍然是两个相同括号相乘。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">(a-b)(a-b) = a<sup>2</sup> - ab - ab + b<sup>2</sup></div>
-              <p class="step-note">两个交叉项都是负的，最后一项仍是 <span class="math">+b<sup>2</sup></span>。</p>
+              <div class="formula-line">$$(a-b)(a-b) = a^{2} - ab - ab + b^{2}$$</div>
+              <p class="step-note">两个交叉项都是负的，最后一项仍是 <span class="math">$+b^{2}$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a<sup>2</sup> - ab - ab + b<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></div>
-              <p class="step-note">两个负的 <span class="math">ab</span> 合并为 <span class="math">-2ab</span>。</p>
+              <div class="formula-line">$$a^{2} - ab - ab + b^{2} = a^{2} - 2ab + b^{2}$$</div>
+              <p class="step-note">两个负的 <span class="math">$ab$</span> 合并为 <span class="math">$-2ab$</span>。</p>
             </div>
           </div>
         </div>
@@ -763,16 +775,16 @@ h2.marker span{
             </svg>
           </div>
           <div class="visual-copy">
-            <strong>边长从 <span class="math">a</span> 变为 <span class="math">a-b</span></strong>
-            <p>大正方形的边长是 <span class="math">a</span>。横向和纵向各减去宽 <span class="math">b</span> 的部分后，蓝色正方形的两条边都变为 <span class="math">a-b</span>，面积就是 <span class="math">(a-b)<sup>2</sup></span>。</p>
+            <strong>边长从 <span class="math">$a$</span> 变为 <span class="math">$a-b$</span></strong>
+            <p>大正方形的边长是 <span class="math">$a$</span>。横向和纵向各减去宽 <span class="math">$b$</span> 的部分后，蓝色正方形的两条边都变为 <span class="math">$a-b$</span>，面积就是 <span class="math">$(a-b)^{2}$</span>。</p>
             <div class="visual-key">
-              <div class="key-item"><span class="key-dot"></span><span>原正方形：边长为 <span class="math">a</span>，面积为 <span class="math">a<sup>2</sup></span></span></div>
-              <div class="key-item"><span class="key-dot red"></span><span>横向、纵向各减去一块面积为 <span class="math">ab</span> 的部分</span></div>
-              <div class="key-item"><span class="key-dot green"></span><span>右下角的 <span class="math">b<sup>2</sup></span> 被减去两次，因此加回一次</span></div>
+              <div class="key-item"><span class="key-dot"></span><span>原正方形：边长为 <span class="math">$a$</span>，面积为 <span class="math">$a^{2}$</span></span></div>
+              <div class="key-item"><span class="key-dot red"></span><span>横向、纵向各减去一块面积为 <span class="math">$ab$</span> 的部分</span></div>
+              <div class="key-item"><span class="key-dot green"></span><span>右下角的 <span class="math">$b^{2}$</span> 被减去两次，因此加回一次</span></div>
             </div>
           </div>
         </div>
-        <div class="conclusion-card"><div class="conclusion-formula">(a-b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></div></div>
+        <div class="conclusion-card"><div class="conclusion-formula">$$(a-b)^{2} = a^{2} - 2ab + b^{2}$$</div></div>
       </div>
     </div>
   </section>
@@ -787,15 +799,15 @@ h2.marker span{
         <div class="formula-card">
           <div class="calc-steps">
             <div class="calc-step">
-              <div class="formula-line">(a+b)(a-b)</div>
+              <div class="formula-line">$$(a+b)(a-b)$$</div>
               <p class="step-note">两个括号的第一项相同，第二项互为相反数。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">(a+b)(a-b) = a<sup>2</sup> - ab + ab - b<sup>2</sup></div>
-              <p class="step-note">展开后出现 <span class="math">-ab</span> 和 <span class="math">+ab</span>。</p>
+              <div class="formula-line">$$(a+b)(a-b) = a^{2} - ab + ab - b^{2}$$</div>
+              <p class="step-note">展开后出现 <span class="math">$-ab$</span> 和 <span class="math">$+ab$</span>。</p>
             </div>
             <div class="calc-step">
-              <div class="formula-line">a<sup>2</sup> - ab + ab - b<sup>2</sup> = a<sup>2</sup> - b<sup>2</sup></div>
+              <div class="formula-line">$$a^{2} - ab + ab - b^{2} = a^{2} - b^{2}$$</div>
               <p class="step-note">两个混合项抵消，只留下两个平方的差。</p>
             </div>
           </div>
@@ -829,14 +841,14 @@ h2.marker span{
           </div>
           <div class="visual-copy">
             <strong>重排前后面积保持不变</strong>
-            <p>左边挖去 <span class="math">b<sup>2</sup></span>，右边把剩余部分重排成长方形，虚线只标出拼接位置。整个长方形长为 <span class="math">a+b</span>，宽为 <span class="math">a-b</span>，面积没有改变。</p>
+            <p>左边挖去 <span class="math">$b^{2}$</span>，右边把剩余部分重排成长方形，虚线只标出拼接位置。整个长方形长为 <span class="math">$a+b$</span>，宽为 <span class="math">$a-b$</span>，面积没有改变。</p>
             <div class="visual-key">
-              <div class="key-item"><span class="key-dot purple"></span><span>左边面积是 <span class="math">a<sup>2</sup>-b<sup>2</sup></span></span></div>
-              <div class="key-item"><span class="key-dot amber"></span><span>右边长方形：长为 <span class="math">a+b</span>，宽为 <span class="math">a-b</span></span></div>
+              <div class="key-item"><span class="key-dot purple"></span><span>左边面积是 <span class="math">$a^{2}-b^{2}$</span></span></div>
+              <div class="key-item"><span class="key-dot amber"></span><span>右边长方形：长为 <span class="math">$a+b$</span>，宽为 <span class="math">$a-b$</span></span></div>
             </div>
           </div>
         </div>
-        <div class="conclusion-card"><div class="conclusion-formula">a<sup>2</sup> - b<sup>2</sup> = (a+b)(a-b)</div></div>
+        <div class="conclusion-card"><div class="conclusion-formula">$$a^{2} - b^{2} = (a+b)(a-b)$$</div></div>
       </div>
     </div>
   </section>
@@ -847,28 +859,28 @@ h2.marker span{
       <div class="prose">
         <h2>三个公式怎样区分</h2>
         <div class="note structure-note">
-          <strong>a、b 表示两个整体</strong>
-          <p>公式中的 <span class="math">a</span>、<span class="math">b</span> 表示两个整体。每个整体可以是一个数、一个字母，也可以是一个完整的代数式。辨认公式时，先找出这两个整体，再按照对应的结构展开或分解。</p>
-          <p>例如，在 <span class="math">(x+2y)<sup>2</sup></span> 中，两个整体分别是 <span class="math">x</span> 和 <span class="math">2y</span>。把它们依次看作 <span class="math">a</span>、<span class="math">b</span>，就能展开为 <span class="math">x<sup>2</sup> + 4xy + 4y<sup>2</sup></span>。</p>
+          <strong><span class="math">$a$</span>、<span class="math">$b$</span> 表示两个整体</strong>
+          <p>公式中的 <span class="math">$a$</span>、<span class="math">$b$</span> 表示两个整体。每个整体可以是一个数、一个字母，也可以是一个完整的代数式。辨认公式时，先找出这两个整体，再按照对应的结构展开或分解。</p>
+          <p>例如，在 <span class="math">$(x+2y)^{2}$</span> 中，两个整体分别是 <span class="math">$x$</span> 和 <span class="math">$2y$</span>。把它们依次看作 <span class="math">$a$</span>、<span class="math">$b$</span>，就能展开为 <span class="math">$x^{2} + 4xy + 4y^{2}$</span>。</p>
         </div>
         <div class="table-wrap">
           <table class="data-table">
             <thead><tr><th>看到的结构</th><th>应该怎样变形</th></tr></thead>
             <tbody>
-              <tr><td>(a+b)<sup>2</sup></td><td>展开为 <span class="math">a<sup>2</sup> + 2ab + b<sup>2</sup></span></td></tr>
-              <tr><td>(a-b)<sup>2</sup></td><td>展开为 <span class="math">a<sup>2</sup> - 2ab + b<sup>2</sup></span></td></tr>
-              <tr><td>a<sup>2</sup> - b<sup>2</sup></td><td>分解为 <span class="math">(a+b)(a-b)</span></td></tr>
+              <tr><td><span class="math">$(a+b)^2$</span></td><td>展开为 <span class="math">$a^{2} + 2ab + b^{2}$</span></td></tr>
+              <tr><td><span class="math">$(a-b)^2$</span></td><td>展开为 <span class="math">$a^{2} - 2ab + b^{2}$</span></td></tr>
+              <tr><td><span class="math">$a^2-b^2$</span></td><td>分解为 <span class="math">$(a+b)(a-b)$</span></td></tr>
             </tbody>
           </table>
         </div>
         <div class="error-grid">
           <div class="error-card">
             <strong>整体平方不能分别平方</strong>
-            <p><span class="math">(a+b)<sup>2</sup> ≠ a<sup>2</sup> + b<sup>2</sup></span>，右边漏掉了两次交叉相乘。</p>
+            <p><span class="math">$\begin{aligned} (a+b)^{2} \ne a^{2} + b^{2} \end{aligned}$</span>，右边漏掉了两次交叉相乘。</p>
           </div>
           <div class="error-card">
             <strong>差的平方不是平方差</strong>
-            <p><span class="math">(a-b)<sup>2</sup> ≠ a<sup>2</sup> - b<sup>2</sup></span>，两个式子的结构不同。</p>
+            <p><span class="math">$\begin{aligned} (a-b)^{2} \ne a^{2} - b^{2} \end{aligned}$</span>，两个式子的结构不同。</p>
           </div>
         </div>
       </div>
@@ -882,9 +894,9 @@ h2.marker span{
         <h2 class="section-title-duplicate">核心结论</h2>
         <div class="summary-panel">
           <div class="summary-formula">
-            <div>(a+b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></div>
-            <div>(a-b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></div>
-            <div>a<sup>2</sup> - b<sup>2</sup> = (a+b)(a-b)</div>
+            <div>$$(a+b)^2=a^2+2ab+b^2$$</div>
+            <div>$$(a-b)^2=a^2-2ab+b^2$$</div>
+            <div>$$a^2-b^2=(a+b)(a-b)$$</div>
           </div>
           <div class="summary-copy">
             <p>完全平方来自两个相同括号相乘；平方差来自一和一差两个括号相乘时，混合项相互抵消。</p>

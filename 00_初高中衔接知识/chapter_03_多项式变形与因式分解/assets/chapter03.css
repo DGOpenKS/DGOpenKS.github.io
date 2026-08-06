@@ -111,6 +111,19 @@
   text-align: center;
 }
 
+.bridge-direction-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  white-space: nowrap;
+}
+
+.bridge-arrow {
+  display: inline-block;
+  font: inherit;
+}
+
 .lesson-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -599,11 +612,16 @@
     gap: .4rem;
   }
 
-  .bridge-arrows span:first-child {
+  .bridge-arrows > span:not(.bridge-direction-row) {
     transform: rotate(90deg);
   }
 
-  .bridge-arrows span:last-child {
+  .bidirectional-bridge .bridge-arrows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .bidirectional-bridge .bridge-arrow {
     transform: rotate(90deg);
   }
 

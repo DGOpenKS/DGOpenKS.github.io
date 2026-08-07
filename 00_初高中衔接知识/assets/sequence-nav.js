@@ -23,18 +23,20 @@
     {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_03_多项式变形与因式分解/05_因式分解方法小结.html",title:"05 因式分解方法小结",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_04_分式根式与条件控制/index.html",title:"Chapter 04 分式根式与条件控制",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
-    {path:"chapter_04_分式根式与条件控制/01_分式化简.html",title:"01 分式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
-    {path:"chapter_04_分式根式与条件控制/02_根式化简.html",title:"02 根式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
-    {path:"chapter_04_分式根式与条件控制/03_复合条件.html",title:"03 复合条件",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
-    {path:"chapter_04_分式根式与条件控制/04_等价化简小结.html",title:"04 等价化简小结",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/01_分式的意义条件与约分.html",title:"01 分式基础",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/02_分式的四则运算.html",title:"02 分式运算",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/03_二次根式的意义与化简.html",title:"03 根式基础",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/04_根式的四则运算.html",title:"04 根式运算",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/05_分母有理化.html",title:"05 分母有理化",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/06_根式与分数指数幂.html",title:"06 分数指数",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
+    {path:"chapter_04_分式根式与条件控制/07_复合条件与等价化简.html",title:"07 复合条件",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
     {path:"chapter_05_方程不等式与约束/index.html",title:"Chapter 05 方程不等式与约束",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
     {path:"chapter_05_方程不等式与约束/01_方程变形.html",title:"01 方程变形",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
     {path:"chapter_05_方程不等式与约束/02-1_分式方程.html",title:"02-1 分式方程",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
     {path:"chapter_05_方程不等式与约束/02-2_根式方程.html",title:"02-2 根式方程",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
     {path:"chapter_05_方程不等式与约束/03_不等式变形.html",title:"03 不等式变形",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
-    {path:"chapter_05_方程不等式与约束/04_二次不等式.html",title:"04 二次不等式",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
-    {path:"chapter_05_方程不等式与约束/05_分式不等式.html",title:"05 分式不等式",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
-    {path:"chapter_05_方程不等式与约束/06_小结.html",title:"06 全章小结",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"}
+    {path:"chapter_05_方程不等式与约束/04_乘积不等式.html",title:"04 乘积不等式",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"},
+    {path:"chapter_05_方程不等式与约束/05_分式不等式.html",title:"05 分式不等式",menu:"chapter_05_方程不等式与约束/index.html",menuTitle:"Chapter 05"}
   ];
 
   const chapters=[

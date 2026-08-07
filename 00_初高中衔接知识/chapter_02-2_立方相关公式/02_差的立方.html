@@ -28,6 +28,8 @@ a{color:inherit}
 .topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
 .brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.brand img{display:block;width:auto;height:30px}
+@media(max-width:640px){.brand img{height:26px}}
 .nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
 .nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
 .hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
@@ -216,7 +218,7 @@ p.prose,
 <body>
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
-    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" alt="" width="2947" height="716"></a>
     <a class="nav-link" href="index.html">章节入口</a>
     <a class="nav-link" href="01_和的立方.html">和的立方</a>
     <a class="nav-link" href="#calculation">公式推导</a>

@@ -73,6 +73,7 @@ p{margin:0 0 12px;color:var(--text)}
 .topbar-inner::-webkit-scrollbar{display:none}
 .brand,.nav-link{text-decoration:none;white-space:nowrap}
 .brand{margin-right:auto;color:var(--blue-deep);font-size:.92rem;font-weight:900;letter-spacing:.08em}
+.brand img{display:block;width:auto;height:30px}
 .nav-link{padding:.42rem .72rem;border-radius:999px;color:var(--muted);font-size:.8rem;font-weight:800}
 .nav-link:hover,.nav-link:focus-visible{color:var(--blue-deep);background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
 .hero{position:relative;max-width:var(--page-max);margin:auto;padding:4.5rem 20px 2.7rem;display:flex;flex-direction:column;justify-content:center}
@@ -168,6 +169,7 @@ main{width:min(var(--page-max),calc(100% - 2rem));margin:auto;padding:0 0 6rem}
 @media(max-width:640px){
   html,body{width:100%;max-width:100%;overflow-x:hidden}
   .topbar-inner{width:calc(100% - 1rem);max-width:none}
+  .brand img{height:26px}
   .hero{width:100%;max-width:var(--page-max);padding-left:20px;padding-right:20px}
   main{width:calc(100% - 2rem);max-width:none;padding-left:0;padding-right:0}
   .hero{padding-top:3rem}
@@ -638,15 +640,10 @@ h2.marker span{
   }
 }
 </style>
-<style>
-.brand{display:inline-flex;min-height:44px;align-items:center}
-.brand img{display:block;width:auto;height:30px;max-width:none}
-@media(max-width:640px){.brand img{height:26px}}
-</style>
 </head>
 <body>
 <nav class="topbar" aria-label="章节导航"><div class="topbar-inner">
-  <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+  <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" alt="" width="2947" height="716"></a>
   <a class="nav-link" href="#plus">和的平方</a>
   <a class="nav-link" href="#minus">差的平方</a>
   <a class="nav-link" href="#difference">平方差</a>

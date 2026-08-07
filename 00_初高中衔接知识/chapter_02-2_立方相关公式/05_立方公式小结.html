@@ -27,6 +27,8 @@ a{color:inherit}
 .topbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
 .brand{font-weight:900;color:var(--blue);text-decoration:none;white-space:nowrap;margin-right:8px}
+.brand img{display:block;width:auto;height:30px}
+@media(max-width:640px){.brand img{height:26px}}
 .nav-link{font-size:.84rem;font-weight:800;color:var(--muted);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:6px 10px;white-space:nowrap}
 .nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:var(--blue-line)}
 .hero{max-width:1180px;margin:auto;padding:42px 20px 30px}
@@ -297,7 +299,7 @@ main{max-width:1180px;margin:auto;padding:0 20px 90px}
 <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body>
-<nav class="topbar" aria-label="章节导航"><div class="topbar-inner"><a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="index.html">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="02_差的立方.html">差的立方</a><a class="nav-link" href="03_立方和.html">立方和</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
+<nav class="topbar" aria-label="章节导航"><div class="topbar-inner"><a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" alt="" width="2947" height="716"></a><a class="nav-link" href="index.html">章节入口</a><a class="nav-link" href="01_和的立方.html">和的立方</a><a class="nav-link" href="02_差的立方.html">差的立方</a><a class="nav-link" href="03_立方和.html">立方和</a><a class="nav-link" href="04_立方差.html">立方差</a></div></nav>
 <header class="hero"><span class="eyebrow">02-2 立方相关公式 · 05</span><h1><span class="title-unit">立方公式小结：</span><br><span class="title-unit">先判断结构，</span><span class="title-unit">再决定变形</span></h1><p class="lead">四个立方公式分成两类：整体的立方用于展开，两个立方的和或差用于因式分解。先判断对象，再决定变形方向。</p></header>
 <main>
 <section class="section" id="structure"><h2 class="marker"><span aria-hidden="true">01</span>结构判断</h2><div class="prose"><p>判断立方结构时，首先要确定三次方作用的对象。</p><div class="structure-grid"><article class="structure"><span class="direction">展开成多项式</span><h3>整体的立方</h3><span class="equation">$(a+b)^{3}，(a-b)^{3}$</span><p>括号整体的三次方，表示三个相同因式相乘。</p></article><article class="structure factor"><span class="direction">分解成因式乘积</span><h3>两个立方的和或差</h3><span class="equation">$a^{3}+b^{3}，a^{3}-b^{3}$</span><p>两个完整立方相加或相减，需要寻找一次因子。</p></article></div><p><span class="math">$(a+b)^{3}$</span> 表示三个相同的 <span class="math">$a+b$</span> 相乘，<span class="math">$a^{3}+b^{3}$</span> 表示两个立方相加。虽然它们都含有加号和三次方，但三次方作用的对象不同，后续变形方向也不同。</p></div></section>

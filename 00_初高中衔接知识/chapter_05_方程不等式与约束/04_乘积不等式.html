@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乘积不等式：用零点划分符号区间 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+  <link rel="stylesheet" href="chapter05-learning.css?v=20260808-4">
+</head>
+<body class="chapter05-page product-inequality-page">
+<a class="skip-link" href="#main-content">跳到正文</a>
+<nav class="topbar" aria-label="第五章导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="nav-link" href="index.html">Chapter 05</a>
+    <a class="nav-link" href="01_方程变形.html">01 方程变形</a>
+    <a class="nav-link" href="02-1_分式方程.html">02-1 分式方程</a>
+    <a class="nav-link" href="02-2_根式方程.html">02-2 根式方程</a>
+    <a class="nav-link" href="03_不等式变形.html">03 不等式变形</a>
+    <a class="nav-link" aria-current="page" href="04_乘积不等式.html">04 乘积不等式</a>
+    <a class="nav-link" href="05_分式不等式.html">05 分式不等式</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">CHAPTER 05 · 04</span>
+  <h1>乘积不等式：<br>用零点划分符号区间</h1>
+  <p class="lead">次数不是判断符号的中心。只要式子已经写成因式乘积，就可以先看每个一次因式在零点左右的正负，再用这些零点切分数轴，判断整个乘积在哪些区间为正或为负。</p>
+</header>
+
+<main id="main-content">
+  <section class="section" id="single-factor" data-source-md="04_乘积不等式.md#一个一次因式怎样判断正负">
+    <h2 class="marker"><span aria-hidden="true">01</span>一次因式</h2>
+    <div class="section-body">
+      <h2>零点把一个一次因式分成左负右正</h2>
+      <p>先看 \(x-a\)。零点是 \(x=a\)：在 \(a\) 左边，\(x-a&lt;0\)；在 \(a\) 右边，\(x-a&gt;0\)。</p>
+      <div class="rule-grid">
+        <article class="rule-card is-negative"><strong>零点左边</strong><p>\(x&lt;a\Longleftrightarrow x-a&lt;0\)</p></article>
+        <article class="rule-card is-zero"><strong>零点位置</strong><p>\(x=a\Longleftrightarrow x-a=0\)</p></article>
+        <article class="rule-card is-positive"><strong>零点右边</strong><p>\(x&gt;a\Longleftrightarrow x-a&gt;0\)</p></article>
+      </div>
+      <p>“一次因式的正负”就是在数轴上判断 \(x-a\) 什么时候为负、为零或为正。</p>
+    </div>
+  </section>
+
+  <section class="section" id="zeros" data-source-md="04_乘积不等式.md#多个零点为什么能划分符号区间">
+    <h2 class="marker"><span aria-hidden="true">02</span>零点分区</h2>
+    <div class="section-body">
+      <h2>同一区间内没有因式经过零点，符号就不会改变</h2>
+      <p>对于 \((x-1)(x-2)(x-3)\)，三个零点 \(1,2,3\) 把数轴分成四段：</p>
+      <div class="formula-card"><div class="math-block">\[(-\infty,1),\quad(1,2),\quad(2,3),\quad(3,+\infty)\]</div></div>
+      <p>在同一个区间内，每个因式的符号都保持不变，因此整个乘积的符号也保持不变。每个区间只需判断一次。</p>
+    </div>
+  </section>
+
+  <section class="section" id="sign-chart" data-source-md="04_乘积不等式.md#逐段判断乘积的符号">
+    <h2 class="marker"><span aria-hidden="true">03</span>符号分区</h2>
+    <div class="section-body">
+      <h2>把每个因式的符号相乘</h2>
+      <p>先看下方的四个区间。零点只负责切分数轴；区间内的正负号来自三个因式的符号乘积。</p>
+      <figure class="sign-line-figure">
+        <svg viewBox="0 0 600 168" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sign-line-title sign-line-desc">
+          <title id="sign-line-title">三个零点划分出的四个符号区间</title>
+          <desc id="sign-line-desc">零点一、二、三把数轴分成四段，从左到右乘积符号依次为负、正、负、正。</desc>
+          <g class="sign-line-regions" aria-hidden="true">
+            <rect class="region-negative" x="60" y="24" width="120" height="72"></rect>
+            <rect class="region-positive" x="180" y="24" width="120" height="72"></rect>
+            <rect class="region-negative" x="300" y="24" width="120" height="72"></rect>
+            <rect class="region-positive" x="420" y="24" width="120" height="72"></rect>
+          </g>
+          <line class="number-line-axis" x1="48" y1="82" x2="552" y2="82"></line>
+          <path class="number-line-arrow" d="M48 82l12-7v14zM552 82l-12-7v14z"></path>
+          <g class="sign-line-signs" aria-hidden="true">
+            <text class="is-negative" x="120" y="61">−</text>
+            <text class="is-positive" x="240" y="61">+</text>
+            <text class="is-negative" x="360" y="61">−</text>
+            <text class="is-positive" x="480" y="61">+</text>
+          </g>
+          <g class="number-line-roots">
+            <circle cx="180" cy="82" r="5"></circle><text x="180" y="109">1</text>
+            <circle cx="300" cy="82" r="5"></circle><text x="300" y="109">2</text>
+            <circle cx="420" cy="82" r="5"></circle><text x="420" y="109">3</text>
+          </g>
+          <g class="sign-line-intervals">
+            <text x="120" y="145">x &lt; 1</text>
+            <text x="240" y="145">1 &lt; x &lt; 2</text>
+            <text x="360" y="145">2 &lt; x &lt; 3</text>
+            <text x="480" y="145">x &gt; 3</text>
+          </g>
+        </svg>
+        <figcaption>实心刻度表示乘积等于零的位置；是否把零点收入解集，由不等号是否带有等号决定。</figcaption>
+      </figure>
+      <figure class="inequality-figure" id="thread-graph">
+        <div class="inequality-figure-copy">
+          <span class="visual-kicker">图像对应</span>
+          <h3>曲线在横轴上方，就表示乘积大于 \(0\)</h3>
+          <p>把 \(y=(x-1)(x-2)(x-3)\) 画出来，曲线每经过一个一次零点都会穿过横轴。青绿色区域对应 \(y&gt;0\)，淡紫色区域对应 \(y&lt;0\)。</p>
+        </div>
+        <div class="inequality-plot-scroll">
+          <svg class="inequality-plot" viewBox="0 0 680 340" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="cubic-plot-title cubic-plot-desc">
+            <title id="cubic-plot-title">三次乘积不等式的穿针引线图</title>
+            <desc id="cubic-plot-desc">函数 y 等于 x 减一、x 减二、x 减三的乘积。曲线在 x 小于一时位于横轴下方，在一与二之间位于横轴上方，在二与三之间位于横轴下方，在 x 大于三时位于横轴上方。</desc>
+            <defs>
+              <clipPath id="cubic-curve-clip">
+                <rect x="48" y="44" width="584" height="200" rx="12"></rect>
+              </clipPath>
+            </defs>
+            <g class="plot-regions" clip-path="url(#cubic-curve-clip)" aria-hidden="true">
+              <rect class="region-negative" x="48" y="44" width="109.5" height="200"></rect>
+              <rect class="region-positive" x="157.5" y="44" width="182.5" height="200"></rect>
+              <rect class="region-negative" x="340" y="44" width="182.5" height="200"></rect>
+              <rect class="region-positive" x="522.5" y="44" width="109.5" height="200"></rect>
+            </g>
+            <g class="root-guides" aria-hidden="true">
+              <line x1="157.5" y1="44" x2="157.5" y2="244"></line>
+              <line x1="340" y1="44" x2="340" y2="244"></line>
+              <line x1="522.5" y1="44" x2="522.5" y2="244"></line>
+            </g>
+            <line class="plot-axis" x1="40" y1="144" x2="640" y2="144"></line>
+            <path class="axis-arrow" d="M40 144l12-7v14zM640 144l-12-7v14z"></path>
+            <text class="axis-label" x="638" y="131">x</text>
+            <text class="function-label" x="57" y="66">y=(x−1)(x−2)(x−3)</text>
+            <text class="region-sign is-negative" x="103" y="219">−</text>
+            <text class="region-sign is-positive" x="249" y="77">+</text>
+            <text class="region-sign is-negative" x="431" y="219">−</text>
+            <text class="region-sign is-positive" x="577" y="77">+</text>
+            <path class="function-curve" clip-path="url(#cubic-curve-clip)" d="M48 490.67 L52.56 467.89 L57.13 445.93 L61.69 424.77 L66.25 404.42 L70.81 384.84 L75.38 366.03 L79.94 347.98 L84.5 330.67 L89.06 314.08 L93.63 298.22 L98.19 283.06 L102.75 268.58 L107.31 254.79 L111.88 241.66 L116.44 229.18 L121 217.33 L125.56 206.12 L130.13 195.51 L134.69 185.5 L139.25 176.08 L143.81 167.24 L148.38 158.95 L152.94 151.21 L157.5 144 L162.06 137.31 L166.63 131.14 L171.19 125.45 L175.75 120.25 L180.31 115.52 L184.87 111.24 L189.44 107.4 L194 104 L198.56 101.01 L203.13 98.43 L207.69 96.23 L212.25 94.42 L216.81 92.96 L221.38 91.86 L225.94 91.1 L230.5 90.67 L235.06 90.54 L239.63 90.72 L244.19 91.18 L248.75 91.92 L253.31 92.91 L257.88 94.16 L262.44 95.63 L267 97.33 L271.56 99.24 L276.13 101.34 L280.69 103.63 L285.25 106.08 L289.81 108.69 L294.38 111.45 L298.94 114.33 L303.5 117.33 L308.06 120.44 L312.63 123.64 L317.19 126.91 L321.75 130.25 L326.31 133.64 L330.88 137.07 L335.44 140.53 L340 144 L344.56 147.47 L349.13 150.93 L353.69 154.36 L358.25 157.75 L362.81 161.09 L367.38 164.36 L371.94 167.56 L376.5 170.67 L381.06 173.67 L385.63 176.55 L390.19 179.31 L394.75 181.92 L399.31 184.37 L403.88 186.66 L408.44 188.76 L413 190.67 L417.56 192.37 L422.13 193.84 L426.69 195.09 L431.25 196.08 L435.81 196.82 L440.37 197.28 L444.94 197.46 L449.5 197.33 L454.06 196.9 L458.63 196.14 L463.19 195.04 L467.75 193.58 L472.31 191.77 L476.88 189.57 L481.44 186.99 L486 184 L490.56 180.6 L495.13 176.76 L499.69 172.48 L504.25 167.75 L508.81 162.55 L513.38 156.86 L517.94 150.69 L522.5 144 L527.06 136.79 L531.63 129.05 L536.19 120.76 L540.75 111.92 L545.31 102.5 L549.88 92.49 L554.44 81.88 L559 70.67 L563.56 58.82 L568.13 46.34 L572.69 33.21 L577.25 19.42 L581.81 4.94 L586.38 -10.22 L590.94 -26.08 L595.5 -42.67 L600.06 -59.98 L604.63 -78.03 L609.19 -96.84 L613.75 -116.42 L618.31 -136.77 L622.88 -157.93 L627.44 -179.89 L632 -202.67"></path>
+            <g class="graph-root">
+              <circle cx="157.5" cy="144" r="5"></circle><text x="157.5" y="170">1</text>
+              <circle cx="340" cy="144" r="5"></circle><text x="340" y="170">2</text>
+              <circle cx="522.5" cy="144" r="5"></circle><text x="522.5" y="170">3</text>
+            </g>
+            <line class="solution-axis" x1="48" y1="280" x2="632" y2="280"></line>
+            <text class="solution-title" x="48" y="266">解集</text>
+            <g class="solution-range">
+              <line x1="157.5" y1="280" x2="340" y2="280"></line>
+              <circle cx="157.5" cy="280" r="5.5"></circle>
+              <circle cx="340" cy="280" r="5.5"></circle>
+              <text x="249" y="320">1 &lt; x &lt; 2</text>
+              <line x1="522.5" y1="280" x2="632" y2="280"></line>
+              <path d="M632 280l-11-6v12z"></path>
+              <circle cx="522.5" cy="280" r="5.5"></circle>
+              <text x="577" y="320">x &gt; 3</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>曲线与横轴的三个交点是函数零点；下方解集数轴使用空心端点，表示严格不等式不包含这些零点。</figcaption>
+      </figure>
+      <div class="table-scroll">
+        <table class="knowledge-table">
+          <thead><tr><th>\(x\) 的范围</th><th>\(x-1\)</th><th>\(x-2\)</th><th>\(x-3\)</th><th>乘积</th></tr></thead>
+          <tbody>
+            <tr><td>\(x&lt;1\)</td><td>负</td><td>负</td><td>负</td><td>负</td></tr>
+            <tr><td>\(1&lt;x&lt;2\)</td><td>正</td><td>负</td><td>负</td><td>正</td></tr>
+            <tr><td>\(2&lt;x&lt;3\)</td><td>正</td><td>正</td><td>负</td><td>负</td></tr>
+            <tr><td>\(x&gt;3\)</td><td>正</td><td>正</td><td>正</td><td>正</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>因此 \((x-1)(x-2)(x-3)&gt;0\) 的解是 \(1&lt;x&lt;2\) 或 \(x&gt;3\)。如果要求小于零，就选择另外两个负号区间。</p>
+      <div class="note">零点处乘积等于零。只有不等号带有等号时，才把相应零点加入解集。</div>
+    </div>
+  </section>
+
+  <section class="section" id="thread" data-source-md="04_乘积不等式.md#穿针引线为什么能够判断符号">
+    <h2 class="marker"><span aria-hidden="true">04</span>穿针引线</h2>
+    <div class="section-body">
+      <h2>每经过一个一次零点，恰好有一个因式变号</h2>
+      <p>最右边 \(x&gt;3\) 时，三个因式都为正。从右向左经过 \(3\)、\(2\)、\(1\) 时，分别只有一个一次因式改变符号，所以整个乘积也依次变号。</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[x&gt;3:\quad +\]</div><p>三个因式都为正，从正号开始。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[\text{经过 }3:\quad +\to-\]</div><p>只有 \(x-3\) 变号。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[\text{经过 }2:\quad -\to+\]</div><p>只有 \(x-2\) 变号。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[\text{经过 }1:\quad +\to-\]</div><p>只有 \(x-1\) 变号。</p></div>
+      </div>
+      <p>把零点按顺序标在数轴上，让符号依次穿过这些零点，就是穿针引线法。它是因式变号的结果，不是需要单独背诵的口诀。</p>
+    </div>
+  </section>
+
+  <section class="section" id="quadratic" data-source-md="04_乘积不等式.md#一元二次不等式是两个因式的情况">
+    <h2 class="marker"><span aria-hidden="true">05</span>二次特例</h2>
+    <div class="section-body">
+      <h2>一元二次不等式是两个一次因式的乘积</h2>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[x^2-4x+3&gt;0\]</div><p>先把所有内容放在零的一边。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[(x-1)(x-3)&gt;0\]</div><p>因式分解后，零点是 \(1\) 和 \(3\)。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[+,\quad-,\quad+\]</div><p>三个区间从左到右依次为正、负、正。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[x&lt;1\quad\text{或}\quad x&gt;3\]</div><p>选择乘积大于零的两个区间。</p></div>
+      </div>
+      <figure class="inequality-figure is-compact">
+        <div class="inequality-figure-copy">
+          <span class="visual-kicker">二次特例</span>
+          <h3>开口向上的曲线，在两个零点外侧位于横轴上方</h3>
+          <p>\(y=(x-1)(x-3)\) 在 \(x=1,3\) 处穿过横轴，因此大于 \(0\) 的部分落在两个零点外侧。</p>
+        </div>
+        <div class="inequality-plot-scroll">
+          <svg class="inequality-plot quadratic-plot" viewBox="0 0 680 300" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="quadratic-plot-title quadratic-plot-desc">
+            <title id="quadratic-plot-title">二次不等式外正内负图</title>
+            <desc id="quadratic-plot-desc">函数 y 等于 x 减一乘以 x 减三。曲线在 x 小于一和 x 大于三时位于横轴上方，在一与三之间位于横轴下方。</desc>
+            <defs>
+              <clipPath id="quadratic-curve-clip">
+                <rect x="48" y="38" width="584" height="178" rx="12"></rect>
+              </clipPath>
+            </defs>
+            <g class="plot-regions" clip-path="url(#quadratic-curve-clip)" aria-hidden="true">
+              <rect class="region-positive" x="48" y="38" width="109.5" height="178"></rect>
+              <rect class="region-negative" x="157.5" y="38" width="365" height="178"></rect>
+              <rect class="region-positive" x="522.5" y="38" width="109.5" height="178"></rect>
+            </g>
+            <g class="root-guides" aria-hidden="true">
+              <line x1="157.5" y1="38" x2="157.5" y2="216"></line>
+              <line x1="522.5" y1="38" x2="522.5" y2="216"></line>
+            </g>
+            <line class="plot-axis" x1="40" y1="144.8" x2="640" y2="144.8"></line>
+            <path class="axis-arrow" d="M40 144.8l12-7v14zM640 144.8l-12-7v14z"></path>
+            <text class="axis-label" x="638" y="132">x</text>
+            <text class="function-label" x="258" y="66">y=(x−1)(x−3)</text>
+            <text class="region-sign is-positive" x="103" y="84">+</text>
+            <text class="region-sign is-negative" x="340" y="184">−</text>
+            <text class="region-sign is-positive" x="577" y="84">+</text>
+            <path class="function-curve" clip-path="url(#quadratic-curve-clip)" d="M48 52.24 L54.08 58.5 L60.17 64.63 L66.25 70.63 L72.33 76.5 L78.42 82.24 L84.5 87.84 L90.58 93.31 L96.67 98.65 L102.75 103.86 L108.83 108.94 L114.92 113.88 L121 118.69 L127.08 123.37 L133.17 127.92 L139.25 132.34 L145.33 136.63 L151.42 140.78 L157.5 144.8 L163.58 148.69 L169.67 152.45 L175.75 156.07 L181.83 159.57 L187.92 162.93 L194 166.16 L200.08 169.26 L206.17 172.23 L212.25 175.06 L218.33 177.76 L224.42 180.33 L230.5 182.77 L236.58 185.08 L242.67 187.26 L248.75 189.3 L254.83 191.21 L260.92 192.99 L267 194.64 L273.08 196.16 L279.17 197.54 L285.25 198.79 L291.33 199.91 L297.42 200.9 L303.5 201.76 L309.58 202.49 L315.67 203.08 L321.75 203.54 L327.83 203.87 L333.92 204.07 L340 204.13 L346.08 204.07 L352.17 203.87 L358.25 203.54 L364.33 203.08 L370.42 202.49 L376.5 201.76 L382.58 200.9 L388.67 199.91 L394.75 198.79 L400.83 197.54 L406.92 196.16 L413 194.64 L419.08 192.99 L425.17 191.21 L431.25 189.3 L437.33 187.26 L443.42 185.08 L449.5 182.77 L455.58 180.33 L461.67 177.76 L467.75 175.06 L473.83 172.23 L479.92 169.26 L486 166.16 L492.08 162.93 L498.17 159.57 L504.25 156.07 L510.33 152.45 L516.42 148.69 L522.5 144.8 L528.58 140.78 L534.67 136.63 L540.75 132.34 L546.83 127.92 L552.92 123.37 L559 118.69 L565.08 113.88 L571.17 108.94 L577.25 103.86 L583.33 98.65 L589.42 93.31 L595.5 87.84 L601.58 82.24 L607.67 76.5 L613.75 70.63 L619.83 64.63 L625.92 58.5 L632 52.24"></path>
+            <g class="graph-root">
+              <circle cx="157.5" cy="144.8" r="5"></circle><text x="157.5" y="171">1</text>
+              <circle cx="522.5" cy="144.8" r="5"></circle><text x="522.5" y="171">3</text>
+            </g>
+            <line class="solution-axis" x1="48" y1="246" x2="632" y2="246"></line>
+            <text class="solution-title" x="48" y="233">解集</text>
+            <g class="solution-range">
+              <line x1="48" y1="246" x2="157.5" y2="246"></line>
+              <path d="M48 246l11-6v12z"></path>
+              <circle cx="157.5" cy="246" r="5.5"></circle>
+              <text x="103" y="282">x &lt; 1</text>
+              <line x1="522.5" y1="246" x2="632" y2="246"></line>
+              <path d="M632 246l-11-6v12z"></path>
+              <circle cx="522.5" cy="246" r="5.5"></circle>
+              <text x="577" y="282">x &gt; 3</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>这就是“外正内负”：曲线在两个零点外侧位于横轴上方，所以选择 \(x&lt;1\) 或 \(x&gt;3\)。</figcaption>
+      </figure>
+      <p>能够分解成两个一次因式时，一元二次不等式不需要另一套符号方法。</p>
+    </div>
+  </section>
+
+  <section class="section" id="multiplicity" data-source-md="04_乘积不等式.md#前面有系数时先看系数">
+    <h2 class="marker"><span aria-hidden="true">06</span>系数与重因式</h2>
+    <div class="section-body">
+      <h2>最右端看系数，经过零点看次数奇偶</h2>
+      <p>对于 \(a(x-x_1)(x-x_2)\cdots(x-x_n)\)，最右边所有一次因式都为正，因此起始符号由 \(a\) 决定。</p>
+      <div class="rule-grid">
+        <article class="rule-card is-positive"><strong>\(a&gt;0\)</strong><p>最右边从正号开始。</p></article>
+        <article class="rule-card is-negative"><strong>\(a&lt;0\)</strong><p>最右边从负号开始。</p></article>
+        <article class="rule-card is-condition"><strong>零点是否收入</strong><p>仍由不等号是否带有等号决定。</p></article>
+      </div>
+      <p>重复因式还会改变“是否变号”的判断。经过奇数次因式的零点，乘积变号；经过偶数次因式的零点，乘积不变号。</p>
+      <div class="contrast-strip" aria-label="奇数次与偶数次因式的变号对照">
+        <article class="contrast-card is-odd"><strong>奇数次因式</strong><p>例如 \((x-a)^1\) 或 \((x-a)^3\)：经过 \(a\) 时变号。</p></article>
+        <div class="contrast-arrow" aria-hidden="true">⇄</div>
+        <article class="contrast-card is-even"><strong>偶数次因式</strong><p>例如 \((x-a)^2\)：两个相同因式同时变号，整个乘积不变号。</p></article>
+      </div>
+      <figure class="multiplicity-figure">
+        <div class="multiplicity-visual-card">
+          <strong>奇数次：穿过零点</strong>
+          <span class="mini-model">示例：\(y=x-a\)</span>
+          <div class="mini-graph-stage">
+            <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="odd-model-title odd-model-desc">
+              <title id="odd-model-title">奇数次因式穿过零点</title>
+              <desc id="odd-model-desc">以一次函数 y 等于 x 减 a 为例，曲线经过 a 时从横轴下方穿到上方，左侧为负，右侧为正。</desc>
+              <line class="mini-axis" x1="32" y1="75" x2="288" y2="75"></line>
+              <path class="mini-axis-arrow" d="M288 75l-10-6v12z"></path>
+              <path class="mini-curve odd" d="M32 123 L160 75 L288 27"></path>
+              <circle class="mini-zero" cx="160" cy="75" r="5"></circle>
+              <text class="mini-label" x="160" y="103">a</text>
+              <text class="mini-sign negative" x="76" y="113">−</text>
+              <text class="mini-sign positive" x="244" y="52">+</text>
+            </svg>
+          </div>
+          <p>经过 \(a\) 后，曲线从横轴一侧穿到另一侧，乘积变号。</p>
+        </div>
+        <div class="multiplicity-visual-card">
+          <strong>偶数次：碰到零点后返回</strong>
+          <span class="mini-model">示例：\(y=(x-a)^2\)</span>
+          <div class="mini-graph-stage">
+            <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="even-model-title even-model-desc">
+              <title id="even-model-title">偶数次因式在零点处返回</title>
+              <desc id="even-model-desc">以二次函数 y 等于 x 减 a 的平方为例，曲线在 a 处接触横轴后返回上方，零点左右都为正。</desc>
+              <line class="mini-axis" x1="32" y1="118.97" x2="288" y2="118.97"></line>
+              <path class="mini-axis-arrow" d="M288 118.97l-10-6v12z"></path>
+              <path class="mini-curve even" d="M32 28.92 L36 34.46 L40 39.83 L44 45.02 L48 50.03 L52 54.86 L56 59.52 L60 64.01 L64 68.32 L68 72.45 L72 76.41 L76 80.19 L80 83.79 L84 87.22 L88 90.48 L92 93.55 L96 96.46 L100 99.18 L104 101.73 L108 104.11 L112 106.3 L116 108.33 L120 110.17 L124 111.84 L128 113.34 L132 114.66 L136 115.8 L140 116.77 L144 117.56 L148 118.17 L152 118.61 L156 118.88 L160 118.97 L164 118.88 L168 118.61 L172 118.17 L176 117.56 L180 116.77 L184 115.8 L188 114.66 L192 113.34 L196 111.84 L200 110.17 L204 108.33 L208 106.3 L212 104.11 L216 101.73 L220 99.18 L224 96.46 L228 93.55 L232 90.48 L236 87.22 L240 83.79 L244 80.19 L248 76.41 L252 72.45 L256 68.32 L260 64.01 L264 59.52 L268 54.86 L272 50.03 L276 45.02 L280 39.83 L284 34.46 L288 28.92"></path>
+              <circle class="mini-zero" cx="160" cy="118.97" r="5"></circle>
+              <text class="mini-label" x="160" y="146">a</text>
+              <text class="mini-sign positive" x="72" y="54">+</text>
+              <text class="mini-sign positive" x="248" y="54">+</text>
+            </svg>
+          </div>
+          <p>曲线只在 \(a\) 处接触横轴，左右仍在同一侧，乘积不变号。</p>
+        </div>
+        <figcaption>“奇次穿过，偶次不穿”在图像上就是“穿过横轴”和“接触横轴后返回”的区别。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="summary" data-source-md="04_乘积不等式.md#解乘积不等式的顺序">
+    <h2 class="marker"><span aria-hidden="true">07</span>处理顺序</h2>
+    <div class="section-body">
+      <h2>把因式分解、零点和符号连成一条线</h2>
+      <div class="summary-panel">
+        <div class="takeaway-list">
+          <div class="takeaway-item"><span>1</span><p>移项，使另一边为零，再把多项式因式分解。</p></div>
+          <div class="takeaway-item"><span>2</span><p>找出所有零点，并按从小到大排列。</p></div>
+          <div class="takeaway-item"><span>3</span><p>判断最右边区间的符号；经过奇数次零点变号，经过偶数次零点不变号。</p></div>
+          <div class="takeaway-item"><span>4</span><p>选择题目要求的正号或负号区间，并根据不等号决定是否包含零点。</p></div>
+        </div>
+      </div>
+      <p>本页现在处理能够在实数范围内分解成一次因式的二次、三次和含重复因式的乘积。</p>
+    </div>
+  </section>
+</main>
+
+<nav class="pager" aria-label="文章导航">
+  <a class="pager-prev" href="03_不等式变形.html">← 上一篇 · 不等式变形</a>
+  <a class="pager-home" href="index.html">返回章节首页</a>
+  <a class="pager-next" href="05_分式不等式.html">下一篇 · 分式不等式 →</a>
+</nav>
+<footer class="footer">OpenKS · Chapter 05 · 乘积不等式</footer>
+</body>
+</html>

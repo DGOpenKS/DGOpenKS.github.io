@@ -1,58 +1,141 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>分式不等式 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<link rel="stylesheet" href="chapter05.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分式不等式：把商的符号转化为乘积的符号 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+  <link rel="stylesheet" href="chapter05-learning.css?v=20260808-4">
 </head>
-<body>
-<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="04_二次不等式.html">上一节</a><a class="nav-link" href="06_小结.html">下一节</a></div></nav>
-<header class="hero simple"><span class="eyebrow">Chapter 05 · 05</span><h1>分式不等式</h1><p class="lead">分式不等式不能随便去分母。分子零点和分母禁点都要放到数轴上分区间。</p></header>
-<main>
-  <section class="section"><div class="marker"><span>01</span>禁点</div><div class="section-body">
-    <h2>分母零点永远不能取</h2>
-    <p>看不等式：</p>
-    <div class="formula-box">$$\frac{x-1}{x+2}\ge0$$</div>
-    <p>分子零点是 $x=1$，分母禁点是 $x=-2$。分母禁点不是普通端点，而是原式没有意义的地方。</p>
-    <div class="visual" aria-label="分式不等式零点和禁点分区间">
-      <svg viewBox="0 0 700 210" role="img">
-        <line x1="80" y1="104" x2="620" y2="104" stroke="#94a3b8" stroke-width="4"/>
-        <line x1="80" y1="104" x2="260" y2="104" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
-        <line x1="452" y1="104" x2="620" y2="104" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
-        <circle cx="260" cy="104" r="12" fill="#fff" stroke="#dc2626" stroke-width="5"/>
-        <circle cx="452" cy="104" r="12" fill="#059669"/>
-        <text x="260" y="142" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900">-2 禁点</text>
-        <text x="452" y="142" text-anchor="middle" fill="#059669" font-size="21" font-weight="900">1 零点</text>
-        <text x="165" y="76" text-anchor="middle" fill="#059669" font-size="18" font-weight="800">留下</text>
-        <text x="356" y="76" text-anchor="middle" fill="#dc2626" font-size="18" font-weight="800">丢掉</text>
-        <text x="536" y="76" text-anchor="middle" fill="#059669" font-size="18" font-weight="800">留下</text>
-      </svg>
+<body class="chapter05-page">
+<a class="skip-link" href="#main-content">跳到正文</a>
+<nav class="topbar" aria-label="第五章导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="nav-link" href="index.html">Chapter 05</a>
+    <a class="nav-link" href="01_方程变形.html">01 方程变形</a>
+    <a class="nav-link" href="02-1_分式方程.html">02-1 分式方程</a>
+    <a class="nav-link" href="02-2_根式方程.html">02-2 根式方程</a>
+    <a class="nav-link" href="03_不等式变形.html">03 不等式变形</a>
+    <a class="nav-link" href="04_乘积不等式.html">04 乘积不等式</a>
+    <a class="nav-link" aria-current="page" href="05_分式不等式.html">05 分式不等式</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">CHAPTER 05 · 05</span>
+  <h1>分式不等式：<br>把商的符号转化为乘积的符号</h1>
+  <p class="lead">初中不等式里的分母通常是确定常数；现在分母含有未知数，正负会随取值改变。不能直接去分母，但可以先保留禁点，再乘以确定为正的分母平方。</p>
+</header>
+
+<main id="main-content">
+  <section class="section" id="condition" data-source-md="05_分式不等式.md#第一步永远是写分母条件">
+    <h2 class="marker"><span aria-hidden="true">01</span>原分母条件</h2>
+    <div class="section-body">
+      <h2>分母含未知数，先标出不能进入的值</h2>
+      <p>看不等式 \(\dfrac{x+3}{x-1}&gt;0\)。原分母不能为零，所以先写：</p>
+      <div class="condition-band"><strong>原分母条件：</strong><span class="math-block">\(x\ne1\)</span></div>
+      <p>无论后面怎样通分、约分或去分母，这个限制都来自原式，不能消失。</p>
     </div>
-  </div></section>
-  <section class="section"><div class="marker"><span>02</span>符号</div><div class="section-body">
-    <h2>每段判断整体分式符号</h2>
-    <div class="sign-list">
-      <div class="sign-row"><strong>$(-\infty,-2)$</strong><span>$x-1$：<b class="negative">负</b></span><span>$x+2$：<b class="negative">负</b></span><span>整体：<b class="positive">正</b></span></div>
-      <div class="sign-row"><strong>$(-2,1)$</strong><span>$x-1$：<b class="negative">负</b></span><span>$x+2$：<b class="positive">正</b></span><span>整体：<b class="negative">负</b></span></div>
-      <div class="sign-row"><strong>$(1,+\infty)$</strong><span>$x-1$：<b class="positive">正</b></span><span>$x+2$：<b class="positive">正</b></span><span>整体：<b class="positive">正</b></span></div>
+  </section>
+
+  <section class="section" id="square" data-source-md="05_分式不等式.md#为什么不能直接乘以分母">
+    <h2 class="marker"><span aria-hidden="true">02</span>分母平方</h2>
+    <div class="section-body">
+      <h2>分母符号不确定，分母平方却确定为正</h2>
+      <div class="rule-grid">
+        <article class="rule-card is-positive"><strong>当 \(x&gt;1\)</strong><p>\(x-1&gt;0\)，直接乘以它时方向不变。</p></article>
+        <article class="rule-card is-negative"><strong>当 \(x&lt;1\)</strong><p>\(x-1&lt;0\)，直接乘以它时方向要改变。</p></article>
+        <article class="rule-card is-blocked"><strong>未知 \(x\) 的范围</strong><p>无法提前决定不等号方向，所以不能直接乘以 \(x-1\)。</p></article>
+      </div>
+      <p>但在 \(x\ne1\) 的范围内，\((x-1)^2&gt;0\)。现在可以两边同时乘以这个正数，方向保持不变。</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[\frac{x+3}{x-1}&gt;0\]</div><p>原分母条件是 \(x\ne1\)。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[\frac{x+3}{x-1}(x-1)^2&gt;0\cdot(x-1)^2\]</div><p>乘以确定为正的分母平方，不等号方向不变。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[(x+3)(x-1)&gt;0\]</div><p>商的符号已经转化为乘积的符号。</p></div>
+      </div>
     </div>
-    <p>题目要求 $\ge0$，所以留下正区间和分子为 $0$ 的点。$x=1$ 可以取，$x=-2$ 永远排除。</p>
-    <div class="formula-box">$$x<-2\quad \text{或}\quad x\ge1$$</div>
-  </div></section>
-  <section class="section"><div class="marker"><span>03</span>整理</div><div class="section-body">
-    <h2>不是一边为 0 时，先整理</h2>
-    <p>例如 $\dfrac1{x-1}>2$，不要直接两边乘以 $x-1$。应先写成：</p>
-    <div class="formula-box">$$\frac1{x-1}-2>0$$</div>
-    <p>再通分：</p>
-    <div class="formula-box">$$\frac{3-2x}{x-1}>0$$</div>
-    <div class="note red">最后真正要记住：分式不等式里，分母零点不是普通端点，而是必须排除的禁点。</div>
-  </div></section>
+  </section>
+
+  <section class="section" id="equivalence" data-source-md="05_分式不等式.md#为什么这一步是等价的">
+    <h2 class="marker"><span aria-hidden="true">03</span>等价理由</h2>
+    <div class="section-body">
+      <h2>正的分母平方让变形能够双向恢复</h2>
+      <p>在 \(x\ne1\) 下，\((x-1)^2\) 是正数。原不等式乘以它可以得到乘积不等式，乘积不等式再除以它也能回到原不等式。</p>
+      <div class="formula-card"><div class="math-block">\[\frac{x+3}{x-1}&gt;0\quad\Longleftrightarrow\quad(x+3)(x-1)&gt;0\]</div></div>
+      <p>零点 \(-3\) 和 \(1\) 把数轴分成三段，乘积在两端为正。因此解是 \(x&lt;-3\) 或 \(x&gt;1\)。</p>
+      <div class="note">\(x=-3\) 时分式等于零，不满足严格大于零；\(x=1\) 时原分式没有意义。</div>
+    </div>
+  </section>
+
+  <section class="section" id="four-relations" data-source-md="05_分式不等式.md#四种符号关系怎样统一处理">
+    <h2 class="marker"><span aria-hidden="true">04</span>四类符号</h2>
+    <div class="section-body">
+      <h2>严格不等式自动排除零，带等号时要单写分母条件</h2>
+      <p>设 \(B(x)\ne0\)。因为 \(B^2(x)&gt;0\)，四种关系可以统一转成乘积符号：</p>
+      <div class="formula-stack">
+        <div class="math-block" data-tone="transform">\[\frac{A(x)}{B(x)}&gt;0\quad\Longleftrightarrow\quad A(x)B(x)&gt;0\]</div>
+        <div class="math-block" data-tone="transform">\[\frac{A(x)}{B(x)}&lt;0\quad\Longleftrightarrow\quad A(x)B(x)&lt;0\]</div>
+        <div class="math-block" data-tone="condition">\[\frac{A(x)}{B(x)}\ge0\quad\Longleftrightarrow\quad\begin{cases}A(x)B(x)\ge0,\\B(x)\ne0,\end{cases}\]</div>
+        <div class="math-block" data-tone="condition">\[\frac{A(x)}{B(x)}\le0\quad\Longleftrightarrow\quad\begin{cases}A(x)B(x)\le0,\\B(x)\ne0.\end{cases}\]</div>
+      </div>
+      <p>严格大于或小于零时，右边的乘积不可能等于零，已经能够排除 \(B(x)=0\)。带等号时，\(A(x)B(x)=0\) 可能来自分母为零，所以必须明确保留 \(B(x)\ne0\)。</p>
+    </div>
+  </section>
+
+  <section class="section" id="fraction-example" data-source-md="05_分式不等式.md#一边不是零时，先移项通分">
+    <h2 class="marker"><span aria-hidden="true">05</span>移项通分</h2>
+    <div class="section-body">
+      <h2>一边不是零，先把问题整理成商与零比较</h2>
+      <p>解 \(\dfrac{2}{x+1}\le1\) 时，先写 \(x\ne-1\)，再移项、通分和乘以分母平方。</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[\frac{2}{x+1}\le1,\qquad x\ne-1\]</div><p>先保留原分母条件。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[\frac{2}{x+1}-1\le0\]</div><p>把所有项移到左边，使右边为零。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[\frac{1-x}{x+1}\le0\]</div><p>通分并整理分子。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[\begin{cases}(1-x)(x+1)\le0,\\x\ne-1\end{cases}\]</div><p>乘以正数 \((x+1)^2\)，同时保留原分母条件。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[(-\infty,-1)\cup[1,+\infty)\]</div><p>分子零点 \(1\) 可以保留；分母禁点 \(-1\) 必须排除。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cancellation" data-source-md="05_分式不等式.md#约分以后仍要保留原分母限制">
+    <h2 class="marker"><span aria-hidden="true">06</span>约分与禁点</h2>
+    <div class="section-body">
+      <h2>式子外形变简单，原来的空点仍然存在</h2>
+      <p>对于 \(\dfrac{x^2-1}{x-1}&gt;0\)，原式先要求 \(x\ne1\)。在这个范围内可以约分：</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}=x+1\]</div><p>约分只在 \(x\ne1\) 的范围内成立。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[x+1&gt;0\quad\Longrightarrow\quad x&gt;-1\]</div><p>先解约分后的不等式。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[(-1,1)\cup(1,+\infty)\]</div><p>最后仍要排除原分母禁点 \(x=1\)。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="summary" data-source-md="05_分式不等式.md#解分式不等式的顺序">
+    <h2 class="marker"><span aria-hidden="true">07</span>处理顺序</h2>
+    <div class="section-body">
+      <h2>从禁点出发，以禁点检查结束</h2>
+      <div class="summary-panel">
+        <div class="takeaway-list">
+          <div class="takeaway-item"><span>1</span><p>写出所有原分母不为零的条件。</p></div>
+          <div class="takeaway-item"><span>2</span><p>移项并通分，使另一边为零，再分解分子和分母。</p></div>
+          <div class="takeaway-item"><span>3</span><p>乘以分母平方，把商的符号转化为乘积的符号。</p></div>
+          <div class="takeaway-item"><span>4</span><p>用零点划分区间，决定分子零点是否包含，并始终排除原分母禁点。</p></div>
+        </div>
+      </div>
+      <p>分式不等式不是不判断符号就直接去分母，而是利用确定为正的分母平方完成等价转化。</p>
+    </div>
+  </section>
 </main>
-<div class="pager"><a href="04_二次不等式.html">上一节：二次不等式</a><a href="06_小结.html">下一节：小结</a></div>
-<footer class="footer">OpenKS · 分式不等式</footer>
+
+<nav class="pager" aria-label="文章导航">
+  <a class="pager-prev" href="04_乘积不等式.html">← 上一篇 · 乘积不等式</a>
+  <a class="pager-home" href="index.html">返回章节首页</a>
+</nav>
+<footer class="footer">OpenKS · Chapter 05 · 分式不等式</footer>
 </body>
 </html>

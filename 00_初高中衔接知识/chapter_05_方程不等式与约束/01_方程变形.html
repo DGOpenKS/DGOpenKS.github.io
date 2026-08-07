@@ -1,43 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>方程变形 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<link rel="stylesheet" href="chapter05.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方程变形：等式两边怎样保持相等 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+  <link rel="stylesheet" href="chapter05-learning.css?v=20260808-4">
 </head>
-<body>
-<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="00_解集追踪.html">上一节</a><a class="nav-link" href="02_分式根式方程.html">下一节</a></div></nav>
-<header class="hero simple"><span class="eyebrow">Chapter 05 · 01</span><h1>方程变形</h1><p class="lead">方程变形真正要守住的是解集：有些变形保持解集，有些变形会带来增根或丢失解。</p></header>
-<main>
-  <section class="section"><div class="marker"><span>01</span>保持</div><div class="section-body">
-    <h2>安全变形只是换一种写法</h2>
-    <p>从 $2x+1=7$ 到 $2x=6$，再到 $x=3$，每一步都没有增加新解，也没有丢掉旧解。它们只是让同一个解集变得更容易看。</p>
-    <div class="formula-box">$$2x+1=7\quad \Longleftrightarrow\quad 2x=6\quad \Longleftrightarrow\quad x=3$$</div>
-  </div></section>
-  <section class="section"><div class="marker"><span>02</span>增根</div><div class="section-body">
-    <h2>平方可能扩大解集</h2>
-    <p>从 $x=2$ 两边平方得到 $x^2=4$，新方程多出 $x=-2$。它满足新方程，却不满足原方程。</p>
-    <div class="compare" aria-label="平方前后解集变化">
-      <div class="set-box"><span class="tag">原方程</span><div class="symbol">x=2</div><p>解集：{2}</p></div>
-      <div class="arrow">→</div>
-      <div class="set-box"><span class="tag red">平方后</span><div class="symbol">x²=4</div><p>解集：{-2, 2}</p></div>
+<body class="chapter05-page">
+<a class="skip-link" href="#main-content">跳到正文</a>
+<nav class="topbar" aria-label="第五章导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="nav-link" href="index.html">Chapter 05</a>
+    <a class="nav-link" aria-current="page" href="01_方程变形.html">01 方程变形</a>
+    <a class="nav-link" href="02-1_分式方程.html">02-1 分式方程</a>
+    <a class="nav-link" href="02-2_根式方程.html">02-2 根式方程</a>
+    <a class="nav-link" href="03_不等式变形.html">03 不等式变形</a>
+    <a class="nav-link" href="04_乘积不等式.html">04 乘积不等式</a>
+    <a class="nav-link" href="05_分式不等式.html">05 分式不等式</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">CHAPTER 05 · 01</span>
+  <h1>方程变形：<br>等式两边怎样保持相等</h1>
+  <p class="lead">方程是含有未知数的等式。解方程时，我们要在等式两边进行能够反向恢复的运算；真正需要守住的边界，是乘除的对象不能为零。</p>
+</header>
+
+<main id="main-content">
+  <section class="section" id="meaning" data-source-md="01_方程变形.md#等式两边同时加减">
+    <h2 class="marker"><span aria-hidden="true">01</span>方程与加减</h2>
+    <div class="section-body">
+      <h2>方程要求等号两边表示同一个数</h2>
+      <p>例如 \(2x+1=7\) 是一个方程。解方程，就是找出未知数取什么值时，等号两边仍然相等。</p>
+      <p>如果 \(A=B\)，两边同时加上或减去同一个数，原来的相等关系不会改变。</p>
+      <div class="formula-stack" aria-label="等式加减规则">
+        <div class="math-block">\[A+C=B+C\]</div>
+        <div class="math-block">\[A-C=B-C\]</div>
+      </div>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[x+5=8\]</div><p>两边同时减去 \(5\)，相等关系保持不变。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[x=3\]</div><p>反过来两边同时加回 \(5\)，又能回到原方程，所以两个方程的解相同。</p></div>
+      </div>
     </div>
-    <div class="note red">$x=-2$ 是平方后多出来的候选解，必须代回原方程筛掉。</div>
-  </div></section>
-  <section class="section"><div class="marker"><span>03</span>检查</div><div class="section-body">
-    <h2>可能改变解集的步骤要验回原式</h2>
-    <div class="grid">
-      <div class="card"><h3>通常安全</h3><p>在当前允许范围内，两边同时加减同一个都有意义的式子；两边同时乘除一个确定非零的数。</p></div>
-      <div class="card"><h3>需要检查</h3><p>两边平方；乘以含未知数的式子；约掉可能为 $0$ 的因式；根式方程平方。</p></div>
+  </section>
+
+  <section class="section" id="multiply" data-source-md="01_方程变形.md#等式两边同时乘除">
+    <h2 class="marker"><span aria-hidden="true">02</span>乘除规则</h2>
+    <div class="section-body">
+      <h2>乘除也能保持相等，但必须排除零</h2>
+      <p>等式两边同时乘以或除以同一个非零数，变形可以双向恢复：</p>
+      <div class="formula-card">
+        <div class="math-block">\[A=B\quad\Longleftrightarrow\quad kA=kB,\qquad k\ne0\]</div>
+      </div>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[2x=6\]</div><p>两边同时除以非零数 \(2\)。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[x=3\]</div><p>反过来同时乘回 \(2\)，可以恢复原方程。</p></div>
+      </div>
+      <div class="note">如果乘除的是含未知数的式子，也必须先确定它不为 \(0\)。下一篇分式方程会用这个规则去分母。</div>
     </div>
-    <div class="note">最后真正要记住：方程变形的目标是尽量保持原来的解集；如果某一步可能改变解集，就必须验回原式。</div>
-  </div></section>
+  </section>
+
+  <section class="section" id="zero" data-source-md="01_方程变形.md#为什么要排除零">
+    <h2 class="marker"><span aria-hidden="true">03</span>零的边界</h2>
+    <div class="section-body">
+      <h2>乘以零会抹掉信息，除以零没有意义</h2>
+      <p>从 \(x=3\) 出发，如果两边同时乘以 \(0\)，只能得到 \(0=0\)。这个结果对任何 \(x\) 都成立，已经不能说明原来要求 \(x=3\)。</p>
+      <div class="rule-grid">
+        <article class="rule-card is-valid"><strong>乘以非零数</strong><p>可以再除回去，方程能够恢复。</p></article>
+        <article class="rule-card is-blocked"><strong>乘以零</strong><p>两边都变成零，原方程的信息消失。</p></article>
+        <article class="rule-card is-blocked"><strong>除以零</strong><p>运算本身没有意义，不能进行。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="example" data-source-md="01_方程变形.md#用这些规则解方程">
+    <h2 class="marker"><span aria-hidden="true">04</span>完整变形</h2>
+    <div class="section-body">
+      <h2>每一步都能反向恢复</h2>
+      <p>解 \(2x+5=11\) 时，先用加减规则移去 \(5\)，再用非零除法得到 \(x\)。</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[2x+5=11\]</div><p>从原方程开始。</p></div>
+        <div class="equation-step" data-tone="operation"><div class="math-block">\[2x=6\]</div><p>两边同时减去 \(5\)。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[x=3\]</div><p>两边同时除以非零数 \(2\)。</p></div>
+      </div>
+      <div class="summary-panel">
+        <h2>核心结论</h2>
+        <p>等式两边可以同时加减同一个数，也可以同时乘除同一个非零数。乘以零会丢失信息，除以零没有意义；只要乘除对象确定不为零，变形前后的方程就能相互还原。</p>
+      </div>
+    </div>
+  </section>
 </main>
-<div class="pager"><a href="00_解集追踪.html">上一节：解集追踪</a><a href="02_分式根式方程.html">下一节：分式根式方程</a></div>
-<footer class="footer">OpenKS · 方程变形</footer>
+
+<nav class="pager" aria-label="文章导航">
+  <a class="pager-home" href="index.html">返回章节首页</a>
+  <a class="pager-next" href="02-1_分式方程.html">下一篇 · 分式方程 →</a>
+</nav>
+<footer class="footer">OpenKS · Chapter 05 · 方程变形</footer>
 </body>
 </html>

@@ -1,75 +1,115 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>解集追踪 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<link rel="stylesheet" href="chapter05.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05 方程、不等式与约束 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+  <link rel="stylesheet" href="chapter05-learning.css?v=20260808-4">
 </head>
-<body>
-<nav class="topbar" aria-label="章节导航"><div class="topbar-inner">
-  <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
-  <a class="nav-link" href="../chapter_04_分式根式与条件控制/">上一章</a>
-  <a class="nav-link" href="00_解集追踪.html">解集追踪</a>
-  <a class="nav-link" href="01_方程变形.html">方程变形</a>
-  <a class="nav-link" href="03_不等式变形.html">不等式变形</a>
-</div></nav>
+<body class="chapter05-page">
+<a class="skip-link" href="#main-content">跳到正文</a>
+<nav class="topbar" aria-label="第五章导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="nav-link" aria-current="page" href="index.html">Chapter 05</a>
+    <a class="nav-link" href="01_方程变形.html">01 方程变形</a>
+    <a class="nav-link" href="02-1_分式方程.html">02-1 分式方程</a>
+    <a class="nav-link" href="02-2_根式方程.html">02-2 根式方程</a>
+    <a class="nav-link" href="03_不等式变形.html">03 不等式变形</a>
+    <a class="nav-link" href="04_乘积不等式.html">04 乘积不等式</a>
+    <a class="nav-link" href="05_分式不等式.html">05 分式不等式</a>
+  </div>
+</nav>
+
 <header class="hero">
-  <div>
-    <span class="eyebrow">Chapter 05</span>
-    <h1>解集追踪</h1>
-    <p class="lead">这一章承接表达式条件，继续讨论方程和不等式：哪些数能真正留下来成为解，哪些数会被约束或验根筛掉。</p>
-  </div>
-  <div class="visual" aria-label="方程留下点，不等式留下区间">
-    <svg viewBox="0 0 680 310" role="img">
-      <rect x="34" y="36" width="612" height="238" rx="14" fill="#f8fafc" stroke="#dbe5f2"/>
-      <line x1="95" y1="112" x2="585" y2="112" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="340" cy="112" r="13" fill="#2563eb"/>
-      <text x="340" y="78" text-anchor="middle" fill="#2563eb" font-size="23" font-weight="900">方程：留下一个点</text>
-      <text x="340" y="150" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">2x+1=7  →  x=3</text>
-      <line x1="95" y1="212" x2="585" y2="212" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
-      <line x1="340" y1="212" x2="585" y2="212" stroke="#059669" stroke-width="9" stroke-linecap="round"/>
-      <circle cx="340" cy="212" r="12" fill="#fff" stroke="#059669" stroke-width="5"/>
-      <text x="438" y="194" text-anchor="middle" fill="#059669" font-size="23" font-weight="900">不等式：留下一段范围</text>
-      <text x="340" y="256" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">2x+1&gt;7  →  x&gt;3</text>
-    </svg>
-  </div>
+  <span class="eyebrow">Chapter 05 · 初高中衔接</span>
+  <h1>方程、不等式与约束</h1>
+  <p class="lead">这一章学习方程与不等式的基本变形，依次讨论分式方程、根式方程、乘积不等式和分式不等式。重点弄清每一步变形在什么条件下成立，掌握分母禁点、平方验根、不等号变向、零点分区和符号判断，进而检查方程的解并确定不等式中未知数的取值范围。</p>
 </header>
-<main>
-  <section class="section"><div class="marker"><span>01</span>核心</div><div class="section-body">
-    <h2>解不是算完就结束，而是被筛选后留下来的数</h2>
-    <p>方程问哪些数让关系相等，不等式问哪些范围让关系成立，约束负责排除一开始就不能进入讨论的数。</p>
-    <div class="flow">
-      <span>先确定允许范围</span>
-      <span>再判断变形是否保持解集</span>
-      <span>再求出候选结果</span>
-      <span>最后把候选结果放回原式检查</span>
+
+<main id="main-content" class="chapter-directory" data-source-md="chapter_05_方程不等式与约束.md#六节怎样连接起来">
+  <section class="directory-overview" aria-labelledby="chapter-path-title">
+    <div class="directory-section-heading">
+      <span class="directory-section-label">01 · 本章主线</span>
+      <h2 id="chapter-path-title">方程要检查所得的解，不等式要判断符号与范围</h2>
+      <p>两部分都要先检查变形条件，但后面的判断重点不同。</p>
     </div>
-  </div></section>
-  <section class="section"><div class="marker"><span>02</span>目录</div><div class="section-body">
-    <h2>按解集追踪的顺序阅读</h2>
-    <div class="grid">
-      <a class="lesson-card" href="00_解集追踪.html"><span class="tag">00</span><strong>解集追踪</strong><p>先把解看成被条件留下来的点或范围。</p><div class="mini-formula">点解 / 区间解 / 约束</div></a>
-      <a class="lesson-card green" href="01_方程变形.html"><span class="tag green">01</span><strong>方程变形</strong><p>看哪些变形保持解集，哪些变形会产生增根。</p><div class="mini-formula">{2} → {-2, 2}</div></a>
-      <a class="lesson-card amber" href="02_分式根式方程.html"><span class="tag amber">02</span><strong>分式根式方程</strong><p>先看约束，再平方或去分母，最后验根。</p><div class="mini-formula">约束 → 候选 → 验根</div></a>
-      <a class="lesson-card purple" href="03_不等式变形.html"><span class="tag purple">03</span><strong>不等式变形</strong><p>乘除前先判断符号，负数会让方向翻转。</p><div class="mini-formula">-3x ≥ 6 → x ≤ -2</div></a>
-      <a class="lesson-card" href="04_二次不等式.html"><span class="tag">04</span><strong>二次不等式</strong><p>零点不是答案，而是分区间的边界。</p><div class="mini-formula">(x-1)(x-3)&gt;0</div></a>
-      <a class="lesson-card red" href="05_分式不等式.html"><span class="tag red">05</span><strong>分式不等式</strong><p>分子零点和分母禁点一起分区间。</p><div class="mini-formula">零点可取，禁点必排除</div></a>
-      <a class="lesson-card" href="06_小结.html"><span class="tag">06</span><strong>小结</strong><p>把允许范围、候选结果和验回原式合成一条检查线。</p><div class="mini-formula">候选结果 ≠ 最终解</div></a>
+    <div class="chapter-path-grid">
+      <article class="chapter-path-card" data-track="equation">
+        <span class="path-label">方程部分</span>
+        <h3>方程变形 → 分式方程 → 根式方程</h3>
+        <p>从等式两边的基本运算出发，学习怎样在保留原分母条件的前提下去分母，以及为什么根式方程平方后必须验根。</p>
+      </article>
+      <article class="chapter-path-card" data-track="inequality">
+        <span class="path-label">不等式部分</span>
+        <h3>不等式变形 → 乘积不等式 → 分式不等式</h3>
+        <p>先弄清乘正数、负数和零时不等号怎样变化，再用零点划分数轴，判断乘积和分式在不同区间内的正负。</p>
+      </article>
     </div>
-  </div></section>
-  <section class="section"><div class="marker"><span>03</span>规划</div><div class="section-body">
-    <h2>统一的方法与练习体系暂未开放</h2>
-    <p>本章正文可以正常阅读。方法体系、练习分层与反馈规则仍在统一规划中，现有早期草案暂不作为正式学习入口。</p>
-    <div class="grid">
-      <article class="entry-card" aria-label="解集追踪方法正在规划"><span class="tag green">方法</span><strong>解集追踪方法</strong><p>规划中，暂未开放。</p></article>
-      <article class="entry-card" aria-label="解集追踪练习正在规划"><span class="tag amber">练习</span><strong>解集追踪练习</strong><p>规划中，暂未开放。</p></article>
+  </section>
+
+  <section class="directory-lessons" aria-labelledby="chapter-lessons-title">
+    <div class="directory-section-heading">
+      <span class="directory-section-label">02 · 本章文章</span>
+      <h2 id="chapter-lessons-title">按理解顺序阅读六篇内容</h2>
+      <p>先完成方程部分的三篇，再进入不等式部分的三篇；前一篇提供后一篇所需的判断方法。</p>
     </div>
-  </div></section>
+
+    <section class="lesson-group" data-track="equation" aria-labelledby="equation-track-title">
+      <div class="lesson-group-heading">
+        <span class="track-label">方程部分 · 3 篇</span>
+        <h3 id="equation-track-title">等价变形、去分母与平方验根</h3>
+        <p>先建立等式变形的基本规则，再把第四章的分式、根式条件放进求解过程。</p>
+      </div>
+      <div class="lesson-grid">
+        <a class="lesson-card" href="01_方程变形.html">
+          <span class="lesson-index">01</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">基本变形</span><strong>方程变形</strong><span class="lesson-summary">从含未知数的等式出发，弄清加减、乘除以及乘以零、除以零的边界。</span></span>
+        </a>
+        <a class="lesson-card" href="02-1_分式方程.html">
+          <span class="lesson-index">02-1</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">分母含未知数</span><strong>分式方程</strong><span class="lesson-summary">先保留原分母的禁点，再去分母求解，并检查所得的值是否满足原方程。</span></span>
+        </a>
+        <a class="lesson-card" href="02-2_根式方程.html">
+          <span class="lesson-index">02-2</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">未知数在根号内</span><strong>根式方程</strong><span class="lesson-summary">先写原式条件并孤立根式，再通过平方继续求解，最后验根并排除增根。</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="lesson-group" data-track="inequality" aria-labelledby="inequality-track-title">
+      <div class="lesson-group-heading">
+        <span class="track-label">不等式部分 · 3 篇</span>
+        <h3 id="inequality-track-title">变号规则、零点分区与符号判断</h3>
+        <p>先判断乘除式的正、负和零，再用零点确定乘积与分式在各区间内的符号。</p>
+      </div>
+      <div class="lesson-grid">
+        <a class="lesson-card" href="03_不等式变形.html">
+          <span class="lesson-index">03</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">方向规则</span><strong>不等式变形</strong><span class="lesson-summary">弄清什么时候不变号、什么时候必须变号，以及乘除式符号未知时为什么不能直接变形。</span></span>
+        </a>
+        <a class="lesson-card" href="04_乘积不等式.html">
+          <span class="lesson-index">04</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">零点分区</span><strong>乘积不等式</strong><span class="lesson-summary">从一次因式的正负出发，用零点划分数轴，判断二次、三次及含重复因式的乘积符号。</span></span>
+        </a>
+        <a class="lesson-card" href="05_分式不等式.html">
+          <span class="lesson-index">05</span>
+          <span class="lesson-card-copy"><span class="lesson-kicker">商的符号</span><strong>分式不等式</strong><span class="lesson-summary">保留分母禁点，通过移项和通分，把商的符号转化为乘积的符号。</span></span>
+        </a>
+      </div>
+    </section>
+  </section>
 </main>
-<footer class="footer">OpenKS · Chapter 05 · 解集追踪</footer>
+
+<nav class="pager" aria-label="章节导航">
+  <a class="pager-prev" href="../chapter_04_分式根式与条件控制/index.html">← 上一章 · 分式、根式与条件控制</a>
+  <a class="pager-next" href="01_方程变形.html">开始第一篇 · 方程变形 →</a>
+</nav>
+<footer class="footer">OpenKS · Chapter 05 方程、不等式与约束</footer>
 </body>
 </html>

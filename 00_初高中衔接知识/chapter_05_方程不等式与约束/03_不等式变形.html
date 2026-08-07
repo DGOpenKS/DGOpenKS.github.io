@@ -1,54 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>不等式变形 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<link rel="stylesheet" href="chapter05.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不等式变形：方向由乘除式的符号决定 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+  <link rel="stylesheet" href="chapter05-learning.css?v=20260808-4">
 </head>
-<body>
-<nav class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="./">章节入口</a><a class="nav-link" href="02_分式根式方程.html">上一节</a><a class="nav-link" href="04_二次不等式.html">下一节</a></div></nav>
-<header class="hero simple"><span class="eyebrow">Chapter 05 · 03</span><h1>不等式变形</h1><p class="lead">不等式变形前，先看乘除对象的符号。乘除负数会改变方向，符号不确定就不能直接操作。</p></header>
-<main>
-  <section class="section"><div class="marker"><span>01</span>方向</div><div class="section-body">
-    <h2>乘除负数会翻转大小关系</h2>
-    <p>解不等式：</p>
-    <div class="formula-box">$$-3x\ge6$$</div>
-    <p>两边除以 $-3$，不等号方向必须改变：</p>
-    <div class="formula-box">$$x\le-2$$</div>
-  </div></section>
-  <section class="section"><div class="marker"><span>02</span>看见</div><div class="section-body">
-    <h2>负号会把数轴左右翻过来</h2>
-    <div class="visual" aria-label="乘以负数后不等号方向改变">
-      <svg viewBox="0 0 700 260" role="img">
-        <line x1="100" y1="86" x2="600" y2="86" stroke="#94a3b8" stroke-width="4"/>
-        <circle cx="245" cy="86" r="10" fill="#2563eb"/><circle cx="455" cy="86" r="10" fill="#059669"/>
-        <text x="245" y="52" text-anchor="middle" fill="#2563eb" font-size="22" font-weight="900">1</text>
-        <text x="455" y="52" text-anchor="middle" fill="#059669" font-size="22" font-weight="900">2</text>
-        <text x="350" y="126" text-anchor="middle" fill="#111827" font-size="21" font-weight="900">1 &lt; 2</text>
-        <line x1="100" y1="184" x2="600" y2="184" stroke="#94a3b8" stroke-width="4"/>
-        <circle cx="245" cy="184" r="10" fill="#059669"/><circle cx="455" cy="184" r="10" fill="#2563eb"/>
-        <text x="245" y="222" text-anchor="middle" fill="#059669" font-size="22" font-weight="900">-6</text>
-        <text x="455" y="222" text-anchor="middle" fill="#2563eb" font-size="22" font-weight="900">-3</text>
-        <text x="350" y="164" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900">乘以 -3 后：-3 &gt; -6</text>
-      </svg>
+<body class="chapter05-page">
+<a class="skip-link" href="#main-content">跳到正文</a>
+<nav class="topbar" aria-label="第五章导航">
+  <div class="topbar-inner">
+    <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+    <a class="nav-link" href="index.html">Chapter 05</a>
+    <a class="nav-link" href="01_方程变形.html">01 方程变形</a>
+    <a class="nav-link" href="02-1_分式方程.html">02-1 分式方程</a>
+    <a class="nav-link" href="02-2_根式方程.html">02-2 根式方程</a>
+    <a class="nav-link" aria-current="page" href="03_不等式变形.html">03 不等式变形</a>
+    <a class="nav-link" href="04_乘积不等式.html">04 乘积不等式</a>
+    <a class="nav-link" href="05_分式不等式.html">05 分式不等式</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">CHAPTER 05 · 03</span>
+  <h1>不等式变形：<br>方向由乘除式的符号决定</h1>
+  <p class="lead">方程乘除主要检查是否为零，不等式还必须知道乘除式的正负：乘正数方向不变，乘负数方向改变，符号不确定时不能直接变形。</p>
+</header>
+
+<main id="main-content">
+  <section class="section" id="equivalent" data-source-md="03_不等式变形.md#什么叫等价变形">
+    <h2 class="marker"><span aria-hidden="true">01</span>等价变形</h2>
+    <div class="section-body">
+      <h2>等价意味着变形前后解集完全相同</h2>
+      <p>例如 \(x+2&gt;5\Longleftrightarrow x&gt;3\)。从左向右可以两边同时减去 \(2\)，从右向左也可以同时加回 \(2\)，所以两个不等式有相同的解。</p>
+      <div class="formula-card"><div class="math-block">\[x+2&gt;5\quad\Longleftrightarrow\quad x&gt;3\]</div></div>
     </div>
-  </div></section>
-  <section class="section"><div class="marker"><span>03</span>判断</div><div class="section-body">
-    <h2>符号不确定时不能直接乘除</h2>
-    <div class="grid">
-      <div class="card"><h3>方向不变</h3><p>在当前允许范围内，两边加减同一个都有意义的式子；两边乘除正数。</p></div>
-      <div class="card"><h3>方向改变</h3><p>两边乘除负数。</p></div>
-      <div class="card"><h3>不能直接做</h3><p>乘除 $a$、$x-1$、$x+2$ 这类符号不确定的式子。</p></div>
-      <div class="card"><h3>先分清</h3><p>如果必须处理含未知数的乘除对象，要先知道它是正、负，还是可能为 $0$。</p></div>
+  </section>
+
+  <section class="section" id="addition" data-source-md="03_不等式变形.md#两边同时加上或减去同一个数">
+    <h2 class="marker"><span aria-hidden="true">02</span>加减规则</h2>
+    <div class="section-body">
+      <h2>两边同时加减，不等号方向不变</h2>
+      <p>加减同一个数只会让两边同时增大或同时减小，不会改变原来的大小顺序。</p>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="source"><div class="math-block">\[A&gt;B\quad\Longleftrightarrow\quad A+C&gt;B+C\]</div><p>两边同时加上 \(C\)，方向不变。</p></div>
+        <div class="equation-step" data-tone="result"><div class="math-block">\[x-2&gt;3\quad\Longleftrightarrow\quad x&gt;5\]</div><p>两边同时加上 \(2\)，两个不等式的解相同。</p></div>
+      </div>
     </div>
-    <div class="note">最后真正要记住：不等式变形前，要先问乘除对象的符号是否确定。</div>
-  </div></section>
+  </section>
+
+  <section class="section" id="positive-negative" data-source-md="03_不等式变形.md#两边同时乘以或除以一个正数">
+    <h2 class="marker"><span aria-hidden="true">03</span>乘除与方向</h2>
+    <div class="section-body">
+      <h2>正数保持方向，负数翻转方向</h2>
+      <div class="rule-grid">
+        <article class="rule-card is-positive"><strong>乘除正数</strong><p>\(A&gt;B\Longleftrightarrow kA&gt;kB\)，其中 \(k&gt;0\)。</p></article>
+        <article class="rule-card is-negative"><strong>乘除负数</strong><p>\(A&gt;B\Longleftrightarrow kA&lt;kB\)，其中 \(k&lt;0\)。</p></article>
+        <article class="rule-card is-blocked"><strong>乘除零</strong><p>乘以零会丢失大小关系，除以零没有意义。</p></article>
+      </div>
+      <div class="equation-steps">
+        <div class="equation-step" data-tone="result"><div class="math-block">\[2x&gt;6\quad\Longleftrightarrow\quad x&gt;3\]</div><p>除以正数 \(2\)，方向不变。</p></div>
+        <div class="equation-step" data-tone="transform"><div class="math-block">\[-2x&gt;6\quad\Longleftrightarrow\quad x&lt;-3\]</div><p>除以负数 \(-2\)，方向必须改变。</p></div>
+      </div>
+      <p>在数轴上，乘以负数会把正方向和负方向对调，因此原来较大的一边会变成较小的一边。</p>
+    </div>
+  </section>
+
+  <section class="section" id="zero" data-source-md="03_不等式变形.md#为什么不能乘以或除以零">
+    <h2 class="marker"><span aria-hidden="true">04</span>零的边界</h2>
+    <div class="section-body">
+      <h2>零不能保留原来的大小关系</h2>
+      <p>从 \(2&gt;1\) 出发，两边同时乘以 \(0\)，只能得到 \(0=0\)。这个结果不能还原出原来的不等式，所以乘以零不是等价变形；除以零则没有意义。</p>
+      <div class="rule-band is-blocked"><strong>不能把零当作不等式乘除变形的对象。</strong></div>
+    </div>
+  </section>
+
+  <section class="section" id="unknown-sign" data-source-md="03_不等式变形.md#乘除式的符号不确定时不能直接变形">
+    <h2 class="marker"><span aria-hidden="true">05</span>符号不确定</h2>
+    <div class="section-body">
+      <h2>含未知数的乘除式必须先分清正、负和零</h2>
+      <p>例如 \(x-1\) 的符号会随 \(x\) 改变：</p>
+      <div class="rule-grid">
+        <article class="rule-card is-positive"><strong>当 \(x&gt;1\)</strong><p>\(x-1&gt;0\)，乘除后方向不变。</p></article>
+        <article class="rule-card is-blocked"><strong>当 \(x=1\)</strong><p>\(x-1=0\)，不能用它作除数。</p></article>
+        <article class="rule-card is-negative"><strong>当 \(x&lt;1\)</strong><p>\(x-1&lt;0\)，乘除后方向改变。</p></article>
+      </div>
+      <p>所以，在不知道 \(x\) 的范围时，不能直接在不等式两边乘以或除以 \(x-1\)。这正是分母含未知数以后出现的新困难。</p>
+    </div>
+  </section>
+
+  <section class="section" id="summary" data-source-md="03_不等式变形.md#最后要按什么顺序判断">
+    <h2 class="marker"><span aria-hidden="true">06</span>判断顺序</h2>
+    <div class="section-body">
+      <h2>先看运算，再看乘除式的符号</h2>
+      <div class="summary-panel">
+        <div class="takeaway-list">
+          <div class="takeaway-item"><span>1</span><p>两边同时加减同一个有意义的数，方向不变。</p></div>
+          <div class="takeaway-item"><span>2</span><p>乘除正数方向不变，乘除负数方向改变。</p></div>
+          <div class="takeaway-item"><span>3</span><p>不能除以零，乘以零也不是等价变形。</p></div>
+          <div class="takeaway-item"><span>4</span><p>乘除式含未知数时，先判断符号，再决定能否变形和是否改变方向。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<div class="pager"><a href="02_分式根式方程.html">上一节：分式根式方程</a><a href="04_二次不等式.html">下一节：二次不等式</a></div>
-<footer class="footer">OpenKS · 不等式变形</footer>
+
+<nav class="pager" aria-label="文章导航">
+  <a class="pager-prev" href="02-2_根式方程.html">← 上一篇 · 根式方程</a>
+  <a class="pager-home" href="index.html">返回章节首页</a>
+  <a class="pager-next" href="04_乘积不等式.html">下一篇 · 乘积不等式 →</a>
+</nav>
+<footer class="footer">OpenKS · Chapter 05 · 不等式变形</footer>
 </body>
 </html>

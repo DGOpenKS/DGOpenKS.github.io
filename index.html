@@ -1,900 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="OpenKS 是一个持续生长的开放知识空间。数学是目前首先开放的知识分支。">
-<title>OpenKS · 开放知识空间</title>
-<link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
-<style>
-:root{
-  color-scheme:light;
-  --bg:#f5f5f1;
-  --surface:#fff;
-  --surface-soft:#eef1ec;
-  --ink:#172129;
-  --muted:#66727b;
-  --line:#dce1dc;
-  --line-strong:#c9d0ca;
-  --blue:#175cd3;
-  --blue-soft:#edf4ff;
-  --green:#2b6e59;
-  --green-soft:#ebf5f0;
-  --amber:#95651c;
-  --amber-soft:#faf2e4;
-  --violet:#6657a6;
-  --violet-soft:#f2effa;
-  --shadow:0 18px 50px rgba(28,38,35,.07);
-  --shadow-hover:0 22px 60px rgba(28,38,35,.11);
-  --radius:24px;
-  --radius-small:16px;
-  --font:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --serif:"Noto Serif SC","Songti SC","STSong",serif;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{
-  margin:0;
-  overflow-x:hidden;
-  background:
-    radial-gradient(circle at 78% 9%,rgba(23,92,211,.06),transparent 29rem),
-    radial-gradient(circle at 10% 38%,rgba(43,110,89,.05),transparent 24rem),
-    var(--bg);
-  color:var(--ink);
-  font-family:var(--font);
-  line-height:1.72;
-  text-rendering:optimizeLegibility;
-}
-
-a{color:inherit}
-svg{display:block}
-
-.shell{
-  width:min(1160px,calc(100% - 2.5rem));
-  margin:0 auto;
-}
-
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:30;
-  border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent);
-  background:color-mix(in srgb,var(--bg) 88%,transparent);
-  backdrop-filter:blur(18px);
-}
-
-.topbar-inner{
-  min-height:68px;
-  display:flex;
-  align-items:center;
-  gap:1.4rem;
-}
-
-.brand{
-  display:inline-flex;
-  min-height:44px;
-  align-items:center;
-  gap:.75rem;
-  margin-right:auto;
-  color:var(--ink);
-  font-weight:900;
-  letter-spacing:.02em;
-  text-decoration:none;
-  white-space:nowrap;
-}
-
-.brand img{
-  display:block;
-  width:auto;
-  height:40px;
-  max-width:none;
-}
-
-.brand-mark{
-  width:34px;
-  height:34px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:3px;
-  padding:7px;
-  border:1px solid var(--line-strong);
-  border-radius:11px;
-  background:var(--surface);
-  box-shadow:0 4px 14px rgba(28,38,35,.06);
-}
-
-.brand-mark i{
-  display:block;
-  border-radius:2px;
-  background:var(--ink);
-}
-
-.brand-mark i:nth-child(2){background:var(--blue)}
-.brand-mark i:nth-child(3){background:var(--green)}
-.brand-mark i:nth-child(4){background:var(--line-strong)}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:.2rem;
-}
-
-.nav a{
-  min-height:42px;
-  display:inline-flex;
-  align-items:center;
-  padding:.5rem .8rem;
-  border-radius:12px;
-  color:var(--muted);
-  font-size:.84rem;
-  font-weight:800;
-  text-decoration:none;
-}
-
-.nav a:hover{background:var(--surface);color:var(--ink)}
-
-.hero{
-  min-height:670px;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(290px,360px);
-  gap:clamp(3rem,8vw,7rem);
-  align-items:center;
-  padding:clamp(5rem,10vw,8.4rem) 0;
-}
-
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:.7rem;
-  margin-bottom:1.4rem;
-  color:var(--blue);
-  font-size:.76rem;
-  font-weight:900;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-
-.eyebrow::before{
-  width:34px;
-  height:2px;
-  background:currentColor;
-  content:"";
-}
-
-h1,h2{
-  font-family:var(--serif);
-  text-wrap:balance;
-}
-
-h1{
-  max-width:820px;
-  margin:0;
-  font-size:clamp(3rem,6.1vw,5.1rem);
-  font-weight:700;
-  line-height:1.12;
-}
-
-.hero-copy{
-  max-width:700px;
-  margin:1.55rem 0 0;
-  color:#4f5c65;
-  font-size:clamp(1.02rem,1.6vw,1.16rem);
-  line-height:1.9;
-}
-
-.hero-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.8rem;
-  margin-top:2rem;
-}
-
-.action-link{
-  min-height:52px;
-  display:inline-flex;
-  align-items:center;
-  gap:.75rem;
-  padding:.8rem 1rem .8rem 1.15rem;
-  border:1px solid var(--line-strong);
-  border-radius:16px;
-  background:var(--surface);
-  color:var(--ink);
-  font-weight:900;
-  text-decoration:none;
-  box-shadow:0 8px 22px rgba(28,38,35,.05);
-}
-
-.action-link.primary{
-  border-color:var(--ink);
-  background:var(--ink);
-  color:#fff;
-}
-
-.action-link .arrow{
-  width:30px;
-  height:30px;
-  display:grid;
-  place-items:center;
-  border-radius:10px;
-  background:rgba(255,255,255,.12);
-}
-
-.action-link:not(.primary) .arrow{background:var(--surface-soft)}
-
-.space-index{
-  padding:1rem;
-  border:1px solid var(--line);
-  border-radius:28px;
-  background:rgba(255,255,255,.7);
-  box-shadow:var(--shadow);
-}
-
-.space-index-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  padding:.45rem .5rem 1rem;
-  color:var(--muted);
-  font-size:.74rem;
-  font-weight:900;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-.space-index-head span:last-child{
-  color:var(--green);
-  letter-spacing:0;
-}
-
-.space-index-list{
-  display:grid;
-  gap:.5rem;
-}
-
-.index-item{
-  min-height:76px;
-  display:grid;
-  grid-template-columns:42px minmax(0,1fr) 24px;
-  gap:.8rem;
-  align-items:center;
-  padding:.8rem;
-  border:1px solid transparent;
-  border-radius:18px;
-}
-
-a.index-item{
-  border-color:#cfdbef;
-  background:var(--blue-soft);
-  color:var(--ink);
-  text-decoration:none;
-}
-
-.index-item.planned{color:#89928f}
-
-.index-number{
-  font-family:var(--serif);
-  font-size:1.1rem;
-  font-weight:800;
-}
-
-.index-item b{display:block;font-size:.94rem}
-.index-item small{display:block;color:var(--muted);font-size:.75rem}
-.index-item.planned small{color:#98a19e}
-
-.index-state{
-  width:22px;
-  height:22px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:var(--surface);
-  color:var(--blue);
-}
-
-main{padding-bottom:6rem}
-
-.section{
-  padding:clamp(5.5rem,9vw,8rem) 0;
-  border-top:1px solid var(--line);
-}
-
-.section-head{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(280px,420px);
-  gap:2.5rem;
-  align-items:end;
-  margin-bottom:2.5rem;
-}
-
-.section-label{
-  display:block;
-  margin-bottom:.8rem;
-  color:var(--blue);
-  font-size:.75rem;
-  font-weight:900;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-}
-
-h2{
-  max-width:740px;
-  margin:0;
-  font-size:clamp(2.1rem,4.2vw,3.65rem);
-  font-weight:700;
-  line-height:1.2;
-}
-
-.section-intro{
-  margin:0;
-  color:var(--muted);
-  line-height:1.85;
-}
-
-.domain-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:1rem;
-}
-
-.domain-card{
-  position:relative;
-  min-height:264px;
-  display:flex;
-  flex-direction:column;
-  padding:1.25rem;
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:rgba(255,255,255,.72);
-}
-
-a.domain-card{
-  border-color:#c9d8f2;
-  background:linear-gradient(145deg,#fff,var(--blue-soft));
-  color:var(--ink);
-  text-decoration:none;
-  box-shadow:var(--shadow);
-}
-
-.card-top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:1rem;
-}
-
-.icon{
-  width:54px;
-  height:54px;
-  display:grid;
-  place-items:center;
-  flex:0 0 auto;
-  border:1px solid var(--line);
-  border-radius:17px;
-  background:var(--surface);
-  color:var(--muted);
-}
-
-.domain-card.active .icon{
-  border-color:#c6d8f7;
-  color:var(--blue);
-}
-
-.icon svg{width:26px;height:26px}
-
-.status{
-  display:inline-flex;
-  align-items:center;
-  min-height:28px;
-  padding:.25rem .55rem;
-  border:1px solid var(--line);
-  border-radius:999px;
-  color:var(--muted);
-  font-size:.7rem;
-  font-weight:900;
-}
-
-.status.open{
-  border-color:#bfd7c9;
-  background:var(--green-soft);
-  color:var(--green);
-}
-
-.domain-card h3{
-  margin:auto 0 .55rem;
-  font-size:1.25rem;
-}
-
-.domain-card p{
-  min-height:4.9em;
-  margin:0;
-  color:var(--muted);
-  font-size:.9rem;
-}
-
-.card-arrow{
-  margin-top:1.2rem;
-  color:var(--blue);
-  font-size:.82rem;
-  font-weight:900;
-}
-
-.domain-card:not(.active) .card-arrow{color:var(--muted)}
-
-.math-section{
-  position:relative;
-}
-
-.route-grid{
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:1rem;
-}
-
-.route-card{
-  min-height:210px;
-  display:flex;
-  flex-direction:column;
-  padding:1.15rem;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:var(--surface);
-  color:var(--ink);
-  text-decoration:none;
-  box-shadow:0 10px 30px rgba(28,38,35,.05);
-}
-
-.route-card .icon{
-  width:46px;
-  height:46px;
-  border-radius:14px;
-}
-
-.route-card:nth-child(2) .icon{color:var(--green);background:var(--green-soft)}
-.route-card:nth-child(3) .icon{color:var(--amber);background:var(--amber-soft)}
-.route-card:nth-child(4) .icon{color:var(--violet);background:var(--violet-soft)}
-.route-card:nth-child(5) .icon{color:var(--green);background:var(--green-soft)}
-
-.route-card h3{
-  margin:auto 0 .4rem;
-  font-size:1.02rem;
-}
-
-.route-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:.82rem;
-  line-height:1.7;
-}
-
-.route-card .card-arrow{margin-top:.9rem;color:var(--ink)}
-
-.topic-area{
-  display:grid;
-  grid-template-columns:220px minmax(0,1fr);
-  gap:2rem;
-  margin-top:3rem;
-  padding-top:3rem;
-  border-top:1px solid var(--line);
-}
-
-.topic-area h3{
-  margin:0 0 .5rem;
-  font-family:var(--serif);
-  font-size:1.5rem;
-}
-
-.topic-area .hint{
-  margin:0;
-  color:var(--muted);
-  font-size:.84rem;
-}
-
-.topic-list{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:.65rem;
-}
-
-.topic-link{
-  min-height:62px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  padding:.85rem 1rem;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:rgba(255,255,255,.68);
-  color:var(--ink);
-  font-size:.9rem;
-  font-weight:850;
-  text-decoration:none;
-}
-
-.topic-link span:last-child{color:var(--muted)}
-
-.principles{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1rem;
-}
-
-.principle{
-  min-height:190px;
-  padding:1.35rem;
-  border-top:2px solid var(--ink);
-  background:rgba(255,255,255,.42);
-}
-
-.principle-number{
-  color:var(--muted);
-  font-family:var(--serif);
-  font-size:.84rem;
-  font-weight:800;
-}
-
-.principle h3{margin:2.8rem 0 .55rem;font-size:1.06rem}
-.principle p{margin:0;color:var(--muted);font-size:.88rem}
-
-.footer{
-  border-top:1px solid var(--line);
-  padding:2.3rem 0;
-  color:var(--muted);
-  font-size:.8rem;
-}
-
-.footer-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-}
-
-.footer-links{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
-.footer a{text-underline-offset:3px}
-
-a.domain-card,
-a.index-item,
-.route-card,
-.topic-link,
-.action-link,
-.brand,
-.nav a{
-  transition:
-    transform .22s var(--ease),
-    border-color .22s ease,
-    background-color .22s ease,
-    box-shadow .22s ease,
-    color .22s ease;
-}
-
-@media(hover:hover){
-  a.domain-card:hover,
-  a.index-item:hover,
-  .route-card:hover,
-  .topic-link:hover,
-  .action-link:hover{
-    transform:translateY(-3px);
-    border-color:color-mix(in srgb,var(--blue) 38%,var(--line));
-    box-shadow:var(--shadow-hover);
-  }
-
-  .brand:hover,.nav a:hover{transform:translateY(-1px)}
-}
-
-a:focus-visible{
-  outline:3px solid color-mix(in srgb,var(--blue) 42%,transparent);
-  outline-offset:3px;
-}
-
-@media(max-width:1040px){
-  .hero{grid-template-columns:minmax(0,1fr) 320px;gap:3rem}
-  .domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .route-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-
-@media(max-width:800px){
-  .topbar-inner{gap:.6rem}
-  .nav{overflow-x:auto;scrollbar-width:none}
-  .nav::-webkit-scrollbar{display:none}
-  .nav a{padding:.5rem .65rem;white-space:nowrap}
-  .hero{min-height:auto;grid-template-columns:1fr;padding:5rem 0}
-  .space-index{max-width:520px}
-  .section-head{grid-template-columns:1fr;gap:1rem}
-  .route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .topic-area{grid-template-columns:1fr;gap:1.2rem}
-  .principles{grid-template-columns:1fr}
-  .principle{min-height:auto}
-  .principle h3{margin-top:2rem}
-}
-
-@media(max-width:560px){
-  .shell{width:min(100% - 1.25rem,1160px)}
-  .brand img{height:32px}
-  .topbar-inner{min-height:60px}
-  .hero{padding:4rem 0}
-  h1{font-size:clamp(2.55rem,13vw,3.6rem)}
-  .hero-copy{font-size:1rem}
-  .hero-actions{display:grid}
-  .action-link{width:100%;justify-content:space-between}
-  .domain-grid,.route-grid,.topic-list{grid-template-columns:1fr}
-  .domain-card{min-height:224px}
-  .route-card{min-height:180px}
-  .section{padding:4.8rem 0}
-  .footer-inner{align-items:flex-start;flex-direction:column}
-}
-
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-  }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OpenKS 让学习变得更加简单。数学知识分支现已开放，计算机知识分支正在准备中。">
+  <meta name="theme-color" content="#f7f9fc">
+  <title>OpenKS · 让学习变得更加简单</title>
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon-180.png">
+  <link rel="stylesheet" href="assets/home.css?v=20260807-2">
 </head>
 <body>
-<nav class="topbar" aria-label="首页导航">
-  <div class="shell topbar-inner">
-    <a class="brand" href="#top" aria-label="OpenKS 首页">
-      <img src="assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
-    </a>
-    <div class="nav">
-      <a href="#domains">知识分支</a>
-      <a href="#mathematics">数学</a>
-      <a href="#about">关于空间</a>
-    </div>
-  </div>
-</nav>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
 
-<header class="shell hero" id="top">
-  <div>
-    <div class="eyebrow">Open Knowledge Space</div>
-    <h1>一个可以持续生长的知识空间。</h1>
-    <p class="hero-copy">知识不应该被关在孤立的页面里。OpenKS 把可靠内容组织成清晰入口，让概念、方法与练习彼此连接。数学是目前首先开放的分支。</p>
-    <div class="hero-actions">
-      <a class="action-link primary" href="#mathematics">
-        <span>进入数学空间</span>
-        <span class="arrow" aria-hidden="true">↗</span>
+  <header class="site-header">
+    <div class="page-shell header-inner">
+      <a class="brand" href="index.html" aria-label="OpenKS 首页">
+        <img
+          src="assets/brand/openks-lockup-a-primary.svg"
+          width="2947"
+          height="716"
+          alt="OpenKS"
+        >
       </a>
-      <a class="action-link" href="#domains">
-        <span>浏览知识分支</span>
-        <span class="arrow" aria-hidden="true">↓</span>
+      <a
+        class="daily-entry"
+        href="https://openks.cc/daily-question?next=%2Fdaily"
+        aria-label="进入 OpenKS 每日一题"
+      >
+        <span>每日一题</span>
+        <span class="daily-entry-arrow" aria-hidden="true">→</span>
       </a>
     </div>
-  </div>
+  </header>
 
-  <aside class="space-index" aria-label="知识空间开放状态">
-    <div class="space-index-head"><span>Space Index</span><span>1 open</span></div>
-    <div class="space-index-list">
-      <a class="index-item" href="#mathematics">
-        <span class="index-number">01</span>
-        <span><b>数学</b><small>当前开放</small></span>
-        <span class="index-state" aria-hidden="true">↗</span>
-      </a>
-      <div class="index-item planned">
-        <span class="index-number">02</span>
-        <span><b>自然与科学</b><small>尚未开放</small></span>
-        <span aria-hidden="true">—</span>
-      </div>
-      <div class="index-item planned">
-        <span class="index-number">03</span>
-        <span><b>计算与技术</b><small>尚未开放</small></span>
-        <span aria-hidden="true">—</span>
-      </div>
-      <div class="index-item planned">
-        <span class="index-number">04</span>
-        <span><b>人文与社会</b><small>尚未开放</small></span>
-        <span aria-hidden="true">—</span>
-      </div>
-    </div>
-  </aside>
-</header>
+  <main class="page-shell home-main" id="main-content">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">让学习变得更加简单。</h1>
+      <p>从清晰的解释开始，沿着知识结构继续学习。</p>
+    </section>
 
-<main>
-  <section class="shell section" id="domains">
-    <div class="section-head">
-      <div>
-        <span class="section-label">Knowledge Branches</span>
-        <h2>从一个分支开始，慢慢长成一片知识空间。</h2>
-      </div>
-      <p class="section-intro">这里只把已经有可靠内容的分支做成入口。尚未准备好的领域保留位置，但不会伪装成可以访问的页面。</p>
-    </div>
-
-    <div class="domain-grid">
-      <a class="domain-card active" href="#mathematics" aria-label="进入数学知识分支">
-        <div class="card-top">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-              <path d="M4 18 10 6l4 8 2-4 4 8H4Z"/>
-              <circle cx="18" cy="6" r="2"/>
-            </svg>
-          </span>
-          <span class="status open">已开放</span>
+    <section class="domain-grid" aria-label="OpenKS 知识分支">
+      <article class="domain-card math-card" aria-labelledby="math-title">
+        <div class="domain-heading">
+          <div>
+            <p class="domain-label">MATHEMATICS</p>
+            <h2 id="math-title">数学</h2>
+          </div>
+          <p class="status status-open"><span aria-hidden="true"></span>已开放</p>
         </div>
-        <h3>数学</h3>
-        <p>从衔接知识出发，逐步进入已经开放的高中内容。</p>
-        <span class="card-arrow">进入分支 ↗</span>
-      </a>
 
-      <article class="domain-card" aria-label="自然与科学知识分支尚未开放">
-        <div class="card-top">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-              <path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 17l-5-9V3"/>
-              <path d="M7.5 15h9"/>
-            </svg>
+        <p class="domain-description">初高中衔接已开放，所有章节都可以直接选择。</p>
+
+        <a class="browse-math" href="#mathematics-content">
+          <span>
+            <strong>浏览数学章节</strong>
+            <small>初高中衔接与高中内容</small>
           </span>
-          <span class="status">整理中</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5v13M7 14l5 5 5-5"></path>
+          </svg>
+        </a>
+      </article>
+
+      <article class="domain-card computer-card" aria-labelledby="computer-title" aria-describedby="computer-status">
+        <div class="domain-heading">
+          <div>
+            <p class="domain-label">COMPUTER SCIENCE</p>
+            <h2 id="computer-title">计算机</h2>
+          </div>
+          <p class="status status-closed" id="computer-status">暂未开放</p>
         </div>
-        <h3>自然与科学</h3>
-        <p>为观察、实验、模型与科学解释预留的知识分支。</p>
-        <span class="card-arrow">尚未开放</span>
-      </article>
 
-      <article class="domain-card" aria-label="计算与技术知识分支尚未开放">
-        <div class="card-top">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-              <rect x="4" y="5" width="16" height="12" rx="2"/>
-              <path d="m9 9-2 2 2 2m4 0h4M8 21h8"/>
-            </svg>
-          </span>
-          <span class="status">整理中</span>
+        <p class="domain-description">这个知识分支正在准备中。</p>
+
+      </article>
+    </section>
+
+    <section class="curriculum-section" aria-labelledby="mathematics-content-title">
+      <header class="curriculum-header" id="mathematics-content">
+        <div>
+          <p class="section-label">MATHEMATICS</p>
+          <h2 id="mathematics-content-title">数学内容</h2>
         </div>
-        <h3>计算与技术</h3>
-        <p>为计算思维、工具、程序与工程实践预留的知识分支。</p>
-        <span class="card-arrow">尚未开放</span>
-      </article>
+        <p>所有当前可以进入的章节，都直接列在这里。</p>
+      </header>
 
-      <article class="domain-card" aria-label="人文与社会知识分支尚未开放">
-        <div class="card-top">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-              <path d="M5 19V8m14 11V8M3 21h18M2 7l10-4 10 4H2Z"/>
-              <path d="M9 9v8m6-8v8"/>
-            </svg>
-          </span>
-          <span class="status">整理中</span>
+      <section class="chapter-group" id="bridge-track" aria-labelledby="bridge-title">
+        <header class="chapter-group-header">
+          <div>
+            <p class="group-label">初高中衔接 · 01—05</p>
+            <h3 id="bridge-title">衔接主线</h3>
+          </div>
+          <p>从研究对象开始，沿着公式、变形与条件继续。</p>
+        </header>
+
+        <div class="chapter-grid">
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_01_初高中数学思维衔接/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">01</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>初高中数学思维衔接</h4>
+            <p>从算出答案，走向看对象、结构与条件。</p>
+          </a>
+
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_02-1_完全平方与平方差公式/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">02-1</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>完全平方与平方差公式</h4>
+            <p>在展开与分解之间识别平方结构。</p>
+          </a>
+
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_02-2_立方相关公式/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">02-2</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>立方相关公式</h4>
+            <p>看清三次展开与因式分解的结构。</p>
+          </a>
+
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_03_多项式变形与因式分解/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">03</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>多项式变形与因式分解</h4>
+            <p>从乘积结构判断合适的分解方法。</p>
+          </a>
+
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_04_分式根式与条件控制/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">04</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>分式、根式与条件控制</h4>
+            <p>化简的同时守住定义与等价条件。</p>
+          </a>
+
+          <a class="chapter-card" href="00_初高中衔接知识/chapter_05_方程不等式与约束/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">05</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>方程、不等式与约束</h4>
+            <p>追踪变形条件、不等号方向与解集。</p>
+          </a>
         </div>
-        <h3>人文与社会</h3>
-        <p>为语言、历史、思想与社会理解预留的知识分支。</p>
-        <span class="card-arrow">尚未开放</span>
-      </article>
+      </section>
+
+      <section class="chapter-group" id="high-school-track" aria-labelledby="high-school-title">
+        <header class="chapter-group-header">
+          <div>
+            <p class="group-label">高中正式内容</p>
+            <h3 id="high-school-title">从集合开始</h3>
+          </div>
+          <p>当前已开放的高中知识入口。</p>
+        </header>
+
+        <div class="chapter-grid single-grid">
+          <a class="chapter-card" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">
+            <span class="chapter-card-top"><span class="chapter-number">A-01</span><span class="chapter-arrow" aria-hidden="true">→</span></span>
+            <h4>集合</h4>
+            <p>先把讨论对象的范围说清楚，再理解元素、包含与集合运算。</p>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <span>© 2026 OpenKS</span>
+      <span>Open Knowledge Space</span>
     </div>
-  </section>
-
-  <section class="shell section math-section" id="mathematics">
-    <div class="section-head">
-      <div>
-        <span class="section-label">Mathematics · Open</span>
-        <h2>数学，当前开放的第一个分支。</h2>
-      </div>
-      <p class="section-intro">你可以从衔接知识开始，也可以直接进入已经开放的高中内容。方法与练习体系仍在统一规划中，暂不提供入口。</p>
-    </div>
-
-    <div class="route-grid" aria-label="数学分支主要入口">
-      <a class="route-card" href="00_初高中衔接知识/chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/index.html">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <path d="M4 6h16M4 12h10M4 18h13"/>
-            <path d="m17 10 3 2-3 2"/>
-          </svg>
-        </span>
-        <h3>快速回顾</h3>
-        <p>先检查代数、函数与基础运算。</p>
-        <span class="card-arrow">开始回顾 ↗</span>
-      </a>
-
-      <a class="route-card" href="00_初高中衔接知识/chapter_01_初高中数学思维衔接/index.html">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <path d="M5 19V8l7-4 7 4v11"/>
-            <path d="M8 19v-6h8v6M3 21h18"/>
-          </svg>
-        </span>
-        <h3>思维衔接</h3>
-        <p>从算答案转向看对象、结构与条件。</p>
-        <span class="card-arrow">进入衔接 ↗</span>
-      </a>
-
-      <a class="route-card" href="10_高中正式内容/A_数学语言集合与条件控制/A-01_集合/index.html">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <circle cx="9" cy="12" r="6"/>
-            <circle cx="15" cy="12" r="6"/>
-          </svg>
-        </span>
-        <h3>高中内容</h3>
-        <p>从 A-01 集合进入正式知识内容。</p>
-        <span class="card-arrow">进入集合 ↗</span>
-      </a>
-
-      <article class="route-card" aria-label="方法索引正在规划，暂未开放">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <circle cx="6" cy="6" r="2"/>
-            <circle cx="18" cy="6" r="2"/>
-            <circle cx="12" cy="18" r="2"/>
-            <path d="m8 7 3 9m5-9-3 9M8 6h8"/>
-          </svg>
-        </span>
-        <h3>方法索引</h3>
-        <p>统一的方法体系仍在规划中，现有早期草案暂不作为正式内容使用。</p>
-        <span class="card-arrow">规划中 · 暂未开放</span>
-      </article>
-
-      <article class="route-card" aria-label="练习索引正在规划，暂未开放">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <path d="M6 3h12v18H6z"/>
-            <path d="m9 9 1.5 1.5L14 7m-5 8h6"/>
-          </svg>
-        </span>
-        <h3>练习索引</h3>
-        <p>统一的练习体系仍在规划中，待结构和反馈规则完善后再开放。</p>
-        <span class="card-arrow">规划中 · 暂未开放</span>
-      </article>
-    </div>
-
-    <div class="topic-area">
-      <div>
-        <h3>当前开放专题</h3>
-        <p class="hint">整行都是入口，可以直接点击。</p>
-      </div>
-      <div class="topic-list">
-        <a class="topic-link" href="00_初高中衔接知识/chapter_02-1_完全平方与平方差公式/index.html"><span>完全平方与平方差公式</span><span aria-hidden="true">↗</span></a>
-        <a class="topic-link" href="00_初高中衔接知识/chapter_02-2_立方相关公式/index.html"><span>立方相关公式</span><span aria-hidden="true">↗</span></a>
-        <a class="topic-link" href="00_初高中衔接知识/chapter_03_多项式变形与因式分解/index.html"><span>多项式变形与因式分解</span><span aria-hidden="true">↗</span></a>
-        <a class="topic-link" href="00_初高中衔接知识/chapter_04_分式根式与条件控制/index.html"><span>分式根式与条件控制</span><span aria-hidden="true">↗</span></a>
-        <a class="topic-link" href="00_初高中衔接知识/chapter_05_方程不等式与约束/index.html"><span>方程不等式与约束</span><span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="shell section" id="about">
-    <div class="section-head">
-      <div>
-        <span class="section-label">How It Grows</span>
-        <h2>先把知识讲清楚，再决定怎样呈现。</h2>
-      </div>
-      <p class="section-intro">OpenKS 以内容为中心。页面、图像、交互与视频都服务于理解，而不是替代可靠的知识来源。</p>
-    </div>
-
-    <div class="principles">
-      <article class="principle">
-        <span class="principle-number">01</span>
-        <h3>知识有来源</h3>
-        <p>核心内容先沉淀为可阅读、可检查的 Markdown，不让页面效果成为唯一解释。</p>
-      </article>
-      <article class="principle">
-        <span class="principle-number">02</span>
-        <h3>入口有层级</h3>
-        <p>首页只负责找到知识分支与可靠入口，不把所有章节同时堆到第一屏。</p>
-      </article>
-      <article class="principle">
-        <span class="principle-number">03</span>
-        <h3>内容准备好才开放</h3>
-        <p>尚未完成的分支只保留位置，不制造死链接，也不假装已经可以学习。</p>
-      </article>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="shell footer-inner">
-    <span>OpenKS · Open Knowledge Space</span>
-    <div class="footer-links">
-      <a href="#domains">知识分支</a>
-      <a href="#mathematics">数学</a>
-      <a href="#top">返回顶部</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>

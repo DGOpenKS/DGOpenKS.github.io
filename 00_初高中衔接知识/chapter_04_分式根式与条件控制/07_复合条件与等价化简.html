@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="复合表达式先从内到外收集条件并取交集，再在共同允许范围内化简，隐藏的限制仍要保留。">
+  <meta name="description" content="复合表达式先收集分式与根式条件，再判断嵌套根号能否利用完全平方结构拆开，并在共同允许范围内完成等价化简。">
   <title>复合条件与等价化简 | OpenKS</title>
   <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -18,7 +18,7 @@
   <header class="hero">
     <span class="eyebrow">初高中衔接 · Chapter 04 · 第 7 节 / 共七节</span>
     <h1>复合条件与等价化简</h1>
-    <p class="lead">面对嵌套根号、根式分母和可约因子，应当先化简还是先找条件？正确顺序是先收集原式条件，再在共同允许范围内变形。</p>
+    <p class="lead">面对嵌套根号、根式分母和可约因子，先收集原式条件并取交集，再检查嵌套根号能否利用完全平方结构拆开，最后在共同允许范围内变形。</p>
   </header>
   <main id="main"><section class="section" id="section-1" aria-labelledby="section-1-title">
   <div class="marker"><span>01</span>内层根式</div>
@@ -32,7 +32,7 @@ E(x)=
 {(x-1)\sqrt{x+2}}
 $$</div>
 <p>分子、分母都有因子 $x-1$，似乎可以立刻约去；式子里又有三个根号，其中一个还套在另一个根号里。如果先化简再寻找条件，很可能把 $x=1$ 重新放进结果；如果只检查最外层根号，又会漏掉内层根式的限制。</p>
-<p>面对复合表达式，可靠的方法不是“先算起来再说”，而是先拆开结构层级，建立原式的允许范围，然后只在这个范围内变形。</p>
+<p>面对复合表达式，先拆开结构层级并建立原式的允许范围。条件完整以后，再检查嵌套根号能否利用完全平方结构拆开，并在共同允许范围内完成约分、有理化等变形。</p>
 <p>表达式中最内层的根式是：</p>
 <div class="equation-card">$$
 \sqrt{x+1}
@@ -115,8 +115,9 @@ $$</div>
 <div class="equation-card">$$
 x\ne1
 $$</div>
-<p>现在，原式产生的条件已经全部找到：</p>
-<div class="equation-card">$$
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \begin{cases}
 x\ge-1,\\
 x\le8,\\
@@ -124,77 +125,155 @@ x>-2,\\
 x\ne1.
 \end{cases}
 $$</div>
-<p>其中 $x\ge-1$ 已经能够保证 $x>-2$，所以取共同范围后得到：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">这四个条件分别保证内层根式、外层根式、根式分母和普通分母因子成立，原式必须同时满足它们。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
 x\in[-1,1)\cup(1,8]
 $$</div>
+    <p class="derivation-note">条件 $x\ge-1$ 已经能够保证 $x>-2$；再结合 $x\le8$ 并排除 $x=1$，全部条件的交集就是 $[-1,1)\cup(1,8]$。</p>
+  </div>
+</div>
 <p>复合条件不是把所有不等式依次写下来就结束，而是要取它们的交集，得到能够同时让全部结构成立的范围。</p>
   </div>
 </section><section class="section" id="section-5" aria-labelledby="section-5-title">
-  <div class="marker"><span>05</span>允许范围</div>
+  <div class="marker"><span>05</span>嵌套化简</div>
   <div class="section-body prose">
-    <h2 id="section-5-title">5. 共同允许范围内的约分</h2>
-    <p>原式分子、分母都有因子 $x-1$。现在已经记录 $x\ne1$，所以在原式允许范围内，$x-1$ 确定非零，可以约去：</p>
+    <h2 id="section-5-title">5. 完全平方结构可以化简嵌套根号</h2>
+    <p>条件已经检查完整，接下来才进入化简。例如：</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
+\sqrt{3+2\sqrt2}
+$$</div>
+    <p class="derivation-note">外层被开方数是 $3+2\sqrt2$。如果它能写成一个非负式子的平方，外层根号就可以化简。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
+(\sqrt m+\sqrt n)^2
+=m+n+2\sqrt{mn}
+$$</div>
+    <p class="derivation-note">展开平方后，两个平方项给出 $m+n$，两个交叉项合成 $2\sqrt{mn}$；这正对应 $3+2\sqrt2$ 的两部分。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
+m+n=3,
+\qquad
+mn=2
+$$</div>
+    <p class="derivation-note">要让 $m+n+2\sqrt{mn}$ 与 $3+2\sqrt2$ 对应，必须找到非负数 $m,n$，同时满足 $m+n=3$ 和 $mn=2$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
+3+2\sqrt2
+=(\sqrt2+1)^2
+$$</div>
+    <p class="derivation-note">取 $m=2,n=1$ 时，既有 $2+1=3$，又有 $2\times1=2$，所以 $3+2\sqrt2$ 正好等于 $(\sqrt2+1)^2$。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
+\sqrt{3+2\sqrt2}
+=\sqrt{(\sqrt2+1)^2}
+=|\sqrt2+1|
+=\sqrt2+1
+$$</div>
+    <p class="derivation-note">中间先写绝对值，是因为 $\sqrt{A^2}=|A|$。这里 $\sqrt2+1$ 本来就是正数，所以绝对值可以去掉。</p>
+  </div>
+</div>
+<p>减号情形使用同样的结构：</p>
 <div class="equation-card">$$
+3-2\sqrt2
+=(\sqrt2-1)^2
+$$</div>
+<p>因此：</p>
+<div class="equation-card">$$
+\sqrt{3-2\sqrt2}
+=|\sqrt2-1|
+=\sqrt2-1
+$$</div>
+<p>最后一步成立，是因为 $\sqrt2&gt;1$。如果不能确定平方中式子的正负，就必须保留绝对值。</p>
+<p>把这两种结构写在一起，就是：当 $m,n\ge0$ 时，</p>
+<div class="equation-card">$$
+\sqrt{m+n+2\sqrt{mn}}
+=\sqrt m+\sqrt n
+$$</div>
+<div class="equation-card">$$
+\sqrt{m+n-2\sqrt{mn}}
+=|\sqrt m-\sqrt n|
+$$</div>
+<p>判断嵌套根号能否化简时，可以这样检查：</p>
+<ul class="article-list"><li>先把被开方数整理成 $A\pm2\sqrt B$，再寻找非负数 $m,n$，使 $m+n=A$、$mn=B$。</li><li>展开对应的平方进行回验，并在外层开方时处理绝对值。</li><li>如果找不到能让结果更简单的配对，就保留原式，不强行改写。</li></ul>
+<p>这里不是把根号直接分配到加减法中。一般来说，$\sqrt{a+b}\ne\sqrt a+\sqrt b$。上面的化简能够成立，是因为先把整个被开方数认成了一个完整的平方。</p>
+<p>本页原式中的</p>
+<div class="equation-card">$$
+\sqrt{3-\sqrt{x+1}}
+$$</div>
+<p>随着 $x$ 的变化，被减去的根式也在变化，不能用一组固定的简单 $m,n$ 在整个允许范围内完成上面的配对。因此，这一项的主要处理是从内到外检查条件，并保留原来的形式。</p>
+<p>当 $x$ 取某些具体值时，它也可能出现可拆结构。例如 $x=7$ 时：</p>
+<div class="equation-card">$$
+\sqrt{3-\sqrt{x+1}}
+=\sqrt{3-\sqrt8}
+=\sqrt{3-2\sqrt2}
+=\sqrt2-1
+$$</div>
+<p>这说明嵌套根号能否拆开，取决于当前被开方数是否具有完全平方结构，而不是只由“根号套根号”的外形决定。</p>
+  </div>
+</section><section class="section" id="section-6" aria-labelledby="section-6-title">
+  <div class="marker"><span>06</span>允许范围</div>
+  <div class="section-body prose">
+    <h2 id="section-6-title">6. 共同允许范围内的约分</h2>
+    <div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 E(x)
 =
 \frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}}
 $$</div>
-<p>完整结论必须写成：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">原式分子、分母都有因子 $x-1$。原式条件已经排除 $x=1$，所以在允许范围内 $x-1$ 确定非零，可以约去。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
 E(x)
 =
 \frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}},
 \qquad
 x\in[-1,1)\cup(1,8]
 $$</div>
-<p>化简后的式子自身在 $x=1$ 时有意义，但原式在 $x=1$ 时出现了 $\dfrac00$。因此，约分后的形式不能替代原式条件。</p>
-<p>如果还要对分母 $\sqrt{x+2}$ 有理化，也必须继续在这个共同范围内进行：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">完整结论必须同时写出化简形式和原式的允许范围。化简后的式子自身在 $x=1$ 时有意义，但原式在 $x=1$ 时出现了 $\dfrac00$，所以约分后的形式不能替代原式条件。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}}
 =
 \frac{\sqrt{3-\sqrt{x+1}}\sqrt{x+2}}{x+2}
 $$</div>
-<p>这里 $x>-2$ 已由原式范围保证，因此所乘的 $\dfrac{\sqrt{x+2}}{\sqrt{x+2}}$ 确实等于 $1$。无论外形怎样继续变化，$x\ne1$ 仍然不能删除。</p>
-<div class="ledger-lab" aria-labelledby="ledger-07-title">
-  <div class="ledger-heading"><span>检查顺序</span><h3 id="ledger-07-title">复合条件的七个步骤</h3></div>
-  <p>从上往下检查并保留每一步得到的条件，最后再进行约分和化简。</p>
-  <ol class="ledger-states">
-    <li><strong>最内层根式</strong><span>$x+1\ge0$，所以 $x\ge-1$。</span></li>
-    <li><strong>外层根式</strong><span>$3-\sqrt{x+1}\ge0$，所以 $x\le8$。</span></li>
-    <li><strong>根式分母</strong><span>$\sqrt{x+2}&gt;0$，所以 $x&gt;-2$。</span></li>
-    <li><strong>普通分母因子</strong><span>$x-1\ne0$，所以 $x\ne1$。</span></li>
-    <li><strong>条件交集</strong><span>$-1\le x\le8$ 且 $x\ne1$。</span></li>
-    <li><strong>允许范围内约分</strong><span>约去 $x-1$，但 $x\ne1$ 继续保留。</span></li>
-    <li><strong>最终记录</strong><span>化简形式与原式范围同时写出。</span></li>
-  </ol>
-</div>
-<p class="visual-interpretation">条件账本把原式中的限制逐层累积。约分发生在条件交集已经确定之后，因此不会把 $x=1$ 重新放回允许范围。</p>
-
+    <p class="derivation-note">如果还要对分母 $\sqrt{x+2}$ 有理化，也必须继续在这个共同范围内进行。这里 $x>-2$ 已由原式范围保证，因此所乘的 $\dfrac{\sqrt{x+2}}{\sqrt{x+2}}$ 确实等于 $1$；无论外形怎样继续变化，$x\ne1$ 仍然不能删除。</p>
   </div>
-</section><section class="section" id="section-6" aria-labelledby="section-6-title">
-  <div class="marker"><span>06</span>等价化简</div>
-  <div class="section-body prose">
-    <h2 id="section-6-title">6. 条件检查与化简</h2>
-    <p>条件检查确定可以进入原式的值。化简则在这些允许的值上，把式子写成更便于观察或运算的形式。</p>
-<p>如果只做条件检查，就还没有完成需要的代数变形；如果只做化简，就可能在变形中扩大原式范围。真正的等价化简必须把这两部分同时保留下来：</p>
-<ol class="decision-path"><li>等价化简 = 形式上的等值变形 + 原式允许范围的一致</li></ol>
-<p>这里的“一致”不是要求化简式自身天然排除所有禁点，而是要求最终陈述明确带着原式条件，使新形式只在原式允许范围内代表原对象。</p>
+</div>
   </div>
 </section><section class="section" id="section-7" aria-labelledby="section-7-title">
-  <div class="marker"><span>07</span>条件账本</div>
+  <div class="marker"><span>07</span>等价化简</div>
   <div class="section-body prose">
-    <h2 id="section-7-title">7. 复合表达式的条件账本</h2>
-    <p>可以把整个过程整理成一条稳定的检查链：</p>
-<ol class="decision-path"><li>识别分式、根式、嵌套和可能约去的因子</li><li>从最内层根号开始，逐层记录被开方数非负</li><li>检查每一个完整分母以及分母中的乘法因子非零</li><li>把全部条件取交集，得到原式允许范围</li><li>只在共同范围内选择约分、根式运算或有理化</li><li>标记在变形中消失或不再明显的条件</li><li>比较化简形式自身范围与原式范围</li><li>同时写出最终形式和原式条件</li></ol>
+    <h2 id="section-7-title">7. 条件检查与化简</h2>
+    <p>条件检查确定可以进入原式的值。化简则在这些允许的值上，把式子写成更便于观察或运算的形式。</p>
+<p>如果只做条件检查，就还没有完成需要的代数变形；如果只做化简，就可能在变形中扩大原式范围。因此，等价化简必须同时保证形式上的等值变形和原式允许范围的一致。</p>
+<p>这里的“一致”不是要求化简式自身天然排除所有禁点，而是要求最终陈述明确带着原式条件，使新形式只在原式允许范围内代表原对象。</p>
+  </div>
+</section><section class="section" id="section-8" aria-labelledby="section-8-title">
+  <div class="marker"><span>08</span>处理顺序</div>
+  <div class="section-body prose">
+    <h2 id="section-8-title">8. 复合表达式的处理顺序</h2>
+    <p>可以把整个过程整理成四步：</p>
+<ol class="decision-path"><li>识别表达式中的分式、根式、嵌套层级和可能约去的因子，从最内层根号向外记录被开方数非负，并检查每个完整分母及其乘法因子非零。</li><li>把全部条件取交集，得到原式的允许范围。</li><li>在这个共同范围内，检查嵌套根号能否配成完全平方，再选择约分、根式运算或有理化；无法配成简单平方时就保留原式。</li><li>标记变形中消失或不再明显的条件，比较化简形式自身范围与原式范围，并同时写出最终形式和原式条件。</li></ol>
   </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
-  <div class="marker"><span>08</span>核心结论</div>
+  <div class="marker"><span>09</span>核心结论</div>
   <div class="section-body prose">
-    <h2 id="summary-title">回到开头的问题</h2>
+    <h2 id="summary-title">条件与化简一起保留</h2>
     <div class="summary-panel">
+      <div class="summary-formula">$$\sqrt{3+2\sqrt2}=\sqrt2+1,\qquad \sqrt{3-2\sqrt2}=\sqrt2-1$$</div>
       <div class="summary-formula">$$E(x)=\frac{\sqrt{3-\sqrt{x+1}}}{\sqrt{x+2}},\qquad x\in[-1,1)\cup(1,8]$$</div>
-      <p>面对嵌套根号、根式分母和可约因子时，应先从内到外收集成立条件并取交集，再在共同允许范围内化简。因子约去以后，原式留下的 $x\ne1$ 仍然必须写进最终结论。</p>
+      <p>面对嵌套根号、根式分母和可约因子时，先从内到外收集成立条件并取交集，再检查嵌套根号是否具有完全平方结构。能够配成平方时把根号拆开，不能时保留原式；因子约去以后，原式留下的 $x\ne1$ 仍然必须写进最终结论。</p>
     </div>
   </div>
 </section></main>

@@ -9,8 +9,7 @@
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
-  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -43,29 +42,39 @@ $$</div>
 <div class="equation-card">$$
 B\ne0,\qquad D\ne0
 $$</div>
-<p>例如：</p>
-<div class="equation-card">$$
+	<p>例如：</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
 $$</div>
-<p>两个原分母要求：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">两个原分母分别含有 $y$ 和 $x^2$，因此原式要求 $x\ne0$、$y\ne0$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne0,\qquad y\ne0
 $$</div>
-<p>相乘以后，把分子、分母看成因式乘积：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">$x\ne0$、$y\ne0$ 共同保证两个原分式都有意义，后续约分只能在这个范围内进行。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
 =
 \frac{12xy^2}{18x^2y}
 =
 \frac{2y}{3x}
 $$</div>
-<p>因此完整结果是：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">相乘后把分子、分母看成因式乘积，约去非零的共同因子，得到 $\dfrac{2y}{3x}$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{3x}{2y}\cdot\frac{4y^2}{9x^2}
 =
 \frac{2y}{3x},\qquad x\ne0,\ y\ne0
 $$</div>
-<p>乘法的核心是形成新的乘法因子。先观察因子再约分，通常比先把所有部分展开更容易看清结构。</p>
+    <p class="derivation-note">完整结果要同时写出化简形式 $\dfrac{2y}{3x}$ 和原分母产生的条件 $x\ne0$、$y\ne0$。乘法中先观察因子再约分，更容易看清结构。</p>
+  </div>
+</div>
   </div>
 </section><section class="section" id="section-2" aria-labelledby="section-2-title">
   <div class="marker"><span>02</span>分式除法</div>
@@ -131,16 +140,22 @@ $$</div>
 $$</div>
 <p>虽然最终结果是 $1$，原分母留下的 $x\ne1$ 仍不能删除。</p>
 <p>异分母加减时，要先把各分母写成因式乘积，再寻找能够被所有分母整除的最简公分母。</p>
-<p>例如：</p>
-<div class="equation-card">$$
+	<p>例如：</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac1{x-1}+\frac1{x+1}
 $$</div>
-<p>原式先要求：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">两个原分母分别是 $x-1$ 和 $x+1$，因此原式要求 $x\ne1$ 且 $x\ne-1$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne1,\qquad x\ne-1
 $$</div>
-<p>两个分母没有共同因式，公分母可以取 $(x-1)(x+1)$：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">这两个条件保证原式有意义。两个分母没有共同因式，最简公分母可以取 $(x-1)(x+1)$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \begin{aligned}
 \frac1{x-1}+\frac1{x+1}
 &=\frac{x+1}{(x-1)(x+1)}
@@ -148,7 +163,9 @@ $$</div>
 &=\frac{2x}{x^2-1}
 \end{aligned}
 $$</div>
-<p>通分时，分母乘了什么，整个分子也必须乘同一个因子。这样做本质上是在乘一个等于 $1$ 的分式，因此没有改变原分式的值。</p>
+    <p class="derivation-note">通分时，分母乘了什么，整个分子也必须乘同一个因子。这样做本质上是在乘一个等于 $1$ 的分式，因此没有改变原分式的值。</p>
+  </div>
+</div>
   </div>
 </section><section class="section" id="section-4" aria-labelledby="section-4-title">
   <div class="marker"><span>04</span>公分母</div>
@@ -167,88 +184,116 @@ $$</div>
 </section><section class="section" id="section-5" aria-labelledby="section-5-title">
   <div class="marker"><span>05</span>混合运算</div>
   <div class="section-body prose">
-    <h2 id="section-5-title">5. 分式的混合运算</h2>
-    <p>看下面的式子：</p>
-<div class="equation-card">$$
+	<h2 id="section-5-title">5. 分式的混合运算</h2>
+	<p>看下面的式子：</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \left(\frac{x}{x-1}-\frac1{x-1}\right)
 \div
 \frac{x+1}{x}
 $$</div>
-<p>在开始计算前，先记录条件。</p>
-<p>前两个分式要求：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">这个混合式同时含有同分母减法和分式除法。开始计算前，要先记录各分母非零以及除式不为 $0$ 的条件。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne1
 $$</div>
-<p>除式 $\dfrac{x+1}{x}$ 的分母要求 $x\ne0$；除式本身还不能等于 $0$，所以：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">括号内两个分式的分母都是 $x-1$，所以它们共同要求 $x\ne1$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x+1\ne0
 $$</div>
-<p>也就是 $x\ne-1$。原式的全部条件为：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">除式 $\dfrac{x+1}{x}$ 的分母要求 $x\ne0$；除式本身还不能等于 $0$，所以它的分子还需满足 $x+1\ne0$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne1,\qquad x\ne0,\qquad x\ne-1
 $$</div>
-<p>现在先处理括号内的同分母减法：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">由 $x+1\ne0$ 得到 $x\ne-1$。把它与 $x\ne0$、$x\ne1$ 合并，原式的全部条件是 $x\ne-1,0,1$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{x}{x-1}-\frac1{x-1}
 =
 \frac{x-1}{x-1}
 =1
 $$</div>
-<p>再把除法改写成乘倒数：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">括号内是同分母减法，合并分子后得到 $\dfrac{x-1}{x-1}=1$。这一变形仍以 $x\ne1$ 为前提。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 1\div\frac{x+1}{x}
 =
 1\cdot\frac{x}{x+1}
 =
 \frac{x}{x+1}
 $$</div>
-<p>所以完整结果是：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">除以 $\dfrac{x+1}{x}$ 等于乘它的倒数 $\dfrac{x}{x+1}$，因此化简形式为 $\dfrac{x}{x+1}$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \left(\frac{x}{x-1}-\frac1{x-1}\right)
 \div
 \frac{x+1}{x}
 =
 \frac{x}{x+1},\qquad x\ne-1,0,1
 $$</div>
-<p>化简后的分式自身只会排除 $x=-1$，但原式还排除了 $x=0$ 和 $x=1$。如果只看最后一行的分母，就会把原式不允许的值重新放回来。</p>
+    <div class="derivation-note"><p>完整结果必须同时写出化简形式 $\dfrac{x}{x+1}$ 和原式条件 $x\ne-1,0,1$。</p><p>化简后的分式自身只会排除 $x=-1$，但原式还排除了 $x=0$ 和 $x=1$。如果只看最后一行的分母，就会把原式不允许的值重新放回来。</p></div>
+  </div>
+</div>
   </div>
 </section><section class="section" id="section-6" aria-labelledby="section-6-title">
   <div class="marker"><span>06</span>繁分式</div>
   <div class="section-body prose">
-    <h2 id="section-6-title">6. 繁分式</h2>
-    <p>分子或分母本身还含有分式时，大分数线仍然表示除法。例如：</p>
-<div class="equation-card">$$
+	<h2 id="section-6-title">6. 繁分式</h2>
+	<p>分子或分母本身还含有分式时，大分数线仍然表示除法。例如：</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{\dfrac1x+\dfrac1y}{\dfrac1x-\dfrac1y}
 $$</div>
-<p>处理它时，先分别整理大分数线的上方和下方，再把整个式子看成一次除法。开始前需要记录：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">大分数线表示一次除法。处理时先分别整理上方和下方，同时记录 $x\ne0$、$y\ne0$ 以及大分数线下方不为 $0$ 的条件。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne0,\qquad y\ne0,\qquad \frac1x-\frac1y\ne0
 $$</div>
-<p>最后一个条件等价于 $x\ne y$。分别通分后：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">前两个条件保证小分式有意义，最后一个条件等价于 $x\ne y$。在这些条件下，可以分别通分大分数线的上方和下方。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac1x+\frac1y=\frac{x+y}{xy},
 \qquad
 \frac1x-\frac1y=\frac{y-x}{xy}
 $$</div>
-<p>于是：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">通分后，大分数线的上方为 $\dfrac{x+y}{xy}$，下方为 $\dfrac{y-x}{xy}$，接下来可以把整个繁分式改写为一次除法。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{\dfrac1x+\dfrac1y}{\dfrac1x-\dfrac1y}
 =
 \frac{x+y}{xy}\div\frac{y-x}{xy}
 =
 \frac{x+y}{y-x}
 $$</div>
-<p>完整条件仍然是：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">把大分数线改写为除法后，约去共同的非零因子 $xy$，繁分式化为 $\dfrac{x+y}{y-x}$。约分不会删除原式条件。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 x\ne0,\qquad y\ne0,\qquad x\ne y
 $$</div>
-<p>繁分式没有新的运算法则，它只是把通分、除法和条件检查叠在同一个表达式中。</p>
+    <p class="derivation-note">完整结论仍需保留 $x\ne0$、$y\ne0$、$x\ne y$。繁分式没有新的运算法则，它只是把通分、除法和条件检查叠在同一个表达式中。</p>
+  </div>
+</div>
   </div>
 </section><section class="section" id="section-7" aria-labelledby="section-7-title">
-  <div class="marker"><span>07</span>运算顺序</div>
+  <div class="marker"><span>07</span>结构对照</div>
   <div class="section-body prose">
-    <h2 id="section-7-title">7. 分式运算的统一顺序</h2>
-    <ol class="decision-path"><li>先记录所有原分母非零的条件</li><li>识别当前是乘、除、加还是减</li><li>除法额外检查除式非零，再改写成乘倒数</li><li>加减先分解分母，再寻找最简公分母</li><li>乘除把各部分整理成乘法因子</li><li>完成运算后再约分和化简</li><li>在最终形式旁保留运算前的全部限制</li></ol>
+    <h2 id="section-7-title">7. 运算结构与原式条件</h2>
+    <p>分式运算要先看运算符号。乘除处理的是因子的乘积，其中除法需要先改写成乘倒数；加减处理的是同一种分数单位，需要先通分。不同运算对应不同结构，并不存在一条必须依次执行的统一流程。</p>
+<p>无论采用哪一种运算，原式中的每一个分母以及除式都会产生相应的限制。完成运算、约分和化简以后，这些限制仍要保留在最终结果中。正确结果不仅是一个化简后的式子，还包括这个式子继承的全部原式条件。</p>
   </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
   <div class="marker"><span>08</span>核心结论</div>

@@ -9,8 +9,7 @@
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
-  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -26,24 +25,31 @@
   <div class="section-body prose">
     <h2 id="section-1-title">1. 乘以 $1$ 的等值变形</h2>
     <p>看下面这个分式：</p>
-<div class="equation-card">$$
+<p>关键不是背诵“上下同乘根号”，而是找到一个等于 $1$ 的分式。分子、分母同时乘同一个非零式子，整个分式的值不变；选择什么式子，则由分母的结构决定。</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac1{\sqrt3}
 $$</div>
-<p>分母有理化要把分母写成不含根号的形式，同时保持整个分式的值不变。</p>
-<p>关键不是背诵“上下同乘根号”，而是找到一个等于 $1$ 的分式。分子、分母同时乘同一个非零式子，整个分式的值不变；选择什么式子，则由分母的结构决定。</p>
-<p>因为 $\sqrt3\ne0$，所以：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">这个分式的分母含有根号。有理化的目标是在保持分式值不变的前提下，把分母改写成不含根号的形式。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{\sqrt3}{\sqrt3}=1
 $$</div>
-<p>原式可以写成：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">因为 $\sqrt3\ne0$，分子、分母又是同一个数，所以 $\dfrac{\sqrt3}{\sqrt3}=1$。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
 \frac1{\sqrt3}
 =
 \frac1{\sqrt3}\cdot\frac{\sqrt3}{\sqrt3}
 =
 \frac{\sqrt3}{3}
 $$</div>
-<p>分母中的根号消失了，但分式的值没有改变。这个过程称为分母有理化。</p>
+    <p class="derivation-note">原式乘以等于 $1$ 的 $\dfrac{\sqrt3}{\sqrt3}$ 后，分母中的 $\sqrt3\cdot\sqrt3$ 变成 $3$，于是得到 $\dfrac{\sqrt3}{3}$。分式的值没有改变，分母也不再含根号。</p>
+  </div>
+</div>
 <p>分母有理化的本质是：选择一个合适的非零式子，使分母经过乘法后变成不含根号的式子，同时让整个分式只乘以 $1$。</p>
   </div>
 </section><section class="section" id="section-2" aria-labelledby="section-2-title">
@@ -78,20 +84,27 @@ $$</div>
   <div class="section-body prose">
     <h2 id="section-3-title">3. 两项和差与共轭式</h2>
     <p>如果分母是 $\sqrt5-2$，只乘 $\sqrt5$ 并不能消去整个分母中的根号。这里需要利用平方差公式：</p>
-<div class="equation-card">$$
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 (u-v)(u+v)=u^2-v^2
 $$</div>
-<p>$u-v$ 与 $u+v$ 称为一对共轭式。它们相乘时，中间的交叉项抵消，只剩两个平方。</p>
-<p>因此：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">$u-v$ 与 $u+v$ 是一对共轭式。展开乘积时，$uv$ 与 $-uv$ 相互抵消，因此只剩 $u^2-v^2$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac1{\sqrt5-2}
 $$</div>
-<p>可以乘以：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">分母是 $\sqrt5-2$，选择共轭式 $\sqrt5+2$，就能把两者的乘积化为平方差 $5-4$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \frac{\sqrt5+2}{\sqrt5+2}
 $$</div>
-<p>由于 $\sqrt5+2>0$，这个分式确实等于 $1$。于是：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">由于 $\sqrt5+2>0$，分子、分母相同且都不为零，所以这个分式等于 $1$。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
 \begin{aligned}
 \frac1{\sqrt5-2}
 &=\frac1{\sqrt5-2}\cdot
@@ -100,6 +113,9 @@ $$</div>
 &=\sqrt5+2
 \end{aligned}
 $$</div>
+    <p class="derivation-note">原式乘以等于 $1$ 的共轭分式后，分母按平方差化为 $(\sqrt5)^2-2^2=5-4=1$，因此结果只剩 $\sqrt5+2$。</p>
+  </div>
+</div>
 <p>同样地：</p>
 <div class="equation-card">$$
 \frac1{\sqrt3+\sqrt2}
@@ -164,14 +180,8 @@ $$</div>
 $$</div>
 <p>有理化以后，新的分母 $x-1$ 仍能排除 $x=1$。即使某些变形使原来的限制不再明显，也必须把原式条件保留下来。</p>
   </div>
-</section><section class="section" id="section-6" aria-labelledby="section-6-title">
-  <div class="marker"><span>06</span>处理顺序</div>
-  <div class="section-body prose">
-    <h2 id="section-6-title">6. 分母有理化的顺序</h2>
-    <ol class="decision-path"><li>先写原分母有意义且非零的条件</li><li>先化简分母，判断它的真实结构</li><li>单个根式因子考虑乘相应根式</li><li>两项根式和差考虑平方差与共轭式</li><li>确认所乘的式子非零，构成的分式确实等于 1</li><li>完成乘法并化简</li><li>在结果旁保留原式条件</li></ol>
-  </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
-  <div class="marker"><span>07</span>核心结论</div>
+  <div class="marker"><span>06</span>核心结论</div>
   <div class="section-body prose">
     <h2 id="summary-title">回到开头的问题</h2>
     <div class="summary-panel">

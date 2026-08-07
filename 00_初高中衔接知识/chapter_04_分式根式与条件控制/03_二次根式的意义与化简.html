@@ -9,8 +9,7 @@
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
-  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -79,75 +78,70 @@ $$</div>
 <div class="equation-card">$$
 \sqrt{36}=6
 $$</div>
-<p>如果被开方数不能完全开方，就要看其中是否含有完全平方因子。例如：</p>
-<div class="equation-card">$$
-\sqrt{72}
-$$</div>
-<p>因为：</p>
-<div class="equation-card">$$
-72=36\cdot2
-$$</div>
-<p>而 $36$、$2$ 都非负，所以可以使用：</p>
+<p>如果被开方数不能完全开方，就要看其中是否含有完全平方因子。对于 $\sqrt{72}$，先识别其中的完全平方因子。</p>
+<p>$36$、$2$ 都非负，所以可以使用：</p>
 <div class="equation-card">$$
 \sqrt{ab}=\sqrt a\sqrt b,\qquad a\ge0,\ b\ge0
 $$</div>
-<p>得到：</p>
-<div class="equation-card">$$
-\sqrt{72}
-=
-\sqrt{36\cdot2}
-=
-6\sqrt2
-$$</div>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$72=36\cdot2$$</div>
+    <p class="derivation-note">$36=6^2$ 是 $72$ 中能够完全开方的因子。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$\sqrt{72}=\sqrt{36\cdot2}=\sqrt{36}\sqrt2$$</div>
+    <p class="derivation-note">$36$、$2$ 都非负，因此可以将乘积的算术平方根拆开。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$\sqrt{72}=6\sqrt2$$</div>
+    <p class="derivation-note">$\sqrt{36}=6$，所以完全平方因子被开到根号外。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$72=2^3\cdot3^2=2^2\cdot3^2\cdot2$$</div>
+    <p class="derivation-note">数较大时，也可以通过质因数分解找到成对出现的相同因子。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$\sqrt{72}=2\cdot3\sqrt2=6\sqrt2$$</div>
+    <p class="derivation-note">每一对相同因子组成一个平方，开方后每对留下一个因子。</p>
+  </div>
+</div>
 <p>这不是把 $6$ 从根号里“搬出来”，而是识别出 $36=6^2$，再让算术平方根还原这个非负的平方结构。</p>
-<p>也可以用质因数分解看见相同结构：</p>
-<div class="equation-card">$$
-72=2^3\cdot3^2
-=2^2\cdot3^2\cdot2
-$$</div>
-<p>成对出现的相同因子组成平方，开方后每一对留下一个因子：</p>
-<div class="equation-card">$$
-\sqrt{72}=2\cdot3\sqrt2=6\sqrt2
-$$</div>
   </div>
 </section><section class="section" id="section-4" aria-labelledby="section-4-title">
   <div class="marker"><span>04</span>绝对值</div>
   <div class="section-body prose">
     <h2 id="section-4-title">4. 字母平方与绝对值</h2>
     <p>数字 $6$ 已经确定非负，所以 $\sqrt{6^2}=6$。字母 $a$ 的符号却不确定。</p>
-<p>如果 $a\ge0$，那么：</p>
-<div class="equation-card">$$
-\sqrt{a^2}=a
-$$</div>
-<p>如果 $a<0$，那么 $-a>0$，而且：</p>
-<div class="equation-card">$$
-(-a)^2=a^2
-$$</div>
-<p>此时算术平方根必须取非负值，所以：</p>
-<div class="equation-card">$$
-\sqrt{a^2}=-a
-$$</div>
-<p>把两种情况合在一起，得到：</p>
-<div class="equation-card">$$
-\boxed{\sqrt{a^2}=|a|}
-$$</div>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$a\ge0\quad\Longrightarrow\quad\sqrt{a^2}=a$$</div>
+    <p class="derivation-note">$a$ 已经是非负数，算术平方根直接取 $a$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$a<0\quad\Longrightarrow\quad(-a)^2=a^2,\qquad\sqrt{a^2}=-a$$</div>
+    <p class="derivation-note">此时 $-a>0$，算术平方根必须取这个非负值。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$\sqrt{a^2}=|a|$$</div>
+    <p class="derivation-note">绝对值把 $a$ 的两种符号情况统一成非负结果。</p>
+  </div>
+</div>
 <p>绝对值不是额外附加的符号，而是算术平方根非负性的直接结果。</p>
-<p>例如：</p>
-<div class="equation-card">$$
-\sqrt{18(x-1)^2}
-$$</div>
-<p>先把平方结构分开：</p>
-<div class="equation-card">$$
-18(x-1)^2=9\cdot2\cdot(x-1)^2
-$$</div>
-<p>于是：</p>
-<div class="equation-card">$$
-\begin{aligned}
-\sqrt{18(x-1)^2}
-&=\sqrt9\sqrt2\sqrt{(x-1)^2}\\
-&=3\sqrt2\,|x-1|
-\end{aligned}
-$$</div>
+<p>再看 $\sqrt{18(x-1)^2}$，其中同时含有数字平方和字母平方。</p>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$18(x-1)^2=9\cdot2\cdot(x-1)^2$$</div>
+    <p class="derivation-note">先把能够完全开方的 $9$ 和 $(x-1)^2$ 分出来。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$\sqrt{18(x-1)^2}=\sqrt9\sqrt2\sqrt{(x-1)^2}$$</div>
+    <p class="derivation-note">在各因子非负的条件下，将乘积的算术平方根拆开。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$\sqrt{18(x-1)^2}=3\sqrt2\,|x-1|$$</div>
+    <p class="derivation-note">$\sqrt9=3$，而 $\sqrt{(x-1)^2}=|x-1|$，字母因式的符号不能被省略。</p>
+  </div>
+</div>
 <p>只有已经知道 $x-1\ge0$，也就是 $x\ge1$ 时，才能把 $|x-1|$ 继续写成 $x-1$。如果不知道 $x$ 的范围，就必须保留绝对值。</p>
   </div>
 </section><section class="section" id="section-5" aria-labelledby="section-5-title">
@@ -192,15 +186,11 @@ $$</div>
 \sqrt{12}=\sqrt{4\cdot3}=2\sqrt3
 $$</div>
 <p>至于 $\sqrt{\dfrac12}$，它的被开方数仍含分母。怎样利用根式除法和等值变形处理这种形式，将在后面的“分母有理化”中继续说明。</p>
-  </div>
-</section><section class="section" id="section-7" aria-labelledby="section-7-title">
-  <div class="marker"><span>07</span>化简顺序</div>
-  <div class="section-body prose">
-    <h2 id="section-7-title">7. 根式化简的顺序</h2>
-    <ol class="decision-path"><li>先判断被开方数是否非负</li><li>在被开方数中寻找完全平方因子或因式</li><li>把确定的平方结构开到根号外</li><li>含字母平方时用绝对值保证结果非负</li><li>检查根号内是否仍含平方因子或分母</li><li>保留原式产生的全部条件</li></ol>
+<p>实际化简时，先确认被开方数非负，再寻找能够开得尽方的因数或因式，把确定的平方结构开到根号外。遇到字母平方时，要根据符号写成绝对值或确定的正负形式。最后还要检查根号内是否仍含平方因子或分母，并保留原式产生的全部条件。</p>
+<p>根式化简不是把符号机械地移出根号，而是在非负性控制下识别并还原平方结构。$\sqrt{a^2}=|a|$ 正是这条原则最重要的体现。</p>
   </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
-  <div class="marker"><span>08</span>核心结论</div>
+  <div class="marker"><span>07</span>核心结论</div>
   <div class="section-body prose">
     <h2 id="summary-title">回到开头的问题</h2>
     <div class="summary-panel">

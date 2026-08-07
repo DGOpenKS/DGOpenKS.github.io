@@ -9,8 +9,7 @@
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
-  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -26,22 +25,32 @@
   <div class="section-body prose">
     <h2 id="section-1-title">1. 二分之一次方</h2>
     <p>整数指数 $a^3$ 表示三个 $a$ 相乘，负整数指数 $a^{-2}$ 表示 $a^2$ 的倒数。继续扩展指数范围时，会出现：</p>
-<div class="equation-card">$$
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 a^{\frac12}
 $$</div>
-<p>这个符号需要与已有的指数运算保持一致。分数指数幂的定义使原来的指数法则继续成立，也把开方纳入同一套指数语言。</p>
-<p>指数运算希望继续满足：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">$a^{1/2}$ 是对整数指数写法的扩展。它的含义必须与已有的指数法则一致，才能把开平方纳入同一套指数语言。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 (a^r)^s=a^{rs}
 $$</div>
-<p>如果取 $r=\dfrac12$、$s=2$，就会得到：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">幂的幂法则规定，幂再乘方时要把两个指数相乘。把指数扩展到分数后，这条法则仍应成立。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \left(a^{\frac12}\right)^2=a
 $$</div>
-<p>也就是说，$a^{1/2}$ 应当表示一个平方等于 $a$ 的数。为了让这个表示是确定的，我们取非负的算术平方根：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">在幂的幂法则中取 $r=\dfrac12$、$s=2$，因为 $\dfrac12\times2=1$，所以 $\left(a^{1/2}\right)^2=a^1=a$。</p>
+  </div>
+  <div class="derivation-step is-result">
+    <div class="derivation-formula">$$
 a^{\frac12}=\sqrt a,\qquad a\ge0
 $$</div>
+    <p class="derivation-note">$a^{1/2}$ 应当表示一个平方等于 $a$ 的确定数。当 $a\ge0$ 时，取非负的算术平方根，就得到 $a^{1/2}=\sqrt a$。</p>
+  </div>
+</div>
 <p>例如：</p>
 <div class="equation-card">$$
 9^{\frac12}=\sqrt9=3
@@ -188,14 +197,8 @@ a^{\frac23}\cdot a^{\frac13}=a
 $$</div>
 <p>符号语言可以转换，但转换时不能把定义范围丢掉。</p>
   </div>
-</section><section class="section" id="section-7" aria-labelledby="section-7-title">
-  <div class="marker"><span>07</span>转换顺序</div>
-  <div class="section-body prose">
-    <h2 id="section-7-title">7. 根式与分数指数的转换顺序</h2>
-    <ol class="decision-path"><li>先确认底数和整个式子的允许范围</li><li>读指数分母，确定开方次数</li><li>读指数分子，确定乘方次数</li><li>指数为负时再取倒数</li><li>根据任务选择根式写法或指数写法</li><li>转换后检查原来的定义范围是否仍被保留</li></ol>
-  </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
-  <div class="marker"><span>08</span>核心结论</div>
+  <div class="marker"><span>07</span>核心结论</div>
   <div class="section-body prose">
     <h2 id="summary-title">回到开头的问题</h2>
     <div class="summary-panel">

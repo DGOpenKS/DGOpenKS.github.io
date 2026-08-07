@@ -9,8 +9,7 @@
   <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter04.css?v=20260805">
-  <script src="assets/chapter04.js?v=20260805" defer></script>
+  <link rel="stylesheet" href="assets/chapter04.css?v=20260808-4">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body class="chapter04-page">
@@ -34,17 +33,23 @@ $$</div>
 $$</div>
 <p>乘法可以按照乘积结构合并被开方数，加法则只能按照同类项结构合并系数。把两种结构分开，才能避免把乘法规则错误地用到加法中。</p>
 <p>根式没有一条适用于所有运算的万能规则。乘除依靠乘积和商的结构，加减依靠同类项的结构。开始计算前，必须先看清运算符号和根式形式。</p>
-<p>当 $a\ge0$、$b\ge0$ 时，$\sqrt a$、$\sqrt b$ 都是非负数，它们的乘积也非负。这个乘积的平方是：</p>
-<div class="equation-card">$$
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 (\sqrt a\sqrt b)^2
 =
 (\sqrt a)^2(\sqrt b)^2
 =ab
 $$</div>
-<p>因此，$\sqrt a\sqrt b$ 正是 $ab$ 的算术平方根：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">当 $a\ge0$、$b\ge0$ 时，$\sqrt a$、$\sqrt b$ 都是非负数，它们的乘积也非负。这个乘积的平方等于 $ab$。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \sqrt a\sqrt b=\sqrt{ab},\qquad a\ge0,\ b\ge0
 $$</div>
+    <p class="derivation-note">$\sqrt a\sqrt b$ 既是非负数，平方又等于 $ab$，所以它正是 $ab$ 的算术平方根。</p>
+  </div>
+</div>
 <p>例如：</p>
 <div class="equation-card">$$
 \sqrt8\cdot\sqrt2
@@ -117,25 +122,32 @@ $$</div>
 </section><section class="section" id="section-4" aria-labelledby="section-4-title">
   <div class="marker"><span>04</span>先化简</div>
   <div class="section-body prose">
-    <h2 id="section-4-title">4. 加减前的根式化简</h2>
-    <p>有些根式表面上被开方数不同，化简后才会显出同类结构。例如：</p>
-<div class="equation-card">$$
+	<h2 id="section-4-title">4. 加减前的根式化简</h2>
+<div class="derivation-block">
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \sqrt8+\sqrt{18}
 $$</div>
-<p>先分别化简：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">$\sqrt8$ 与 $\sqrt{18}$ 表面上被开方数不同，暂时不能直接判断是否同类，需要先分别化简。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \sqrt8=2\sqrt2,
 \qquad
 \sqrt{18}=3\sqrt2
 $$</div>
-<p>现在两个根式都含有 $\sqrt2$，可以合并系数：</p>
-<div class="equation-card">$$
+    <p class="derivation-note">$\sqrt8$ 和 $\sqrt{18}$ 分别提取平方因子后，都化为 $\sqrt2$ 的倍数，因此它们是同类二次根式。</p>
+  </div>
+  <div class="derivation-step">
+    <div class="derivation-formula">$$
 \sqrt8+\sqrt{18}
 =
 2\sqrt2+3\sqrt2
 =5\sqrt2
 $$</div>
-<p>因此，根式加减的第一步通常不是急着合并，而是先把各根式化到最简，再判断是否同类。</p>
+    <div class="derivation-note"><p>两个根式化简后都含有 $\sqrt2$，可以合并系数，得到 $5\sqrt2$。</p><p>根式加减时，先把各根式化到最简，再判断是否同类。</p></div>
+  </div>
+</div>
   </div>
 </section><section class="section" id="section-5" aria-labelledby="section-5-title">
   <div class="marker"><span>05</span>运算律</div>
@@ -178,15 +190,10 @@ $$</div>
 $$</div>
 <p>这个过程没有把加法错误地放进同一个根号，而是先按同类根式结构合并，再按根式除法处理。</p>
 <p>如果根式中含有字母，开始前还要先写出每个被开方数非负以及每个分母非零的条件。运算可以改变式子的外形，原式条件仍要保留。</p>
-  </div>
-</section><section class="section" id="section-7" aria-labelledby="section-7-title">
-  <div class="marker"><span>07</span>运算顺序</div>
-  <div class="section-body prose">
-    <h2 id="section-7-title">7. 根式运算的统一顺序</h2>
-    <ol class="decision-path"><li>先确认所有二次根式在实数范围内有意义</li><li>看清当前是乘除还是加减</li><li>乘法检查两个被开方数非负，再按乘积结构处理</li><li>除法额外检查分母对应的根式非零</li><li>加减先把各根式化到最简</li><li>只合并同类根式的系数</li><li>混合运算继续遵守原有运算顺序和代数公式</li><li>最后检查结果是否最简，并保留原式条件</li></ol>
+<p>需要带走的判断是：根式运算没有一条万能规则。乘除依靠乘积和商的结构，加减依靠同类项结构；运算符号和表达式形式共同决定下一步应该怎样做。</p>
   </div>
 </section><section class="section" id="summary" aria-labelledby="summary-title">
-  <div class="marker"><span>08</span>核心结论</div>
+  <div class="marker"><span>07</span>核心结论</div>
   <div class="section-body prose">
     <h2 id="summary-title">回到开头的问题</h2>
     <div class="summary-panel">

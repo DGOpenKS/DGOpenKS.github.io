@@ -6,8 +6,8 @@
 
   const root=new URL("../",script.src);
   const sequence=[
-    {path:"chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/index.html",title:"00-1 代数与函数快速回顾",menu:"../index.html",menuTitle:"DGOpenKS 总目录"},
-    {path:"chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/index.html",title:"00-2 几何与综合快速回顾",menu:"../index.html",menuTitle:"DGOpenKS 总目录"},
+    {path:"chapter_00_江西中考数学快速回顾特辑/chapter00-1_代数与函数快速回顾/index.html",title:"00-1 代数与函数快速回顾",menu:"../index.html",menuTitle:"OpenKS 总目录"},
+    {path:"chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/index.html",title:"00-2 几何与综合快速回顾",menu:"../index.html",menuTitle:"OpenKS 总目录"},
     {path:"chapter_01_初高中数学思维衔接/index.html",title:"Chapter 01 初高中数学思维衔接",menu:"chapter_01_初高中数学思维衔接/index.html",menuTitle:"Chapter 01"},
     {path:"chapter_02-1_完全平方与平方差公式/index.html",title:"Chapter 02-1 完全平方与平方差公式",menu:"chapter_02-1_完全平方与平方差公式/index.html",menuTitle:"Chapter 02-1"},
     {path:"chapter_02-2_立方相关公式/index.html",title:"Chapter 02-2 立方相关公式",menu:"chapter_02-2_立方相关公式/index.html",menuTitle:"Chapter 02-2"},
@@ -116,7 +116,15 @@
       .find((item)=>currentPath.endsWith("/"+item.path));
     const inner=document.createElement("div");
     inner.className="topbar-inner";
-    inner.append(topbarLink("brand","DGOpenKS","../index.html",false));
+    const brand=topbarLink("brand","","../index.html",false);
+    brand.setAttribute("aria-label","OpenKS 首页");
+    const brandImage=document.createElement("img");
+    brandImage.src=new URL("../assets/brand/openks-lockup-a-primary.svg",root).href;
+    brandImage.alt="";
+    brandImage.width=2947;
+    brandImage.height=716;
+    brand.append(brandImage);
+    inner.append(brand);
     inner.append(topbarLink(
       "nav-link",
       chapter.title,
@@ -154,7 +162,7 @@
 
   const style=document.createElement("link");
   style.rel="stylesheet";
-  style.href=new URL("sequence-nav.css?v=20260805-4",script.src).href;
+  style.href=new URL("sequence-nav.css?v=20260808-2",script.src).href;
   document.head.appendChild(style);
 
   const previous=index>0?sequence[index-1]:null;

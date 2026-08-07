@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DGOpenKS 是一个持续生长的开放知识空间。数学是目前首先开放的知识分支。">
-<title>DGOpenKS · 开放知识空间</title>
+<meta name="description" content="OpenKS 是一个持续生长的开放知识空间。数学是目前首先开放的知识分支。">
+<title>OpenKS · 开放知识空间</title>
+<link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
 <style>
 :root{
   color-scheme:light;
@@ -73,6 +74,7 @@ svg{display:block}
 
 .brand{
   display:inline-flex;
+  min-height:44px;
   align-items:center;
   gap:.75rem;
   margin-right:auto;
@@ -81,6 +83,13 @@ svg{display:block}
   letter-spacing:.02em;
   text-decoration:none;
   white-space:nowrap;
+}
+
+.brand img{
+  display:block;
+  width:auto;
+  height:40px;
+  max-width:none;
 }
 
 .brand-mark{
@@ -605,7 +614,7 @@ a:focus-visible{
 
 @media(max-width:560px){
   .shell{width:min(100% - 1.25rem,1160px)}
-  .brand span:last-child{display:none}
+  .brand img{height:32px}
   .topbar-inner{min-height:60px}
   .hero{padding:4rem 0}
   h1{font-size:clamp(2.55rem,13vw,3.6rem)}
@@ -632,9 +641,8 @@ a:focus-visible{
 <body>
 <nav class="topbar" aria-label="首页导航">
   <div class="shell topbar-inner">
-    <a class="brand" href="#top" aria-label="返回 DGOpenKS 首页顶部">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span>DGOpenKS</span>
+    <a class="brand" href="#top" aria-label="OpenKS 首页">
+      <img src="assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
     </a>
     <div class="nav">
       <a href="#domains">知识分支</a>
@@ -648,7 +656,7 @@ a:focus-visible{
   <div>
     <div class="eyebrow">Open Knowledge Space</div>
     <h1>一个可以持续生长的知识空间。</h1>
-    <p class="hero-copy">知识不应该被关在孤立的页面里。DGOpenKS 把可靠内容组织成清晰入口，让概念、方法与练习彼此连接。数学是目前首先开放的分支。</p>
+    <p class="hero-copy">知识不应该被关在孤立的页面里。OpenKS 把可靠内容组织成清晰入口，让概念、方法与练习彼此连接。数学是目前首先开放的分支。</p>
     <div class="hero-actions">
       <a class="action-link primary" href="#mathematics">
         <span>进入数学空间</span>
@@ -855,7 +863,7 @@ a:focus-visible{
         <span class="section-label">How It Grows</span>
         <h2>先把知识讲清楚，再决定怎样呈现。</h2>
       </div>
-      <p class="section-intro">DGOpenKS 以内容为中心。页面、图像、交互与视频都服务于理解，而不是替代可靠的知识来源。</p>
+      <p class="section-intro">OpenKS 以内容为中心。页面、图像、交互与视频都服务于理解，而不是替代可靠的知识来源。</p>
     </div>
 
     <div class="principles">
@@ -880,7 +888,7 @@ a:focus-visible{
 
 <footer class="footer">
   <div class="shell footer-inner">
-    <span>DGOpenKS · Open Knowledge Space</span>
+    <span>OpenKS · Open Knowledge Space</span>
     <div class="footer-links">
       <a href="#domains">知识分支</a>
       <a href="#mathematics">数学</a>

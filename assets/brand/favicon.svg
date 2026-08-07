@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">OpenKS micro light-background color mark</title>
+  <desc id="desc">The optically adjusted three-color OpenKS symbol for 16 to 48 pixels.</desc>
+  <defs>
+    <mask id="openks-cutouts-mark" maskUnits="userSpaceOnUse" x="0" y="0" width="1254" height="1254">
+      <rect width="1254" height="1254" fill="#fff"/>
+      <circle cx="639.8" cy="645.4" r="184" fill="#000"/>
+      <g fill="none" stroke="#000" stroke-width="72" stroke-linecap="butt">
+        <path d="M639.8 645.4L850 -340"/>
+        <path d="M639.8 645.4L-240 1134"/>
+        <path d="M639.8 645.4L1390 1310"/>
+      </g>
+    </mask>
+    <clipPath id="openks-outer-mark" clipPathUnits="userSpaceOnUse"><path d="M1105.8 645.4C1098.9 686.6 1089.4 723.9 1080.3 763.5C1071.2 803 1064.4 842.4 1051.2 882.9C1037.9 923.4 1026.1 971.1 1000.8 1006.4C975.5 1041.7 938.3 1076.2 899.3 1094.9C860.3 1113.6 809.9 1114.5 766.6 1118.7C723.4 1123 682.2 1120 639.8 1120.4C597.4 1120.9 555.4 1126 512.2 1121.6C469 1117.2 419.1 1113.9 380.8 1094C342.6 1074.2 307.8 1037.9 282.7 1002.5C257.6 967.2 245.4 921.4 230.2 881.9C215 842.4 204.9 804.9 191.6 765.5C178.4 726.1 157.9 687.4 150.8 645.4C143.7 603.5 136.9 554 149.1 514C161.3 474 195.6 436.8 224.1 405.4C252.6 374.1 288.7 351.2 320.2 325.8C351.7 300.4 380.9 277.8 413.3 253.1C445.7 228.5 476.8 199.2 514.5 177.9C552.3 156.7 598.1 125.4 639.8 125.4C681.6 125.4 726.7 157.7 765.1 177.9C803.4 198.2 836.2 223.6 869.8 247.1C903.4 270.5 933.8 293.4 966.5 318.8C999.2 344.2 1040 366.5 1065.9 399.4C1091.8 432.4 1115.2 475.3 1121.8 516.3C1128.5 557.3 1112.7 604.2 1105.8 645.4Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#openks-outer-mark)" mask="url(#openks-cutouts-mark)">
+    <path fill="#263A8B" d="M639.8 645.4L-1109.4 1615A2000 2000 0 0 1 1055.6-1310.8Z"/>
+    <path fill="#3D68D8" d="M639.8 645.4L1055.6-1310.8A2000 2000 0 0 1 2137.8 1971.4Z"/>
+    <path fill="#168C88" d="M639.8 645.4L2137.8 1971.4A2000 2000 0 0 1-1109.4 1615Z"/>
+  </g>
+</svg>

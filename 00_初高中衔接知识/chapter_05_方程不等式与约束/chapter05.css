@@ -30,7 +30,8 @@ p{margin:0 0 12px;color:#334155}
 .topbar-inner{width:100%;max-width:1080px;min-width:0;margin:auto;padding:10px 20px;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
 .brand,.nav-link{text-decoration:none;white-space:nowrap}
-.brand{font-weight:900;color:var(--blue);margin-right:8px}
+.brand{display:inline-flex;min-height:44px;align-items:center;font-weight:900;color:var(--blue);margin-right:8px}
+.brand img{display:block;width:auto;height:30px;max-width:none}
 .nav-link{font-size:.84rem;font-weight:800;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:6px 10px}
 .nav-link:hover,.nav-link:focus-visible{outline:0;color:var(--blue);background:var(--blue-soft);border-color:#c7d8ff}
 .hero{max-width:1080px;margin:auto;padding:46px 20px 28px;display:grid;grid-template-columns:minmax(0,.92fr) minmax(340px,1.08fr);gap:28px;align-items:center}
@@ -89,6 +90,7 @@ main{max-width:1080px;margin:auto;padding:0 20px 82px}
 .pager a{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 12px;text-decoration:none;font-weight:900;color:var(--muted)}
 .pager a:hover,.pager a:focus-visible{outline:0;color:var(--blue);border-color:#c7d8ff;background:var(--blue-soft)}
 @media(max-width:820px){
+  .brand img{height:26px}
   .topbar{overflow:hidden}
   .topbar-inner,.hero,main,.pager{width:100%;max-width:100%;overflow-x:hidden}
   .topbar-inner{overflow-x:auto}

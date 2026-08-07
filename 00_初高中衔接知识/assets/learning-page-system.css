@@ -211,6 +211,13 @@ input{
   letter-spacing:.08em;
 }
 
+.brand img{
+  display:block;
+  width:auto;
+  height:30px;
+  max-width:none;
+}
+
 .nav-link{
   padding:.42rem .72rem;
   justify-content:center;
@@ -784,6 +791,10 @@ h2.marker{
     font-size:.78rem;
     letter-spacing:.06em;
     white-space:nowrap;
+  }
+
+  .brand img{
+    height:26px;
   }
 
   .brand::after{

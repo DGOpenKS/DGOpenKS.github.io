@@ -35,6 +35,12 @@
   font-weight:950;
   letter-spacing:.08em;
 }
+.brand img{
+  display:block;
+  width:auto;
+  height:30px;
+  max-width:none;
+}
 .nav-link{
   padding:.42rem .72rem;
   justify-content:center;
@@ -88,6 +94,10 @@
   color:var(--blue-deep,#104b62);
 }
 @media(max-width:640px){
+  .brand img{
+    height:26px;
+  }
+
   .pager{
     grid-template-columns:minmax(0,1fr);
     width:min(1180px,calc(100% - 1.75rem));

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="按固定顺序检查多项式结构，选择合适的因式分解方法，并明确分解范围与检查方式。">
+  <title>因式分解方法小结：按结构选择方法 | OpenKS</title>
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260807-2">
+  <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="章节导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+      <a class="nav-link" href="index.html">Chapter 03</a>
+      <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式</a>
+      <a class="nav-link" href="05_因式分解方法小结.html" aria-current="page">05 方法小结</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Chapter 03 · 05</span>
+    <h1>因式分解方法小结：<br><span class="title-continuation">按结构选择方法</span></h1>
+    <p class="lead">面对一个新的多项式，先做固定检查，再根据剩余结构选择方法；每得到一个新因式，都要重新检查并在最后乘回原式。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" aria-labelledby="entry-title">
+      <h2 class="marker" id="entry-title"><span aria-hidden="true">01</span>先做两项固定检查</h2>
+      <div class="section-body prose">
+        <p class="section-intro">前面几篇分别处理了不同的多项式结构。面对一个新式子时，先后顺序可以保持不变。</p>
+
+        <ol class="decision-list">
+          <li><strong>先提公因式</strong><span>检查每一项共同含有的数字、字母或整式，并把公因式完整提出。</span></li>
+          <li><strong>再查完整公式</strong><span>核对项数、指数、系数和符号；完整符合已学公式时，直接使用相应公式分解。</span></li>
+        </ol>
+
+        <div class="formula-card" aria-label="因式分解的两项固定入口检查">
+          <div class="route-formula">
+            <span>先提公因式</span>
+            <b aria-hidden="true">→</b>
+            <span>再查完整公式</span>
+          </div>
+          <p>这两项检查会降低式子的复杂程度，也能让后面的结构更容易显现。</p>
+        </div>
+
+        <p>完成这两步以后，剩余多项式的结构决定下一步使用哪种方法。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="branch-title">
+      <h2 class="marker" id="branch-title"><span aria-hidden="true">02</span>按剩余结构选择方法</h2>
+      <div class="section-body prose">
+        <p class="section-intro">固定检查完成后，先看剩余部分属于哪一类结构。</p>
+
+        <div class="formula-card" aria-label="因式分解方法的选择条件与本章边界">
+          <div class="method-branches">
+            <span><b>局部项能产生同一完整括号</b><em>使用分组分解</em></span>
+            <span><b>二次三项式的整数因数配对较少</b><em>使用十字相乘</em></span>
+            <span><b>一元二次多项式的配对较多、全部失败或需要判断实数范围</b><em>使用判别式与求根公式</em></span>
+            <span><b>同一个整式反复出现</b><em>先整体代换，再重新判断</em></span>
+            <span data-boundary><b>不符合以上结构</b><em>本章方法不能直接处理</em></span>
+          </div>
+        </div>
+
+        <ol class="decision-list">
+          <li><strong>分组分解</strong><span>各部分提出公因式后必须出现同一个完整括号；几种自然分组都无法统一括号时，换用其他方法。</span></li>
+          <li><strong>十字相乘</strong><span>已经整理好系数，且整数因数配对较少时适合使用；配对明显增多或全部失败时，及时停止试配。</span></li>
+          <li><strong>判别式与求根公式</strong><span>剩余式已经整理成一元二次多项式 $ax^2+bx+c$，且配对较多、全部整数配对失败或需要判断实数范围时使用。</span></li>
+          <li><strong>整体代换</strong><span>同一个整式反复出现时，先把它看成一个字母；按替换后的结构选择方法，最后换回原来的整式并继续检查。</span></li>
+          <li><strong>超出本章范围</strong><span>剩余式不符合以上结构时，本章方法不能直接处理。保留当前结果，不能只根据试配或分组失败断言它无法继续分解。</span></li>
+        </ol>
+
+        <p>选定方法只是完成当前一层分解。得到新因式以后，检查需要从头开始。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="loop-title">
+      <h2 class="marker" id="loop-title"><span aria-hidden="true">03</span>每得到新因式都重新检查</h2>
+      <div class="section-body prose">
+        <p class="section-intro">一次变形可能只显现部分乘积结构。把每个新因式当作新的检查对象，才能判断它是否还能继续分解。</p>
+
+        <div class="formula-card" aria-label="因式分解的重复检查过程">
+          <div class="route-formula">
+            <span>得到新因式</span>
+            <b aria-hidden="true">→</b>
+            <span>重查公因式与公式</span>
+            <b aria-hidden="true">→</b>
+            <span>按结构再选方法</span>
+            <b aria-hidden="true">↺</b>
+          </div>
+          <p>只要某个新因式仍能继续分解，就对它重复这条检查路径。</p>
+        </div>
+
+        <p>当所有非常数因式在指定系数范围内都不能继续分解时，这条循环才停止。因此，最后还要明确允许的系数范围，并乘回原式检查。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="finish-title">
+      <h2 class="marker" id="finish-title"><span aria-hidden="true">04</span>明确范围，再乘回检查</h2>
+      <div class="section-body prose">
+        <p class="section-intro">说一个多项式“不能再分解”时，需要同时说明允许的系数范围。</p>
+
+        <ol class="decision-list">
+          <li><strong>整数或有理数范围</strong><span>十字相乘主要寻找这些范围内的一次因式；整数配对失败后，还要根据当前目标判断是否需要扩展到实数。</span></li>
+          <li><strong>实数范围</strong><span>对二次三项式，$\Delta&lt;0$ 时没有实系数一次因式；$\Delta\ge0$ 时可以由实数根写出一次因式。</span></li>
+          <li><strong>乘回原式</strong><span>将所有因式展开，确认项数、次数、系数和符号全部恢复。</span></li>
+        </ol>
+
+        <div class="summary-panel">
+          <p><strong>完整路径：</strong>先提公因式，再查完整公式；按剩余结构选择方法，对新因式重新检查；达到指定系数范围内的停止位置后，乘回原式确认结果。</p>
+        </div>
+
+        <p>本章得到的因式结构会继续用于下一章的分式约分与式子化简。进入分式和根式以后，还要同时保留原式的成立条件。</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="04_求根公式法.html">← 上一篇 · 求根公式法</a>
+    <a class="pager-home" href="index.html">返回章节首页</a>
+    <a class="pager-next" href="../chapter_04_分式根式与条件控制/index.html">下一章 · 分式、根式与条件控制 →</a>
+  </nav>
+
+  <footer class="footer">OpenKS · Chapter 03 · 05 · 因式分解方法小结</footer>
+</body>
+</html>

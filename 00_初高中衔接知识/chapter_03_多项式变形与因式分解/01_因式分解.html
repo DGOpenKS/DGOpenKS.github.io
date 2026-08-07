@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="理解因式分解的乘积结构，掌握提公因式、公式法和完成程度的基本判断。">
   <title>因式分解：乘积结构与基本方法 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
   <script>
     MathJax = {
       tex: {
@@ -17,7 +17,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260805-3">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260807-2">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body>
@@ -28,60 +28,63 @@
       <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
       <a class="nav-link" href="index.html">Chapter 03</a>
       <a class="nav-link" href="01_因式分解.html" aria-current="page">01 因式分解</a>
-      <a class="nav-link" href="02_分组分解法.html">02 分组分解法</a>
-      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘法</a>
-      <a class="nav-link" href="04_求根公式法.html">04 求根公式法</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式</a>
+      <a class="nav-link" href="05_因式分解方法小结.html">05 方法小结</a>
     </div>
   </nav>
 
   <header class="hero">
     <span class="eyebrow">Chapter 03 · 01</span>
     <h1>因式分解：<br><span class="title-continuation">乘积结构与基本方法</span></h1>
-    <p class="lead">因式分解，就是把多项式的加减形式化成若干整式相乘的形式。</p>
+    <p class="lead">先把两个因式展开，再沿相反方向还原，因式分解的变形方向会自然显现。</p>
   </header>
 
   <main id="main">
     <section class="section" aria-labelledby="product-title">
       <h2 class="marker" id="product-title"><span aria-hidden="true">01</span>先展开，再还原</h2>
       <div class="section-body prose">
-        <p class="section-intro">因式分解与整式乘法的方向相反。先把两个相乘的因式展开：</p>
+        <p class="section-intro">先从两个整式相乘开始。把乘积展开，观察它怎样变成多项式：</p>
 
-        <div class="math-block" data-tone="blue">
+        <div class="formula-card formula-focus" data-tone="blue">
           $$\begin{aligned}
-          (2x-3)(x+4)
+          &amp;(2x-3)(x+4)\\
           &amp;=2x^2+8x-3x-12\\
           &amp;=2x^2+5x-12.
           \end{aligned}$$
         </div>
-        <p>展开以后，原来的两个因式变成若干单项式通过加减连接的多项式。</p>
+        <p>展开以后，原来的两个因式变成了一个由若干项通过加减连接的多项式。</p>
 
-        <p>因式分解沿相反方向，把这个多项式恢复成乘积：</p>
-        <div class="math-block" data-tone="green">
+        <p>现在沿相反方向，把中间项 $5x$ 重新写成 $8x-3x$，再把这个多项式恢复成乘积：</p>
+        <div class="formula-card formula-focus" data-tone="green">
           $$\begin{aligned}
-          2x^2+5x-12
+          &amp;2x^2+5x-12\\
           &amp;=2x^2+8x-3x-12\\
           &amp;=(2x^2+8x)-(3x+12)\\
           &amp;=2x(x+4)-3(x+4)\\
           &amp;=(2x-3)(x+4).
           \end{aligned}$$
         </div>
-        <p>原式重新变成两个整式相乘的形式，其中 $2x-3$ 和 $x+4$ 都叫作因式。这就是因式分解所完成的变形。</p>
+        <p>原式重新变成两个整式相乘的形式，其中 $2x-3$ 和 $x+4$ 都叫作因式。把一个多项式化成若干整式的积，就叫作因式分解。</p>
 
-        <p>接下来我们要学习如何从多项式中找到乘积结构。</p>
+        <p>接下来，我们要学习如何从多项式中找到乘积结构。各项共同含有的部分，通常就是最先能够确定的因式。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="common-title">
       <h2 class="marker" id="common-title"><span aria-hidden="true">02</span>从公因式开始</h2>
       <div class="section-body prose">
-        <p class="section-intro">公因式是多项式中每一项都含有的共同部分。面对次数较高或项数较多的多项式，先观察各项的数字、字母和重复整式。</p>
+        <p class="section-intro">以 $12x^3-18x^2+12x$ 为例，先观察每一项共同含有什么。</p>
 
-        <p>以 $12x^3-18x^2+12x$ 为例，三个系数都含有因数 $6$，三个单项式都含有字母 $x$：</p>
-        <div class="math-block" data-tone="blue">
-          $$12x^3-18x^2+12x
-          =6x(2x^2-3x+2).$$
+        <p>三项系数的绝对值 $12,18,12$ 的最大公因数是 $6$，每一项也都含有 $x$。把共有的 $6x$ 提出：</p>
+        <div class="formula-card formula-focus" data-tone="blue">
+          $$\begin{aligned}
+          &amp;12x^3-18x^2+12x\\
+          &amp;=6x(2x^2-3x+2).
+          \end{aligned}$$
         </div>
-        <p>$12,18,12$ 的最大公因数是 $6$，各项中 $x$ 的最低次数是 $1$，所以完整的公因式是 $6x$。提出以后，原来的三次多项式变成了一个单项式与二次多项式的乘积。</p>
+        <p>$6x$ 出现在原式的每一项中，因此它是原式的公因式。提出以后，原来的三次多项式变成了一个单项式与二次多项式的乘积。</p>
 
         <p>寻找完整公因式时，依次检查：</p>
 
@@ -92,16 +95,16 @@
           <li><strong>检查符号</strong><span>提出负号能够使括号内结构更清楚时，可以同时提出负号。</span></li>
         </ol>
 
-        <p>公因式也可能是一个完整整式：</p>
-        <div class="math-block" data-tone="green">
+        <p>公因式也可以是一个多项式整体：</p>
+        <div class="formula-card formula-focus" data-tone="green">
           $$\begin{aligned}
-          (x-2)(x+5)-3(x-2)
+          &amp;(x-2)(x+5)-3(x-2)\\
           &amp;=(x-2)\big[(x+5)-3\big]\\
           &amp;=(x-2)(x+2).
           \end{aligned}$$
         </div>
         <p>两项都含有完整因式 $x-2$，提出以后再整理另一个括号。</p>
-        <p>提出公因式以后，已经找到了一个乘法结构，但括号内可能还能继续分解。此时再看剩余部分是否完整符合某个公式。</p>
+        <p>提出公因式只是找到了第一层乘积结构。括号内部可能还能继续分解，因此下一步要检查剩余部分是否完整符合已经学过的公式。</p>
       </div>
     </section>
 
@@ -110,23 +113,23 @@
       <div class="section-body prose">
         <p class="section-intro">提出公因式以后，括号内可能出现新的结构。以 $12x^2-75$ 为例，先提出公因数 $3$：</p>
 
-        <div class="calc-flow" aria-label="十二倍x平方减七十五的连续因式分解步骤">
-          <div class="calc-row">
-            <div>$$12x^2-75=3(4x^2-25)$$</div>
-            <p>先提出公因数 $3$，括号内的平方差结构随之显现。</p>
+        <div class="formula-card calc-steps" aria-label="十二倍x平方减七十五的连续因式分解步骤">
+          <div class="calc-step">
+            <div class="formula-line">$$12x^2-75=3(4x^2-25)$$</div>
+            <p class="step-note">先提出公因数 $3$，括号内的平方差结构随之显现。</p>
           </div>
-          <div class="calc-row">
-            <div>$$3(4x^2-25)=3(2x-5)(2x+5)$$</div>
-            <p>括号内是 $(2x)^2-5^2$，继续使用平方差公式。</p>
+          <div class="calc-step is-result">
+            <div class="formula-line">$$3(4x^2-25)=3(2x-5)(2x+5)$$</div>
+            <p class="step-note">括号内是 $(2x)^2-5^2$，继续使用平方差公式。</p>
           </div>
         </div>
-        <p>这个过程先用公因式降低式子的复杂程度，再用平方差公式找到剩余的两个因式。公因式和公式可以连续使用。</p>
+        <p>这个过程先用公因式降低式子的复杂程度，再用平方差公式找到剩余的两个因式。公因式和公式可以连续使用。所有因式都检查过以后，还要根据题目目标判断应该在什么位置停止。</p>
 
         <p>剩余部分具有两项或三项时，再检查它是否完整符合下面的平方或立方结构：</p>
         <ol class="decision-list formula-condition-list">
           <li><strong>$A^2-B^2=(A-B)(A+B)$</strong><span>两项都是完全平方，中间为减号时使用。</span></li>
           <li><strong>$A^2\mathbin{\substack{+\\[0.1em]-}}2AB+B^2=(A\mathbin{\substack{+\\[0.1em]-}}B)^2$</strong><span>首尾两项都是平方，中间项是首尾底数乘积的 2 倍时使用。</span></li>
-          <li><strong>$A^3\mathbin{\substack{+\\[0.1em]-}}B^3=(A\mathbin{\substack{+\\[0.1em]-}}B)(A^2\mathbin{\substack{-\\[0.1em]+}}AB+B^2)$</strong><span>两项都是完全立方，并以加号或减号连接时使用。</span></li>
+          <li><strong>$A^3\mathbin{\substack{+\\[0.1em]-}}B^3=(A\mathbin{\substack{+\\[0.1em]-}}B)(A^2\mathbin{\substack{-\\[0.1em]+}}AB+B^2)$</strong><span>两项都是完全立方时使用；第一个因式与原式同号，第二个因式的中间项反号，末项始终为正。</span></li>
         </ol>
 
         <p>沿因式分解方向使用公式时，项数、指数、系数和符号都要完整匹配。立方和差公式中，$B^2$ 前始终是加号；$x^2+25$ 是两个平方的和，在实数范围内不能使用平方差公式分解。</p>
@@ -139,20 +142,26 @@
       <div class="section-body prose">
         <p class="section-intro">已经得到乘积以后，还要根据当前目标判断是否需要继续分解。</p>
 
-        <div class="summary-panel method-summary">
-          <div class="method-summary-formula" aria-label="因式分解的变形方向">
+        <p>题目直接要求“因式分解”时，通常要继续检查每个非常数因式。前面的 $12x^2-75$ 应写到 $3(2x-5)(2x+5)$，两个一次因式已经不能继续分解。</p>
+
+        <p>在其他问题中，因式分解也可以作为中间工具。如果当前只需要提出公因数 $3$，写到 $3(4x^2-25)$ 已经显出所需结构，可以在这里停止。</p>
+
+        <p>说一个式子“不能再分解”时，还要说明系数范围。本章前三篇主要在整数或有理数系数范围内寻找因式；后面的求根公式与由根写因式会继续判断实数范围内的分解。</p>
+
+        <div class="summary-panel">
+          <div class="summary-formula" aria-label="因式分解的变形方向">
             $$\text{加减结构}\longrightarrow\text{若干整式的乘积}.$$
           </div>
-          <div class="method-summary-paths">
-            <div class="method-summary-path">
-              <span class="method-summary-path-index">1</span>
+          <div class="summary-paths">
+            <div class="summary-path">
+              <span class="summary-path-index">1</span>
               <div>
                 <h3>从哪里开始</h3>
                 <p>先提出每一项共有的公因式，再检查剩余部分是否完整符合公式；每完成一步，都要继续检查各个因式。</p>
               </div>
             </div>
-            <div class="method-summary-path">
-              <span class="method-summary-path-index">2</span>
+            <div class="summary-path">
+              <span class="summary-path-index">2</span>
               <div>
                 <h3>分解到什么程度</h3>
                 <p>题目直接要求因式分解时，要继续检查到指定范围内不能再分解；因式分解作为中间工具时，可以在所需结构出现后停止。</p>
@@ -161,7 +170,7 @@
           </div>
         </div>
 
-        <p>还有一些多项式没有整体公因式，也不直接符合公式。例如 $3x^3-6x^2+5x-10$，整体看不到可以直接提出的因式，但前两项和后两项之间分别存在共同部分。下一篇将从这个式子出发，说明怎样通过<a href="02_分组分解法.html">分组制造新的共同因式</a>。</p>
+        <p>还有一些多项式没有整体公因式，也不直接符合公式。例如 $3x^3-6x^2+5x-10$，前两项和后两项分别含有共同部分。下一篇继续用这个式子，说明怎样通过<a href="02_分组分解法.html">分组让新的共同因式显现</a>。</p>
       </div>
     </section>
   </main>
@@ -171,6 +180,6 @@
     <a class="pager-next" href="02_分组分解法.html">下一篇 · 分组分解法 →</a>
   </nav>
 
-  <footer class="footer">OpenKS · Chapter 03-1 · 因式分解</footer>
+  <footer class="footer">OpenKS · Chapter 03 · 01 · 因式分解</footer>
 </body>
 </html>

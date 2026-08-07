@@ -21,6 +21,7 @@
     {path:"chapter_03_多项式变形与因式分解/02_分组分解法.html",title:"02 分组分解法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_03_多项式变形与因式分解/03_十字相乘法.html",title:"03 十字相乘法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式法",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
+    {path:"chapter_03_多项式变形与因式分解/05_因式分解方法小结.html",title:"05 因式分解方法小结",menu:"chapter_03_多项式变形与因式分解/index.html",menuTitle:"Chapter 03"},
     {path:"chapter_04_分式根式与条件控制/index.html",title:"Chapter 04 分式根式与条件控制",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
     {path:"chapter_04_分式根式与条件控制/01_分式化简.html",title:"01 分式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
     {path:"chapter_04_分式根式与条件控制/02_根式化简.html",title:"02 根式的特点与化简",menu:"chapter_04_分式根式与条件控制/index.html",menuTitle:"Chapter 04"},
@@ -77,7 +78,8 @@
         {path:"chapter_03_多项式变形与因式分解/01_因式分解.html",title:"01 因式分解"},
         {path:"chapter_03_多项式变形与因式分解/02_分组分解法.html",title:"02 分组分解"},
         {path:"chapter_03_多项式变形与因式分解/03_十字相乘法.html",title:"03 十字相乘"},
-        {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式"}
+        {path:"chapter_03_多项式变形与因式分解/04_求根公式法.html",title:"04 求根公式"},
+        {path:"chapter_03_多项式变形与因式分解/05_因式分解方法小结.html",title:"05 方法小结"}
       ]
     },
     {

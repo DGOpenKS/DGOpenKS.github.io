@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="理解分组分解怎样制造共同因式，掌握分组、负号处理和继续分解的判断方法。">
   <title>分组分解法：制造共同因式 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
   <script>
     MathJax = {
       tex: {
@@ -17,7 +17,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260805-3">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260807-2">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body>
@@ -28,27 +28,55 @@
       <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
       <a class="nav-link" href="index.html">Chapter 03</a>
       <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
-      <a class="nav-link" href="02_分组分解法.html" aria-current="page">02 分组分解法</a>
-      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘法</a>
-      <a class="nav-link" href="04_求根公式法.html">04 求根公式法</a>
+      <a class="nav-link" href="02_分组分解法.html" aria-current="page">02 分组分解</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式</a>
+      <a class="nav-link" href="05_因式分解方法小结.html">05 方法小结</a>
     </div>
   </nav>
 
   <header class="hero">
     <span class="eyebrow">Chapter 03 · 02</span>
     <h1>分组分解法：<br><span class="title-continuation">制造共同因式</span></h1>
-    <p class="lead">多项式没有整体公因式，也不直接符合乘法公式时，可以尝试分组，让各组分别提出公因式后产生同一个完整括号。</p>
+    <p class="lead">有些多项式整体没有公因式，也不直接符合乘法公式，但局部项之间仍然存在共同部分。先从一个具体式子出发，看看这些共同部分怎样成为整个多项式的因式。</p>
   </header>
 
   <main id="main">
     <section class="section" aria-labelledby="common-title">
-      <h2 class="marker" id="common-title"><span aria-hidden="true">01</span>共同括号</h2>
+      <h2 class="marker" id="common-title"><span aria-hidden="true">01</span>从一个无法直接分解的式子开始</h2>
       <div class="section-body prose">
-        <p class="section-intro">上一篇留下的 $3x^3-6x^2+5x-10$，没有整体公因式，也不直接符合公式，但前两项和后两项分别含有共同部分。</p>
-        <div class="math-block" data-tone="blue">
+        <p class="section-intro">先看上一篇留下的多项式：</p>
+        <div class="formula-card formula-focus" data-tone="blue">
           $$3x^3-6x^2+5x-10.$$
         </div>
-        <p>把能够分别提出公因式的项放在一起，就有机会让各组出现同一个括号。这个过程来自分配律：</p>
+        <p>四项没有整体公因式，也不符合完整的平方或立方公式。但前两项都含有 $3x^2$，后两项都含有 $5$。先按这两个局部结构分组：</p>
+
+        <div class="formula-card calc-steps" aria-label="三x三次方减六x平方加五x减十的分组分解步骤">
+          <div class="calc-step">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;3x^3-6x^2+5x-10\\
+            &amp;=(3x^3-6x^2)+(5x-10)
+            \end{aligned}$$</div>
+            <p class="step-note">加上括号只改变观察方式，各项和符号都保持不变。</p>
+          </div>
+          <div class="calc-step">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;(3x^3-6x^2)+(5x-10)\\
+            &amp;=3x^2(x-2)+5(x-2)
+            \end{aligned}$$</div>
+            <p class="step-note">两组分别提出公因式，都得到完整括号 $x-2$。</p>
+          </div>
+          <div class="calc-step is-result">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;3x^2(x-2)+5(x-2)\\
+            &amp;=(x-2)(3x^2+5)
+            \end{aligned}$$</div>
+            <p class="step-note">提出共同括号 $x-2$，原式成为两个整式的乘积。</p>
+          </div>
+        </div>
+        <p>两组都出现了完全相同的 $x-2$，它因此成为整个多项式的公因式。这个过程通过分组让共同因式显现出来，称为分组分解。</p>
+
+        <p>刚才的计算使用了分配律的反向形式：</p>
         <div class="formula-bridge" role="img" aria-label="两个含有相同括号的部分提出共同因式">
           <div>
             <small>两个部分含有同一括号</small>
@@ -63,95 +91,110 @@
             $$(A+B)(P+Q)$$
           </div>
         </div>
-        <p>两个部分都含有 $A+B$，所以可以把它提出。分组的目标就是把原式整理成这种含有共同括号的结构。</p>
+        <p>分组的目标就是把原式整理成两个或多个部分，使这些部分分别提出公因式后出现同一个完整括号。第一个例子按原来的项序就能完成；相邻分组不能得到共同括号时，还可以调整项的顺序。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="choose-title">
-      <h2 class="marker" id="choose-title"><span aria-hidden="true">02</span>选择分组</h2>
+      <h2 class="marker" id="choose-title"><span aria-hidden="true">02</span>分组时可以先调整项的顺序</h2>
       <div class="section-body prose">
-        <p class="section-intro">回到这个多项式。前两项都含有 $3x^2$，后两项都含有 $5$，因此先按前两项和后两项分组。</p>
-        <div class="calc-flow" aria-label="三x三次方减六x平方加五x减十的分组分解步骤">
-          <div class="calc-row">
-            <div>$$3x^3-6x^2+5x-10$$</div>
-            <p>先观察前两项和后两项能否分别提出公因式。</p>
+        <p class="section-intro">多项式的项可以依据加法交换律重新排列。因此，分组不一定只能按照原来的相邻位置进行。例如：</p>
+        <div class="formula-card formula-focus" data-tone="blue">
+          $$2x^2+3y+6xy+x.$$
+        </div>
+        <p>原来的前两项和后两项不能产生同一个括号。先调整中间三项的顺序：</p>
+
+        <div class="formula-card calc-steps" aria-label="二x平方加三y加六xy加x调整顺序后的分组分解步骤">
+          <div class="calc-step">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;2x^2+3y+6xy+x\\
+            &amp;=2x^2+6xy+x+3y
+            \end{aligned}$$</div>
+            <p class="step-note">只调整各项的排列顺序，每一项及其符号都保持不变。</p>
           </div>
-          <div class="calc-row">
-            <div>$$=(3x^3-6x^2)+(5x-10)$$</div>
-            <p>先按前两项和后两项分组，原式中的项和符号保持不变。</p>
+          <div class="calc-step">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;2x^2+6xy+x+3y\\
+            &amp;=2x(x+3y)+(x+3y)
+            \end{aligned}$$</div>
+            <p class="step-note">前两项提出 $2x$，后两项提出 $1$，两组都得到 $x+3y$。</p>
           </div>
-          <div class="calc-row">
-            <div>$$=3x^2(x-2)+5(x-2)$$</div>
-            <p>第一组提出 $3x^2$，第二组提出 $5$，两组都得到 $x-2$。</p>
-          </div>
-          <div class="calc-row is-result">
-            <div>$$=(x-2)(3x^2+5)$$</div>
-            <p>提出共同括号 $x-2$，原式成为两个整式的乘积。</p>
+          <div class="calc-step is-result">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;2x(x+3y)+(x+3y)\\
+            &amp;=(2x+1)(x+3y)
+            \end{aligned}$$</div>
+            <p class="step-note">提出共同括号 $x+3y$，完成分解。</p>
           </div>
         </div>
-        <p>计算中真正决定分组是否成功的是共同括号 $x-2$。分组没有固定位置，选择时先看哪些项容易分别提出公因式，再检查提出以后能否得到完全相同的括号。</p>
+        <p>两组分别提取后都得到 $x+3y$，所以这次换序和分组有效。</p>
 
         <ol class="decision-list">
-          <li><strong>保留所有项</strong><span>换序和加括号不能改变原式中的符号。</span></li>
-          <li><strong>比较各组括号</strong><span>括号完全相同时，才能把它作为共同因式提出。</span></li>
-          <li><strong>处理整体负号</strong><span>两个括号只差负号时，从其中一组提出负号使它们一致。</span></li>
+          <li><strong>寻找可能的共同括号</strong><span>判断哪些项分别提出公因式后，有可能得到同一个括号。</span></li>
+          <li><strong>保持项和符号不变</strong><span>换序和加括号时，原式中的每一项及其符号都要保留。</span></li>
+          <li><strong>处理整体负号</strong><span>两个括号只差整体负号时，可以从其中一组提出负号。</span></li>
         </ol>
 
-        <p>几种自然分组都不能产生相同括号时，当前式子不适合继续使用分组分解。分组成功以后，还要检查剩余因式。</p>
+        <p>几种自然的组合都无法产生同一个完整括号时，当前式子就不适合用分组分解。找到共同括号以后，分解也可能尚未结束，还要继续检查新得到的因式。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="continue-title">
-      <h2 class="marker" id="continue-title"><span aria-hidden="true">03</span>继续分解</h2>
+      <h2 class="marker" id="continue-title"><span aria-hidden="true">03</span>分组可以是连续分解中的一步</h2>
       <div class="section-body prose">
         <p class="section-intro">共同括号提出以后，分解还可能没有结束；有些式子在分组前也要先提出整体公因式。下面把这些步骤放在同一个式子中看。</p>
 
-        <div class="calc-flow" aria-label="六x三次方加六x平方减二十四x减二十四的连续分解步骤">
-          <div class="calc-row">
-            <div>$$6x^3+6x^2-24x-24=6(x^3+x^2-4x-4)$$</div>
-            <p>所有项都有公因数 $6$，先完整提出。</p>
+        <div class="formula-card calc-steps" aria-label="六x三次方加六x平方减二十四x减二十四的连续分解步骤">
+          <div class="calc-step">
+            <div class="formula-line">$$\begin{aligned}
+            &amp;6x^3+6x^2-24x-24\\
+            &amp;=6(x^3+x^2-4x-4)
+            \end{aligned}$$</div>
+            <p class="step-note">所有项都有公因数 $6$，先完整提出。</p>
           </div>
-          <div class="calc-row">
-            <div>$$x^3+x^2-4x-4=x^2(x+1)-4(x+1)$$</div>
-            <p>前两项提出 $x^2$，后两项提出 $-4$，两组得到相同括号 $x+1$。</p>
+          <div class="calc-step">
+            <div class="formula-line">$$x^3+x^2-4x-4=x^2(x+1)-4(x+1)$$</div>
+            <p class="step-note">前两项提出 $x^2$，后两项提出 $-4$，两组得到相同括号 $x+1$。</p>
           </div>
-          <div class="calc-row">
-            <div>$$x^2(x+1)-4(x+1)=(x+1)(x^2-4)$$</div>
-            <p>提出共同因式 $x+1$，第二个因式仍需检查。</p>
+          <div class="calc-step">
+            <div class="formula-line">$$x^2(x+1)-4(x+1)=(x+1)(x^2-4)$$</div>
+            <p class="step-note">提出共同因式 $x+1$，第二个因式仍需检查。</p>
           </div>
-          <div class="calc-row is-result">
-            <div>$$x^2-4=(x-2)(x+2)$$</div>
-            <p>$x^2-4$ 是平方差，继续分解成两个一次因式。</p>
+          <div class="calc-step is-result">
+            <div class="formula-line">$$x^2-4=(x-2)(x+2)$$</div>
+            <p class="step-note">$x^2-4$ 是平方差，继续分解成两个一次因式。</p>
           </div>
         </div>
 
-        <div class="math-block" data-tone="green">
-          $$6x^3+6x^2-24x-24=6(x+1)(x-2)(x+2).$$
+        <div class="formula-card formula-focus" data-tone="green">
+          $$\begin{aligned}
+          &amp;6x^3+6x^2-24x-24\\
+          &amp;=6(x+1)(x-2)(x+2).
+          \end{aligned}$$
         </div>
-        <p>这个过程依次使用提公因式、分组和平方差公式。最后乘回原式，可以确认分解正确。</p>
-        <p>这个例子说明，分组可以处在一连串分解步骤的中间。</p>
+        <p>这个过程依次使用了提公因式、分组和平方差公式。分组只是中间一步，最后仍要检查每个因式，并通过乘回原式确认结果。由此可以进一步确定分组分解真正的使用条件。</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="route-title">
-      <h2 class="marker" id="route-title"><span aria-hidden="true">04</span>分组的边界</h2>
+      <h2 class="marker" id="route-title"><span aria-hidden="true">04</span>分组的使用条件</h2>
       <div class="section-body prose">
-        <p class="section-intro">分组能否继续，取决于局部结构能否形成同一个完整括号。</p>
+        <p class="section-intro">分组分解常见于四项或更多项的多项式，项数只是一个观察信号。真正决定这个方法能否使用的，是各部分提出公因式后能否产生同一个完整括号。</p>
 
-        <div class="summary-panel method-summary">
-          <div class="method-summary-formula" aria-label="分组分解的核心关系">
+        <div class="summary-panel">
+          <div class="summary-formula" aria-label="分组分解的核心关系">
             $$P(A+B)+Q(A+B)=(A+B)(P+Q).$$
           </div>
-          <div class="method-summary-paths">
-            <div class="method-summary-path">
-              <span class="method-summary-path-index">1</span>
+          <div class="summary-paths">
+            <div class="summary-path">
+              <span class="summary-path-index">1</span>
               <div>
                 <h3>什么时候使用</h3>
                 <p>多项式没有整体公因式，也不直接符合公式，但部分项分别提出公因式后能够产生同一个括号时，可以使用分组分解。</p>
               </div>
             </div>
-            <div class="method-summary-path">
-              <span class="method-summary-path-index">2</span>
+            <div class="summary-path">
+              <span class="summary-path-index">2</span>
               <div>
                 <h3>怎样判断成功</h3>
                 <p>各组提出公因式后必须出现同一个完整括号。括号无法统一时，当前分组无效；提出共同括号后，还要继续检查剩余因式。</p>
@@ -160,9 +203,7 @@
           </div>
         </div>
 
-        <p>共同括号提出以后，若剩余部分是系数为整数的二次三项式，又不符合完整公式，下一步就要判断它能否还原成两个一次因式。</p>
-
-        <p>第三篇将从这个问题出发，使用<a href="03_十字相乘法.html">十字相乘</a>寻找二次三项式中的两个一次因式。</p>
+        <p>对于 $x^2-7x+12$ 这样的二次三项式，找不到整体公因式和完整公式，也没有现成的局部括号可供提取。下一篇将从这个式子出发，使用<a href="03_十字相乘法.html">十字相乘</a>恢复出两个一次因式。</p>
       </div>
     </section>
   </main>
@@ -173,6 +214,6 @@
     <a class="pager-next" href="03_十字相乘法.html">下一篇 · 十字相乘法 →</a>
   </nav>
 
-  <footer class="footer">OpenKS · Chapter 03-2 · 分组分解法</footer>
+  <footer class="footer">OpenKS · Chapter 03 · 02 · 分组分解法</footer>
 </body>
 </html>

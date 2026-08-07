@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="从乘积结构开始学习因式分解，再依次掌握分组分解、十字相乘和求根公式法。">
+  <meta name="description" content="从乘积结构开始学习因式分解，依次掌握分组分解、十字相乘、求根公式、由根写因式及方法选择。">
   <title>多项式变形与因式分解 | OpenKS</title>
-<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
   <script>
     MathJax = {
       tex: {
@@ -17,7 +17,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <link rel="stylesheet" href="../assets/learning-page-system.css?v=20260808-2">
-  <link rel="stylesheet" href="assets/chapter03.css?v=20260806-1">
+  <link rel="stylesheet" href="assets/chapter03.css?v=20260807-2">
   <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body>
@@ -29,9 +29,10 @@
       <a class="nav-link" href="../chapter_02-2_立方相关公式/index.html">上一章</a>
       <a class="nav-link" href="index.html" aria-current="page">Chapter 03</a>
       <a class="nav-link" href="01_因式分解.html">01 因式分解</a>
-      <a class="nav-link" href="02_分组分解法.html">02 分组分解法</a>
-      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘法</a>
-      <a class="nav-link" href="04_求根公式法.html">04 求根公式法</a>
+      <a class="nav-link" href="02_分组分解法.html">02 分组分解</a>
+      <a class="nav-link" href="03_十字相乘法.html">03 十字相乘</a>
+      <a class="nav-link" href="04_求根公式法.html">04 求根公式</a>
+      <a class="nav-link" href="05_因式分解方法小结.html">05 方法小结</a>
       <a class="nav-link" href="../chapter_04_分式根式与条件控制/index.html">下一章</a>
     </div>
   </nav>
@@ -39,7 +40,7 @@
   <header class="hero">
     <span class="eyebrow">Chapter 03</span>
     <h1>多项式变形与因式分解</h1>
-    <p class="lead">看到一个多项式，先判断它的结构，再选择分解方法。本章从乘积结构与基本方法出发，依次进入分组分解、十字相乘和求根公式。</p>
+    <p class="lead">因式分解要把多项式恢复成若干整式的乘积。先检查公因式和完整公式，再根据剩余结构选择方法。</p>
   </header>
 
   <main id="main">
@@ -52,7 +53,7 @@
         <div class="formula-bridge bidirectional-bridge" aria-label="整式乘法与因式分解的相反方向">
           <div>
             <small>因式的乘积</small>
-            $$(x-2)(x-3)$$
+            $$(2x-3)(x+4)$$
           </div>
           <div class="bridge-arrows">
             <span class="bridge-direction-row"><span>整式乘法</span><b class="bridge-arrow" aria-hidden="true">→</b></span>
@@ -60,7 +61,7 @@
           </div>
           <div>
             <small>展开后的多项式</small>
-            $$x^2-5x+6$$
+            $$2x^2+5x-12$$
           </div>
         </div>
 
@@ -69,35 +70,41 @@
     </section>
 
     <section class="section" aria-labelledby="lessons-title">
-      <div class="marker"><span>02</span>四篇内容</div>
+      <div class="marker"><span>02</span>五篇内容</div>
       <div class="section-body prose">
         <h2 id="lessons-title">按理解顺序阅读</h2>
-        <p class="section-intro">先看懂乘积结构，再学习分组与两种二次三项式的分解方法。</p>
+        <p class="section-intro">先看懂乘积结构，再依次学习方法、适用范围和完整判断顺序。</p>
 
-        <div class="boundary-split">
-          <a class="lesson-item" href="01_因式分解.html">
+        <div class="lesson-list">
+          <a class="lesson-card chapter03-lesson-card" href="01_因式分解.html">
             <span class="lesson-tag">基础</span>
             <strong>因式分解</strong>
-            <p>看清乘积结构，先处理公因式和公式。</p>
-            <div class="lesson-formula">公因式 → 完整公式</div>
+            <p>看懂乘积结构，先提公因式，再检查公式。</p>
+            <div class="lesson-formula">乘积结构</div>
           </a>
-          <a class="lesson-item" href="02_分组分解法.html">
+          <a class="lesson-card chapter03-lesson-card" href="02_分组分解法.html">
             <span class="lesson-tag" data-tone="amber">分组</span>
             <strong>分组分解法</strong>
-            <p>让不同部分产生相同的完整括号。</p>
-            <div class="lesson-formula">共同括号 → 共同因式</div>
+            <p>让局部项提出后出现同一个完整括号。</p>
+            <div class="lesson-formula">共同括号</div>
           </a>
-          <a class="lesson-item" href="03_十字相乘法.html">
-            <span class="lesson-tag">巧法</span>
+          <a class="lesson-card chapter03-lesson-card" href="03_十字相乘法.html">
+            <span class="lesson-tag">整数配对</span>
             <strong>十字相乘法</strong>
-            <p>比较交叉项，快速确定因式。</p>
-            <div class="lesson-formula">$mq+np=b$</div>
+            <p>用整数因数配对恢复两个一次因式。</p>
+            <div class="lesson-formula">因数配对</div>
           </a>
-          <a class="lesson-item" href="04_求根公式法.html">
+          <a class="lesson-card chapter03-lesson-card" href="04_求根公式法.html">
             <span class="lesson-tag" data-tone="purple">通法</span>
             <strong>求根公式法</strong>
-            <p>先求根，再由根写出因式。</p>
-            <div class="lesson-formula">$\Delta=b^2-4ac$</div>
+            <p>用判别式判断实数根，再由根写出因式。</p>
+            <div class="lesson-formula">判别式 → 根 → 因式</div>
+          </a>
+          <a class="lesson-card chapter03-lesson-card" href="05_因式分解方法小结.html">
+            <span class="lesson-tag" data-tone="amber">小结</span>
+            <strong>因式分解方法小结</strong>
+            <p>把检查顺序和方法选择连成判断主线。</p>
+            <div class="lesson-formula">检查 → 选择 → 复查</div>
           </a>
         </div>
       </div>
@@ -106,20 +113,28 @@
     <section class="section" aria-labelledby="route-title">
       <div class="marker"><span>03</span>判断主线</div>
       <div class="section-body prose">
-        <h2 id="route-title">每次分解都沿同一条路线</h2>
-        <p class="section-intro">先处理最明显的结构，可以减少后面无效的尝试。</p>
+        <h2 id="route-title">先检查，再按结构选择方法</h2>
+        <p class="section-intro">前两步固定，之后根据剩余多项式的结构选择不同方法。</p>
 
         <ol class="decision-list">
-          <li><strong>检查公因式</strong><span>每一项是否含有同一个数、字母或整式？</span></li>
-          <li><strong>检查完整公式结构</strong><span>项数、指数、系数和符号是否全部匹配？</span></li>
-          <li><strong>尝试分组</strong><span>四项或更多项能否通过分组产生同一个括号？</span></li>
-          <li><strong>判断二次三项式</strong><span>因数配对较少时，使用十字相乘快速识别。</span></li>
-          <li><strong>必要时转向求根公式</strong><span>试配不经济或失败时，用判别式和根确定因式。</span></li>
-          <li><strong>乘回原式</strong><span>检查二次项、一次项和常数项是否全部恢复。</span></li>
+          <li><strong>先检查公因式</strong><span>找出每一项共同含有的数字、字母或多项式整体，并完整提出。</span></li>
+          <li><strong>再检查完整公式</strong><span>逐项核对项数、指数、系数和符号，确认是否完整符合平方或立方结构。</span></li>
+          <li class="decision-branch-step">
+            <strong>按剩余结构分支</strong>
+            <span class="method-branches">
+              <span><b>局部出现同一括号</b><em>分组分解</em></span>
+              <span><b>二次三项式的整数配对较少</b><em>十字相乘</em></span>
+              <span><b>一元二次多项式的配对较多、全部失败或需要判断实数范围</b><em>判别式与求根公式</em></span>
+              <span><b>同一个整式反复出现</b><em>先整体代换，再重新判断</em></span>
+              <span data-boundary><b>不符合以上结构</b><em>本章方法不能直接处理</em></span>
+            </span>
+          </li>
+          <li><strong>重新检查每个因式</strong><span>每得到一个新因式，都要判断它能否继续提出公因式或使用公式。</span></li>
+          <li><strong>最后乘回原式</strong><span>检查各项、次数、系数和符号是否全部恢复。</span></li>
         </ol>
 
         <div class="summary-panel">
-          <p>因式分解从结构判断开始。结果整体成为整式的乘积，并且乘回去恒等于原式，分解才真正完成。</p>
+          <p>每得到一个因式都继续检查；达到当前目标后，再乘回原式确认。</p>
         </div>
       </div>
     </section>

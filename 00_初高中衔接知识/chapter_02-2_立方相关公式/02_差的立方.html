@@ -381,11 +381,36 @@ p.prose,
 </nav>
 
 <footer class="footer">OpenKS · 02-2 立方相关公式 · 差的立方公式</footer>
-<script type="module">
-import * as THREE from './assets/vendor/three-r160/three.module.min.js?v=20260731-esm';
-import {DGDimensionLabels} from './assets/dimension-labels.js?v=20260731-esm';
-
+<script src="./assets/formula-3d-runtime.bundle.js?v=20260808-local"></script>
+<script>
 (() => {
+  'use strict';
+  const runtime = window.DGFormula3DRuntime;
+  if (!runtime || !runtime.THREE || !runtime.DGDimensionLabels) {
+    document.querySelectorAll('[data-diff-stage]').forEach(card => {
+      const loader = card.querySelector('.diff-scene-loader');
+      const fallback = card.querySelector('.diff-scene-fallback');
+      if (loader) loader.hidden = true;
+      if (fallback) fallback.hidden = false;
+    });
+    window.__dgDifferenceCubeStatic = {
+      getState: () => ({
+        stages:Array.from(document.querySelectorAll('[data-diff-stage]')).map(card => ({
+          stage:Number(card.dataset.diffStage) || 0
+        })),
+        mountedModels:[],
+        renderer:'fallback',
+        runtimeAvailable:false,
+        hasThree:false,
+        threeRevision:null,
+        hasWebGL:false
+      })
+    };
+    console.warn('[OpenKS] difference cube runtime is unavailable.');
+    return;
+  }
+  const {THREE, DGDimensionLabels} = runtime;
+
   const stageData = [
     {title:'从 a³ 出发', mode:'whole'},
     {title:'减去 3a²b', mode:'slabs'},
@@ -832,6 +857,19 @@ import {DGDimensionLabels} from './assets/dimension-labels.js?v=20260731-esm';
       }))
     })
   };
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  if (window.__dgDifferenceCubeStatic) return;
+  document.querySelectorAll('[data-diff-stage]').forEach(card => {
+    const loader = card.querySelector('.diff-scene-loader');
+    const fallback = card.querySelector('.diff-scene-fallback');
+    if (loader) loader.hidden = true;
+    if (fallback) fallback.hidden = false;
+  });
+  console.warn('[OpenKS] difference cube model initialization did not complete.');
 })();
 </script>
 </body>

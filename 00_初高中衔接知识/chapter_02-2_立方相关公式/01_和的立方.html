@@ -1240,11 +1240,38 @@ p.prose,
 
 <footer class="footer">OpenKS · 02-2 立方相关公式 · 和的立方公式</footer>
 
-<script type="module">
-import * as THREE from './assets/vendor/three-r160/three.module.min.js?v=20260731-esm';
-import {DGDimensionLabels} from './assets/dimension-labels.js?v=20260731-esm';
-
+<script src="./assets/formula-3d-runtime.bundle.js?v=20260808-local"></script>
+<script>
 (() => {
+  'use strict';
+  const runtime = window.DGFormula3DRuntime;
+  if (!runtime || !runtime.THREE || !runtime.DGDimensionLabels) {
+    document.querySelectorAll('[data-model-stage]').forEach(card => {
+      const loader = card.querySelector('.scene-loader');
+      const fallback = card.querySelector('.scene-fallback');
+      const scene = card.querySelector('.scene-wrap');
+      if (loader) loader.hidden = true;
+      if (fallback) fallback.hidden = false;
+      if (scene) scene.classList.add('is-fallback');
+    });
+    window.__dgCubeDerivation = {
+      getState: () => ({
+        stages:Array.from(document.querySelectorAll('[data-model-stage]')).map(card => ({
+          stage:Number(card.dataset.modelStage) || 0
+        })),
+        mountedModels:[],
+        renderer:'fallback',
+        runtimeAvailable:false,
+        hasThree:false,
+        threeRevision:null,
+        hasWebGL:false
+      })
+    };
+    console.warn('[OpenKS] cube model runtime is unavailable.');
+    return;
+  }
+  const {THREE, DGDimensionLabels} = runtime;
+
   const FLOW_A_LEN = 120;
   const FLOW_B_LEN = 70;
   const FLOW_TOTAL = FLOW_A_LEN + FLOW_B_LEN;
@@ -2544,6 +2571,21 @@ import {DGDimensionLabels} from './assets/dimension-labels.js?v=20260731-esm';
       hasWebGL:hasWebGL()
     })
   };
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  if (window.__dgCubeDerivation) return;
+  document.querySelectorAll('[data-model-stage]').forEach(card => {
+    const loader = card.querySelector('.scene-loader');
+    const fallback = card.querySelector('.scene-fallback');
+    const scene = card.querySelector('.scene-wrap');
+    if (loader) loader.hidden = true;
+    if (fallback) fallback.hidden = false;
+    if (scene) scene.classList.add('is-fallback');
+  });
+  console.warn('[OpenKS] cube model initialization did not complete.');
 })();
 </script>
 </body>

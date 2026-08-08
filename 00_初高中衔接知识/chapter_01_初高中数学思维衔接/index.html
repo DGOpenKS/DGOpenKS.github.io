@@ -60,18 +60,21 @@ body{
   color:var(--ink);
   font-family:var(--font);
   line-height:1.78;
-  overflow-x:hidden;
+  overflow-x:clip;
   text-rendering:optimizeLegibility;
 }
 button,input{font:inherit}
 a{color:inherit}
+.skip-link{position:fixed;top:10px;left:10px;z-index:100;padding:10px 14px;border:2px solid #104b62;border-radius:10px;background:var(--surface);color:#104b62;font-weight:900;text-decoration:none;transform:translateY(calc(-100% - 20px));transition:transform .16s var(--ease)}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,input):focus-visible{outline:3px solid color-mix(in srgb,var(--object) 58%,white);outline-offset:3px}
 .topbar{position:sticky;top:0;z-index:40;background:rgba(244,242,236,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,195,184,.8)}
 .topbar-inner{width:min(var(--page-max),calc(100% - 2rem));min-height:62px;margin:0 auto;padding:0;display:flex;align-items:center;gap:.35rem;overflow-x:auto;scrollbar-width:none}
 .topbar-inner::-webkit-scrollbar{display:none}
-.brand{font-weight:900;color:#104b62;letter-spacing:.08em;white-space:nowrap;margin-right:auto}
+.brand{position:sticky;left:0;z-index:2;flex:0 0 auto;margin-right:auto;padding-right:.6rem;background:linear-gradient(90deg,var(--bg) 82%,transparent);font-weight:900;color:#104b62;letter-spacing:.08em;white-space:nowrap}
 .brand img{display:block;width:auto;height:30px}
-.nav-pill{border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:800;padding:.42rem .72rem;border-radius:999px;white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
-.nav-pill:hover,.nav-pill.active{color:#104b62;background:var(--surface);border-color:var(--line)}
+.nav-pill{display:inline-flex;min-height:44px;align-items:center;border:1px solid transparent;text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:800;padding:.42rem .72rem;border-radius:999px;white-space:nowrap;transition:color .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease)}
+.nav-pill:hover,.nav-pill.active,.nav-pill[aria-current="location"]{color:#104b62;background:var(--surface);border-color:var(--line)}
 .hero{max-width:var(--page-max);margin:0 auto;padding:4.5rem 20px 2.7rem;display:flex;flex-direction:column;justify-content:center}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:#104b62;font-size:.75rem;font-weight:900;letter-spacing:.13em;margin-bottom:1.15rem}
 .eyebrow::before{width:28px;height:2px;background:var(--object);content:""}
@@ -139,8 +142,8 @@ p{margin:0 0 12px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--object);display:inline-block}
 .dot.input{background:var(--input)}.dot.output{background:var(--output)}.dot.parameter{background:var(--parameter)}.dot.move{background:var(--movement)}.dot.ok{background:var(--conclusion)}.dot.ref{background:var(--reference)}
-canvas{display:block;width:100%;height:clamp(320px,48vw,500px);border-radius:14px;background:var(--surface-2);border:1px solid var(--line);touch-action:none}
-canvas.direct-manipulation{cursor:grab}
+canvas{display:block;width:100%;max-width:100%;height:clamp(320px,48vw,500px);border-radius:14px;background:var(--surface-2);border:1px solid var(--line);touch-action:pan-y pinch-zoom}
+canvas.direct-manipulation{cursor:grab;touch-action:none}
 canvas.direct-manipulation.is-dragging{cursor:grabbing}
 .object-canvas{height:clamp(360px,52vw,540px)}
 .control-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
@@ -220,7 +223,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   .question-strip,.control-grid,.stat-grid,.lens-grid,.transfer-grid,.reflection-list{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){
-  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  html,body{width:100%;max-width:100%;overflow-x:clip}
   .topbar-inner{width:calc(100% - 1rem)}
   .brand img{height:26px}
   .hero{width:100%;padding:3rem 20px 2.25rem}
@@ -229,6 +232,8 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   .question-strip,.control-grid,.stat-grid,.lens-grid,.transfer-grid,.reflection-list{grid-template-columns:1fr}
   .path-steps{display:grid;grid-template-columns:1fr}
   .path-steps span:not(:last-child)::after{content:"";display:none}
+  .canvas-head{display:block}
+  .canvas-head .legend{margin-top:10px}
   .panel,.canvas-panel{padding:14px}
   .stage{padding:2.25rem 0}
   .stage-marker{font-size:.76rem}
@@ -238,18 +243,23 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   canvas{height:330px}
   h1,h2,h3,p,.lead{word-break:normal;overflow-wrap:break-word;line-break:strict}
 }
+@media(pointer:coarse){
+  canvas.direct-manipulation{cursor:default;touch-action:pan-y pinch-zoom}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
+<link rel="stylesheet" href="../assets/sequence-nav.css?v=20260808-2">
 <script src="../assets/sequence-nav.js?v=20260808-2" defer></script>
 </head>
 <body>
-<nav class="topbar" aria-label="章节导航">
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="第一章段落导航">
   <div class="topbar-inner">
     <a class="brand" href="../../index.html" aria-label="OpenKS 首页"><img src="../../assets/brand/openks-lockup-a-primary.svg" alt="" width="2947" height="716"></a>
-    <a class="nav-pill active" href="#stage1">1 方程与函数</a>
+    <a class="nav-pill active" href="#stage1" aria-current="location">1 方程与函数</a>
     <a class="nav-pill" href="#stage2">2 完整关系</a>
     <a class="nav-pill" href="#stage3">3 三种形式</a>
     <a class="nav-pill" href="#stage4">4 参数家族</a>
@@ -271,7 +281,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <div class="throughline reveal" aria-label="本章主线">
     <b>本章主线</b>
     <div class="path-steps">
@@ -385,15 +395,15 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             <span><i class="dot output"></i>y / 输出</span>
           </div>
         </div>
-        <canvas class="object-canvas" id="objectCanvas" aria-label="函数对象图像"></canvas>
-        <div class="question-strip" aria-label="研究问题">
-          <button class="question-btn active" type="button" data-question="zeros">哪里 y = 0？</button>
-          <button class="question-btn" type="button" data-question="positive">哪里 y > 0？</button>
-          <button class="question-btn" type="button" data-question="negative">哪里 y < 0？</button>
-          <button class="question-btn" type="button" data-question="minimum">顶点在哪？</button>
-          <button class="question-btn" type="button" data-question="change">x 变化时 y 如何变？</button>
+        <canvas class="object-canvas" id="objectCanvas" aria-label="当前二次函数的坐标图像"></canvas>
+        <div class="question-strip" role="group" aria-label="研究问题">
+          <button class="question-btn active" type="button" data-question="zeros" aria-pressed="true">哪里 y = 0？</button>
+          <button class="question-btn" type="button" data-question="positive" aria-pressed="false">哪里 y > 0？</button>
+          <button class="question-btn" type="button" data-question="negative" aria-pressed="false">哪里 y < 0？</button>
+          <button class="question-btn" type="button" data-question="minimum" aria-pressed="false">顶点在哪？</button>
+          <button class="question-btn" type="button" data-question="change" aria-pressed="false">x 变化时 y 如何变？</button>
         </div>
-        <div class="stat-grid">
+        <div class="stat-grid" aria-live="polite">
           <div class="stat"><b>当前问题</b><span id="questionLabel">求零点</span></div>
           <div class="stat"><b>研究对象</b><span>定义域内的完整函数</span></div>
           <div class="stat"><b>当前结论</b><span id="answerStat">x=1,3</span></div>
@@ -433,7 +443,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <p><strong>更容易看出：</strong>顶点、对称轴、最值和变化趋势。</p>
         </div>
       </div>
-      <div class="compare">
+      <div class="compare" aria-live="polite">
         <div class="compare-card old">
           <h3>当前问题</h3>
           <p id="pairOld">已知 $f(x)=x^2-4x+3$，判断函数的零点和正负。</p>
@@ -469,7 +479,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
         <div class="canvas-head">
           <div>
             <div class="canvas-title" id="familyTitle">$y = a(x-h)^2 + k$</div>
-            <p class="subtle" id="familyPrompt">当 $a\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。拖动琥珀色顶点，观察整条曲线怎样移动。</p>
+            <p class="subtle" id="familyPrompt">当 $a\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。可以拖动琥珀色顶点，也可以使用下方滑块，观察整条曲线怎样移动。</p>
           </div>
           <div class="legend">
             <span><i class="dot ref"></i>参考对象</span>
@@ -478,10 +488,10 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             <span><i class="dot move"></i>移动轨迹</span>
           </div>
         </div>
-        <canvas id="familyCanvas" class="direct-manipulation" aria-label="参数家族图像，可拖动顶点"></canvas>
-        <div class="mode-tabs" aria-label="参数表达方式">
-          <button class="mode-tab active" type="button" data-family-mode="vertex">顶点式：a,h,k</button>
-          <button class="mode-tab" type="button" data-family-mode="standard">一般式：a,b,c</button>
+        <canvas id="familyCanvas" class="direct-manipulation" aria-label="二次函数参数家族图像，可使用下方滑块调整参数"></canvas>
+        <div class="mode-tabs" role="group" aria-label="参数表达方式">
+          <button class="mode-tab active" type="button" data-family-mode="vertex" aria-pressed="true">顶点式：a,h,k</button>
+          <button class="mode-tab" type="button" data-family-mode="standard" aria-pressed="false">一般式：a,b,c</button>
         </div>
         <div class="control-panel active" id="vertexControls">
           <div class="control-grid">
@@ -522,7 +532,7 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
           <input class="scrub" id="transformScrub" type="range" min="0" max="1" step="0.001" value="1" aria-label="观看从参考函数到当前函数的变化">
           <button class="btn" type="button" id="playTransform">播放变化</button>
         </div>
-        <div class="stat-grid">
+        <div class="stat-grid" aria-live="polite">
           <div class="stat"><b>当前公式</b><span id="familyFormula">y=(x-1)²-1</span></div>
           <div class="stat"><b>顶点</b><span id="vertexStat">(1,-1)</span></div>
           <div class="stat"><b>开口</b><span id="openStat">向上</span></div>
@@ -555,26 +565,26 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
             <span><i class="dot" style="background:var(--warning)"></i>无效状态</span>
           </div>
         </div>
-        <canvas id="domainCanvas" aria-label="定义域限制图像"></canvas>
+        <canvas id="domainCanvas" aria-label="函数 y 等于 x 平方减 4x 加 3 的定义域与值域图像"></canvas>
         <div class="control-grid">
           <div class="control">
             <label for="domainMin">左端点 <span id="domainMinRead">-1.0</span></label>
             <input id="domainMin" type="range" min="-3" max="5" step="0.1" value="-1">
           </div>
           <div class="control">
-            <label for="domainMax">右端点 <span id="domainMaxRead">4.0</span></label>
-            <input id="domainMax" type="range" min="-3" max="5" step="0.1" value="4">
+            <label for="domainMax">右端点 <span id="domainMaxRead">1.0</span></label>
+            <input id="domainMax" type="range" min="-3" max="5" step="0.1" value="1">
           </div>
           <div class="control">
             <label>重置 <span>默认区间</span></label>
-            <button class="btn" type="button" id="resetDomain">回到 [-1,4]</button>
+            <button class="btn" type="button" id="resetDomain">回到 [-1,1]</button>
           </div>
         </div>
-        <div class="stat-grid">
-          <div class="stat"><b>完整对象</b><span id="domainObject">表达式 + [-1,4]</span></div>
-          <div class="stat"><b>值域下界</b><span id="domainMinY">-1.00</span></div>
+        <div class="stat-grid" aria-live="polite">
+          <div class="stat"><b>完整对象</b><span id="domainObject">表达式 + [-1,1]</span></div>
+          <div class="stat"><b>值域下界</b><span id="domainMinY">0.00</span></div>
           <div class="stat"><b>值域上界</b><span id="domainMaxY">8.00</span></div>
-          <div class="stat"><b>结论</b><span id="domainConclusion">顶点在区间内，最小值由顶点给出</span></div>
+          <div class="stat"><b>结论</b><span id="domainConclusion">顶点不在区间内，最值由端点给出</span></div>
         </div>
         <div class="callout" id="domainCallout">
           <p><strong>具体比较：</strong>在全体实数上，函数的值域是 $[-1,+\infty)$；若把定义域限制为 $[-1,1]$，函数在该区间上递减，值域变为 $[0,8]$。</p>
@@ -619,6 +629,12 @@ canvas.direct-manipulation.is-dragging{cursor:grabbing}
     </div>
   </section>
 </main>
+
+<nav class="pager" aria-label="章节导航" data-sequence-navigation>
+  <a class="pager-prev" href="../chapter_00_江西中考数学快速回顾特辑/chapter00-2_几何与综合快速回顾/index.html">← 上一章 · 00-2 几何与综合快速回顾</a>
+  <a class="pager-home" href="../index.html">返回知识首页</a>
+  <a class="pager-next" href="../chapter_02-1_完全平方与平方差公式/index.html">下一章 · Chapter 02-1 完全平方与平方差公式 →</a>
+</nav>
 
 <footer class="footer">
   OpenKS · 第一章 · 从答案到对象
@@ -700,7 +716,8 @@ const relationPairs = [
 const pairState = { index: 0 };
 const objectState = { question: 'zeros', probe: 2.6, raf: 0 };
 const familyState = { mode: 'vertex', a: 1, h: 1, k: -1, stdA: 1, stdB: -4, stdC: 3, scrub: 1, playing: false, drag: false, hover: false, raf: 0 };
-const domainState = { min: -1, max: 4, raf: 0 };
+const domainFunction = Object.freeze({ a: 1, b: -4, c: 3 });
+const domainState = { min: -1, max: 1, raf: 0 };
 const canvases = {};
 
 function problemA(){ return problemState.a; }
@@ -735,6 +752,7 @@ function quadraticExpression(){
   return parts.join(' ') || '0';
 }
 function problemFunction(){ return `y = ${quadraticExpression()}`; }
+function fDomain(x){ return domainFunction.a*x*x + domainFunction.b*x + domainFunction.c; }
 
 function setupCanvas(id){
   const canvas = document.getElementById(id);
@@ -745,16 +763,15 @@ function setupCanvas(id){
 
 function resizeCanvas(id){
   const item = canvases[id];
+  item.canvas.style.width = '100%';
   const rect = item.canvas.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  const w = Math.max(320, Math.round(rect.width));
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = Math.max(1, Math.round(rect.width));
   const h = Math.max(280, Math.round(rect.height));
   if (item.canvas.width !== Math.round(w*dpr) || item.canvas.height !== Math.round(h*dpr)) {
     item.canvas.width = Math.round(w*dpr);
     item.canvas.height = Math.round(h*dpr);
   }
-  item.canvas.style.width = w + 'px';
-  item.canvas.style.height = h + 'px';
   item.ctx.setTransform(dpr,0,0,dpr,0,0);
   item.w = w; item.h = h; item.dpr = dpr;
 }
@@ -831,7 +848,12 @@ function drawCurve(item, g, fn, stroke, width=3, alpha=1, range=[g.xMin,g.xMax])
   ctx.lineJoin = 'round';
   ctx.beginPath();
   let started = false;
-  const step = (range[1] - range[0]) / 360;
+  const span = range[1] - range[0];
+  if(!Number.isFinite(span) || span <= 0){
+    ctx.restore();
+    return;
+  }
+  const step = span / 360;
   for(let x = range[0]; x <= range[1] + .0001; x += step){
     const y = fn(x);
     const px = g.X(x), py = g.Y(y);
@@ -951,7 +973,11 @@ function intervalText(wantPositive){
 function setQuestion(q){
   objectState.question = q;
   objectState.probe = -1.2;
-  document.querySelectorAll('.question-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.question === q));
+  document.querySelectorAll('.question-btn').forEach(btn => {
+    const active = btn.dataset.question === q;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
   const roots = problemState.roots.slice().sort((a,b) => a-b);
   const vx = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
   const vy = fBase(vx);
@@ -974,7 +1000,6 @@ function setQuestion(q){
 function updateProblemUI(){
   document.getElementById('objectTitle').innerHTML = `$${problemFunction()}$`;
   setQuestion(objectState.question);
-  updateDomainUI();
   if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
 }
 
@@ -1066,7 +1091,11 @@ function updateFamilyUI(){
     if(document.activeElement !== input) input.value = familyState[key];
   });
   document.getElementById('transformScrub').value = familyState.scrub;
-  document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.familyMode === familyState.mode));
+  document.querySelectorAll('.mode-tab').forEach(btn => {
+    const active = btn.dataset.familyMode === familyState.mode;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
   document.getElementById('vertexControls').classList.toggle('active', familyState.mode === 'vertex');
   document.getElementById('standardControls').classList.toggle('active', familyState.mode === 'standard');
   if(familyState.mode === 'standard'){
@@ -1087,7 +1116,7 @@ function updateFamilyUI(){
   } else {
     if(_lastFamilyMode !== 'vertex'){
       document.getElementById('familyTitle').innerHTML = '$y = a(x-h)^2 + k$';
-      document.getElementById('familyPrompt').innerHTML = '当 $a\\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。拖动琥珀色顶点，观察整条曲线怎样移动。';
+      document.getElementById('familyPrompt').innerHTML = '当 $a\\neq0$ 时，$a$ 的正负决定开口方向，$|a|$ 影响开口宽窄，$h$ 和 $k$ 决定顶点 $(h,k)$。可以拖动琥珀色顶点，也可以使用下方滑块，观察整条曲线怎样移动。';
       if(window.MathJax && MathJax.typesetPromise){var els=[document.getElementById('familyTitle'),document.getElementById('familyPrompt')];if(MathJax.typesetClear)MathJax.typesetClear(els);MathJax.typesetPromise(els);}
     }
     document.getElementById('familyFormula').textContent = `y=${pretty(familyState.a)}(x${familyState.h >= 0 ? '-' : '+'}${pretty(Math.abs(familyState.h))})²${familyState.k >= 0 ? '+' : '-'}${pretty(Math.abs(familyState.k))}`;
@@ -1138,17 +1167,17 @@ function isNearVertex(e){
 function drawDomain(){
   resizeCanvas('domainCanvas');
   const item = canvases.domainCanvas;
-  const vxBase = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
-  const g = graph(item, -4, 7, Math.min(-3, fBase(vxBase) - 2), Math.max(9, fBase(-4), fBase(7)));
+  const vxBase = -domainFunction.b / (2*domainFunction.a);
+  const g = graph(item, -4, 7, Math.min(-3, fDomain(vxBase) - 2), Math.max(9, fDomain(-4), fDomain(7)));
   drawAxes(item,g);
   const valid = domainState.min <= domainState.max;
-  drawCurve(item,g,fBase,colors.reference(),2.2,.72);
+  drawCurve(item,g,fDomain,colors.reference(),2.2,.72);
   if(valid){
     const x1 = domainState.min, x2 = domainState.max;
-    const y1 = fBase(x1), y2 = fBase(x2);
+    const y1 = fDomain(x1), y2 = fDomain(x2);
     const candidates = [x1, x2];
     if(x1 <= vxBase && x2 >= vxBase) candidates.push(vxBase);
-    const ys = candidates.map(fBase);
+    const ys = candidates.map(fDomain);
     const lowY = Math.min(...ys), highY = Math.max(...ys);
     const left = g.X(x1), right = g.X(x2);
     const ctx = item.ctx;
@@ -1162,10 +1191,14 @@ function drawDomain(){
     ctx.globalAlpha = .12;
     ctx.fillRect(g.X(g.xMin),g.Y(highY),g.X(g.xMax)-g.X(g.xMin),g.Y(lowY)-g.Y(highY));
     ctx.restore();
-    drawCurve(item,g,fBase,colors.object(),4,.95,[x1,x2]);
-    drawPoint(item,g,x1,y1,colors.input(),'左端点');
-    drawPoint(item,g,x2,y2,colors.input(),'右端点');
-    if(x1 <= vxBase && x2 >= vxBase) drawPoint(item,g,vxBase,fBase(vxBase),colors.conclusion(),`区间${extremumName(problemA())}`);
+    if(Math.abs(x2 - x1) < .0001){
+      drawPoint(item,g,x1,y1,colors.input(),'唯一定义点');
+    } else {
+      drawCurve(item,g,fDomain,colors.object(),4,.95,[x1,x2]);
+      drawPoint(item,g,x1,y1,colors.input(),'左端点');
+      drawPoint(item,g,x2,y2,colors.input(),'右端点');
+    }
+    if(x1 <= vxBase && x2 >= vxBase) drawPoint(item,g,vxBase,fDomain(vxBase),colors.conclusion(),`区间${extremumName(domainFunction.a)}`);
   } else {
     const ctx = item.ctx;
     ctx.save();
@@ -1189,13 +1222,17 @@ function updateDomainUI(){
     document.getElementById('domainMaxY').textContent = '-';
     document.getElementById('domainConclusion').textContent = '先修正定义域';
   } else {
-    const vxBase = Math.abs(problemA()) < .001 ? 0 : -problemB() / (2*problemA());
+    const vxBase = -domainFunction.b / (2*domainFunction.a);
     const candidates = [min,max];
     if(min <= vxBase && max >= vxBase) candidates.push(vxBase);
-    const ys = candidates.map(fBase);
+    const ys = candidates.map(fDomain);
     document.getElementById('domainMinY').textContent = pretty(Math.min(...ys));
     document.getElementById('domainMaxY').textContent = pretty(Math.max(...ys));
-    document.getElementById('domainConclusion').textContent = min <= vxBase && max >= vxBase ? `顶点在区间内，${extremumName(problemA())}由顶点给出` : '极值出现在端点处';
+    document.getElementById('domainConclusion').textContent = Math.abs(max - min) < .0001
+      ? '定义域只有一个点，值域也只有一个值'
+      : min <= vxBase && max >= vxBase
+        ? `顶点在区间内，${extremumName(domainFunction.a)}由顶点给出`
+        : '顶点不在区间内，最值由端点给出';
   }
   schedule(drawDomain, domainState);
 }
@@ -1287,9 +1324,9 @@ function init(){
     updateDomainUI();
   });
   document.getElementById('resetDomain').addEventListener('click', () => {
-    domainState.min = -1; domainState.max = 4;
+    domainState.min = -1; domainState.max = 1;
     document.getElementById('domainMin').value = -1;
-    document.getElementById('domainMax').value = 4;
+    document.getElementById('domainMax').value = 1;
     updateDomainUI();
   });
 
@@ -1300,13 +1337,33 @@ function init(){
   }, { threshold: .16 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  function revealActiveNav(link){
+    const scroller = link.closest('.topbar-inner');
+    const brand = scroller?.querySelector('.brand');
+    if(!scroller || scroller.scrollWidth <= scroller.clientWidth + 1) return;
+    const reserved = (brand?.offsetWidth || 0) + 10;
+    const visibleWidth = Math.max(0, scroller.clientWidth - reserved);
+    const target = link.offsetLeft - reserved - (visibleWidth - link.offsetWidth) / 2;
+    scroller.scrollTo({ left:Math.max(0,target), behavior:reduceMotion ? 'auto' : 'smooth' });
+  }
+
   const stageObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(!entry.isIntersecting) return;
-      document.querySelectorAll('.nav-pill').forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+      let activeLink = null;
+      document.querySelectorAll('.nav-pill').forEach(link => {
+        const active = link.getAttribute('href') === '#' + entry.target.id;
+        link.classList.toggle('active', active);
+        if(active){
+          link.setAttribute('aria-current', 'location');
+          activeLink = link;
+        }
+        else link.removeAttribute('aria-current');
+      });
+      if(activeLink) requestAnimationFrame(() => revealActiveNav(activeLink));
     });
   }, { rootMargin: '-35% 0px -55% 0px' });
-  document.querySelectorAll('.stage').forEach(stage => stageObserver.observe(stage));
+  document.querySelectorAll('.stage:not(#stage0)').forEach(stage => stageObserver.observe(stage));
 
   window.addEventListener('resize', () => {
     schedule(drawObject, objectState);

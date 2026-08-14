@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f4f2ec">
+  <title>静态有序排布中的等差累计练习 | OpenKS</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/practice.css">
+  <script src="/practice.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#practice-main">跳到当前题目</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <img class="brand-lockup" src="/brand/openks-lockup.svg" width="2947" height="716" alt="OpenKS">
+      <span class="page-kind">练习</span>
+    </div>
+  </header>
+
+  <main id="practice-main" class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">数列 · 累计</p>
+      <h1 id="page-title">静态有序排布中的等差累计</h1>
+      <p class="intro__lead">每次只处理当前一步。先独立作答；需要时再逐层查看提示。反馈只指出当前最早需要修正的一处。</p>
+    </section>
+
+    <section id="practice-app" class="practice-shell" aria-busy="true">
+      <div class="loading-state" id="loading-state" role="status">正在准备题目……</div>
+
+      <div id="practice-content" hidden>
+        <section class="progress-panel" aria-label="当前进度">
+          <div class="progress-panel__labels">
+            <span id="item-progress">第 1 / 5 题</span>
+            <span id="step-progress">第 1 / 1 步</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="练习进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span id="progress-fill"></span>
+          </div>
+        </section>
+
+        <article class="practice-card" aria-labelledby="current-prompt">
+          <section class="stem-block" aria-labelledby="stem-heading">
+            <p class="section-label" id="stem-heading">题目</p>
+            <p class="stem-text" id="stem-text"></p>
+          </section>
+
+          <div class="step-divider" aria-hidden="true"></div>
+
+          <section class="response-block">
+            <p class="section-label">当前一步</p>
+            <h2 id="current-prompt" tabindex="-1"></h2>
+            <form id="answer-form" novalidate>
+              <div id="response-controls"></div>
+              <p class="form-error" id="form-error" role="alert" hidden></p>
+              <div class="primary-actions" id="primary-actions"></div>
+            </form>
+          </section>
+
+          <section class="hint-panel" id="hint-panel" tabindex="-1" aria-labelledby="hint-heading" aria-live="polite" hidden>
+            <div class="panel-heading">
+              <span class="panel-icon" aria-hidden="true">?</span>
+              <h3 id="hint-heading">已查看的提示</h3>
+            </div>
+            <ol id="hint-list"></ol>
+          </section>
+
+          <section class="feedback-panel" id="feedback-panel" tabindex="-1" aria-live="polite" hidden>
+            <p class="feedback-panel__label" id="feedback-label"></p>
+            <p id="feedback-text"></p>
+          </section>
+
+          <section class="completion-panel" id="completion-panel" tabindex="-1" aria-live="polite" hidden>
+            <p class="section-label">本题结束</p>
+            <h3 id="completion-heading"></h3>
+            <p id="completion-text"></p>
+          </section>
+
+          <div class="continue-actions" id="continue-actions"></div>
+        </article>
+      </div>
+
+      <section class="finished-card" id="finished-card" tabindex="-1" hidden>
+        <span class="finished-mark" aria-hidden="true">✓</span>
+        <p class="section-label">体验完成</p>
+        <h2 id="finished-message">已完成本次体验。</h2>
+        <p>你可以重新开始，再观察自己在哪一步需要提示。</p>
+        <button class="button button--primary" id="reset-button" type="button">重新开始</button>
+      </section>
+
+      <section class="service-error" id="service-error" role="alert" hidden>
+        <h2>暂时无法连接本地练习</h2>
+        <p id="service-error-text">请确认本地服务仍在运行，然后重试。</p>
+        <button class="button button--primary" id="retry-button" type="button">重新连接</button>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">OpenKS · 让知识结构变得清楚</footer>
+
+  <noscript>
+    <p class="noscript-message">这个练习需要启用 JavaScript 才能逐步释放提示与反馈。</p>
+  </noscript>
+</body>
+</html>

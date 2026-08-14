@@ -1,0 +1,646 @@
+{
+  "format": "dgopenks_local_practice_experiment",
+  "format_version": 1,
+  "status": "local_experiment_non_formal",
+  "identity_note": "本文件不是正式 P/Q、候选、验证记录或学习进度依据；所有 local_key 只在本目录内使用。",
+  "source_locks": {
+    "design": {
+      "path": "practice_tree/高中正式练习体系/03_实验/E-03_等差数列前n项和/01_静态有序排布中的等差累计_小型练习树实验.md",
+      "sha256": "0c19f9e353ea8f91b290fe214c3c070e47014354a8ccb833e5982f00fc031449"
+    },
+    "method": {
+      "path": "method_tree/高中正式方法体系/03_实验/E-03_等差数列前n项和/09_静态有序排布中的等差累计_实验方法稿.md",
+      "sha256": "39cba6dac35926a1386625232f34c8651a612848883e9b038942fff78708cf58"
+    },
+    "materials": {
+      "path": "method_tree/高中正式方法体系/03_实验/E-03_等差数列前n项和/08_静态累计任务合同非正式可读性观察.md",
+      "sha256": "e007a218e3838d4736206ab283dc3600981156495e2492d2060ae9a7f57be909"
+    }
+  },
+  "visibility_contract": {
+    "learner_export_paths": {
+      "always_available": [
+        "items[].learner.stem",
+        "items[].steps[].learner.prompt",
+        "items[].steps[].learner.choices"
+      ],
+      "progressive": ["items[].steps[].learner.hints"],
+      "selected_only": ["items[].steps[].learner.feedback_messages"],
+      "terminal_only": ["items[].learner.completed_explanation"]
+    },
+    "internal_only_roots": [
+      "format",
+      "format_version",
+      "status",
+      "identity_note",
+      "source_locks",
+      "visibility_contract",
+      "gate_order",
+      "outcome_kinds",
+      "diagnostic_route_policy",
+      "items[].internal",
+      "items[].steps[].internal"
+    ],
+    "release_rules": {
+      "hints": "按数组顺序逐层释放",
+      "feedback_messages": "只释放判定路线选中的一条",
+      "completed_explanation": "仅在 outcome_kind 为 independent_complete、hinted_complete、correct_stop 或 answer_revealed 时释放；其他状态导出时必须剔除"
+    },
+    "rule": "导出器只能按上述逐字段白名单和释放阶段取值，不能直接导出整个 learner 对象；不得显示内部关口、诊断名称、答案合同、来源路径或实验身份。"
+  },
+  "gate_order": [
+    {"gate": 1, "label": "锁定累计目标与对象范围"},
+    {"gate": 2, "label": "定义每一项的对象、数量和单位"},
+    {"gate": 3, "label": "检查整个范围内的固定差"},
+    {"gate": 4, "label": "选择合法的项数路径"},
+    {"gate": 5, "label": "检查首项、末项和项数是否唯一"},
+    {"gate": 6, "label": "计算累计总量"},
+    {"gate": 7, "label": "核对并解释结果"}
+  ],
+  "outcome_kinds": [
+    "independent_complete",
+    "hinted_complete",
+    "correct_stop",
+    "answer_revealed"
+  ],
+  "diagnostic_route_policy": {
+    "correct_contract_first": true,
+    "evaluation_order": "array_order",
+    "stop_after_first_match": true,
+    "feedback_limit_per_attempt": 1,
+    "rule": "先按 response_contract 判断作答是否正确；只有未通过正确合同时，才按 diagnostic_routes 数组顺序检查。命中第一条后立即停止，只释放该条反馈。"
+  },
+  "items": [
+    {
+      "internal": {
+        "local_item_key": "item-01",
+        "source_ref": "08 §2.1",
+        "primary_role": "complete_accumulation_given_count",
+        "expected_terminal_gate": 7,
+        "terminal_kind": "complete"
+      },
+      "learner": {
+        "stem": "某博物馆的徽章展示墙分为自下而上的 18 层。最下层摆 23 枚徽章，之后每上一层都比紧邻的下一层多 4 枚。布置完成后，墙上共摆多少枚徽章？",
+        "completed_explanation": "令 a_k 表示自下而上第 k 层的徽章数。18 层之间有 17 次变化，所以 a_18=23+17×4=91，S_18=18×(23+91)÷2=1026。全部 18 层共有 1026 枚徽章；末层可由 17 次增加重建，总量也位于 18×23 与 18×91 之间。"
+      },
+      "steps": [
+        {
+          "internal": {
+            "local_step_key": "item-01-step-01",
+            "target_gate": 2,
+            "response_contract": {"type": "single_choice", "correct_value": "A"},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": "B"}, "internal_name": "把对象序号当作贡献数量", "feedback_index": 1},
+              {"when": {"equals": "C"}, "internal_name": "把单项贡献改成累计量", "feedback_index": 2},
+              {"when": {"equals": "D"}, "internal_name": "把固定差当作数列项", "feedback_index": 3}
+            ]
+          },
+          "learner": {
+            "prompt": "哪一个定义能让各项相加后表示整面墙的徽章总数？",
+            "choices": [
+              {"value": "A", "text": "a_k 表示自下而上第 k 层的徽章数"},
+              {"value": "B", "text": "a_k 表示层的序号 k"},
+              {"value": "C", "text": "a_k 表示前 k 层已经累计的徽章数"},
+              {"value": "D", "text": "a_k 表示第 k 层与下一层相差的徽章数"}
+            ],
+            "hints": [
+              "先说清每一个数对应哪一层、记录什么数量。",
+              "a_k 应表示第 k 个计入对象对总量的完整贡献。",
+              "把句子补完整：a_k 表示自下而上第 k 层的____数。"
+            ],
+            "feedback_messages": [
+              "这个定义把层、数量和单位对应起来，各项之和就是全部层的徽章总数。",
+              "层号只说明位置，不是这一层对总量贡献的徽章数。",
+              "前 k 层的累计量已经包含多个对象，不能再把这些累计量逐项相加。",
+              "相邻层的差是公差，不是每一层对总量的完整贡献。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-01-step-02",
+            "target_gate": 4,
+            "response_contract": {"type": "integer", "correct_value": 17},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": 18}, "internal_name": "对象数与间隔数混淆", "feedback_index": 1},
+              {"when": {"fallback": true}, "internal_name": "相邻变化次数未确定", "feedback_index": 2}
+            ]
+          },
+          "learner": {
+            "prompt": "从第 1 层到第 18 层，一共发生多少次相邻变化？",
+            "hints": [
+              "把第 1 层到第 18 层之间的间隔与 18 个对象分开。",
+              "从第 1 个对象到第 N 个对象只有 N-1 次变化。",
+              "18-1=____。"
+            ],
+            "feedback_messages": [
+              "共有 17 次相邻变化，末层应在首层基础上增加 17 个公差。",
+              "18 是层数，不是变化次数；第 1 层到第 18 层之间只有 17 个间隔。",
+              "先标出首层和末层，再数两者之间的相邻间隔。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-01-step-03",
+            "target_gate": 6,
+            "response_contract": {
+              "type": "compound",
+              "required_outputs": {"last_term": 91, "total": 1026},
+              "output_evidence_rules": {
+                "last_term": "显式写出末项 91，或由完整逐项相加序列的末项 91 提供证据",
+                "total": "显式得到总量 1026"
+              },
+              "route_label_required": false,
+              "required_calculation_contract_count": 1,
+              "accepted_calculation_contracts": [
+                {
+                  "kind": "endpoint_sum_formula",
+                  "required_equations": [
+                    {"left_expression": "23+17×4", "operator": "=", "right_value": 91},
+                    {"left_expression": "18×(23+91)÷2", "operator": "=", "right_value": 1026}
+                  ],
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "first_term_difference_sum_formula",
+                  "required_equations": [
+                    {"left_expression": "23+17×4", "operator": "=", "right_value": 91},
+                    {"left_expression": "18×23+18×17÷2×4", "operator": "=", "right_value": 1026}
+                  ],
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "direct_sum",
+                  "required_sequence": {"first_term": 23, "last_term": 91, "term_count": 18, "common_difference": 4},
+                  "required_total": 1026,
+                  "requires_complete_work": true
+                }
+              ]
+            },
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"field_missing_or_incorrect": {"field": "last_term", "expected": 91}}, "internal_name": "末项重建错误", "feedback_index": 1},
+              {"when": {"field_missing_or_incorrect": {"field": "total", "expected": 1026}}, "internal_name": "累计计算错误", "feedback_index": 2},
+              {"when": {"calculation_kind_detected": "direct_sum", "complete_work_missing": true}, "internal_name": "合法替代路线缺少过程", "feedback_index": 3},
+              {"when": {"accepted_calculation_contract_missing": true}, "internal_name": "正确数值缺少合法计算过程", "feedback_index": 4}
+            ]
+          },
+          "learner": {
+            "prompt": "求末层的徽章数和全部 18 层的总数。若直接逐项相加，请写出完整加法过程。",
+            "hints": [
+              "先用 17 次变化求末层，再求全部 18 项的和。",
+              "a_18=23+17×4，S_18=18×(23+a_18)÷2。",
+              "a_18=91，S_18=18×(23+91)÷2=____。"
+            ],
+            "feedback_messages": [
+              "末层为 91 枚，全部 18 层共有 1026 枚；完整逐项相加得到同一结果也成立。",
+              "先检查末层是否由 23 加上 17 个 4 得到。",
+              "末项与项数已经确定，重新检查 18×(23+91)÷2 的运算。",
+              "逐项相加是合法路线，但需要写清从首层到末层的全部 18 项，才能核对是否漏项。",
+              "末项和总量虽然已经写出，但还缺少可核对的完整过程；请写出一种完整求和公式，或列出从 23 到 91 的全部 18 项。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-01-step-04",
+            "target_gate": 7,
+            "response_contract": {
+              "type": "semantic_rubric",
+              "required_meanings": [
+                {"key": "scope", "criterion": "明确总量包含全部18层或第1层到第18层"},
+                {"key": "total", "expected_number": 1026},
+                {"key": "unit", "accepted_text": ["枚徽章"]}
+              ],
+              "required_check_count": 1,
+              "accepted_checks": [
+                {
+                  "kind": "rebuild_last_term",
+                  "relation": {"left_expression": "23+17×4", "operator": "=", "right_value": 91},
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "sum_bounds",
+                  "predicate": {
+                    "lower_expression": "18×23",
+                    "lower_operator": "≤",
+                    "checked_value": 1026,
+                    "upper_operator": "≤",
+                    "upper_expression": "18×91",
+                    "expected_result": true
+                  },
+                  "accept_mathematically_equivalent_notation": true
+                }
+              ]
+            },
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"required_meaning_missing_or_incorrect": "scope"}, "internal_name": "累计范围未解释", "feedback_index": 1},
+              {"when": {"required_meaning_missing_or_incorrect": "total"}, "internal_name": "累计总量缺失或错误", "feedback_index": 2},
+              {"when": {"required_meaning_missing_or_incorrect": "unit"}, "internal_name": "结果单位遗漏", "feedback_index": 3},
+              {"when": {"check_missing": true}, "internal_name": "结果未核对", "feedback_index": 4},
+              {"when": {"check_incorrect": true}, "internal_name": "核对等式或数值关系错误", "feedback_index": 5}
+            ]
+          },
+          "learner": {
+            "prompt": "用一句话解释 1026 的含义，并写出一种检查方式。",
+            "hints": [
+              "说明这个数包含哪些层，单位是什么。",
+              "可以重建末层，也可以检查总量是否位于首层下界与末层上界之间。",
+              "全部____共有____，单位是____；末层由 23+17×4 得到。"
+            ],
+            "feedback_messages": [
+              "结果已经回到原题，并且有独立检查支持。",
+              "数值还缺少累计范围；请说明它包含第 1 层到第 18 层。",
+              "请明确写出总量 1026；若写了其他数值，请先回到求和步骤核对。",
+              "数值还缺少原题单位；这里的单位是枚徽章。",
+              "再补一种检查：重建末层，或比较 1026 与 18×23、18×91。",
+              "你已经写了检查，但等式或数值关系不成立；请重新计算末层，或重新比较总量的上下界。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "internal": {
+        "local_item_key": "item-02",
+        "source_ref": "08 §2.4",
+        "primary_role": "fixed_difference_rejection",
+        "expected_terminal_gate": 3,
+        "terminal_kind": "correct_stop"
+      },
+      "learner": {
+        "stem": "一面马赛克墙由自下而上的 12 行组成。第 1 行用 20 块方砖；第 2 至第 6 行中，每一行都比它下面相邻的一行多 3 块；第 7 至第 12 行中，每一行都比它下面相邻的一行多 5 块。整面墙共用多少块方砖？",
+        "completed_explanation": "当前方法在固定差检查处停止。前一段的相邻差为 3，后一段的相邻差为 5，全部 12 行不能组成一个公差不变的等差数列，因此不继续进行分段求和。"
+      },
+      "steps": [
+        {
+          "internal": {
+            "local_step_key": "item-02-step-01",
+            "target_gate": 3,
+            "response_contract": {"type": "single_choice", "correct_value": "B"},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": "A"}, "internal_name": "固定差失效后仍继续", "feedback_index": 1},
+              {"when": {"equals": "C"}, "internal_name": "把合法项数误判为问题", "feedback_index": 2},
+              {"when": {"equals": "D"}, "internal_name": "把同单位贡献误判为不可加", "feedback_index": 3}
+            ]
+          },
+          "learner": {
+            "prompt": "能否把全部 12 行作为一个完整等差累计继续？",
+            "choices": [
+              {"value": "A", "text": "可以，直接使用一个等差数列求和"},
+              {"value": "B", "text": "不可以，整个范围内没有同一个固定差"},
+              {"value": "C", "text": "不可以，因为 12 不是合法项数"},
+              {"value": "D", "text": "不可以，因为各行方砖数的单位不同"}
+            ],
+            "hints": [
+              "先检查全部 12 行，而不是只看其中一段。",
+              "一个完整等差累计要求整个范围内只有同一个公差。",
+              "题面同时出现了每行增加 3 块和每行增加 5 块。"
+            ],
+            "feedback_messages": [
+              "应在固定差检查处停止：全部 12 行没有同一个公差。",
+              "前一段增加 3，后一段增加 5，不能把两段合成一个公差不变的数列。",
+              "12 是正整数，可以作为项数；真正失效的是全程固定差。",
+              "各行记录的都是方砖数，单位一致；真正失效的是全程固定差。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "internal": {
+        "local_item_key": "item-03",
+        "source_ref": "08 §2.3（项数未知）",
+        "primary_role": "zero_difference_missing_count",
+        "expected_terminal_gate": 5,
+        "terminal_kind": "correct_stop"
+      },
+      "learner": {
+        "stem": "一只标本柜的隔层自下而上连续排列。最下层放 42 枚贝壳标本，每上一层都与紧邻的下一层放得一样多，最上层也放 42 枚。仅凭这些信息，能否确定柜中贝壳标本的总数？若不能，请说明还缺少什么信息。",
+        "completed_explanation": "相邻数量不变，所以 d=0。题面没有给出隔层总数，而相同的首末量不能确定 N；若层数为 N，总量只能写成 42N 枚。缺少隔层总数，因此总量不能唯一确定。"
+      },
+      "steps": [
+        {
+          "internal": {
+            "local_step_key": "item-03-step-01",
+            "target_gate": 4,
+            "response_contract": {"type": "single_choice", "correct_value": "C"},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": "A"}, "internal_name": "零公差时强套端点项数公式", "feedback_index": 1},
+              {"when": {"equals": "B"}, "internal_name": "把未给项数误认为明给", "feedback_index": 2}
+            ]
+          },
+          "learner": {
+            "prompt": "当前可以通过哪一条路径确定层数 N？",
+            "choices": [
+              {"value": "A", "text": "由相同的首末数量和 d=0 使用端点公式"},
+              {"value": "B", "text": "题面已经直接给出了层数"},
+              {"value": "C", "text": "两条成功路径目前都不能确定 N"}
+            ],
+            "hints": [
+              "先看层数是否明给，再看端点公式的使用条件。",
+              "端点公式要求 d 不等于 0；d=0 时项数必须由其他信息给出。",
+              "d=0，N 未给，端点路径是否合法：____。"
+            ],
+            "feedback_messages": [
+              "层数没有明给，端点公式又不适用于 d=0，因此当前还不能确定 N。",
+              "相同首末数量只能说明各层一样多，不能说明中间共有多少层。",
+              "题面只给了最下层和最上层的数量，没有给出隔层总数。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-03-step-02",
+            "target_gate": 5,
+            "response_contract": {"type": "single_choice", "correct_value": "B"},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": "A"}, "internal_name": "信息不足时仍给出唯一总量", "feedback_index": 1},
+              {"when": {"equals": "C"}, "internal_name": "把已知零公差误判为缺失", "feedback_index": 2},
+              {"when": {"equals": "D"}, "internal_name": "把常数列误判为非等差数列", "feedback_index": 3}
+            ]
+          },
+          "learner": {
+            "prompt": "现在能否确定总量？",
+            "choices": [
+              {"value": "A", "text": "可以，总量就是 42 枚"},
+              {"value": "B", "text": "不可以；缺少 N，只能写成 42N 枚"},
+              {"value": "C", "text": "不可以；缺少公差 d"},
+              {"value": "D", "text": "不可以；d=0 时不属于等差数列"}
+            ],
+            "hints": [
+              "只检查 a_1、a_N 和 N 是否都能唯一确定。",
+              "少一个必要量，就不能得到唯一总量。",
+              "总量为 42N，题面还缺少____。"
+            ],
+            "feedback_messages": [
+              "正确停止：缺少隔层总数 N，总量只能写成 42N 枚。",
+              "42 是每一层的数量，不是所有层的总量。",
+              "公差已经确定为 0，缺少的是隔层总数 N。",
+              "相邻项之差恒为 0，仍然是等差数列；问题在于 N 未知。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "internal": {
+        "local_item_key": "item-04",
+        "source_ref": "08 §2.2",
+        "primary_role": "endpoint_count_and_accumulation",
+        "expected_terminal_gate": 7,
+        "terminal_kind": "complete"
+      },
+      "learner": {
+        "stem": "社区大厅沿一面墙从左到右排着一列纪念盒。第一个盒中放 17 枚纪念章，从第二个起，每个盒都比左边相邻的盒多 5 枚；最右边的盒中有 82 枚。第一个和最右边的盒都包括在这列中。问这些盒中共有多少枚纪念章？",
+        "completed_explanation": "首末盒都计入，且 d=5，所以 N=(82-17)÷5+1=14。于是 S_14=14×(17+82)÷2=693。第一个到最右边的全部 14 个盒中共有 693 枚纪念章；17+13×5=82 可重建末盒。"
+      },
+      "steps": [
+        {
+          "internal": {
+            "local_step_key": "item-04-step-01",
+            "target_gate": 4,
+            "response_contract": {"type": "integer", "correct_value": 14},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": 13}, "internal_name": "把端点间隔数当作对象数", "feedback_index": 1},
+              {"when": {"fallback": true}, "internal_name": "端点项数计算错误", "feedback_index": 2}
+            ]
+          },
+          "learner": {
+            "prompt": "这一列共有多少个盒？",
+            "hints": [
+              "先求首盒到末盒之间有多少个相邻间隔。",
+              "首末盒都计入时，N=(a_N-a_1)÷d+1。",
+              "N=(82-17)÷5+1=____。"
+            ],
+            "feedback_messages": [
+              "共有 14 个盒：13 个间隔加上第一个盒。",
+              "13 是相邻间隔数；首末盒都计入，所以对象数还要加 1。",
+              "重新核对首末差 82-17 是否正好包含若干个 5，再把间隔数加 1。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-04-step-02",
+            "target_gate": 6,
+            "response_contract": {
+              "type": "integer",
+              "correct_value": 693,
+              "acceptable_routes": ["sum_formula", "direct_sum"],
+              "route_capture_optional": true
+            },
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"fallback": true}, "internal_name": "端点项数确定后的求和错误", "feedback_index": 1}
+            ]
+          },
+          "learner": {
+            "prompt": "求全部盒中的纪念章总数。",
+            "hints": [
+              "现在首项、末项和项数都已经确定。",
+              "使用 S_N=N(a_1+a_N)÷2。",
+              "S_14=14×(17+82)÷2=____。"
+            ],
+            "feedback_messages": [
+              "总量为 693 枚；完整逐项相加得到同一结果也成立。",
+              "重新检查 14×(17+82)÷2，注意 14 是对象数。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-04-step-03",
+            "target_gate": 7,
+            "response_contract": {
+              "type": "semantic_rubric",
+              "required_meanings": [
+                {"key": "scope", "criterion": "明确总量包含第一个到最右边的全部14个盒"},
+                {"key": "total", "expected_number": 693},
+                {"key": "unit", "accepted_text": ["枚纪念章"]}
+              ],
+              "required_check_count": 1,
+              "accepted_checks": [
+                {
+                  "kind": "rebuild_last_term",
+                  "relation": {"left_expression": "17+13×5", "operator": "=", "right_value": 82},
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "pair_sum",
+                  "relation": {"left_expression": "7×99", "operator": "=", "right_value": 693},
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "sum_bounds",
+                  "predicate": {
+                    "lower_expression": "14×17",
+                    "lower_operator": "≤",
+                    "checked_value": 693,
+                    "upper_operator": "≤",
+                    "upper_expression": "14×82",
+                    "expected_result": true
+                  },
+                  "accept_mathematically_equivalent_notation": true
+                }
+              ]
+            },
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"required_meaning_missing_or_incorrect": "scope"}, "internal_name": "累计对象范围未解释", "feedback_index": 1},
+              {"when": {"required_meaning_missing_or_incorrect": "total"}, "internal_name": "累计总量缺失或错误", "feedback_index": 2},
+              {"when": {"required_meaning_missing_or_incorrect": "unit"}, "internal_name": "结果单位遗漏", "feedback_index": 3},
+              {"when": {"check_missing": true}, "internal_name": "结果未核对", "feedback_index": 4},
+              {"when": {"check_incorrect": true}, "internal_name": "核对等式或数值关系错误", "feedback_index": 5}
+            ]
+          },
+          "learner": {
+            "prompt": "解释 693 的含义，并写出一种检查方式。",
+            "hints": [
+              "说明它包含从第一个到最右边的哪些盒。",
+              "可用 13 次增加重建末盒，也可用首尾配对核对。",
+              "全部 14 个盒共有____；17+13×5=____。"
+            ],
+            "feedback_messages": [
+              "结果、单位、累计范围和检查都已写清。",
+              "请说明 693 包含第一个到最右边的全部 14 个盒。",
+              "请明确写出总量 693；若写了其他数值，请先回到求和步骤核对。",
+              "请补上原题单位：枚纪念章。",
+              "再补一种检查，例如 17+13×5=82，或 7 组首尾和都是 99。",
+              "你已经写了检查，但等式或数值关系不成立；请重新计算末盒，或重新核对首尾配对与总量范围。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "internal": {
+        "local_item_key": "item-05",
+        "source_ref": "08 §2.3（项数已知）",
+        "primary_role": "zero_difference_given_count",
+        "expected_terminal_gate": 7,
+        "terminal_kind": "complete"
+      },
+      "learner": {
+        "stem": "一只标本柜的隔层自下而上连续排列，共 24 层。最下层放 42 枚贝壳标本，每上一层都与紧邻的下一层放得一样多，最上层也放 42 枚。柜中共放多少枚贝壳标本？",
+        "completed_explanation": "相邻数量不变仍是固定差，d=0；题面已经给出 N=24，所以进入项数明给路径。总量为 S_24=24×42=1008。全部 24 层共有 1008 枚贝壳标本；再由 a_24=42+23×0=42 核对末层。"
+      },
+      "steps": [
+        {
+          "internal": {
+            "local_step_key": "item-05-step-01",
+            "target_gate": 4,
+            "response_contract": {"type": "single_choice", "correct_value": "A"},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": "B"}, "internal_name": "零公差时错误停止", "feedback_index": 1},
+              {"when": {"equals": "C"}, "internal_name": "项数明给时误用端点路径", "feedback_index": 2}
+            ]
+          },
+          "learner": {
+            "prompt": "现在应该怎样处理项数？",
+            "choices": [
+              {"value": "A", "text": "继续，使用题面明给的 N=24"},
+              {"value": "B", "text": "停止，因为 d=0 时一定不能求总量"},
+              {"value": "C", "text": "忽略 24，用相同首末量反推 N"}
+            ],
+            "hints": [
+              "先看项数是否已经由题面给出。",
+              "d=0 仍是固定差；只要 N 已知，就可以累计。",
+              "d=0，N=24：应继续还是停止？"
+            ],
+            "feedback_messages": [
+              "题面已经给出 N=24，可以进入求和。",
+              "d=0 只会阻止用相同首末量反推项数；这里的 N 已经明给。",
+              "项数已经明确，不需要也不能由相同首末量重新推断。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-05-step-02",
+            "target_gate": 6,
+            "response_contract": {"type": "integer", "correct_value": 1008},
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"equals": 966}, "internal_name": "把23个间隔误当作24项", "feedback_index": 1},
+              {"when": {"fallback": true}, "internal_name": "常数列累计计算错误", "feedback_index": 2}
+            ]
+          },
+          "learner": {
+            "prompt": "求全部 24 层的贝壳标本总数。",
+            "hints": [
+              "这里有 24 个相同的 42。",
+              "d=0 时，S_N=N×a_1。",
+              "24×42=____。"
+            ],
+            "feedback_messages": [
+              "全部 24 层的总量为 1008 枚。",
+              "23 是相邻间隔数，但需要相加的是 24 层的 24 个数量。",
+              "重新计算 24 个 42 的总和。"
+            ]
+          }
+        },
+        {
+          "internal": {
+            "local_step_key": "item-05-step-03",
+            "target_gate": 7,
+            "response_contract": {
+              "type": "semantic_rubric",
+              "required_meanings": [
+                {"key": "scope", "criterion": "明确总量包含全部24层"},
+                {"key": "total", "expected_number": 1008},
+                {"key": "unit", "accepted_text": ["枚贝壳标本"]}
+              ],
+              "required_check_count": 1,
+              "accepted_checks": [
+                {
+                  "kind": "rebuild_last_term",
+                  "relation": {"left_expression": "42+23×0", "operator": "=", "right_value": 42},
+                  "accept_mathematically_equivalent_notation": true
+                },
+                {
+                  "kind": "constant_sum",
+                  "relation": {"left_expression": "24×42", "operator": "=", "right_value": 1008},
+                  "accept_mathematically_equivalent_notation": true
+                }
+              ]
+            },
+            "correct_feedback_index": 0,
+            "diagnostic_routes": [
+              {"when": {"required_meaning_missing_or_incorrect": "scope"}, "internal_name": "累计范围未解释", "feedback_index": 1},
+              {"when": {"required_meaning_missing_or_incorrect": "total"}, "internal_name": "累计总量缺失或错误", "feedback_index": 2},
+              {"when": {"required_meaning_missing_or_incorrect": "unit"}, "internal_name": "结果单位遗漏", "feedback_index": 3},
+              {"when": {"check_missing": true}, "internal_name": "结果未核对", "feedback_index": 4},
+              {"when": {"check_incorrect": true}, "internal_name": "核对等式或数值关系错误", "feedback_index": 5}
+            ]
+          },
+          "learner": {
+            "prompt": "解释 1008 的含义，并写出一种检查方式。",
+            "hints": [
+              "说明这个数覆盖多少层，单位是什么。",
+              "可以检查第 24 层仍为 42，也可以检查 24×42。",
+              "全部____共有____，单位是____；第 24 层可用 42+23×0=____ 核对。"
+            ],
+            "feedback_messages": [
+              "结果已经还原为全部 24 层的贝壳标本总数，并完成核对。",
+              "请说明 1008 包含全部 24 层。",
+              "请明确写出总量 1008；若写了其他数值，请先回到求和步骤核对。",
+              "请补上原题单位：枚贝壳标本。",
+              "再补一种检查，例如 42+23×0=42，或直接核对 24×42。",
+              "你已经写了检查，但等式或数值关系不成立；请重新计算第 24 层，或重新核对 24×42。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

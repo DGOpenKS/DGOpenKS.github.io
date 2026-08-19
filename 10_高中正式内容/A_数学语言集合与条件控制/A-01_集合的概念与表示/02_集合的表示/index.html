@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解集合的列举法与描述法，准确写出元素范围与共同特征，并核对不同写法是否表示同一集合。">
+  <title>集合的表示 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#enumeration">列举法</a>
+      <a class="nav-link" href="#description">描述法</a>
+      <a class="nav-link" href="#same-set">同一集合</a>
+      <a class="nav-link" href="#choice">方法选择</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 02</span>
+    <h1>集合的表示</h1>
+    <p class="lead">一个集合可以写成具体的元素，也可以写成元素必须满足的条件。真正要检查的不是写法是否相同，而是两种写法有没有不多不少地确定同一批元素。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="enumeration" data-source-md="02_集合的表示.md#列举法把元素逐一写出">
+      <h2 class="marker"><span aria-hidden="true">01</span>列举法</h2>
+      <div class="section-body prose">
+        <h2>列举法：把元素逐一写出</h2>
+        <p class="section-intro">集合已经确定后，第一种表示思路是直接回答“其中具体有哪些元素”。</p>
+
+        <div class="a-definition">
+          <p>如果集合中的元素能够逐一写出，可以把它们放在花括号内，元素之间用逗号分隔。这种表示集合的方法称为<strong>列举法</strong>。</p>
+        </div>
+
+        <p>设集合 $B$ 由所有大于 $10$ 且小于 $20$ 的整数组成。先限定研究对象是整数，再逐一找出满足两个大小条件的数，得到 $11$ 到 $19$ 这九个整数。</p>
+
+        <div class="a-representation-formula" aria-label="集合 B 等于由 11 到 19 这九个整数组成的集合">
+          $$B=\{11,12,13,14,15,16,17,18,19\}.$$
+        </div>
+        <p>花括号内写出了全部九个元素：没有遗漏满足条件的整数，也没有加入不满足条件的数。因此，这不是“列举几个例子”，而是把集合 $B$ 的元素完整写出。</p>
+
+        <p class="a-observe">为了看清“逐一写出”为什么必须完整，下面把原来的研究范围、判断条件和最终元素排成一条筛选路径。重点检查结果中是否正好保留了所有满足条件的整数。</p>
+        <figure class="a-representation-figure">
+          <div class="a-enumeration-flow" aria-label="从整数范围中筛选出大于 10 且小于 20 的全部整数 11 到 19">
+            <div class="a-flow-source">
+              <span>研究对象</span>
+              <strong>整数</strong>
+            </div>
+            <span class="a-representation-arrow" aria-hidden="true">→</span>
+            <div class="a-flow-condition">
+              <span>必须满足</span>
+              <strong>大于 10 且小于 20</strong>
+            </div>
+            <span class="a-representation-arrow" aria-hidden="true">→</span>
+            <div class="a-flow-elements" aria-label="筛选出的九个元素">
+              <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+              <span>16</span><span>17</span><span>18</span><span>19</span>
+            </div>
+          </div>
+          <figcaption>筛选结果从 11 连续到 19，共九个整数；花括号中的内容必须与这九个结果完全一致。</figcaption>
+        </figure>
+        <p>这条路径说明，列举法写的是集合的全部元素，而不是挑选几个代表。元素的书写顺序可以改变；同一个元素即使重复书写，也不会产生新的元素。</p>
+      </div>
+    </section>
+
+    <section class="section" id="description" data-source-md="02_集合的表示.md#描述法写清范围与共同特征">
+      <h2 class="marker"><span aria-hidden="true">02</span>描述法</h2>
+      <div class="section-body prose">
+        <h2>描述法：写清范围与共同特征</h2>
+        <p class="section-intro">如果元素不便逐一列出，或者共同特征更能说明集合的结构，就要换一种方式确定全部元素。</p>
+
+        <div class="a-definition">
+          <p>先选取一个代表元素，再写出它的取值范围和必须满足的共同特征，这种表示集合的方法称为<strong>描述法</strong>，常写成下面的形式。</p>
+        </div>
+
+        <div class="a-representation-formula" aria-label="描述法的一般形式是花括号内 x 属于 D，满足条件 P(x)">
+          $$\{x\in D\mid P(x)\}.$$
+        </div>
+        <p>这里，$x$ 是代表元素，$D$ 限定 $x$ 的取值范围，$P(x)$ 是筛选元素的条件：在范围 $D$ 中，满足 $P(x)$ 的对象恰好是这个集合的全部元素。竖线“$\mid$”表示“满足”，不是除号。代表元素 $x$ 只是描述任意元素所用的符号，并不是额外加入集合的一个对象。</p>
+
+        <p class="a-observe">描述式虽然很短，却承担了三项不同的工作。下面把三个部分拆开，是为了检查范围和条件是否都写完整；重点观察每个符号在确定元素时负责什么。</p>
+        <figure class="a-representation-figure">
+          <div class="a-description-anatomy" aria-label="描述式由代表元素 x、取值范围 D 和共同特征 P(x) 三部分组成">
+            <span class="a-anatomy-brace" aria-hidden="true">{</span>
+            <span class="a-anatomy-part is-object"><strong>x</strong><small>代表元素</small></span>
+            <span class="a-anatomy-symbol" aria-hidden="true">∈</span>
+            <span class="a-anatomy-part is-domain"><strong>D</strong><small>取值范围</small></span>
+            <span class="a-anatomy-symbol" aria-hidden="true">|</span>
+            <span class="a-anatomy-part is-condition"><strong>P(x)</strong><small>共同特征</small></span>
+            <span class="a-anatomy-brace" aria-hidden="true">}</span>
+          </div>
+          <figcaption>代表元素说明“在描述谁”，取值范围限定“从哪里选”，共同特征恰好筛出“哪些对象留下”。三部分合在一起，才能确定集合的全部元素。</figcaption>
+        </figure>
+        <p>结构图揭示的是描述法的边界：只写共同特征还不够，取值范围同样参与确定元素；而代表元素只是贯穿范围与条件的同一个符号。</p>
+      </div>
+    </section>
+
+    <section class="section" id="same-set" data-source-md="02_集合的表示.md#同一集合可以有不同表示">
+      <h2 class="marker"><span aria-hidden="true">03</span>同一集合</h2>
+      <div class="section-body prose">
+        <h2>同一集合可以有不同表示</h2>
+        <p class="section-intro">把描述法用于前面的集合 $B$，代表元素来自整数集，并且必须同时满足大于 $10$、小于 $20$。</p>
+
+        <div class="a-representation-formula" aria-label="集合 B 等于所有满足 10 小于 x 小于 20 的整数 x 组成的集合">
+          $$B=\{x\in\mathbb Z\mid 10&lt;x&lt;20\}.$$
+        </div>
+        <p>这个描述式说明：先从整数集 $\mathbb Z$ 中选取代表元素 $x$，再保留满足 $10&lt;x&lt;20$ 的整数。它与列举式是否表示同一集合，不能只凭写法看起来合理来判断。</p>
+
+        <p class="a-observe">下面的双向核对用来排除两种问题：列举式是否混入了不满足条件的元素，描述式是否还允许列举式没有写出的元素。</p>
+        <figure class="a-representation-figure">
+          <div class="a-equivalence-check" aria-label="通过列举式到描述式以及描述式到列举式两个方向核对集合 B">
+            <div class="a-equivalence-row">
+              <strong>列举式 → 描述式</strong>
+              <span>列出的 $11$ 到 $19$ 这九个数都是整数，并且都满足 $10&lt;x&lt;20$。</span>
+              <em>没有多写</em>
+            </div>
+            <div class="a-equivalence-row">
+              <strong>描述式 → 列举式</strong>
+              <span>任何满足 $10&lt;x&lt;20$ 的整数，都只能是 $11$ 到 $19$ 中的一个。</span>
+              <em>没有漏写</em>
+            </div>
+          </div>
+          <figcaption>两个方向都成立，说明两种写法确定的元素完全相同。</figcaption>
+        </figure>
+        <p>第一步确认列出的九个数全都符合描述条件，第二步确认所有符合描述条件的整数都已经出现在列举式中。这样逐元素、逐条件核对后，才能确定两个式子表示同一个集合 $B$。</p>
+      </div>
+    </section>
+
+    <section class="section" id="choice" data-source-md="02_集合的表示.md#方法选择以准确不遗漏为准">
+      <h2 class="marker"><span aria-hidden="true">04</span>方法选择</h2>
+      <div class="section-body prose">
+        <h2>方法选择：以准确、不遗漏为准</h2>
+        <p class="section-intro">两种方法没有高低之分，选择的依据是怎样更清楚地确定全部元素。</p>
+
+        <div class="a-method-guide" aria-label="列举法与描述法的适用情形">
+          <article>
+            <h3>列举法更直接的情形</h3>
+            <p>元素较少，并且容易逐一确定时，可以直接把全部元素写在花括号内。</p>
+          </article>
+          <article>
+            <h3>描述法更清楚的情形</h3>
+            <p>元素很多、无限，或者共同特征比逐项写出更重要时，可以写出取值范围和共同特征。</p>
+          </article>
+        </div>
+        <p>不能只凭元素个数机械选择方法：有限集也可以使用描述法，无限集也可能有直观的排列规律。无论选择哪一种，最终都要检查它是否准确确定了原集合。</p>
+
+        <h3>描述条件不能丢掉研究范围</h3>
+        <p>表示集合 $B$ 时，整数范围是原集合边界的一部分。完整的描述式写成</p>
+        <div class="a-representation-formula is-compact" aria-label="完整写法是 x 属于整数集并且满足 10 小于 x 小于 20">
+          $$\{x\in\mathbb Z\mid 10&lt;x&lt;20\}.$$
+        </div>
+        <p>式中的 $x\in\mathbb Z$ 明确排除了非整数。若在上下文没有说明 $x$ 是整数时，只写</p>
+        <div class="a-representation-formula is-compact is-warning" aria-label="缺少取值范围的写法是满足 10 小于 x 小于 20 的 x">
+          $$\{x\mid 10&lt;x&lt;20\},$$
+        </div>
+        <p>这个式子不能排除大于 $10$ 且小于 $20$ 的非整数，因而不能准确表示原来的集合 $B$。描述法要先确定代表元素，再同时保留取值范围和共同特征。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="02_集合的表示.md#核心理解表示不同元素必须相同">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：表示不同，元素必须相同</h2>
+        <div class="summary-panel">
+          <p><strong>列举法</strong>回答“具体有哪些元素”，必须把全部元素逐一写出；<strong>描述法</strong>回答“元素来自什么范围并满足什么条件”，必须同时保留取值范围和共同特征。</p>
+          <p>判断表示是否正确，始终回到集合的元素：原集合的元素一个不能漏，原集合之外的对象一个不能多。</p>
+          <p class="a-summary-line">写法可以不同 → 双向检查元素归属标准 → 确认没有遗漏、没有多余。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_集合与元素/index.html">← 上一篇 · 集合与元素</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 集合的表示</footer>
+</body>
+</html>

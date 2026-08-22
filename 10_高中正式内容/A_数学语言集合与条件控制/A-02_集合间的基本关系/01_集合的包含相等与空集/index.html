@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解子集、集合相等、真子集与空集，把集合间关系还原为元素归属判断。">
+  <title>集合的包含、相等与空集 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#subset">包含关系</a>
+      <a class="nav-link" href="#equality">相等与真子集</a>
+      <a class="nav-link" href="#empty-set">空集</a>
+      <a class="nav-link" href="#symbols">符号层级</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 03</span>
+    <h1>集合的包含、相等与空集</h1>
+    <p class="lead">两个集合写得一样长，未必相等；元素的书写顺序不同，也可能表示同一个集合。子集、集合相等、真子集和空集的特殊位置，都要通过逐个检查元素归属来判断。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="subset" data-source-md="01_集合的包含相等与空集.md#包含关系一个集合的元素是否都在另一个集合中">
+      <h2 class="marker"><span aria-hidden="true">01</span>包含关系</h2>
+      <div class="section-body prose">
+        <h2>包含关系：一个集合的元素是否都在另一个集合中</h2>
+        <p class="section-intro">比较两个集合时，先从一个方向检查：集合 $A$ 中的元素是否全部出现在集合 $B$ 中。</p>
+
+        <div class="a-definition">
+          <p>对于两个集合 $A$ 与 <span class="a-math-punct">$B$，</span>如果集合 $A$ 中的每一个元素都是集合 $B$ 的元素，就称 $A$ 是 $B$ 的<strong>子集</strong>，记作 <span class="a-math-punct">$A\subseteq B$，</span>也可以说 $A$ 包含于 <span class="a-math-punct">$B$。</span></p>
+        </div>
+
+        <p>“每一个”是子集定义的关键。换成元素语言，对于任意对象 <span class="a-math-punct">$x$，</span>只要 <span class="a-math-punct">$x\in A$，</span>就必须有 <span class="a-math-punct">$x\in B$。</span>这个要求可以写成</p>
+        <div class="a-representation-formula" aria-label="如果 x 属于 A，那么 x 属于 B">
+          $$x\in A\Longrightarrow x\in B.$$
+        </div>
+        <p>推出关系必须对 $A$ 的全部元素成立。只找到几个同时属于 $A$ 和 $B$ 的元素，仍不能证明 <span class="a-math-punct">$A\subseteq B$；</span>相反，只要找到一个 $x\in A$ 但 <span class="a-math-punct">$x\notin B$，</span>就能否定这个包含关系。</p>
+        <p>如果 $A$ 不是 $B$ 的子集，记作 <span class="a-math-punct">$A\nsubseteq B$。</span>这表示 $A$ 中至少有一个元素不属于 <span class="a-math-punct">$B$。</span></p>
+
+        <p class="a-observe">下面把“证明包含”和“否定包含”并排，是为了看清两种判断所需的证据不同：前者必须覆盖 $A$ 的全部元素，后者只需要一个反例。</p>
+        <figure class="a-representation-figure">
+          <div class="a-equivalence-check" aria-label="证明子集需要检查全部元素，否定子集只需要一个反例">
+            <div class="a-equivalence-row">
+              <strong>要证明 $A\subseteq B$</strong>
+              <span>对每一个 <span class="a-math-punct">$x\in A$，</span>都能确认 <span class="a-math-punct">$x\in B$。</span></span>
+              <em>检查全部</em>
+            </div>
+            <div class="a-equivalence-row">
+              <strong>要否定 $A\subseteq B$</strong>
+              <span>找到一个 <span class="a-math-punct">$x\in A$，</span>同时满足 <span class="a-math-punct">$x\notin B$。</span></span>
+              <em>一个反例</em>
+            </div>
+          </div>
+          <figcaption>子集是全称条件：证明时不能只看部分元素；否定时，一个不符合条件的元素就足够。</figcaption>
+        </figure>
+        <p>这组对比揭示了包含关系的判断边界：共同元素的多少不是标准，$A$ 的每一个元素能否落入 $B$ 才是标准。</p>
+      </div>
+    </section>
+
+    <section class="section" id="equality" data-source-md="01_集合的包含相等与空集.md#集合相等与真子集包含要检查几个方向">
+      <h2 class="marker"><span aria-hidden="true">02</span>相等与真子集</h2>
+      <div class="section-body prose">
+        <h2>集合相等与真子集：包含要检查几个方向</h2>
+        <p class="section-intro">一个方向的包含只能说明 $A$ 的元素都在 $B$ 中；要判断两个集合是否相等，还必须反过来再检查一次。</p>
+
+        <p>设 <span class="a-math-punct">$A=\{1,2\}$，</span><span class="a-math-punct">$B=\{1,2,3\}$，</span><span class="a-math-punct">$C=\{2,1\}$。</span>虽然 $A$ 与 $C$ 的书写顺序不同，但它们包含的元素完全相同：$A$ 的每个元素都在 $C$ 中，$C$ 的每个元素也都在 $A$ 中。</p>
+        <p>因此，判断两个集合相等，需要同时确认两个包含方向：</p>
+        <div class="a-representation-formula" aria-label="A 等于 B，当且仅当 A 是 B 的子集并且 B 是 A 的子集">
+          $$A=B\quad\Longleftrightarrow\quad A\subseteq B\text{ 且 }B\subseteq A.$$
+        </div>
+        <p>只知道 <span class="a-math-punct">$A\subseteq B$，</span>不能直接得到 <span class="a-math-punct">$A=B$。</span>在这个例子中，<span class="a-math-punct">$A\subseteq B$，</span>但 $3\in B$ 且 <span class="a-math-punct">$3\notin A$，</span>所以 <span class="a-math-punct">$A\ne B$。</span>这时称 $A$ 是 $B$ 的<strong>真子集</strong>，记作 <span class="a-math-punct">$A\subsetneqq B$。</span>真子集不仅要求 <span class="a-math-punct">$A\subseteq B$，</span>还要求较大的集合中至少有一个元素不在较小的集合中。</p>
+
+        <p class="a-observe">下面仍使用同一组集合，重点比较“两个方向都包含”和“只有一个方向包含”分别得到什么结论。</p>
+        <figure class="a-representation-figure">
+          <div class="a-equivalence-check" aria-label="集合相等与真子集的双向包含比较">
+            <div class="a-equivalence-row">
+              <strong>$A$ 与 $C$</strong>
+              <span><span class="a-math-punct">$A\subseteq C$，</span>并且 <span class="a-math-punct">$C\subseteq A$。</span></span>
+              <em>$A=C$</em>
+            </div>
+            <div class="a-equivalence-row">
+              <strong>$A$ 与 $B$</strong>
+              <span><span class="a-math-punct">$A\subseteq B$，</span>但 $3\in B$ 且 <span class="a-math-punct">$3\notin A$。</span></span>
+              <em>$A\subsetneqq B$</em>
+            </div>
+          </div>
+          <figcaption>双向包含排除了双方可能多出的元素，因而得到相等；单向包含再加上较大集合确有多出的元素，得到真子集。</figcaption>
+        </figure>
+        <p>接下来讨论没有任何元素的空集，以及它在包含关系中的特殊位置。</p>
+      </div>
+    </section>
+
+    <section class="section" id="empty-set" data-source-md="01_集合的包含相等与空集.md#空集没有元素却有确定的包含位置">
+      <h2 class="marker"><span aria-hidden="true">03</span>空集</h2>
+      <div class="section-body prose">
+        <h2>空集：没有元素，却有确定的包含位置</h2>
+        <p class="section-intro">空集的特殊之处不在于符号，而在于它没有任何元素；这个事实同时决定了它与其他集合的包含关系。</p>
+
+        <div class="a-definition">
+          <p>不含任何元素的集合称为<strong>空集</strong>，记作 <span class="a-math-punct">$\varnothing$。</span></p>
+        </div>
+
+        <p>空集容易与数字 $0$、集合 $\{\varnothing\}$ 混淆。下面把三者分开，是为了检查它们分别是什么对象、含有多少元素。</p>
+        <div class="a-number-sets" role="region" aria-label="空集、数字零与含空集的集合对比" tabindex="0">
+          <table>
+            <thead>
+              <tr><th scope="col">写法</th><th scope="col">它是什么</th><th scope="col">元素情况</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$0$</td><td>一个数</td><td>它不是空集。</td></tr>
+              <tr><td>$\varnothing$</td><td>一个集合</td><td>没有任何元素。</td></tr>
+              <tr><td>$\{\varnothing\}$</td><td>一个集合</td><td>有一个元素，这个元素是空集。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>表中真正要区分的是对象层级：$\varnothing$ 自身没有元素，而 $\{\varnothing\}$ 把空集作为唯一元素放进了另一个集合。</p>
+
+        <p>空集还是任意集合的子集。若要否定 <span class="a-math-punct">$\varnothing\subseteq A$，</span>必须从空集中找到一个不属于 $A$ 的元素；但空集没有元素，所以这样的反例不可能存在。因此，对任意集合 <span class="a-math-punct">$A$，</span>都有</p>
+        <div class="a-representation-formula" aria-label="空集是任意集合 A 的子集">
+          $$\varnothing\subseteq A.$$
+        </div>
+        <p>这里的 $\varnothing\subseteq A$ 只表示空集与 $A$ 的包含关系，并不表示空集本身一定是 $A$ 的元素。</p>
+
+        <div class="a-boundary-note">
+          <p>例如，对 <span class="a-math-punct">$A=\{1,2\}$，</span>有 <span class="a-math-punct">$\varnothing\subseteq A$，</span>但 <span class="a-math-punct">$\varnothing\notin A$。</span>前一个式子的两边都是集合，后一个式子判断空集这个对象是否被列为 $A$ 的元素。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="symbols" data-source-md="01_集合的包含相等与空集.md#两类符号元素关系与集合关系不能混用">
+      <h2 class="marker"><span aria-hidden="true">04</span>符号层级</h2>
+      <div class="section-body prose">
+        <h2>两类符号：元素关系与集合关系不能混用</h2>
+        <p class="section-intro">判断式是否写对，先看符号两边分别是什么对象：一个是元素归属，另一个是集合之间的包含。</p>
+
+        <p>$a\in A$ 的左边是一个元素，右边是一个集合；$M\subseteq A$ 的两边都是集合。</p>
+
+        <p class="a-observe">下面比较 $a\in A$ 与 <span class="a-math-punct">$M\subseteq A$，</span>检查符号两边的对象层级。</p>
+        <div class="a-relation-grid" aria-label="元素关系与集合关系的符号对比">
+          <article class="a-relation a-trait">
+            <h3>元素与集合</h3>
+            <span class="a-relation-symbol">$a\in A$</span>
+            <p>左边是一个对象，右边是集合；回答“这个对象是不是集合的元素”。</p>
+          </article>
+          <article class="a-relation a-trait">
+            <h3>集合与集合</h3>
+            <span class="a-relation-symbol">$M\subseteq A$</span>
+            <p>两边都是集合；回答“左边集合的元素是否全部属于右边集合”。</p>
+          </article>
+        </div>
+        <p>仍以 $A=\{1,2\}$ 为例，$1\in A$ 表示数字 $1$ 是 $A$ 的元素；$\{1\}\subseteq A$ 表示集合 $\{1\}$ 的每个元素都属于 <span class="a-math-punct">$A$。</span>图中的符号差别，正对应这两个判断对象的层级差别。</p>
+
+        <p>分清符号层级后，包含关系还有两个直接结果：</p>
+        <div class="a-method-guide" aria-label="包含关系的自反性与传递性">
+          <article>
+            <h3>任何集合都是自身的子集</h3>
+            <p>$A$ 的每个元素当然都属于 <span class="a-math-punct">$A$，</span>所以 <span class="a-math-punct">$A\subseteq A$。</span></p>
+          </article>
+          <article>
+            <h3>包含关系可以传递</h3>
+            <p>如果 $A\subseteq B$ 且 <span class="a-math-punct">$B\subseteq C$，</span>那么 $A$ 的每个元素也属于 <span class="a-math-punct">$C$，</span>所以 <span class="a-math-punct">$A\subseteq C$。</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="01_集合的包含相等与空集.md#核心理解把关系还原为逐个元素检查">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：把关系还原为逐个元素检查</h2>
+        <div class="summary-panel">
+          <p>判断子集，要检查一个方向的全部元素；判断集合相等，要检查两个包含方向；判断真子集，还要确认较大的集合中确有多出的元素。</p>
+          <p>空集虽然没有元素，却是任意集合的子集；使用关系符号时，还要先确认两边是在比较“元素与集合”，还是“集合与集合”。</p>
+          <p class="a-summary-line">追踪元素归属 → 确定包含方向 → 判断子集、相等或真子集。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../A-01_集合的概念与表示/02_集合的表示/index.html">← 上一篇 · 集合的表示</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../../A-03_集合的基本运算/01_交集与并集/index.html">下一篇 · 交集与并集 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 集合的包含、相等与空集</footer>
+</body>
+</html>

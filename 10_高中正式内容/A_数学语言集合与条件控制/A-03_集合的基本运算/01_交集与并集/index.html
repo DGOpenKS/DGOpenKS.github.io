@@ -19,149 +19,131 @@
   <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
   <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
   <style>
-    .a-membership-states{
+    .a-set-diagram-pair{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:1rem;
+      gap:1.1rem;
     }
 
-    .a-operation-state{
+    .a-set-diagram-panel{
       min-width:0;
-      padding:1rem;
-      border:1px solid var(--line);
-      border-radius:var(--radius-md);
-      background:var(--soft);
     }
 
-    .a-operation-state h3{
+    .a-set-diagram-panel h3{
       margin:0 0 .35rem;
       color:var(--ink);
       font-family:var(--font-serif);
       font-size:1.12rem;
     }
 
-    .a-operation-state > p{
-      margin:0 0 .85rem;
+    .a-set-diagram-panel > p:not(.a-set-diagram-result){
+      margin:0 0 .75rem;
+      color:var(--body);
       font-size:.9rem;
     }
 
-    .a-membership-map{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:.5rem;
+    .a-set-diagram{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:var(--radius-md);
+      background:var(--soft);
     }
 
-    .a-membership-region{
-      display:grid;
-      min-width:0;
-      min-height:8rem;
-      padding:.75rem .45rem;
-      align-content:center;
-      justify-items:center;
-      gap:.35rem;
-      border:1px solid var(--line);
-      border-top:4px solid var(--blue-line);
-      border-radius:var(--radius-sm);
-      background:var(--paper);
-      text-align:center;
+    .a-svg-universe{
+      fill:var(--paper);
+      stroke:var(--line-strong);
+      stroke-width:2;
     }
 
-    .a-membership-region.is-common{
-      border-top-color:var(--cyan);
+    .a-svg-set-fill-a{
+      fill:var(--blue-soft);
     }
 
-    .a-membership-region.is-b-only{
-      border-top-color:var(--purple-line);
+    .a-svg-set-fill-b{
+      fill:var(--purple-soft);
     }
 
-    .a-membership-region strong{
-      color:var(--blue-deep);
-      font-size:.84rem;
+    .a-svg-selected{
+      fill:var(--cyan-soft);
     }
 
-    .a-membership-region.is-common strong{
-      color:var(--cyan-deep);
+    .a-set-diagram-panel.is-intersection .a-svg-set-fill-a,
+    .a-set-diagram-panel.is-intersection .a-svg-set-fill-b{
+      fill:#f3f2ee;
     }
 
-    .a-membership-region.is-b-only strong{
-      color:var(--purple-deep);
+    .a-set-diagram-panel.is-intersection .a-svg-selected{
+      fill:#c9e5db;
     }
 
-    .a-region-elements{
-      color:var(--ink);
-      font-family:var(--font-math);
-      font-size:1.16rem;
-      font-weight:800;
+    .a-svg-set-outline-a,
+    .a-svg-set-outline-b{
+      fill:none;
+      stroke-width:3;
     }
 
-    .a-region-status{
-      display:inline-flex;
-      min-height:1.75rem;
-      padding:.18rem .55rem;
-      align-items:center;
-      border-radius:var(--radius-pill);
-      background:var(--cyan-soft);
-      color:var(--cyan-deep);
-      font-size:.76rem;
+    .a-svg-set-outline-a{
+      stroke:var(--blue);
+    }
+
+    .a-svg-set-outline-b{
+      stroke:var(--purple);
+    }
+
+    .a-svg-universe-label,
+    .a-svg-set-label,
+    .a-svg-member{
+      font-family:var(--font-sans);
       font-weight:900;
     }
 
-    .a-operation-state.is-intersection .a-membership-region:not(.is-common){
-      border-top-color:var(--line-strong);
-      background:#efede7;
+    .a-svg-universe-label{
+      fill:var(--muted);
+      font-size:17px;
     }
 
-    .a-operation-state.is-intersection .a-membership-region:not(.is-common) strong,
-    .a-operation-state.is-intersection .a-membership-region:not(.is-common) .a-region-elements{
-      color:var(--muted);
+    .a-svg-set-label{
+      font-size:20px;
     }
 
-    .a-operation-state.is-intersection .a-membership-region:not(.is-common) .a-region-status{
-      background:#e4e1d9;
-      color:#596270;
+    .a-svg-set-label.is-a{
+      fill:var(--blue-deep);
     }
 
-    .a-operation-result{
-      margin:.85rem 0 0;
-      padding:.7rem .8rem;
+    .a-svg-set-label.is-b{
+      fill:var(--purple-deep);
+    }
+
+    .a-svg-member{
+      fill:var(--ink);
+      font-family:var(--font-math);
+      font-size:22px;
+      text-anchor:middle;
+      dominant-baseline:middle;
+    }
+
+    .a-set-diagram-result{
+      margin:.75rem 0 0;
+      padding:.65rem .55rem;
       border-radius:var(--radius-sm);
-      background:var(--paper);
+      background:var(--soft);
       color:var(--ink);
       text-align:center;
     }
 
-    .a-operation-result mjx-container{
+    .a-set-diagram-result mjx-container{
       margin:0 !important;
     }
 
     @media (max-width:820px){
-      .a-membership-states{
+      .a-set-diagram-pair{
         grid-template-columns:1fr;
       }
     }
 
-    @media (max-width:420px){
-      .a-operation-state{
-        padding:.75rem;
-      }
-
-      .a-membership-map{
-        gap:.35rem;
-      }
-
-      .a-membership-region{
-        min-height:7.5rem;
-        padding:.65rem .25rem;
-      }
-
-      .a-membership-region strong,
-      .a-region-status{
-        font-size:.7rem;
-      }
-    }
-
     @media print{
-      .a-operation-state{
+      .a-set-diagram-panel{
         break-inside:avoid;
       }
     }
@@ -198,7 +180,7 @@
         <p class="section-intro">先看第一种筛选方式：一个元素必须同时通过 $A$ 与 $B$ 两个归属条件，才能进入结果集合。</p>
 
         <div class="a-definition">
-          <p>一般地，由所有既属于集合 $A$ 又属于集合 $B$ 的元素组成的集合，称为 $A$ 与 $B$ 的<strong>交集</strong>，记作 $A\cap B$。</p>
+          <p>一般地，由所有既属于集合 $A$ 又属于集合 $B$ 的元素组成的集合，称为 $A$ 与 $B$ 的<strong>交集</strong>，记作 <span class="a-math-punct">$A\cap B$。</span></p>
         </div>
 
         <p>把“同时属于”写成元素条件，就得到交集的描述：</p>
@@ -216,14 +198,14 @@
         <p class="section-intro">换一种筛选方式，只要元素至少通过一个归属条件，就要把它收入结果集合。</p>
 
         <div class="a-definition">
-          <p>由所有属于集合 $A$ 或属于集合 $B$ 的元素组成的集合，称为 $A$ 与 $B$ 的<strong>并集</strong>，记作 $A\cup B$。</p>
+          <p>由所有属于集合 $A$ 或属于集合 $B$ 的元素组成的集合，称为 $A$ 与 $B$ 的<strong>并集</strong>，记作 <span class="a-math-punct">$A\cup B$。</span></p>
         </div>
 
         <p>把“至少属于一个”写成元素条件，就得到并集的描述：</p>
         <div class="a-representation-formula" aria-label="A 与 B 的并集由至少属于 A 或 B 中一个集合的元素组成">
           $$A\cup B=\{x\mid x\in A\text{，或 }x\in B\}.$$
         </div>
-        <p>这里的“或”包含三种情形：只属于 $A$、只属于 $B$、同时属于 $A$ 与 $B$。它不是排除共同情形的二选一。公共元素虽然同时来自两个集合，但作为集合元素进入并集时仍只写一次。</p>
+        <p>这里的“或”包含三种情形：只属于 $A$、只属于 $B$、同时属于 $A$ 与 <span class="a-math-punct">$B$。</span>它不是排除共同情形的二选一。公共元素虽然同时来自两个集合，但作为集合元素进入并集时仍只写一次。</p>
       </div>
     </section>
 
@@ -233,11 +215,11 @@
         <h2>用同一组集合分别求交集和并集</h2>
         <p class="section-intro">用同一组集合分别求交集和并集，可以直接看清“且”和“或”会保留哪些元素。设</p>
 
-        <div class="a-representation-formula" aria-label="集合 A 含有 4、5、6、8，集合 B 含有 3、5、7、8">
+        <div class="a-representation-formula is-long-list" aria-label="集合 A 含有 4、5、6、8，集合 B 含有 3、5、7、8">
           $$A=\{4,5,6,8\},\qquad B=\{3,5,7,8\}.$$
         </div>
 
-        <p>先检查“且”：只有 $5$ 和 $8$ 同时属于 $A$ 与 $B$，所以</p>
+        <p>先检查“且”：只有 $5$ 和 $8$ 同时属于 $A$ 与 <span class="a-math-punct">$B$，</span>所以</p>
         <div class="a-representation-formula" aria-label="A 与 B 的交集是由 5 和 8 组成的集合">
           $$A\cap B=\{5,8\}.$$
         </div>
@@ -246,58 +228,71 @@
           $$A\cup B=\{3,4,5,6,7,8\}.$$
         </div>
 
-        <p class="a-observe">下面仍使用这两个集合。先观察元素被分到“只在 $A$”“两边共有”“只在 $B$”哪一块，再比较交集和并集分别保留哪些区域。</p>
+        <p class="a-observe">下面仍使用这两个集合。先看元素位于椭圆 $A$、椭圆 $B$ 还是两者的交叠区域，再比较交集与并集分别突出哪些部分。</p>
         <figure class="a-representation-figure">
-          <div class="a-membership-states" aria-label="同一组集合在交集与并集运算中的三块归属区域">
-            <article class="a-operation-state is-intersection">
-              <h3>交集：只保留公共部分</h3>
+          <div class="a-set-diagram-pair">
+            <div class="a-set-diagram-panel is-intersection">
+              <h3>交集：只突出重叠区域</h3>
               <p>两个归属条件都为“是”才保留。</p>
-              <div class="a-membership-map">
-                <div class="a-membership-region is-a-only">
-                  <strong>只在 $A$</strong>
-                  <span class="a-region-elements">$4,6$</span>
-                  <span class="a-region-status">不保留</span>
-                </div>
-                <div class="a-membership-region is-common">
-                  <strong>$A$ 与 $B$ 共有</strong>
-                  <span class="a-region-elements">$5,8$</span>
-                  <span class="a-region-status">保留</span>
-                </div>
-                <div class="a-membership-region is-b-only">
-                  <strong>只在 $B$</strong>
-                  <span class="a-region-elements">$3,7$</span>
-                  <span class="a-region-status">不保留</span>
-                </div>
-              </div>
-              <p class="a-operation-result">$A\cap B=\{5,8\}$</p>
-            </article>
+              <svg class="a-set-diagram" viewBox="0 0 520 300" role="img" aria-labelledby="a04-intersection-title a04-intersection-desc">
+                <title id="a04-intersection-title">集合 A 与 B 的交集图</title>
+                <desc id="a04-intersection-desc">绘图边界内有两个相交椭圆。4、6 只在 A 中，5、8 在重叠区域，3、7 只在 B 中。只有重叠区域被突出。</desc>
+                <defs>
+                  <clipPath id="a04-intersection-a">
+                    <ellipse cx="205" cy="150" rx="135" ry="92"></ellipse>
+                  </clipPath>
+                </defs>
+                <rect class="a-svg-universe" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <ellipse class="a-svg-set-fill-a" cx="205" cy="150" rx="135" ry="92"></ellipse>
+                <ellipse class="a-svg-set-fill-b" cx="315" cy="150" rx="135" ry="92"></ellipse>
+                <ellipse class="a-svg-selected" cx="315" cy="150" rx="135" ry="92" clip-path="url(#a04-intersection-a)"></ellipse>
+                <ellipse class="a-svg-set-outline-a" cx="205" cy="150" rx="135" ry="92"></ellipse>
+                <ellipse class="a-svg-set-outline-b" cx="315" cy="150" rx="135" ry="92"></ellipse>
+                <text class="a-svg-set-label is-a" x="170" y="100">A</text>
+                <text class="a-svg-set-label is-b" x="350" y="100">B</text>
+                <text class="a-svg-member" x="120" y="128">4</text>
+                <text class="a-svg-member" x="140" y="192">6</text>
+                <text class="a-svg-member" x="245" y="125">5</text>
+                <text class="a-svg-member" x="275" y="185">8</text>
+                <text class="a-svg-member" x="400" y="128">3</text>
+                <text class="a-svg-member" x="380" y="192">7</text>
+              </svg>
+              <p class="a-set-diagram-result">$A\cap B=\{5,8\}$</p>
+            </div>
 
-            <article class="a-operation-state is-union">
-              <h3>并集：三块全部保留</h3>
+            <div class="a-set-diagram-panel is-union">
+              <h3>并集：突出两个椭圆覆盖的全部区域</h3>
               <p>至少一个归属条件为“是”就保留。</p>
-              <div class="a-membership-map">
-                <div class="a-membership-region is-a-only">
-                  <strong>只在 $A$</strong>
-                  <span class="a-region-elements">$4,6$</span>
-                  <span class="a-region-status">保留</span>
-                </div>
-                <div class="a-membership-region is-common">
-                  <strong>$A$ 与 $B$ 共有</strong>
-                  <span class="a-region-elements">$5,8$</span>
-                  <span class="a-region-status">保留一次</span>
-                </div>
-                <div class="a-membership-region is-b-only">
-                  <strong>只在 $B$</strong>
-                  <span class="a-region-elements">$3,7$</span>
-                  <span class="a-region-status">保留</span>
-                </div>
-              </div>
-              <p class="a-operation-result">$A\cup B=\{3,4,5,6,7,8\}$</p>
-            </article>
+              <svg class="a-set-diagram" viewBox="0 0 520 300" role="img" aria-labelledby="a04-union-title a04-union-desc">
+                <title id="a04-union-title">集合 A 与 B 的并集图</title>
+                <desc id="a04-union-desc">绘图边界内有两个相交椭圆。4、6 只在 A 中，5、8 在重叠区域，3、7 只在 B 中。两个椭圆覆盖的全部区域都被突出，包括重叠区域。</desc>
+                <defs>
+                  <mask id="a04-union-mask" x="0" y="0" width="520" height="300" maskUnits="userSpaceOnUse">
+                    <ellipse cx="205" cy="150" rx="135" ry="92" fill="white"></ellipse>
+                    <ellipse cx="315" cy="150" rx="135" ry="92" fill="white"></ellipse>
+                  </mask>
+                </defs>
+                <rect class="a-svg-universe" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <ellipse class="a-svg-set-fill-a" cx="205" cy="150" rx="135" ry="92"></ellipse>
+                <ellipse class="a-svg-set-fill-b" cx="315" cy="150" rx="135" ry="92"></ellipse>
+                <rect class="a-svg-selected" x="0" y="0" width="520" height="300" mask="url(#a04-union-mask)"></rect>
+                <ellipse class="a-svg-set-outline-a" cx="205" cy="150" rx="135" ry="92"></ellipse>
+                <ellipse class="a-svg-set-outline-b" cx="315" cy="150" rx="135" ry="92"></ellipse>
+                <text class="a-svg-set-label is-a" x="170" y="100">A</text>
+                <text class="a-svg-set-label is-b" x="350" y="100">B</text>
+                <text class="a-svg-member" x="120" y="128">4</text>
+                <text class="a-svg-member" x="140" y="192">6</text>
+                <text class="a-svg-member" x="245" y="125">5</text>
+                <text class="a-svg-member" x="275" y="185">8</text>
+                <text class="a-svg-member" x="400" y="128">3</text>
+                <text class="a-svg-member" x="380" y="192">7</text>
+              </svg>
+              <p class="a-set-diagram-result">$A\cup B=\{3,4,5,6,7,8\}$</p>
+            </div>
           </div>
-          <figcaption>交集只读取中间的公共部分；并集读取三块区域，但公共元素 $5$ 和 $8$ 不会因为同时属于两边而重复书写。</figcaption>
+          <figcaption>左图只突出两个椭圆的重叠区域，所以交集是 <span class="a-math-punct">$\{5,8\}$；</span>右图突出两个椭圆覆盖的全部区域，重叠部分也包含在内，但公共元素 $5$ 和 $8$ 仍只写一次。椭圆及重叠区域的面积只表示归属关系，不表示元素个数。</figcaption>
         </figure>
-        <p>这张图把“且”与“或”的边界落在同一对象上：$5$ 和 $8$ 既属于交集，也属于并集；它们进入并集并不要求“只能属于其中一个集合”。</p>
+        <p>接下来，把图中的区域判断还原为逐个元素的归属判断。</p>
       </div>
     </section>
 
@@ -337,6 +332,7 @@
   <nav class="pager" aria-label="文章导航">
     <a class="pager-prev" href="../../A-02_集合间的基本关系/01_集合的包含相等与空集/index.html">← 上一篇 · 集合的包含、相等与空集</a>
     <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../02_全集与补集/index.html">下一篇 · 全集与补集 →</a>
   </nav>
   <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 交集与并集</footer>
 </body>

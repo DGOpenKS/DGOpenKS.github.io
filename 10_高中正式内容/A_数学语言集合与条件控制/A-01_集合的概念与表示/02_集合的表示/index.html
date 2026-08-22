@@ -55,7 +55,7 @@
 
         <p>设集合 $B$ 由所有大于 $10$ 且小于 $20$ 的整数组成。先限定研究对象是整数，再逐一找出满足两个大小条件的数，得到 $11$ 到 $19$ 这九个整数。</p>
 
-        <div class="a-representation-formula" aria-label="集合 B 等于由 11 到 19 这九个整数组成的集合">
+        <div class="a-representation-formula is-long-list" aria-label="集合 B 等于由 11 到 19 这九个整数组成的集合">
           $$B=\{11,12,13,14,15,16,17,18,19\}.$$
         </div>
         <p>花括号内写出了全部九个元素：没有遗漏满足条件的整数，也没有加入不满足条件的数。因此，这不是“列举几个例子”，而是把集合 $B$ 的元素完整写出。</p>
@@ -80,7 +80,7 @@
           </div>
           <figcaption>筛选结果从 11 连续到 19，共九个整数；花括号中的内容必须与这九个结果完全一致。</figcaption>
         </figure>
-        <p>这条路径说明，列举法写的是集合的全部元素，而不是挑选几个代表。元素的书写顺序可以改变；同一个元素即使重复书写，也不会产生新的元素。</p>
+        <p>元素的书写顺序可以改变；同一个元素即使重复书写，也不会产生新的元素。</p>
       </div>
     </section>
 
@@ -97,9 +97,9 @@
         <div class="a-representation-formula" aria-label="描述法的一般形式是花括号内 x 属于 D，满足条件 P(x)">
           $$\{x\in D\mid P(x)\}.$$
         </div>
-        <p>这里，$x$ 是代表元素，$D$ 限定 $x$ 的取值范围，$P(x)$ 是筛选元素的条件：在范围 $D$ 中，满足 $P(x)$ 的对象恰好是这个集合的全部元素。竖线“$\mid$”表示“满足”，不是除号。代表元素 $x$ 只是描述任意元素所用的符号，并不是额外加入集合的一个对象。</p>
+        <p>这里，$x$ 是代表元素，$D$ 限定 $x$ 的取值范围，$P(x)$ 是筛选元素的条件：在范围 $D$ 中，满足 $P(x)$ 的对象恰好是这个集合的全部元素。竖线“$\mid$”可以理解为“满足”。代表元素 $x$ 只是描述任意元素所用的符号，并不是额外加入集合的一个对象。</p>
 
-        <p class="a-observe">描述式虽然很短，却承担了三项不同的工作。下面把三个部分拆开，是为了检查范围和条件是否都写完整；重点观察每个符号在确定元素时负责什么。</p>
+        <p class="a-observe">下面把描述式的三个部分拆开，检查代表元素、取值范围和共同特征是否都写完整。</p>
         <figure class="a-representation-figure">
           <div class="a-description-anatomy" aria-label="描述式由代表元素 x、取值范围 D 和共同特征 P(x) 三部分组成">
             <span class="a-anatomy-brace" aria-hidden="true">{</span>
@@ -120,19 +120,19 @@
       <h2 class="marker"><span aria-hidden="true">03</span>同一集合</h2>
       <div class="section-body prose">
         <h2>同一集合可以有不同表示</h2>
-        <p class="section-intro">把描述法用于前面的集合 $B$，代表元素来自整数集，并且必须同时满足大于 $10$、小于 $20$。</p>
+        <p class="section-intro">把描述法用于前面的集合 <span class="a-math-punct">$B$，</span>需要同时写出整数范围，以及大于 $10$ 且小于 $20$ 这一共同特征。</p>
 
         <div class="a-representation-formula" aria-label="集合 B 等于所有满足 10 小于 x 小于 20 的整数 x 组成的集合">
           $$B=\{x\in\mathbb Z\mid 10&lt;x&lt;20\}.$$
         </div>
-        <p>这个描述式说明：先从整数集 $\mathbb Z$ 中选取代表元素 $x$，再保留满足 $10&lt;x&lt;20$ 的整数。它与列举式是否表示同一集合，不能只凭写法看起来合理来判断。</p>
+        <p>这个描述式中，$x$ 的取值范围是整数集 <span class="a-math-punct">$\mathbb Z$，</span>并且 $x$ 必须满足 <span class="a-math-punct">$10&lt;x&lt;20$。</span>它与列举式是否表示同一集合，不能只凭写法看起来合理来判断。</p>
 
-        <p class="a-observe">下面的双向核对用来排除两种问题：列举式是否混入了不满足条件的元素，描述式是否还允许列举式没有写出的元素。</p>
+        <p class="a-observe">下面从两个方向核对：先检查列举式中的元素是否全都满足条件，再检查满足条件的整数是否全都已经列出。</p>
         <figure class="a-representation-figure">
           <div class="a-equivalence-check" aria-label="通过列举式到描述式以及描述式到列举式两个方向核对集合 B">
             <div class="a-equivalence-row">
               <strong>列举式 → 描述式</strong>
-              <span>列出的 $11$ 到 $19$ 这九个数都是整数，并且都满足 $10&lt;x&lt;20$。</span>
+              <span>列出的 $11$ 到 $19$ 这九个数都是整数，并且都满足 <span class="a-math-punct">$10&lt;x&lt;20$。</span></span>
               <em>没有多写</em>
             </div>
             <div class="a-equivalence-row">
@@ -143,7 +143,7 @@
           </div>
           <figcaption>两个方向都成立，说明两种写法确定的元素完全相同。</figcaption>
         </figure>
-        <p>第一步确认列出的九个数全都符合描述条件，第二步确认所有符合描述条件的整数都已经出现在列举式中。这样逐元素、逐条件核对后，才能确定两个式子表示同一个集合 $B$。</p>
+        <p>确认两种写法表示同一集合后，接下来再看什么情况下适合选择列举法或描述法。</p>
       </div>
     </section>
 
@@ -151,7 +151,7 @@
       <h2 class="marker"><span aria-hidden="true">04</span>方法选择</h2>
       <div class="section-body prose">
         <h2>方法选择：以准确、不遗漏为准</h2>
-        <p class="section-intro">两种方法没有高低之分，选择的依据是怎样更清楚地确定全部元素。</p>
+        <p class="section-intro">选择列举法还是描述法，要看哪一种能更清楚、准确且不遗漏地确定全部元素。</p>
 
         <div class="a-method-guide" aria-label="列举法与描述法的适用情形">
           <article>
@@ -174,7 +174,7 @@
         <div class="a-representation-formula is-compact is-warning" aria-label="缺少取值范围的写法是满足 10 小于 x 小于 20 的 x">
           $$\{x\mid 10&lt;x&lt;20\},$$
         </div>
-        <p>这个式子不能排除大于 $10$ 且小于 $20$ 的非整数，因而不能准确表示原来的集合 $B$。描述法要先确定代表元素，再同时保留取值范围和共同特征。</p>
+        <p>这个式子不能排除大于 $10$ 且小于 $20$ 的非整数，因而不能准确表示原来的集合 <span class="a-math-punct">$B$。</span>描述法要先确定代表元素，再同时保留取值范围和共同特征。</p>
       </div>
     </section>
 
@@ -185,7 +185,7 @@
         <div class="summary-panel">
           <p><strong>列举法</strong>回答“具体有哪些元素”，必须把全部元素逐一写出；<strong>描述法</strong>回答“元素来自什么范围并满足什么条件”，必须同时保留取值范围和共同特征。</p>
           <p>判断表示是否正确，始终回到集合的元素：原集合的元素一个不能漏，原集合之外的对象一个不能多。</p>
-          <p class="a-summary-line">写法可以不同 → 双向检查元素归属标准 → 确认没有遗漏、没有多余。</p>
+          <p class="a-summary-line">写法可以不同 → 双向核对两边的元素 → 确认没有遗漏、没有多余。</p>
         </div>
       </div>
     </section>

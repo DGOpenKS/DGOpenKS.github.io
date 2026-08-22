@@ -1,5 +1,10 @@
 /* A 模块局部组件。公共布局、字体、颜色变量和响应式规则来自 learning-page-system.css。 */
 
+/* 将短行内公式与其后的中文闭合标点视为一个排版单元，避免标点孤立在下一行行首。 */
+.a-math-punct{
+  white-space:nowrap;
+}
+
 .a-definition,
 .a-example,
 .a-boundary-note{
@@ -636,6 +641,13 @@
 
   .a-flow-elements{
     grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+@media (max-width:380px){
+  .a-representation-formula.is-long-list{
+    padding-inline:.6rem;
+    font-size:.96rem;
   }
 }
 

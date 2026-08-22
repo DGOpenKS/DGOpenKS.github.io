@@ -39,8 +39,7 @@
   <header class="hero">
     <span class="eyebrow">A 数学语言、集合与条件控制 · 01</span>
     <h1>集合与元素</h1>
-    <p class="lead">面对许多对象，先要确定哪些对象属于同一个整体。真正要分清的是：这个整体的判断标准是否确定，以及一个对象是否属于它。
-    </p>
+    <p class="lead">集合把指定的一些对象看作一个整体，其中每一个对象都是这个集合的元素。判断一个整体能否成为集合，关键是标准是否明确；集合一旦确定，就能判断任意对象属于还是不属于它。</p>
   </header>
 
   <main id="main">
@@ -48,24 +47,19 @@
       <h2 class="marker"><span aria-hidden="true">01</span>定义边界</h2>
       <div class="section-body prose">
         <h2>什么样的整体是集合</h2>
-        <p class="section-intro">先从对象和整体的关系开始。集合要把研究的整体和其中的每一个对象分清。</p>
-
         <div class="a-definition">
           <p>一般地，把指定的一些研究对象作为一个整体，这个整体称为<strong>集合</strong>，简称<strong>集</strong>；其中的每一个对象称为这个集合的<strong>元素</strong>。元素可以是数，也可以是点、图形或其他确定的对象。</p>
         </div>
 
-        <p>例如，先看从 1 到 10 的整数，再从中选出偶数，得到 2、4、6、8、10。我们把这些数组成的集合记作 $A$。现在，“是否在 1 到 10 之间并且是偶数”就是明确的判断标准；给出一个候选数，就能确定它是不是集合 $A$ 的元素。</p>
-        <p>相反，在没有补充标准时，“所有较小的数”中的“较小”没有确定界限，因而无法确定哪些数应当成为元素。</p>
-
-        <p>定义已经说明了“集合”和“元素”，但“判断标准是否确定”仍然容易停留在一句抽象的话上。我们可以把这个要求画成一次实际判断：给出一个候选对象，再按照标准检查，看能否得到唯一的“属于”或“不属于”结论。</p>
-        <p class="a-observe">下面两条判断链比较的不是图形的边界，而是元素的归属能否被明确判断。</p>
+        <p>集合还必须有明确的判断标准：任意候选对象都能得到唯一的“属于”或“不属于”结论；像“所有较小的数”这样没有明确界限的说法，不能确定一个集合。</p>
+        <p class="a-observe">下面比较两条判断链，观察明确与不明确的标准分别会得到什么结果。</p>
 
         <div class="a-decision-grid">
           <figure class="a-figure">
             <div class="a-decision-diagram" aria-label="判断标准明确时，候选对象可以得到属于或不属于的唯一结论">
               <div class="a-decision-start is-defined">
                 <span>明确的判断标准</span>
-                <strong>$1\leq x\leq 10$，且 $x$ 是偶数</strong>
+                <strong><span class="a-math-punct">$1\leq x\leq 10$，</span>且 $x$ 是偶数</strong>
               </div>
               <div class="a-decision-case">
                 <span class="a-candidate">候选对象 $6$</span>
@@ -81,7 +75,7 @@
                 <span class="a-flow-arrow" aria-hidden="true">→</span>
                 <strong class="a-decision-result is-out">$7\notin A$</strong>
               </div>
-              <div class="a-decision-conclusion is-defined">因此，$A=\{2,4,6,8,10\}$。</div>
+              <div class="a-decision-conclusion is-defined">因此，<span class="a-math-punct">$A=\{2,4,6,8,10\}$。</span></div>
             </div>
             <figcaption>对任意候选对象，这个标准都能给出唯一结论，因而集合 $A$ 的元素范围是确定的。</figcaption>
           </figure>
@@ -89,28 +83,28 @@
           <figure class="a-figure">
             <div class="a-decision-diagram" aria-label="“所有较小的数”没有给出确定界限，因而候选对象的归属无法确定">
               <div class="a-decision-start is-undefined">
-                <span>尚未完整的说法</span>
+                <span>判断标准不完整</span>
                 <strong>“所有较小的数”</strong>
               </div>
               <div class="a-missing-standard">
-                <strong>判断在这里停下</strong>
+                <strong>无法完成判断</strong>
                 <span>“较小”没有给出确定界限。</span>
               </div>
               <div class="a-decision-case is-blocked">
                 <span class="a-candidate">候选对象 $7$</span>
                 <span class="a-flow-arrow" aria-hidden="true">→</span>
-                <span class="a-decision-reason">无法按原句检查</span>
+                <span class="a-decision-reason">无法判断是否满足</span>
                 <span class="a-flow-arrow" aria-hidden="true">→</span>
                 <strong class="a-decision-result is-unknown">归属不确定</strong>
               </div>
-              <div class="a-decision-conclusion is-undefined">这句话目前还没有确定出一个集合。</div>
+              <div class="a-decision-conclusion is-undefined">仅凭这句话，无法确定一个集合。</div>
             </div>
             <figcaption>对候选对象，原句不能给出唯一的归属结论，因而哪些对象应当成为元素仍无法确定。</figcaption>
           </figure>
         </div>
 
         <div class="a-boundary-note">
-          <p>从图中要看出的是判断能否完成。左边的标准能够把每个候选对象确定地分为“属于 $A$”或“不属于 $A$”；右边的说法缺少确定界限，判断无法进行到结论。因此，集合的确定性表现在：对任意对象，它是否成为这个集合的元素，必须有明确答案。</p>
+          <p>两条判断链揭示的是判断能否完成：明确的标准能把每个候选对象唯一地分为“属于 $A$”或“不属于 $A$”；“较小”缺少明确界限，因而无法得到唯一结论。因此，集合的确定性表现在：对任意对象，它是否成为这个集合的元素，必须有明确答案。</p>
         </div>
       </div>
     </section>
@@ -143,13 +137,13 @@
     <section class="section" id="membership" data-source-md="01_集合与元素.md#元素与集合属于还是不属于">
       <h2 class="marker"><span aria-hidden="true">03</span>属于关系</h2>
       <div class="section-body prose">
-        <h2>对一个对象，只需判断它在不在集合中</h2>
+        <h2>元素与集合：属于还是不属于</h2>
         <p class="section-intro">集合通常用大写拉丁字母 $A,B,C,\ldots$ 表示，元素通常用小写拉丁字母 $a,b,c,\ldots$ 表示。</p>
 
-        <p>如果 $a$ 是集合 $A$ 的元素，就说 $a$ <strong>属于</strong> $A$，记作 $a\in A$；如果 $a$ 不是集合 $A$ 的元素，就说 $a$ <strong>不属于</strong> $A$，记作 $a\notin A$。</p>
+        <p>如果 $a$ 是集合 $A$ 的元素，就说 $a$ <strong>属于</strong> <span class="a-math-punct">$A$，</span>记作 <span class="a-math-punct">$a\in A$；</span>如果 $a$ 不是集合 $A$ 的元素，就说 $a$ <strong>不属于</strong> <span class="a-math-punct">$A$，</span>记作 <span class="a-math-punct">$a\notin A$。</span></p>
 
         <div class="a-example">
-          <p>回到集合 $A=\{2,4,6,8,10\}$，判断标准已经确定，因此可以直接比较 $6$ 和 $7$ 的归属。</p>
+          <p>回到集合 <span class="a-math-punct">$A=\{2,4,6,8,10\}$，</span>判断标准已经确定，因此可以分别判断 $6$ 和 $7$ 是否属于 <span class="a-math-punct">$A$。</span></p>
         </div>
 
         <div class="a-relation-grid" aria-label="属于与不属于的对比">
@@ -181,17 +175,17 @@
               <tr><th scope="col">名称</th><th scope="col">记号</th><th scope="col">边界说明</th></tr>
             </thead>
             <tbody>
-              <tr><td>自然数集</td><td>$\mathbb N$</td><td>其中包括 $0$。</td></tr>
-              <tr><td>正整数集</td><td>$\mathbb N^*$ 或 $\mathbb N_+$</td><td>其中不包括 $0$。</td></tr>
-              <tr><td>整数集</td><td>$\mathbb Z$</td><td>使用固定记号表示。</td></tr>
-              <tr><td>有理数集</td><td>$\mathbb Q$</td><td>使用固定记号表示。</td></tr>
-              <tr><td>实数集</td><td>$\mathbb R$</td><td>使用固定记号表示。</td></tr>
+              <tr><td>自然数集</td><td>$\mathbb N$</td><td>其中包括 <span class="a-math-punct">$0$。</span></td></tr>
+              <tr><td>正整数集</td><td>$\mathbb N^*$ 或 $\mathbb N_+$</td><td>其中不包括 <span class="a-math-punct">$0$。</span></td></tr>
+              <tr><td>整数集</td><td>$\mathbb Z$</td><td>—</td></tr>
+              <tr><td>有理数集</td><td>$\mathbb Q$</td><td>—</td></tr>
+              <tr><td>实数集</td><td>$\mathbb R$</td><td>—</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="a-boundary-note">
-          <p>正实数集有时记作 $\mathbb R_+$。本文采用这一约定时，$0\notin\mathbb R_+$。使用数集记号时，要特别分清自然数集是否包含 $0$、正整数集是否包含 $0$。</p>
+          <p>正实数集有时记作 <span class="a-math-punct">$\mathbb R_+$。</span>本文采用这一约定时，<span class="a-math-punct">$0\notin\mathbb R_+$。</span>使用数集记号时，要特别分清自然数集是否包含 $0$、正整数集是否包含 <span class="a-math-punct">$0$。</span></p>
         </div>
       </div>
     </section>

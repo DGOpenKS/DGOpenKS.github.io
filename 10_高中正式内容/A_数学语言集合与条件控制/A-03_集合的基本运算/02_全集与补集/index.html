@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解全集规定的研究范围与补集的定义，比较同一集合在不同全集中的补集。">
+  <title>全集与补集 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+  <style>
+    .a-complement-diagram-pair{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.1rem;
+    }
+
+    .a-complement-diagram-panel{
+      min-width:0;
+    }
+
+    .a-complement-diagram-panel h3{
+      margin:0 0 .25rem;
+      color:var(--ink);
+      font-family:var(--font-serif);
+      font-size:1.12rem;
+    }
+
+    .a-complement-diagram-panel > p:not(.a-complement-diagram-result){
+      margin:0 0 .75rem;
+      color:var(--body);
+      font-size:.9rem;
+    }
+
+    .a-complement-svg{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:var(--radius-md);
+      background:var(--soft);
+    }
+
+    .a-svg-universe-base{
+      fill:var(--paper);
+    }
+
+    .a-svg-complement-area{
+      fill:var(--cyan-soft);
+    }
+
+    .a-svg-set-a{
+      fill:var(--blue-soft);
+      stroke:var(--blue);
+      stroke-width:3;
+    }
+
+    .a-svg-universe-outline{
+      fill:none;
+      stroke:var(--line-strong);
+      stroke-width:2;
+    }
+
+    .a-svg-universe-label,
+    .a-svg-set-label,
+    .a-svg-member,
+    .a-svg-new-label{
+      font-family:var(--font-sans);
+      font-weight:800;
+    }
+
+    .a-svg-universe-label{
+      fill:var(--muted);
+      font-size:17px;
+    }
+
+    .a-svg-set-label{
+      fill:var(--blue-deep);
+      font-size:20px;
+    }
+
+    .a-svg-member{
+      fill:var(--ink);
+      font-family:var(--font-math);
+      font-size:22px;
+      font-weight:900;
+      text-anchor:middle;
+      dominant-baseline:middle;
+    }
+
+    .a-svg-member.is-new,
+    .a-svg-new-label{
+      fill:var(--cyan-deep);
+    }
+
+    .a-svg-new-label{
+      font-size:14px;
+      text-anchor:middle;
+    }
+
+    .a-complement-diagram-result{
+      margin:.75rem 0 0;
+      padding:.65rem .55rem;
+      border-radius:var(--radius-sm);
+      background:var(--soft);
+      color:var(--ink);
+      text-align:center;
+    }
+
+    .a-complement-diagram-result mjx-container{
+      margin:0 !important;
+    }
+
+    .a-complement-steps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin:1.35rem 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .a-complement-steps li{
+      min-width:0;
+      padding:1rem;
+      border:1px solid var(--line);
+      border-top:4px solid var(--blue);
+      border-radius:var(--radius-md);
+      background:var(--paper);
+      box-shadow:var(--soft-shadow);
+    }
+
+    .a-complement-steps li:nth-child(2){
+      border-top-color:var(--purple);
+    }
+
+    .a-complement-steps li:nth-child(3){
+      border-top-color:var(--cyan);
+    }
+
+    .a-complement-steps strong{
+      display:block;
+      margin:0 0 .45rem;
+      color:var(--ink);
+    }
+
+    .a-complement-steps p{
+      margin:0;
+      font-size:.92rem;
+    }
+
+    @media (max-width:820px){
+      .a-complement-diagram-pair,
+      .a-complement-steps{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media print{
+      .a-complement-diagram-panel,
+      .a-complement-steps li{
+        break-inside:avoid;
+        box-shadow:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#universal-set">全集</a>
+      <a class="nav-link" href="#complement">补集</a>
+      <a class="nav-link" href="#change">全集改变</a>
+      <a class="nav-link" href="#steps">计算步骤</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 05</span>
+    <h1>全集与补集</h1>
+    <p class="lead">补集不能脱离全集来谈。先确定研究范围，再保留这个范围内所有不属于集合 $A$ 的元素；全集改变，补集也可能随之改变。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="universal-set" data-source-md="02_全集与补集.md#全集先确定当前研究范围">
+      <h2 class="marker"><span aria-hidden="true">01</span>全集</h2>
+      <div class="section-body prose">
+        <h2>全集：先确定当前研究范围</h2>
+        <p class="section-intro">讨论哪些对象之前，先把当前问题涉及的全部元素圈定下来；这个范围就是后面判断补集的起点。</p>
+
+        <div class="a-definition">
+          <p>在一个具体问题中，如果一个集合包含所研究问题涉及的全部元素，就称这个集合为<strong>全集</strong>，通常记作 <span class="a-math-punct">$U$。</span></p>
+        </div>
+
+        <p>全集由当前问题的研究范围决定，研究范围改变，全集也可能改变。</p>
+        <p>所以，只写 $U$ 还不够，还要说明 $U$ 包含哪些元素。只有先确定全集，才能确定集合 $A$ 的补集。</p>
+      </div>
+    </section>
+
+    <section class="section" id="complement" data-source-md="02_全集与补集.md#补集在全集内排除原集合">
+      <h2 class="marker"><span aria-hidden="true">02</span>补集</h2>
+      <div class="section-body prose">
+        <h2>补集：在全集内排除原集合</h2>
+        <p class="section-intro">范围确定以后，再从全集 $U$ 中留下所有不属于 $A$ 的元素。</p>
+
+        <div class="a-definition">
+          <p>设 $U$ 是全集，并且 <span class="a-math-punct">$A\subseteq U$。</span>由全集 $U$ 中所有不属于集合 $A$ 的元素组成的集合，称为 $A$ <strong>相对于全集 $U$ 的补集</strong>，记作 <span class="a-math-punct">$\complement_U A$。</span></p>
+        </div>
+
+        <p>把“在 $U$ 中”和“不在 $A$ 中”同时写进元素条件，就得到</p>
+        <div class="a-representation-formula" aria-label="A 相对于全集 U 的补集由属于 U 且不属于 A 的元素组成">
+          $$\complement_U A=\{x\mid x\in U\text{，且 }x\notin A\}.$$
+        </div>
+        <p>一个元素属于 <span class="a-math-punct">$\complement_U A$，</span>必须同时满足：它在 $U$ 中，但不在 $A$ 中。下标 $U$ 表示补集所依据的全集。</p>
+      </div>
+    </section>
+
+    <section class="section" id="change" data-source-md="02_全集与补集.md#全集改变补集也可能改变">
+      <h2 class="marker"><span aria-hidden="true">03</span>全集改变</h2>
+      <div class="section-body prose">
+        <h2>同一个 <span class="a-math-punct">$A$，</span>全集改变，补集怎样改变</h2>
+        <p class="section-intro">保持 $A=\{2,4\}$ 不变，只把全集扩大一个元素，就能直接看出补集为什么依赖所选的全集。</p>
+
+        <p>先取</p>
+        <div class="a-representation-formula" aria-label="全集 U1 由 1、2、3、4、5、6 组成">
+          $$U_1=\{1,2,3,4,5,6\}.$$
+        </div>
+        <p>在 $U_1$ 中去掉 $A$ 的元素 <span class="a-math-punct">$2,4$，</span>得到</p>
+        <div class="a-representation-formula" aria-label="A 相对于全集 U1 的补集由 1、3、5、6 组成">
+          $$\complement_{U_1}A=\{1,3,5,6\}.$$
+        </div>
+
+        <p>如果把全集改为</p>
+        <div class="a-representation-formula" aria-label="全集 U2 由 0、1、2、3、4、5、6 组成">
+          $$U_2=\{0,1,2,3,4,5,6\},$$
+        </div>
+        <p>那么 $0$ 也在研究范围内且不属于 <span class="a-math-punct">$A$，</span>因此</p>
+        <div class="a-representation-formula" aria-label="A 相对于全集 U2 的补集由 0、1、3、5、6 组成">
+          $$\complement_{U_2}A=\{0,1,3,5,6\}.$$
+        </div>
+
+        <p class="a-observe">下面两幅图中的椭圆 $A$ 都是 <span class="a-math-punct">$\{2,4\}$。</span>只观察各自全集的矩形边框内部：椭圆外的青绿色区域是补集，椭圆内的 $2,4$ 被排除。</p>
+        <figure class="a-representation-figure">
+          <div class="a-complement-diagram-pair">
+            <div class="a-complement-diagram-panel">
+              <h3>以 $U_1$ 为全集</h3>
+              <p><span class="a-math-punct">$A=\{2,4\}$，</span>研究范围是 <span class="a-math-punct">$\{1,2,3,4,5,6\}$。</span></p>
+              <svg class="a-complement-svg" viewBox="0 0 520 300" role="img" aria-labelledby="a05-u1-title a05-u1-desc">
+                <title id="a05-u1-title">集合 A 相对于全集 U1 的补集图</title>
+                <desc id="a05-u1-desc">矩形表示全集 U1，椭圆表示集合 A。2、4 在椭圆内；1、3、5、6 在矩形内且椭圆外，因此青绿色的矩形内部减去椭圆内部的区域表示补集。</desc>
+                <defs>
+                  <mask id="a05-u1-complement-mask" x="0" y="0" width="520" height="300" maskUnits="userSpaceOnUse">
+                    <rect x="12" y="12" width="496" height="276" rx="16" fill="white"></rect>
+                    <ellipse cx="260" cy="150" rx="92" ry="72" fill="black"></ellipse>
+                  </mask>
+                </defs>
+                <rect class="a-svg-universe-base" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <rect class="a-svg-complement-area" x="0" y="0" width="520" height="300" mask="url(#a05-u1-complement-mask)"></rect>
+                <ellipse class="a-svg-set-a" cx="260" cy="150" rx="92" ry="72"></ellipse>
+                <rect class="a-svg-universe-outline" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <text class="a-svg-universe-label" x="28" y="39">U₁</text>
+                <text class="a-svg-set-label" x="260" y="105" text-anchor="middle">A</text>
+                <text class="a-svg-member" x="220" y="145">2</text>
+                <text class="a-svg-member" x="295" y="160">4</text>
+                <text class="a-svg-member" x="120" y="90">1</text>
+                <text class="a-svg-member" x="120" y="215">3</text>
+                <text class="a-svg-member" x="400" y="90">5</text>
+                <text class="a-svg-member" x="400" y="215">6</text>
+              </svg>
+              <p class="a-complement-diagram-result">$\complement_{U_1}A=\{1,3,5,6\}$</p>
+            </div>
+
+            <div class="a-complement-diagram-panel">
+              <h3>以 $U_2$ 为全集</h3>
+              <p><span class="a-math-punct">$A=\{2,4\}$，</span>研究范围比 $U_1$ 多了 <span class="a-math-punct">$0$。</span></p>
+              <svg class="a-complement-svg" viewBox="0 0 520 300" role="img" aria-labelledby="a05-u2-title a05-u2-desc">
+                <title id="a05-u2-title">集合 A 相对于全集 U2 的补集图</title>
+                <desc id="a05-u2-desc">矩形表示全集 U2，椭圆 A 的位置和形状与上一图相同。2、4 在椭圆内；1、3、5、6 保持在椭圆外，并新增 0。0、1、3、5、6 都在矩形内且椭圆外，因此属于补集。</desc>
+                <defs>
+                  <mask id="a05-u2-complement-mask" x="0" y="0" width="520" height="300" maskUnits="userSpaceOnUse">
+                    <rect x="12" y="12" width="496" height="276" rx="16" fill="white"></rect>
+                    <ellipse cx="260" cy="150" rx="92" ry="72" fill="black"></ellipse>
+                  </mask>
+                </defs>
+                <rect class="a-svg-universe-base" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <rect class="a-svg-complement-area" x="0" y="0" width="520" height="300" mask="url(#a05-u2-complement-mask)"></rect>
+                <ellipse class="a-svg-set-a" cx="260" cy="150" rx="92" ry="72"></ellipse>
+                <rect class="a-svg-universe-outline" x="12" y="12" width="496" height="276" rx="16"></rect>
+                <text class="a-svg-universe-label" x="28" y="39">U₂</text>
+                <text class="a-svg-set-label" x="260" y="105" text-anchor="middle">A</text>
+                <text class="a-svg-member" x="220" y="145">2</text>
+                <text class="a-svg-member" x="295" y="160">4</text>
+                <text class="a-svg-member" x="120" y="90">1</text>
+                <text class="a-svg-member" x="120" y="215">3</text>
+                <text class="a-svg-member" x="400" y="90">5</text>
+                <text class="a-svg-member" x="400" y="215">6</text>
+                <text class="a-svg-member is-new" x="65" y="150">0</text>
+                <text class="a-svg-new-label" x="65" y="177">新增</text>
+              </svg>
+              <p class="a-complement-diagram-result">$\complement_{U_2}A=\{0,1,3,5,6\}$</p>
+            </div>
+          </div>
+          <figcaption>两图中椭圆 $A$ 的位置、形状和元素都没有改变；$U_2$ 只比 $U_1$ 多出椭圆外的 <span class="a-math-punct">$0$，</span>因此第二个补集也只多出 <span class="a-math-punct">$0$。</span>青绿色阴影严格位于全集矩形内部且在椭圆 $A$ 外部，阴影面积只表示归属范围，不表示元素个数。</figcaption>
+        </figure>
+        <p>这组对比说明，不能只问“$A$ 的补集是什么”。必须同时说明所依据的全集，才能确定哪些元素有资格被判断和保留。</p>
+      </div>
+    </section>
+
+    <section class="section" id="steps" data-source-md="02_全集与补集.md#计算步骤先看范围再做排除">
+      <h2 class="marker"><span aria-hidden="true">04</span>计算步骤</h2>
+      <div class="section-body prose">
+        <h2>计算补集：先看范围，再做排除</h2>
+        <p class="section-intro">求补集不是到 $A$ 的外部任意寻找对象，而是在已经确定的全集中完成一次排除。</p>
+
+        <ol class="a-complement-steps" aria-label="计算补集的三个步骤">
+          <li>
+            <strong>第一步：确认全集 $U$</strong>
+            <p>先写清当前研究范围包含哪些元素。</p>
+          </li>
+          <li>
+            <strong>第二步：确认 $A\subseteq U$</strong>
+            <p>检查 $A$ 的每个元素都在全集 $U$ 中。</p>
+          </li>
+          <li>
+            <strong>第三步：只在 $U$ 内排除 $A$</strong>
+            <p>保留 $U$ 中不属于 $A$ 的全部元素。</p>
+          </li>
+        </ol>
+        <p>如果只在 $A$ 的外部随意寻找对象，就会把全集之外的对象错误地收入结果。补集表示的不是“世界上所有不属于 $A$ 的对象”，而是“当前全集中不属于 $A$ 的对象”。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="02_全集与补集.md#核心理解补集是带参照范围的排除">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：补集是带参照范围的排除</h2>
+        <div class="summary-panel">
+          <p>全集 $U$ 决定从哪里选，集合 $A$ 决定排除什么。两个条件必须同时明确，$\complement_U A$ 才是确定的集合。</p>
+          <p>同一个 $A$ 放在不同的全集中，补集可能不同；全集改变时，补集必须重新判断。</p>
+          <p class="a-summary-line">确定全集范围 → 确认 $A\subseteq U$ → 保留 $U$ 中不属于 $A$ 的元素。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_交集与并集/index.html">← 上一篇 · 交集与并集</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 全集与补集</footer>
+</body>
+</html>

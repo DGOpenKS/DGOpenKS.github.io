@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解全称量词与存在量词如何规定检查对象的数量，并辨认对象范围、量词和性质怎样共同决定命题真假。">
+  <title>全称量词与存在量词 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#domain">对象范围</a>
+      <a class="nav-link" href="#universal">全称量词</a>
+      <a class="nav-link" href="#existential">存在量词</a>
+      <a class="nav-link" href="#quantifier-change">量词改变</a>
+      <a class="nav-link" href="#domain-change">范围改变</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 11</span>
+    <h1>全称量词与存在量词</h1>
+    <p class="lead">同一个性质，可以要求指定范围内“每一个对象都成立”，也可以只要求“至少有一个对象成立”。先把对象范围、量词和性质分别看清，才能准确判断一句含量词命题在说什么、真假为什么会改变。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="domain" data-source-md="01_全称量词与存在量词.md#先确定对象范围与性质">
+      <h2 class="marker"><span aria-hidden="true">01</span>对象范围</h2>
+      <div class="section-body prose">
+        <h2>先确定对象范围与性质</h2>
+        <p class="section-intro">量词说明要检查多少个对象，但在此之前，必须先知道对象从哪里取、要检查什么性质。</p>
+
+        <div class="a-representation-formula" aria-label="M 是对象范围，x 属于 M，p x 是关于 x 的性质">
+          $$M:\text{对象范围},\qquad x\in M,\qquad p(x):\text{关于 }x\text{ 的性质}.$$
+        </div>
+        <p>只写 $p(x)$ 时，性质的真假可能随 $x$ 改变。加入量词以后，句子才进一步说明：这个性质要对范围内的全部对象成立，还是只需对其中至少一个对象成立。</p>
+
+        <div class="a-trait-grid" aria-label="含量词命题的对象范围、量词和性质">
+          <article class="a-trait">
+            <h3>对象范围</h3>
+            <p>$x\in M$ 确定哪些对象可以被检查，也给命题划定判断边界。</p>
+          </article>
+          <article class="a-trait">
+            <h3>量词</h3>
+            <p>“每一个”或“至少一个”规定性质需要对多少个对象成立。</p>
+          </article>
+          <article class="a-trait">
+            <h3>性质</h3>
+            <p>$p(x)$ 说明对每个被取到的对象，具体要判断什么。</p>
+          </article>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>对象范围本身就是命题的一部分。若不说明 $x$ 在哪个集合中取值，“所有”或“存在”就没有确定边界，命题的真假也无法确定。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="universal" data-source-md="01_全称量词与存在量词.md#全称量词要求每一个对象都成立">
+      <h2 class="marker"><span aria-hidden="true">02</span>全称量词</h2>
+      <div class="section-body prose">
+        <h2>全称量词：要求每一个对象都成立</h2>
+        <p class="section-intro">“所有”“任意”“每一个”“一切”表达的是对指定范围内全部对象的要求。</p>
+
+        <div class="a-definition">
+          <p>这些表示整体或全部的词称为<strong>全称量词</strong>，通常用符号 <span class="a-math-punct">$\forall$</span> 表示。“对 $M$ 中任意一个 <span class="a-math-punct">$x$，</span>$p(x)$ 成立”写成</p>
+          <div class="a-representation-formula" aria-label="对 M 中每一个 x，p x 成立">
+            $$\forall x\in M,\ p(x).$$
+          </div>
+          <p>这称为全称量词命题。</p>
+        </div>
+
+        <p class="a-observe">读这个命题时，三个部分各自承担不同作用。</p>
+        <div class="a-equivalence-check" aria-label="全称量词命题中范围、量词和性质的作用">
+          <div class="a-equivalence-row">
+            <strong>范围 $x\in M$</strong>
+            <span>确定哪些对象必须接受检查。</span>
+            <em>检查边界</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>量词 $\forall$</strong>
+            <span>要求范围内每一个对象都不能遗漏。</span>
+            <em>全部对象</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>性质 $p(x)$</strong>
+            <span>规定每一个对象都必须满足的具体条件。</span>
+            <em>共同要求</em>
+          </div>
+        </div>
+
+        <p>全称量词命题要成为真命题，$M$ 中每一个对象都必须满足 <span class="a-math-punct">$p(x)$；</span>只要范围内有一个对象不满足，这个“全部成立”的要求就失败。</p>
+      </div>
+    </section>
+
+    <section class="section" id="existential" data-source-md="01_全称量词与存在量词.md#存在量词至少有一个对象成立">
+      <h2 class="marker"><span aria-hidden="true">03</span>存在量词</h2>
+      <div class="section-body prose">
+        <h2>存在量词：至少有一个对象成立</h2>
+        <p class="section-intro">“存在一个”“至少有一个”“有些”把要求从“全部”改成了“能够找到一个”。</p>
+
+        <div class="a-definition">
+          <p>这些表示范围内存在某个对象的词称为<strong>存在量词</strong>，通常用符号 <span class="a-math-punct">$\exists$</span> 表示。“存在 $M$ 中的一个 <span class="a-math-punct">$x$，</span>使 $p(x)$ 成立”写成</p>
+          <div class="a-representation-formula" aria-label="M 中至少存在一个 x，使 p x 成立">
+            $$\exists x\in M,\ p(x).$$
+          </div>
+          <p>这称为存在量词命题。</p>
+        </div>
+
+        <p class="a-observe">范围和性质没有少，改变的是需要找到的对象数量。</p>
+        <div class="a-equivalence-check" aria-label="存在量词命题中范围、量词和性质的作用">
+          <div class="a-equivalence-row">
+            <strong>范围 $x\in M$</strong>
+            <span>限定可以从哪些对象中寻找。</span>
+            <em>寻找边界</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>量词 $\exists$</strong>
+            <span>只要求范围内至少能找到一个对象。</span>
+            <em>至少一个</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>性质 $p(x)$</strong>
+            <span>规定被找到的对象必须满足什么条件。</span>
+            <em>寻找目标</em>
+          </div>
+        </div>
+
+        <p>存在量词命题要成为真命题，只需在 $M$ 中找到至少一个满足 $p(x)$ 的对象；要判定它为假，则范围内不能有任何对象满足这个性质。</p>
+      </div>
+    </section>
+
+    <section class="section" id="quantifier-change" data-source-md="01_全称量词与存在量词.md#同一性质量词改变命题也改变">
+      <h2 class="marker"><span aria-hidden="true">04</span>量词改变</h2>
+      <div class="section-body prose">
+        <h2>同一性质：量词改变，命题也改变</h2>
+        <p class="section-intro">把对象范围固定为整数，把性质固定为 <span class="a-math-punct">$p(x):x^2=4$。</span>下面两句话只有量词不同。</p>
+
+        <div class="a-relation-grid" aria-label="整数范围内 x 平方等于 4 的全称命题与存在命题比较">
+          <article class="a-relation a-trait">
+            <h3>要求每一个整数成立</h3>
+            <span class="a-relation-symbol">$\forall x\in\mathbb Z,\ x^2=4$</span>
+            <p>范围是整数，量词 $\forall$ 要求每一个整数都满足 <span class="a-math-punct">$x^2=4$。</span>整数 $0$ 不满足 <span class="a-math-punct">$0^2=4$，</span>所以命题为假。</p>
+          </article>
+          <article class="a-relation a-trait">
+            <h3>只要求找到一个整数</h3>
+            <span class="a-relation-symbol">$\exists x\in\mathbb Z,\ x^2=4$</span>
+            <p>范围仍是整数，量词 $\exists$ 只要求一个整数满足同一性质。整数 $2$ 满足 <span class="a-math-punct">$2^2=4$，</span>所以命题为真。</p>
+          </article>
+        </div>
+
+        <p>两句话的对象范围都是 <span class="a-math-punct">$\mathbb Z$，</span>性质都是 <span class="a-math-punct">$x^2=4$；</span>全称量词要求所有整数都通过，存在量词只要求至少一个整数通过。因此，只改变量词，就可能改变命题的真假。</p>
+      </div>
+    </section>
+
+    <section class="section" id="domain-change" data-source-md="01_全称量词与存在量词.md#对象范围改变真假可能改变">
+      <h2 class="marker"><span aria-hidden="true">05</span>范围改变</h2>
+      <div class="section-body prose">
+        <h2>对象范围改变，真假可能改变</h2>
+        <p class="section-intro">这一次固定存在量词和性质 <span class="a-math-punct">$x^2=2$，</span>只改变允许寻找对象的范围。</p>
+
+        <div class="a-relation-grid" aria-label="x 平方等于 2 在整数范围和实数范围内的存在命题比较">
+          <article class="a-relation a-trait">
+            <h3>在整数中寻找</h3>
+            <span class="a-relation-symbol">$\exists x\in\mathbb Z,\ x^2=2$</span>
+            <p>量词 $\exists$ 要在整数范围内找到一个满足 $x^2=2$ 的对象。若 <span class="a-math-punct">$|x|\leq1$，</span>则 <span class="a-math-punct">$x^2\leq1$；</span>若 <span class="a-math-punct">$|x|\geq2$，</span>则 <span class="a-math-punct">$x^2\geq4$。</span>整数的平方不可能等于 <span class="a-math-punct">$2$，</span>所以命题为假。</p>
+          </article>
+          <article class="a-relation a-trait">
+            <h3>在实数中寻找</h3>
+            <span class="a-relation-symbol">$\exists x\in\mathbb R,\ x^2=2$</span>
+            <p>量词仍是 <span class="a-math-punct">$\exists$，</span>性质仍是 <span class="a-math-punct">$x^2=2$，</span>但范围改为实数。因为 <span class="a-math-punct">$\sqrt2\in\mathbb R$</span> 且 <span class="a-math-punct">$(\sqrt2)^2=2$，</span>所以命题为真。</p>
+          </article>
+        </div>
+
+        <p>量词没有改变，性质也没有改变，但对象范围不同，允许寻找的对象随之不同。命题“存在 <span class="a-math-punct">$x$，</span>使 $x^2=2$”只有在给定对象范围后，才有确定的真假。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="01_全称量词与存在量词.md#核心理解量词规定要检查多少对象">
+      <h2 class="marker"><span aria-hidden="true">06</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：量词规定要检查多少对象</h2>
+        <div class="summary-panel">
+          <p>全称量词要求指定范围内每一个对象都满足性质，存在量词只要求其中至少一个对象满足性质。</p>
+          <p>对象范围、量词和性质共同组成含量词命题：范围决定检查谁，量词决定检查多少对象，性质决定检查什么。</p>
+          <p class="a-summary-line">先锁定对象范围 → 再看“全部”还是“至少一个” → 最后检查性质 <span class="a-math-punct">$p(x)$。</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../A-04_充分条件与必要条件/03_充要条件/index.html">← 上一篇 · 充要条件</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../02_含量词命题的否定/index.html">下一篇 · 含量词命题的否定 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 全称量词与存在量词</footer>
+</body>
+</html>

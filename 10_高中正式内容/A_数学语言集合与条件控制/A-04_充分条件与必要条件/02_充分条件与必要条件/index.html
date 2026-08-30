@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从共同讨论范围出发，用命题推出与条件集合包含理解充分、必要，并求含参数条件的取值范围。">
+  <title>充分条件与必要条件 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#one-arrow">共同范围与箭头</a>
+      <a class="nav-link" href="#example">具体例子</a>
+      <a class="nav-link" href="#sets">条件集合</a>
+      <a class="nav-link" href="#two-directions">参数范围</a>
+      <a class="nav-link" href="#summary">判断步骤</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 09</span>
+    <h1>充分条件与必要条件</h1>
+    <p class="lead">判断一个条件对另一个条件是充分还是必要，先固定共同的讨论范围 $D$，再看命题的推出方向；遇到参数问题，还可以比较条件在 $D$ 中筛出的集合 $P,Q$。这样既能分清关系名称，也能求出参数的取值范围。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="one-arrow" data-source-md="02_充分条件与必要条件.md#从一条真命题理解充分与必要">
+      <h2 class="marker"><span aria-hidden="true">01</span>共同范围与箭头</h2>
+      <div class="section-body prose">
+        <h2>从一条真命题理解充分与必要</h2>
+        <p class="section-intro">先固定共同的讨论范围 $D$，再区分关于 $x$ 的条件 $p(x),q(x)$ 与由它们组成的完整命题。</p>
+
+        <div class="a-definition">
+          <p>如果对每一个 <span class="a-math-punct">$x\in D$，</span>只要 $p(x)$ 成立，$q(x)$ 就一定成立，那么命题“若 $p(x)$，则 $q(x)$”是真命题，简记为 <span class="a-math-punct">$p\Rightarrow q$。</span></p>
+        </div>
+
+        <div class="a-representation-formula" aria-label="在共同范围 D 内，条件 p 推出条件 q">
+          $$p\Rightarrow q$$
+        </div>
+
+        <p class="a-observe">同一条箭头从两端观察，会得到“充分”和“必要”两个名称。</p>
+        <div class="a-relation-grid" aria-label="同一条 p 推出 q 的箭头产生充分与必要两个关系名称">
+          <article class="a-relation a-trait">
+            <h3>从 $p$ 出发</h3>
+            <span class="a-relation-symbol">$p\Rightarrow q$</span>
+            <p>$p$ 足以保证 $q$，所以称 $p$ 是 $q$ 的<strong>充分条件</strong>。</p>
+          </article>
+          <article class="a-relation a-trait">
+            <h3>从 $q$ 回看</h3>
+            <span class="a-relation-symbol">$p\Rightarrow q$</span>
+            <p>每个满足 $p$ 的对象都必须满足 $q$，所以称 $q$ 是 $p$ 的<strong>必要条件</strong>。</p>
+          </article>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>判断“$p$ 是不是 $q$ 的必要条件”时，必须另查反方向 <span class="a-math-punct">$q\Rightarrow p$，</span>不能把“必要”误解成原箭头会自动倒转。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="example" data-source-md="02_充分条件与必要条件.md#用同一个例子看清两个方向">
+      <h2 class="marker"><span aria-hidden="true">02</span>具体例子</h2>
+      <div class="section-body prose">
+        <h2>用同一个例子看清两个方向</h2>
+        <p class="section-intro">把两个条件放在共同范围 $D=\mathbb R$ 内，先证明正向箭头，再用反例检查反向箭头。</p>
+
+        <div class="a-representation-formula" aria-label="共同范围 D 是实数集，条件 p 是 x 大于 2，条件 q 是 x 大于 1">
+          $$
+          \begin{aligned}
+          &amp;D=\mathbb R,\\
+          &amp;p(x):x&gt;2,\qquad q(x):x&gt;1
+          \end{aligned}
+          $$
+        </div>
+
+        <div class="a-equivalence-check" aria-label="分别检查 p 推出 q 与 q 推出 p">
+          <div class="a-equivalence-row">
+            <strong>检查 $p\Rightarrow q$</strong>
+            <span>若 <span class="a-math-punct">$x&gt;2$，</span>那么必有 <span class="a-math-punct">$x&gt;1$，</span>所以正向箭头成立。</span>
+            <em>成立</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>检查 $q\Rightarrow p$</strong>
+            <span>取 <span class="a-math-punct">$x=\frac32$，</span>此时 $x&gt;1$ 成立，而 $x&gt;2$ 不成立。</span>
+            <em>不成立</em>
+          </div>
+        </div>
+
+        <p>正向成立说明 $p$ 是 $q$ 的充分条件，反向不成立说明 $p$ 不是 $q$ 的必要条件。因此，$p$ 是 $q$ 的充分不必要条件；换一个观察方向，$q$ 是 $p$ 的必要不充分条件。</p>
+      </div>
+    </section>
+
+    <section class="section" id="sets" data-source-md="02_充分条件与必要条件.md#条件在共同范围内筛出集合">
+      <h2 class="marker"><span aria-hidden="true">03</span>条件集合</h2>
+      <div class="section-body prose">
+        <h2>条件在共同范围内筛出集合</h2>
+        <p class="section-intro">条件本身不是集合，但每个条件都能从共同范围 $D$ 中筛出一批对象。把这些对象组成集合，推出方向就能翻译成包含方向。</p>
+
+        <div class="a-representation-formula" aria-label="集合 P 由 D 内满足条件 p 的对象组成，集合 Q 由 D 内满足条件 q 的对象组成">
+          $$
+          \begin{aligned}
+          P&amp;=\{x\in D\mid p(x)\},\\
+          Q&amp;=\{x\in D\mid q(x)\}
+          \end{aligned}
+          $$
+        </div>
+
+        <div class="a-equivalence-check" aria-label="充分条件与必要条件对应的集合包含方向">
+          <div class="a-equivalence-row">
+            <strong>$p$ 是 $q$ 的充分条件</strong>
+            <span>$p\Rightarrow q$</span>
+            <em>$P\subseteq Q$</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$p$ 是 $q$ 的必要条件</strong>
+            <span>$q\Rightarrow p$</span>
+            <em>$Q\subseteq P$</em>
+          </div>
+        </div>
+
+        <p>回到刚才的例子，两个条件筛出的集合是</p>
+        <div class="a-representation-formula" aria-label="集合 P 是开区间 2 到正无穷，集合 Q 是开区间 1 到正无穷">
+          $$P=(2,+\infty),\qquad Q=(1,+\infty)$$
+        </div>
+        <p>因为 <span class="a-math-punct">$P\subsetneqq Q$，</span>$P$ 中的每个实数也都属于 $Q$，这正对应 <span class="a-math-punct">$p\Rightarrow q$。</span></p>
+
+        <div class="a-boundary-note">
+          <p>如果 $P,Q$ 互不包含，两条推出方向都不成立，那么 $p$ 是 $q$ 的既不充分也不必要条件。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="two-directions" data-source-md="02_充分条件与必要条件.md#用包含关系求参数的取值范围">
+      <h2 class="marker"><span aria-hidden="true">04</span>参数范围</h2>
+      <div class="section-body prose">
+        <h2>用包含关系求参数的取值范围</h2>
+        <p class="section-intro">把刚才的端点 $2$ 改成参数 $a$。先比较两个条件关于变量 $x$ 的集合，再把集合关系翻译成参数 $a$ 的范围。</p>
+
+        <div class="a-representation-formula" aria-label="共同范围 D 是实数集，参数 a 是实数，条件 p 下标 a 是 x 大于 a，条件 q 是 x 大于 1">
+          $$
+          \begin{aligned}
+          &amp;D=\mathbb R,\qquad a\in\mathbb R,\\
+          &amp;p_a(x):x&gt;a,\qquad q(x):x&gt;1
+          \end{aligned}
+          $$
+        </div>
+        <div class="a-representation-formula" aria-label="条件 p 下标 a 筛出的集合是开区间 a 到正无穷，条件 q 筛出的集合是开区间 1 到正无穷">
+          $$P_a=(a,+\infty),\qquad Q=(1,+\infty)$$
+        </div>
+
+
+        <p class="a-observe">参数 $a$ 移动区间端点，三种位置关系对应三种条件关系。</p>
+        <div class="a-equivalence-check" aria-label="参数 a 的三种范围对应的集合关系和条件关系">
+          <div class="a-equivalence-row">
+            <strong>$a&gt;1$</strong>
+            <span>$P_a\subsetneqq Q$</span>
+            <em>充分不必要</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$a=1$</strong>
+            <span>$P_a=Q$</span>
+            <em>既充分又必要</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$a&lt;1$</strong>
+            <span>$Q\subsetneqq P_a$</span>
+            <em>必要不充分</em>
+          </div>
+        </div>
+
+        <p>$a&gt;1$ 时，$x&gt;a$ 能推出 <span class="a-math-punct">$x&gt;1$，</span>反方向不一定成立；$a&lt;1$ 时，推出方向正好相反；$a=1$ 时，两个条件筛出的范围完全相同。</p>
+
+        <div class="a-method-guide" aria-label="条件 p 下标 a 对条件 q 充分或必要时参数 a 的范围">
+          <article>
+            <h3>只问是否充分</h3>
+            <p>$p_a$ 是 $q$ 的充分条件，当且仅当 <span class="a-math-punct">$a\ge 1$。</span></p>
+          </article>
+          <article>
+            <h3>只问是否必要</h3>
+            <p>$p_a$ 是 $q$ 的必要条件，当且仅当 <span class="a-math-punct">$a\le 1$。</span></p>
+          </article>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>只有题目要求“充分不必要”或“必要不充分”时，才要排除 $a=1$，分别得到 $a&gt;1$ 或 $a&lt;1$。还要分清两种范围：$D,P_a,Q$ 描述变量 $x$ 的范围，而 $a&gt;1$、$a=1$、$a&lt;1$ 描述参数 $a$ 的取值范围。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="02_充分条件与必要条件.md#判断时真正要做的事">
+      <h2 class="marker"><span aria-hidden="true">05</span>判断步骤</h2>
+      <div class="section-body prose">
+        <h2>判断时真正要做的事</h2>
+        <div class="summary-panel">
+          <p>先固定两个条件共同的讨论范围 $D$，再求出它们关于变量 $x$ 的集合 $P,Q$。把题目要求翻译成 $P\subseteq Q$、$Q\subseteq P$ 或 <span class="a-math-punct">$P=Q$，</span>解出参数范围后，再根据集合相等或真包含命名关系。</p>
+          <p>命题箭头说明“充分、必要”的含义，集合包含则把方向变成可以比较、可以计算的取值范围关系。</p>
+          <p class="a-summary-line">固定 $D$ → 求 $P,Q$ → 翻译包含或相等 → 解参数 → 命名关系。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_命题条件与结论/index.html">← 上一篇 · 命题、条件与结论</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../03_充要条件/index.html">下一篇 · 充要条件 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 模块 · 充分条件与必要条件</footer>
+</body>
+</html>

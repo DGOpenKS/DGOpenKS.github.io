@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解有限区间与无穷区间的括号规则，并在不等式、区间符号和数轴之间准确转换。">
+  <title>实数区间 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+  <style>
+    .a-interval-number-line{
+      display:block;
+      width:100%;
+      max-width:760px;
+      height:auto;
+      margin:0 auto;
+      border-radius:var(--radius-md);
+      background:var(--soft);
+    }
+
+    .a-interval-axis,
+    .a-interval-tick{
+      stroke:var(--line-strong);
+      stroke-width:2;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .a-interval-segment{
+      stroke:var(--blue);
+      stroke-width:8;
+      stroke-linecap:butt;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .a-interval-endpoint{
+      stroke:var(--blue-deep);
+      stroke-width:3;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .a-interval-endpoint.is-in{
+      fill:var(--blue-deep);
+    }
+
+    .a-interval-endpoint.is-out{
+      fill:var(--paper);
+    }
+
+    .a-interval-svg-label,
+    .a-interval-svg-note{
+      font-family:var(--font-sans);
+      font-size:.24px;
+      font-weight:800;
+      text-anchor:middle;
+    }
+
+    .a-interval-svg-label{
+      fill:var(--ink);
+    }
+
+    .a-interval-svg-note{
+      fill:var(--blue-deep);
+    }
+
+    @media (max-width:640px){
+      .a-interval-svg-label,
+      .a-interval-svg-note{
+        font-size:.33px;
+      }
+    }
+
+    @media print{
+      .a-interval-number-line{
+        background:var(--paper);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#finite-intervals">有限区间</a>
+      <a class="nav-link" href="#representations">不等式与数轴</a>
+      <a class="nav-link" href="#infinite-intervals">无穷区间</a>
+      <a class="nav-link" href="#conversion">转换顺序</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 03</span>
+    <h1>实数区间</h1>
+    <p class="lead">数轴上一段连续的实数所组成的集合，叫作区间。它可以用不等式、区间符号或数轴来表示，这三种写法描述的是同一个实数范围。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="finite-intervals" data-source-md="01_实数区间.md#有限区间括号记录端点是否取到">
+      <h2 class="marker"><span aria-hidden="true">01</span>有限区间</h2>
+      <div class="section-body prose">
+        <h2>有限区间：括号记录端点是否取到</h2>
+        <p class="section-intro">有限区间有左、右两个端点。每一端使用什么括号，只取决于这个端点是否属于当前集合。</p>
+
+        <div class="a-definition">
+          <p>设 $a,b\in\mathbb R$，且 <span class="a-math-punct">$a&lt;b$。</span>以 $a,b$ 为端点的连续实数范围，可以写成下面四种有限区间。</p>
+        </div>
+
+        <div class="a-number-sets">
+          <table aria-label="四种有限区间的不等式、区间表示和端点情况">
+            <thead>
+              <tr>
+                <th scope="col">实数范围</th>
+                <th scope="col">区间表示</th>
+                <th scope="col">端点情况</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$a\leq x\leq b$</td>
+                <td>$[a,b]$</td>
+                <td>两端都取到</td>
+              </tr>
+              <tr>
+                <td>$a&lt;x&lt;b$</td>
+                <td>$(a,b)$</td>
+                <td>两端都不取到</td>
+              </tr>
+              <tr>
+                <td>$a\leq x&lt;b$</td>
+                <td>$[a,b)$</td>
+                <td>取到左端，不取到右端</td>
+              </tr>
+              <tr>
+                <td>$a&lt;x\leq b$</td>
+                <td>$(a,b]$</td>
+                <td>不取到左端，取到右端</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>方括号靠近某个有限端点，表示这个端点属于区间；圆括号靠近某个有限端点，表示这个端点不属于区间。因此，$[a,b]$ 称为闭区间，$(a,b)$ 称为开区间，$[a,b)$ 与 $(a,b]$ 称为半开半闭区间；$a,b$ 都称为区间的端点。</p>
+      </div>
+    </section>
+
+    <section class="section" id="representations" data-source-md="01_实数区间.md#三种表示不等式区间与数轴说同一范围">
+      <h2 class="marker"><span aria-hidden="true">02</span>不等式与数轴</h2>
+      <div class="section-body prose">
+        <h2>三种表示：不等式、区间与数轴说同一范围</h2>
+        <p class="section-intro">先从不等式读出实数范围，再把两个端点的归属分别对应到括号和数轴端点。</p>
+
+        <p>例如，集合</p>
+        <div class="a-representation-formula" aria-label="集合 S 由大于等于负二且小于三的实数组成">
+          $$S=\{x\in\mathbb R\mid -2\leq x&lt;3\}.$$
+        </div>
+        <p>也可以写成 <span class="a-math-punct">$S=[-2,3)$。</span>左边的方括号表示 <span class="a-math-punct">$-2\in S$，</span>右边的圆括号表示 <span class="a-math-punct">$3\notin S$；</span>$-2$ 与 $3$ 之间的所有实数都属于 <span class="a-math-punct">$S$。</span></p>
+
+        <p class="a-observe">观察数轴上的两个端点：$-2$ 处是实心点，并写明“属于 <span class="a-math-punct">$S$”；</span>$3$ 处是空心点，并写明“不属于 <span class="a-math-punct">$S$”。</span>两个端点之间的线段表示区间内的全部实数。</p>
+        <figure class="a-representation-figure">
+          <svg class="a-interval-number-line" viewBox="-4 -1.3 9 3" role="img" aria-labelledby="a10-number-line-title a10-number-line-desc">
+            <title id="a10-number-line-title">区间负二到三左闭右开的数轴表示</title>
+            <desc id="a10-number-line-desc">数轴上从负二到三画出线段。负二处是实心点并标注属于集合 S，三处是空心点并标注不属于集合 S，表示集合 S 等于左闭右开的区间负二到三。</desc>
+            <defs>
+              <marker id="a10-axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth=".2" markerHeight=".2" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10Z" fill="var(--line-strong)"></path>
+              </marker>
+            </defs>
+            <line class="a-interval-axis" x1="-3.65" y1="0" x2="4.65" y2="0" marker-start="url(#a10-axis-arrow)" marker-end="url(#a10-axis-arrow)"></line>
+            <line class="a-interval-tick" x1="-3" y1="-.11" x2="-3" y2=".11"></line>
+            <line class="a-interval-tick" x1="-2" y1="-.14" x2="-2" y2=".14"></line>
+            <line class="a-interval-tick" x1="-1" y1="-.11" x2="-1" y2=".11"></line>
+            <line class="a-interval-tick" x1="0" y1="-.11" x2="0" y2=".11"></line>
+            <line class="a-interval-tick" x1="1" y1="-.11" x2="1" y2=".11"></line>
+            <line class="a-interval-tick" x1="2" y1="-.11" x2="2" y2=".11"></line>
+            <line class="a-interval-tick" x1="3" y1="-.14" x2="3" y2=".14"></line>
+            <line class="a-interval-tick" x1="4" y1="-.11" x2="4" y2=".11"></line>
+            <line class="a-interval-segment" x1="-2" y1="0" x2="3" y2="0"></line>
+            <circle class="a-interval-endpoint is-in" cx="-2" cy="0" r=".16"></circle>
+            <circle class="a-interval-endpoint is-out" cx="3" cy="0" r=".16"></circle>
+            <text class="a-interval-svg-note" x="-2" y="-.55">属于 S</text>
+            <text class="a-interval-svg-note" x="3" y="-.55">不属于 S</text>
+            <text class="a-interval-svg-label" x="-2" y=".55">−2</text>
+            <text class="a-interval-svg-label" x="3" y=".55">3</text>
+          </svg>
+          <figcaption>实心点说明 $-2$ 被区间取到，对应不等式中的“$\leq$”和左方括号；空心点说明 $3$ 不被区间取到，对应不等式中的“$&lt;$”和右圆括号。因此，不等式、区间符号与数轴都表示同一个集合 <span class="a-math-punct">$S=[-2,3)$。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="infinite-intervals" data-source-md="01_实数区间.md#无穷区间无穷端只能用圆括号">
+      <h2 class="marker"><span aria-hidden="true">03</span>无穷区间</h2>
+      <div class="section-body prose">
+        <h2>无穷区间：无穷端只能用圆括号</h2>
+        <p class="section-intro">当实数范围向一侧无限延伸时，仍要判断有限端点是否取到；表示无穷方向的一端则始终使用圆括号。</p>
+
+        <div class="a-number-sets">
+          <table aria-label="四种向一侧无限延伸的实数范围及其区间表示">
+            <thead>
+              <tr>
+                <th scope="col">实数范围</th>
+                <th scope="col">区间表示</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$x\geq a$</td>
+                <td>$[a,+\infty)$</td>
+              </tr>
+              <tr>
+                <td>$x&gt;a$</td>
+                <td>$(a,+\infty)$</td>
+              </tr>
+              <tr>
+                <td>$x\leq b$</td>
+                <td>$(-\infty,b]$</td>
+              </tr>
+              <tr>
+                <td>$x&lt;b$</td>
+                <td>$(-\infty,b)$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>$+\infty$ 与 $-\infty$ 表示无限延伸的方向，不是实数，也不是区间中可以“取到”的端点。因此，无穷端一律使用圆括号，不能写成 $[a,+\infty]$ 或 <span class="a-math-punct">$[-\infty,b]$。</span></p>
+        </div>
+
+        <p>全体实数组成的集合可以表示为</p>
+        <div class="a-representation-formula" aria-label="全体实数是从负无穷到正无穷的开区间">
+          $$\mathbb R=(-\infty,+\infty).$$
+        </div>
+        <p>式子两端都用圆括号，正是因为 $\pm\infty$ 都不属于实数集。</p>
+      </div>
+    </section>
+
+    <section class="section" id="conversion" data-source-md="01_实数区间.md#判断顺序先读范围再定括号">
+      <h2 class="marker"><span aria-hidden="true">04</span>转换顺序</h2>
+      <div class="section-body prose">
+        <h2>判断顺序：先读范围，再定括号</h2>
+        <p class="section-intro">无论从哪一种表示出发，都要分别检查左右边界，并保证转换前后包含完全相同的实数。</p>
+
+        <div class="a-method-guide" aria-label="实数范围与区间符号之间的双向转换顺序">
+          <article>
+            <h3>从实数范围写成区间</h3>
+            <p><strong>先确认范围：</strong>找出左、右边界，并确认这是一段连续的实数范围。</p>
+            <p><strong>再检查有限端点：</strong>不等号允许等于时用方括号，严格不等号对应圆括号。</p>
+            <p><strong>最后检查无穷端：</strong>出现无穷方向时，无穷端只能写圆括号。</p>
+          </article>
+          <article>
+            <h3>从区间读回实数范围</h3>
+            <p><strong>分别读取两端：</strong>方括号对应“可以等于”，圆括号对应“不能等于”。</p>
+            <p><strong>识别无穷方向：</strong>无穷端只表示范围向该方向延伸，不表示能够取到无穷。</p>
+            <p><strong>核对最终范围：</strong>得到的不等式应当与原区间包含完全相同的实数。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="01_实数区间.md#核心理解括号是在回答端点归属">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：括号是在回答端点归属</h2>
+        <div class="summary-panel">
+          <p>有限端点能否取到，决定使用方括号还是圆括号；无穷不是实数，永远不能作为被取到的端点。</p>
+          <p>把每个括号还原成端点的属于或不属于关系，就能在不等式、区间与数轴之间准确转换。</p>
+          <p class="a-summary-line">有限端点看归属 → 无穷端用圆括号 → 三种表示保持同一实数范围。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../A-01_集合的概念与表示/02_集合的表示/index.html">← 上一篇 · 集合的表示</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../../A-02_集合间的基本关系/01_集合的包含相等与空集/index.html">下一篇 · 集合的包含、相等与空集 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 实数区间</footer>
+</body>
+</html>

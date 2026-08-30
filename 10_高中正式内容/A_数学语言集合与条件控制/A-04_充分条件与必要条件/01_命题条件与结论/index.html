@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解命题的定义与边界，准确辨认若 p 则 q 中的条件、结论和推出方向，并用证明或反例判断真假。">
+  <title>命题的条件与结论 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#proposition">什么是命题</a>
+      <a class="nav-link" href="#direction">条件与结论</a>
+      <a class="nav-link" href="#true-proposition">真命题</a>
+      <a class="nav-link" href="#counterexample">逆命题与反例</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 08</span>
+    <h1>命题的条件与结论</h1>
+    <p class="lead">一句话只有能够确定真假，才是命题。遇到“若 <span class="a-math-punct">$p$，</span>则 <span class="a-math-punct">$q$”，</span>还要读清从条件 $p$ 出发、推出结论 $q$ 的方向，再判断条件成立时结论是否一定成立。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="proposition" data-source-md="01_命题条件与结论.md#命题能够判断真假的陈述">
+      <h2 class="marker"><span aria-hidden="true">01</span>什么是命题</h2>
+      <div class="section-body prose">
+        <h2>命题：能够判断真假的陈述</h2>
+        <p class="section-intro">辨认命题，先检查整句话能不能得到确定的“真”或“假”，而不是先看它写了多少数学符号。</p>
+
+        <div class="a-definition">
+          <p>一般地，用语言、符号或式子表达的，可以判断真假的陈述句称为<strong>命题</strong>。判断为真的命题称为<strong>真命题</strong>，判断为假的命题称为<strong>假命题</strong>。</p>
+        </div>
+
+        <div class="a-example">
+          <p>“$2$ 是偶数”能够判断为真，“<span class="a-math-punct">$3&lt;1$”</span>能够判断为假。真假虽然不同，但两句话都能得到确定判断，所以都是命题。</p>
+        </div>
+
+        <p>疑问句、祈使句不是在作出可以判断真假的陈述。“<span class="a-math-punct">$x&gt;1$”</span>虽然含有数学式子，却没有指定 $x$ 的值，也没有对一个明确范围内的对象作出完整判断，因此还不是命题。</p>
+        <div class="a-boundary-note">
+          <p>只有补全缺少的值或对象范围，使整句话能够确定真假，原来的式子才成为命题。辨认命题的关键始终是“能否确定真假”。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="direction" data-source-md="01_命题条件与结论.md#条件与结论读清若-p-则-q">
+      <h2 class="marker"><span aria-hidden="true">02</span>条件与结论</h2>
+      <div class="section-body prose">
+        <h2>条件与结论：读清“若 <span class="a-math-punct">$p$，</span>则 <span class="a-math-punct">$q$”</span></h2>
+        <p class="section-intro">命题写成标准形式以后，先确认推理从哪里出发，再确认它要得到什么结果。</p>
+
+        <div class="a-method-guide" aria-label="若 p 则 q 中条件与结论的含义">
+          <article>
+            <h3>条件 $p$</h3>
+            <p>表示推理从什么情形出发。</p>
+          </article>
+          <article>
+            <h3>结论 $q$</h3>
+            <p>表示条件成立时应当得到什么结果。</p>
+          </article>
+        </div>
+
+        <p>判断条件与结论不能只看一句话的先后位置，而要看推理方向。把命题改写为“若 <span class="a-math-punct">$p$，</span>则 <span class="a-math-punct">$q$”</span>后，箭头从 $p$ 指向 <span class="a-math-punct">$q$：</span></p>
+        <div class="a-representation-formula" aria-label="p 推出 q">
+          $$p\Rightarrow q.$$
+        </div>
+        <p>这个式子读作“由 $p$ 可以推出 <span class="a-math-punct">$q$”。</span>箭头从条件指向结论，表示只要条件 $p$ 成立，结论 $q$ 就一定成立。</p>
+      </div>
+    </section>
+
+    <section class="section" id="true-proposition" data-source-md="01_命题条件与结论.md#真命题条件成立时结论不能失败">
+      <h2 class="marker"><span aria-hidden="true">03</span>真命题</h2>
+      <div class="section-body prose">
+        <h2>真命题：条件成立时结论不能失败</h2>
+        <p class="section-intro">要说明一个“若 <span class="a-math-punct">$p$，</span>则 <span class="a-math-punct">$q$”</span>是真命题，需要证明任意满足条件 $p$ 的对象都必然满足结论 <span class="a-math-punct">$q$。</span></p>
+
+        <div class="a-example">
+          <p>对于任意整数 <span class="a-math-punct">$n$，</span>考虑命题：“若 $n$ 是 $4$ 的倍数，则 $n$ 是 $2$ 的倍数。”下面从条件出发，说明结论对每一个满足条件的整数都成立。</p>
+        </div>
+
+        <p>把原命题的条件和结论分别记作 $p$ 与 <span class="a-math-punct">$q$：</span></p>
+        <div class="a-representation-formula" aria-label="p 表示 n 是 4 的倍数，q 表示 n 是 2 的倍数">
+          $$
+          \begin{aligned}
+          p&:\ n\text{ 是 }4\text{ 的倍数},\\
+          q&:\ n\text{ 是 }2\text{ 的倍数}.
+          \end{aligned}
+          $$
+        </div>
+        <p>第一行写出推理的出发条件，第二行写出要得到的结论。接下来只需从 $p$ 出发，说明为什么 $q$ 必然成立。</p>
+
+        <p>如果 $p$ 成立，就存在整数 <span class="a-math-punct">$k$，</span>使 <span class="a-math-punct">$n=4k$。</span>因为 <span class="a-math-punct">$4=2\times2$，</span>可以把 $4k$ 改写成含有因数 $2$ 的形式：</p>
+        <div class="a-representation-formula" aria-label="n 等于 4k，也等于 2 乘 2k">
+          $$n=4k=2(2k).$$
+        </div>
+        <p>式中的 $n=4k$ 把条件写成了代数形式，$4k=2(2k)$ 则把因数 $2$ 明确地提了出来。因为 $2k$ 仍是整数，所以 $n$ 是 $2$ 的倍数，结论 $q$ 必然成立。因此原命题是真命题，可以记作 <span class="a-math-punct">$p\Rightarrow q$。</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="counterexample" data-source-md="01_命题条件与结论.md#逆命题交换条件与结论后重新判断">
+      <h2 class="marker"><span aria-hidden="true">04</span>逆命题与反例</h2>
+      <div class="section-body prose">
+        <h2>逆命题：交换条件与结论后重新判断</h2>
+        <p class="section-intro">把原命题 $p\Rightarrow q$ 的条件和结论交换，得到 $q\Rightarrow p$，称为原命题的<strong>逆命题</strong>。原命题与逆命题是两个命题，真假必须分别判断。</p>
+
+        <p>上面的原命题是“若 $n$ 是 $4$ 的倍数，则 $n$ 是 $2$ 的倍数”，它的逆命题是“若 $n$ 是 $2$ 的倍数，则 $n$ 是 $4$ 的倍数”。取 <span class="a-math-punct">$n=2$，</span>可以得到下面两个判断：</p>
+        <div class="a-equivalence-check" aria-label="n 等于 2 时逆命题的条件成立而结论不成立">
+          <div class="a-equivalence-row">
+            <strong>逆命题的条件</strong>
+            <span>“$2$ 是 $2$ 的倍数”成立。</span>
+            <em>条件为真</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>逆命题的结论</strong>
+            <span>“$2$ 是 $4$ 的倍数”不成立。</span>
+            <em>结论为假</em>
+          </div>
+        </div>
+        <p>因此，$n=2$ 使逆命题的条件成立、结论不成立，是一个有效反例。只要找到这样一个对象，就足以否定这个逆命题。</p>
+
+        <div class="a-boundary-note">
+          <p>原命题 $p\Rightarrow q$ 为真，不能推出它的逆命题 $q\Rightarrow p$ 也为真。交换条件与结论后，得到的是另一个命题，必须重新判断真假。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="01_命题条件与结论.md#核心理解命题先判真假推出再看方向">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：命题先判真假，推出再看方向</h2>
+        <div class="summary-panel">
+          <p>命题首先必须是能够确定真假的陈述。对于“若 <span class="a-math-punct">$p$，</span>则 <span class="a-math-punct">$q$”，</span>$p$ 是出发条件，$q$ 是目标结论；只有在 $p$ 成立时 $q$ 必然成立，才能写出 <span class="a-math-punct">$p\Rightarrow q$。</span></p>
+          <p>交换条件和结论得到 <span class="a-math-punct">$q\Rightarrow p$，</span>称为原命题的逆命题。原命题与逆命题是两个命题，真假必须分别判断；否定一个命题，只需找到一个条件真而结论假的反例。</p>
+          <p class="a-summary-line">先确认能够判断真假 → 再辨认条件与结论 → 沿箭头方向证明或寻找反例。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../A-03_集合的基本运算/03_集合运算律及其验证/index.html">← 上一篇 · 集合运算律及其验证</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../02_充分条件与必要条件/index.html">下一篇 · 充分条件与必要条件 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 命题的条件与结论</footer>
+</body>
+</html>

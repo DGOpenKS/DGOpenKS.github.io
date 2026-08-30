@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解含量词命题的否定为什么必须同时互换量词并否定性质，并分清反例与存在对象承担的不同任务。">
+  <title>含量词命题的否定 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#not-universal">否定全称命题</a>
+      <a class="nav-link" href="#not-existential">否定存在命题</a>
+      <a class="nav-link" href="#both-change">两处同时改变</a>
+      <a class="nav-link" href="#same-property">同一性质的否定</a>
+      <a class="nav-link" href="#counterexample-witness">反例与存在对象</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 12</span>
+    <h1>含量词命题的否定</h1>
+    <p class="lead">否定含量词命题，关键不是在原句前加上“不是”，而是准确说明原要求怎样失败：“全部成立”因一个例外而失败，“至少一个成立”因一个也找不到而失败。由此可以看清，量词和性质为什么必须同时改变。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="not-universal" data-source-md="02_含量词命题的否定.md#否定全称命题找到一个例外">
+      <h2 class="marker"><span aria-hidden="true">01</span>否定全称命题</h2>
+      <div class="section-body prose">
+        <h2>否定全称命题：找到一个例外</h2>
+        <p class="section-intro">先读清原命题的要求：在同一对象范围 $M$ 内，每一个对象都必须满足性质 <span class="a-math-punct">$p(x)$。</span></p>
+
+        <div class="a-representation-formula" aria-label="对 M 中每一个 x，p x 成立">
+          $$\forall x\in M,\ p(x).$$
+        </div>
+        <p>这句话中，$x\in M$ 固定检查范围，$\forall$ 要求范围内每一个对象都通过，$p(x)$ 是每个对象要满足的性质。要使“每一个都满足”失败，不需要所有对象都不满足；只要在 $M$ 中找到一个不满足 $p(x)$ 的对象即可。</p>
+
+        <div class="a-representation-formula" aria-label="全称量词命题的否定等价于存在一个对象不满足原性质">
+          $$\neg(\forall x\in M,\ p(x))\iff \exists x\in M,\ \neg p(x).$$
+        </div>
+        <p class="a-observe">从原命题到它的否定，逐项看清三个部分的变化。</p>
+        <div class="a-equivalence-check" aria-label="否定全称命题时范围保持不变，量词和性质同时改变">
+          <div class="a-equivalence-row">
+            <strong>对象范围 $M$</strong>
+            <span>仍在原来的 $M$ 中检查对象，没有更换范围。</span>
+            <em>范围不变</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$\forall$ 变为 $\exists$</strong>
+            <span>原来的全部要求，被一个例外击破。</span>
+            <em>量词互换</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$p(x)$ 变为 $\neg p(x)$</strong>
+            <span>要找的是不满足原性质的对象。</span>
+            <em>性质否定</em>
+          </div>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>“并非所有对象都具有某性质”表示“至少有一个对象不具有该性质”，并不表示“所有对象都不具有该性质”。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="not-existential" data-source-md="02_含量词命题的否定.md#否定存在命题一个也找不到">
+      <h2 class="marker"><span aria-hidden="true">02</span>否定存在命题</h2>
+      <div class="section-body prose">
+        <h2>否定存在命题：一个也找不到</h2>
+        <p class="section-intro">存在量词命题声称：在对象范围 $M$ 中，至少能找到一个满足 $p(x)$ 的对象。</p>
+
+        <div class="a-representation-formula" aria-label="M 中至少存在一个 x，使 p x 成立">
+          $$\exists x\in M,\ p(x).$$
+        </div>
+        <p>这里 $x\in M$ 限定寻找范围，$\exists$ 只要求至少一个对象，$p(x)$ 规定寻找目标。要使“至少有一个满足”失败，就必须让 $M$ 中每一个对象都不满足 <span class="a-math-punct">$p(x)$。</span></p>
+
+        <div class="a-representation-formula" aria-label="存在量词命题的否定等价于每一个对象都不满足原性质">
+          $$\neg(\exists x\in M,\ p(x))\iff \forall x\in M,\ \neg p(x).$$
+        </div>
+        <p class="a-observe">否定后的对象范围不变，但寻找要求和对象性质同时反转。</p>
+        <div class="a-equivalence-check" aria-label="否定存在命题时范围保持不变，量词和性质同时改变">
+          <div class="a-equivalence-row">
+            <strong>对象范围 $M$</strong>
+            <span>仍然只讨论原来范围内的对象。</span>
+            <em>范围不变</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$\exists$ 变为 $\forall$</strong>
+            <span>要说明一个也找不到，必须检查每一个对象。</span>
+            <em>量词互换</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$p(x)$ 变为 $\neg p(x)$</strong>
+            <span>每一个对象都必须不满足原性质。</span>
+            <em>性质否定</em>
+          </div>
+        </div>
+
+        <p>换成自然语言，“不存在满足该性质的对象”就是“每一个对象都不满足该性质”。只有量词和性质一起改变，才准确表达原存在命题的失败。</p>
+      </div>
+    </section>
+
+    <section class="section" id="both-change" data-source-md="02_含量词命题的否定.md#为什么不能只改一处">
+      <h2 class="marker"><span aria-hidden="true">03</span>两处同时改变</h2>
+      <div class="section-body prose">
+        <h2>为什么量词和性质必须同时改变</h2>
+        <p class="section-intro">只改量词或只改性质，得到的都是另一条命题，不能完整表达原命题怎样失败。</p>
+
+        <div class="a-equivalence-check" aria-label="否定含量词命题时只改一处会得到什么错误含义">
+          <div class="a-equivalence-row">
+            <strong>保留 <span class="a-math-punct">$\forall$，</span>只否定 $p(x)$</strong>
+            <span>得到“每一个对象都不满足”，比“不是每一个都满足”更强。</span>
+            <em>不是原否定</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>只把 $\forall$ 改为 $\exists$</strong>
+            <span>得到“至少有一个对象满足原性质”，仍在断言原性质成立。</span>
+            <em>没有否定性质</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>只把 $\exists$ 改为 $\forall$</strong>
+            <span>得到“每一个对象都满足原性质”，没有表达一个也找不到。</span>
+            <em>没有否定性质</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>保留 <span class="a-math-punct">$\exists$，</span>只否定 $p(x)$</strong>
+            <span>得到“至少有一个对象不满足”，不等于“没有任何对象满足”。</span>
+            <em>不是原否定</em>
+          </div>
+        </div>
+
+        <div class="a-definition">
+          <p>正确的否定始终保留原对象范围，同时完成两处改变：<strong>全称量词与存在量词互换，性质 $p(x)$ 变为 <span class="a-math-punct">$\neg p(x)$。</span></strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="same-property" data-source-md="02_含量词命题的否定.md#用同一个性质看清两种否定">
+      <h2 class="marker"><span aria-hidden="true">04</span>同一性质的否定</h2>
+      <div class="section-body prose">
+        <h2>用同一个性质看清两种否定</h2>
+        <p class="section-intro">在实数范围内固定 <span class="a-math-punct">$p(x):x\leq1$。</span>性质 $p(x)$ 的否定是 <span class="a-math-punct">$x&gt;1$；</span>对象范围始终是实数。</p>
+
+        <h3>全称命题的否定：一个反例成为存在对象</h3>
+        <div class="a-example">
+          <div class="a-representation-formula" aria-label="对每一个实数 x，x 小于等于 1">
+            $$\forall x\in\mathbb R,\ x\leq1.$$
+          </div>
+          <p>范围是实数，量词 $\forall$ 要求每一个实数都满足 <span class="a-math-punct">$x\leq1$。</span>取 <span class="a-math-punct">$x=2$，</span>有 $2\leq1$ 不成立，所以原命题为假。</p>
+          <div class="a-representation-formula" aria-label="存在一个实数 x，使 x 大于 1">
+            $$\exists x\in\mathbb R,\ x&gt;1.$$
+          </div>
+          <p>否定后的范围仍是实数，量词变为 <span class="a-math-punct">$\exists$，</span>性质变为 <span class="a-math-punct">$x&gt;1$。</span>同一个 $x=2$ 正是满足否定命题的对象。</p>
+        </div>
+
+        <h3>存在命题的否定：必须让每个对象都不满足</h3>
+        <div class="a-example">
+          <div class="a-representation-formula" aria-label="存在一个实数 x，使 x 小于等于 1">
+            $$\exists x\in\mathbb R,\ x\leq1.$$
+          </div>
+          <p>范围是实数，量词 $\exists$ 只要求找到一个满足 <span class="a-math-punct">$x\leq1$</span> 的对象。取 $x=0$ 就能证明原命题为真。</p>
+          <div class="a-representation-formula" aria-label="对每一个实数 x，x 大于 1">
+            $$\forall x\in\mathbb R,\ x&gt;1.$$
+          </div>
+          <p>否定后的范围仍是实数，量词变为 <span class="a-math-punct">$\forall$，</span>性质变为 <span class="a-math-punct">$x&gt;1$。</span>而 $x=0$ 又是这个全称命题的反例，所以否定命题为假。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="counterexample-witness" data-source-md="02_含量词命题的否定.md#反例与存在对象承担不同任务">
+      <h2 class="marker"><span aria-hidden="true">05</span>反例与存在对象</h2>
+      <div class="section-body prose">
+        <h2>反例与存在对象承担不同任务</h2>
+        <p class="section-intro">两种判断有时都只给出一个对象，但这个对象是在击破“全部”，还是在完成“至少一个”，必须分清。</p>
+
+        <div class="a-method-guide" aria-label="反例与存在对象的不同任务">
+          <article>
+            <h3>寻找全称命题的反例</h3>
+            <p>给出一个不满足性质的对象，就击破了“每一个都成立”，因此足以否定全称命题。</p>
+          </article>
+          <article>
+            <h3>寻找存在命题所需的对象</h3>
+            <p>给出一个满足性质的对象，就完成了“至少有一个成立”，因此足以证明存在命题。</p>
+          </article>
+        </div>
+
+        <p>两项任务虽然都可能只需给出一个对象，针对的原命题和判断目的却不同：反例使全称要求失败，满足条件的对象使存在要求成立。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="02_含量词命题的否定.md#核心理解范围不变要求反转">
+      <h2 class="marker"><span aria-hidden="true">06</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：范围不变，要求反转</h2>
+        <div class="summary-panel">
+          <p>写含量词命题的否定时，先固定对象范围，再把全称量词与存在量词互换，同时否定性质 <span class="a-math-punct">$p(x)$。</span></p>
+          <p>全部成立的失败来自一个例外，至少一个成立的失败来自全部都不成立。量词和性质一起改变，正是这两种失败方式的准确表达。</p>
+          <p class="a-summary-line">对象范围不变 → 量词互换 → 性质同时否定。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_全称量词与存在量词/index.html">← 上一篇 · 全称量词与存在量词</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 含量词命题的否定</footer>
+</body>
+</html>

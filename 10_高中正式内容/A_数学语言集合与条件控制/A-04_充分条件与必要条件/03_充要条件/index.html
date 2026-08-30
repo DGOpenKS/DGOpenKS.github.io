@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解充要条件必须在共同范围内同时验证两个推出方向，并通过双向包含、集合相等和参数范围完成判断。">
+  <title>充要条件 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/a-module.css?v=20260818-2">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="A 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="../../index.html">A 模块目录</a>
+      <a class="nav-link" href="#definition">充要条件</a>
+      <a class="nav-link" href="#notation">记号与对称性</a>
+      <a class="nav-link" href="#example">参数范围</a>
+      <a class="nav-link" href="#sets">集合相等</a>
+      <a class="nav-link" href="#boundary">共同范围</a>
+      <a class="nav-link" href="#transfer">可逆变形</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">A 数学语言、集合与条件控制 · 10</span>
+    <h1>充要条件</h1>
+    <p class="lead">要写成 <span class="a-math-punct">$p\Leftrightarrow q$，</span>必须在共同范围内同时验证 $p\Rightarrow q$ 和 <span class="a-math-punct">$q\Rightarrow p$。</span>沿着参数 $a$ 的取值范围与条件集合的双向包含，可以看见：两条箭头同时成立，正好对应两个条件集合相等。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="definition" data-source-md="03_充要条件.md#定义充分与必要同时成立">
+      <h2 class="marker"><span aria-hidden="true">01</span>充要条件</h2>
+      <div class="section-body prose">
+        <h2>定义：充分与必要同时成立</h2>
+        <p class="section-intro">先固定共同讨论范围 <span class="a-math-punct">$D$，</span>设 $p(x),q(x)$ 是关于 $x$ 的两个条件。如果对每一个 <span class="a-math-punct">$x\in D$，</span>下面两个方向都成立：</p>
+
+        <div class="a-definition">
+          <div class="a-representation-formula" aria-label="p 推出 q，并且 q 推出 p">
+            $$p\Rightarrow q\quad\text{且}\quad q\Rightarrow p,$$
+          </div>
+          <p>那么 $p$ 既是 $q$ 的充分条件，也是 $q$ 的必要条件。此时称 $p$ 是 $q$ 的<strong>充分必要条件</strong>，简称<strong>充要条件</strong>。</p>
+        </div>
+
+        <p class="a-observe">一条推出只说明一个方向；两个条件要在同一个范围 $D$ 内互相推出，才满足充要条件的定义。</p>
+        <div class="a-equivalence-check" aria-label="充要条件包含正向和反向两条推出关系">
+          <div class="a-equivalence-row">
+            <strong>$p\Rightarrow q$</strong>
+            <span>$p$ 是 $q$ 的充分条件。</span>
+            <em>充分</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$q\Rightarrow p$</strong>
+            <span>$p$ 是 $q$ 的必要条件。</span>
+            <em>必要</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notation" data-source-md="03_充要条件.md#定义充分与必要同时成立">
+      <h2 class="marker"><span aria-hidden="true">02</span>记号与对称性</h2>
+      <div class="section-body prose">
+        <h2>记号与对称性</h2>
+        <p class="section-intro">两个推出方向都成立时，记作</p>
+
+        <div class="a-representation-formula" aria-label="p 等价于 q">
+          $$p\Leftrightarrow q.$$
+        </div>
+        <p>读作“$p$ 等价于 <span class="a-math-punct">$q$”</span>或“$p$ 当且仅当 <span class="a-math-punct">$q$”。</span>这个记号已经同时包含 $p\Rightarrow q$ 和 <span class="a-math-punct">$q\Rightarrow p$，</span>缺少任意一个方向，都不能写成 <span class="a-math-punct">$p\Leftrightarrow q$。</span></p>
+        <p>充要关系是对称的：如果 $p$ 是 $q$ 的充要条件，那么 $q$ 也是 $p$ 的充要条件。</p>
+      </div>
+    </section>
+
+    <section class="section" id="example" data-source-md="03_充要条件.md#继续移动端点什么时候两个条件等价">
+      <h2 class="marker"><span aria-hidden="true">03</span>参数范围</h2>
+      <div class="section-body prose">
+        <h2>继续移动端点：什么时候两个条件等价</h2>
+        <p class="section-intro">沿用上一篇的两个条件。设 <span class="a-math-punct">$D=\mathbb R$，</span><span class="a-math-punct">$a\in\mathbb R$，</span>并令</p>
+
+        <div class="a-representation-formula" aria-label="条件 p a 是 x 大于 a，条件 q 是 x 大于 1">
+          $$p_a(x):x>a,\qquad q(x):x>1.$$
+        </div>
+        <p>它们对应的条件集合是</p>
+        <div class="a-representation-formula" aria-label="P a 是开区间 a 到正无穷，Q 是开区间 1 到正无穷">
+          $$P_a=(a,+\infty),\qquad Q=(1,+\infty).$$
+        </div>
+
+        <h3>充分方向：$p_a\Rightarrow q$</h3>
+        <div class="a-example">
+          <p>要让 <span class="a-math-punct">$p_a\Rightarrow q$，</span>就是要让 <span class="a-math-punct">$P_a\subseteq Q$。</span>这要求</p>
+          <div class="a-representation-formula" aria-label="a 大于等于 1">
+            $$a\ge 1.$$
+          </div>
+          <p>如果 <span class="a-math-punct">$a<1$，</span>取 <span class="a-math-punct">$x=\dfrac{a+1}{2}$，</span>就有 $x>a$ 却 <span class="a-math-punct">$x<1$，</span>因此这个方向不成立。</p>
+        </div>
+
+        <h3>必要方向：$q\Rightarrow p_a$</h3>
+        <div class="a-example">
+          <p>要让 <span class="a-math-punct">$q\Rightarrow p_a$，</span>就是要让 <span class="a-math-punct">$Q\subseteq P_a$。</span>这要求</p>
+          <div class="a-representation-formula" aria-label="a 小于等于 1">
+            $$a\le 1.$$
+          </div>
+          <p>如果 <span class="a-math-punct">$a>1$，</span>仍取 <span class="a-math-punct">$x=\dfrac{a+1}{2}$，</span>就有 $x>1$ 却 <span class="a-math-punct">$x<a$，</span>因此这个方向不成立。</p>
+        </div>
+
+        <p>同一个 $a$ 要让两个方向同时成立，就必须同时满足</p>
+        <div class="a-representation-formula" aria-label="a 大于等于 1 且 a 小于等于 1，当且仅当 a 等于 1">
+          $$a\ge 1\quad\text{且}\quad a\le 1\quad\Longleftrightarrow\quad a=1.$$
+        </div>
+        <p>当 <span class="a-math-punct">$a=1$，</span><span class="a-math-punct">$P_a=Q=(1,+\infty)$，</span>所以 $p_a\Leftrightarrow q$。</p>
+      </div>
+    </section>
+
+    <section class="section" id="sets" data-source-md="03_充要条件.md#条件集合双向包含就是集合相等">
+      <h2 class="marker"><span aria-hidden="true">04</span>集合相等</h2>
+      <div class="section-body prose">
+        <h2>条件集合：双向包含就是集合相等</h2>
+        <p class="section-intro">在同一个讨论范围 $D$ 内，设</p>
+
+        <div class="a-representation-formula" aria-label="集合 P 由范围 D 内满足 p 的对象组成，集合 Q 由范围 D 内满足 q 的对象组成">
+          $$P=\{x\in D\mid p(x)\},\qquad Q=\{x\in D\mid q(x)\}.$$
+        </div>
+
+        <p class="a-observe">每一条推出关系对应一个包含方向；充要关系要求两个包含方向同时成立。</p>
+        <div class="a-equivalence-check" aria-label="两条推出关系分别对应条件集合的两个包含方向">
+          <div class="a-equivalence-row">
+            <strong>$p\Rightarrow q$</strong>
+            <span>每个满足 $p(x)$ 的对象都满足 <span class="a-math-punct">$q(x)$。</span></span>
+            <em>$P\subseteq Q$</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$q\Rightarrow p$</strong>
+            <span>每个满足 $q(x)$ 的对象都满足 <span class="a-math-punct">$p(x)$。</span></span>
+            <em>$Q\subseteq P$</em>
+          </div>
+        </div>
+
+        <p>因此，在共同范围 $D$ 内，</p>
+        <div class="a-representation-formula" aria-label="p 等价于 q，当且仅当 P 是 Q 的子集且 Q 是 P 的子集，当且仅当 P 等于 Q">
+          $$\begin{aligned}
+          p\Leftrightarrow q
+          &\quad\Longleftrightarrow\quad P\subseteq Q\ \text{且}\ Q\subseteq P\\
+          &\quad\Longleftrightarrow\quad P=Q.
+          \end{aligned}$$
+        </div>
+        <p>也就是说，<span class="a-math-punct">$p\Leftrightarrow q$</span> 不是“更强的一条箭头”，而是两个条件在共同范围内选中了同一批对象。</p>
+      </div>
+    </section>
+
+    <section class="section" id="boundary" data-source-md="03_充要条件.md#共同范围改变条件关系也可能改变">
+      <h2 class="marker"><span aria-hidden="true">05</span>范围变化</h2>
+      <div class="section-body prose">
+        <h2>共同范围改变，条件关系也可能改变</h2>
+        <p class="section-intro">考虑两个条件</p>
+
+        <div class="a-representation-formula" aria-label="条件 p 是 x 等于 1，条件 q 是 x 的平方等于 1">
+          $$p(x):x=1,\qquad q(x):x^2=1.$$
+        </div>
+
+        <div class="a-equivalence-check" aria-label="共同范围改变时两个条件的集合关系发生变化">
+          <div class="a-equivalence-row">
+            <strong>$D=\mathbb R$</strong>
+            <span><span class="a-math-punct">$P=\{1\}$，</span><span class="a-math-punct">$Q=\{-1,1\}$，</span>所以 <span class="a-math-punct">$P\subsetneqq Q$。</span></span>
+            <em>充分但不必要</em>
+          </div>
+          <div class="a-equivalence-row">
+            <strong>$D=(0,+\infty)$</strong>
+            <span><span class="a-math-punct">$-1$</span> 被排除，<span class="a-math-punct">$P=Q=\{1\}$。</span></span>
+            <em>$p\Leftrightarrow q$</em>
+          </div>
+        </div>
+
+        <div class="a-boundary-note">
+          <p>条件的写法没有改变，但它们的关系会随共同范围 $D$ 改变。因此，判断充要关系时不能省略共同讨论范围。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transfer" data-source-md="03_充要条件.md#迁移到方程不同写法可以表示同一范围">
+      <h2 class="marker"><span aria-hidden="true">06</span>可逆变形</h2>
+      <div class="section-body prose">
+        <h2>迁移到方程：不同写法可以表示同一范围</h2>
+        <p class="section-intro">设 <span class="a-math-punct">$x\in\mathbb R$，</span>并令</p>
+
+        <div class="a-representation-formula" aria-label="条件 p 是 x 等于 1，条件 r 是 x 平方减 2x 加 1 等于 0">
+          $$p(x):x=1,\qquad r(x):x^2-2x+1=0.$$
+        </div>
+        <p>把方程左边因式分解，得到一条每一步都可逆的变形链：</p>
+        <div class="a-representation-formula" aria-label="x 平方减 2x 加 1 等于 0，当且仅当 x 减 1 的平方等于 0，当且仅当 x 等于 1">
+          $$x^2-2x+1=0\quad\Leftrightarrow\quad (x-1)^2=0\quad\Leftrightarrow\quad x=1.$$
+        </div>
+        <p>在实数范围内，每一步都能正向推出，也能反向推出，所以两个条件集合都是 <span class="a-math-punct">$\{1\}$，</span>从而 <span class="a-math-punct">$p\Leftrightarrow r$。</span>只验证一个方向，或者只代入几个数值，都不能替代双向的一般验证。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="03_充要条件.md#核心理解等价来自同一范围内的双向成立">
+      <h2 class="marker"><span aria-hidden="true">07</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>核心理解：等价来自同一范围内的双向成立</h2>
+        <div class="summary-panel">
+          <p>判断充要条件时，先固定共同范围，再检查 $p\Rightarrow q$ 与 $q\Rightarrow p$ 是否同时成立。</p>
+          <p>用集合语言说，就是同时验证 $P\subseteq Q$ 与 <span class="a-math-punct">$Q\subseteq P$；</span>双向包含成立，正好得到 <span class="a-math-punct">$P=Q$。</span></p>
+          <p class="a-summary-line">共同范围 → 双向成立 → 条件集合相等 → 得到充要关系。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../02_充分条件与必要条件/index.html">← 上一篇 · 充分条件与必要条件</a>
+    <a class="pager-home" href="../../index.html">返回 A 模块目录</a>
+    <a class="pager-next" href="../../A-05_全称量词与存在量词/01_全称量词与存在量词/index.html">下一篇 · 全称量词与存在量词 →</a>
+  </nav>
+  <footer class="footer">OpenKS · A 数学语言、集合与条件控制 · 充要条件</footer>
+</body>
+</html>

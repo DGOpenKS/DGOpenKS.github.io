@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解函数的定义边界，分清定义域、函数值和值域，并判断解析式的实际定义域与两个表示是否为同一个函数。">
+  <title>函数的概念、定义域和值域 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#definition">定义边界</a>
+      <a class="nav-link" href="#objects">三个对象</a>
+      <a class="nav-link" href="#actual-domain">实际定义域</a>
+      <a class="nav-link" href="#same-function">同一函数</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 01</span>
+    <h1>函数的概念、定义域和值域</h1>
+    <p class="lead">函数要求定义域中的每个 $x$ 都对应唯一确定的 $y$。定义域说明 $x$ 能取哪些数，值域说明 $y$ 实际能取到哪些数。比较两个函数，要看定义域和对应关系是否相同。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="definition" data-source-md="01_函数的概念定义域和值域.md#定义边界每个输入都有唯一输出">
+      <h2 class="marker"><span aria-hidden="true">01</span>定义边界</h2>
+      <div class="section-body prose">
+        <h2>函数的定义：每个输入都有唯一输出</h2>
+        <p class="section-intro">先规定 $x$ 和 $y$ 的取值范围，再检查：每个允许的 $x$，是否都恰好对应一个 $y$。</p>
+
+        <div class="b-definition">
+          <p>设 $A$、$B$ 是非空实数集。如果有一个确定的对应关系 $f$，使集合 $A$ 中的每一个数 $x$，在集合 $B$ 中都有唯一确定的数 $y$ 与它对应，那么称 <span class="b-math-punct">$f:A\to B$</span> 是从集合 $A$ 到集合 $B$ 的一个函数，记作</p>
+          <div class="b-formula" aria-label="y 等于 f x，x 属于 A">
+            $$y=f(x),\qquad x\in A.$$
+          </div>
+        </div>
+
+        <p>“每一个”要求定义域中的每个 $x$ 都有对应的 $y$；“唯一确定”要求这个 $y$ 只能有一个。不同的 $x$ 可以对应同一个 $y$。</p>
+        <p class="b-observe">下面用 $f(x)=x^2$ 说明：把集合 $A$ 中的数逐个代入，看看能得到集合 $B$ 中的哪些数。</p>
+
+        <figure class="b-map-figure">
+          <div class="b-map" aria-label="集合 A 中的负二、零、二分别映射到集合 B 中的四、零、四；集合 B 中的九没有被映射到">
+            <section class="b-map-set" aria-labelledby="map-inputs-title">
+              <h3 id="map-inputs-title">集合 $A$：输入</h3>
+              <div class="b-map-node-list">
+                <span class="b-map-node">$-2$</span>
+                <span class="b-map-node">$0$</span>
+                <span class="b-map-node">$2$</span>
+              </div>
+            </section>
+
+            <section class="b-map-rule" aria-labelledby="map-rule-title">
+              <h3 id="map-rule-title">对应关系 $f(x)=x^2$</h3>
+              <ul>
+                <li><span>$-2$</span><span class="b-map-arrow" aria-hidden="true">→</span><strong>$4$</strong></li>
+                <li><span>$0$</span><span class="b-map-arrow" aria-hidden="true">→</span><strong>$0$</strong></li>
+                <li><span>$2$</span><span class="b-map-arrow" aria-hidden="true">→</span><strong>$4$</strong></li>
+              </ul>
+            </section>
+
+            <section class="b-map-set" aria-labelledby="map-outputs-title">
+              <h3 id="map-outputs-title">集合 $B$：候选输出</h3>
+              <div class="b-map-node-list">
+                <span class="b-map-node is-value">$0$<small>函数值</small></span>
+                <span class="b-map-node is-value">$4$<small>函数值</small></span>
+                <span class="b-map-node is-unused">$9$<small>未取到</small></span>
+              </div>
+            </section>
+          </div>
+          <figcaption>集合 $A$ 中的 $-2$、$0$、$2$ 都只有一个对应结果，符合函数的要求。$-2$ 和 $2$ 都得到 $4$，说明不同的 $x$ 可以对应同一个值。$9$ 在集合 $B$ 中，但这三个输入都得不到 $9$。</figcaption>
+        </figure>
+
+        <div class="b-boundary-note">
+          <p>若规定 <span class="b-math-punct">$x\geqslant0$、</span><span class="b-math-punct">$y\in\mathbb R$，</span>对应关系为 <span class="b-math-punct">$y^2=x$，</span>当 $x=1$ 时，$y=1$ 和 $y=-1$ 都符合这个关系。同一个 $x$ 对应两个不同的 $y$，所以这不是从 $x$ 到 $y$ 的函数。</p>
+          <p>改成 <span class="b-math-punct">$y=\sqrt{x}$</span> 后，只取算术平方根。每个 $x\geqslant0$ 都对应唯一确定的 $y$，因此构成函数。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="objects" data-source-md="01_函数的概念定义域和值域.md#三个对象定义域函数值和值域">
+      <h2 class="marker"><span aria-hidden="true">02</span>三个对象</h2>
+      <div class="section-body prose">
+        <h2>定义域、函数值和值域</h2>
+        <p class="section-intro">在 $y=f(x)$ 中，$x$ 叫作自变量。围绕它的取值和对应结果，可以分清三个概念。</p>
+
+        <div class="b-object-grid">
+          <article>
+            <h3>定义域 $A$</h3>
+            <p>自变量 $x$ 可以取的所有数组成的集合，就是定义域。</p>
+          </article>
+          <article>
+            <h3>函数值 $f(x_0)$</h3>
+            <p>选定一个 <span class="b-math-punct">$x_0\in A$</span>，它对应的唯一结果就是函数值 $f(x_0)$。</p>
+          </article>
+          <article>
+            <h3>值域 $C$</h3>
+            <p>当 $x$ 取遍定义域 $A$ 时，所有实际得到的函数值组成值域。</p>
+          </article>
+        </div>
+
+        <p>若把值域记作 $C$，可以写成</p>
+        <div class="b-formula" aria-label="C 是当 x 属于 A 时所有 f x 组成的集合">
+          $$C=\{f(x)\mid x\in A\}.$$
+        </div>
+        <p>值域就是函数实际能取到的所有值组成的集合。集合 $B$ 中取不到的数，不属于值域。</p>
+      </div>
+    </section>
+
+    <section class="section" id="actual-domain" data-source-md="01_函数的概念定义域和值域.md#从解析式确定实际定义域">
+      <h2 class="marker"><span aria-hidden="true">03</span>实际定义域</h2>
+      <div class="section-body prose">
+        <h2>从解析式确定实际定义域</h2>
+        <p class="section-intro">如果只给出解析式，没有规定定义域，通常就把所有能使式子有意义的实数作为定义域。</p>
+
+        <p>以函数</p>
+        <div class="b-formula" aria-label="f x 等于根号 x 加一">
+          $$f(x)=\sqrt{x+1}$$
+        </div>
+        <p>为例，根号内的数必须大于或等于 $0$，所以 $x+1\geqslant0$，即 <span class="b-math-punct">$x\geqslant-1$。</span>这就是 $x$ 的取值范围。</p>
+        <p>对于每个这样的 $x$，算术平方根都有唯一确定的值，而且不会小于 $0$。</p>
+
+        <p>要确定值域，还要说明：每个非负数都能成为函数值。任取 <span class="b-math-punct">$y\geqslant0$，</span>令 <span class="b-math-punct">$x=y^2-1$。</span>因为 $y^2\geqslant0$，所以 $x\geqslant-1$，这个 $x$ 在定义域内。</p>
+        <p>把这个 $x$ 代回函数：</p>
+        <div class="b-formula" aria-label="代入 x 等于 y 的平方减一，f x 等于根号 x 加一，等于根号 y 的平方，等于 y">
+          $$f(x)=\sqrt{x+1}=\sqrt{y^2}=y.$$
+        </div>
+        <p>代入后，$x+1=y^2$；又因为 $y\geqslant0$，所以 $\sqrt{y^2}=y$。这说明每个非负数都能取到。</p>
+        <p>函数取不到负数，又能取到每个非负数，所以值域就是所有非负实数组成的集合。定义域和值域分别是</p>
+        <div class="b-formula" aria-label="定义域是大于等于负一的实数，值域是大于等于零的实数">
+          $$
+          \begin{aligned}
+          A&=\{x\in\mathbb R\mid x\geqslant-1\},\\
+          C&=\{y\in\mathbb R\mid y\geqslant0\}.
+          \end{aligned}
+          $$
+        </div>
+
+        <div class="b-boundary-note">
+          <p>如果 $x$ 表示实际数量，还要看它在问题中能取哪些值。例如，件数只能取非负整数；时间要符合题目给定的时段，长度也要符合实际范围。有些数虽然能让式子有意义，在实际问题中却不能取。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="same-function" data-source-md="01_函数的概念定义域和值域.md#同一个函数要同时检查两件事">
+      <h2 class="marker"><span aria-hidden="true">04</span>同一函数</h2>
+      <div class="section-body prose">
+        <h2>判断两个表示是不是同一个函数</h2>
+        <p class="section-intro">判断两个写法是不是同一个函数，检查两件事：定义域是否相同；对定义域中的每一个 $x$，两个写法给出的值是否相同。两项都相同，才是同一个函数。</p>
+
+        <div class="b-function-check">
+          <article class="is-same">
+            <h3>表示相同的函数</h3>
+            <div class="b-function-lines">
+              <span>$f(x)=\sqrt{x+1},\quad x\geqslant-1$</span>
+              <span>$g(t)=\sqrt{t+1},\quad t\geqslant-1$</span>
+            </div>
+            <p>两者只是把自变量的字母从 $x$ 换成了 $t$。定义域相同，每个相同的自变量取值也都得到相同的结果，所以是同一个函数。</p>
+          </article>
+          <article class="is-different">
+            <h3>解析式相同仍可能不同</h3>
+            <div class="b-function-lines">
+              <span>$f(x)=\sqrt{x+1},\quad x\geqslant-1$</span>
+              <span>$h(x)=\sqrt{x+1},\quad x\geqslant0$</span>
+            </div>
+            <p>两个解析式一样，但 $f$ 允许 $x\geqslant-1$，$h$ 只允许 $x\geqslant0$。定义域不同，所以不是同一个函数。</p>
+          </article>
+        </div>
+
+        <p>即使定义域相同，只要其中有一个 $x$ 对应的函数值不同，也不是同一个函数。若定义域和每个 $x$ 对应的值都相同，所有能取到的函数值自然也相同，因此不必再单独比较值域。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="01_函数的概念定义域和值域.md#核心理解先定输入范围再看对应结果">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>先定输入范围，再看对应结果</h2>
+        <div class="summary-panel">
+          <p>判断是不是函数：先明确 $x$ 的取值范围，再检查其中每个 $x$ 是否都恰好对应一个 $y$。</p>
+          <p>定义域是 $x$ 可以取的所有数组成的集合；函数值是某个 $x$ 对应的结果；值域是所有函数值组成的集合。</p>
+          <p class="b-summary-line">判断两个函数是否相同：定义域相同，并且每个相同的自变量取值都得到相同的函数值，两项缺一不可。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../../B-01_函数的概念及其表示/02_函数的表示法与分段函数/index.html">下一篇 · 函数的表示法与分段函数 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 函数的概念、定义域和值域</footer>
+</body>
+</html>

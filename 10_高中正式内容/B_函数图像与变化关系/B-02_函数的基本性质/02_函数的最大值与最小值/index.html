@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从完整定义域与端点边界理解函数最值：既要对所有函数值成立，又要存在输入实际取得。">
+  <title>函数的最大值与最小值 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body class="b-extrema">
+  <!-- Source: ../02_函数的最大值与最小值.md; SHA-256 aebe4b8e3830ec5765af60967a813ab7ffca3d29e1a1ccbf043aa3fad515acd9.
+       B module article 04; curriculum node B-02. b-module.css copied unchanged from ab93 for preview.
+       SVG world mapping: quadratic X=145+85x, Y=295-57y; linear X=70+240x, Y=295-240y.
+       Quadratic path is exact: x=-1+3t, y=1-6t+9t², control point (0.5,-2).
+       Empty/filled endpoint markers encode exclusion/inclusion. No diagram is the sole explanation. -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+      <a class="nav-link" href="#maximum">最大值</a>
+      <a class="nav-link" href="#minimum">最小值</a>
+      <a class="nav-link" href="#whole-domain">整个定义域</a>
+      <a class="nav-link" href="#endpoints">端点边界</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 04</span>
+    <h1>函数的最大值与最小值</h1>
+    <p class="lead">判断函数的最大值和最小值，要先明确 $x$ 能取哪些数。最大值不能小于定义域内的任何一个函数值，最小值不能大于定义域内的任何一个函数值。而且，都必须能在定义域内找到一个 <span class="b-math-punct">$x$，</span>使 $f(x)$ 等于这个值。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="maximum" data-source-md="../02_函数的最大值与最小值.md" data-source-section="1. 最大值需要两个条件">
+      <div class="marker"><span aria-hidden="true">01</span>最大值</div>
+      <div class="section-body prose">
+        <h2>1. 最大值需要两个条件</h2>
+
+<p class="section-intro">设函数 $f(x)$ 的定义域为 <span class="b-math-punct">$D$。</span>判断实数 $M$ 是不是最大值，要检查下面两个条件。</p>
+<p>第一，对 $D$ 中的每一个 <span class="b-math-punct">$x$，</span>$f(x)$ 都不能超过 <span class="b-math-punct">$M$：</span></p>
+<div class="b-formula">$$\forall x\in D,\quad f(x)\le M.$$</div>
+<p>第二，必须能在 $D$ 中找到一个 <span class="b-math-punct">$x_0$，</span>即 <span class="b-math-punct">$x_0\in D$，</span>使 $f(x_0)$ 等于 <span class="b-math-punct">$M$：</span></p>
+<div class="b-formula">$$f(x_0)=M.$$</div>
+<div class="b-definition"><p>同时满足这两个条件，$M$ 才是函数 $f(x)$ 的<strong>最大值</strong>。第一个条件保证没有任何函数值超过 <span class="b-math-punct">$M$；</span>第二个条件保证 $M$ 确实是某个输入对应的函数值。</p></div>
+<p>最大值是 <span class="b-math-punct">$M$，</span>不是 <span class="b-math-punct">$x_0$。</span>$x_0$ 说明 $x$ 取什么数时，$f(x)$ 等于 <span class="b-math-punct">$M$。</span>不同的 $x$ 可能都使 $f(x)$ 等于 <span class="b-math-punct">$M$，</span>但最大值仍是同一个数。</p>
+      </div>
+    </section>
+    <section class="section" id="minimum" data-source-md="../02_函数的最大值与最小值.md" data-source-section="2. 最小值也需要比较和取得">
+      <div class="marker"><span aria-hidden="true">02</span>最小值</div>
+      <div class="section-body prose">
+        <h2>2. 最小值也需要比较和取得</h2>
+
+<p class="section-intro">判断实数 $m$ 是不是最小值，也要检查两个条件，只需把比较方向反过来。</p>
+<p>第一，对 $D$ 中的每一个 <span class="b-math-punct">$x$，</span>$f(x)$ 都不能小于 <span class="b-math-punct">$m$：</span></p>
+<div class="b-formula">$$\forall x\in D,\quad f(x)\ge m.$$</div>
+<p>第二，必须能在 $D$ 中找到一个 <span class="b-math-punct">$x_0$，</span>即 <span class="b-math-punct">$x_0\in D$，</span>使 $f(x_0)$ 等于 <span class="b-math-punct">$m$：</span></p>
+<div class="b-formula">$$f(x_0)=m.$$</div>
+<div class="b-definition"><p>同时满足这两个条件，$m$ 才是函数 $f(x)$ 的<strong>最小值</strong>。既要保证所有函数值都不小于 <span class="b-math-punct">$m$，</span>又要保证函数在定义域内确实取到 <span class="b-math-punct">$m$。</span></p></div>
+<p>最大值和最小值统称为函数的<strong>最值</strong>。一个函数可能同时有最大值和最小值，也可能只有其中一个，或者两个都没有。</p>
+      </div>
+    </section>
+    <section class="section" id="whole-domain" data-source-md="../02_函数的最大值与最小值.md" data-source-section="3. 用整个定义域检查最值">
+      <div class="marker"><span aria-hidden="true">03</span>整个定义域</div>
+      <div class="section-body prose">
+        <h2>3. 用整个定义域检查最值</h2>
+
+<p class="section-intro">设 <span class="b-math-punct">$f(x)=x^2$，</span>定义域为 <span class="b-math-punct">$[-1,2]$。</span>先看这段区间内所有的 $x^2$ 都在哪两个数之间，再看这两个数能不能取到。</p>
+<p>对任意 <span class="b-math-punct">$x\in[-1,2]$，</span>都有 <span class="b-math-punct">$|x|\le2$。</span>平方数非负；把 $|x|\le2$ 两边平方，又得到 <span class="b-math-punct">$x^2\le4$。</span>合起来就是</p>
+<div class="b-formula">$$0\le x^2\le4.$$</div>
+<p>这说明每个 $x\in[-1,2]$ 对应的函数值都不小于 <span class="b-math-punct">$0$，</span>也不大于 <span class="b-math-punct">$4$。</span></p>
+<p>当 $x=0$ 时，<span class="b-math-punct">$f(0)=0$；</span>当 $x=2$ 时，<span class="b-math-punct">$f(2)=4$。</span>$0$ 和 $2$ 都在定义域 $[-1,2]$ 内，所以这两个函数值都能取到。函数的最小值是 <span class="b-math-punct">$0$，</span>最大值是 <span class="b-math-punct">$4$。</span></p>
+<p class="b-observe">看 $x\in[-1,2]$ 时的整段图象：所有点的纵坐标都在 $0$ 与 $4$ 之间，最低处和最高处也都有图象上的点。</p>
+<figure class="b-map-figure ext-main-figure">
+<div class="ext-plot-layout"><svg class="ext-graph" viewBox="0 0 390 345" role="img" aria-labelledby="square-title square-desc">
+<title id="square-title">函数 y=x²，定义域为闭区间负一到二。最低点为零、零，最高点为二、四，端点负一、一也包含在图象中。</title><desc id="square-desc">横轴为输入 x，纵轴为输出 y；空心点不属于图象，实心点属于图象。</desc>
+<line x1="26.000000000000014" y1="238" x2="349.0" y2="238" class="ext-grid"/>
+<line x1="26.000000000000014" y1="181" x2="349.0" y2="181" class="ext-grid"/>
+<line x1="26.000000000000014" y1="124" x2="349.0" y2="124" class="ext-grid"/>
+<line x1="26.000000000000014" y1="67" x2="349.0" y2="67" class="ext-grid"/>
+<line x1="34.5" y1="67" x2="332.0" y2="67" class="ext-guide"/>
+<line x1="26.000000000000014" y1="295" x2="349.0" y2="295" class="ext-axis"/>
+<line x1="145" y1="306.4" x2="145" y2="32.80000000000001" class="ext-axis"/>
+<line x1="60" y1="295" x2="60" y2="298.705" class="ext-axis"/>
+<text x="60" y="322" text-anchor="middle">−1</text>
+<line x1="145" y1="295" x2="145" y2="298.705" class="ext-axis"/>
+<text x="145" y="322" text-anchor="middle">0</text>
+<line x1="230" y1="295" x2="230" y2="298.705" class="ext-axis"/>
+<text x="230" y="322" text-anchor="middle">1</text>
+<line x1="315" y1="295" x2="315" y2="298.705" class="ext-axis"/>
+<text x="315" y="322" text-anchor="middle">2</text>
+<text x="131" y="244" text-anchor="end">1</text>
+<text x="131" y="187" text-anchor="end">2</text>
+<text x="131" y="130" text-anchor="end">3</text>
+<text x="131" y="73" text-anchor="end">4</text>
+<text x="355.0" y="302">x</text>
+<text x="139" y="22.80000000000001">y</text>
+<path d="M 60 238 Q 187.5 409 315 67" class="ext-curve"/>
+<circle cx="60" cy="238" r="6" class="ext-point "/>
+<circle cx="145" cy="295" r="6" class="ext-point "/>
+<circle cx="315" cy="67" r="6" class="ext-point "/>
+<text x="69" y="224">(−1, 1)</text>
+<text x="324" y="53">(2, 4)</text>
+</svg>
+<div class="ext-plot-copy"><h3><span class="b-math-punct">$f(x)=x^2$，</span>$x\in[-1,2]$</h3>
+<p>图中画出了 $x\in[-1,2]$ 时的整段曲线，每个点的纵坐标都满足 <span class="b-math-punct">$0\le y\le4$。</span></p>
+<p><strong>最低处：</strong>点 <span class="b-math-punct">$(0,0)$。</span>当 $x=0$ 时，函数取得最小值 <span class="b-math-punct">$0$。</span></p>
+<p><strong>最高处：</strong>点 <span class="b-math-punct">$(2,4)$。</span>当 $x=2$ 时，函数取得最大值 <span class="b-math-punct">$4$。</span></p>
+<p>实心点表示这个点属于函数图象，相应的 $x$ 在定义域内。</p></div></div>
+<figcaption>不等式说明所有函数值都在 $0$ 与 $4$ 之间。点 $(0,0)$ 和 $(2,4)$ 说明这两个值都能取到。最大值是纵坐标 <span class="b-math-punct">$4$，</span>取得最大值时，$x$ 等于横坐标 <span class="b-math-punct">$2$。</span></figcaption>
+</figure>
+<p>只比较几个点，不能说明其他的函数值也符合要求。判断最值，要说明不等式对定义域中的每一个 $x$ 都成立，还要指出哪个 $x$ 能使等号成立。只看图象的一小段也不够。</p>
+      </div>
+    </section>
+    <section class="section" id="endpoints" data-source-md="../02_函数的最大值与最小值.md" data-source-section="4. 有上界不等于有最大值">
+      <div class="marker"><span aria-hidden="true">04</span>端点边界</div>
+      <div class="section-body prose">
+        <h2>4. 有上界不等于有最大值</h2>
+
+<p class="section-intro">再看 <span class="b-math-punct">$f(x)=x$。</span>解析式相同，定义域是否包含端点，会让最值的结论不同。</p>
+<p>先设定义域为开区间 <span class="b-math-punct">$(0,1)$。</span>对任意 <span class="b-math-punct">$x\in(0,1)$，</span>都有</p>
+<div class="b-formula">$$0&lt;f(x)&lt;1.$$</div>
+<p>因为 <span class="b-math-punct">$f(x)=x$，</span>当 $x$ 取遍 $(0,1)$ 时，函数值也恰好取遍这个开区间。无论选其中哪个数，区间内都还有比它大的数，也还有比它小的数。因此，这个函数没有最大值，也没有最小值。</p>
+<p>$1$ 大于所有函数值，所以是函数值的一个<strong>上界</strong>。但 <span class="b-math-punct">$1\notin(0,1)$，</span>$x$ 不能取 <span class="b-math-punct">$1$。</span>不存在定义域中的 $x_0$ 使 <span class="b-math-punct">$f(x_0)=1$，</span>所以这个上界 $1$ 也不是最大值。</p>
+<p>同理，$0$ 是下界，但 $x$ 也不能取 <span class="b-math-punct">$0$，</span>函数值就不可能等于 <span class="b-math-punct">$0$。</span>所以这个下界 $0$ 也不是最小值。</p>
+<p>再看解析式仍为 $f(x)=x$、定义域为 $[0,1]$ 的函数。这时 $x$ 可以取 $0$ 和 <span class="b-math-punct">$1$，</span>相应的函数值就是 $0$ 和 <span class="b-math-punct">$1$。</span>因此，这个新函数的最小值为 <span class="b-math-punct">$0$，</span>最大值为 <span class="b-math-punct">$1$。</span></p>
+<p class="b-observe">对照两幅图的端点：两条线段的位置相同。空心点表示 $x$ 不能取该端点的横坐标，实心点表示可以取。</p>
+<div class="ext-compare">
+<figure class="b-map-figure"><h3>开区间 $(0,1)$</h3><svg class="ext-graph" viewBox="0 0 390 345" role="img" aria-labelledby="open-title open-desc">
+<title id="open-title">函数 y=x，定义域为开区间零到一，两端用空心点表示，零与一不能取到，没有最大值和最小值。</title><desc id="open-desc">横轴为输入 x，纵轴为输出 y；空心点不属于图象，实心点属于图象。</desc>
+<line x1="41.2" y1="55" x2="362.8" y2="55" class="ext-grid"/>
+<line x1="41.2" y1="295" x2="362.8" y2="295" class="ext-axis"/>
+<line x1="70" y1="343.0" x2="70" y2="19.0" class="ext-axis"/>
+<line x1="310" y1="295" x2="310" y2="299.8" class="ext-axis"/>
+<text x="310" y="322" text-anchor="middle">1</text>
+<text x="56" y="61" text-anchor="end">1</text>
+<text x="56" y="321">0</text>
+<text x="368.8" y="302">x</text>
+<text x="64" y="9.0">y</text>
+<path d="M 70 295 L 310 55" class="ext-curve"/>
+<circle cx="70" cy="295" r="6" class="ext-point ext-open"/>
+<circle cx="310" cy="55" r="6" class="ext-point ext-open"/>
+</svg>
+<figcaption>两端空心：$x$ 不能取 $0$ 和 <span class="b-math-punct">$1$，</span>$f(x)=x$ 也就取不到 $0$ 和 <span class="b-math-punct">$1$。</span>函数没有最大值，也没有最小值。</figcaption></figure>
+<figure class="b-map-figure"><h3>闭区间 $[0,1]$</h3><svg class="ext-graph" viewBox="0 0 390 345" role="img" aria-labelledby="closed-title closed-desc">
+<title id="closed-title">函数 y=x，定义域为闭区间零到一，两端用实心点表示，取得最小值零和最大值一。</title><desc id="closed-desc">横轴为输入 x，纵轴为输出 y；空心点不属于图象，实心点属于图象。</desc>
+<line x1="41.2" y1="55" x2="362.8" y2="55" class="ext-grid"/>
+<line x1="41.2" y1="295" x2="362.8" y2="295" class="ext-axis"/>
+<line x1="70" y1="343.0" x2="70" y2="19.0" class="ext-axis"/>
+<line x1="310" y1="295" x2="310" y2="299.8" class="ext-axis"/>
+<text x="310" y="322" text-anchor="middle">1</text>
+<text x="56" y="61" text-anchor="end">1</text>
+<text x="56" y="321">0</text>
+<text x="368.8" y="302">x</text>
+<text x="64" y="9.0">y</text>
+<path d="M 70 295 L 310 55" class="ext-curve"/>
+<circle cx="70" cy="295" r="6" class="ext-point "/>
+<circle cx="310" cy="55" r="6" class="ext-point "/>
+</svg>
+<figcaption>两端实心：<span class="b-math-punct">$f(0)=0$，</span><span class="b-math-punct">$f(1)=1$。</span>最小值为 <span class="b-math-punct">$0$，</span>最大值为 <span class="b-math-punct">$1$。</span></figcaption></figure>
+</div>
+<div class="b-boundary-note"><p>同样是 <span class="b-math-punct">$f(x)=x$，</span>定义域从 $(0,1)$ 换成 <span class="b-math-punct">$[0,1]$，</span>最值的结论就变了。因此，不能只看解析式，还要看定义域。一个数即使大于或等于所有函数值，也要检查是否有某个 $x$ 能使函数值等于它，才能判断它是不是最大值。</p></div>
+      </div>
+    </section>
+    <section class="section" id="summary" data-source-md="../02_函数的最大值与最小值.md" data-source-section="5. 真正要检查的两件事">
+      <div class="marker"><span aria-hidden="true">05</span>核心结论</div>
+      <div class="section-body prose">
+        <h2>5. 真正要检查的两件事</h2>
+
+<div class="summary-panel">
+<p>判断 $M$ 是不是最大值：先检查所有 $x\in D$ 是否都满足 <span class="b-math-punct">$f(x)\le M$；</span>再检查是否存在 <span class="b-math-punct">$x_0\in D$，</span>使 <span class="b-math-punct">$f(x_0)=M$。</span></p>
+<p>判断 $m$ 是不是最小值：先检查所有 $x\in D$ 是否都满足 <span class="b-math-punct">$f(x)\ge m$；</span>再检查是否存在 <span class="b-math-punct">$x_0\in D$，</span>使 <span class="b-math-punct">$f(x_0)=m$。</span></p>
+<p class="b-summary-line">不等式对定义域内每一个 $x$ 都成立，并且至少有一个 $x$ 能使等号成立。</p>
+<p>两个条件缺一不可。只有都满足，才能确定最大值或最小值。</p>
+</div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-02_函数的基本性质/01_函数的单调性与单调区间/index.html">← 上一篇 · 函数的单调性与单调区间</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../../B-02_函数的基本性质/03_函数的奇偶性/index.html">下一篇 · 函数的奇偶性 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 函数的最大值与最小值</footer>
+</body>
+</html>

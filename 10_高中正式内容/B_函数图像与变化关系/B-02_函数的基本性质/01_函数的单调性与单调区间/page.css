@@ -1,0 +1,21 @@
+/* 本篇局部样式；公共视觉规则来自 learning-page-system.css 与原样复制的 b-module.css。 */
+.bp-monotonic .bp-figure { max-width:100%; }
+.bp-monotonic .bp-figure-title { margin:0 0 .5rem; padding:0; border:0; color:var(--ink); font-weight:800; }
+.bp-monotonic .bp-graph { display:block; width:100%; max-width:570px; height:auto; margin:auto; background:var(--soft); border-radius:var(--radius-md); }
+.bp-monotonic .bp-graph text { fill:var(--ink); font-family:var(--font-math); font-size:16px; }
+.bp-monotonic .bp-axis, .bp-monotonic .bp-tick { stroke:var(--muted); stroke-width:1.2; }
+.bp-monotonic .bp-curve { fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.bp-monotonic .bp-blue { stroke:var(--blue); }
+.bp-monotonic .bp-purple { stroke:var(--purple); }
+.bp-monotonic .bp-dot { fill:var(--ink); stroke:var(--paper); stroke-width:1; }
+.bp-monotonic .bp-legend { display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem 1.5rem; margin:1rem 0; font-size:.92rem; }
+.bp-monotonic .bp-decreasing { color:var(--purple-deep); }
+.bp-monotonic .bp-increasing { color:var(--blue-deep); }
+.bp-monotonic .bp-caption { margin:1rem 0 0; padding-top:.85rem; border-top:1px solid var(--line); font-size:.92rem; }
+.bp-monotonic .nav-link:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+.bp-monotonic .summary-panel p:last-child { margin-bottom:0; }
+.bp-monotonic .b-formula { font-size:clamp(1rem,2.2vw,1.2rem); }
+@media (max-width:640px) {
+  .bp-monotonic .b-formula { padding:.8rem .4rem; }
+  .bp-monotonic .bp-figure { padding:.8rem; }
+}

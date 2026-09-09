@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="比较函数的解析法、列表法和图象法，理解分段函数仍是一个完整函数，并学会按输入范围选择对应规则。">
+  <title>函数的表示法与分段函数 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .b-representation-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin:1.35rem 0;
+    }
+
+    .b-representation-card,
+    .b-dot-figure{
+      min-width:0;
+      margin:0;
+      padding:clamp(1rem,2.4vw,1.35rem);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:var(--paper);
+      box-shadow:var(--soft-shadow);
+    }
+
+    .b-representation-card:nth-child(1){
+      border-top:4px solid var(--blue);
+    }
+
+    .b-representation-card:nth-child(2){
+      border-top:4px solid var(--purple);
+    }
+
+    .b-representation-card h3,
+    .b-dot-figure h3{
+      margin:.55rem 0 .65rem;
+      color:var(--ink);
+    }
+
+    .b-representation-card p:last-child{
+      margin-bottom:0;
+    }
+
+    .b-representation-label{
+      display:inline-flex;
+      min-height:1.8rem;
+      align-items:center;
+      padding:.22rem .62rem;
+      border-radius:var(--radius-pill);
+      background:var(--blue-soft);
+      color:var(--blue-deep);
+      font-size:.76rem;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    .b-representation-card:nth-child(2) .b-representation-label{
+      background:var(--purple-soft);
+      color:var(--purple-deep);
+    }
+
+    .b-dot-figure{
+      grid-column:1 / -1;
+      border-top:4px solid var(--cyan);
+    }
+
+    .b-dot-figure .b-representation-label{
+      background:var(--cyan-soft);
+      color:var(--cyan-deep);
+    }
+
+    .b-table-scroll{
+      max-width:100%;
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:var(--paper);
+      scrollbar-width:thin;
+    }
+
+    .b-table-scroll:focus-visible{
+      outline:3px solid rgba(23,107,135,.48);
+      outline-offset:3px;
+    }
+
+    .b-value-table,
+    .b-method-table{
+      width:100%;
+      border-collapse:collapse;
+      color:var(--body);
+      line-height:1.6;
+    }
+
+    .b-value-table th,
+    .b-value-table td,
+    .b-method-table th,
+    .b-method-table td{
+      padding:.72rem .8rem;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      text-align:center;
+      vertical-align:middle;
+    }
+
+    .b-value-table tr:last-child > *,
+    .b-method-table tbody tr:last-child > *{
+      border-bottom:0;
+    }
+
+    .b-value-table tr > *:last-child,
+    .b-method-table tr > *:last-child{
+      border-right:0;
+    }
+
+    .b-value-table th,
+    .b-method-table th{
+      background:var(--soft);
+      color:var(--ink);
+      font-weight:900;
+    }
+
+    .b-value-table th[scope="row"]{
+      color:var(--purple-deep);
+    }
+
+    .b-dot-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.35fr) minmax(210px,.65fr);
+      gap:1rem;
+      align-items:center;
+      margin-top:1rem;
+    }
+
+    .b-dot-plot{
+      display:block;
+      width:100%;
+      height:auto;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:var(--soft);
+    }
+
+    .b-plot-grid{
+      stroke:var(--grid);
+      stroke-width:1;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .b-plot-axis{
+      stroke:var(--line-strong);
+      stroke-width:2;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .b-plot-point{
+      fill:var(--cyan);
+      stroke:var(--paper);
+      stroke-width:3;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .b-plot-label,
+    .b-plot-axis-label{
+      fill:var(--body);
+      font-family:var(--font-sans);
+      font-size:.2px;
+      font-weight:800;
+      text-anchor:middle;
+    }
+
+    .b-plot-axis-label{
+      fill:var(--cyan-deep);
+      font-size:.23px;
+      font-style:italic;
+    }
+
+    .b-plot-key{
+      display:grid;
+      gap:.7rem;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .b-plot-key li{
+      padding:.75rem .85rem;
+      border-left:3px solid var(--cyan);
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+      background:var(--cyan-soft);
+      color:var(--body);
+    }
+
+    .b-dot-figure figcaption{
+      margin-top:1rem;
+      padding-top:.85rem;
+      border-top:1px solid var(--line);
+      color:var(--body);
+      font-size:.92rem;
+    }
+
+    .b-method-table{
+      min-width:650px;
+      text-align:left;
+    }
+
+    .b-method-table th,
+    .b-method-table td{
+      text-align:left;
+    }
+
+    .b-method-table th:first-child{
+      width:18%;
+      color:var(--blue-deep);
+      white-space:nowrap;
+    }
+
+    .b-branch-flow{
+      display:grid;
+      grid-template-columns:minmax(150px,.6fr) auto minmax(280px,1.4fr) auto minmax(150px,.65fr);
+      gap:.8rem;
+      align-items:stretch;
+      margin:1.35rem 0;
+    }
+
+    .b-flow-step,
+    .b-flow-branch{
+      display:flex;
+      min-width:0;
+      padding:1rem;
+      flex-direction:column;
+      justify-content:center;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:var(--paper);
+    }
+
+    .b-flow-step{
+      border-color:var(--blue-line);
+      background:var(--blue-soft);
+      text-align:center;
+    }
+
+    .b-flow-step.is-result{
+      border-color:var(--cyan-line);
+      background:var(--cyan-soft);
+    }
+
+    .b-flow-step small,
+    .b-flow-branch small{
+      display:block;
+      margin-bottom:.25rem;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    .b-flow-step strong,
+    .b-flow-branch strong{
+      color:var(--ink);
+    }
+
+    .b-flow-arrow{
+      display:grid;
+      color:var(--purple);
+      font-size:1.4rem;
+      font-weight:900;
+      place-items:center;
+    }
+
+    .b-flow-branches{
+      display:grid;
+      gap:.65rem;
+    }
+
+    .b-flow-branch{
+      border-color:var(--purple-line);
+      background:var(--purple-soft);
+    }
+
+    .b-flow-branch p{
+      margin:.35rem 0 0;
+      color:var(--body);
+      font-size:.9rem;
+    }
+
+    .b-boundary-check{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin:1.35rem 0;
+    }
+
+    .b-boundary-choice{
+      min-width:0;
+      padding:1rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:var(--paper);
+      box-shadow:var(--soft-shadow);
+    }
+
+    .b-boundary-choice.is-rejected{
+      border-top:4px solid var(--red);
+    }
+
+    .b-boundary-choice.is-selected{
+      border-top:4px solid var(--cyan);
+    }
+
+    .b-choice-state{
+      display:inline-flex;
+      margin-bottom:.65rem;
+      padding:.2rem .58rem;
+      border-radius:var(--radius-pill);
+      font-size:.75rem;
+      font-weight:900;
+    }
+
+    .is-rejected .b-choice-state{
+      background:var(--red-soft);
+      color:var(--red-deep);
+    }
+
+    .is-selected .b-choice-state{
+      background:var(--cyan-soft);
+      color:var(--cyan-deep);
+    }
+
+    .b-boundary-choice h3{
+      margin:0 0 .5rem;
+    }
+
+    .b-boundary-choice p:last-child{
+      margin-bottom:0;
+    }
+
+    @media(max-width:820px){
+      .b-dot-layout,
+      .b-branch-flow{
+        grid-template-columns:1fr;
+      }
+
+      .b-flow-arrow{
+        min-height:1.4rem;
+        transform:rotate(90deg);
+      }
+    }
+
+    @media(max-width:640px){
+      .b-representation-grid,
+      .b-boundary-check{
+        grid-template-columns:1fr;
+      }
+
+      .b-dot-figure{
+        grid-column:auto;
+      }
+
+      .b-representation-card,
+      .b-dot-figure,
+      .b-boundary-choice{
+        padding:.9rem;
+      }
+
+      .b-value-table th,
+      .b-value-table td{
+        padding:.6rem .5rem;
+      }
+
+      .b-plot-label{
+        font-size:.25px;
+      }
+
+      .b-plot-axis-label{
+        font-size:.28px;
+      }
+    }
+
+    @media print{
+      .b-representation-card,
+      .b-dot-figure,
+      .b-boundary-choice{
+        box-shadow:none;
+      }
+
+      .b-dot-plot{
+        background:var(--paper);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#representations">三种表示</a>
+      <a class="nav-link" href="#strengths">各自特点</a>
+      <a class="nav-link" href="#piecewise">分段函数</a>
+      <a class="nav-link" href="#boundary">边界判断</a>
+      <a class="nav-link" href="#summary">核心结论</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 02</span>
+    <h1>函数的表示法与分段函数</h1>
+    <p class="lead">同一个函数可以用解析式、数表或图象表示。判断它们是否表示同一个函数，要看定义域是否相同，每个 $x$ 对应的函数值是否相同。分段函数仍是一个函数，求值时先看 $x$ 满足哪一段的条件，再用那一段的式子计算。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="representations" data-source-md="02_函数的表示法与分段函数.md#同一个函数可以有不同的表示">
+      <h2 class="marker"><span aria-hidden="true">01</span>三种表示</h2>
+      <div class="section-body prose">
+        <h2>三种表示，说的是同一个对应关系</h2>
+        <p class="section-intro">表示方法不同，不一定是不同的函数。只要定义域相同，且定义域中的每个 $x$ 对应的函数值都相同，就是同一个函数。</p>
+
+        <p>设定义域为 <span class="b-math-punct">$A=\{-2,-1,0,1,2\}$，</span>把每个 $x$ 平方，就得到对应的函数值。下面用三种方法表示这个函数。</p>
+        <p class="b-observe">比较时看两件事：$x$ 能取的数是否都是集合 $A$ 中的五个数；每个 $x$ 对应的函数值是否相同。</p>
+
+        <div class="b-representation-grid">
+          <article class="b-representation-card">
+            <span class="b-representation-label">解析法</span>
+            <h3>直接写出计算规则</h3>
+            <div class="b-formula" aria-label="f x 等于 x 的平方，x 属于集合 A">
+              $$f(x)=x^2,\qquad x\in A.$$
+            </div>
+            <p>把 $x$ 平方，就能算出 $f(x)$。条件 <span class="b-math-punct">$x\in A$</span> 说明 $x$ 只能取集合 $A$ 中的数。</p>
+          </article>
+
+          <article class="b-representation-card">
+            <span class="b-representation-label">列表法</span>
+            <h3>逐项列出对应值</h3>
+            <div class="b-table-scroll" tabindex="0" aria-label="函数 f 的输入与输出数表，可横向滚动">
+              <table class="b-value-table">
+                <tbody>
+                  <tr>
+                    <th scope="row">$x$</th>
+                    <td>$-2$</td>
+                    <td>$-1$</td>
+                    <td>$0$</td>
+                    <td>$1$</td>
+                    <td>$2$</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">$f(x)$</th>
+                    <td>$4$</td>
+                    <td>$1$</td>
+                    <td>$0$</td>
+                    <td>$1$</td>
+                    <td>$4$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>每一列上面是 $x$，下面是对应的 $f(x)$。例如，$x$ 取 $-2$ 或 $2$ 时，函数值都是 $4$。</p>
+          </article>
+
+          <figure class="b-dot-figure">
+            <span class="b-representation-label">图象法</span>
+            <h3>把每组对应值放进坐标系</h3>
+            <div class="b-dot-layout">
+              <svg class="b-dot-plot" viewBox="-2.8 -4.9 5.7 5.8" role="img" aria-labelledby="b02-dot-title b02-dot-desc">
+                <title id="b02-dot-title">有限定义域上的函数 f x 等于 x 平方的图象</title>
+                <desc id="b02-dot-desc">坐标系中只标出负二逗号四、负一逗号一、零逗号零、一逗号一、二逗号四这五个点，没有把点连接成曲线。</desc>
+                <defs>
+                  <marker id="b02-axis-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth=".18" markerHeight=".18" markerUnits="userSpaceOnUse" orient="auto">
+                    <path d="M0 0L10 5L0 10Z" fill="var(--line-strong)"></path>
+                  </marker>
+                </defs>
+
+                <g aria-hidden="true">
+                  <line class="b-plot-grid" x1="-2" y1="0" x2="-2" y2="-4.35"></line>
+                  <line class="b-plot-grid" x1="-1" y1="0" x2="-1" y2="-4.35"></line>
+                  <line class="b-plot-grid" x1="1" y1="0" x2="1" y2="-4.35"></line>
+                  <line class="b-plot-grid" x1="2" y1="0" x2="2" y2="-4.35"></line>
+                  <line class="b-plot-grid" x1="-2.45" y1="-1" x2="2.45" y2="-1"></line>
+                  <line class="b-plot-grid" x1="-2.45" y1="-2" x2="2.45" y2="-2"></line>
+                  <line class="b-plot-grid" x1="-2.45" y1="-3" x2="2.45" y2="-3"></line>
+                  <line class="b-plot-grid" x1="-2.45" y1="-4" x2="2.45" y2="-4"></line>
+
+                  <line class="b-plot-axis" x1="-2.55" y1="0" x2="2.62" y2="0" marker-end="url(#b02-axis-arrow)"></line>
+                  <line class="b-plot-axis" x1="0" y1=".42" x2="0" y2="-4.62" marker-end="url(#b02-axis-arrow)"></line>
+
+                  <text class="b-plot-label" x="-2" y=".38">−2</text>
+                  <text class="b-plot-label" x="-1" y=".38">−1</text>
+                  <text class="b-plot-label" x=".17" y=".38">0</text>
+                  <text class="b-plot-label" x="1" y=".38">1</text>
+                  <text class="b-plot-label" x="2" y=".38">2</text>
+                  <text class="b-plot-label" x="-.2" y="-1">1</text>
+                  <text class="b-plot-label" x="-.2" y="-2">2</text>
+                  <text class="b-plot-label" x="-.2" y="-3">3</text>
+                  <text class="b-plot-label" x="-.2" y="-4">4</text>
+                  <text class="b-plot-axis-label" x="2.68" y=".08">x</text>
+                  <text class="b-plot-axis-label" x=".18" y="-4.58">y</text>
+                </g>
+
+                <circle class="b-plot-point" cx="-2" cy="-4" r=".105"></circle>
+                <circle class="b-plot-point" cx="-1" cy="-1" r=".105"></circle>
+                <circle class="b-plot-point" cx="0" cy="0" r=".105"></circle>
+                <circle class="b-plot-point" cx="1" cy="-1" r=".105"></circle>
+                <circle class="b-plot-point" cx="2" cy="-4" r=".105"></circle>
+              </svg>
+
+              <ul class="b-plot-key">
+                <li>每个点的横坐标是 $x$，纵坐标是对应的函数值 $f(x)$。</li>
+                <li>五个点分别对应数表中的五列，也都符合解析式给出的计算结果。</li>
+                <li><strong>定义域只有五个数，所以图象只有五个点，不能擅自连成连续曲线。</strong></li>
+              </ul>
+            </div>
+            <figcaption>这三种表示的定义域都是 $A$，每个 $x$ 对应的函数值也完全相同，所以表示的是同一个函数。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="strengths" data-source-md="02_函数的表示法与分段函数.md#三种方法各自看清什么">
+      <h2 class="marker"><span aria-hidden="true">02</span>各自特点</h2>
+      <div class="section-body prose">
+        <h2>选择表示法，要看希望看清什么</h2>
+        <p class="section-intro">上面的三种方法表示同一个函数，但各有用处：解析式便于计算，数表便于查值，图象便于观察整体形状。</p>
+
+        <div class="b-table-scroll" tabindex="0" aria-label="三种函数表示法的特点比较，可横向滚动">
+          <table class="b-method-table">
+            <thead>
+              <tr>
+                <th scope="col">表示方法</th>
+                <th scope="col">更容易看清</th>
+                <th scope="col">需要留意</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">解析法</th>
+                <td>把对应规则写成式子，便于根据 $x$ 准确计算 $f(x)$。</td>
+                <td>不是每个函数都能用一个解析式表示。</td>
+              </tr>
+              <tr>
+                <th scope="row">列表法</th>
+                <td>直接列出若干组 $x$ 和对应的函数值，方便读取，尤其适合定义域只有有限个数的情形。</td>
+                <td>定义域有无限多个数时，有限数表通常只能记录其中一部分。</td>
+              </tr>
+              <tr>
+                <th scope="row">图象法</th>
+                <td>函数图象由所有点 $(x,f(x))$ 组成，能直观呈现函数的整体形状。</td>
+                <td>从图上读取的数值可能只是近似值，有些函数也难以画出完整图象。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>需要时，可以把几种方法结合使用。表示同一个函数时，定义域必须相同，每个 $x$ 对应的函数值也必须相同。</p>
+      </div>
+    </section>
+
+    <section class="section" id="piecewise" data-source-md="02_函数的表示法与分段函数.md#分段函数仍然是一个函数">
+      <h2 class="marker"><span aria-hidden="true">03</span>分段函数</h2>
+      <div class="section-body prose">
+        <h2>分段写规则，仍然只定义一个函数</h2>
+        <p class="section-intro">有些函数按 $x$ 的取值范围分段写，会更方便。先把定义域分成几部分，再分别写出各部分使用的式子，就得到分段表示。</p>
+
+        <p>绝对值函数可以写成</p>
+        <div class="b-formula" aria-label="绝对值函数按照 x 小于零与 x 大于等于零分为两段">
+          $$
+          f(x)=|x|=
+          \begin{cases}
+          -x, & x&lt;0,\\
+          x, & x\geqslant0.
+          \end{cases}
+          $$
+        </div>
+
+        <p class="b-observe">这里把定义域 $\mathbb R$ 分成两部分：$x&lt;0$ 时用 $-x$，$x\geqslant0$ 时用 $x$。先判断 $x$ 满足哪个条件，再用对应的式子计算。</p>
+
+        <div class="b-branch-flow" aria-label="绝对值函数从输入范围到分支规则再到唯一函数值的流程">
+          <article class="b-flow-step">
+            <small>输入</small>
+            <strong>$x\in\mathbb R$</strong>
+          </article>
+          <span class="b-flow-arrow" aria-hidden="true">→</span>
+          <div class="b-flow-branches">
+            <article class="b-flow-branch">
+              <small>若 $x&lt;0$</small>
+              <strong>使用 $-x$</strong>
+              <p>$-3$ 小于 $0$，所以用 $-x$，得到 $f(-3)=-(-3)=3$。</p>
+            </article>
+            <article class="b-flow-branch">
+              <small>若 $x\geqslant0$</small>
+              <strong>使用 $x$</strong>
+              <p>$3$ 大于等于 $0$，所以用 $x$，得到 $f(3)=3$。</p>
+            </article>
+          </div>
+          <span class="b-flow-arrow" aria-hidden="true">→</span>
+          <article class="b-flow-step is-result">
+            <small>输出</small>
+            <strong>唯一的 $f(x)$</strong>
+          </article>
+        </div>
+
+        <p>每个实数 $x$ 都恰好满足其中一个条件，因此都有唯一的函数值。两行合在一起，才说明了整个定义域上的每个 $x$ 对应什么值，所以这是一个函数，不是两个函数。</p>
+      </div>
+    </section>
+
+    <section class="section" id="boundary" data-source-md="02_函数的表示法与分段函数.md#边界决定使用哪一条规则">
+      <h2 class="marker"><span aria-hidden="true">04</span>边界判断</h2>
+      <div class="section-body prose">
+        <h2>到达分界点时，先看不等号</h2>
+        <p class="section-intro">在分界点处，等号写在哪一段尤其重要。先检查 $x$ 满足哪个条件，再用对应的式子计算，不能凭式子的先后或计算方便来选。</p>
+
+        <p>例如</p>
+        <div class="b-formula" aria-label="g x 按照 x 小于一与 x 大于等于一分为两段">
+          $$
+          g(x)=
+          \begin{cases}
+          2x+1, & x&lt;1,\\
+          x^2, & x\geqslant1.
+          \end{cases}
+          $$
+        </div>
+
+        <p class="b-observe">求 $g(1)$ 时，先把 $x=1$ 代入两条条件，判断应该用哪一行。</p>
+
+        <div class="b-boundary-check">
+          <article class="b-boundary-choice is-rejected">
+            <span class="b-choice-state">条件不满足</span>
+            <h3>第一段：$x&lt;1$</h3>
+            <p>把 $x=1$ 代入条件，得到 <span class="b-math-punct">$1&lt;1$，</span>不成立，所以不能使用 $2x+1$。误用这一行会算成 $2\times1+1=3$，但 $3$ 不是 $g(1)$。</p>
+          </article>
+          <article class="b-boundary-choice is-selected">
+            <span class="b-choice-state">条件满足</span>
+            <h3>第二段：$x\geqslant1$</h3>
+            <p>把 $x=1$ 代入条件，得到 <span class="b-math-punct">$1\geqslant1$，</span>成立，所以使用 $x^2$，得到 <span class="b-math-punct">$g(1)=1^2=1$。</span></p>
+          </article>
+        </div>
+
+        <p>分段表示通常让各段条件覆盖整个定义域，而且互不重叠。这样，定义域中的每个 $x$ 都恰好满足一段的条件。</p>
+        <p>更根本的要求是：定义域中的每个 $x$ 都必须有唯一的函数值。</p>
+
+        <div class="b-boundary-note">
+          <p>如果定义域中的某个 $x$ 不满足任何一段的条件，就没有对应的函数值。</p>
+          <p>如果某个 $x$ 同时满足两段的条件，而两段算出的值不同，这个 $x$ 就没有唯一确定的函数值，因而不构成函数。</p>
+          <p>如果重叠处算出的值相同，函数值仍然唯一，不会因此破坏函数的要求，但重复的条件没有必要。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary" data-source-md="02_函数的表示法与分段函数.md#真正要抓住的关系">
+      <h2 class="marker"><span aria-hidden="true">05</span>核心结论</h2>
+      <div class="section-body prose">
+        <h2>表示可以改变，对应关系必须保持完整</h2>
+        <div class="summary-panel">
+          <p>判断不同表示是否是同一个函数，要看定义域是否相同，每个 $x$ 对应的函数值是否相同，不能只看式子或图象是否相似。</p>
+          <p>解析法便于按规则计算，列表法便于读取对应值，图象法便于观察整体形状。需要时可以结合使用。</p>
+          <p class="b-summary-line">分段函数的各段合起来是一个函数。求值时，先看 $x$ 满足哪一段的条件，再用那一段的式子计算唯一的函数值。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-01_函数的概念及其表示/01_函数的概念定义域和值域/index.html">← 上一篇 · 函数的概念、定义域和值域</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../../B-02_函数的基本性质/01_函数的单调性与单调区间/index.html">下一篇 · 函数的单调性与单调区间 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 函数的表示法与分段函数</footer>
+</body>
+</html>

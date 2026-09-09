@@ -1,0 +1,13 @@
+/* Local to B-02 / 函数的奇偶性. */
+.parity-page .parity-figure svg{display:block;width:100%;max-width:520px;height:auto;margin:auto;overflow:visible}
+.parity-page .axis{fill:none;stroke:var(--muted);stroke-width:1.1}
+.parity-page .curve{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linejoin:round}
+.parity-page .guide{fill:none;stroke:var(--purple);stroke-width:1.25;stroke-dasharray:5 4}
+.parity-page .point{fill:var(--purple);stroke:var(--paper);stroke-width:1.5}
+.parity-page .axis-label{fill:var(--body);font:16px var(--font-math)}
+.parity-page .point-label{fill:var(--purple-deep);font:700 17px var(--font-sans)}
+.parity-page .parity-key{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.6rem;margin-top:.5rem;color:var(--purple-deep)}
+.parity-page .parity-key span{white-space:nowrap}
+.parity-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.parity-page .b-formula{font-size:clamp(1rem,2.6vw,1.2rem)}
+@media(max-width:640px){.parity-page .parity-figure{padding:.7rem}.parity-page .parity-key{font-size:.92rem}}

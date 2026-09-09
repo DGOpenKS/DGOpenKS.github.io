@@ -1,0 +1,17 @@
+/* Only this article: graph layout and mathematical marks. */
+.b-extrema .ext-plot-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:center}
+.b-extrema .ext-graph{display:block;width:100%;max-width:440px;height:auto;margin:auto;overflow:visible}
+.b-extrema .ext-graph text{fill:var(--body);font:18px var(--font-math)}
+.b-extrema .ext-axis{stroke:var(--muted);stroke-width:1.4}
+.b-extrema .ext-grid{stroke:var(--grid);stroke-width:1}
+.b-extrema .ext-guide{stroke:var(--cyan);stroke-width:1.6;stroke-dasharray:6 5}
+.b-extrema .ext-curve{fill:none;stroke:var(--blue);stroke-width:3.5}
+.b-extrema .ext-point{fill:var(--blue);stroke:var(--blue);stroke-width:2.5}
+.b-extrema .ext-open{fill:var(--paper)}
+.b-extrema .ext-plot-copy h3{margin-top:0}
+.b-extrema .ext-compare{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+.b-extrema .ext-compare h3{margin:0;text-align:center}
+.b-extrema .eyebrow{max-width:100%;letter-spacing:.08em}
+@media(max-width:700px){
+  .b-extrema .ext-plot-layout,.b-extrema .ext-compare{grid-template-columns:minmax(0,1fr)}
+}

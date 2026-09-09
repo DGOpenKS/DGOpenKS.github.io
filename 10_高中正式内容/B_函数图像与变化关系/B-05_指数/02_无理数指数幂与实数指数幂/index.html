@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="用有理数逐步逼近无理数，理解正底数的实数指数幂，并在完整条件下使用零指数、负指数和实数幂的运算性质。">
+  <title>无理数指数幂与实数指数幂 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+</head>
+<body>
+  <!-- Source SHA256: 17721c85fb329c5d73486424024567f66144fb76c2257a78b93897977d2a94a9 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#approximation">有理数逼近</a>
+      <a class="nav-link" href="#positive-base">底数条件</a>
+      <a class="nav-link" href="#zero-negative">零与负指数</a>
+      <a class="nav-link" href="#properties">运算性质</a>
+      <a class="nav-link" href="#example">条件与运算</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 10</span>
+    <h1>无理数指数幂与实数指数幂</h1>
+    <p class="lead">分数指数幂把指数扩展到了有理数，但 $a^{\sqrt2}$ 仍需要解释。用有理数逐步逼近无理数，就能确定正底数的无理数指数幂。指数扩展到全体实数后，原有的运算规律仍然成立，使用时要先确认底数为正。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="approximation" data-source-md="02_无理数指数幂与实数指数幂.md#1-用有理数逐步逼近无理数">
+      <h2 class="marker"><span aria-hidden="true">01</span>有理数逼近</h2>
+      <div class="section-body prose">
+        <h2>1. 用有理数逐步逼近无理数</h2>
+        <p class="section-intro">以 $a^{\sqrt2}$ 为例，取 <span class="b-math-punct">$a>0$。</span>先用有限小数从两侧逐步逼近 <span class="b-math-punct">$\sqrt2$，</span>例如</p>
+        <div class="b-formula">$$1.4142&lt;\sqrt2&lt;1.4143.$$</div>
+        <p>有限小数都是有理数，因此 $a^{1.4142}$ 和 $a^{1.4143}$ 已经有意义。当 $a>1$ 时，这两个数给出一段可能的取值范围；近似值取得越精确，这段范围就越小。若 <span class="b-math-punct">$0&lt;a&lt;1$，</span>两端的大小次序会反过来，但也会趋向同一个确定的正数。</p>
+        <div class="b-definition">
+          <p>把这个由有理数指数幂逐步确定的数记作 <span class="b-math-punct">$a^{\sqrt2}$。</span>它由越来越精确的逼近确定，不是用某一个有限小数替代 $\sqrt2$ 得到的值。</p>
+        </div>
+        <p>把两种底数下的大小关系并排写出，可以看清次序的区别：</p>
+        <div class="b-function-check">
+          <article>
+            <h3>当 $a>1$ 时</h3>
+            <div class="b-function-lines"><span>$a^{1.4142}&lt;a^{\sqrt2}&lt;a^{1.4143}$</span></div>
+            <p>指数较大的一端，对应的幂也较大。</p>
+          </article>
+          <article>
+            <h3>当 $0&lt;a&lt;1$ 时</h3>
+            <div class="b-function-lines"><span>$a^{1.4143}&lt;a^{\sqrt2}&lt;a^{1.4142}$</span></div>
+            <p>指数较大的一端，对应的幂反而较小。</p>
+          </article>
+        </div>
+        <p>两种情况下，取值范围的两端都由有理数指数幂给出。继续提高近似的精度，才能逐步确定中间的那个数。底数 $a=1$ 也允许，此时各个幂的值都是 <span class="b-math-punct">$1$。</span></p>
+        <p>同样地，对任意无理数 <span class="b-math-punct">$\alpha$，</span>都用越来越精确的有理数近似它，并由相应的有理数指数幂确定 <span class="b-math-punct">$a^\alpha$。</span>这样，正底数 $a$ 的指数就从有理数扩展到了全体实数。</p>
+      </div>
+    </section>
+
+    <section class="section" id="positive-base" data-source-md="02_无理数指数幂与实数指数幂.md#2-为什么统一要求底数为正">
+      <h2 class="marker"><span aria-hidden="true">02</span>底数条件</h2>
+      <div class="section-body prose">
+        <h2>2. 为什么统一要求底数为正</h2>
+        <p class="section-intro">要让每一个实数指数都有一致的意义，底数必须取正数。负底数和零底数，都不能覆盖全部实数指数。</p>
+        <p>负数可以有奇数次实数方根，却没有偶数次实数方根。例如，$\sqrt[3]{-2}$ 有意义，而 $\sqrt{-2}$ 在实数范围内没有意义。因此，负底数无法沿着所有有理数指数继续扩展，也就不能建立适用于所有实数指数的统一规则。</p>
+        <p>底数 $0$ 也有范围限制：$0$ 的正指数幂可以定义，但 $0^0$ 不在这里定义，负指数还会要求除以 <span class="b-math-punct">$0$。</span></p>
+        <div class="b-boundary-note">
+          <p>因此，谈论对任意 $x\in\mathbb R$ 都有意义的 $a^x$ 时，必须取 <span class="b-math-punct">$a>0$。</span>某些指数下有意义，并不代表所有实数指数下都有意义。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="zero-negative" data-source-md="02_无理数指数幂与实数指数幂.md#3-零指数和负指数仍保持原意">
+      <h2 class="marker"><span aria-hidden="true">03</span>零与负指数</h2>
+      <div class="section-body prose">
+        <h2>3. 零指数和负指数仍保持原意</h2>
+        <p class="section-intro">底数取正数后，指数可以扩展到实数，零指数和负指数的规则仍然不变。对 <span class="b-math-punct">$a>0$、</span><span class="b-math-punct">$x\in\mathbb R$，</span>有下面两个关系。</p>
+        <p>零指数仍保留原来的规定：</p>
+        <div class="b-formula">$$a^0=1.$$</div>
+        <p>指数变号，对应把原来的幂取倒数：</p>
+        <div class="b-formula">$$a^{-x}=\frac1{a^x}.$$</div>
+        <p>这里的 $x$ 可以是任意实数。因为 <span class="b-math-punct">$a^x>0$，</span>分母不会为 <span class="b-math-punct">$0$，</span>所以取倒数的关系对实数指数仍然成立。</p>
+      </div>
+    </section>
+
+    <section class="section" id="properties" data-source-md="02_无理数指数幂与实数指数幂.md#4-实数指数幂的运算性质">
+      <h2 class="marker"><span aria-hidden="true">04</span>运算性质</h2>
+      <div class="section-body prose">
+        <h2>4. 实数指数幂的运算性质</h2>
+        <p class="section-intro">设 <span class="b-math-punct">$a>0$，</span><span class="b-math-punct">$b>0$，</span><span class="b-math-punct">$r,s\in\mathbb R$。</span>有理数指数幂的三条基本运算性质，对实数指数幂仍然成立。</p>
+        <h3>同底数幂相乘</h3>
+        <div class="b-formula">$$a^r a^s=a^{r+s}.$$</div>
+        <p>底数同为 <span class="b-math-punct">$a$，</span>相乘后底数不变，两个指数 $r$ 和 $s$ 相加。</p>
+        <h3>幂再乘方</h3>
+        <div class="b-formula">$$(a^r)^s=a^{rs}.$$</div>
+        <p>把 $a^r$ 再取 $s$ 次幂，两个指数相乘，得到指数 <span class="b-math-punct">$rs$。</span></p>
+        <h3>积的乘方</h3>
+        <div class="b-formula">$$(ab)^r=a^r b^r.$$</div>
+        <p>把积 $ab$ 取 $r$ 次幂，可以分别把两个因数取 $r$ 次幂，再相乘。右边的两个因数都保留指数 <span class="b-math-punct">$r$。</span></p>
+        <p>这三条性质先在有理数指数下成立。实数指数幂的定义与有理数指数幂连续衔接，因此这些运算结构也保留下来。</p>
+        <h3>由积的乘方得到商的乘方</h3>
+        <p>仍取 <span class="b-math-punct">$a>0$、</span><span class="b-math-punct">$b>0$、</span><span class="b-math-punct">$r\in\mathbb R$。</span>把 $\frac ab$ 写成 <span class="b-math-punct">$a\cdot b^{-1}$，</span>就可以使用积的乘方：</p>
+        <div class="b-formula">$$\left(\frac ab\right)^r=(a\cdot b^{-1})^r.$$</div>
+        <p>将指数 $r$ 分配到两个因数，得到</p>
+        <div class="b-formula">$$(a\cdot b^{-1})^r=a^r(b^{-1})^r.$$</div>
+        <p>再用幂的乘方，<span class="b-math-punct">$(b^{-1})^r=b^{-r}$；</span>用负指数规则，<span class="b-math-punct">$b^{-r}=\frac1{b^r}$。</span>于是</p>
+        <div class="b-formula">$$a^r(b^{-1})^r=\frac{a^r}{b^r}.$$</div>
+        <p>所以，商的乘方也可以分别作用于分子和分母：</p>
+        <div class="b-formula">$$\left(\frac ab\right)^r=\frac{a^r}{b^r}\quad(a>0,\ b>0).$$</div>
+        <p>条件 $b>0$ 保证 $b$ 和 $b^r$ 都不为 <span class="b-math-punct">$0$，</span>上面的除法才有意义。</p>
+      </div>
+    </section>
+
+    <section class="section" id="example" data-source-md="02_无理数指数幂与实数指数幂.md#5-运算前先确认条件">
+      <h2 class="marker"><span aria-hidden="true">05</span>条件与运算</h2>
+      <div class="section-body prose">
+        <h2>5. 运算前先确认条件</h2>
+        <p class="section-intro">例如，计算 <span class="b-math-punct">$2^{\sqrt2}\cdot2^{1-\sqrt2}$。</span>底数 <span class="b-math-punct">$2>0$，</span>两个指数都是实数，可以使用同底数幂相乘的性质。</p>
+        <p>先保留底数 <span class="b-math-punct">$2$，</span>把两个指数相加：</p>
+        <div class="b-formula">$$2^{\sqrt2}\cdot2^{1-\sqrt2}=2^{\sqrt2+1-\sqrt2}.$$</div>
+        <p>指数中的 $\sqrt2$ 与 $-\sqrt2$ 互相抵消，合并后只剩 <span class="b-math-punct">$1$：</span></p>
+        <div class="b-formula">$$2^{\sqrt2+1-\sqrt2}=2^1.$$</div>
+        <p>最后回到整数指数幂，$2$ 的一次幂就是 <span class="b-math-punct">$2$：</span></p>
+        <div class="b-formula">$$2^1=2.$$</div>
+        <p>每一步都沿用已有的指数运算结构。若底数不是正数，就不能把这套实数指数幂规则直接套上去。</p>
+        <div class="summary-panel">
+          <h3>核心结论</h3>
+          <p>无理数指数幂由有理数指数幂的逐步逼近确定。底数为正，才能让所有实数指数都有统一的意义；原有的指数运算规律也继续成立。</p>
+          <p class="b-summary-line">先确认底数为正，再按式子的结构使用指数运算性质。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_n次方根与分数指数幂/index.html">← 上一篇 · n 次方根与分数指数幂</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 无理数指数幂与实数指数幂</footer>
+  <script>
+    // Keep focused navigation links visible inside the narrow, scrollable topbar.
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({block:'nearest', inline:'center', behavior:'instant'});
+    });
+  </script>
+</body>
+</html>

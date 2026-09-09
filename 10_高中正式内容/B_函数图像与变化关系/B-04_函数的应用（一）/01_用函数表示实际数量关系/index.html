@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从水箱注水的数量关系出发，分清变量与固定条件，写出对应规则和实际定义域，并用数量与单位解释函数值。">
+  <title>用函数表示实际数量关系 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .water-page .water-terms { margin:1.2rem 0; }
+    .water-page .water-terms > div { display:grid; grid-template-columns:7rem minmax(0,1fr); gap:1rem; padding:.8rem 0; border-bottom:1px solid var(--line); }
+    .water-page .water-terms dt { color:var(--blue-deep); font-weight:800; }
+    .water-page .water-terms dd { margin:0; }
+    .water-page .water-figure svg { display:block; width:100%; max-width:440px; height:auto; margin:auto; overflow:visible; }
+    .water-page .water-figure text { fill:var(--body); font-family:var(--font-sans); font-size:15px; }
+    .water-page .water-figure .axis { fill:none; stroke:var(--muted); stroke-width:1.3; }
+    .water-page .water-figure .guide { fill:none; stroke:var(--line-strong); stroke-dasharray:4 4; }
+    .water-page .water-figure .curve { fill:none; stroke:var(--blue); stroke-width:3; }
+    .water-page .water-figure .point { fill:var(--blue-deep); stroke:var(--paper); stroke-width:1.5; }
+    .water-page .water-checks li { margin:.8rem 0; }
+    @media(max-width:640px) { .water-page .water-terms > div { grid-template-columns:5.2rem minmax(0,1fr); gap:.7rem; } }
+  </style>
+</head>
+<body class="water-page">
+<!-- Source SHA256: 29266311cb7f477895c4f217dbad39b0cc98445cbd4eac5d36493060365006b4.
+     SVG model: V(t)=30+12t, 0<=t<=10; X(t)=52+23t, Y(V)=242-1.2V.
+     The exact affine graph joins the computed endpoints; all marked points use this model. -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+  <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+  <a class="nav-link" href="#variables">变量与常量</a>
+  <a class="nav-link" href="#rule">对应规则</a>
+  <a class="nav-link" href="#domain">实际定义域</a>
+  <a class="nav-link" href="#value">函数值的含义</a>
+  <a class="nav-link" href="#summary">四次检查</a>
+</div></nav>
+<header class="hero">
+  <span class="eyebrow">B 函数图像与变化关系 · 08</span>
+  <h1>用函数表示实际数量关系</h1>
+  <p class="lead">给水箱注水，能用一个式子计算水量，还要说明这个式子在什么时间范围内有效。从变量、对应规则到实际定义域，把这些条件写完整，算出的函数值才有明确的实际含义。</p>
+</header>
+<main id="main" tabindex="-1">
+  <section class="section" id="variables" data-source-md="01_用函数表示实际数量关系.md#1-先分清变量和不变量">
+    <h2 class="marker"><span aria-hidden="true">01</span>变量与常量</h2>
+    <div class="section-body prose">
+      <h2>1. 先分清变量和不变量</h2>
+      <p class="section-intro">设一个水箱开始时有 $30\ \text{L}$ 水，以 $12\ \text{L/min}$ 的稳定流量注水，水箱最多容纳 $150\ \text{L}$。注水过程到水箱装满时结束。</p>
+      <p>这个过程中，注水时间和水量都会变化；初始水量、注水流量和水箱容量保持不变。先把这些量分清：</p>
+      <dl class="water-terms">
+        <div><dt>变化的量</dt><dd>注水时间 $t$，单位是 min；时刻 $t$ 的水量 $V$，单位是 L。</dd></div>
+        <div><dt>固定的条件</dt><dd>初始水量 $30\ \text{L}$，稳定流量 $12\ \text{L/min}$，容量 $150\ \text{L}$。</dd></div>
+      </dl>
+      <p>在这些固定条件下，$t$ 一旦确定，水量 $V$ 也唯一确定，所以可以把 $V$ 看成 $t$ 的函数。这里选择时间作为自变量，是因为水量随着时间推进而变化。</p>
+    </div>
+  </section>
+  <section class="section" id="rule" data-source-md="01_用函数表示实际数量关系.md#2-从数量关系得到对应规则">
+    <h2 class="marker"><span aria-hidden="true">02</span>对应规则</h2>
+    <div class="section-body prose">
+      <h2>2. 从数量关系得到对应规则</h2>
+      <p class="section-intro">分清各个量以后，再把“原有的水量加上增加的水量”写成式子。</p>
+      <p>注水 $t$ 分钟后，增加的水量等于流量乘时间，即 $12t\ \text{L}$。加上原有的 $30\ \text{L}$，得到</p>
+      <div class="b-formula">$$V(t)=30+12t.$$</div>
+      <p>式子中的 $30$ 表示初始水量，$12t$ 表示经过 $t$ 分钟增加的水量。两部分相加，就是时刻 $t$ 的水量。</p>
+      <p>单位也能帮助检查数量关系。流量的单位是 L/min，乘上时间的单位 min，得到</p>
+      <div class="b-formula">$$\text{L/min}\times\text{min}=\text{L}.$$</div>
+      <p>相乘后得到升，与水量 $V$ 的单位一致。原有水量和增加的水量单位相同，可以相加。</p>
+    </div>
+  </section>
+  <section class="section" id="domain" data-source-md="01_用函数表示实际数量关系.md#3-实际定义域来自情境限制">
+    <h2 class="marker"><span aria-hidden="true">03</span>实际定义域</h2>
+    <div class="section-body prose">
+      <h2>3. 实际定义域来自情境限制</h2>
+      <p class="section-intro">解析式 $30+12t$ 中，任意实数都能代入，但不是每个数都能表示这个过程中的注水时间。</p>
+      <p>注水时间不能为负，水量也不能超过容量。这两个条件要同时满足：</p>
+      <div class="b-formula">$$t\ge0,\qquad 30+12t\le150.$$</div>
+      <p>第二个不等式表示水量尚未超过水箱容量。先在两边同时减去初始水量 $30$，不等号方向不变，得到</p>
+      <div class="b-formula">$$12t\le120.$$</div>
+      <p>再在两边同时除以正数 $12$，不等号方向仍不变，得到</p>
+      <div class="b-formula">$$t\le10.$$</div>
+      <p>结合时间不能为负的条件 $t\ge0$，这个实际问题中的定义域是</p>
+      <div class="b-formula">$$0\le t\le10.$$</div>
+      <p>定义域要同时符合解析式的计算要求和实际条件，不能只看解析式。本例中，$t=0$ 表示开始注水，$t=10$ 时水箱刚好装满，过程结束。</p>
+      <p class="b-observe">图中的线段只画从开始注水到刚好装满的过程。注意它的两个端点：它们都属于这个实际函数的图象。</p>
+      <figure class="b-map-figure water-figure">
+        <svg viewBox="0 0 340 300" role="img" aria-labelledby="water-title water-desc">
+        <title id="water-title">注水时间与水量：从零分钟到十分钟</title>
+        <desc id="water-desc">横轴为注水时间，单位分钟；纵轴为水量，单位升。线段从零分钟、三十升到十分钟、一百五十升，包含两个端点。六分钟时水量为一百零二升。装满后不延长线段。</desc>
+        <path class="axis" d="M52,28 V242.0 H282"/>
+        <text x="16" y="18">V / L</text><text x="282" y="286" text-anchor="end">t / min</text>
+        <path class="guide" d="M52,206.0 H52 V242.0"/>
+        <text x="42" y="211.0" text-anchor="end">30</text>
+        <text x="52" y="264" text-anchor="middle">0</text>
+        <path class="guide" d="M52,119.60000000000001 H190 V242.0"/>
+        <text x="42" y="124.60000000000001" text-anchor="end">102</text>
+        <text x="190" y="264" text-anchor="middle">6</text>
+        <path class="guide" d="M52,62.0 H282 V242.0"/>
+        <text x="42" y="67.0" text-anchor="end">150</text>
+        <text x="282" y="264" text-anchor="middle">10</text>
+        <path class="curve" d="M52,206.0 L282,62.0"/>
+        <circle class="point" data-t="0" data-v="30" cx="52" cy="206.0" r="4"/>
+        <circle class="point" data-t="6" data-v="102" cx="190" cy="119.60000000000001" r="4"/>
+        <circle class="point" data-t="10" data-v="150" cx="282" cy="62.0" r="4"/>
+        </svg>
+        <figcaption>线段从 $(0,30)$ 到 $(10,150)$，对应 $V(t)=30+12t$、$0\le t\le10$。实心端点表示开始和装满时刻都包含在内；装满后，这个注水过程已经结束。</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section" id="value" data-source-md="01_用函数表示实际数量关系.md#4-函数值必须回到原问题解释">
+    <h2 class="marker"><span aria-hidden="true">04</span>函数值的含义</h2>
+    <div class="section-body prose">
+      <h2>4. 函数值必须回到原问题解释</h2>
+      <p class="section-intro">确定了允许的时间范围，再计算某个时刻的水量。例如，$6$ 在定义域内，可以把 $t=6$ 代入对应规则：</p>
+      <div class="b-formula">$$V(6)=30+12\times6=102.$$</div>
+      <p>先算乘法，$12\times6=72$，得到新增水量；再加上原有的 $30$，得到 $102$。这也对应图中的点 $(6,102)$。</p>
+      <p>结果表示：<strong>注水 $6$ 分钟后，水箱中有 $102\ \text{L}$ 水。</strong>解释函数值时，输入、输出和单位都要一同说明。</p>
+      <div class="b-boundary-note">
+        <p>如果把 $t=12$ 代入解析式，会算得 <span class="b-math-punct">$174$。</span>但 $12\notin[0,10]$，此时水箱早已装满，当前注水过程已经结束。</p>
+        <p>$12$ 超出了这个实际函数的定义域，所以 $174$ 只是代入解析式得到的数，<strong>不能解释为水箱中的真实水量</strong>。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="summary" data-source-md="01_用函数表示实际数量关系.md#5-一个完整关系要经过四次检查">
+    <h2 class="marker"><span aria-hidden="true">05</span>四次检查</h2>
+    <div class="section-body prose">
+      <h2>5. 一个完整关系要经过四次检查</h2>
+      <p class="section-intro">用函数表示实际数量关系，可以按下面的顺序检查：</p>
+      <ol class="water-checks">
+        <li><strong>变量和固定条件。</strong>哪些量在变化，哪些条件保持不变？</li>
+        <li><strong>输入和输出。</strong>哪个量作为输入，哪个量由它唯一确定？</li>
+        <li><strong>对应规则。</strong>实际叙述怎样写成数量关系和解析式？</li>
+        <li><strong>实际含义。</strong>定义域、函数值和单位是否符合原情境？</li>
+      </ol>
+      <p>这里要准确表示的是一个已经明确的数量关系，不是在多种函数中挑选最合适的模型。</p>
+      <div class="summary-panel"><p class="b-summary-line">实际函数由变量、对应规则和实际定义域共同构成。得到函数值后，还要把它翻译回原来的数量与单位。</p></div>
+    </div>
+  </section>
+</main>
+<nav class="pager" aria-label="文章导航">
+  <a class="pager-prev" href="../../B-03_幂函数/02_典型幂函数的图象与性质/index.html">← 上一篇 · 典型幂函数的图象与性质</a>
+  <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+  <a class="pager-next" href="../../B-05_指数/01_n次方根与分数指数幂/index.html">下一篇 · n 次方根与分数指数幂 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 用函数表示实际数量关系</footer>
+<script>
+  document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+    if (event.target.matches(':focus-visible')) {
+      event.target.scrollIntoView({block:'nearest', inline:'center', behavior:'instant'});
+    }
+  });
+</script>
+</body>
+</html>

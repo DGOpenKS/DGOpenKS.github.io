@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon-180.png">
-  <link rel="stylesheet" href="assets/home.css?v=20260912-2">
+  <link rel="stylesheet" href="assets/home.css?v=20260912-4">
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -55,6 +55,15 @@
 
         <p class="domain-description">初高中衔接已开放，所有章节都可以直接选择。</p>
 
+        <div class="card-visual">
+          <svg class="card-illustration math-illustration" viewBox="0 0 180 100" aria-hidden="true" focusable="false">
+            <path class="illustration-guide" d="M30 14v72M66 14v72M102 14v72M138 14v72M20 22h140M20 50h140M20 78h140" />
+            <path class="illustration-axis" d="M20 78h145m-5-4 5 4-5 4M30 88V10m-4 5 4-5 4 5" />
+            <path d="M40 24Q94 120 148 24" />
+            <circle cx="94" cy="72" r="3" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+
         <div class="browse-math">
           <span>
             <strong>浏览数学章节</strong>
@@ -75,7 +84,16 @@
           <p class="status status-open"><span aria-hidden="true"></span>已开放</p>
         </div>
 
-        <p class="domain-description">从一道题开始，把理解用到解题中。</p>
+        <p class="domain-description">每天一道题，一题一突破。</p>
+        <div class="card-visual">
+          <p class="daily-steps">看题 · 手写 · 复盘</p>
+          <svg class="card-illustration daily-illustration" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <rect class="illustration-paper" x="18" y="12" width="55" height="76" rx="6" />
+            <path class="illustration-guide" d="M29 30h30M29 42h22M29 54h15" />
+            <path d="m51 70 4-14 24-30a5 5 0 0 1 8 6L63 62 51 70Zm4-14 8 6m12-31 8 6" />
+            <path class="illustration-axis" d="M29 76h13" />
+          </svg>
+        </div>
 
         <div class="browse-math">
           <span><strong>进入每日一题</strong></span>
@@ -185,17 +203,34 @@
   </dialog>
 
   <footer class="site-footer">
-    <div class="page-shell footer-inner">
-      <span>© 2026 OpenKS</span>
-      <span>Open Knowledge Space</span>
+    <div class="page-shell">
+      <div class="footer-main">
+        <div class="footer-identity">
+          <a class="brand" href="index.html" aria-label="OpenKS 首页">
+            <img src="assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="OpenKS">
+          </a>
+          <p>让学习变得更加简单。</p>
+        </div>
+        <nav class="footer-nav" aria-label="页脚导航">
+          <a href="#mathematics-content">数学知识</a>
+          <a href="https://openks.cc/daily-question?next=%2Fdaily">每日一题</a>
+          <button type="button" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">联系我们</button>
+        </nav>
+      </div>
+      <div class="footer-inner">
+        <span>© 2026 OpenKS</span>
+        <span>Open Knowledge Space</span>
+      </div>
     </div>
   </footer>
   <script>
     const contactDialog = document.getElementById('contact-dialog');
     const copyStatus = document.getElementById('copy-status');
-    document.getElementById('contact-open').addEventListener('click', () => {
-      copyStatus.textContent = '';
-      contactDialog.showModal();
+    document.querySelectorAll('#contact-open, [data-contact-open]').forEach(button => {
+      button.addEventListener('click', () => {
+        copyStatus.textContent = '';
+        contactDialog.showModal();
+      });
     });
     document.getElementById('copy-wechat').addEventListener('click', async () => {
       try {

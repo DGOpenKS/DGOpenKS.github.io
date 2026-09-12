@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="区分局部函数值大小与最终增长趋势，从相同输入变化解释对数、正幂、指数函数的增长差别，并明确充分大时的比较条件。">
+<title>不同函数增长速度的比较 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+<style>
+.growth-page .growth-table{width:100%;border-collapse:collapse;margin:1.3rem 0;background:var(--paper)}
+.growth-page .growth-table caption{text-align:left;color:var(--blue-deep);font-weight:700;margin-bottom:.7rem}
+.growth-page .growth-table th,.growth-page .growth-table td{padding:.8rem .6rem;border:1px solid var(--line);text-align:center}
+.growth-page .growth-table thead{background:var(--blue-soft);color:var(--blue-deep)}
+.growth-page .growth-table tbody th{font-weight:400}
+.growth-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.growth-page .b-formula{font-size:clamp(1rem,2.4vw,1.2rem)}
+@media(max-width:640px){.growth-page .growth-table th,.growth-page .growth-table td{padding:.7rem .35rem;font-size:.95rem}.growth-page .b-formula{padding:.8rem .4rem}}
+</style>
+</head>
+<body class="growth-page">
+<!-- Source SHA256: 188a6fa1e51207b1754b18803b687a5caff356f974768b3f3bc87c787826bc28 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#local">局部与最终</a>
+<a class="nav-link" href="#change">输入变化</a>
+<a class="nav-link" href="#hierarchy">增长层级</a>
+<a class="nav-link" href="#scope">使用范围</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 17</span><h1>不同函数增长速度的比较</h1>
+<p class="lead">一次函数、正幂函数、指数函数、对数函数都可能随自变量增大而增大，但“都在增大”不等于“增长得一样快”。暂时领先的函数，后来可能被反超。比较相同输入变化带来的结果，可以理解它们的增长差别，并分清局部大小与最终趋势。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="local" data-source-md="03_不同函数增长速度的比较.md#1-局部大小不能代表最终趋势">
+<h2 class="marker"><span aria-hidden="true">01</span>局部与最终</h2>
+<div class="section-body prose"><h2>局部大小不能代表最终趋势</h2>
+<p class="section-intro">先比较 $y=2^x$ 和 $y=2x$。它们都随 $x$ 增大而增大，函数值的大小关系却会改变。</p>
+<table class="growth-table"><caption>同一对函数，大小关系随范围改变</caption>
+<thead><tr><th scope="col">自变量的位置或范围</th><th scope="col">函数值的大小关系</th></tr></thead>
+<tbody>
+<tr><th scope="row">$x=0$</th><td>$2^x&gt;2x$</td></tr>
+<tr><th scope="row">$1&lt;x&lt;2$</th><td>$2^x&lt;2x$</td></tr>
+<tr><th scope="row">$x&gt;2$</th><td>$2^x&gt;2x$</td></tr>
+</tbody></table>
+<p>在 $x=0$ 时，指数函数的值较大；在 $1&lt;x&lt;2$ 时，一次函数的值反而较大；当 $x&gt;2$ 时，指数函数又反超，并迅速拉开差距。</p>
+<p>因此，一张范围有限的图或几个函数值，只能说明所观察范围内的大小关系，不能据此判断全部位置的大小次序。</p>
+<div class="b-definition"><p>“增长最终更快”的准确含义是：存在某个界限 $x_0$，当 $x&gt;x_0$ 时，相应的大小关系始终成立。它不要求这个关系在所有位置都成立。</p></div>
+</div></section>
+<section class="section" id="change" data-source-md="03_不同函数增长速度的比较.md#2-相同的输入变化会带来什么">
+<h2 class="marker"><span aria-hidden="true">02</span>输入变化</h2>
+<div class="section-body prose"><h2>相同的输入变化会带来什么</h2>
+<p class="section-intro">要理解增长差别，可以让自变量按同一种方式变化，再比较各函数值怎样改变。</p>
+<p>先固定 $a&gt;1$、$k&gt;0$。当自变量都增加同一个正数 $h$（$h&gt;0$）时，根据指数运算法则，</p>
+<div class="b-formula">$$a^{x+h}=a^h\cdot a^x.$$</div>
+<p>指数函数每次都按固定倍数 $a^h&gt;1$ 放大。对一次函数，展开括号得到</p>
+<div class="b-formula">$$k(x+h)=kx+kh.$$</div>
+<p>一次函数每次只增加固定量 $kh$。随着这种变化不断重复，指数函数的增长最终会超过一次函数。</p>
+<p>再固定 $b&gt;1$、$c&gt;0$，把正自变量 $x$ 放大为原来的 $q$ 倍，其中 $q&gt;1$。根据对数的积运算法则，</p>
+<div class="b-formula">$$\log_b(qx)=\log_bx+\log_bq.$$</div>
+<p>对数函数只增加固定量 $\log_bq$。同样把 $x$ 放大为 $qx$，幂函数满足</p>
+<div class="b-formula">$$(qx)^c=q^c x^c.$$</div>
+<p>幂函数按固定倍数 $q^c&gt;1$ 放大，因此幂函数的增长最终会超过对数函数。</p>
+<p>在同样的放大下，再比较指数函数的新值与原值。根据同底数幂相除的法则，</p>
+<div class="b-formula">$$\frac{a^{qx}}{a^x}=a^{(q-1)x}.$$</div>
+<p>由于 $a&gt;1$、$q&gt;1$，这个放大倍数会随 $x$ 增大而不断增大；幂函数的放大倍数 $q^c$ 则固定不变。这揭示了指数函数最终超过幂函数的结构原因。</p>
+</div></section>
+<section class="section" id="hierarchy" data-source-md="03_不同函数增长速度的比较.md#3-充分大时的增长层级">
+<h2 class="marker"><span aria-hidden="true">03</span>增长层级</h2>
+<div class="section-body prose"><h2>充分大时的增长层级</h2>
+<p class="section-intro">把这些增长方式放在一起比较，可以得到一个带有范围条件的结论。对<strong>固定的</strong> $a&gt;1$、$b&gt;1$ 和 $c&gt;0$，当 $x$ <strong>充分大</strong>时，</p>
+<div class="b-formula">$$\log_bx&lt;x^c&lt;a^x.$$</div>
+<p>也就是说，在最终趋势中，对数增长慢于任意正幂增长，任意正幂增长又慢于以大于 $1$ 为底的指数增长。</p>
+<p>一次函数 $y=kx$（$k&gt;0$）属于一次幂这一层。因此，在上述底数和系数 $k$ 固定、$x$ 充分大时，也有</p>
+<div class="b-formula">$$\log_bx&lt;kx&lt;a^x.$$</div>
+<p>这里的界限 $x_0$ 会随底数、指数和系数改变。即使 $a$ 很接近 $1$、$c$ 很大，指数函数也只是可能反超得更晚，最终层级并不改变。</p>
+</div></section>
+<section class="section" id="scope" data-source-md="03_不同函数增长速度的比较.md#4-怎样使用这个结论">
+<h2 class="marker"><span aria-hidden="true">04</span>使用范围</h2>
+<div class="section-body prose"><h2>怎样使用这个结论</h2>
+<p class="section-intro">使用增长层级前，先确认参数条件，再确认所比较的范围。</p>
+<p>比较对象应属于这里的递增情形：指数函数和对数函数的底数都大于 $1$，幂指数和一次项系数都为正。</p>
+<p>若问题问的是“当 $x$ 充分大时”或“最终趋势”，可以使用上述层级。若问某个具体区间或某个具体点，就必须计算函数值、研究交点或观察该区间，不能用最终趋势代替局部判断。</p>
+<div class="summary-panel"><p>真正要记住的不是“指数函数处处最大”，而是带有范围的结论：在参数固定且 $x$ 充分大时，对数增长最慢，正幂增长居中，指数增长最快；在有限范围内，大小次序完全可能不同。</p><p class="b-summary-line">比较增长，先确认条件，再分清局部大小与最终趋势。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../02_对数函数的图象与性质/index.html">← 上一篇 · 对数函数的图象与性质</a>
+<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+<a class="pager-next" href="../../B-09_函数的应用（二）/01_函数零点与方程的根/index.html">下一篇 · 函数零点与方程的根 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 不同函数增长速度的比较</footer>
+<script>
+document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+  event.target.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+});
+</script>
+</body>
+</html>

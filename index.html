@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="OpenKS 让学习变得更加简单。数学知识分支现已开放，计算机知识分支正在准备中。">
+  <meta name="description" content="OpenKS 让学习变得更加简单。浏览数学知识，进入每日一题，或联系我们。">
   <meta name="theme-color" content="#f7f9fc">
   <title>OpenKS · 开放知识空间</title>
   <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon-180.png">
-  <link rel="stylesheet" href="assets/home.css?v=20260807-2">
+  <link rel="stylesheet" href="assets/home.css?v=20260912-2">
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -24,14 +24,16 @@
           alt="OpenKS"
         >
       </a>
-      <a
+      <button
         class="daily-entry"
-        href="https://openks.cc/daily-question?next=%2Fdaily"
-        aria-label="进入 OpenKS 每日一题"
+        type="button"
+        id="contact-open"
+        aria-haspopup="dialog"
+        aria-controls="contact-dialog"
       >
-        <span>每日一题</span>
+        <span>联系我们</span>
         <span class="daily-entry-arrow" aria-hidden="true">→</span>
-      </a>
+      </button>
     </div>
   </header>
 
@@ -41,8 +43,8 @@
       <p>从清晰的解释开始，沿着知识结构继续学习。</p>
     </section>
 
-    <section class="domain-grid" aria-label="OpenKS 知识分支">
-      <article class="domain-card math-card" aria-labelledby="math-title">
+    <section class="domain-grid" aria-label="OpenKS 学习入口">
+      <a class="domain-card math-card" href="#mathematics-content" aria-labelledby="math-title">
         <div class="domain-heading">
           <div>
             <p class="domain-label">MATHEMATICS</p>
@@ -53,7 +55,7 @@
 
         <p class="domain-description">初高中衔接已开放，所有章节都可以直接选择。</p>
 
-        <a class="browse-math" href="#mathematics-content">
+        <div class="browse-math">
           <span>
             <strong>浏览数学章节</strong>
             <small>初高中衔接与高中内容</small>
@@ -61,21 +63,25 @@
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 5v13M7 14l5 5 5-5"></path>
           </svg>
-        </a>
-      </article>
+        </div>
+      </a>
 
-      <article class="domain-card computer-card" aria-labelledby="computer-title" aria-describedby="computer-status">
+      <a class="domain-card daily-card" href="https://openks.cc/daily-question?next=%2Fdaily" aria-labelledby="daily-title">
         <div class="domain-heading">
           <div>
-            <p class="domain-label">COMPUTER SCIENCE</p>
-            <h2 id="computer-title">计算机</h2>
+            <p class="domain-label">DAILY QUESTION</p>
+            <h2 id="daily-title">每日一题</h2>
           </div>
-          <p class="status status-closed" id="computer-status">暂未开放</p>
+          <p class="status status-open"><span aria-hidden="true"></span>已开放</p>
         </div>
 
-        <p class="domain-description">这个知识分支正在准备中。</p>
+        <p class="domain-description">从一道题开始，把理解用到解题中。</p>
 
-      </article>
+        <div class="browse-math">
+          <span><strong>进入每日一题</strong></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+        </div>
+      </a>
     </section>
 
     <section class="curriculum-section" aria-labelledby="mathematics-content-title">
@@ -160,11 +166,45 @@
     </section>
   </main>
 
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
+    <div class="contact-heading">
+      <h2 id="contact-title">联系我们</h2>
+      <form method="dialog"><button class="contact-close" aria-label="关闭联系我们" autofocus>×</button></form>
+    </div>
+    <p class="contact-intro">欢迎通过微信与我们联系，也可以关注我们的内容。</p>
+    <div class="wechat-contact">
+      <div><span class="contact-label">微信号</span><strong id="wechat-id">DGOpenKS</strong></div>
+      <button class="daily-entry" id="copy-wechat" type="button">复制微信号</button>
+    </div>
+    <p class="copy-status" id="copy-status" role="status"></p>
+    <nav class="social-links" aria-label="OpenKS 内容平台">
+      <a href="https://www.xiaohongshu.com/user/profile/65bfc376000000000903fa64?xsec_token=YBiIM0xg6Or6YrfLixb6YDrfY-R6SfwRb_jfhyrFLoRSM%3D&amp;xsec_source=app_share&amp;xhsshare=&amp;shareRedId=ODtERkY4Oz82NzUyOTgwNjY8OTpKRjw9&amp;apptime=1789215254&amp;share_id=beefe9aa58b64acbb6188c2938735f9a&amp;share_channel=wechat" target="_blank" rel="noopener noreferrer">小红书<span aria-hidden="true">↗</span></a>
+      <a href="https://v.douyin.com/UZkBctua1oM/" target="_blank" rel="noopener noreferrer">抖音<span aria-hidden="true">↗</span></a>
+      <a href="https://space.bilibili.com/3707002719046006" target="_blank" rel="noopener noreferrer">哔哩哔哩<span aria-hidden="true">↗</span></a>
+    </nav>
+  </dialog>
+
   <footer class="site-footer">
     <div class="page-shell footer-inner">
       <span>© 2026 OpenKS</span>
       <span>Open Knowledge Space</span>
     </div>
   </footer>
+  <script>
+    const contactDialog = document.getElementById('contact-dialog');
+    const copyStatus = document.getElementById('copy-status');
+    document.getElementById('contact-open').addEventListener('click', () => {
+      copyStatus.textContent = '';
+      contactDialog.showModal();
+    });
+    document.getElementById('copy-wechat').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(document.getElementById('wechat-id').textContent);
+        copyStatus.textContent = '微信号已复制';
+      } catch {
+        copyStatus.textContent = '未能自动复制，请长按或选中微信号复制。';
+      }
+    });
+  </script>
 </body>
 </html>

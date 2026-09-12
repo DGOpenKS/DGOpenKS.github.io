@@ -25,14 +25,14 @@
 </div></nav>
 <header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 05</span><h1>函数的奇偶性</h1><p class="lead">判断奇偶性，先检查定义域中的每个 $x$，它的相反数 $-x$ 是否也在定义域中。再比较 $f(-x)$ 和 $f(x)$，看函数值是否相等或互为相反数。判断所用的等式必须对定义域内每个 $x$ 都成立；图象的对称也要与这些等式对应。</p></header>
 <main id="main" tabindex="-1">
-<section class="section" id="domain" data-source-md="03_函数的奇偶性.md#1-第一关是定义域关于原点对称"><h2 class="marker"><span aria-hidden="true">01</span>定义域条件</h2><div class="section-body prose"><h2>1. 第一关是<span class="b-math-punct">定义域</span>关于原点对称</h2>
+<section class="section" id="domain" data-source-md="03_函数的奇偶性.md#1-第一关是定义域关于原点对称"><h2 class="marker"><span aria-hidden="true">01</span>定义域条件</h2><div class="section-body prose"><h2>第一关是<span class="b-math-punct">定义域</span>关于原点对称</h2>
 <p class="section-intro">要比较 $f(-x)$ 和 $f(x)$，$x$ 与 $-x$ 就必须都在定义域中。设函数的定义域为 $D$，所谓 $D$ 关于原点对称，是指</p>
 <div class="b-formula">$$x\in D\quad\Longleftrightarrow\quad -x\in D.$$</div>
 <p>也就是说，定义域中每个非零数的相反数也必须在定义域中。$0$ 若属于定义域，它的相反数仍是自己。</p>
 <div class="b-definition"><p>$\mathbb R$、$[-2,2]$、<span class="b-math-punct">$(-\infty,0)\cup(0,+\infty)$</span> 都关于原点对称，而 $[0,+\infty)$ 不关于原点对称。</p></div>
 <p>如果定义域不关于原点对称，就会有某个 $x\in D$，但 $-x\notin D$。这个 $x$ 有函数值，$-x$ 却没有，因而 $f(-x)$ 没有定义。</p>
 <p>这样就不能对定义域内所有 $x$ 比较 $f(-x)$ 与 $f(x)$，所以这个函数既不是奇函数，也不是偶函数。</p></div></section>
-<section class="section" id="even" data-source-md="03_函数的奇偶性.md#2-偶函数保持函数值不变"><h2 class="marker"><span aria-hidden="true">02</span>偶函数</h2><div class="section-body prose"><h2>2. 偶函数保持函数值不变</h2>
+<section class="section" id="even" data-source-md="03_函数的奇偶性.md#2-偶函数保持函数值不变"><h2 class="marker"><span aria-hidden="true">02</span>偶函数</h2><div class="section-body prose"><h2>偶函数保持函数值不变</h2>
 <p class="section-intro">确认 $x$ 与 $-x$ 都能取到后，再比较 $f(-x)$ 和 $f(x)$。在定义域 $D$ 关于原点对称的前提下，如果对任意 $x\in D$，都有</p>
 <div class="b-formula">$$f(-x)=f(x),$$</div>
 <p>那么 $f(x)$ 是偶函数。例如 $f(x)=x^2+1$ 的定义域是 $\mathbb R$。把解析式中的 $x$ 换成 $-x$，得到</p>
@@ -55,7 +55,7 @@
 </svg>
 <div class="parity-key"><span>A：$(x,f(x))$</span><span>B：$(-x,f(x))$</span></div>
 <figcaption>点 A 与点 B 一样高，说明 $f(-x)=f(x)$。水平虚线连接这两个点，它们关于 $y$ 轴对称。</figcaption></figure></div></section>
-<section class="section" id="odd" data-source-md="03_函数的奇偶性.md#3-奇函数的函数值也变成相反数"><h2 class="marker"><span aria-hidden="true">03</span>奇函数</h2><div class="section-body prose"><h2>3. 奇函数的函数值也变成相反数</h2>
+<section class="section" id="odd" data-source-md="03_函数的奇偶性.md#3-奇函数的函数值也变成相反数"><h2 class="marker"><span aria-hidden="true">03</span>奇函数</h2><div class="section-body prose"><h2>奇函数的函数值也变成相反数</h2>
 <p class="section-intro">若 $x$ 换成 $-x$ 时，函数值也变成相反数，就要比较 $f(-x)$ 和 $-f(x)$。在定义域 $D$ 关于原点对称的前提下，如果对任意 $x\in D$，都有</p>
 <div class="b-formula">$$f(-x)=-f(x),$$</div>
 <p>那么 $f(x)$ 是奇函数。例如 $g(x)=x^3-x$ 的定义域是 $\mathbb R$。把解析式中的 $x$ 换成 $-x$：</p>
@@ -81,7 +81,7 @@
 <figcaption>点 A 与点 B 关于原点对称。连接它们的虚线经过原点，原点到两点的距离相等。</figcaption></figure>
 <p>反过来，若图象关于原点中心对称，对于图象上的任意一点 $(x,g(x))$，点 $(-x,-g(x))$ 也在图象上。</p>
 <p>这说明 $-x\in D$，并且 $g(-x)=-g(x)$。对定义域内每个 $x$ 都是如此，定义域条件和函数值关系都满足，所以 $g$ 是奇函数。</p></div></section>
-<section class="section" id="boundary" data-source-md="03_函数的奇偶性.md#4-不是偶函数，也不一定就是奇函数"><h2 class="marker"><span aria-hidden="true">04</span>两个反例</h2><div class="section-body prose"><h2>4. 不是偶函数，也不一定就是奇函数</h2>
+<section class="section" id="boundary" data-source-md="03_函数的奇偶性.md#4-不是偶函数，也不一定就是奇函数"><h2 class="marker"><span aria-hidden="true">04</span>两个反例</h2><div class="section-body prose"><h2>不是偶函数，也不一定就是奇函数</h2>
 <p class="section-intro">定义域关于原点对称，只说明：$x$ 在定义域中时，$-x$ 也在其中。它并不保证 $f(-x)$ 与 $f(x)$ 相等或互为相反数。</p>
 <p>例如 $h(x)=x+1$，定义域为 $\mathbb R$，关于原点对称。把 $-x$ 代入得到 $h(-x)$；把 $h(x)$ 整体取相反数得到 $-h(x)$。比较这三个式子：</p>
 <div class="b-formula">$$\begin{aligned}h(-x)&=-x+1,\\h(x)&=x+1,\\-h(x)&=-x-1.\end{aligned}$$</div>
@@ -89,7 +89,7 @@
 <p>因此，$h(-x)=h(x)$ 与 $h(-x)=-h(x)$ 在 $x=1$ 时都不成立，不能对定义域内每个 $x$ 成立。这个函数既不是偶函数，也不是奇函数，可见“不是偶函数”并不等于“是奇函数”。</p>
 <div class="b-boundary-note"><p>再看 $p(x)=x^2$，规定定义域为 $[0,+\infty)$。$1$ 在定义域中，$-1$ 却不在，所以定义域不关于原点对称。</p>
 <p>即使把 $-x$ 代入 $x^2$ 能算出一个式子，也不能说这个函数是偶函数：在 $x=1$ 时，函数根本没有规定 $-1$ 对应的值。</p></div></div></section>
-<section class="section" id="summary" data-source-md="03_函数的奇偶性.md#5-判断顺序比记结论更重要"><h2 class="marker"><span aria-hidden="true">05</span>判断顺序</h2><div class="section-body prose"><h2>5. 判断顺序比记结论更重要</h2>
+<section class="section" id="summary" data-source-md="03_函数的奇偶性.md#5-判断顺序比记结论更重要"><h2 class="marker"><span aria-hidden="true">05</span>判断顺序</h2><div class="section-body prose"><h2>判断顺序比记结论更重要</h2>
 <div class="summary-panel"><p>先检查定义域是否关于原点对称。若是，再计算并化简 $f(-x)$，判断 $f(-x)=f(x)$ 或 $f(-x)=-f(x)$ 是否对定义域内每个 $x$ 都成立。</p>
 <p>定义域不对称，或两个等式都不能对定义域内每个 $x$ 成立，函数就既不是奇函数，也不是偶函数。</p>
 <p>图象可以帮助观察，但不能只凭几个点判断整个函数的奇偶性。仍要检查定义域，并说明相应的等式对定义域内每个 $x$ 都成立。</p>
@@ -98,6 +98,7 @@
   <nav class="pager" aria-label="文章导航">
     <a class="pager-prev" href="../../B-02_函数的基本性质/02_函数的最大值与最小值/index.html">← 上一篇 · 函数的最大值与最小值</a>
     <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../../B-03_幂函数/01_幂函数的概念/index.html">下一篇 · 幂函数的概念 →</a>
   </nav>
 <footer class="footer">OpenKS · B 函数图像与变化关系 · 函数的奇偶性</footer>
 <script>

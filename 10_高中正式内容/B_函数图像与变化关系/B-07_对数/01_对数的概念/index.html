@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从已知底数和幂值求指数理解对数，分清底数、真数与对数值，说明三个定义条件，并认识常用对数和自然对数。">
+  <title>对数的概念 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .log-concept-page .log-roles { width:100%; table-layout:fixed; border-collapse:collapse; margin:1.2rem 0; }
+    .log-concept-page .log-roles caption { margin-bottom:.7rem; color:var(--blue-deep); font-weight:700; text-align:left; }
+    .log-concept-page .log-roles th, .log-concept-page .log-roles td { padding:.8rem .65rem; border:1px solid var(--line); vertical-align:top; }
+    .log-concept-page .log-roles thead { color:var(--blue-deep); background:var(--blue-soft); }
+    .log-concept-page .log-roles tbody { background:var(--paper); }
+    .log-concept-page .log-roles th:first-child { width:18%; }
+    @media(max-width:640px) {
+      .log-concept-page .log-roles th, .log-concept-page .log-roles td { padding:.65rem .4rem; font-size:.9rem; }
+    }
+  </style>
+</head>
+<body class="log-concept-page">
+  <!-- Source SHA256: 788c182c3ad86b05d1429cf356ffaf7acb645ddab7a0497bcacf220e7b871f4c -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#definition">对数定义</a>
+      <a class="nav-link" href="#conditions">三个条件</a>
+      <a class="nav-link" href="#conversion">两种写法</a>
+      <a class="nav-link" href="#values">两个对数值</a>
+      <a class="nav-link" href="#notation">常用记号</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 13</span>
+    <h1>对数的概念</h1>
+    <p class="lead">已知底数和指数，可以用乘方求结果；反过来，已知底数和结果，要找的就是指数。对数是这个未知指数的名称。从指数等式出发，就能理解对数的写法，以及底数和真数为什么有条件限制。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="definition" data-source-md="01_对数的概念.md#1-从指数等式定义对数">
+      <h2 class="marker"><span aria-hidden="true">01</span>对数定义</h2>
+      <div class="section-body prose">
+        <h2>从指数等式定义对数</h2>
+        <p class="section-intro">对数与指数描述的是同一个关系。先写出乘方的等式，再给其中要找的指数一个名称。</p>
+        <div class="b-definition">
+          <p>设 <span class="b-math-punct">$a&gt;0$</span> 且 <span class="b-math-punct">$a\ne1$，</span><span class="b-math-punct">$N&gt;0$。</span>如果</p>
+          <div class="b-formula">$$a^x=N,$$</div>
+          <p>那么指数 $x$ 叫作<strong>以 $a$ 为底 $N$ 的对数</strong>，记作 <span class="b-math-punct">$x=\log_aN$。</span></p>
+        </div>
+        <p>因此，指数式和对数式可以相互改写：</p>
+        <div class="b-formula">$$a^x=N\quad\Longleftrightarrow\quad\log_aN=x.$$</div>
+        <p>左边把 $x$ 放在指数位置，右边把同一个 $x$ 写成对数的值。$a$ 叫作对数的<strong>底数</strong>，$N$ 叫作<strong>真数</strong>；$\log_aN$ 的值，就是使 $a$ 的这个次幂等于 $N$ 的指数。</p>
+        <p class="b-observe">对应两种写法，留意三个量的位置与含义。</p>
+        <table class="log-roles">
+          <caption>同一个指数关系中的三个量</caption>
+          <thead><tr><th scope="col">量</th><th scope="col">在 $a^x=N$ 中</th><th scope="col">在 $\log_aN=x$ 中</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$a$</th><td>乘方的底数</td><td>对数的底数</td></tr>
+            <tr><th scope="row">$x$</th><td>指数</td><td>对数的值</td></tr>
+            <tr><th scope="row">$N$</th><td>乘方的结果</td><td>真数</td></tr>
+          </tbody>
+        </table>
+        <p>换成对数式后，底数、指数和结果都没有改变。对数式把要找的指数写了出来。</p>
+      </div>
+    </section>
+    <section class="section" id="conditions" data-source-md="01_对数的概念.md#2-三个条件为什么不能省">
+      <h2 class="marker"><span aria-hidden="true">02</span>三个条件</h2>
+      <div class="section-body prose">
+        <h2>三个条件为什么不能省</h2>
+        <p class="section-intro">要用对数表示一个确定的指数，就必须保证：给定真数后，这个指数存在，而且只有一个。</p>
+        <p>当 $a&gt;0$ 且 $a\ne1$ 时，$y=a^x$ 在全体实数上有意义，值域为 <span class="b-math-punct">$(0,+\infty)$，</span>并且严格单调。值域说明每个正数 $N$ 都能取到，严格单调说明它只会对应一个指数。</p>
+        <p>要求 <strong>$a&gt;0$</strong>，是因为当 $a\le0$ 时，实数指数幂不能对所有实数指数作统一定义。</p>
+        <p>要求 <strong>$a\ne1$</strong>，是因为 $1^x$ 始终等于 <span class="b-math-punct">$1$。</span>当 $N=1$ 时，所有实数指数都符合，指数不唯一；当 $N\ne1$ 时，又找不到符合的指数。因此，$1$ 不能作为对数的底数。</p>
+        <p>要求 <strong>$N&gt;0$</strong>，是因为合法底数的任意实数次幂 $a^x$ 都大于 <span class="b-math-punct">$0$，</span>不可能等于 $0$ 或负数。</p>
+        <div class="b-boundary-note">
+          <p>真数为正，并不表示对数值一定为正。真数是乘方的结果，对数值是指数；指数可以是正数、零或负数。</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="conversion" data-source-md="01_对数的概念.md#3-在两种写法之间来回转换">
+      <h2 class="marker"><span aria-hidden="true">03</span>两种写法</h2>
+      <div class="section-body prose">
+        <h2>在两种写法之间来回转换</h2>
+        <p class="section-intro">用一个负指数的例子，可以同时看清两种写法的对应关系，以及真数与对数值的区别。</p>
+        <p>$2$ 的 $-3$ 次幂等于 <span class="b-math-punct">$\frac18$，</span>写成指数式就是</p>
+        <div class="b-formula">$$2^{-3}=\frac18.$$</div>
+        <p>按对数的定义，同一个关系可以写成</p>
+        <div class="b-formula">$$\log_2\frac18=-3.$$</div>
+        <p>第二式读作“以 $2$ 为底，$\frac18$ 的对数是 $-3$”。底数仍是 <span class="b-math-punct">$2$，</span>真数是乘方的结果 <span class="b-math-punct">$\frac18$，</span>而对数值是指数 <span class="b-math-punct">$-3$。</span>这里真数为正，对数值却为负。</p>
+        <p>从对数式回到指数式，只需把 $-3$ 放回 $2$ 的指数位置。三个量没有改变，只是被询问的量换了位置。</p>
+      </div>
+    </section>
+    <section class="section" id="values" data-source-md="01_对数的概念.md#4-两个可以直接得到的对数值">
+      <h2 class="marker"><span aria-hidden="true">04</span>两个对数值</h2>
+      <div class="section-body prose">
+        <h2>两个可以直接得到的对数值</h2>
+        <p class="section-intro">同样从指数等式出发，就能直接得到两个常用的对数值。以下都要求 $a&gt;0$ 且 <span class="b-math-punct">$a\ne1$。</span></p>
+        <div class="b-function-check">
+          <article>
+            <h3>真数为 $1$</h3>
+            <p>因为 $a$ 的 $0$ 次幂等于 <span class="b-math-punct">$1$，</span>即 <span class="b-math-punct">$a^0=1$，</span>所以使幂等于 $1$ 的指数就是 <span class="b-math-punct">$0$：</span></p>
+            <div class="b-formula">$$\log_a1=0.$$</div>
+          </article>
+          <article>
+            <h3>真数与底数相同</h3>
+            <p>因为 $a$ 的 $1$ 次幂等于 <span class="b-math-punct">$a$，</span>即 <span class="b-math-punct">$a^1=a$，</span>所以使幂等于 $a$ 的指数就是 <span class="b-math-punct">$1$：</span></p>
+            <div class="b-formula">$$\log_aa=1.$$</div>
+          </article>
+        </div>
+        <p>这两个等式都是对数定义的直接结果。分别回到 $a^0=1$ 和 <span class="b-math-punct">$a^1=a$，</span>就能说明它们的理由，不需要另记一套规则。</p>
+      </div>
+    </section>
+    <section class="section" id="notation" data-source-md="01_对数的概念.md#5-常用对数与自然对数">
+      <h2 class="marker"><span aria-hidden="true">05</span>常用记号</h2>
+      <div class="section-body prose">
+        <h2>常用对数与自然对数</h2>
+        <p class="section-intro">有两个底数经常使用，因此各有一种简写。记号变了，对数表示指数的含义没有改变。</p>
+        <p>以 $10$ 为底的对数叫作<strong>常用对数</strong>，通常把 $\log_{10}N$ 简记为 <span class="b-math-punct">$\lg N$：</span></p>
+        <div class="b-formula">$$\lg N=\log_{10}N.$$</div>
+        <p>它表示使 $10^x=N$ 成立的指数 <span class="b-math-punct">$x$。</span></p>
+        <p>以无理数 $e=2.71828\ldots$ 为底的对数叫作<strong>自然对数</strong>，通常把 $\log_eN$ 简记为 <span class="b-math-punct">$\ln N$：</span></p>
+        <div class="b-formula">$$\ln N=\log_eN.$$</div>
+        <p>它表示使 $e^x=N$ 成立的指数 <span class="b-math-punct">$x$。</span>这两种记号都仍要求真数 <span class="b-math-punct">$N&gt;0$。</span></p>
+        <div class="summary-panel">
+          <p>理解对数时，始终回到它所对应的指数关系。</p>
+          <p class="b-summary-line">$\log_aN$ 回答的是：底数 $a$ 的多少次幂等于正数 <span class="b-math-punct">$N$？</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-06_指数函数/02_指数函数的图象与性质/index.html">← 上一篇 · 指数函数的图象与性质</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_对数的运算与换底公式/index.html">下一篇 · 对数的运算与换底公式 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 对数的概念</footer>
+</body>
+</html>

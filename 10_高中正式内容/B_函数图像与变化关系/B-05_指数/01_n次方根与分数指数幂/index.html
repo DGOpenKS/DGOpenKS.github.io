@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从乘方的逆向问题理解 n 次方根，分清奇偶根与根式的含义，再用开方、乘方和取倒数解释分数指数幂。">
+  <title>n 次方根与分数指数幂 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .roots-page .roots-table { width:100%; border-collapse:collapse; margin:1rem 0; table-layout:fixed; }
+    .roots-page .roots-table caption { text-align:left; color:var(--blue-deep); font-weight:700; margin-bottom:.75rem; }
+    .roots-page .roots-table th, .roots-page .roots-table td { padding:.8rem .65rem; border:1px solid var(--line); vertical-align:top; overflow-wrap:break-word; }
+    .roots-page .roots-table thead { background:var(--blue-soft); color:var(--blue-deep); }
+    .roots-page .roots-table th:first-child { width:24%; }
+    .roots-page .roots-table td { background:var(--paper); }
+    .roots-page .roots-table small { display:block; margin-top:.35rem; font-size:.88em; color:var(--body); }
+    .roots-page .roots-symbol { display:block; margin:.6rem 0; color:var(--blue-deep); font-size:1.3rem; }
+    @media(max-width:640px) {
+      .roots-page .roots-table th, .roots-page .roots-table td { padding:.65rem .35rem; font-size:.9rem; }
+    }
+  </style>
+</head>
+<body class="roots-page">
+<!-- Source SHA256: d33af0f06d84b0d5348a48763b7fb870ec9180588a0299b998fc618ad967def6 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#roots">n 次方根</a>
+      <a class="nav-link" href="#sign">根号与符号</a>
+      <a class="nav-link" href="#fraction">分数指数</a>
+      <a class="nav-link" href="#calculation">计算步骤</a>
+      <a class="nav-link" href="#boundary">使用边界</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 09</span>
+    <h1>$n$ 次方根与分数指数幂</h1>
+    <p class="lead">正整数指数表示连乘，分数指数却不能按“连乘几次”理解。先从乘方反过来认识 $n$ 次方根，再把开方和乘方写进同一个指数。计算前，还要分清根指数的奇偶性、根号的含义和底数的条件。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="roots" data-source-md="01_n次方根与分数指数幂.md#1-从乘方反过来看-n-次方根">
+      <h2 class="marker"><span aria-hidden="true">01</span>n 次方根</h2>
+      <div class="section-body prose">
+        <h2>从乘方反过来看 $n$ 次方根</h2>
+        <p class="section-intro">已知一个数的 $n$ 次方，怎样反过来找这个数？$n$ 次方根就是对这个问题的回答。</p>
+        <div class="b-definition">
+          <p>设 $n&gt;1$，且 $n$ 是整数。如果一个实数 $x$ 满足</p>
+          <div class="b-formula">$$x^n=a,$$</div>
+          <p>那么 $x$ 叫作 $a$ 的 $n$ 次方根。</p>
+        </div>
+        <p>判断 $x$ 是否为 $a$ 的 $n$ 次方根，就检查 $x^n$ 是否等于 $a$。实数范围内有几个根，取决于 $n$ 的奇偶性和 $a$ 的符号。</p>
+        <p>当 $n$ 为奇数时，$x^n$ 随 $x$ 增大而严格增大，并且保留 $x$ 的正负号。因此，每个实数 $a$ 都有且只有一个 $n$ 次方根，记作 $\sqrt[n]{a}$。$a$ 为正时根为正，$a$ 为负时根为负，$a=0$ 时根为 $0$。</p>
+        <p>当 $n$ 为偶数时，$x^n$ 不会是负数，而且 $x$ 与 $-x$ 的 $n$ 次方相等。因此，正数有两个互为相反数的实根，$0$ 只有一个根，负数没有实根。</p>
+        <p class="b-observe">把 $a$ 的三种情况并排比较，就能看清奇数次方根与偶数次方根的数量区别。</p>
+        <table class="roots-table">
+          <caption>方程 $x^n=a$ 的实根（$n&gt;1$，$n$ 为整数）</caption>
+          <thead><tr><th scope="col">$a$ 的条件</th><th scope="col">$n$ 为奇数</th><th scope="col">$n$ 为偶数</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$a&gt;0$</th><td>$\sqrt[n]{a}$<small>一个正根</small></td><td>$\pm\sqrt[n]{a}$<small>两个根，互为相反数</small></td></tr>
+            <tr><th scope="row">$a=0$</th><td>$0$<small>只有一个根</small></td><td>$0$<small>只有一个根</small></td></tr>
+            <tr><th scope="row">$a&lt;0$</th><td>$\sqrt[n]{a}$<small>一个负根</small></td><td>没有实根</td></tr>
+          </tbody>
+        </table>
+        <p>表中列的是方程的所有实根。根式 $\sqrt[n]{a}$ 本身表示一个数，不能把它与方程的两个根混在一起。</p>
+        <div class="b-boundary-note">
+          <p>在 $\sqrt[n]{a}$ 中，$n$ 叫作<strong>根指数</strong>，$a$ 叫作<strong>被开方数</strong>。当 $n$ 为偶数且 $a&gt;0$ 时，$\sqrt[n]{a}$ 只表示正根；另一个根写成 $-\sqrt[n]{a}$。要表示这两个根，才写 $\pm\sqrt[n]{a}$。</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="sign" data-source-md="01_n次方根与分数指数幂.md#2-根号不一定还原原来的符号">
+      <h2 class="marker"><span aria-hidden="true">02</span>根号与符号</h2>
+      <div class="section-body prose">
+        <h2>根号不一定还原原来的符号</h2>
+        <p class="section-intro">把一个实数 $a$ 先取 $n$ 次方，再开 $n$ 次方，并不总能得到原来的 $a$。关键仍是 $n$ 的奇偶性。</p>
+        <p>奇数次幂保留符号，开奇数次方就能还原原数：</p>
+        <div class="b-formula">$$\sqrt[n]{a^n}=a \qquad (n\text{ 为奇数}).$$</div>
+        <p>偶数次幂会失去原数的正负信息，根号表示的又是非负根，所以得到的是 $a$ 的绝对值：</p>
+        <div class="b-formula">$$\sqrt[n]{a^n}=|a| \qquad (n\text{ 为偶数}).$$</div>
+        <p>例如，先算 $-3$ 的平方，得到</p>
+        <div class="b-formula">$$(-3)^2=9.$$</div>
+        <p>再开平方。$\sqrt{9}$ 表示非负的平方根，因此 $\sqrt{9}=3$。把这两步连起来：</p>
+        <div class="b-formula">$$\sqrt{(-3)^2}=3=|-3|.$$</div>
+        <p>结果是 $3$，不能写成 $-3$。绝对值保留了“结果必须非负”这个条件。</p>
+      </div>
+    </section>
+    <section class="section" id="fraction" data-source-md="01_n次方根与分数指数幂.md#3-用根式定义正分数指数幂">
+      <h2 class="marker"><span aria-hidden="true">03</span>分数指数</h2>
+      <div class="section-body prose">
+        <h2>用根式定义正分数指数幂</h2>
+        <p class="section-intro">有了根式，就可以把“开方”和“乘方”写进同一个指数。分母说明开几次方，分子说明取几次方。</p>
+        <div class="b-definition">
+          <p>设 $a&gt;0$，$m,n$ 是正整数，$n&gt;1$。把分数 $\frac mn$ 约成最简形式后，定义</p>
+          <div class="b-formula">$$\begin{aligned}a^{\frac mn}&amp;=\sqrt[n]{a^m}\\&amp;=(\sqrt[n]{a})^m.\end{aligned}$$</div>
+        </div>
+        <p>$\sqrt[n]{a^m}$ 是先取 $m$ 次方，再开 $n$ 次方；$(\sqrt[n]{a})^m$ 是先开 $n$ 次方，再取 $m$ 次方。两者相等，是因为它们都是正数，各自的 $n$ 次方都等于 $a^m$，而一个正数的正 $n$ 次方根只有一个。</p>
+        <p>若指数前有负号，就沿用负整数指数“取倒数”的意义：</p>
+        <div class="b-formula">$$\begin{aligned}a^{-\frac mn}&amp;=\frac{1}{a^{\frac mn}}\\&amp;=\frac{1}{\sqrt[n]{a^m}}.\end{aligned}$$</div>
+        <p>第一个等号把负指数改写为正指数幂的倒数；第二个等号按刚才的定义，把分母中的分数指数幂写成根式。这里仍要求 $a&gt;0$，这样根式有意义，分母也不会为 $0$。</p>
+        <div class="b-boundary-note">
+          <p>另规定：$0$ 的正分数指数幂为 $0$。$0$ 的负分数指数幂没有意义，因为取倒数时不能用 $0$ 作分母。</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="calculation" data-source-md="01_n次方根与分数指数幂.md#4-顺着指数的结构计算">
+      <h2 class="marker"><span aria-hidden="true">04</span>计算步骤</h2>
+      <div class="section-body prose">
+        <h2>顺着指数的结构计算</h2>
+        <p class="section-intro">以 $16^{-\frac34}$ 为例。底数 $16&gt;0$，指数中的 $\frac34$ 已是最简分数，可以按定义计算。</p>
+        <p>先根据负指数取倒数：</p>
+        <div class="b-formula">$$16^{-\frac34}=\frac{1}{16^{\frac34}}.$$</div>
+        <p>把分母 $4$ 读作“四次方根”，把分子 $3$ 读作“三次方”，将分数指数幂改写成根式：</p>
+        <div class="b-formula">$$\frac{1}{16^{\frac34}}=\frac{1}{(\sqrt[4]{16})^3}.$$</div>
+        <p>因为 $2^4=16$，且四次方根的根号取正根，所以 $\sqrt[4]{16}=2$：</p>
+        <div class="b-formula">$$\frac{1}{(\sqrt[4]{16})^3}=\frac{1}{2^3}.$$</div>
+        <p>最后算出 $2^3=8$，得到</p>
+        <div class="b-formula">$$\frac{1}{2^3}=\frac18.$$</div>
+        <p class="b-observe">回看指数 $-\frac34$，三个部分分别对应刚才的三种运算。</p>
+        <div class="b-object-grid" aria-label="负号、分母和分子与运算的对应关系">
+          <article><h3>负号：取倒数</h3><span class="roots-symbol">$-$</span><p>将 $16^{\frac34}$ 放到分母，写成它的倒数。</p></article>
+          <article><h3>分母：开方</h3><span class="roots-symbol">$4$</span><p>开四次方，得到 $\sqrt[4]{16}=2$。</p></article>
+          <article><h3>分子：乘方</h3><span class="roots-symbol">$3$</span><p>取三次方，得到 $2^3=8$。</p></article>
+        </div>
+        <p>取倒数、开方、乘方依次对应指数中的负号、分母和分子，所以 $16^{-\frac34}=\frac18$。</p>
+      </div>
+    </section>
+    <section class="section" id="boundary" data-source-md="01_n次方根与分数指数幂.md#5-使用前先检查边界">
+      <h2 class="marker"><span aria-hidden="true">05</span>使用边界</h2>
+      <div class="section-body prose">
+        <h2>使用前先检查边界</h2>
+        <p class="section-intro">运算步骤确定后，还要检查式子有没有意义。根式与分数指数幂，各有需要先确认的条件。</p>
+        <p>看到 $\sqrt[n]{a}$，先检查根指数的奇偶性和被开方数的符号。看到 $a^{m/n}$，先把指数约成最简分数，再看底数：$a&gt;0$ 时可以直接使用分数指数的定义；底数为 $0$ 时，只能使用单独规定的正分数指数幂。</p>
+        <div class="b-boundary-note">
+          <p>奇数次方根允许被开方数为负数。例如</p>
+          <div class="b-formula">$$\sqrt[3]{-8}=-2.$$</div>
+          <p>这是奇数次方根的结论，不能据此把本节要求正底数的分数指数定义任意扩展到负底数。</p>
+        </div>
+        <div class="summary-panel">
+          <p>$n$ 次方根是乘方的逆向问题。分数指数把开方和乘方统一进了同一种指数记号。</p>
+          <p class="b-summary-line">根指数的奇偶性与底数条件，决定这些式子能否在实数范围内成立。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-04_函数的应用（一）/01_用函数表示实际数量关系/index.html">← 上一篇 · 用函数表示实际数量关系</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_无理数指数幂与实数指数幂/index.html">下一篇 · 无理数指数幂与实数指数幂 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · n 次方根与分数指数幂</footer>
+</body>
+</html>

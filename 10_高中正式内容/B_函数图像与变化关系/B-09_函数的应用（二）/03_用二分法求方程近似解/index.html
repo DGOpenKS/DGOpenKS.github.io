@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从连续且端点异号的区间出发，理解二分法怎样保留零点，用区间长度控制误差，并完整观察七次二分计算。">
+<title>用二分法求方程近似解 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+<style>
+.bisection-page .table-scroll{max-width:100%;overflow-x:auto;margin:1.3rem 0}
+.bisection-page .bisection-table{width:100%;min-width:440px;border-collapse:collapse;background:var(--paper);font-variant-numeric:tabular-nums}
+.bisection-page .bisection-table caption{text-align:left;color:var(--blue-deep);font-weight:700;margin-bottom:.7rem}
+.bisection-page .bisection-table th,.bisection-page .bisection-table td{padding:.8rem .6rem;border:1px solid var(--line);text-align:center}
+.bisection-page .bisection-table thead{background:var(--blue-soft);color:var(--blue-deep)}
+.bisection-page .bisection-table tbody th{font-weight:400}
+.bisection-page .table-scroll:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.bisection-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.bisection-page .b-formula{font-size:clamp(1rem,2.4vw,1.2rem)}
+@media(max-width:640px){.bisection-page .bisection-table th,.bisection-page .bisection-table td{padding:.7rem .35rem;font-size:.95rem}.bisection-page .b-formula{padding:.8rem .4rem}}
+</style>
+</head>
+<body class="bisection-page">
+<!-- Source SHA256: 341abed7ab60b0f53924b695ccf61e885dde09fd0dcb8cab12fa94c38c6c0c7a -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#conditions">开始条件</a>
+<a class="nav-link" href="#update">更新区间</a>
+<a class="nav-link" href="#error">误差控制</a>
+<a class="nav-link" href="#example">完整例子</a>
+<a class="nav-link" href="#limits">方法边界</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 20</span><h1>用二分法求方程近似解</h1>
+<p class="lead">当方程 $f(x)=0$ 难以求出精确解时，可以先找到一个确定含有零点的区间，再反复把区间长度缩小一半。二分法的关键是每次都保留一个仍能保证零点存在的小区间。顺着区间的更新过程，可以说明近似值怎样得到、误差怎样控制。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="conditions" data-source-md="03_用二分法求方程近似解.md#1-什么时候可以开始二分">
+<h2 class="marker"><span aria-hidden="true">01</span>开始条件</h2>
+<div class="section-body prose"><h2>什么时候可以开始二分</h2>
+<p>先选定初始闭区间 $[a_0,b_0]$。要在这个区间内开始二分，必须先确认零点存在。</p>
+<div class="b-definition"><p>若函数 $f$ 在 $[a_0,b_0]$ 上连续，并且两端的函数值异号，即</p>
+<div class="b-formula">$$f(a_0)f(b_0)&lt;0,$$</div>
+<p>那么零点存在定理保证开区间 $(a_0,b_0)$ 内<strong>至少有一个零点</strong>。</p></div>
+<p>二分法将逐步逼近其中一个由异号区间锁定的零点，但不负责找出区间内的所有零点。</p>
+</div></section>
+<section class="section" id="update" data-source-md="03_用二分法求方程近似解.md#2-每一次如何更新区间">
+<h2 class="marker"><span aria-hidden="true">02</span>更新区间</h2>
+<div class="section-body prose"><h2>每一次如何更新区间</h2>
+<p class="section-intro">有了连续且端点异号的区间，接下来要判断保留哪一半。把当前区间记为 $[a,b]$，先取中点</p>
+<div class="b-formula">$$m=\frac{a+b}{2}.$$</div>
+<p>若 $f(m)=0$，就已经找到精确零点，可以停止。若 $f(m)\ne0$，它必定与两个异号端点中的一个同号、与另一个异号。因此，按下面的规则保留端点异号的一半：</p>
+<div class="b-formula">$$[a,b]\leftarrow\begin{cases}[a,m],&amp;f(a)f(m)&lt;0,\\\left[m,b\right],&amp;f(m)f(b)&lt;0.\end{cases}$$</div>
+<p>函数在新区间上仍连续，两端的函数值仍异号，所以其中仍至少有一个零点。每次更新都保留了这个保证，同时把区间长度减半。</p>
+<p>经过 $n$ 次更新，区间长度变为</p>
+<div class="b-formula">$$b_n-a_n=\frac{b_0-a_0}{2^n}.$$</div>
+<p>分母中的 $2^n$ 来自连续 $n$ 次减半。因此，只要继续二分，含零点区间就会按可控的速度缩小。</p>
+</div></section>
+<section class="section" id="error" data-source-md="03_用二分法求方程近似解.md#3-精度怎样由区间长度控制">
+<h2 class="marker"><span aria-hidden="true">03</span>误差控制</h2>
+<div class="section-body prose"><h2>精度怎样由区间长度控制</h2>
+<p class="section-intro">区间缩小到什么程度，决定了近似值能有多精确。设保留区间 $[a_n,b_n]$ 中的某个零点为 $x^*$，取区间中点作为近似值：</p>
+<div class="b-formula">$$\widetilde{x}=\frac{a_n+b_n}{2}.$$</div>
+<p>零点位于两个端点之间，中点到任一端点的距离都是区间长度的一半。因此，中点与零点的距离不会超过这个长度：</p>
+<div class="b-formula">$$\left|\widetilde{x}-x^*\right|\le\frac{b_n-a_n}{2}.$$</div>
+<p>若采用更保守的停止标准 $b_n-a_n&lt;\varepsilon$，则从区间中取任意一个数作为近似值，它与该零点的误差都小于 $\varepsilon$。</p>
+<div class="b-boundary-note"><p>最后要用近似符号“$\approx$”表达结果，不能把近似值写成与零点精确相等。</p></div>
+</div></section>
+<section class="section" id="example" data-source-md="03_用二分法求方程近似解.md#4-完整看一次区间缩小">
+<h2 class="marker"><span aria-hidden="true">04</span>完整例子</h2>
+<div class="section-body prose"><h2>完整看一次区间缩小</h2>
+<p class="section-intro">用方程 $2x^3+3x-3=0$ 看一次完整计算。记 $f(x)=2x^3+3x-3$，它是多项式函数，在 $[0,1]$ 上连续。代入两个端点，得到</p>
+<div class="b-formula">$$f(0)=-3&lt;0,\qquad f(1)=2&gt;0.$$</div>
+<p>所以初始区间 $[0,1]$ 内有零点。依次取中点，再根据函数值的符号保留异号的一半。表中每一行的“保留区间”就是下一次二分的起点。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="七次二分计算表，可横向滚动">
+<table class="bisection-table"><caption>从初始区间 [0, 1] 开始的七次二分</caption>
+<thead><tr><th scope="col">次数</th><th scope="col">中点 $m$</th><th scope="col">$f(m)$ 的符号</th><th scope="col">保留区间</th></tr></thead>
+<tbody>
+<tr><th scope="row">1</th><td>0.5</td><td>−</td><td>[0.5, 1]</td></tr>
+<tr><th scope="row">2</th><td>0.75</td><td>+</td><td>[0.5, 0.75]</td></tr>
+<tr><th scope="row">3</th><td>0.625</td><td>−</td><td>[0.625, 0.75]</td></tr>
+<tr><th scope="row">4</th><td>0.6875</td><td>−</td><td>[0.6875, 0.75]</td></tr>
+<tr><th scope="row">5</th><td>0.71875</td><td>−</td><td>[0.71875, 0.75]</td></tr>
+<tr><th scope="row">6</th><td>0.734375</td><td>−</td><td>[0.734375, 0.75]</td></tr>
+<tr><th scope="row">7</th><td>0.7421875</td><td>+</td><td>[0.734375, 0.7421875]</td></tr>
+</tbody></table></div>
+<p>最后两个端点处的函数值分别为</p>
+<div class="b-formula">$$f(0.734375)\approx-0.004768&lt;0,$$</div>
+<div class="b-formula">$$f(0.7421875)\approx0.044219&gt;0.$$</div>
+<p>两端仍异号，说明保留区间仍含有零点。此时区间长度为</p>
+<div class="b-formula">$$0.7421875-0.734375=0.0078125&lt;0.01.$$</div>
+<p>取中点 $0.73828125$，再按小数形式表示，可写出近似解 $x\approx0.74$。由于 $0.74$ 本身也在最终区间内，这个表示仍满足误差小于 $0.01$。</p>
+</div></section>
+<section class="section" id="limits" data-source-md="03_用二分法求方程近似解.md#5-二分法能与不能保证的事">
+<h2 class="marker"><span aria-hidden="true">05</span>方法边界</h2>
+<div class="section-body prose"><h2>二分法能与不能保证的事</h2>
+<p class="section-intro">回到整个过程，二分法的保证始终来自两个条件：函数连续，区间两端的函数值异号。在这两个条件下，含零点区间会不断缩小，从而得到满足指定误差的近似值。</p>
+<p>它不能单独证明零点唯一，也不能找到所有零点。如果函数在零点处只接触 $x$ 轴而不变号，标准二分法也无法依靠端点异号来定位这个零点。</p>
+<div class="summary-panel"><p class="b-summary-line">每次保留异号的一半，用区间长度控制误差；中点函数值恰好为零时，就已找到精确零点。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../02_零点存在性的判断/index.html">← 上一篇 · 零点存在性的判断</a>
+<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+<a class="pager-next" href="../04_函数模型的选择与应用/index.html">下一篇 · 函数模型的选择与应用 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 用二分法求方程近似解</footer>
+<script>
+document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+  event.target.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+});
+</script>
+</body>
+</html>

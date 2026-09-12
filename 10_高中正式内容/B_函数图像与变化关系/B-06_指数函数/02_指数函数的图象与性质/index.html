@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从函数值的比值理解指数函数的两种单调方向，对照定义域、值域、定点、倒数底数的对称关系与固定步长下的恒定倍率。">
+<title>指数函数的图象与性质 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+<style>
+.exp-page .exp-graphs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:1.3rem 0}
+.exp-page .exp-figure{margin:0;padding:1rem}
+.exp-page .exp-figure h3{margin:0 0 .4rem;text-align:center;color:var(--blue-deep);font-size:1.15rem}
+.exp-page .exp-figure svg{display:block;width:100%;max-width:420px;height:auto;margin:auto}
+.exp-page .exp-grid{fill:none;stroke:var(--grid);stroke-width:.7}
+.exp-page .exp-axis{fill:none;stroke:var(--muted);stroke-width:1.1}
+.exp-page .exp-label{fill:var(--body);font:18px var(--font-math)}
+.exp-page .exp-curve{fill:none;stroke:var(--blue);stroke-width:2.6;stroke-linejoin:round}
+.exp-page .exp-point{fill:var(--purple);stroke:var(--paper);stroke-width:1.5}
+.exp-page .exp-key{text-align:center;color:var(--purple-deep);font-size:.95rem}
+.exp-page .exp-figure figcaption{font-size:1rem}
+.exp-page .exp-table{width:100%;border-collapse:collapse;margin:1.3rem 0;font-size:1rem;background:var(--paper)}
+.exp-page .exp-table caption{text-align:left;color:var(--blue-deep);font-weight:700;margin-bottom:.6rem}
+.exp-page .exp-table th,.exp-page .exp-table td{padding:.9rem .7rem;border:1px solid var(--line);text-align:left;vertical-align:top}
+.exp-page .exp-table thead th{background:var(--blue-soft);color:var(--blue-deep)}
+.exp-page .exp-table tbody th{color:var(--blue-deep)}
+.exp-page .exp-mobile-label{display:none}
+.exp-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.exp-page .b-formula{font-size:clamp(1rem,2.4vw,1.2rem)}
+@media(max-width:1100px) and (min-width:821px),(max-width:680px){.exp-page .exp-graphs{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){
+.exp-page .exp-table,.exp-page .exp-table tbody{display:block}
+.exp-page .exp-table thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.exp-page .exp-table caption{display:block}
+.exp-page .exp-table tr{display:block;margin:0 0 1rem;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.exp-page .exp-table tbody th{display:block;padding:.8rem 1rem;border:0;background:var(--blue-soft)}
+.exp-page .exp-table td{display:grid;grid-template-columns:6.1em minmax(0,1fr);gap:.6rem;padding:.7rem 1rem;border:0;border-top:1px solid var(--line)}
+.exp-page .exp-mobile-label{display:block;color:var(--muted)}
+}
+@media(max-width:640px){.exp-page .exp-figure{padding:.7rem}.exp-page .b-formula{padding:.8rem .4rem}}
+@media print{.exp-page .exp-figure{break-inside:avoid}.exp-page .exp-graphs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body class="exp-page">
+<!-- Source SHA256: f37e5554bf9f625c8833b62cd91a1cd3abc90afb4b295d6adbe31f8b879837d7
+SVG model: y=a^x; a=2 or 0.5. X=180+48*x, Y=260-48*y, equal units.
+361 samples per curve. Visible x in [-3,3], y in [0,4.5]; upper boundary at y=4.5.
+Marked points are evaluated from the model. No endpoint is marked at the finite plot boundary. -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#common">共同性质</a><a class="nav-link" href="#monotonicity">单调方向</a><a class="nav-link" href="#comparison">性质与图象</a><a class="nav-link" href="#growth">增长与衰减</a><a class="nav-link" href="#same-base">同底比较</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 12</span><h1>指数函数的图象与性质</h1><p class="lead">指数函数 $f(x)=a^x$ 的底数满足 $a>0$ 且 $a\ne1$。它们都取正值、经过 $(0,1)$，但底数位于 $1$ 的哪一侧，会决定图象是上升还是下降。从两个函数值的比值出发，可以说明这两种变化方向，也能理解指数增长、指数衰减和同底数幂的大小比较。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="common" data-source-md="02_指数函数的图象与性质.md#1-所有指数函数共有的骨架">
+<h2 class="marker"><span aria-hidden="true">01</span>共同性质</h2><div class="section-body prose"><h2>所有指数函数共有的骨架</h2>
+<p class="section-intro">先看所有合法底数下都成立的性质。自变量 $x$ 可以取任意实数，所以指数函数的定义域是 $\mathbb R$。</p>
+<p>实数指数幂 $a^x$ 始终为正，并能取遍所有正数。因此，函数实际能取到的所有值组成的集合，也就是值域，为 <span class="b-math-punct">$(0,+\infty)$。</span></p>
+<p>把 $x=0$ 代入，再用正数的零次幂等于 $1$，得到</p>
+<div class="b-formula">$$f(0)=a^0=1.$$</div>
+<p>所以，每一条指数函数图象都经过定点 <span class="b-math-punct">$(0,1)$。</span></p>
+<div class="b-definition"><p>图象始终在 $x$ 轴上方。在一个方向上，函数值会越来越接近 $0$，但不会等于 $0$；在相反方向上，函数值会不断增大。</p></div>
+</div></section>
+<section class="section" id="monotonicity" data-source-md="02_指数函数的图象与性质.md#2-两种单调方向从哪里来">
+<h2 class="marker"><span aria-hidden="true">02</span>单调方向</h2><div class="section-body prose"><h2>两种单调方向从哪里来</h2>
+<p class="section-intro">共同性质不能决定图象的上升方向。要判断 $x$ 增大时函数值怎样变化，任取实数 $x_1&lt;x_2$，令 <span class="b-math-punct">$d=x_2-x_1>0$。</span>比较两个函数值的比：</p>
+<div class="b-formula">$$\frac{f(x_2)}{f(x_1)}=\frac{a^{x_2}}{a^{x_1}}.$$</div>
+<p>这里把 $f(x_2)$ 和 $f(x_1)$ 分别写成对应的指数幂。因为 $a^{x_1}>0$，分母不为 $0$，可以使用同底数幂相除的性质：</p>
+<div class="b-formula">$$\frac{a^{x_2}}{a^{x_1}}=a^{x_2-x_1}.$$</div>
+<p>相除后底数不变，指数相减。再用 $d=x_2-x_1$ 代换，得到</p>
+<div class="b-formula">$$a^{x_2-x_1}=a^d.$$</div>
+<p>因此，函数值的大小比较化成了 $a^d$ 与 $1$ 的比较。分母 $f(x_1)$ 为正：比值大于 $1$，就有 $f(x_2)>f(x_1)$；比值小于 $1$，就有 <span class="b-math-punct">$f(x_2)&lt;f(x_1)$。</span></p>
+<h3>底数大于 $1$：单调递增</h3>
+<p>实数指数幂由有理数指数幂逐步确定。因此，当 $a>1$ 时，正指数幂仍有 $a^d>1$。两个函数值的比大于 $1$，所以 <span class="b-math-punct">$f(x_2)>f(x_1)$。</span>这对任意实数 $x_1&lt;x_2$ 都成立，函数在 $\mathbb R$ 上单调递增。</p>
+<h3>底数在 $0$ 与 $1$ 之间：单调递减</h3>
+<p>当 $0&lt;a&lt;1$ 时，可以写成 $a=\frac1b$，其中 $b>1$。把底数写成倒数，再用负指数的意义：</p>
+<div class="b-formula">$$a^d=\left(\frac1b\right)^d=\frac1{b^d}.$$</div>
+<p>因为 $b>1$ 且 $d>0$，所以 $b^d>1$，它的倒数满足 <span class="b-math-punct">$0&lt;\frac1{b^d}&lt;1$。</span>因此，两个函数值的比小于 $1$，就有 <span class="b-math-punct">$f(x_2)&lt;f(x_1)$。</span>这对任意实数 $x_1&lt;x_2$ 都成立，函数在 $\mathbb R$ 上单调递减。</p>
+</div></section>
+<section class="section" id="comparison" data-source-md="02_指数函数的图象与性质.md#3-把两类性质放在一起看">
+<h2 class="marker"><span aria-hidden="true">03</span>性质与图象</h2><div class="section-body prose"><h2>把两类性质放在一起看</h2>
+<p class="section-intro">两类指数函数都经过 $(0,1)$，但变化方向相反。把单调方向与这个定点放在一起，就能对照 $x$ 在 $0$ 两侧时的函数值。</p>
+<table class="exp-table" role="table"><caption>两类指数函数的性质</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">性质</th><th scope="col" role="columnheader">$a>1$</th><th scope="col" role="columnheader">$0&lt;a&lt;1$</th></tr></thead><tbody role="rowgroup">
+<tr role="row"><th scope="row" role="rowheader">单调性</th><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$a>1$</span><span>在 $\mathbb R$ 上递增</span></td><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>在 $\mathbb R$ 上递减</span></td></tr>
+<tr role="row"><th scope="row" role="rowheader">$x>0$ 时</th><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$a>1$</span><span>$a^x>1$</span></td><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>$0&lt;a^x&lt;1$</span></td></tr>
+<tr role="row"><th scope="row" role="rowheader">$x&lt;0$ 时</th><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$a>1$</span><span>$0&lt;a^x&lt;1$</span></td><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>$a^x>1$</span></td></tr>
+<tr role="row"><th scope="row" role="rowheader">$x$ 越来越大时</th><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$a>1$</span><span>函数值不断增大</span></td><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>函数值趋近于 $0$</span></td></tr>
+<tr role="row"><th scope="row" role="rowheader">$x$ 越来越小时</th><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$a>1$</span><span>函数值趋近于 $0$</span></td><td role="cell"><span class="exp-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>函数值不断增大</span></td></tr>
+</tbody></table>
+<p>底数互为倒数时，两个图象还有对称关系。仍记 $f(x)=a^x$，取 $a>1$，把底数换成 $\frac1a$。由负指数的意义，得到</p>
+<div class="b-formula">$$\left(\frac1a\right)^x=a^{-x}.$$</div>
+<p>而 $a^{-x}$ 就是把 $-x$ 代入原函数 $f$ 后得到的函数值，所以</p>
+<div class="b-formula">$$a^{-x}=f(-x).$$</div>
+<p>输入由 $x$ 换成 $-x$，相当于把原图象关于 $y$ 轴对称。这也解释了互为倒数的两个底数为什么具有相反的变化方向。</p>
+<p class="b-observe">以底数 $2$ 和 $\frac12$ 为例，对照同样的坐标尺度：两条曲线都经过 $(0,1)$，点 $(1,2)$ 与 $(-1,2)$ 关于 $y$ 轴对称。</p>
+<div class="exp-graphs"><figure class="b-map-figure exp-figure"><h3>y = 2ˣ</h3>
+<svg viewBox="0 0 360 302" role="img" aria-labelledby="increasing-title increasing-desc">
+<title id="increasing-title">y = 2ˣ的图象</title><desc id="increasing-desc">底数大于1，随着x增大，函数值增大。图象经过(0,1)和(1,2)，始终在x轴上方。横轴每单位与纵轴每单位长度相同。</desc>
+<g class="exp-grid"><path d="M36,44 V260"/><path d="M84,44 V260"/><path d="M132,44 V260"/><path d="M228,44 V260"/><path d="M276,44 V260"/><path d="M324,44 V260"/><path d="M36,212 H324"/><path d="M36,164 H324"/><path d="M36,116 H324"/><path d="M36,68 H324"/></g>
+<path class="exp-axis" d="M24,260 H339 l-6,-4 m6,4 l-6,4 M180,293 V22 l-4,6 m4,-6 l4,6"/>
+<g class="exp-label"><text x="84" y="285" text-anchor="middle">−2</text><text x="132" y="285" text-anchor="middle">−1</text><text x="228" y="285" text-anchor="middle">1</text><text x="276" y="285" text-anchor="middle">2</text><text x="166" y="218" text-anchor="end">1</text><text x="166" y="170" text-anchor="end">2</text><text x="166" y="122" text-anchor="end">3</text><text x="166" y="74" text-anchor="end">4</text><text x="344" y="252">x</text><text x="192" y="29">y</text><text x="165" y="283" text-anchor="end">O</text></g>
+<path class="exp-curve" data-base="2" d="M36.000,254.000 L36.689,253.940 L37.379,253.879 L38.068,253.818 L38.757,253.756 L39.447,253.694 L40.136,253.631 L40.825,253.567 L41.515,253.503 L42.204,253.438 L42.893,253.372 L43.583,253.306 L44.272,253.239 L44.961,253.171 L45.651,253.103 L46.340,253.034 L47.029,252.964 L47.718,252.894 L48.408,252.823 L49.097,252.751 L49.786,252.678 L50.476,252.605 L51.165,252.531 L51.854,252.456 L52.544,252.381 L53.233,252.305 L53.922,252.228 L54.612,252.150 L55.301,252.071 L55.990,251.992 L56.680,251.912 L57.369,251.831 L58.058,251.749 L58.748,251.667 L59.437,251.583 L60.126,251.499 L60.816,251.414 L61.505,251.328 L62.194,251.242 L62.884,251.154 L63.573,251.065 L64.262,250.976 L64.952,250.886 L65.641,250.795 L66.330,250.703 L67.020,250.609 L67.709,250.516 L68.398,250.421 L69.088,250.325 L69.777,250.228 L70.466,250.130 L71.155,250.032 L71.845,249.932 L72.534,249.831 L73.223,249.729 L73.913,249.627 L74.602,249.523 L75.291,249.418 L75.981,249.312 L76.670,249.205 L77.359,249.097 L78.049,248.988 L78.738,248.878 L79.427,248.767 L80.117,248.654 L80.806,248.541 L81.495,248.426 L82.185,248.310 L82.874,248.194 L83.563,248.075 L84.253,247.956 L84.942,247.836 L85.631,247.714 L86.321,247.591 L87.010,247.467 L87.699,247.342 L88.389,247.215 L89.078,247.087 L89.767,246.958 L90.457,246.827 L91.146,246.696 L91.835,246.562 L92.525,246.428 L93.214,246.292 L93.903,246.155 L94.592,246.017 L95.282,245.877 L95.971,245.735 L96.660,245.593 L97.350,245.449 L98.039,245.303 L98.728,245.156 L99.418,245.008 L100.107,244.858 L100.796,244.706 L101.486,244.553 L102.175,244.399 L102.864,244.242 L103.554,244.085 L104.243,243.926 L104.932,243.765 L105.622,243.602 L106.311,243.438 L107.000,243.273 L107.690,243.105 L108.379,242.936 L109.068,242.766 L109.758,242.593 L110.447,242.419 L111.136,242.243 L111.826,242.066 L112.515,241.886 L113.204,241.705 L113.894,241.522 L114.583,241.337 L115.272,241.150 L115.962,240.962 L116.651,240.771 L117.340,240.579 L118.029,240.385 L118.719,240.188 L119.408,239.990 L120.097,239.790 L120.787,239.588 L121.476,239.384 L122.165,239.177 L122.855,238.969 L123.544,238.759 L124.233,238.546 L124.923,238.332 L125.612,238.115 L126.301,237.896 L126.991,237.675 L127.680,237.451 L128.369,237.226 L129.059,236.998 L129.748,236.768 L130.437,236.536 L131.127,236.301 L131.816,236.064 L132.505,235.824 L133.195,235.582 L133.884,235.338 L134.573,235.091 L135.263,234.842 L135.952,234.591 L136.641,234.336 L137.331,234.080 L138.020,233.820 L138.709,233.558 L139.399,233.294 L140.088,233.027 L140.777,232.757 L141.466,232.484 L142.156,232.209 L142.845,231.931 L143.534,231.650 L144.224,231.367 L144.913,231.080 L145.602,230.791 L146.292,230.499 L146.981,230.204 L147.670,229.905 L148.360,229.604 L149.049,229.300 L149.738,228.993 L150.428,228.683 L151.117,228.370 L151.806,228.053 L152.496,227.734 L153.185,227.411 L153.874,227.085 L154.564,226.756 L155.253,226.423 L155.942,226.087 L156.632,225.748 L157.321,225.405 L158.010,225.059 L158.700,224.710 L159.389,224.357 L160.078,224.000 L160.768,223.640 L161.457,223.276 L162.146,222.909 L162.835,222.538 L163.525,222.163 L164.214,221.784 L164.903,221.402 L165.593,221.016 L166.282,220.626 L166.971,220.232 L167.661,219.834 L168.350,219.432 L169.039,219.027 L169.729,218.617 L170.418,218.203 L171.107,217.785 L171.797,217.362 L172.486,216.936 L173.175,216.505 L173.865,216.070 L174.554,215.630 L175.243,215.186 L175.933,214.738 L176.622,214.285 L177.311,213.828 L178.001,213.366 L178.690,212.900 L179.379,212.428 L180.069,211.952 L180.758,211.472 L181.447,210.986 L182.137,210.496 L182.826,210.001 L183.515,209.501 L184.205,208.995 L184.894,208.485 L185.583,207.970 L186.272,207.449 L186.962,206.924 L187.651,206.393 L188.340,205.856 L189.030,205.315 L189.719,204.768 L190.408,204.215 L191.098,203.657 L191.787,203.093 L192.476,202.524 L193.166,201.949 L193.855,201.368 L194.544,200.782 L195.234,200.189 L195.923,199.591 L196.612,198.987 L197.302,198.376 L197.991,197.760 L198.680,197.137 L199.370,196.508 L200.059,195.873 L200.748,195.232 L201.438,194.584 L202.127,193.929 L202.816,193.268 L203.506,192.601 L204.195,191.926 L204.884,191.245 L205.574,190.558 L206.263,189.863 L206.952,189.161 L207.642,188.453 L208.331,187.737 L209.020,187.014 L209.709,186.284 L210.399,185.546 L211.088,184.802 L211.777,184.049 L212.467,183.289 L213.156,182.522 L213.845,181.747 L214.535,180.964 L215.224,180.173 L215.913,179.375 L216.603,178.568 L217.292,177.754 L217.981,176.931 L218.671,176.100 L219.360,175.261 L220.049,174.413 L220.739,173.557 L221.428,172.692 L222.117,171.818 L222.807,170.936 L223.496,170.045 L224.185,169.145 L224.875,168.236 L225.564,167.318 L226.253,166.391 L226.943,165.455 L227.632,164.509 L228.321,163.554 L229.011,162.589 L229.700,161.614 L230.389,160.630 L231.079,159.636 L231.768,158.632 L232.457,157.618 L233.146,156.594 L233.836,155.559 L234.525,154.514 L235.214,153.459 L235.904,152.393 L236.593,151.317 L237.282,150.230 L237.972,149.131 L238.661,148.022 L239.350,146.902 L240.040,145.771 L240.729,144.628 L241.418,143.474 L242.108,142.308 L242.797,141.131 L243.486,139.941 L244.176,138.740 L244.865,137.527 L245.554,136.302 L246.244,135.065 L246.933,133.815 L247.622,132.552 L248.312,131.277 L249.001,129.990 L249.690,128.689 L250.380,127.376 L251.069,126.049 L251.758,124.709 L252.448,123.355 L253.137,121.988 L253.826,120.608 L254.515,119.213 L255.205,117.805 L255.894,116.382 L256.583,114.945 L257.273,113.494 L257.962,112.029 L258.651,110.548 L259.341,109.053 L260.030,107.543 L260.719,106.018 L261.409,104.478 L262.098,102.922 L262.787,101.350 L263.477,99.763 L264.166,98.160 L264.855,96.541 L265.545,94.906 L266.234,93.254 L266.923,91.586 L267.613,89.902 L268.302,88.200 L268.991,86.481 L269.681,84.745 L270.370,82.992 L271.059,81.221 L271.749,79.433 L272.438,77.627 L273.127,75.802 L273.817,73.959 L274.506,72.098 L275.195,70.218 L275.885,68.320 L276.574,66.402 L277.263,64.466 L277.952,62.510 L278.642,60.534 L279.331,58.538 L280.020,56.523 L280.710,54.487 L281.399,52.431 L282.088,50.355 L282.778,48.258 L283.467,46.139 L284.156,44.000"/>
+<circle class="exp-point" data-x="0" data-y="1" cx="180" cy="212" r="4.5"/>
+<circle class="exp-point" data-x="1" data-y="2" cx="228" cy="164" r="4.5"/>
+</svg><p class="exp-key">标记点：$(0,1)$ 与 $(1,2)$</p><figcaption>底数大于1，随着x增大，函数值增大。</figcaption></figure><figure class="b-map-figure exp-figure"><h3>y = (1/2)ˣ</h3>
+<svg viewBox="0 0 360 302" role="img" aria-labelledby="decreasing-title decreasing-desc">
+<title id="decreasing-title">y = (1/2)ˣ的图象</title><desc id="decreasing-desc">底数在0与1之间，随着x增大，函数值减小。图象经过(0,1)和(-1,2)，始终在x轴上方。横轴每单位与纵轴每单位长度相同。</desc>
+<g class="exp-grid"><path d="M36,44 V260"/><path d="M84,44 V260"/><path d="M132,44 V260"/><path d="M228,44 V260"/><path d="M276,44 V260"/><path d="M324,44 V260"/><path d="M36,212 H324"/><path d="M36,164 H324"/><path d="M36,116 H324"/><path d="M36,68 H324"/></g>
+<path class="exp-axis" d="M24,260 H339 l-6,-4 m6,4 l-6,4 M180,293 V22 l-4,6 m4,-6 l4,6"/>
+<g class="exp-label"><text x="84" y="285" text-anchor="middle">−2</text><text x="132" y="285" text-anchor="middle">−1</text><text x="228" y="285" text-anchor="middle">1</text><text x="276" y="285" text-anchor="middle">2</text><text x="166" y="218" text-anchor="end">1</text><text x="166" y="170" text-anchor="end">2</text><text x="166" y="122" text-anchor="end">3</text><text x="166" y="74" text-anchor="end">4</text><text x="344" y="252">x</text><text x="192" y="29">y</text><text x="165" y="283" text-anchor="end">O</text></g>
+<path class="exp-curve" data-base="0.5" d="M75.844,44.000 L76.533,46.139 L77.222,48.258 L77.912,50.355 L78.601,52.431 L79.290,54.487 L79.980,56.523 L80.669,58.538 L81.358,60.534 L82.048,62.510 L82.737,64.466 L83.426,66.402 L84.115,68.320 L84.805,70.218 L85.494,72.098 L86.183,73.959 L86.873,75.802 L87.562,77.627 L88.251,79.433 L88.941,81.221 L89.630,82.992 L90.319,84.745 L91.009,86.481 L91.698,88.200 L92.387,89.902 L93.077,91.586 L93.766,93.254 L94.455,94.906 L95.145,96.541 L95.834,98.160 L96.523,99.763 L97.213,101.350 L97.902,102.922 L98.591,104.478 L99.281,106.018 L99.970,107.543 L100.659,109.053 L101.349,110.548 L102.038,112.029 L102.727,113.494 L103.417,114.945 L104.106,116.382 L104.795,117.805 L105.485,119.213 L106.174,120.608 L106.863,121.988 L107.552,123.355 L108.242,124.709 L108.931,126.049 L109.620,127.376 L110.310,128.689 L110.999,129.990 L111.688,131.277 L112.378,132.552 L113.067,133.815 L113.756,135.065 L114.446,136.302 L115.135,137.527 L115.824,138.740 L116.514,139.941 L117.203,141.131 L117.892,142.308 L118.582,143.474 L119.271,144.628 L119.960,145.771 L120.650,146.902 L121.339,148.022 L122.028,149.131 L122.718,150.230 L123.407,151.317 L124.096,152.393 L124.786,153.459 L125.475,154.514 L126.164,155.559 L126.854,156.594 L127.543,157.618 L128.232,158.632 L128.921,159.636 L129.611,160.630 L130.300,161.614 L130.989,162.589 L131.679,163.554 L132.368,164.509 L133.057,165.455 L133.747,166.391 L134.436,167.318 L135.125,168.236 L135.815,169.145 L136.504,170.045 L137.193,170.936 L137.883,171.818 L138.572,172.692 L139.261,173.557 L139.951,174.413 L140.640,175.261 L141.329,176.100 L142.019,176.931 L142.708,177.754 L143.397,178.568 L144.087,179.375 L144.776,180.173 L145.465,180.964 L146.155,181.747 L146.844,182.522 L147.533,183.289 L148.223,184.049 L148.912,184.802 L149.601,185.546 L150.291,186.284 L150.980,187.014 L151.669,187.737 L152.358,188.453 L153.048,189.161 L153.737,189.863 L154.426,190.558 L155.116,191.245 L155.805,191.926 L156.494,192.601 L157.184,193.268 L157.873,193.929 L158.562,194.584 L159.252,195.232 L159.941,195.873 L160.630,196.508 L161.320,197.137 L162.009,197.760 L162.698,198.376 L163.388,198.987 L164.077,199.591 L164.766,200.189 L165.456,200.782 L166.145,201.368 L166.834,201.949 L167.524,202.524 L168.213,203.093 L168.902,203.657 L169.592,204.215 L170.281,204.768 L170.970,205.315 L171.660,205.856 L172.349,206.393 L173.038,206.924 L173.728,207.449 L174.417,207.970 L175.106,208.485 L175.795,208.995 L176.485,209.501 L177.174,210.001 L177.863,210.496 L178.553,210.986 L179.242,211.472 L179.931,211.952 L180.621,212.428 L181.310,212.900 L181.999,213.366 L182.689,213.828 L183.378,214.285 L184.067,214.738 L184.757,215.186 L185.446,215.630 L186.135,216.070 L186.825,216.505 L187.514,216.936 L188.203,217.362 L188.893,217.785 L189.582,218.203 L190.271,218.617 L190.961,219.027 L191.650,219.432 L192.339,219.834 L193.029,220.232 L193.718,220.626 L194.407,221.016 L195.097,221.402 L195.786,221.784 L196.475,222.163 L197.165,222.538 L197.854,222.909 L198.543,223.276 L199.232,223.640 L199.922,224.000 L200.611,224.357 L201.300,224.710 L201.990,225.059 L202.679,225.405 L203.368,225.748 L204.058,226.087 L204.747,226.423 L205.436,226.756 L206.126,227.085 L206.815,227.411 L207.504,227.734 L208.194,228.053 L208.883,228.370 L209.572,228.683 L210.262,228.993 L210.951,229.300 L211.640,229.604 L212.330,229.905 L213.019,230.204 L213.708,230.499 L214.398,230.791 L215.087,231.080 L215.776,231.367 L216.466,231.650 L217.155,231.931 L217.844,232.209 L218.534,232.484 L219.223,232.757 L219.912,233.027 L220.601,233.294 L221.291,233.558 L221.980,233.820 L222.669,234.080 L223.359,234.336 L224.048,234.591 L224.737,234.842 L225.427,235.091 L226.116,235.338 L226.805,235.582 L227.495,235.824 L228.184,236.064 L228.873,236.301 L229.563,236.536 L230.252,236.768 L230.941,236.998 L231.631,237.226 L232.320,237.451 L233.009,237.675 L233.699,237.896 L234.388,238.115 L235.077,238.332 L235.767,238.546 L236.456,238.759 L237.145,238.969 L237.835,239.177 L238.524,239.384 L239.213,239.588 L239.903,239.790 L240.592,239.990 L241.281,240.188 L241.971,240.385 L242.660,240.579 L243.349,240.771 L244.038,240.962 L244.728,241.150 L245.417,241.337 L246.106,241.522 L246.796,241.705 L247.485,241.886 L248.174,242.066 L248.864,242.243 L249.553,242.419 L250.242,242.593 L250.932,242.766 L251.621,242.936 L252.310,243.105 L253.000,243.273 L253.689,243.438 L254.378,243.602 L255.068,243.765 L255.757,243.926 L256.446,244.085 L257.136,244.242 L257.825,244.399 L258.514,244.553 L259.204,244.706 L259.893,244.858 L260.582,245.008 L261.272,245.156 L261.961,245.303 L262.650,245.449 L263.340,245.593 L264.029,245.735 L264.718,245.877 L265.408,246.017 L266.097,246.155 L266.786,246.292 L267.475,246.428 L268.165,246.562 L268.854,246.696 L269.543,246.827 L270.233,246.958 L270.922,247.087 L271.611,247.215 L272.301,247.342 L272.990,247.467 L273.679,247.591 L274.369,247.714 L275.058,247.836 L275.747,247.956 L276.437,248.075 L277.126,248.194 L277.815,248.310 L278.505,248.426 L279.194,248.541 L279.883,248.654 L280.573,248.767 L281.262,248.878 L281.951,248.988 L282.641,249.097 L283.330,249.205 L284.019,249.312 L284.709,249.418 L285.398,249.523 L286.087,249.627 L286.777,249.729 L287.466,249.831 L288.155,249.932 L288.845,250.032 L289.534,250.130 L290.223,250.228 L290.912,250.325 L291.602,250.421 L292.291,250.516 L292.980,250.609 L293.670,250.703 L294.359,250.795 L295.048,250.886 L295.738,250.976 L296.427,251.065 L297.116,251.154 L297.806,251.242 L298.495,251.328 L299.184,251.414 L299.874,251.499 L300.563,251.583 L301.252,251.667 L301.942,251.749 L302.631,251.831 L303.320,251.912 L304.010,251.992 L304.699,252.071 L305.388,252.150 L306.078,252.228 L306.767,252.305 L307.456,252.381 L308.146,252.456 L308.835,252.531 L309.524,252.605 L310.214,252.678 L310.903,252.751 L311.592,252.823 L312.282,252.894 L312.971,252.964 L313.660,253.034 L314.349,253.103 L315.039,253.171 L315.728,253.239 L316.417,253.306 L317.107,253.372 L317.796,253.438 L318.485,253.503 L319.175,253.567 L319.864,253.631 L320.553,253.694 L321.243,253.756 L321.932,253.818 L322.621,253.879 L323.311,253.940 L324.000,254.000"/>
+<circle class="exp-point" data-x="0" data-y="1" cx="180" cy="212" r="4.5"/>
+<circle class="exp-point" data-x="-1" data-y="2" cx="132" cy="164" r="4.5"/>
+</svg><p class="exp-key">标记点：$(0,1)$ 与 $(-1,2)$</p><figcaption>底数在0与1之间，随着x增大，函数值减小。</figcaption></figure></div>
+<p>两幅图互为关于 $y$ 轴的对称图象。$2^x$ 向左越来越接近 $0$，$\left(\frac12\right)^x$ 向右越来越接近 $0$，但都不会到达 $x$ 轴。图中只画出一部分，曲线在画面边缘仍会继续延伸，定义域始终是 $\mathbb R$。</p>
+</div></section>
+<section class="section" id="growth" data-source-md="02_指数函数的图象与性质.md#4-指数增长和指数衰减是什么意思">
+<h2 class="marker"><span aria-hidden="true">04</span>增长与衰减</h2><div class="section-body prose"><h2>“指数增长”和“指数衰减”是什么意思</h2>
+<p class="section-intro">单调性说明变化方向。指数增长与指数衰减还说明：当自变量增加同样的量时，函数值总按同一个倍数变化。设步长 $h>0$，比较 $x+h$ 与 $x$ 对应的函数值：</p>
+<div class="b-formula">$$\frac{f(x+h)}{f(x)}=\frac{a^{x+h}}{a^x}.$$</div>
+<p>把函数值写成指数幂后，使用同底数幂相除，指数相减：</p>
+<div class="b-formula">$$\frac{a^{x+h}}{a^x}=a^{(x+h)-x}=a^h.$$</div>
+<p>指数中的 $x$ 相互抵消，只剩步长 $h$。所以，这个倍数只由步长 $h$ 和底数 $a$ 决定，与当前位置 $x$ 无关。</p>
+<p>若 $a>1$，由于 $h>0$，倍数 $a^h$ 大于 $1$，表现为<strong>指数增长</strong>；若 $0&lt;a&lt;1$，倍数 $a^h$ 小于 $1$，表现为<strong>指数衰减</strong>。</p>
+<div class="b-boundary-note"><p>衰减表示数值按固定比例变小，并不表示函数值会变成负数或等于 $0$。指数函数始终取正值。</p></div>
+</div></section>
+<section class="section" id="same-base" data-source-md="02_指数函数的图象与性质.md#5-用单调性比较同底数幂">
+<h2 class="marker"><span aria-hidden="true">05</span>同底比较</h2><div class="section-body prose"><h2>用单调性比较同底数幂</h2>
+<p class="section-intro">知道了单调方向，就可以比较同底数的两个幂。同一合法底数下，只需比较指数：底数大于 $1$ 时，指数次序保持不变；底数在 $(0,1)$ 内时，指数次序反转。</p>
+<p>例如，比较 $0.7^{-0.3}$ 与 $0.7^{0.2}$。它们的底数相同，且 $0&lt;0.7&lt;1$，所以函数 $y=0.7^x$ 单调递减。虽然指数满足 $-0.3&lt;0.2$，函数值的次序却相反：</p>
+<div class="b-formula">$$0.7^{-0.3}>0.7^{0.2}.$$</div>
+<p>这里的不等号方向由底数 $0.7$ 所对应的递减性决定。若两个幂的底数不同，就不能直接套用同一个指数函数的单调性，必须另找共同的比较标准。</p>
+<div class="summary-panel"><h3>核心结论</h3><p>所有指数函数都定义在 $\mathbb R$ 上、取遍正数并经过 $(0,1)$；$a>1$ 时递增并表现为增长，$0&lt;a&lt;1$ 时递减并表现为衰减。</p><p class="b-summary-line">比较同底数幂，先判断底数在 $1$ 的哪一侧，再确定指数次序是否反转。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../01_指数函数的概念/index.html">← 上一篇 · 指数函数的概念</a>
+<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+<a class="pager-next" href="../../B-07_对数/01_对数的概念/index.html">下一篇 · 对数的概念 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 指数函数的图象与性质</footer>
+<script>
+// Keep focused navigation links visible in the shared narrow topbar.
+document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+  event.target.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+});
+</script>
+</body>
+</html>

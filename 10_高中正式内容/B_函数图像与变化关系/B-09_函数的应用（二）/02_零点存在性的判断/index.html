@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解零点存在定理的连续性、端点异号与开区间结论，通过不连续反例分清存在、唯一以及充分条件的边界。">
+  <title>零点存在性的判断 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .zero-existence-page .step-graph { display:block; width:100%; max-width:460px; height:auto; margin:0 auto; }
+    .zero-existence-page .step-graph text { fill:var(--body); font-family:var(--font-sans); font-size:18px; }
+  </style>
+</head>
+<body class="zero-existence-page">
+<!-- Source SHA256: 3ffaa767640675b9bda643b0450b8ab8257052d3b13eec2583f350df025cdb1c -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#theorem">条件与结论</a>
+      <a class="nav-link" href="#reason">连续与异号</a>
+      <a class="nav-link" href="#counterexample">连续性反例</a>
+      <a class="nav-link" href="#limits">定理的边界</a>
+      <a class="nav-link" href="#conclusion">判断结论</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 19</span>
+    <h1>零点存在性的判断</h1>
+    <p class="lead">有些方程难以直接解出，但仍能先判断某个区间内是否一定有解。函数两端的值一正一负，就一定有零点吗？还要确认整个闭区间上的连续性。把这两个条件与结论放在一起，才能分清什么时候能保证零点存在，什么时候还不能判定。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="theorem" data-source-md="02_零点存在性的判断.md#1-条件与结论要一起看">
+      <h2 class="marker"><span aria-hidden="true">01</span>条件与结论</h2>
+      <div class="section-body prose">
+        <h2>条件与结论要一起看</h2>
+        <p class="section-intro">判断区间内是否一定有零点，需要同时看函数是否连续、端点函数值是否异号。</p>
+        <div class="b-definition">
+          <p>设 <span class="b-math-punct">$a&lt;b$，</span>函数 $y=f(x)$ 在<strong>闭区间 $[a,b]$ 上连续</strong>。如果两个端点的函数值异号，即</p>
+          <div class="b-formula">$$f(a)f(b)&lt;0,$$</div>
+          <p>那么存在 <span class="b-math-punct">$c\in(a,b)$，</span>使得</p>
+          <div class="b-formula">$$f(c)=0.$$</div>
+        </div>
+        <p>这就是<strong>零点存在定理</strong>。结论是在开区间 $(a,b)$ 内<strong>至少有一个</strong>零点，不是恰有一个。</p>
+        <p>这里的 $f(a)f(b)&lt;0$ 是严格不等式。若某个端点的函数值已经为 <span class="b-math-punct">$0$，</span>只能直接确认这个端点是零点，不能由此保证开区间内还有零点。</p>
+      </div>
+    </section>
+    <section class="section" id="reason" data-source-md="02_零点存在性的判断.md#2-为什么连续与异号能支持结论">
+      <h2 class="marker"><span aria-hidden="true">02</span>连续与异号</h2>
+      <div class="section-body prose">
+        <h2>为什么连续与异号能支持结论</h2>
+        <p class="section-intro">两个条件各有什么作用？不妨设 $f(a)&lt;0$ 而 <span class="b-math-punct">$f(b)&gt;0$。</span>横坐标为 $a$ 的点在 $x$ 轴下方，横坐标为 $b$ 的点在 $x$ 轴上方。</p>
+        <p>因为两点之间的图象连续，曲线不能从下方跳到上方，必须在某处经过 $x$ 轴。交点的横坐标就是某个 <span class="b-math-punct">$c\in(a,b)$，</span>因而 <span class="b-math-punct">$f(c)=0$。</span>$f(a)&gt;0&gt;f(b)$ 时道理相同。</p>
+        <p><strong>端点异号</strong>给出曲线两端的位置，<strong>连续性</strong>排除“跳过” $x$ 轴的可能。两个条件承担的作用不同，不能只保留其中一个。</p>
+      </div>
+    </section>
+    <section class="section" id="counterexample" data-source-md="02_零点存在性的判断.md#3-连续性不能省略">
+      <h2 class="marker"><span aria-hidden="true">03</span>连续性反例</h2>
+      <div class="section-body prose">
+        <h2>连续性不能省略</h2>
+        <p class="section-intro">如果图象能够跳跃，端点异号就不够了。在 $[-1,1]$ 上定义</p>
+        <div class="b-formula">$$g(x)=\begin{cases}-1,&amp;x&lt;0,\\1,&amp;x\ge0.\end{cases}$$</div>
+        <p>两个端点的函数值确实异号：</p>
+        <div class="b-formula">$$g(-1)g(1)=-1&lt;0.$$</div>
+        <p>但 $g(x)$ 只取 $-1$ 和 <span class="b-math-punct">$1$，</span>没有零点。图象在 $x=0$ 处从 $-1$ 跳到 <span class="b-math-punct">$1$，</span>不连续。</p>
+        <p class="b-observe">两段水平线都没有碰到 $x$ 轴；在 $x=0$ 处，也没有连接两段的竖线。</p>
+        <figure class="b-map-figure">
+          <svg class="step-graph" viewBox="0 0 400 250" role="img" aria-labelledby="step-title step-desc">
+            <title id="step-title">端点异号但没有零点的阶跃函数</title>
+            <desc id="step-desc">在负一到零的左侧，函数值恒为负一，零处为空心点；从零到一，函数值恒为一，零处为实心点。两段图象不连接，均不与横轴相交。</desc>
+            <g stroke="#8995a4" stroke-width="1.3" fill="none">
+              <path d="M30 125H373 M200 225V20"/>
+              <path d="M368 121L373 125L368 129 M196 25L200 20L204 25"/>
+              <path d="M60 121V129 M340 121V129"/>
+            </g>
+            <g fill="none" stroke="var(--blue)" stroke-width="4">
+              <path d="M60 195H200 M200 55H340"/>
+            </g>
+            <g fill="var(--blue)">
+              <circle cx="60" cy="195" r="5"/><circle cx="340" cy="55" r="5"/><circle cx="200" cy="55" r="5"/>
+            </g>
+            <circle cx="200" cy="195" r="6" fill="var(--paper)" stroke="var(--blue)" stroke-width="3"/>
+            <g text-anchor="middle">
+              <text x="60" y="151">−1</text><text x="340" y="151">1</text>
+              <text x="181" y="150">0</text><text x="177" y="61">1</text><text x="176" y="217">−1</text>
+              <text x="379" y="148">x</text><text x="221" y="24">y</text>
+            </g>
+          </svg>
+          <figcaption>空心点表示 $(0,-1)$ 不在图象上；实心点表示 <span class="b-math-punct">$g(0)=1$。</span>函数从负值跳到正值，始终没有取到 <span class="b-math-punct">$0$。</span></figcaption>
+        </figure>
+        <p>这个反例说明，单看端点异号不足以保证零点存在；连续性不能省略。</p>
+      </div>
+    </section>
+    <section class="section" id="limits" data-source-md="02_零点存在性的判断.md#4-定理没有告诉我们什么">
+      <h2 class="marker"><span aria-hidden="true">04</span>定理的边界</h2>
+      <div class="section-body prose">
+        <h2>定理没有告诉我们什么</h2>
+        <p class="section-intro">即使定理的条件都满足，结论也只能是“至少一个”。一条连续曲线可能在区间内多次穿过 $x$ 轴；要证明零点唯一，还需要严格单调等额外信息。</p>
+        <p>反过来，若 <span class="b-math-punct">$f(a)f(b)\ge0$，</span>这条定理就不能对 $(a,b)$ 内是否有零点作出判定。两个端点同号时，连续曲线仍可能穿过 $x$ 轴两次，或者接触 $x$ 轴后返回原来的一侧。</p>
+        <div class="b-boundary-note">
+          <p>在连续性已经满足的前提下，端点异号是保证开区间内有零点的<strong>充分条件，不是必要条件</strong>。不能把“端点不异号”理解成“区间内没有零点”。</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="conclusion" data-source-md="02_零点存在性的判断.md#5-判断时应得到的结论">
+      <h2 class="marker"><span aria-hidden="true">05</span>判断结论</h2>
+      <div class="section-body prose">
+        <h2>判断时应得到的结论</h2>
+        <p class="section-intro">使用这条定理，先确认函数在整个闭区间上连续，再比较两个端点的函数值。只有当乘积小于 $0$ 时，才能直接得出开区间内至少有一个零点。</p>
+        <div class="summary-panel">
+          <p>闭区间上连续，端点值严格异号，就能确认开区间内至少有一个零点。</p>
+          <p class="b-summary-line">条件不满足时，准确结论只是“不能用这条定理判定”，而不是“没有零点”。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_函数零点与方程的根/index.html">← 上一篇 · 函数零点与方程的根</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../03_用二分法求方程近似解/index.html">下一篇 · 用二分法求方程近似解 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 零点存在性的判断</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({block:'nearest', inline:'center', behavior:'instant'});
+    });
+  </script>
+</body>
+</html>

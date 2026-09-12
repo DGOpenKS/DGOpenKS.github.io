@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="固定合法底数，把每个正数对应到唯一的实数指数，理解对数函数的定义、定义域以及它与同底指数函数的输入输出关系。">
+  <title>对数函数的概念 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .log-concept-page .log-correspondence { width:100%; border-collapse:collapse; table-layout:fixed; margin:1.2rem 0; }
+    .log-concept-page .log-correspondence caption { text-align:left; color:var(--blue-deep); font-weight:700; margin-bottom:.7rem; }
+    .log-concept-page .log-correspondence th, .log-concept-page .log-correspondence td { padding:.85rem .65rem; border:1px solid var(--line); text-align:center; vertical-align:middle; }
+    .log-concept-page .log-correspondence thead { background:var(--blue-soft); color:var(--blue-deep); }
+    .log-concept-page .log-correspondence tbody { background:var(--paper); }
+    .log-concept-page .log-correspondence th:first-child { width:42%; }
+    .log-concept-page .log-correspondence small { display:block; font-size:.88em; color:var(--body); }
+    @media(max-width:640px) {
+      .log-concept-page .log-correspondence th, .log-concept-page .log-correspondence td { padding:.7rem .3rem; font-size:.92rem; }
+    }
+  </style>
+</head>
+<body class="log-concept-page">
+<!-- Source SHA256: ff8f77da96a3b46c35a9013851b6a5c95fd85998a863e686772f0c0702ef1037 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#definition">函数定义</a>
+      <a class="nav-link" href="#domain">正数定义域</a>
+      <a class="nav-link" href="#correspondence">输入与输出</a>
+      <a class="nav-link" href="#notation">常用记号</a>
+      <a class="nav-link" href="#form">基本形式</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 15</span>
+    <h1>对数函数的概念</h1>
+    <p class="lead">一个对数式求出某个数的对数；固定底数，让真数变化，就得到对数函数。它把每个正数对应到“底数的多少次幂等于它”。从这个对应出发，可以理解为什么函数值唯一、输入必须为正数，以及怎样根据真数确定定义域。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="definition" data-source-md="01_对数函数的概念.md#1-从一个对数值到一个函数">
+      <h2 class="marker"><span aria-hidden="true">01</span>函数定义</h2>
+      <div class="section-body prose">
+        <h2>从一个对数值到一个函数</h2>
+        <p class="section-intro">先固定底数 <span class="b-math-punct">$a&gt;0$</span> 且 <span class="b-math-punct">$a\ne1$。</span>要把正数 $x$ 对应到一个指数，就要说明：每个正数都能找到这样的指数，而且只能找到一个。</p>
+        <p>任取一个正数 $x$。指数函数 $a^y$ 能取到所有正数，所以至少有一个实数 $y$ 满足</p>
+        <div class="b-formula">$$a^y=x.$$</div>
+        <p>又因为指数函数严格单调，不同的指数不会得到相同的结果，所以满足这个等式的实数 $y$ 只有一个。</p>
+        <div class="b-definition">
+          <p>把这个唯一的指数记作 <span class="b-math-punct">$y=\log_a x$，</span>就得到<strong>对数函数</strong></p>
+          <div class="b-formula">$$y=\log_a x,\qquad a&gt;0,\ a\ne1.$$</div>
+        </div>
+        <p>这里 $a$ 是预先固定的底数，$x$ 是自变量，函数值 $y$ 是使 $a^y=x$ 成立的指数。底数保持不变，变化的是输入的正数和它对应的指数。</p>
+      </div>
+    </section>
+    <section class="section" id="domain" data-source-md="01_对数函数的概念.md#2-为什么定义域只能是正数">
+      <h2 class="marker"><span aria-hidden="true">02</span>正数定义域</h2>
+      <div class="section-body prose">
+        <h2>为什么定义域只能是正数</h2>
+        <p class="section-intro">每个正数都能对应一个唯一的指数，但零和负数不行。合法底数的任意实数次幂都大于 <span class="b-math-punct">$0$，</span>因此等式 $a^y=x$ 只能在 $x&gt;0$ 时成立。</p>
+        <p>所以，对数函数的定义域是所有正实数组成的集合：</p>
+        <div class="b-formula">$$(0,+\infty).$$</div>
+        <p>当 $x=0$ 或 $x&lt;0$ 时，不存在实数 $y$ 使 <span class="b-math-punct">$a^y=x$。</span>因此，$\log_a0$ 和负数的实对数都没有意义。</p>
+        <div class="b-boundary-note">
+          <p>底数条件也不能省略。$a\le0$ 时，实数指数幂不能在全体实数上统一定义；$a=1$ 时，又不能让每个正数对应唯一的指数。固定底数时，必须同时满足 $a&gt;0$ 和 <span class="b-math-punct">$a\ne1$。</span></p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="correspondence" data-source-md="01_对数函数的概念.md#3-对数函数与指数函数交换了什么">
+      <h2 class="marker"><span aria-hidden="true">03</span>输入与输出</h2>
+      <div class="section-body prose">
+        <h2>对数函数与指数函数交换了什么</h2>
+        <p class="section-intro">回到定义，$\log_a x$ 就是使 $a^y=x$ 成立的指数。因此，在 $a&gt;0$、$a\ne1$ 且 $x&gt;0$ 时，两种写法表达同一件事：</p>
+        <div class="b-formula">$$y=\log_a x\quad\Longleftrightarrow\quad a^y=x.$$</div>
+        <p>指数函数 $y=a^x$ 把“指数”对应到“幂的结果”，对数函数 $y=\log_a x$ 则把这个正的结果对应回原来的指数。</p>
+        <p>例如，$2$ 的 $3$ 次幂等于 <span class="b-math-punct">$8$，</span>所以以 $2$ 为底，$8$ 的对数就是 <span class="b-math-punct">$3$：</span></p>
+        <div class="b-formula">$$2^3=8\quad\Longleftrightarrow\quad\log_2 8=3.$$</div>
+        <p class="b-observe">底数同为 $2$，比较这两个函数中 $3$ 和 $8$ 分别处在输入还是输出的位置。</p>
+        <table class="log-correspondence">
+          <caption>同一底数下，输入与输出互换</caption>
+          <thead><tr><th scope="col">函数</th><th scope="col">输入</th><th scope="col">输出</th></tr></thead>
+          <tbody>
+            <tr data-base="2" data-input="3" data-output="8" data-operation="power"><th scope="row">指数函数<br>$y=2^x$</th><td>$3$<small>指数</small></td><td>$8$<small>幂的结果</small></td></tr>
+            <tr data-base="2" data-input="8" data-output="3" data-operation="log"><th scope="row">对数函数<br>$y=\log_2 x$</th><td>$8$<small>幂的结果</small></td><td>$3$<small>指数</small></td></tr>
+          </tbody>
+        </table>
+        <p>指数函数把 $3$ 对应到 $8$，对数函数把 $8$ 对应回 <span class="b-math-punct">$3$。</span>这就是两者<strong>互为反函数</strong>的含义：同一底数下，它们的输入与输出互换。先看清这个对应关系，图象和具体性质将在后面研究。</p>
+      </div>
+    </section>
+    <section class="section" id="notation" data-source-md="01_对数函数的概念.md#4-两种常用的对数函数">
+      <h2 class="marker"><span aria-hidden="true">04</span>常用记号</h2>
+      <div class="section-body prose">
+        <h2>两种常用的对数函数</h2>
+        <p class="section-intro">底数取 $10$ 或 $e$ 时，对数函数有两种常用的简写。</p>
+        <p>当底数为 $10$ 时，函数 $y=\log_{10}x$ 记作</p>
+        <div class="b-formula">$$y=\lg x.$$</div>
+        <p>当底数为 $e$ 时，函数 $y=\log_e x$ 记作</p>
+        <div class="b-formula">$$y=\ln x.$$</div>
+        <p>这两种记号都保留了底数，只是省略了底数的下标写法。它们是底数不同的对数函数，定义域都仍是 <span class="b-math-punct">$(0,+\infty)$。</span></p>
+      </div>
+    </section>
+    <section class="section" id="form" data-source-md="01_对数函数的概念.md#5-先辨认基本形式再确定定义域">
+      <h2 class="marker"><span aria-hidden="true">05</span>基本形式</h2>
+      <div class="section-body prose">
+        <h2>先辨认基本形式，再确定定义域</h2>
+        <p class="section-intro">基本对数函数中的底数必须是固定常数，真数就是自变量 <span class="b-math-punct">$x$。</span>例如，$y=\log_3 x$ 是对数函数，输入的 $x$ 必须大于 <span class="b-math-punct">$0$。</span></p>
+        <p>而 $y=\log_3(4-x)$ 是由对数函数与一次式复合得到的函数。它的真数是整个 $4-x$，所以要使这个函数有意义，必须满足</p>
+        <div class="b-formula">$$4-x&gt;0.$$</div>
+        <p>这要求 $4$ 大于 $x$，也就是</p>
+        <div class="b-formula">$$x&lt;4.$$</div>
+        <p>因此，$y=\log_3(4-x)$ 的定义域为 <span class="b-math-punct">$(-\infty,4)$。</span>只要真数不是单独的 $x$，就不能直接照搬 <span class="b-math-punct">$(0,+\infty)$；</span>应先令整个真数大于 <span class="b-math-punct">$0$。</span></p>
+        <div class="summary-panel">
+          <p>理解对数函数，先固定合法底数，再认清对应关系。</p>
+          <p class="b-summary-line">输入必须是正数，输出是使底数的相应次幂等于这个输入的唯一实数指数。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-07_对数/02_对数的运算与换底公式/index.html">← 上一篇 · 对数的运算与换底公式</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_对数函数的图象与性质/index.html">下一篇 · 对数函数的图象与性质 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 对数函数的概念</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({block:'nearest', inline:'center', behavior:'instant'});
+    });
+  </script>
+</body>
+</html>

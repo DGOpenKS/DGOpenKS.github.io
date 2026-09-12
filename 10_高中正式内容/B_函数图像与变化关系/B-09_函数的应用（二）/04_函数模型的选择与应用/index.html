@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从人口数据理解函数模型的选择、参数确定、独立数据检验与条件外推，分清计算结果和有效范围。">
+<title>函数模型的选择与应用 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+<style>
+.model-page .model-table{width:100%;border-collapse:collapse;margin:1.3rem 0;background:var(--paper)}
+.model-page .model-table caption{text-align:left;color:var(--blue-deep);font-weight:700;margin-bottom:.7rem}
+.model-page .model-table th,.model-page .model-table td{padding:.8rem .6rem;border:1px solid var(--line);text-align:center}
+.model-page .model-table thead{background:var(--blue-soft);color:var(--blue-deep)}
+.model-page .model-table tbody th{font-weight:400}
+.model-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.model-page .b-formula{font-size:clamp(1rem,2.4vw,1.2rem)}
+@media(max-width:640px){.model-page .model-table th,.model-page .model-table td{padding:.7rem .35rem;font-size:.95rem}.model-page .b-formula{padding:.8rem .4rem}}
+</style>
+</head>
+<body class="model-page">
+<!-- Source SHA256: 67cb8d266609b97daafa0a9734d30998976cd743f8f48f123970d81c4c5a0f18 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#choose">选择模型</a>
+<a class="nav-link" href="#parameters">确定参数</a>
+<a class="nav-link" href="#validation">数据检验</a>
+<a class="nav-link" href="#extrapolation">条件外推</a>
+<a class="nav-link" href="#complete">完整模型</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 21</span><h1>函数模型的选择与应用</h1>
+<p class="lead">函数模型用函数近似描述现实关系。以人口数据为例，先根据变化方式选择函数，再确定参数、用其他数据检验，最后看外推结果为何必须带上条件。一个公式是否可用，要看它所依据的假设和已经检验的范围。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="choose" data-source-md="04_函数模型的选择与应用.md#1-从变化方式选择候选模型">
+<h2 class="marker"><span aria-hidden="true">01</span>选择模型</h2>
+<div class="section-body prose"><h2>从变化方式选择候选模型</h2>
+<p class="section-intro">选择函数之前，先说明变量和单位。记 $t$ 为从 1950 年末起经过的年数，$P(t)$ 为对应年末的人口总数，单位是万人。</p>
+<p>已知 1950 年末人口为 $55196$ 万人，1959 年末人口为 $67207$ 万人。这两个年份分别对应 $t=0$ 和 $t=9$。</p>
+<p>这段时间的逐年数据呈现平稳增长，散点没有明显突变，相邻年份的增长比例也大致接近。若假设<strong>单位时间内的相对增长速度在短期内近似稳定</strong>，就可以选取指数型候选模型：</p>
+<div class="b-formula">$$P(t)=Ae^{rt}.$$</div>
+<p>其中，$A$ 是初始人口数，$r$ 描述平均相对增长速度。当 $t$ 以年为单位时，$r$ 是每年的增长参数。</p>
+<div class="b-definition"><p>选择指数型的依据是近似稳定的比例变化。仅仅知道“人口在增长”，还不足以确定模型；如果变化结构不同，候选函数也应改变。</p></div>
+</div></section>
+<section class="section" id="parameters" data-source-md="04_函数模型的选择与应用.md#2-用已知数据确定参数">
+<h2 class="marker"><span aria-hidden="true">02</span>确定参数</h2>
+<div class="section-body prose"><h2>用已知数据确定参数</h2>
+<p class="section-intro">选定指数型后，用两个已知年份的数据确定 $A$ 和 $r$。</p>
+<p>当 $t=0$ 时，$e^{r\cdot0}=1$，所以 $P(0)=A=55196$。再将 1959 年末的 $t=9$、$P(9)=67207$ 代入模型，得到</p>
+<div class="b-formula">$$55196e^{9r}=67207.$$</div>
+<p>两边同除以正数 $55196$，得到</p>
+<div class="b-formula">$$e^{9r}=\frac{67207}{55196}.$$</div>
+<p>两边都为正数，可以取自然对数。由 $\ln(e^{9r})=9r$，得到</p>
+<div class="b-formula">$$9r=\ln\frac{67207}{55196}.$$</div>
+<p>再将两边除以 $9$，就确定了增长参数：</p>
+<div class="b-formula">$$r=\frac{1}{9}\ln\frac{67207}{55196}\approx0.021876.$$</div>
+<p>将 $A$ 和取近似值后的 $r$ 代回，得到描述 1950—1959 年数据的模型：</p>
+<div class="b-formula">$$P(t)=55196e^{0.021876t},\quad 0\le t\le9.$$</div>
+<p>按该模型，每经过一年，人口数乘以的因子是 $e^r\approx1.02212$。下文的模型计算值均使用这里的 $r=0.021876$。</p>
+<p>范围 $0\le t\le9$ 记录的是建模和校验所使用的时段。它并不表示这个公式在所有年份都会成立。</p>
+</div></section>
+<section class="section" id="validation" data-source-md="04_函数模型的选择与应用.md#3-用中间数据检查模型">
+<h2 class="marker"><span aria-hidden="true">03</span>数据检验</h2>
+<div class="section-body prose"><h2>用中间数据检查模型</h2>
+<p class="section-intro">参数由 1950 年和 1959 年的数据确定，模型在这两个定参点吻合是定参过程的结果。要检查模型是否可用，还应看未参与定参的中间年份。</p>
+<p>把 1951 年、1954 年、1958 年对应的 $t=1$、$t=4$、$t=8$ 代入模型，再与实际值比较：</p>
+<table class="model-table"><caption>中间年份的模型计算值与实际值</caption>
+<thead><tr><th scope="col">年份</th><th scope="col">模型计算值 /万人</th><th scope="col">实际值 /万人</th></tr></thead>
+<tbody>
+<tr><th scope="row">1951</th><td>56417</td><td>56300</td></tr>
+<tr><th scope="row">1954</th><td>60243</td><td>60266</td></tr>
+<tr><th scope="row">1958</th><td>65753</td><td>65994</td></tr>
+</tbody></table>
+<p>三个年份的偏差大小分别为 $117$ 万人、$23$ 万人和 $241$ 万人，相对于当年的总人口都较小。若把全部年份画成散点图，这些点也会落在模型曲线附近。</p>
+<p>这样的检验支持模型在已观测时段内是一个较好的近似，不能证明人口在此后的所有年份都按这个公式变化。</p>
+</div></section>
+<section class="section" id="extrapolation" data-source-md="04_函数模型的选择与应用.md#4-外推结果必须带上条件">
+<h2 class="marker"><span aria-hidden="true">04</span>条件外推</h2>
+<div class="section-body prose"><h2>外推结果必须带上条件</h2>
+<p class="section-intro">如果假定上述增长条件一直不变，可以把模型延伸到 1990 年。1990 年对应 $t=40$，已经超出了前面检验的 $0\le t\le9$。</p>
+<p>在“原增长条件继续成立”的假设下，将 $t=40$ 代入，得到</p>
+<div class="b-formula">$$P(40)=55196e^{0.021876\times40}\approx132414\text{ 万人}.$$</div>
+<p>换算为亿人，这个结果约为 $13.24$ 亿人。但 1990 年的实际人口约为 $11.43$ 亿人，模型多估了约 $1.81$ 亿人。</p>
+<p>这不是前面的代数计算自相矛盾，而是长期外推超出了校验时段，人口增长条件和增长速度也发生了变化。</p>
+<div class="b-boundary-note"><p>$13.24$ 亿人只是“原假设继续成立”之下的条件结果。计算出一个数值，并不能保证现实会按原来的条件继续变化。</p></div>
+</div></section>
+<section class="section" id="complete" data-source-md="04_函数模型的选择与应用.md#5-一个模型完整包含什么">
+<h2 class="marker"><span aria-hidden="true">05</span>完整模型</h2>
+<div class="section-body prose"><h2>一个模型完整包含什么</h2>
+<p class="section-intro">回看这个人口模型，建立公式只是完整过程中的一部分。</p>
+<p>先定义变量、单位和实际范围，再根据数据、图象和变化机制选择候选函数。接着，用已知数据确定参数，用其他数据检验偏差。最后，解释结果的实际含义，并说明它在哪个范围内可信。</p>
+<div class="summary-panel"><p>假设说明为什么选择这个函数，参数让函数对应具体数据，检验说明近似是否合理，边界说明结果可以用到哪里。这些内容与公式共同构成一个完整的模型。</p><p class="b-summary-line">模型的可信程度，要由假设、数据检验和使用范围共同支持。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../03_用二分法求方程近似解/index.html">← 上一篇 · 用二分法求方程近似解</a>
+<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+<a class="pager-next" href="../../B-10_变底数的对数函数/01_变底数的对数函数/index.html">下一篇 · 变底数的对数函数 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 函数模型的选择与应用</footer>
+<script>
+document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+  event.target.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+});
+</script>
+</body>
+</html>

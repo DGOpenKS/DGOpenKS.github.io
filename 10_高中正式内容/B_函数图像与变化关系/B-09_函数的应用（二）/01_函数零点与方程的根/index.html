@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解函数零点是定义域中使函数值为零的输入数，说明它与方程实数根、图象与横轴交点横坐标的对应关系，并辨明定义域的限制。">
+  <title>函数零点与方程的根 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .zero-page .zero-figure svg { display:block; width:100%; max-width:360px; height:auto; margin:auto; }
+    .zero-page .zero-grid { fill:none; stroke:var(--grid); stroke-width:.7; }
+    .zero-page .zero-axis { fill:none; stroke:var(--muted); stroke-width:1.1; }
+    .zero-page .zero-label { fill:var(--body); font:18px var(--font-math); }
+    .zero-page .zero-curve { fill:none; stroke:var(--blue); stroke-width:2.6; stroke-linejoin:round; }
+    .zero-page .zero-point { fill:var(--purple); stroke:var(--paper); stroke-width:1.5; }
+    .zero-page .zero-figure figcaption { font-size:1rem; }
+    @media print { .zero-page .zero-figure { break-inside:avoid; } }
+  </style>
+</head>
+<body class="zero-page">
+<!-- Source SHA256: 71743899f98751542aadc0217a0e3b5429cfefb31684eae8c262087f2c0fbf55
+SVG model: y=x^3-x; 151 uniform samples on [-1.5,1.5]. X=180+84x, Y=175-70y.
+The finite plot window is not the domain. Exact zero markers use x=-1,0,1 and y=0. -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+      <a class="nav-link" href="#definition">零点定义</a>
+      <a class="nav-link" href="#equivalence">三种语言</a>
+      <a class="nav-link" href="#example">函数例子</a>
+      <a class="nav-link" href="#domain">定义域限制</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 18</span>
+    <h1>函数零点与方程的根</h1>
+    <p class="lead">方程、函数和图象围绕 $f(x)=0$ 展开时，寻找的是同一组实数：哪些输入使函数值恰好等于零。先分清输入的数、函数值和图象上的点，再看零点怎样与方程的根、图象交点的横坐标对应。</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="section" id="definition" data-source-md="01_函数零点与方程的根.md#1-什么是函数的零点">
+      <h2 class="marker"><span aria-hidden="true">01</span>零点定义</h2>
+      <div class="section-body prose">
+        <h2>什么是函数的零点</h2>
+        <div class="b-definition">
+          <p>设函数 $y=f(x)$ 的定义域为 $D$。如果 $x_0\in D$，并且</p>
+          <div class="b-formula">$$f(x_0)=0,$$</div>
+          <p>那么数 $x_0$ 叫作函数 $f$ 的<strong>零点</strong>。</p>
+        </div>
+        <p>零点是定义域中的一个数，不是函数值 $0$，也不是图象上的点 $(x_0,0)$。三者彼此相关，但对象不同：$x_0$ 是输入，$0$ 是这个输入对应的函数值，$(x_0,0)$ 则把输入与函数值合在一对坐标里。</p>
+        <p>定义中的 $x_0\in D$ 不能省略。函数在某个数处没有定义，这个数就不是函数允许的输入，更不能成为函数的零点。</p>
+      </div>
+    </section>
+    <section class="section" id="equivalence" data-source-md="01_函数零点与方程的根.md#2-三种说法为什么等价">
+      <h2 class="marker"><span aria-hidden="true">02</span>三种语言</h2>
+      <div class="section-body prose">
+        <h2>三种说法为什么等价</h2>
+        <p class="section-intro">对定义域中的同一个实数 $x_0$，三种说法都落在同一个条件上：</p>
+        <div class="b-formula">$$f(x_0)=0.$$</div>
+        <p><strong>用方程说：</strong>$x_0$ 是方程 $f(x)=0$ 的实数根，当且仅当代入后等式成立，也就是 $f(x_0)=0$。这正是方程根的含义。</p>
+        <p><strong>用函数说：</strong>$x_0$ 是函数 $f$ 的零点，当且仅当 $f(x_0)=0$。这正是上一节的零点定义。</p>
+        <p><strong>用图象说：</strong>图象上的点具有坐标 $(x,f(x))$，而 $x$ 轴上的点纵坐标为 $0$。因此，$f(x_0)=0$ 当且仅当 $(x_0,0)$ 是 $y=f(x)$ 的图象与 $x$ 轴的交点。</p>
+        <p>所以，求方程的实数根、求函数零点和求图象与 $x$ 轴交点的<strong>横坐标</strong>，可以互相转换。对应的是同一个输入数 $x_0$，而不是把一个数与一个点混为一谈。</p>
+      </div>
+    </section>
+    <section class="section" id="example" data-source-md="01_函数零点与方程的根.md#3-在一个一般函数中核对">
+      <h2 class="marker"><span aria-hidden="true">03</span>函数例子</h2>
+      <div class="section-body prose">
+        <h2>在一个一般函数中核对</h2>
+        <p class="section-intro">把这三种语言放到同一个函数上。取定义域为全体实数的函数</p>
+        <div class="b-formula">$$f(x)=x^3-x,\qquad x\in\mathbb R.$$</div>
+        <p>先通过因式分解寻找使函数值为零的输入：</p>
+        <div class="b-formula">$$x^3-x=x(x-1)(x+1).$$</div>
+        <p>乘积等于 $0$，当且仅当至少一个因式等于 $0$。因此，方程 $x^3-x=0$ 的实数根为 $-1$、$0$、$1$。这三个数也是函数的零点，对应图象上的三个 $x$ 轴交点：</p>
+        <div class="b-formula">$$(-1,0),\qquad(0,0),\qquad(1,0).$$</div>
+        <p class="b-observe">看曲线与 $x$ 轴相交的位置。每个交点的纵坐标都是 $0$，横坐标分别为 $-1$、$0$、$1$。</p>
+        <figure class="b-map-figure zero-figure">
+          <svg viewBox="0 0 360 335" role="img" aria-labelledby="cubic-title cubic-desc">
+            <title id="cubic-title">函数 y=x³−x 的三个零点对应的图象交点</title>
+            <desc id="cubic-desc">曲线与横轴相交于(-1,0)、(0,0)、(1,0)。函数零点是这三个交点的横坐标-1、0、1，零点本身是数。图中只显示曲线的一段。</desc>
+            <g class="zero-grid"><path d="M54 105H306M54 245H306M96 35V315M264 35V315"/></g>
+            <g class="zero-axis"><path d="M28 175H331M180 322V22"/><path d="M325 171L331 175L325 179M176 28L180 22L184 28"/></g>
+            <g class="zero-label"><text x="96" y="201" text-anchor="middle">−1</text><text x="167" y="201" text-anchor="end">0</text><text x="264" y="201" text-anchor="middle">1</text><text x="168" y="111" text-anchor="end">1</text><text x="168" y="251" text-anchor="end">−1</text><text x="338" y="181">x</text><text x="191" y="27">y</text></g>
+            <path class="zero-curve" d="M54.000,306.250 L55.680,298.325 L57.360,290.650 L59.040,283.219 L60.720,276.030 L62.400,269.080 L64.080,262.365 L65.760,255.882 L67.440,249.627 L69.120,243.598 L70.800,237.790 L72.480,232.201 L74.160,226.826 L75.840,221.664 L77.520,216.709 L79.200,211.960 L80.880,207.412 L82.560,203.063 L84.240,198.908 L85.920,194.945 L87.600,191.170 L89.280,187.580 L90.960,184.171 L92.640,180.940 L94.320,177.885 L96.000,175.000 L97.680,172.283 L99.360,169.732 L101.040,167.341 L102.720,165.108 L104.400,163.030 L106.080,161.103 L107.760,159.324 L109.440,157.689 L111.120,156.196 L112.800,154.840 L114.480,153.619 L116.160,152.528 L117.840,151.566 L119.520,150.727 L121.200,150.010 L122.880,149.410 L124.560,148.925 L126.240,148.550 L127.920,148.283 L129.600,148.120 L131.280,148.058 L132.960,148.093 L134.640,148.222 L136.320,148.443 L138.000,148.750 L139.680,149.141 L141.360,149.614 L143.040,150.163 L144.720,150.786 L146.400,151.480 L148.080,152.241 L149.760,153.066 L151.440,153.951 L153.120,154.894 L154.800,155.890 L156.480,156.937 L158.160,158.030 L159.840,159.168 L161.520,160.345 L163.200,161.560 L164.880,162.808 L166.560,164.087 L168.240,165.392 L169.920,166.721 L171.600,168.070 L173.280,169.436 L174.960,170.815 L176.640,172.204 L178.320,173.601 L180.000,175.000 L181.680,176.399 L183.360,177.796 L185.040,179.185 L186.720,180.564 L188.400,181.930 L190.080,183.279 L191.760,184.608 L193.440,185.913 L195.120,187.192 L196.800,188.440 L198.480,189.655 L200.160,190.832 L201.840,191.970 L203.520,193.063 L205.200,194.110 L206.880,195.106 L208.560,196.049 L210.240,196.934 L211.920,197.759 L213.600,198.520 L215.280,199.214 L216.960,199.837 L218.640,200.386 L220.320,200.859 L222.000,201.250 L223.680,201.557 L225.360,201.778 L227.040,201.907 L228.720,201.942 L230.400,201.880 L232.080,201.717 L233.760,201.450 L235.440,201.075 L237.120,200.590 L238.800,199.990 L240.480,199.273 L242.160,198.434 L243.840,197.472 L245.520,196.381 L247.200,195.160 L248.880,193.804 L250.560,192.311 L252.240,190.676 L253.920,188.897 L255.600,186.970 L257.280,184.892 L258.960,182.659 L260.640,180.268 L262.320,177.717 L264.000,175.000 L265.680,172.115 L267.360,169.060 L269.040,165.829 L270.720,162.420 L272.400,158.830 L274.080,155.055 L275.760,151.092 L277.440,146.937 L279.120,142.588 L280.800,138.040 L282.480,133.291 L284.160,128.336 L285.840,123.174 L287.520,117.799 L289.200,112.210 L290.880,106.402 L292.560,100.373 L294.240,94.118 L295.920,87.635 L297.600,80.920 L299.280,73.970 L300.960,66.781 L302.640,59.350 L304.320,51.675 L306.000,43.750"/>
+            <circle class="zero-point" cx="96" cy="175" r="4.5" data-x="-1" data-y="0"/>
+            <circle class="zero-point" cx="180" cy="175" r="4.5" data-x="0" data-y="0"/>
+            <circle class="zero-point" cx="264" cy="175" r="4.5" data-x="1" data-y="0"/>
+          </svg>
+          <figcaption>三个标记表示交点；读出它们的横坐标，就得到零点 $-1$、$0$、$1$。图中只画出曲线的一段，绘图边界不是定义域的端点。</figcaption>
+        </figure>
+        <p>这里的因式分解只是找出这组数的方法；三种语言的对应关系并不依赖函数必须是多项式。</p>
+      </div>
+    </section>
+    <section class="section" id="domain" data-source-md="01_函数零点与方程的根.md#4-定义域会排除形式上的候选">
+      <h2 class="marker"><span aria-hidden="true">04</span>定义域限制</h2>
+      <div class="section-body prose">
+        <h2>定义域会排除形式上的候选</h2>
+        <p class="section-intro">寻找使函数值为零的输入时，还要回到定义域。例如函数</p>
+        <div class="b-formula">$$g(x)=\frac{x^2-1}{x-1}$$</div>
+        <p>的定义域不含 $x=1$。虽然分子在 $x=1$ 时等于 $0$，但原函数在这里没有函数值，所以 $1$ 不是 $g$ 的零点。</p>
+        <div class="b-boundary-note"><p>函数零点必须同时满足“输入属于定义域”和“函数值等于零”。只检查式子的某一部分不够。</p></div>
+        <div class="summary-panel">
+          <p>理解这三种语言时，始终先锁定同一个输入 $x_0$：代入方程得到等式成立，代入函数得到函数值为零，放到图象上得到横坐标为 $x_0$ 的 $x$ 轴交点。</p>
+          <p class="b-summary-line">零点是使函数值为零的输入数；这个数首先必须属于定义域。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-08_对数函数/03_不同函数增长速度的比较/index.html">← 上一篇 · 不同函数增长速度的比较</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_零点存在性的判断/index.html">下一篇 · 零点存在性的判断 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 函数零点与方程的根</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({block:'nearest', inline:'center', behavior:'instant'});
+    });
+  </script>
+</body>
+</html>

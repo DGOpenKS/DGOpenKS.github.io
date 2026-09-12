@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从指数关系解释对数函数的定义域、值域、定点与两类单调方向，理解符号和两端趋势，并比较同底数对数的大小。">
+<title>对数函数的图象与性质 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+<style>
+.log-page .log-table{width:100%;border-collapse:collapse;margin:1.3rem 0;font-size:1rem;background:var(--paper)}
+.log-page .log-table caption{text-align:left;color:var(--blue-deep);font-weight:700;margin-bottom:.6rem}
+.log-page .log-table th,.log-page .log-table td{padding:.85rem .7rem;border:1px solid var(--line);text-align:left;vertical-align:top}
+.log-page .log-table thead th{background:var(--blue-soft);color:var(--blue-deep)}
+.log-page .log-table tbody th{width:30%;color:var(--blue-deep)}
+.log-page .log-mobile-label{display:none}
+.log-page .log-graphs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:1.3rem 0}
+.log-page .log-figure{margin:0;padding:1rem}
+.log-page .log-figure h3{margin:0 0 .4rem;text-align:center;color:var(--blue-deep);font-size:1.15rem}
+.log-page .log-figure svg{display:block;width:100%;max-width:360px;height:auto;margin:auto}
+.log-page .log-grid{fill:none;stroke:var(--grid);stroke-width:.7}
+.log-page .log-axis{fill:none;stroke:var(--muted);stroke-width:1.1}
+.log-page .log-label{fill:var(--body);font:18px var(--font-math)}
+.log-page .log-curve{fill:none;stroke:var(--blue);stroke-width:2.6;stroke-linejoin:round}
+.log-page .log-point{fill:var(--purple);stroke:var(--paper);stroke-width:1.5}
+.log-page .log-point-label{fill:var(--purple-deep);font:18px var(--font-math)}
+.log-page .log-figure figcaption{font-size:1rem}
+.log-page .eyebrow{max-width:100%;width:fit-content;flex-wrap:wrap}
+.log-page .b-formula{font-size:clamp(1rem,2.4vw,1.2rem)}
+@media(max-width:1100px) and (min-width:821px),(max-width:680px){.log-page .log-graphs{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:1000px){
+.log-page .log-table,.log-page .log-table tbody{display:block}
+.log-page .log-table thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.log-page .log-table caption{display:block}
+.log-page .log-table tr{display:block;margin:0 0 1rem;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.log-page .log-table tbody th{display:block;width:auto;padding:.8rem 1rem;border:0;background:var(--blue-soft)}
+.log-page .log-table td{display:grid;grid-template-columns:4.5em minmax(0,1fr);gap:.6rem;padding:.7rem 1rem;border:0;border-top:1px solid var(--line)}
+.log-page .log-mobile-label{display:block;color:var(--muted)}
+}
+@media(max-width:640px){.log-page .log-figure{padding:.7rem}.log-page .b-formula{padding:.8rem .4rem}}
+@media print{.log-page .log-figure{break-inside:avoid}}
+</style>
+</head>
+<body class="log-page">
+<!-- Source SHA256: 254b00c5c3e929344136db5847c58932479c1c1c3a3a98a35199f829e5dab90e
+SVG model: y=ln(x)/ln(a), a=2 or 0.5. X=50+50x, Y=175-50y (equal units).
+Each curve uses 321 logarithmically spaced x samples on [1/8,4.6].
+The finite window is not the domain; no point at x=0 and no endpoint markers.
+Common point evaluated at x=1: y=0, mapped to (100,175). -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#structure">共同骨架</a><a class="nav-link" href="#monotonicity">单调方向</a><a class="nav-link" href="#properties">图象性质</a><a class="nav-link" href="#comparison">同底比较</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 16</span><h1>对数函数的图象与性质</h1>
+<p class="lead">对数函数 $y=\log_ax$ 的底数满足 $a&gt;0$ 且 $a\ne1$。同样是真数增大，函数值为什么有时增大、有时减小？回到指数关系 $x=a^y$，就能解释图象的共同骨架，以及底数在 $1$ 的哪一侧怎样决定变化方向和大小比较的方向。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="structure" data-source-md="02_对数函数的图象与性质.md#1-所有对数函数共有的骨架">
+<h2 class="marker"><span aria-hidden="true">01</span>共同骨架</h2><div class="section-body prose"><h2>所有对数函数共有的骨架</h2>
+<p class="section-intro">先看与底数大小无关的性质。对数的真数必须为正，也就是 $x&gt;0$，所以定义域是 <span class="b-math-punct">$(0,+\infty)$。</span></p>
+<p>值域说明函数实际能取到哪些值。对任意实数 $y$，取 $x=a^y&gt;0$，这个 $x$ 就在定义域内。根据对数定义，有</p>
+<div class="b-formula">$$\log_ax=y.$$</div>
+<p>任意实数 $y$ 都能这样取到，因此函数值能取遍全体实数，值域是 <span class="b-math-punct">$\mathbb R$。</span></p>
+<p>再看图象经过哪里。因为 $a^0=1$，所以按对数定义可得</p>
+<div class="b-formula">$$\log_a1=0.$$</div>
+<p>这说明所有对数函数的图象都经过定点 <span class="b-math-punct">$(1,0)$。</span>由于始终要求 $x&gt;0$，图象全部位于 $y$ 轴右侧，不会与 $y$ 轴相交。</p>
+</div></section>
+<section class="section" id="monotonicity" data-source-md="02_对数函数的图象与性质.md#2-两种单调方向从哪里来">
+<h2 class="marker"><span aria-hidden="true">02</span>单调方向</h2><div class="section-body prose"><h2>两种单调方向从哪里来</h2>
+<p class="section-intro">共同的定义域、值域和定点，并不能决定图象是上升还是下降。要判断单调性，可以把两个对数值还原成指数。</p>
+<p>任取 $0&lt;x_1&lt;x_2$，把对应的两个函数值分别记为</p>
+<div class="b-formula">$$y_1=\log_ax_1,\qquad y_2=\log_ax_2.$$</div>
+<p>根据对数定义，$a^{y_1}=x_1$、$a^{y_2}=x_2$。把这两个关系代入 $x_1&lt;x_2$，得到</p>
+<div class="b-formula">$$a^{y_1}=x_1&lt;x_2=a^{y_2}.$$</div>
+<h3>当 $a&gt;1$ 时</h3>
+<p>指数函数 $a^y$ 递增，较小的函数值来自较小的指数。因此，由 $a^{y_1}&lt;a^{y_2}$ 可知 <span class="b-math-punct">$y_1&lt;y_2$。</span>这说明较小的真数对应较小的对数值，所以 $y=\log_ax$ 在 $(0,+\infty)$ 上单调递增。</p>
+<h3>当 $0&lt;a&lt;1$ 时</h3>
+<p>指数函数 $a^y$ 递减，较小的函数值反而来自较大的指数。因此，由 $a^{y_1}&lt;a^{y_2}$ 可知 <span class="b-math-punct">$y_1&gt;y_2$。</span>这说明较小的真数对应较大的对数值，所以 $y=\log_ax$ 在 $(0,+\infty)$ 上单调递减。</p>
+</div></section>
+<section class="section" id="properties" data-source-md="02_对数函数的图象与性质.md#3-把图象特征放在一起看">
+<h2 class="marker"><span aria-hidden="true">03</span>图象性质</h2><div class="section-body prose"><h2>把图象特征放在一起看</h2>
+<p class="section-intro">有了定点 $(1,0)$ 和单调方向，就可以继续判断函数值的正负，以及图象在两端怎样变化。</p>
+<table class="log-table" role="table"><caption>两类底数下的对数函数性质</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">性质</th><th scope="col" role="columnheader">$a&gt;1$</th><th scope="col" role="columnheader">$0&lt;a&lt;1$</th></tr></thead><tbody role="rowgroup"><tr role="row"><th role="rowheader" scope="row">单调性</th><td role="cell"><span class="log-mobile-label" aria-hidden="true">$a&gt;1$</span><span>在 $(0,+\infty)$ 上递增</span></td><td role="cell"><span class="log-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>在 $(0,+\infty)$ 上递减</span></td></tr><tr role="row"><th role="rowheader" scope="row">$x&gt;1$ 时</th><td role="cell"><span class="log-mobile-label" aria-hidden="true">$a&gt;1$</span><span>$\log_ax&gt;0$</span></td><td role="cell"><span class="log-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>$\log_ax&lt;0$</span></td></tr><tr role="row"><th role="rowheader" scope="row">$0&lt;x&lt;1$ 时</th><td role="cell"><span class="log-mobile-label" aria-hidden="true">$a&gt;1$</span><span>$\log_ax&lt;0$</span></td><td role="cell"><span class="log-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>$\log_ax&gt;0$</span></td></tr><tr role="row"><th role="rowheader" scope="row">$x$ 从正数一侧趋近 $0$ 时</th><td role="cell"><span class="log-mobile-label" aria-hidden="true">$a&gt;1$</span><span>函数值向负方向无限减小</span></td><td role="cell"><span class="log-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>函数值向正方向无限增大</span></td></tr><tr role="row"><th role="rowheader" scope="row">$x$ 不断增大时</th><td role="cell"><span class="log-mobile-label" aria-hidden="true">$a&gt;1$</span><span>函数值向正方向无限增大</span></td><td role="cell"><span class="log-mobile-label" aria-hidden="true">$0&lt;a&lt;1$</span><span>函数值向负方向无限减小</span></td></tr></tbody></table>
+<p>符号规律来自定点 $(1,0)$ 和单调性。图象在 $x=1$ 时函数值为 $0$，再判断它在这一点左、右两侧是上升还是下降，就能确定函数值的正负。图象靠近 $y$ 轴时虽然会无限延伸，却始终只在 $x&gt;0$ 的范围内。</p>
+<p>两端的变化仍可回到 $x=a^y$ 理解。以 $a&gt;1$ 为例，要让正数 $a^y$ 越来越接近 $0$，指数 $y$ 必须向负方向不断减小；要让 $a^y$ 不断增大，指数 $y$ 必须向正方向不断增大。</p>
+<p>当 $0&lt;a&lt;1$ 时，指数函数的方向相反，因此表中的两端趋势也随之反转。</p>
+<p class="b-observe">分别取底数 $2$ 和 $\frac12$，观察曲线经过 $(1,0)$ 后怎样变化，以及它在 $x$ 轴上方还是下方。</p>
+<div class="log-graphs"><figure class="b-map-figure log-figure"><h3>$y=\log_2x$：递增</h3>
+<svg viewBox="0 0 320 350" role="img" aria-labelledby="increasing-title increasing-desc" data-base="2">
+<title id="increasing-title">底数为2的递增对数曲线</title>
+<desc id="increasing-desc">曲线只在x大于0时有定义，经过点(1,0)，与y轴不相交。底数大于1，随x增大而递增。</desc>
+<g class="log-grid"><path d="M100 25V325"/><path d="M150 25V325"/><path d="M200 25V325"/><path d="M250 25V325"/><path d="M35 325H280"/><path d="M35 275H280"/><path d="M35 225H280"/><path d="M35 125H280"/><path d="M35 75H280"/><path d="M35 25H280"/></g>
+<g class="log-axis"><path d="M35 175H291M50 335V15"/><path d="M285 171L291 175L285 179M46 21L50 15L54 21"/></g>
+<g class="log-label"><text x="150" y="196" text-anchor="middle">2</text><text x="200" y="196" text-anchor="middle">3</text><text x="250" y="196" text-anchor="middle">4</text><text x="40" y="281" text-anchor="end">-2</text><text x="40" y="231" text-anchor="end">-1</text><text x="40" y="131" text-anchor="end">1</text><text x="40" y="81" text-anchor="end">2</text><text x="35" y="195">0</text><text x="298" y="181">x</text><text x="62" y="20">y</text></g>
+<path class="log-curve" d="M56.250,325.000 L56.321,324.187 L56.392,323.374 L56.465,322.562 L56.538,321.749 L56.612,320.936 L56.687,320.123 L56.763,319.311 L56.840,318.498 L56.917,317.685 L56.995,316.872 L57.075,316.060 L57.155,315.247 L57.236,314.434 L57.318,313.621 L57.401,312.809 L57.485,311.996 L57.569,311.183 L57.655,310.370 L57.742,309.558 L57.830,308.745 L57.918,307.932 L58.008,307.119 L58.099,306.307 L58.191,305.494 L58.283,304.681 L58.377,303.868 L58.472,303.056 L58.568,302.243 L58.665,301.430 L58.764,300.617 L58.863,299.805 L58.963,298.992 L59.065,298.179 L59.168,297.366 L59.271,296.554 L59.376,295.741 L59.483,294.928 L59.590,294.115 L59.699,293.303 L59.809,292.490 L59.920,291.677 L60.032,290.864 L60.146,290.052 L60.261,289.239 L60.377,288.426 L60.495,287.613 L60.614,286.801 L60.734,285.988 L60.856,285.175 L60.979,284.362 L61.103,283.549 L61.229,282.737 L61.356,281.924 L61.485,281.111 L61.615,280.298 L61.746,279.486 L61.879,278.673 L62.014,277.860 L62.150,277.047 L62.288,276.235 L62.427,275.422 L62.568,274.609 L62.710,273.796 L62.854,272.984 L63.000,272.171 L63.147,271.358 L63.296,270.545 L63.447,269.733 L63.599,268.920 L63.753,268.107 L63.909,267.294 L64.067,266.482 L64.226,265.669 L64.387,264.856 L64.550,264.043 L64.715,263.231 L64.882,262.418 L65.051,261.605 L65.221,260.792 L65.394,259.980 L65.568,259.167 L65.744,258.354 L65.923,257.541 L66.103,256.729 L66.286,255.916 L66.470,255.103 L66.657,254.290 L66.846,253.478 L67.037,252.665 L67.230,251.852 L67.425,251.039 L67.622,250.227 L67.822,249.414 L68.024,248.601 L68.228,247.788 L68.435,246.975 L68.644,246.163 L68.855,245.350 L69.068,244.537 L69.284,243.724 L69.503,242.912 L69.724,242.099 L69.947,241.286 L70.173,240.473 L70.402,239.661 L70.633,238.848 L70.867,238.035 L71.103,237.222 L71.343,236.410 L71.584,235.597 L71.829,234.784 L72.076,233.971 L72.326,233.159 L72.579,232.346 L72.835,231.533 L73.094,230.720 L73.356,229.908 L73.620,229.095 L73.888,228.282 L74.159,227.469 L74.432,226.657 L74.709,225.844 L74.989,225.031 L75.272,224.218 L75.559,223.406 L75.848,222.593 L76.141,221.780 L76.437,220.967 L76.737,220.155 L77.040,219.342 L77.346,218.529 L77.656,217.716 L77.970,216.904 L78.286,216.091 L78.607,215.278 L78.931,214.465 L79.259,213.653 L79.590,212.840 L79.926,212.027 L80.265,211.214 L80.608,210.402 L80.955,209.589 L81.305,208.776 L81.660,207.963 L82.019,207.150 L82.382,206.338 L82.748,205.525 L83.120,204.712 L83.495,203.899 L83.874,203.087 L84.258,202.274 L84.646,201.461 L85.039,200.648 L85.436,199.836 L85.837,199.023 L86.244,198.210 L86.654,197.397 L87.070,196.585 L87.490,195.772 L87.914,194.959 L88.344,194.146 L88.778,193.334 L89.218,192.521 L89.662,191.708 L90.112,190.895 L90.566,190.083 L91.026,189.270 L91.491,188.457 L91.961,187.644 L92.436,186.832 L92.917,186.019 L93.403,185.206 L93.895,184.393 L94.393,183.581 L94.896,182.768 L95.404,181.955 L95.919,181.142 L96.439,180.330 L96.965,179.517 L97.497,178.704 L98.036,177.891 L98.580,177.079 L99.130,176.266 L99.687,175.453 L100.250,174.640 L100.819,173.828 L101.395,173.015 L101.978,172.202 L102.566,171.389 L103.162,170.576 L103.764,169.764 L104.374,168.951 L104.990,168.138 L105.613,167.325 L106.243,166.513 L106.880,165.700 L107.525,164.887 L108.177,164.074 L108.836,163.262 L109.502,162.449 L110.177,161.636 L110.859,160.823 L111.548,160.011 L112.246,159.198 L112.951,158.385 L113.664,157.572 L114.385,156.760 L115.115,155.947 L115.853,155.134 L116.599,154.321 L117.354,153.509 L118.117,152.696 L118.889,151.883 L119.669,151.070 L120.459,150.258 L121.257,149.445 L122.064,148.632 L122.881,147.819 L123.707,147.007 L124.542,146.194 L125.387,145.381 L126.241,144.568 L127.105,143.756 L127.978,142.943 L128.862,142.130 L129.755,141.317 L130.659,140.505 L131.573,139.692 L132.497,138.879 L133.432,138.066 L134.377,137.254 L135.334,136.441 L136.300,135.628 L137.278,134.815 L138.267,134.003 L139.267,133.190 L140.279,132.377 L141.302,131.564 L142.336,130.751 L143.383,129.939 L144.441,129.126 L145.511,128.313 L146.593,127.500 L147.687,126.688 L148.794,125.875 L149.914,125.062 L151.046,124.249 L152.191,123.437 L153.349,122.624 L154.520,121.811 L155.704,120.998 L156.902,120.186 L158.113,119.373 L159.338,118.560 L160.577,117.747 L161.830,116.935 L163.097,116.122 L164.379,115.309 L165.675,114.496 L166.985,113.684 L168.311,112.871 L169.651,112.058 L171.007,111.245 L172.378,110.433 L173.765,109.620 L175.167,108.807 L176.586,107.994 L178.020,107.182 L179.471,106.369 L180.938,105.556 L182.421,104.743 L183.922,103.931 L185.439,103.118 L186.974,102.305 L188.526,101.492 L190.095,100.680 L191.683,99.867 L193.288,99.054 L194.912,98.241 L196.554,97.429 L198.214,96.616 L199.894,95.803 L201.592,94.990 L203.310,94.177 L205.047,93.365 L206.804,92.552 L208.580,91.739 L210.377,90.926 L212.195,90.114 L214.032,89.301 L215.891,88.488 L217.771,87.675 L219.672,86.863 L221.594,86.050 L223.539,85.237 L225.505,84.424 L227.494,83.612 L229.505,82.799 L231.539,81.986 L233.596,81.173 L235.676,80.361 L237.780,79.548 L239.908,78.735 L242.059,77.922 L244.236,77.110 L246.436,76.297 L248.662,75.484 L250.913,74.671 L253.190,73.859 L255.492,73.046 L257.820,72.233 L260.175,71.420 L262.557,70.608 L264.965,69.795 L267.401,68.982 L269.864,68.169 L272.356,67.357 L274.875,66.544 L277.423,65.731 L280.000,64.918"/>
+<circle class="log-point" cx="100" cy="175" r="4.5" data-x="1" data-y="0"/>
+<text class="log-point-label" x="111" y="218">(1, 0)</text>
+</svg><figcaption>$0&lt;x&lt;1$ 时，曲线在 $x$ 轴下方；$x&gt;1$ 时，曲线在 $x$ 轴上方。</figcaption></figure><figure class="b-map-figure log-figure"><h3>$y=\log_{\frac12}x$：递减</h3>
+<svg viewBox="0 0 320 350" role="img" aria-labelledby="decreasing-title decreasing-desc" data-base="0.5">
+<title id="decreasing-title">底数为二分之一的递减对数曲线</title>
+<desc id="decreasing-desc">曲线只在x大于0时有定义，经过点(1,0)，与y轴不相交。底数在0与1之间，随x增大而递减。</desc>
+<g class="log-grid"><path d="M100 25V325"/><path d="M150 25V325"/><path d="M200 25V325"/><path d="M250 25V325"/><path d="M35 325H280"/><path d="M35 275H280"/><path d="M35 225H280"/><path d="M35 125H280"/><path d="M35 75H280"/><path d="M35 25H280"/></g>
+<g class="log-axis"><path d="M35 175H291M50 335V15"/><path d="M285 171L291 175L285 179M46 21L50 15L54 21"/></g>
+<g class="log-label"><text x="150" y="196" text-anchor="middle">2</text><text x="200" y="196" text-anchor="middle">3</text><text x="250" y="196" text-anchor="middle">4</text><text x="40" y="281" text-anchor="end">-2</text><text x="40" y="231" text-anchor="end">-1</text><text x="40" y="131" text-anchor="end">1</text><text x="40" y="81" text-anchor="end">2</text><text x="35" y="195">0</text><text x="298" y="181">x</text><text x="62" y="20">y</text></g>
+<path class="log-curve" d="M56.250,25.000 L56.321,25.813 L56.392,26.626 L56.465,27.438 L56.538,28.251 L56.612,29.064 L56.687,29.877 L56.763,30.689 L56.840,31.502 L56.917,32.315 L56.995,33.128 L57.075,33.940 L57.155,34.753 L57.236,35.566 L57.318,36.379 L57.401,37.191 L57.485,38.004 L57.569,38.817 L57.655,39.630 L57.742,40.442 L57.830,41.255 L57.918,42.068 L58.008,42.881 L58.099,43.693 L58.191,44.506 L58.283,45.319 L58.377,46.132 L58.472,46.944 L58.568,47.757 L58.665,48.570 L58.764,49.383 L58.863,50.195 L58.963,51.008 L59.065,51.821 L59.168,52.634 L59.271,53.446 L59.376,54.259 L59.483,55.072 L59.590,55.885 L59.699,56.697 L59.809,57.510 L59.920,58.323 L60.032,59.136 L60.146,59.948 L60.261,60.761 L60.377,61.574 L60.495,62.387 L60.614,63.199 L60.734,64.012 L60.856,64.825 L60.979,65.638 L61.103,66.451 L61.229,67.263 L61.356,68.076 L61.485,68.889 L61.615,69.702 L61.746,70.514 L61.879,71.327 L62.014,72.140 L62.150,72.953 L62.288,73.765 L62.427,74.578 L62.568,75.391 L62.710,76.204 L62.854,77.016 L63.000,77.829 L63.147,78.642 L63.296,79.455 L63.447,80.267 L63.599,81.080 L63.753,81.893 L63.909,82.706 L64.067,83.518 L64.226,84.331 L64.387,85.144 L64.550,85.957 L64.715,86.769 L64.882,87.582 L65.051,88.395 L65.221,89.208 L65.394,90.020 L65.568,90.833 L65.744,91.646 L65.923,92.459 L66.103,93.271 L66.286,94.084 L66.470,94.897 L66.657,95.710 L66.846,96.522 L67.037,97.335 L67.230,98.148 L67.425,98.961 L67.622,99.773 L67.822,100.586 L68.024,101.399 L68.228,102.212 L68.435,103.025 L68.644,103.837 L68.855,104.650 L69.068,105.463 L69.284,106.276 L69.503,107.088 L69.724,107.901 L69.947,108.714 L70.173,109.527 L70.402,110.339 L70.633,111.152 L70.867,111.965 L71.103,112.778 L71.343,113.590 L71.584,114.403 L71.829,115.216 L72.076,116.029 L72.326,116.841 L72.579,117.654 L72.835,118.467 L73.094,119.280 L73.356,120.092 L73.620,120.905 L73.888,121.718 L74.159,122.531 L74.432,123.343 L74.709,124.156 L74.989,124.969 L75.272,125.782 L75.559,126.594 L75.848,127.407 L76.141,128.220 L76.437,129.033 L76.737,129.845 L77.040,130.658 L77.346,131.471 L77.656,132.284 L77.970,133.096 L78.286,133.909 L78.607,134.722 L78.931,135.535 L79.259,136.347 L79.590,137.160 L79.926,137.973 L80.265,138.786 L80.608,139.598 L80.955,140.411 L81.305,141.224 L81.660,142.037 L82.019,142.850 L82.382,143.662 L82.748,144.475 L83.120,145.288 L83.495,146.101 L83.874,146.913 L84.258,147.726 L84.646,148.539 L85.039,149.352 L85.436,150.164 L85.837,150.977 L86.244,151.790 L86.654,152.603 L87.070,153.415 L87.490,154.228 L87.914,155.041 L88.344,155.854 L88.778,156.666 L89.218,157.479 L89.662,158.292 L90.112,159.105 L90.566,159.917 L91.026,160.730 L91.491,161.543 L91.961,162.356 L92.436,163.168 L92.917,163.981 L93.403,164.794 L93.895,165.607 L94.393,166.419 L94.896,167.232 L95.404,168.045 L95.919,168.858 L96.439,169.670 L96.965,170.483 L97.497,171.296 L98.036,172.109 L98.580,172.921 L99.130,173.734 L99.687,174.547 L100.250,175.360 L100.819,176.172 L101.395,176.985 L101.978,177.798 L102.566,178.611 L103.162,179.424 L103.764,180.236 L104.374,181.049 L104.990,181.862 L105.613,182.675 L106.243,183.487 L106.880,184.300 L107.525,185.113 L108.177,185.926 L108.836,186.738 L109.502,187.551 L110.177,188.364 L110.859,189.177 L111.548,189.989 L112.246,190.802 L112.951,191.615 L113.664,192.428 L114.385,193.240 L115.115,194.053 L115.853,194.866 L116.599,195.679 L117.354,196.491 L118.117,197.304 L118.889,198.117 L119.669,198.930 L120.459,199.742 L121.257,200.555 L122.064,201.368 L122.881,202.181 L123.707,202.993 L124.542,203.806 L125.387,204.619 L126.241,205.432 L127.105,206.244 L127.978,207.057 L128.862,207.870 L129.755,208.683 L130.659,209.495 L131.573,210.308 L132.497,211.121 L133.432,211.934 L134.377,212.746 L135.334,213.559 L136.300,214.372 L137.278,215.185 L138.267,215.997 L139.267,216.810 L140.279,217.623 L141.302,218.436 L142.336,219.249 L143.383,220.061 L144.441,220.874 L145.511,221.687 L146.593,222.500 L147.687,223.312 L148.794,224.125 L149.914,224.938 L151.046,225.751 L152.191,226.563 L153.349,227.376 L154.520,228.189 L155.704,229.002 L156.902,229.814 L158.113,230.627 L159.338,231.440 L160.577,232.253 L161.830,233.065 L163.097,233.878 L164.379,234.691 L165.675,235.504 L166.985,236.316 L168.311,237.129 L169.651,237.942 L171.007,238.755 L172.378,239.567 L173.765,240.380 L175.167,241.193 L176.586,242.006 L178.020,242.818 L179.471,243.631 L180.938,244.444 L182.421,245.257 L183.922,246.069 L185.439,246.882 L186.974,247.695 L188.526,248.508 L190.095,249.320 L191.683,250.133 L193.288,250.946 L194.912,251.759 L196.554,252.571 L198.214,253.384 L199.894,254.197 L201.592,255.010 L203.310,255.823 L205.047,256.635 L206.804,257.448 L208.580,258.261 L210.377,259.074 L212.195,259.886 L214.032,260.699 L215.891,261.512 L217.771,262.325 L219.672,263.137 L221.594,263.950 L223.539,264.763 L225.505,265.576 L227.494,266.388 L229.505,267.201 L231.539,268.014 L233.596,268.827 L235.676,269.639 L237.780,270.452 L239.908,271.265 L242.059,272.078 L244.236,272.890 L246.436,273.703 L248.662,274.516 L250.913,275.329 L253.190,276.141 L255.492,276.954 L257.820,277.767 L260.175,278.580 L262.557,279.392 L264.965,280.205 L267.401,281.018 L269.864,281.831 L272.356,282.643 L274.875,283.456 L277.423,284.269 L280.000,285.082"/>
+<circle class="log-point" cx="100" cy="175" r="4.5" data-x="1" data-y="0"/>
+<text class="log-point-label" x="111" y="157">(1, 0)</text>
+</svg><figcaption>$0&lt;x&lt;1$ 时，曲线在 $x$ 轴上方；$x&gt;1$ 时，曲线在 $x$ 轴下方。</figcaption></figure></div>
+<p>两幅图使用相同的坐标尺度。它们都经过 $(1,0)$，都不与 $y$ 轴相交，但单调方向和正负分布相反。图中只画出一段曲线；曲线仍会继续延伸，绘图边界不是定义域的端点。</p>
+</div></section>
+<section class="section" id="comparison" data-source-md="02_对数函数的图象与性质.md#4-用单调性比较同底数对数">
+<h2 class="marker"><span aria-hidden="true">04</span>同底比较</h2><div class="section-body prose"><h2>用单调性比较同底数对数</h2>
+<p class="section-intro">图象的单调方向也决定了大小比较的方向。先确认两个对数的底数相同，且满足 $a&gt;0$、$a\ne1$；真数还要满足 $M&gt;0$、<span class="b-math-punct">$N&gt;0$。</span></p>
+<p>当 $a&gt;1$ 时，对数函数递增，真数较小，对数值也较小：</p>
+<div class="b-formula">$$M&lt;N\quad\Longrightarrow\quad\log_aM&lt;\log_aN.$$</div>
+<p>不等号方向保持不变。当 $0&lt;a&lt;1$ 时，对数函数递减，真数较小，对数值反而较大：</p>
+<div class="b-formula">$$M&lt;N\quad\Longrightarrow\quad\log_aM&gt;\log_aN.$$</div>
+<p>这时不等号方向发生反转。</p>
+<h3>比较 $\log_{0.3}1.8$ 与 $\log_{0.3}2.7$</h3>
+<p>两个真数都为正，且 $1.8&lt;2.7$。它们的底数同为 $0.3$，位于 $(0,1)$ 内，因此对数函数递减，得到</p>
+<div class="b-formula">$$\log_{0.3}1.8&gt;\log_{0.3}2.7.$$</div>
+<p>较小的真数 $1.8$，对应的对数值反而较大。</p>
+<div class="b-boundary-note"><p>若题目只说明 $a&gt;0$ 且 $a\ne1$，却没有指出 $a&gt;1$ 还是 $0&lt;a&lt;1$，就必须分类讨论。若两个对数的底数不同，也不能直接套用同一个对数函数的单调性。</p></div>
+<div class="summary-panel"><p>最终需要把三件事连在一起：真数为正，决定图象只在 $y$ 轴右侧；$\log_a1=0$，决定共同定点；底数在 $1$ 的哪一侧，决定图象的单调方向、函数值的正负以及大小比较的方向。</p>
+<p class="b-summary-line">比较同底数对数，先确认真数为正，再按底数所在范围判断方向。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../01_对数函数的概念/index.html">← 上一篇 · 对数函数的概念</a>
+<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+<a class="pager-next" href="../03_不同函数增长速度的比较/index.html">下一篇 · 不同函数增长速度的比较 →</a>
+</nav>
+<footer class="footer">OpenKS · B 函数图像与变化关系 · 对数函数的图象与性质</footer>
+<script>
+document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+  event.target.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+});
+</script>
+</body>
+</html>

@@ -99,6 +99,8 @@ svg {
 
 .daily-entry {
   min-height: 42px;
+  font-family: inherit;
+  cursor: pointer;
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
@@ -163,32 +165,35 @@ svg {
 }
 
 .domain-card {
+  text-decoration: none;
   position: relative;
   min-width: 0;
-  min-height: 410px;
+  min-height: 380px;
   padding: clamp(28px, 3vw, 38px);
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+  transition: border-color .22s ease;
   animation: reveal .5s var(--ease) .06s both;
 }
 
 .math-card {
   display: flex;
   flex-direction: column;
-  border-color: rgba(255, 255, 255, .08);
-  background:
-    radial-gradient(circle at 93% 5%, rgba(61, 104, 216, .32), transparent 17rem),
-    linear-gradient(145deg, var(--night-soft), var(--night) 58%);
-  color: #fff;
-  box-shadow: 0 28px 80px rgba(26, 39, 82, .16);
+  background: var(--surface);
+  color: var(--ink);
 }
 
-.computer-card {
+.daily-card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, .7);
+  border-color: #e3dfd5;
+  background-color: #f8f6f0;
+  background-image:
+    linear-gradient(rgba(215, 210, 196, .35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(215, 210, 196, .35) 1px, transparent 1px);
+  background-size: 32px 32px;
   animation-delay: .12s;
 }
 
@@ -208,8 +213,9 @@ svg {
   line-height: 1.2;
 }
 
-.math-card .domain-label {
-  color: rgba(255, 255, 255, .52);
+.daily-card h2 {
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-weight: 700;
 }
 
 .domain-card h2 {
@@ -237,9 +243,9 @@ svg {
 }
 
 .status-open {
-  border-color: rgba(255, 255, 255, .16);
-  background: rgba(255, 255, 255, .07);
-  color: rgba(255, 255, 255, .84);
+  border-color: #d5e8e3;
+  background: #edf7f5;
+  color: #23655e;
 }
 
 .status-open span {
@@ -262,8 +268,38 @@ svg {
   letter-spacing: 0;
 }
 
-.math-card .domain-description {
-  color: rgba(255, 255, 255, .64);
+.card-visual {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-height: 100px;
+  margin: 8px 0 16px;
+}
+
+.card-illustration {
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.math-illustration { width: 180px; color: #7893c7; }
+.daily-illustration { color: #498b98; }
+.illustration-guide { stroke: currentColor; opacity: .22; stroke-width: 1; }
+.illustration-axis { opacity: .55; stroke-width: 1.5; }
+.illustration-paper { fill: #fffdf8; stroke-opacity: .45; }
+
+.daily-steps {
+  margin: 0 auto 0 0;
+  color: #0c728c;
+  font-size: 14px;
+  font-weight: 600;
+  word-spacing: .35em;
 }
 
 .browse-math {
@@ -274,10 +310,10 @@ svg {
   gap: 24px;
   margin-top: auto;
   padding: 16px 18px;
-  border: 1px solid rgba(255, 255, 255, .13);
+  border: 1px solid #dce3f4;
   border-radius: 18px;
-  background: rgba(255, 255, 255, .045);
-  color: #fff;
+  background: #f1f4fc;
+  color: var(--brand);
   text-decoration: none;
   transition: background-color .22s ease, border-color .22s ease;
 }
@@ -295,7 +331,7 @@ svg {
 }
 
 .browse-math small {
-  color: rgba(255, 255, 255, .5);
+  color: var(--muted);
   font-size: 13px;
 }
 
@@ -304,7 +340,7 @@ svg {
   height: 22px;
   flex: 0 0 auto;
   fill: none;
-  stroke: rgba(255, 255, 255, .74);
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
@@ -441,9 +477,43 @@ svg {
 }
 
 .site-footer {
-  padding: 14px 0 28px;
+  margin-top: 32px;
+  padding: 40px 0 24px;
+  border-top: 1px solid var(--line);
+  background: #f0f3f8;
   color: var(--muted);
   font-size: 12px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 28px;
+}
+
+.footer-identity .brand img { height: 30px; }
+.footer-identity p { margin: 12px 0 0; font-size: 14px; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.footer-nav a, .footer-nav button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.footer-nav a:hover, .footer-nav button:hover { color: var(--brand); }
+.footer-nav a:focus-visible, .footer-nav button:focus-visible {
+  outline: 3px solid rgba(61, 104, 216, .48);
+  outline-offset: 4px;
 }
 
 .footer-inner {
@@ -456,14 +526,14 @@ svg {
 
 .brand:focus-visible,
 .daily-entry:focus-visible,
-.browse-math:focus-visible,
+.domain-card:focus-visible,
 .chapter-card:focus-visible,
 .skip-link:focus-visible {
   outline: 3px solid rgba(61, 104, 216, .48);
   outline-offset: 4px;
 }
 
-.browse-math:focus-visible {
+.domain-card:focus-visible {
   outline-color: #83a6ff;
 }
 
@@ -478,13 +548,25 @@ svg {
     transform: translateX(2px);
   }
 
-  .browse-math:hover {
-    border-color: rgba(255, 255, 255, .22);
-    background: rgba(255, 255, 255, .075);
+  .math-card:hover {
+    border-color: #aab9df;
   }
 
-  .browse-math:hover svg {
-    stroke: #fff;
+  .math-card:hover .browse-math {
+    border-color: #b9c7e9;
+    background: #e8eefb;
+  }
+
+  .daily-card:hover {
+    border-color: #90bcc7;
+  }
+
+  .daily-card:hover .browse-math {
+    background: #09667e;
+    border-color: #09667e;
+  }
+
+  .domain-card:hover .browse-math svg {
     transform: translateY(3px);
   }
 
@@ -530,7 +612,7 @@ svg {
     min-height: 320px;
   }
 
-  .computer-card {
+  .daily-card {
     min-height: 190px;
   }
 
@@ -698,11 +780,11 @@ svg {
     font-size: 18px;
   }
 
-  .computer-card {
+  .daily-card {
     min-height: 142px;
   }
 
-  .computer-card .domain-description {
+  .daily-card .domain-description {
     max-width: 200px;
   }
 
@@ -722,7 +804,7 @@ svg {
 }
 
 @media (max-width: 360px) {
-  .computer-card .domain-description {
+  .daily-card .domain-description {
     max-width: none;
   }
 }
@@ -736,4 +818,49 @@ svg {
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+}
+
+.daily-card .browse-math {
+  border-color: #0c728c;
+  background: #0c728c;
+  color: #fff;
+}
+.daily-card:hover .browse-math svg { transform: translateX(3px); }
+.contact-dialog {
+  width: min(460px, calc(100% - 32px));
+  max-height: calc(100svh - 32px);
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(16, 24, 47, .2);
+}
+.contact-dialog::backdrop { background: rgba(16, 24, 47, .36); }
+.contact-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.contact-heading h2 { margin: 0; font-size: 26px; font-weight: 650; }
+.contact-close {
+  width: 44px; height: 44px; border: 0; border-radius: 12px;
+  background: var(--page); color: var(--muted); font: inherit; font-size: 26px; cursor: pointer;
+}
+.contact-intro { margin: 12px 0 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.wechat-contact { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--page); }
+.contact-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; }
+#wechat-id { font-size: 22px; font-weight: 650; user-select: all; }
+.copy-status { min-height: 40px; margin: 8px 0 14px; color: var(--muted); font-size: 13px; }
+.social-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.social-links a { display: flex; align-items: center; justify-content: space-between; flex: 1 0 auto; gap: 12px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; color: var(--brand); text-decoration: none; font-size: 14px; }
+.contact-dialog button:focus-visible, .social-links a:focus-visible { outline: 3px solid rgba(61,104,216,.48); outline-offset: 3px; }
+.social-links a:hover { background: var(--page); border-color: var(--brand); }
+@media (max-width: 620px) {
+  .daily-card { min-height: 228px; }
+  .daily-card .domain-description { max-width: none; }
+  .card-visual { min-height: 76px; margin-block: 8px 12px; }
+  .card-illustration { width: 76px; height: 76px; }
+  .math-illustration { width: 137px; }
+  .footer-main { align-items: flex-start; flex-direction: column; gap: 18px; padding-bottom: 20px; }
+  .footer-nav { gap: 24px; }
+  .contact-dialog { padding: 20px; }
+  .wechat-contact { padding: 14px; }
+  #copy-wechat { min-height: 44px; }
 }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解指数函数的定义、正底数与排除底数1的原因，并通过3的x次幂与x的三次幂分清底数和指数的角色。">
+  <title>指数函数的概念 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+</head>
+<body>
+  <!-- Source SHA256: 400f870c4debc216003c9640d0090cd7e69b68e2ec6b81e6c1b8f82d2da60259 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#definition">指数函数</a>
+      <a class="nav-link" href="#positive-base">正底数</a>
+      <a class="nav-link" href="#exclude-one">排除底数 1</a>
+      <a class="nav-link" href="#roles">底数与指数</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 11</span>
+    <h1>指数函数的概念</h1>
+    <p class="lead">实数指数幂已经说明：固定一个正底数后，每个实数指数都对应一个确定的正数。让指数成为自变量，就得到新的函数。理解指数函数，要分清底数和指数的角色，还要弄清底数为什么必须大于零、为什么要排除 <span class="b-math-punct">$1$。</span></p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="definition" data-source-md="01_指数函数的概念.md#1-什么是指数函数">
+      <h2 class="marker"><span aria-hidden="true">01</span>指数函数</h2>
+      <div class="section-body prose">
+        <h2>什么是指数函数</h2>
+        <p class="section-intro">固定底数，让指数随自变量变化，这是指数函数的基本结构。</p>
+        <div class="b-definition">
+          <p>一般地，函数</p>
+          <div class="b-formula">$$f(x)=a^x\qquad(a>0,\ a\ne1)$$</div>
+          <p>叫作指数函数，它的定义域是 <span class="b-math-punct">$\mathbb R$。</span></p>
+        </div>
+        <p>式中的 $a$ 是固定的常数，$x$ 是自变量。当 $x$ 取不同实数时，实数指数幂 $a^x$ 给出唯一的函数值。底数在同一个函数中保持不变，变化的是指数。</p>
+        <p>这一定义说的是最基本的形式 <span class="b-math-punct">$y=a^x$。</span>例如，下面两个函数都符合这个形式：</p>
+        <div class="b-function-lines" aria-label="两个指数函数的例子">
+          <span>$y=2^x$</span>
+          <span>$y=\left(\frac13\right)^x$</span>
+        </div>
+        <p>它们的底数分别是 $2$ 和 <span class="b-math-punct">$\frac13$，</span>都大于零且不等于 <span class="b-math-punct">$1$。</span>两者虽然变化方向不同，却都属于指数函数。图象和变化性质留到下一篇研究。</p>
+      </div>
+    </section>
+
+    <section class="section" id="positive-base" data-source-md="01_指数函数的概念.md#2-为什么底数必须大于零">
+      <h2 class="marker"><span aria-hidden="true">02</span>正底数</h2>
+      <div class="section-body prose">
+        <h2>为什么底数必须大于零</h2>
+        <p class="section-intro">定义域是 $\mathbb R$，就要求 $a^x$ 对每一个实数 $x$ 都有统一的实数意义。底数为零或负数时，这个要求无法满足。</p>
+        <p>若 <span class="b-math-punct">$a=0$，</span>取负指数 <span class="b-math-punct">$x=-1$，</span>按负指数取倒数的规则，就会要求计算</p>
+        <div class="b-formula">$$0^{-1}=\frac10.$$</div>
+        <p>分母为零，除法没有意义，因此 $0^{-1}$ 也没有意义。仅这一个实数输入，就使对应关系无法在全体实数上成立。</p>
+        <p>若 <span class="b-math-punct">$a&lt;0$，</span>取 <span class="b-math-punct">$x=\frac12$，</span>二分之一次幂就需要负数的平方根，在实数范围内没有值。因此，负底数也不能覆盖所有实数指数。</p>
+        <div class="b-boundary-note">
+          <p>要求 <span class="b-math-punct">$a>0$，</span>是为了保证每个 $x\in\mathbb R$ 都有且只有一个 $a^x$ 与它对应。正底数的实数指数幂已经保证这一点，才能由此得到定义域为 $\mathbb R$ 的函数。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="exclude-one" data-source-md="01_指数函数的概念.md#3-为什么还要排除-a1">
+      <h2 class="marker"><span aria-hidden="true">03</span>排除底数 1</h2>
+      <div class="section-body prose">
+        <h2>为什么还要排除 $a=1$</h2>
+        <p class="section-intro">底数 $1$ 是正数，它的实数指数幂有意义。但指数函数的定义还要排除这个特殊情况。</p>
+        <p>若 <span class="b-math-punct">$a=1$，</span>那么对任意实数 <span class="b-math-punct">$x$，</span>都有</p>
+        <div class="b-formula">$$1^x=1.$$</div>
+        <p>无论指数怎样改变，输出始终是 <span class="b-math-punct">$1$。</span>所以，$y=1^x$ 当然仍是一个函数，只不过它是常值函数。</p>
+        <p>常值函数不能表现“指数改变带来函数值变化”这一类函数的共同结构。因此，教材在指数函数的定义中排除 <span class="b-math-punct">$a=1$。</span></p>
+        <div class="b-boundary-note">
+          <p>实数指数幂允许底数为 <span class="b-math-punct">$1$，</span>指数函数的定义排除底数为 <span class="b-math-punct">$1$。</span>这里是在区分函数类别，并不是说 $1^x$ 没有意义或不能构成函数。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roles" data-source-md="01_指数函数的概念.md#4-不要把底数和指数的位置看反">
+      <h2 class="marker"><span aria-hidden="true">04</span>底数与指数</h2>
+      <div class="section-body prose">
+        <h2>不要把底数和指数的位置看反</h2>
+        <p class="section-intro">确认底数条件后，还要看自变量在哪里。$3^x$ 与 $x^3$ 都含有幂，但底数和指数的角色正好相反。</p>
+        <div class="b-function-check" aria-label="指数函数与幂函数的角色比较">
+          <article>
+            <h3>指数函数</h3>
+            <div class="b-formula">$$y=3^x$$</div>
+            <p>底数 $3$ 固定，指数 $x$ 变化。自变量在指数位置，底数也满足定义条件，所以它是指数函数。</p>
+          </article>
+          <article>
+            <h3>幂函数</h3>
+            <div class="b-formula">$$y=x^3$$</div>
+            <p>底数随 $x$ 变化，指数 $3$ 固定。自变量在底数位置，所以它是幂函数，不是指数函数。</p>
+          </article>
+        </div>
+        <p>判断时要看清固定的是底数还是指数，不能只看式子中有没有幂。</p>
+        <div class="summary-panel">
+          <h3>核心结论</h3>
+          <p>固定满足 $a>0$ 且 $a\ne1$ 的底数，让实数自变量出现在指数位置，所得 $y=a^x$ 才是这里所说的指数函数。它的定义域是 <span class="b-math-punct">$\mathbb R$。</span></p>
+          <p class="b-summary-line">底数固定、指数变化，还要满足底数大于零且不等于 <span class="b-math-punct">$1$。</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-05_指数/02_无理数指数幂与实数指数幂/index.html">← 上一篇 · 无理数指数幂与实数指数幂</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_指数函数的图象与性质/index.html">下一篇 · 指数函数的图象与性质 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 指数函数的概念</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
+    });
+  </script>
+</body>
+</html>

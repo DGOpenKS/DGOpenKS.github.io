@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从指数运算推导积、商、幂的对数性质与换底公式，保留底数和真数条件，并用反例分清不能拆分的加减结构。">
+  <title>对数的运算与换底公式 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+  <style>
+    .log-rules-page .log-structure { width:100%; margin:1.3rem 0; border-collapse:collapse; table-layout:fixed; }
+    .log-rules-page .log-structure caption { margin-bottom:.8rem; text-align:left; color:var(--blue-deep); font-weight:700; }
+    .log-rules-page .log-structure th, .log-rules-page .log-structure td { padding:.85rem .5rem; border:1px solid var(--line); text-align:center; }
+    .log-rules-page .log-structure thead { background:var(--blue-soft); color:var(--blue-deep); }
+    .log-rules-page .log-structure tbody { background:var(--paper); }
+    .log-rules-page .log-structure small { display:block; margin-top:.4rem; color:var(--body); font-size:.8rem; font-weight:400; }
+    .log-rules-page .log-invalid { border-color:var(--amber-line); background:var(--amber-soft); color:var(--amber-deep); }
+    @media(max-width:640px) {
+      .log-rules-page .log-structure th, .log-rules-page .log-structure td { padding:.7rem .25rem; font-size:.9rem; }
+    }
+  </style>
+</head>
+<body class="log-rules-page">
+  <!-- Source SHA256: db3a548bfc8a41631a37bf878cf085f8cb76cf1d4ced40c07475bbb497d1fd57 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#product">积的对数</a>
+      <a class="nav-link" href="#quotient-power">商与幂</a>
+      <a class="nav-link" href="#change-base">换底公式</a>
+      <a class="nav-link" href="#boundary">不能拆的结构</a>
+      <a class="nav-link" href="#example">计算过程</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 14</span>
+    <h1>对数的运算与换底公式</h1>
+    <p class="lead">对数记录的是指数。正数的乘、除、乘方，为什么能转化为对数的加、减、倍乘？把对数反写成指数式，就能从指数运算推出这些性质；沿着同一条思路，还能把不便计算的底数换成另一个合法底数。</p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section" id="product" data-source-md="02_对数的运算与换底公式.md#1-积的对数为什么变成和">
+      <h2 class="marker"><span aria-hidden="true">01</span>积的对数</h2>
+      <div class="section-body prose">
+        <h2>积的对数为什么变成和</h2>
+        <p class="section-intro">先把两个正数写成同底数的幂，再看它们相乘时，指数发生了什么变化。</p>
+        <p>设 <span class="b-math-punct">$a&gt;0$</span> 且 <span class="b-math-punct">$a\ne1$，</span>并且 <span class="b-math-punct">$M&gt;0$、</span><span class="b-math-punct">$N&gt;0$。</span>把两个对数分别记为 $\alpha$ 和 $\beta$：</p>
+        <div class="b-formula">$$\alpha=\log_aM,\qquad\beta=\log_aN.$$</div>
+        <p>根据对数的定义，$\alpha$ 是底数 $a$ 得到 $M$ 所需的指数，$\beta$ 是底数 $a$ 得到 $N$ 所需的指数。因此</p>
+        <div class="b-formula">$$M=a^\alpha,\qquad N=a^\beta.$$</div>
+        <p>把这两个指数式代入积 $MN$：</p>
+        <div class="b-formula">$$MN=a^\alpha a^\beta.$$</div>
+        <p>两个幂的底数相同，相乘时指数相加，所以</p>
+        <div class="b-formula">$$a^\alpha a^\beta=a^{\alpha+\beta}.$$</div>
+        <p>这说明 $MN$ 是 $a$ 的 $\alpha+\beta$ 次幂。再按对数的定义改写：</p>
+        <div class="b-formula">$$\log_a(MN)=\alpha+\beta.$$</div>
+        <p>把 $\alpha$ 和 $\beta$ 换回原来的两个对数，得到积的对数性质：</p>
+        <div class="b-formula">$$\log_a(MN)=\log_aM+\log_aN.$$</div>
+        <p>积的对数等于各因数对数的和。这个“和”来自同底数幂相乘时的指数相加，并不是一条孤立的口诀。</p>
+        <div class="b-boundary-note">
+          <p>条件 $M&gt;0$、$N&gt;0$ 不能省略。右边的 $\log_aM$ 和 $\log_aN$ 都必须有意义，所以要分别检查两个真数是否为正。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quotient-power" data-source-md="02_对数的运算与换底公式.md#2-商与幂的运算性质">
+      <h2 class="marker"><span aria-hidden="true">02</span>商与幂</h2>
+      <div class="section-body prose">
+        <h2>商与幂的运算性质</h2>
+        <p class="section-intro">相同的思路也能解释商与幂。仍设 <span class="b-math-punct">$a&gt;0$</span> 且 <span class="b-math-punct">$a\ne1$，</span><span class="b-math-punct">$M&gt;0$、</span><span class="b-math-punct">$N&gt;0$，</span>并沿用 $\alpha=\log_aM$、$\beta=\log_aN$。</p>
+        <h3>商：同底数幂相除，指数相减</h3>
+        <p>由 $M=a^\alpha$、$N=a^\beta$，先把商写成两个幂相除：</p>
+        <div class="b-formula">$$\frac{M}{N}=\frac{a^\alpha}{a^\beta}.$$</div>
+        <p>同底数幂相除，底数不变，指数相减：</p>
+        <div class="b-formula">$$\frac{a^\alpha}{a^\beta}=a^{\alpha-\beta}.$$</div>
+        <p>因此，$\frac MN$ 是 $a$ 的 $\alpha-\beta$ 次幂。改写成对数式，得到</p>
+        <div class="b-formula">$$\log_a\frac{M}{N}=\alpha-\beta.$$</div>
+        <p>把两个指数换回各自的对数：</p>
+        <div class="b-formula">$$\log_a\frac{M}{N}=\log_aM-\log_aN.$$</div>
+        <p>商的对数等于被除数的对数减去除数的对数。条件 $N&gt;0$ 也同时保证了除数不为 $0$。</p>
+        <h3>幂：幂再乘方，指数相乘</h3>
+        <p>再取任意实数 $r$。因为 $M&gt;0$，实数幂 $M^r$ 有意义且为正。把 $M=a^\alpha$ 代入：</p>
+        <div class="b-formula">$$M^r=(a^\alpha)^r.$$</div>
+        <p>使用幂的乘方性质，两个指数相乘：</p>
+        <div class="b-formula">$$(a^\alpha)^r=a^{r\alpha}.$$</div>
+        <p>这说明 $M^r$ 是 $a$ 的 $r\alpha$ 次幂。改写成对数式：</p>
+        <div class="b-formula">$$\log_a(M^r)=r\alpha.$$</div>
+        <p>再把 $\alpha$ 换成 $\log_aM$，就得到</p>
+        <div class="b-formula">$$\log_a(M^r)=r\log_aM,\qquad r\in\mathbb R.$$</div>
+        <p>真数的指数可以移到对数前成为倍数，前提仍是底数合法、真数 $M&gt;0$。</p>
+        <p class="b-observe">把三条推导中的结构对应起来：真数怎样运算，决定了指数怎样运算。</p>
+        <table class="log-structure">
+          <caption>从真数的运算看对应的指数</caption>
+          <thead><tr><th scope="col">真数</th><th scope="col">写成 $a$ 的幂</th><th scope="col">以 $a$ 为底的对数</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$MN$<small>相乘</small></th><td>$a^{\alpha+\beta}$</td><td>$\alpha+\beta$<small>指数相加</small></td></tr>
+            <tr><th scope="row">$\dfrac MN$<small>相除</small></th><td>$a^{\alpha-\beta}$</td><td>$\alpha-\beta$<small>指数相减</small></td></tr>
+            <tr><th scope="row">$M^r$<small>乘方</small></th><td>$a^{r\alpha}$</td><td>$r\alpha$<small>指数相乘</small></td></tr>
+          </tbody>
+        </table>
+        <p>这里 $\alpha=\log_aM$、$\beta=\log_aN$。右列写出的就是每个真数对应的指数，因而也是它以 $a$ 为底的对数。三条性质都来自指数运算。</p>
+      </div>
+    </section>
+
+    <section class="section" id="change-base" data-source-md="02_对数的运算与换底公式.md#3-换底公式从哪里来">
+      <h2 class="marker"><span aria-hidden="true">03</span>换底公式</h2>
+      <div class="section-body prose">
+        <h2>换底公式从哪里来</h2>
+        <p class="section-intro">有了幂的对数性质，就能把一个对数换成另一个底数来计算。</p>
+        <p>设原底数 <span class="b-math-punct">$a&gt;0$</span> 且 <span class="b-math-punct">$a\ne1$，</span>真数 <span class="b-math-punct">$b&gt;0$；</span>另选新底数 <span class="b-math-punct">$c&gt;0$</span> 且 <span class="b-math-punct">$c\ne1$。</span>先把原对数记为 $x$：</p>
+        <div class="b-formula">$$x=\log_ab.$$</div>
+        <p>根据对数的定义，把它写成指数式：</p>
+        <div class="b-formula">$$a^x=b.$$</div>
+        <p>等式两边都是正数，可以同取以 $c$ 为底的对数：</p>
+        <div class="b-formula">$$\log_c(a^x)=\log_cb.$$</div>
+        <p>利用幂的对数性质，把左边真数的指数 $x$ 移到对数前：</p>
+        <div class="b-formula">$$x\log_ca=\log_cb.$$</div>
+        <p>因为 $a\ne1$，所以 $\log_ca\ne0$。两边可以同除以 $\log_ca$，得到</p>
+        <div class="b-formula">$$x=\frac{\log_cb}{\log_ca}.$$</div>
+        <p>最后代回 $x=\log_ab$，得到换底公式：</p>
+        <div class="b-definition">
+          <div class="b-formula">$$\log_ab=\frac{\log_cb}{\log_ca}.$$</div>
+          <p>分子是真数 $b$ 以新底数 $c$ 为底的对数；分母是原底数 $a$ 以同一个新底数 $c$ 为底的对数。</p>
+        </div>
+        <p>新底数 $c$ 可以是任意合法底数。取 $c=10$ 或 $c=e$，就能分别用常用对数或自然对数计算其他底数的对数。</p>
+      </div>
+    </section>
+
+    <section class="section" id="boundary" data-source-md="02_对数的运算与换底公式.md#4-公式不能怎样拆">
+      <h2 class="marker"><span aria-hidden="true">04</span>使用边界</h2>
+      <div class="section-body prose">
+        <h2>公式不能怎样拆</h2>
+        <p class="section-intro">前面的运算性质对应乘法、除法和乘方，不包括加法与减法。不能看到括号，就把真数中的每一项分别取对数。</p>
+        <div class="b-boundary-note">
+          <h3>错误拆法：下面的等式一般不成立</h3>
+          <div class="b-formula log-invalid">$$\log_a(M+N)\;\overset{\text{错误}}{=}\;\log_aM+\log_aN.$$</div>
+          <p>右边的两个对数相加，对应的是积 $MN$ 的对数，不能用来拆分和 $M+N$。</p>
+        </div>
+        <p>例如，先在真数中相加，再取常用对数，得到</p>
+        <div class="b-formula">$$\lg(1+1)=\lg2.$$</div>
+        <p>如果把两个 $1$ 分别取常用对数，再相加，因为 $\lg1=0$，得到的却是</p>
+        <div class="b-formula">$$\lg1+\lg1=0.$$</div>
+        <p>$\lg2$ 与 $0$ 并不相等，所以这两个计算过程不能互相替换。</p>
+        <p>$\log_a(M-N)$ 也不能按差拆开。即使 $M$、$N$ 都为正，$M-N$ 还可能不是正数，此时原式甚至没有意义。</p>
+      </div>
+    </section>
+
+    <section class="section" id="example" data-source-md="02_对数的运算与换底公式.md#5-顺着结构完成一次计算">
+      <h2 class="marker"><span aria-hidden="true">05</span>计算过程</h2>
+      <div class="section-body prose">
+        <h2>顺着结构完成一次计算</h2>
+        <p class="section-intro">计算 $\log_2\dfrac{8\sqrt2}{4}$ 时，先检查条件：底数 $2&gt;0$ 且不等于 $1$，$8$、$\sqrt2$ 和 $4$ 都为正，可以使用积、商和幂的性质。</p>
+        <p>先用商的对数性质，把分母对应的对数减去：</p>
+        <div class="b-formula">$$\log_2\frac{8\sqrt2}{4}=\log_2(8\sqrt2)-\log_24.$$</div>
+        <p>再用积的对数性质，把分子中的两个因数分别取对数、相加：</p>
+        <div class="b-formula">$$\log_2(8\sqrt2)-\log_24=\log_28+\log_2\sqrt2-\log_24.$$</div>
+        <p>由 $8=2^3$、$\sqrt2=2^{1/2}$、$4=2^2$，三个对数分别是 $3$、$\frac12$、$2$。其中根式先写成二分之一次幂，再取对数。代入得到</p>
+        <div class="b-formula">$$\log_28+\log_2\sqrt2-\log_24=3+\frac12-2.$$</div>
+        <p>最后计算加减，$3-2=1$，再加上 $\frac12$：</p>
+        <div class="b-formula">$$3+\frac12-2=\frac32.$$</div>
+        <div class="summary-panel">
+          <h3>核心结论</h3>
+          <p>对数运算来自指数运算：正数的乘、除、乘方，分别对应对数的加、减、倍乘。换底公式也由对数定义和幂的对数性质推出。</p>
+          <p class="b-summary-line">先检查底数是否合法、每个真数是否为正，再辨认乘、除、乘方；加、减不能直接拆分。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../01_对数的概念/index.html">← 上一篇 · 对数的概念</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../../B-08_对数函数/01_对数函数的概念/index.html">下一篇 · 对数函数的概念 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 对数的运算与换底公式</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
+    });
+  </script>
+</body>
+</html>

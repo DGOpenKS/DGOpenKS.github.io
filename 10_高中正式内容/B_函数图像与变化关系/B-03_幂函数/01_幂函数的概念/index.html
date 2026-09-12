@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解幂函数的标准形式：自变量是底数，指数固定，系数为1；结合典型函数、等价写法和定义域分清概念边界。">
+  <title>幂函数的概念 | OpenKS</title>
+  <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+  <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="topbar" aria-label="B 模块页面导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../../index.html" aria-label="OpenKS 首页">
+        <img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt="">
+      </a>
+      <a class="nav-link" href="#standard">标准形式</a>
+      <a class="nav-link" href="#exponents">不同指数</a>
+      <a class="nav-link" href="#boundary">概念边界</a>
+      <a class="nav-link" href="#domain">定义域</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">B 函数图像与变化关系 · 06</span>
+    <h1>幂函数的概念</h1>
+    <p class="lead">含有幂的式子，不一定表示幂函数。判断时要看：自变量是否在底数位置，指数是否固定，幂前的系数是否为 $1$；还要确定这个幂在实数范围内何时有意义。</p>
+  </header>
+
+  <main id="main">
+    <section class="section" id="standard" data-source-md="01_幂函数的概念.md#1-幂函数的标准形式">
+      <h2 class="marker"><span aria-hidden="true">01</span>标准形式</h2>
+      <div class="section-body prose">
+        <h2>幂函数的标准形式</h2>
+        <p class="section-intro">幂函数的结构是：自变量作底数，指数在整个函数中保持不变。</p>
+        <div class="b-definition">
+          <p>一般地，形如</p>
+          <div class="b-formula">$$y=x^\alpha$$</div>
+          <p>的函数叫作幂函数，其中 $x$ 是自变量，$\alpha$ 是常数。</p>
+        </div>
+        <p>这个形式同时规定了底数、指数和系数。把这三个位置分开看：</p>
+        <div class="b-object-grid">
+          <article>
+            <h3>底数 $x$</h3>
+            <p>底数是自变量，表示输入。</p>
+          </article>
+          <article>
+            <h3>指数 $\alpha$</h3>
+            <p>指数是常数，在整个函数中固定不变。</p>
+          </article>
+          <article>
+            <h3>系数 $1$</h3>
+            <p>$x^\alpha$ 前的系数是 $1$，通常省略不写。</p>
+          </article>
+        </div>
+        <p>判断时要同时看清这三个位置，不能只看式子中有没有幂。</p>
+        <p>字母可以改变，角色不变。例如，把输入记作 $t$，函数写成</p>
+        <div class="b-formula">$$v=t^{-1}.$$</div>
+        <p>这里 $t$ 是自变量，$-1$ 是固定指数，$v$ 是对应的函数值。它仍然是“输入的固定次幂”，也就是通常写成 $y=x^{-1}$ 的幂函数。</p>
+      </div>
+    </section>
+
+    <section class="section" id="exponents" data-source-md="01_幂函数的概念.md#2-指数不同仍可以是幂函数">
+      <h2 class="marker"><span aria-hidden="true">02</span>不同指数</h2>
+      <div class="section-body prose">
+        <h2>指数不同，仍可以是幂函数</h2>
+        <p class="section-intro">在同一个幂函数中，指数固定；换一个固定指数，可以得到另一个幂函数。下面五个函数都符合 $y=x^\alpha$ 的形式：</p>
+        <div class="b-function-lines" aria-label="五个典型幂函数及其固定指数">
+          <span>$y=x$，指数为 $1$</span>
+          <span>$y=x^2$，指数为 $2$</span>
+          <span>$y=x^3$，指数为 $3$</span>
+          <span>$y=x^{\frac12}$，指数为 $\frac12$</span>
+          <span>$y=x^{-1}$，指数为 $-1$</span>
+        </div>
+        <p>它们的图象和定义域并不相同，但“底数是自变量、指数是常数”的结构没有改变，幂前的系数也都是 $1$。</p>
+        <p>幂还可以写成其他形式。比较下面两组写法时，要连同等式成立的条件一起看：</p>
+        <div class="b-function-check">
+          <article>
+            <h3>倒数的写法</h3>
+            <p>当 $x\ne0$ 时，负一次幂可以写成倒数：</p>
+            <div class="b-formula">$$x^{-1}=\dfrac1x.$$</div>
+            <p>在这个定义域内，$y=\dfrac1x$ 仍是指数为 $-1$ 的幂函数。</p>
+          </article>
+          <article>
+            <h3>平方根的写法</h3>
+            <p>当 $x\ge0$ 时，二分之一次幂可以写成算术平方根：</p>
+            <div class="b-formula">$$x^{\frac12}=\sqrt{x}.$$</div>
+            <p>在这个定义域内，$y=\sqrt{x}$ 仍是指数为 $\frac12$ 的幂函数。</p>
+          </article>
+        </div>
+        <p>这些改写只改变表达形式，没有改变对应关系。因此，要看式子在定义域内表达的函数关系，不能只凭它当前的外观判断。</p>
+      </div>
+    </section>
+
+    <section class="section" id="boundary" data-source-md="01_幂函数的概念.md#3-一般单项式不一定是幂函数">
+      <h2 class="marker"><span aria-hidden="true">03</span>概念边界</h2>
+      <div class="section-body prose">
+        <h2>一般单项式不一定是幂函数</h2>
+        <p class="section-intro">判断函数是否为幂函数，还要检查幂前的系数。例如函数</p>
+        <div class="b-formula">$$g(x)=2x^3$$</div>
+        <p>虽然是单项式，也含有 $x$ 的三次幂，却不符合 $y=x^\alpha$ 的标准形式，因为 $x^3$ 前的系数是 $2$，不是 $1$。</p>
+        <p>它可以看成幂函数 $x^3$ 的两倍，但 $g(x)$ 本身不能叫作幂函数。</p>
+        <div class="b-boundary-note">
+          <p>还要分清底数与指数的位置。幂函数中，自变量在底数位置，指数固定。若底数固定，而自变量出现在指数位置，函数结构就不同了，不能再用幂函数的定义判断。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="domain" data-source-md="01_幂函数的概念.md#4-形式成立还要连同定义域理解">
+      <h2 class="marker"><span aria-hidden="true">04</span>定义域</h2>
+      <div class="section-body prose">
+        <h2>形式成立还要连同定义域理解</h2>
+        <p class="section-intro">确认了 $y=x^\alpha$ 的形式，还要确定：这个幂在实数范围内何时有意义。</p>
+        <p>对于 $y=x^{-1}=\dfrac1x$，分母不能为 $0$，所以要排除 $x=0$。对于 $y=x^{\frac12}=\sqrt{x}$，根号内的数不能小于 $0$，所以要求 $x\ge0$。</p>
+        <p>定义域随指数改变。统一写成 $y=x^\alpha$，不意味着所有幂函数的定义域都是 $\mathbb R$。</p>
+        <div class="summary-panel">
+          <p>识别幂函数，要看完整结构：底数是自变量，指数是常数，系数为 $1$，并在相应定义域内理解这个幂。</p>
+          <p class="b-summary-line">形式相似并不够，只有真正符合 $y=x^\alpha$ 的函数才是幂函数。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="pager" aria-label="文章导航">
+    <a class="pager-prev" href="../../B-02_函数的基本性质/03_函数的奇偶性/index.html">← 上一篇 · 函数的奇偶性</a>
+    <a class="pager-home" href="../../index.html">返回 B 模块目录</a>
+    <a class="pager-next" href="../02_典型幂函数的图象与性质/index.html">下一篇 · 典型幂函数的图象与性质 →</a>
+  </nav>
+  <footer class="footer">OpenKS · B 函数图像与变化关系 · 幂函数的概念</footer>
+  <script>
+    document.querySelector('.topbar-inner').addEventListener('focusin', event => {
+      event.target.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从已知大小关系出发，说明加减、乘除、合并、同次乘方和开方的依据与条件。">
+<title>不等式性质与合法变形 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+
+</head>
+<body>
+<!-- Canonical source: /Users/longyayuxian/Documents/Codex/DGOpenKS.github.io/10_高中正式内容/C_方程不等式与成立条件/C-01_等式性质与不等式性质/03_不等式性质与合法变形.md; Source SHA256: 07b8d52484cb3f2c983cfac81f923132b56ad5361404246d0a49403e098a672d -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#addition">同加同减</a>
+<a class="nav-link" href="#sign">乘除正负</a>
+<a class="nav-link" href="#combine">传递与相加</a>
+<a class="nav-link" href="#product">乘积比较</a>
+<a class="nav-link" href="#powers">乘方与开方</a>
+<a class="nav-link" href="#summary">使用依据</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 03</span><h1>不等式性质与合法变形</h1>
+<p class="lead">已知 <span class="b-math-punct">$a&gt;b$，</span>能否断定 <span class="b-math-punct">$a+c&gt;b+c$、</span><span class="b-math-punct">$ac&gt;bc$？</span>如果还知道另一个不等式，能不能把它们相加或相乘？本篇要说明的是：怎样从已知的大小关系得到新的大小关系，并看清每一步需要的条件。同次乘方、同次开方的比较，也可以从这些基本性质继续推出。</p>
+<p class="lead">以下字母均表示实数，所有式子都要在所讨论的取值下有意义。先用 $a&gt;b$ 说明性质；涉及除法时，除数必须非零。</p>
+</header>
+<main id="main" tabindex="-1">
+<section class="section" id="addition" data-source-md="03_不等式性质与合法变形.md#同加、同减为什么不改变方向">
+<h2 class="marker"><span aria-hidden="true">01</span>同加同减</h2><div class="section-body prose">
+<h2>同加、同减为什么不改变方向</h2>
+<p class="section-intro">先看熟悉的 <span class="b-math-punct">$5&gt;2$。</span>两边同加 <span class="b-math-punct">$3$，</span>得到 <span class="b-math-punct">$8&gt;5$；</span>两边的差始终为 <span class="b-math-punct">$3$。</span>对一般的 <span class="b-math-punct">$a&gt;b$，</span>第一篇已经说明 <span class="b-math-punct">$a-b&gt;0$。</span>同加 $c$ 后，两边的差为</p>
+<div class="b-formula">$$(a+c)-(b+c)=a-b&gt;0.$$</div>
+<p>新增的 $c$ 抵消，差没有改变，所以 <span class="b-math-punct">$a+c&gt;b+c$。</span>同减 $c$ 也一样，因为 $-c$ 在作差时同样抵消。两种操作互相还原，因此</p>
+<div class="b-formula">$$a&gt;b\iff a+c&gt;b+c.$$</div>
+<p>移项就是这个性质的使用。例如 $x+3&gt;7$ 两边同减 <span class="b-math-punct">$3$，</span>得到 <span class="b-math-punct">$x&gt;4$；</span>从 $x&gt;4$ 同加 <span class="b-math-punct">$3$，</span>又能回到原不等式，所以两者的解相同。</p>
+</div></section>
+<section class="section" id="sign" data-source-md="03_不等式性质与合法变形.md#同乘、同除为什么要先看正负">
+<h2 class="marker"><span aria-hidden="true">02</span>乘除正负</h2><div class="section-body prose">
+<h2>同乘、同除为什么要先看正负</h2>
+<p class="section-intro">同乘一个数后，差不再保持原值，而是也乘上了这个数：</p>
+<div class="b-formula">$$ac-bc=(a-b)c.$$</div>
+<p>已知 <span class="b-math-punct">$a-b&gt;0$。</span>如果 <span class="b-math-punct">$c&gt;0$，</span>右边是正数乘正数，仍为正，所以</p>
+<div class="b-formula">$$a&gt;b\iff ac&gt;bc\qquad(c&gt;0).$$</div>
+<p>如果 <span class="b-math-punct">$c&lt;0$，</span>右边变成负数，新式左边反而小于右边，所以</p>
+<div class="b-formula">$$a&gt;b\iff ac&lt;bc\qquad(c&lt;0).$$</div>
+<p>这两个关系可以反向使用，因为同除以非零的 $c$ 能还原原式。例如 $5&gt;2$ 两边同乘 <span class="b-math-punct">$-1$，</span>得到 <span class="b-math-punct">$-5&lt;-2$，</span>不等号方向必须反转。</p>
+<p>同除以 $c$ 就是同乘 <span class="b-math-punct">$1/c$。</span>当 $c\ne0$ 时，$1/c$ 与 $c$ 同号，所以同除正数方向不变，同除负数方向反转。若 <span class="b-math-punct">$c=0$，</span>同乘后两边都变成零，不能保留原来的严格大小关系；同除则没有意义。</p>
+<p>如果 $c$ 是 $x-1$ 这样的式子，就先确定 $x$ 的范围：$x&gt;1$ 时它为正，$x&lt;1$ 时它为负，$x=1$ 时它为零。符号没有确定前，不能直接决定同乘或同除后的不等号方向。</p>
+</div></section>
+<section class="section" id="combine" data-source-md="03_不等式性质与合法变形.md#两个大小关系怎样接起来">
+<h2 class="marker"><span aria-hidden="true">03</span>传递与相加</h2><div class="section-body prose">
+<h2>两个大小关系怎样接起来</h2>
+<p class="section-intro">$a&gt;b$ 与 $b&lt;a$ 表示同一件事。交换两边时，也要把不等号换一个朝向。</p>
+<p>若 $a&gt;b$ 且 <span class="b-math-punct">$b&gt;c$，</span>则 <span class="b-math-punct">$a&gt;c$，</span>这就是传递性。用作差可以说明原因：</p>
+<div class="b-formula">$$a-c=(a-b)+(b-c)&gt;0.$$</div>
+<p>等号把 $a$ 与 $c$ 的差拆成两个已知的正差；正数相加仍为正，所以结论成立。</p>
+<p>若 $a&gt;b$ 且 <span class="b-math-punct">$c&gt;d$，</span>两式方向相同，可以分别相加。新差为</p>
+<div class="b-formula">$$(a+c)-(b+d)=(a-b)+(c-d)&gt;0.$$</div>
+<p>右边仍是两个正差之和，因此得到 <span class="b-math-punct">$a+c&gt;b+d$。</span>这里不要求四个数都为正，只要求两个原不等式同向且成立。</p>
+<p>不过，这个结论不能反过来拆。例如 $5+1&gt;2+3$ 成立，却不能推出 <span class="b-math-punct">$1&gt;3$。</span>只知道总和较大，不代表每一部分都较大。</p>
+</div></section>
+<section class="section" id="product" data-source-md="03_不等式性质与合法变形.md#比较两个乘积，符号条件不能省">
+<h2 class="marker"><span aria-hidden="true">04</span>乘积比较</h2><div class="section-body prose">
+<h2>比较两个乘积，符号条件不能省</h2>
+<p class="section-intro">同向相加能够直接使用正差之和，但同向相乘还要检查各因子的符号。若 $a&gt;b&gt;0$ 且 <span class="b-math-punct">$c&gt;d&gt;0$，</span>先把 $a&gt;b$ 同乘正数 <span class="b-math-punct">$c$，</span>得到 <span class="b-math-punct">$ac&gt;bc$；</span>再把 $c&gt;d$ 同乘正数 <span class="b-math-punct">$b$，</span>得到 <span class="b-math-punct">$bc&gt;bd$。</span>用传递性连接起来，就是</p>
+<div class="b-formula">$$ac&gt;bc&gt;bd,$$</div>
+<p>所以 <span class="b-math-punct">$ac&gt;bd$。</span>全正条件保证了这两次乘法都不改变方向。</p>
+<p>如果缺少合适的符号条件，就不能照搬。例如 <span class="b-math-punct">$-1&gt;-2$、</span>$-3&gt;-4$ 都成立，但对应相乘后是 <span class="b-math-punct">$3&lt;8$。</span></p>
+<p>另一种可以确定的情形是 $a&gt;b&gt;0$ 且 <span class="b-math-punct">$c&lt;d&lt;0$。</span>把 $a&gt;b$ 同乘负数 <span class="b-math-punct">$c$，</span>得到 <span class="b-math-punct">$ac&lt;bc$；</span>把 $c&lt;d$ 同乘正数 <span class="b-math-punct">$b$，</span>得到 <span class="b-math-punct">$bc&lt;bd$。</span>因此</p>
+<div class="b-formula">$$ac&lt;bc&lt;bd,$$</div>
+<p>从而 <span class="b-math-punct">$ac&lt;bd$。</span>不必把每一种符号组合背成新口诀，回到“每次乘的是正数还是负数”，就能判断每一步的方向。</p>
+<p>乘积的大小也不能反推各因子的大小。例如 <span class="b-math-punct">$1\times3&gt;2\times1$，</span>但 $1&gt;2$ 不成立。前面的条件足以推出乘积关系，并不表示只有满足那些条件才可能得到同样的结果。</p>
+</div></section>
+<section class="section" id="powers" data-source-md="03_不等式性质与合法变形.md#正数同次乘方、同次开方，大小方向不变">
+<h2 class="marker"><span aria-hidden="true">05</span>乘方与开方</h2><div class="section-body prose">
+<h2>正数同次乘方、同次开方，大小方向不变</h2>
+<p class="section-intro">设 <span class="b-math-punct">$a&gt;b&gt;0$。</span>先看平方：把 $a&gt;b$ 分别同乘正数 $a$ 和 <span class="b-math-punct">$b$，</span>得到 $a^2&gt;ab$ 与 <span class="b-math-punct">$ab&gt;b^2$，</span>所以</p>
+<div class="b-formula">$$a^2&gt;ab&gt;b^2.$$</div>
+<p>更一般地，设整数 <span class="b-math-punct">$n\ge2$。</span>从 $b^n$ 出发，每次把一个因子 $b$ 换成较大的 <span class="b-math-punct">$a$，</span>其余因子都为正，乘积就会严格增大：</p>
+<div class="b-formula">$$b^n&lt;ab^{n-1}&lt;\cdots&lt;a^n.$$</div>
+<p>这一过程共有 $n$ 次替换，每次都依据“同乘正数方向不变”。于是，$a&gt;b&gt;0$ 时有 <span class="b-math-punct">$a^n&gt;b^n$。</span></p>
+<p>同次开方也保持正数之间的大小。设 <span class="b-math-punct">$u=\sqrt[n]{a}$、</span><span class="b-math-punct">$v=\sqrt[n]{b}$，</span>其中 <span class="b-math-punct">$a&gt;b&gt;0$、</span>整数 <span class="b-math-punct">$n\ge2$。</span>根据 $n$ 次方根的意义，$u,v$ 都为正，并且 <span class="b-math-punct">$u^n=a$、</span><span class="b-math-punct">$v^n=b$。</span></p>
+<p>如果 <span class="b-math-punct">$u=v$，</span>就会有 <span class="b-math-punct">$a=b$；</span>如果 <span class="b-math-punct">$u&lt;v$，</span>刚证明的正数乘方性质又会给出 <span class="b-math-punct">$a=u^n&lt;v^n=b$。</span>两种情况都与 $a&gt;b$ 矛盾，因此只能是</p>
+<div class="b-formula">$$\sqrt[n]{a}&gt;\sqrt[n]{b}.$$</div>
+<p>这里借用了已经学过的 $n$ 次方根的定义，补充的是它如何保留大小关系。正数条件不能随意删去：例如 <span class="b-math-punct">$-1&gt;-2$，</span>平方后却有 <span class="b-math-punct">$1&lt;4$；</span>偶数次根号也不能直接作用于负数。</p>
+</div></section>
+<section class="section" id="summary" data-source-md="03_不等式性质与合法变形.md#判断一种运算能不能用，先看它依赖什么">
+<h2 class="marker"><span aria-hidden="true">06</span>使用依据</h2><div class="section-body prose">
+<h2>判断一种运算能不能用，先看它依赖什么</h2>
+<p class="section-intro">前面的严格不等式可以作适当的非严格推广。例如把正差换成非负差，同加一个数仍保持 <span class="b-math-punct">$\ge$，</span>同乘正数仍保持 <span class="b-math-punct">$\ge$，</span>同乘负数则把 $\ge$ 变成 <span class="b-math-punct">$\le$。</span>两个非负差之和仍非负，因此同向相加也有对应的非严格结论。带等号时，每一步仍要保留原来的符号条件。</p>
+<p>使用这些性质时，先确认已知关系和取值范围，再选择运算：加减同一个数看差是否保留；乘除看乘除式的正负与是否为零；合并两个不等式则分别检查原条件，不能从一个合并后的结论反拆出全部原条件。</p>
+<div class="summary-panel"><p>下一步研究基本不等式时，就会用这些性质把平方非负逐步变成两个量之间的大小关系。本篇提供的依据是：每个新结论，都应能说明它从哪个已知关系出发、经过了什么运算、为什么方向正确。</p></div>
+</div></section>
+</main>
+
+<nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../02_等式性质与等价变形/index.html">← 上一篇 · 等式性质与等价变形</a><a class="pager-home" href="../../index.html">返回 C 模块目录</a><a class="pager-next" href="../../C-02_基本不等式/01_基本不等式的推导与等号条件/index.html">下一篇 · 基本不等式的推导与等号条件 →</a></nav>
+<footer class="footer">OpenKS · C 方程不等式与成立条件 · 不等式性质与合法变形</footer>
+</body>
+</html>

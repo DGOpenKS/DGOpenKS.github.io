@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从配方推出判别式，用平方的取值解释实根个数，再对应抛物线与横轴的交点。">
+<title>判别式、实根与图象交点 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+</head><body>
+<!-- Source: /Users/longyayuxian/Documents/Codex/DGOpenKS.github.io/10_高中正式内容/C_方程不等式与成立条件/C-03_二次函数与一元二次方程不等式/02_判别式实根与图象交点.md; SHA256: 4dd1cdef1d5293e7f7cf85a98e74f40deca78395fce6c64fb6e207bff3020e86 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#quadratic">二次条件</a>
+<a class="nav-link" href="#derive">配方与判别式</a>
+<a class="nav-link" href="#roots">三种实根</a>
+<a class="nav-link" href="#intersections">根与交点</a>
+<a class="nav-link" href="#boundary">适用边界</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 07</span><h1>判别式、实根与图象交点</h1>
+<p class="lead">一元二次方程的实根个数与抛物线和 $x$ 轴的交点个数并不是两个独立结论。它们都在判断同一个二次式何时等于 <span class="b-math-punct">$0$，</span>而判别式的符号正好给出这个判断。</p>
+</header><main id="main" tabindex="-1">
+<section class="section" id="quadratic" data-source-md="02_判别式实根与图象交点.md#先守住二次条件">
+<h2 class="marker"><span aria-hidden="true">01</span>二次条件</h2><div class="section-body prose"><h2>先守住二次条件</h2>
+<p class="section-intro">设 <span class="b-math-punct">$a,b,c\in\mathbb R$，</span>且 $a\ne0$：</p><div class="b-formula">$$f(x)=ax^2+bx+c.$$</div>
+<p>$a\ne0$ 保证 $f$ 确实是二次函数，$ax^2+bx+c=0$ 确实是一元二次方程。若 <span class="b-math-punct">$a=0$，</span>对象会降为一次式或常数式，不能再套用一元二次方程的判别式结论。</p>
+</div></section>
+<section class="section" id="derive" data-source-md="02_判别式实根与图象交点.md#判别式怎样从方程中出现">
+<h2 class="marker"><span aria-hidden="true">02</span>配方与判别式</h2><div class="section-body prose"><h2>判别式怎样从方程中出现</h2>
+<p class="section-intro">从方程</p>
+<div class="b-formula">$$ax^2+bx+c=0$$</div>
+<p>出发。因为 <span class="b-math-punct">$a\ne0$，</span>两边同乘非零数 $4a$ 不改变方程的解，得到</p>
+<div class="b-formula">$$4a^2x^2+4abx+4ac=0.$$</div>
+<p>把 $4ac$ 移到右边，再在两边同时加上 <span class="b-math-punct">$b^2$，</span>左边就能配成完全平方：</p>
+<div class="b-formula">$$4a^2x^2+4abx+b^2=b^2-4ac,$$</div>
+<p>也就是</p>
+<div class="b-formula">$$(2ax+b)^2=b^2-4ac.$$</div>
+<p>把右边记作</p>
+<div class="b-formula">$$\Delta=b^2-4ac,$$</div>
+<p>称为这个一元二次方程的判别式。于是，方程有没有实根、实根是否相同，转化成了实数平方能否等于 <span class="b-math-punct">$\Delta$。</span></p>
+</div></section>
+<section class="section" id="roots" data-source-md="02_判别式实根与图象交点.md#三种符号对应三种实根情形">
+<h2 class="marker"><span aria-hidden="true">03</span>三种实根</h2><div class="section-body prose"><h2>三种符号对应三种实根情形</h2>
+<p class="section-intro">当 $\Delta&gt;0$ 时，$\sqrt\Delta$ 是正实数，由</p>
+<div class="b-formula">$$2ax+b=\pm\sqrt\Delta$$</div>
+<p>得到两个不同的实根</p>
+<div class="b-formula">$$x_1=\frac{-b-\sqrt\Delta}{2a}$$</div><div class="b-formula">$$x_2=\frac{-b+\sqrt\Delta}{2a}.$$</div>
+<p>分母 $2a$ 不为 <span class="b-math-punct">$0$，</span>而两个分子相差 <span class="b-math-punct">$2\sqrt\Delta&gt;0$，</span>所以两根确实不同。</p>
+<p>当 $\Delta=0$ 时，$(2ax+b)^2=0$ 只能推出 <span class="b-math-punct">$2ax+b=0$，</span>因此</p>
+<div class="b-formula">$$x_1=x_2=-\frac{b}{2a}.$$</div>
+<p>教材把它称为两个相等的实根；从不同实数解的个数看，只有一个实数解。</p>
+<p>当 $\Delta&lt;0$ 时，实数的平方不可能等于负数，所以方程没有实根。三种情况来自平方的正、零、负边界，不是孤立记忆的分类。</p>
+</div></section>
+<section class="section" id="intersections" data-source-md="02_判别式实根与图象交点.md#实根与交点为什么一一对应">
+<h2 class="marker"><span aria-hidden="true">04</span>根与交点</h2><div class="section-body prose"><h2>实根与交点为什么一一对应</h2>
+<p class="section-intro">函数图象由点 $(x,f(x))$ 组成，而 $x$ 轴上的点纵坐标为 <span class="b-math-punct">$0$。</span>因此，对任意实数 <span class="b-math-punct">$x_0$，</span></p>
+<div class="b-definition"><p>下面三种说法相互等价：</p><p>$x_0$ 是方程的根。</p><p><span class="b-math-punct">$f(x_0)=0$。</span></p><p>$(x_0,0)$ 是图象与 $x$ 轴的交点。</p></div>
+<p>这个双向关系说明：$\Delta&gt;0$ 时，方程有两个不同实根，抛物线与 $x$ 轴有两个交点；$\Delta=0$ 时，只有一个不同的实数解，抛物线与 $x$ 轴只有一个交点；$\Delta&lt;0$ 时没有实根，也没有交点。在一个给定的二次函数中，开口方向由 $a$ 的符号决定，交点个数则由全部系数共同确定的 $\Delta$ 判断；无论开口向上还是向下，根与交点横坐标的双向对应都成立。</p>
+</div></section>
+<section class="section" id="boundary" data-source-md="02_判别式实根与图象交点.md#不能把降次对象放进判别式分类">
+<h2 class="marker"><span aria-hidden="true">05</span>适用边界</h2><div class="section-body prose"><h2>不能把降次对象放进判别式分类</h2>
+<p class="section-intro">例如令 <span class="b-math-punct">$a=0,b=1,c=0$，</span>原式变成 <span class="b-math-punct">$f(x)=x$，</span>方程 $x=0$ 是一元一次方程，图象也是直线。即使形式上算出 <span class="b-math-punct">$b^2-4ac=1$，</span>也不能据此称它有“一元二次方程的两个实根”。判别式三分类的前提始终是 <span class="b-math-punct">$a\ne0$。</span></p>
+<div class="summary-panel"><p>判别式连接的是同一个二次对象的两种语言：代数上，它判断方程的实根情形；图象上，它判断抛物线与 $x$ 轴的交点个数。两者一致，是因为根与交点横坐标本来就是同一组实数。</p></div>
+</div></section>
+</main><nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../01_同一个二次式的函数方程与不等式/index.html">← 上一篇 · 同一个二次式的函数、方程与不等式</a>
+<a class="pager-home" href="../../index.html">返回 C 模块目录</a>
+<a class="pager-next" href="../03_一元二次不等式的解集/index.html">下一篇 · 一元二次不等式的解集 →</a>
+</nav><footer class="footer">OpenKS · C 方程不等式与成立条件 · 判别式、实根与图象交点</footer></body></html>

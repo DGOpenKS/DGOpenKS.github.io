@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="实际问题的答案，不只是某个不等式在实数范围内的解集。变量往往还带着单位、取值范围和“必须是整数”等限制。建模的关键，是先保留这些现实条件，再用一元二次不等式处理数量关系，最后把数学解集筛回实际可取范围。">
+<title>实际问题中的一元二次不等式 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+
+<style>
+.c-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1rem;margin:1.4rem 0}
+.c-cases .b-definition{margin:0;min-width:0}
+.c-cases h3{margin:0 0 .7rem}
+.c-cases dl{margin:0}
+.c-cases dl>div{padding:.7rem 0;border-top:1px solid var(--line)}
+.c-cases dt{color:var(--muted);font-weight:600;margin-bottom:.3rem}
+.c-cases dd{margin:0;overflow-x:auto}
+</style>
+</head><body>
+<!-- Source: /Users/longyayuxian/Documents/Codex/DGOpenKS.github.io/10_高中正式内容/C_方程不等式与成立条件/C-03_二次函数与一元二次方程不等式/04_实际问题中的一元二次不等式.md; SHA256: 49635f33d343c3611c3674f83faf4fe2e9eefdd0cdf24987fff98b41e1cfc023 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#range">现实范围</a>
+<a class="nav-link" href="#model">收入关系</a>
+<a class="nav-link" href="#solve">数学解集</a>
+<a class="nav-link" href="#reality">现实筛选</a>
+<a class="nav-link" href="#summary">核心理解</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 09</span><h1>实际问题中的一元二次不等式</h1>
+<p class="lead">实际问题的答案，不只是某个不等式在实数范围内的解集。变量往往还带着单位、取值范围和“必须是整数”等限制。建模的关键，是先保留这些现实条件，再用一元二次不等式处理数量关系，最后把数学解集筛回实际可取范围。</p>
+</header><main id="main" tabindex="-1">
+<section class="section" id="range" data-source-md="04_实际问题中的一元二次不等式.md#变量先带着现实范围"><h2 class="marker"><span aria-hidden="true">01</span>现实范围</h2><div class="section-body prose"><h2>变量先带着现实范围</h2>
+<p class="section-intro">某旅店有 $20$ 间客房，每间客房的日租金为 $80$ 元。日租金只按 $10$ 元的整数倍上调，若每提高 $10$ 元，就少租出 $1$ 间。旅店希望每日客房租金总收入不低于 $1800$ 元，同时规定每间客房的日租金不超过 $130$ 元。</p>
+<p>设日租金提高了 $x$ 个 $10$ 元。由于只按 $10$ 元的整数倍上调，这里的 $x$ 必须是非负整数。价格上限还要求 <span class="b-math-punct">$80+10x\leqslant130$，</span>而出租间数 $20-x$ 不能为负。因此，这个模型的实际取值范围是</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$x\in\mathbb Z,\qquad 0\leqslant x\leqslant5.$$</div>
+<p>其中 $x\leqslant5$ 已经比客房数量给出的 $x\leqslant20$ 更严格，所以合并条件后只需保留前一个上界。</p>
+</div></section>
+<section class="section" id="model" data-source-md="04_实际问题中的一元二次不等式.md#从数量关系得到不等式"><h2 class="marker"><span aria-hidden="true">02</span>收入关系</h2><div class="section-body prose"><h2>从数量关系得到不等式</h2>
+<p class="section-intro">日租金提高 $x$ 个 $10$ 元后，每间客房的日租金是 $80+10x$ 元，预计出租的客房数是 $20-x$ 间。两者相乘就是每日客房租金总收入：</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$R(x)=(80+10x)(20-x).$$</div>
+<p>要求“总收入不低于 $1800$ 元”，就是要求 <span class="b-math-punct">$R(x)\geqslant1800$，</span>因此数量关系转化为</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$(80+10x)(20-x)\geqslant1800.$$</div>
+<p>这里的不等号来自现实条件“至少”，而不是由计算过程自行选择。</p>
+</div></section>
+<section class="section" id="solve" data-source-md="04_实际问题中的一元二次不等式.md#标准化后求数学解集"><h2 class="marker"><span aria-hidden="true">03</span>数学解集</h2><div class="section-body prose"><h2>标准化后求数学解集</h2>
+<p class="section-intro">求解时，先暂时把 $x$ 放宽为实数；得到实数解集后，再恢复整数、价格上限等现实条件。先展开左边，再把各项移到同一边：</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$1600+120x-10x^2\geqslant1800$$</div><p>等价地：</p><div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$-10x^2+120x-200\geqslant0.$$</div>
+<p>展开只使用分配律，移项相当于两边同减 <span class="b-math-punct">$1800$，</span>所以不等号方向不变。接着两边同除以负数 <span class="b-math-punct">$-10$，</span>不等号必须改变方向，得到标准形式</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$x^2-12x+20\leqslant0.$$</div>
+<p>左边可以分解为 <span class="b-math-punct">$(x-2)(x-10)$。</span>对应抛物线开口向上，零点是 $2$ 和 <span class="b-math-punct">$10$；</span>图象在两个零点之间不高于 $x$ 轴，所以这个不等式在实数范围内的解集是</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$[2,10].$$</div>
+<p>这个区间只是数学解集，还不是实际问题的最终答案。</p>
+</div></section>
+<section class="section" id="reality" data-source-md="04_实际问题中的一元二次不等式.md#把解集筛回现实条件"><h2 class="marker"><span aria-hidden="true">04</span>现实筛选</h2><div class="section-body prose"><h2>把解集筛回现实条件</h2>
+<p class="section-intro">数学解集要求 <span class="b-math-punct">$2\leqslant x\leqslant10$，</span>实际范围则要求 $x$ 是整数且 <span class="b-math-punct">$0\leqslant x\leqslant5$。</span>两者必须同时满足。两个集合的交集是</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$[2,10]\cap\{0,1,2,3,4,5\}=\{2,3,4,5\},$$</div>
+<p>所以 $x$ 只能取 <span class="b-math-punct">$2,3,4,5$。</span></p>
+<p>再回到 $x$ 的含义：日租金提高 <span class="b-math-punct">$20$、</span><span class="b-math-punct">$30$、</span>$40$ 或 $50$ 元，所以每间客房的日租金可以定为</p>
+<div class="b-formula" role="region" tabindex="0" aria-label="公式，可横向滚动">$$100\text{ 元},\quad110\text{ 元},\quad120\text{ 元},\quad130\text{ 元}.$$</div>
+<p>例如端点 $x=2$ 时，总收入是 $100\times18=1800$ 元，恰好达到下限；这也检查了端点 $2$ 应当保留。</p>
+</div></section>
+<section class="section" id="summary" data-source-md="04_实际问题中的一元二次不等式.md#数学答案必须接受现实筛选"><h2 class="marker"><span aria-hidden="true">05</span>核心理解</h2><div class="section-body prose"><h2>数学答案必须接受现实筛选</h2>
+<div class="summary-panel"><p class="section-intro">一元二次不等式负责处理数量之间的关系，但模型还要保留变量的单位、连续或离散性质以及现实上限。只有把数学解集与这些条件取交集，并把剩余取值翻译回原来的实际量，得到的才是实际问题的答案。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../03_一元二次不等式的解集/index.html">← 上一篇 · 一元二次不等式的解集</a>
+<a class="pager-home" href="../../index.html">返回 C 模块目录</a>
+</nav>
+<footer class="footer">OpenKS · C 方程不等式与成立条件 · 实际问题中的一元二次不等式</footer></body></html>

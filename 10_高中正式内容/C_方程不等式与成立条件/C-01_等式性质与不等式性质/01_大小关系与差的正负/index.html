@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="通过作差比较两个式子，说明差的正负怎样决定大小，以及结论何时需要取值范围。">
+<title>大小关系与差的正负 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+
+<style>
+.difference-line svg{display:block;width:100%;max-width:420px;height:auto;margin:auto}
+.difference-line text{font-family:var(--font-sans);font-size:16px;fill:var(--body)}
+.difference-line .axis{stroke:var(--muted);stroke-width:1.3;fill:none}
+.difference-line .point-a{fill:var(--blue-deep)}
+.difference-line .point-b{fill:var(--purple-deep)}
+.difference-line .gap{stroke:var(--blue);stroke-width:2;fill:none}
+
+.c-table-scroll{max-width:100%;overflow-x:auto;margin:1.4rem 0}
+.c-table-scroll table{width:100%;border-collapse:collapse;font-size:.95rem}
+.c-table-scroll th,.c-table-scroll td{padding:.8rem .4rem;border:1px solid var(--line);text-align:center}
+.c-table-scroll th:first-child{width:22%}
+.c-table-scroll th:nth-child(2){width:24%}
+.c-table-scroll td{white-space:nowrap}
+.c-table-scroll thead{background:var(--blue-soft)}
+.c-table-scroll tbody th{font-weight:400}
+</style>
+</head>
+<body>
+<!-- Canonical source: /Users/longyayuxian/Documents/Codex/DGOpenKS.github.io/10_高中正式内容/C_方程不等式与成立条件/C-01_等式性质与不等式性质/01_大小关系与差的正负.md; Source SHA256: 0a92c6a4cc229d4afd2ba80b532c60c4dc3dd41eb1a30ecd4c8f2a45162bbe88 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#difference">作差比较</a>
+<a class="nav-link" href="#relations">差与大小</a>
+<a class="nav-link" href="#range">取值范围</a>
+<a class="nav-link" href="#summary">比较方法</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 01</span><h1>大小关系与差的正负</h1>
+<p class="lead">比较 $2$ 和 <span class="b-math-punct">$5$，</span>可以直接看出 <span class="b-math-punct">$2&lt;5$。</span>但如果要比较两个含有字母的式子，往往不能一眼判断。这时可以先把它们相减，再看差是正数、零还是负数。本篇要说明的就是：为什么作差能判断大小，以及差中还含有字母时，怎样把大小关系说完整。</p>
+</header>
+<main id="main" tabindex="-1">
+<section class="section" id="difference" data-source-md="01_大小关系与差的正负.md#比较两个式子，先看它们相差多少">
+<h2 class="marker"><span aria-hidden="true">01</span>作差比较</h2><div class="section-body prose">
+<h2>比较两个式子，先看它们相差多少</h2>
+<p class="section-intro">例如，比较 $(x+2)(x+3)$ 与 <span class="b-math-punct">$(x+1)(x+4)$，</span>其中 $x$ 是任意实数。两个式子都随 $x$ 改变，逐个代入数值只能看到个别情况。先把前一个式子减去后一个：</p>
+<div class="b-formula">$$(x+2)(x+3)-(x+1)(x+4).$$</div>
+<p>为了看清差的正负，先用分配律展开两个乘积：</p>
+<div class="b-formula">$$(x^2+5x+6)-(x^2+5x+4).$$</div>
+<p>减去第二个括号时，括号内每一项都要变号。再合并同类项，含 $x$ 的项恰好抵消：</p>
+<div class="b-formula">$$x^2+5x+6-x^2-5x-4=2.$$</div>
+<p>差始终为 <span class="b-math-punct">$2$，</span>说明前一个式子的值总比后一个大 <span class="b-math-punct">$2$。</span>所以，无论 $x$ 取什么实数，都有</p>
+<div class="b-formula">$$(x+2)(x+3)&gt;(x+1)(x+4).$$</div>
+<p>这里不需要分别算出两个式子的值。只要算清它们的差，就能判断大小。</p>
+</div></section>
+<section class="section" id="relations" data-source-md="01_大小关系与差的正负.md#差的正负为什么能记录大小关系">
+<h2 class="marker"><span aria-hidden="true">02</span>差与大小</h2><div class="section-body prose">
+<h2>差的正负为什么能记录大小关系</h2>
+<p class="section-intro">设 $a,b$ 是两个实数。若 <span class="b-math-punct">$a&gt;b$，</span>从较大的数 $a$ 中减去较小的数 <span class="b-math-punct">$b$，</span>差为正；若两数相等，差为零；若 <span class="b-math-punct">$a&lt;b$，</span>差为负。反过来也成立，因此</p>
+<div class="b-definition"><p>$a&gt;b\iff a-b&gt;0$</p><p>$a=b\iff a-b=0$</p><p>$a&lt;b\iff a-b&lt;0$</p></div>
+<p>这里的 $\iff$ 表示两个方向都成立。例如，知道 $a&gt;b$ 就知道 <span class="b-math-punct">$a-b&gt;0$；</span>知道 <span class="b-math-punct">$a-b&gt;0$，</span>也能确定 <span class="b-math-punct">$a&gt;b$。</span></p>
+<p>在数轴上，这件事可以这样理解：把表示 $a,b$ 的两个点同时向同一方向移动相同距离，使 $b$ 移到 <span class="b-math-punct">$0$。</span>此时 $a$ 移到 <span class="b-math-punct">$a-b$，</span>两个点的左右顺序没有改变。于是，原来 $a$ 在 $b$ 的右边，就变成了 $a-b$ 在 $0$ 的右边。</p>
+<p>这也说明了为什么要注意减法顺序。$2-5=-3&lt;0$ 判断的是 <span class="b-math-punct">$2&lt;5$；</span>$5-2=3&gt;0$ 判断的是 <span class="b-math-punct">$5&gt;2$。</span>先明确“谁减谁”，才能把差的符号翻译成正确的大小关系。</p>
+<figure class="b-map-figure difference-line">
+<svg viewBox="0 0 320 280" role="img" aria-labelledby="difference-title difference-desc">
+<title id="difference-title">把参照点 5 移到 0，相对位置不变</title>
+<desc id="difference-desc">两条数轴采用同一刻度。平移前圆点a在2，方点b在5；都减5后，圆点a-b在负3，方点b-b在0。两点相隔3个单位，圆点始终在方点左边。</desc>
+<text x="20" y="23">平移前</text>
+<path class="axis" d="M28 85 H292 l-7 -4 m7 4 l-7 4 M140 80 V90"/>
+<text x="140" y="112" text-anchor="middle">0</text>
+<circle class="point-a" data-value="2" cx="188" cy="85" r="5"/>
+<rect class="point-b" data-value="5" x="255" y="80" width="10" height="10"/>
+<text x="188" y="66" text-anchor="middle">a = 2</text>
+<text x="260" y="66" text-anchor="middle">b = 5</text>
+<path class="gap" d="M188 113 V121 H260 V113"/>
+<text x="224" y="144" text-anchor="middle">相隔 3</text>
+<text x="20" y="178">都减去 5 后</text>
+<path class="axis" d="M28 222 H292 l-7 -4 m7 4 l-7 4"/>
+<circle class="point-a" data-value="-3" cx="68" cy="222" r="5"/>
+<rect class="point-b" data-value="0" x="135" y="217" width="10" height="10"/>
+<text x="63" y="204" text-anchor="middle">a − b</text>
+<text x="149" y="204" text-anchor="middle">b − b</text>
+<text x="68" y="248" text-anchor="middle">−3</text>
+<text x="140" y="248" text-anchor="middle">0</text>
+</svg>
+<figcaption>原来 $2$ 在 $5$ 的左边；同移后，$2-5=-3$ 在 $0$ 的左边。参照点变成了 $0$，左右关系没有改变。</figcaption>
+</figure>
+</div></section>
+<section class="section" id="range" data-source-md="01_大小关系与差的正负.md#差中还含有字母，结论就要带上取值范围">
+<h2 class="marker"><span aria-hidden="true">03</span>取值范围</h2><div class="section-body prose">
+<h2>差中还含有字母，结论就要带上取值范围</h2>
+<p class="section-intro">并不是每次作差都能得到固定的正数或负数。例如，比较 $x^2+x$ 与 <span class="b-math-punct">$x^2+3$，</span>其中 <span class="b-math-punct">$x\in\mathbb R$。</span>两式相减，同类项抵消后得到</p>
+<div class="b-formula">$$(x^2+x)-(x^2+3)=x-3.$$</div>
+<p>这次差的正负取决于 $x$ 与 $3$ 的关系，因此需要分清三种情况：</p>
+<div class="c-table-scroll" role="region" tabindex="0" aria-label="按 x 的范围比较两个式子，可横向滚动"><table><thead><tr><th scope="col">$x$ 的范围</th><th scope="col">差 $x-3$ 的符号</th><th scope="col">两个式子的大小关系</th></tr></thead><tbody><tr><th scope="row">$x&gt;3$</th><td>正</td><td>$x^2+x&gt;x^2+3$</td></tr><tr><th scope="row">$x=3$</th><td>零</td><td>$x^2+x=x^2+3$</td></tr><tr><th scope="row">$x&lt;3$</th><td>负</td><td>$x^2+x&lt;x^2+3$</td></tr></tbody></table></div>
+<p>得到 $x-3$ 并不意味着比较已经结束，还要判断它在什么范围内为正、为零或为负。大小关系随 $x$ 改变时，不能省略相应的条件。</p>
+<p>若只知道差非负，就只能断定前一个数不小于后一个数。符号 $\ge$ 表示“大于或等于”，所以</p>
+<div class="b-formula">$$a\ge b\iff a-b\ge0.$$</div>
+<p>同理，$\le$ 表示“小于或等于”，对应</p>
+<div class="b-formula">$$a\le b\iff a-b\le0.$$</div>
+<p>例如，一项支出 $m$ 元“不超过 $100$ 元”，表示 <span class="b-math-punct">$m\le100$，</span>允许恰好花费 $100$ 元；“少于 $100$ 元”才表示 <span class="b-math-punct">$m&lt;100$。</span>不等号是否带等号，取决于原来的数量要求。</p>
+</div></section>
+<section class="section" id="summary" data-source-md="01_大小关系与差的正负.md#作差以后，还要完成符号判断">
+<h2 class="marker"><span aria-hidden="true">04</span>比较方法</h2><div class="section-body prose">
+<h2>作差以后，还要完成符号判断</h2>
+<p class="section-intro">用作差比较大小，可以按这个顺序进行：先确认两个式子在所讨论的范围内都有意义；用前一个减后一个；通过展开、合并同类项或因式分解，把差化成容易判断符号的形式；最后根据正、零、负写出结论，保留必要的取值范围和等号情形。</p>
+<div class="summary-panel"><p>作差的作用，是把“两个式子谁大谁小”转化为“它们的差与零是什么关系”。后面证明不等式的性质，以及说明基本不等式为什么成立，都会继续使用这个判断。</p></div>
+</div></section>
+</main>
+
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../../index.html">← C 模块目录</a>
+<a class="pager-home" href="../../index.html">返回 C 模块目录</a>
+<a class="pager-next" href="../02_等式性质与等价变形/index.html">下一篇 · 等式性质与等价变形 →</a>
+</nav>
+<footer class="footer">OpenKS · C 方程不等式与成立条件 · 大小关系与差的正负</footer>
+</body>
+</html>

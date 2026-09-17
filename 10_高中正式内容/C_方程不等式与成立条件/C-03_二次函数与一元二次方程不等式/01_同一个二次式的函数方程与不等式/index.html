@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从函数值和自变量的关系出发，用图象联系二次函数、方程与不等式，再以配方说明一般二次函数的性质。">
+<title>同一个二次式的函数、方程与不等式 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+
+<style>
+.c-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1rem;margin:1.4rem 0}
+.c-cases .b-definition{margin:0;min-width:0}
+.c-cases h3{margin:0 0 .7rem}
+.c-cases dl{margin:0}
+.c-cases dl>div{padding:.7rem 0;border-top:1px solid var(--line)}
+.c-cases dt{color:var(--muted);font-weight:600;margin-bottom:.3rem}
+.c-cases dd{margin:0;overflow-x:auto}
+
+.c-quadratic-figure svg{display:block;width:100%;max-width:520px;height:auto;margin:auto}
+.c-quadratic-figure .graph-axes,.c-quadratic-figure .graph-ticks{fill:none;stroke:var(--muted);stroke-width:1.4;color:var(--muted)}
+.c-quadratic-figure .graph-guides{fill:none;stroke:var(--amber);stroke-width:1.4;stroke-dasharray:5 5}
+.c-quadratic-figure .graph-curve{fill:none;stroke:var(--blue-deep);stroke-width:3}
+.c-quadratic-figure .graph-points{fill:var(--blue-deep)}
+.c-quadratic-figure .graph-given{fill:var(--amber)}
+.c-quadratic-figure .graph-labels{font:20px var(--font-sans);fill:var(--ink)}
+</style>
+</head><body>
+<!-- Source: /Users/longyayuxian/Documents/Codex/DGOpenKS.github.io/10_高中正式内容/C_方程不等式与成立条件/C-03_二次函数与一元二次方程不等式/01_同一个二次式的函数方程与不等式.md; SHA256: 5a37d4d13a21825e0b22020cc6e4e4d3c4feceb3fa5b9a9d1098a6567d650f89 -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#object">三者联系</a>
+<a class="nav-link" href="#example">图象对照</a>
+<a class="nav-link" href="#complete">配方</a>
+<a class="nav-link" href="#properties">图象性质</a>
+<a class="nav-link" href="#summary">核心理解</a>
+</div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 06</span><h1>同一个二次式的函数、方程与不等式</h1>
+<p class="lead">函数描述自变量与函数值的对应关系；把方程整理成 <span class="b-math-punct">$Q(x)=0$，</span>就是已知函数值为零，求自变量。本篇先用 $y=x^2-4$ 和图象说明这种联系，再介绍一般二次函数的配方与图象性质。</p>
+</header><main id="main" tabindex="-1">
+<section class="section" id="object" data-source-md="01_同一个二次式的函数方程与不等式.md#先固定共同的二次式；作为函数值；作为方程左边；作为不等式左边"><h2 class="marker"><span aria-hidden="true">01</span>三者联系</h2><div class="section-body prose"><h2>函数、方程与不等式的联系</h2><p>设 <span class="b-math-punct">$y=Q(x)=ax^2+bx+c$，</span>其中 $a,b,c$ 为实数，<span class="b-math-punct">$a\ne0$，</span><span class="b-math-punct">$x\in\mathbb R$。</span>$a\ne0$ 保证这是二次式；$a=0$ 时会降为一次式或常数式。</p><h3 id="function">函数与方程</h3><p>函数给出自变量 $x$ 与函数值 $y$ 的对应关系。给定 <span class="b-math-punct">$x$，</span>就能算出 <span class="b-math-punct">$y$；</span>方程整理成 $Q(x)=0$ 后，就是已知函数值为 <span class="b-math-punct">$0$，</span>求对应的 <span class="b-math-punct">$x$。</span></p><p id="equation">在图象上，$y=0$ 的点都在横轴上。因此，解方程 $Q(x)=0$，就是找图象与横轴交点的横坐标。</p><h3 id="inequality">不等式</h3><p>$Q(x)&gt;0$ 要找函数值为正的 <span class="b-math-punct">$x$，</span>对应图象在横轴上方的部分；$Q(x)&lt;0$ 则对应横轴下方的部分。若带等号，还要包含函数值为 $0$ 的那些 <span class="b-math-punct">$x$。</span></p></div></section>
+<section class="section" id="example" data-source-md="01_同一个二次式的函数方程与不等式.md#用一个二次式核对三种角色"><h2 class="marker"><span aria-hidden="true">02</span>图象对照</h2><div class="section-body prose"><h2>用一个图象看清三者的联系</h2><p>以 $y=x^2-4$ 为例。它是 $y=x^2$ 的图象向下平移 $4$ 个单位，开口向上，顶点为 <span class="b-math-punct">$(0,-4)$，</span>对称轴是 <span class="b-math-punct">$x=0$。</span></p><p>给定 <span class="b-math-punct">$x=3$，</span>算得 <span class="b-math-punct">$y=3^2-4=5$，</span>所以点 $(3,5)$ 在图象上。现在反过来，令 <span class="b-math-punct">$y=0$，</span>就得到方程 <span class="b-math-punct">$x^2-4=0$。</span>因式分解后是</p><div class="b-formula">$$(x-2)(x+2)=0.$$</div><p>乘积为零，至少有一个因子为零，因此 $x=2$ 或 <span class="b-math-punct">$x=-2$。</span>这就是图象与横轴两个交点的横坐标。</p><p>若要求 <span class="b-math-punct">$x^2-4&lt;0$，</span>就看函数值小于 $0$ 的情形。例如 $x=0$ 时 <span class="b-math-punct">$y=-4&lt;0$，</span>对应横轴下方的点 <span class="b-math-punct">$(0,-4)$。</span>下面把这些点放到同一张图中。</p><figure class="b-map-figure c-quadratic-figure">
+<svg viewBox="0 0 480 480" role="img" aria-labelledby="curve-title curve-desc">
+<title id="curve-title">二次函数 y=x²−4 的图象</title><desc id="curve-desc">抛物线向上开口，与横轴交于负二、零和二、零，顶点是零、负四，三、五在图象上。横纵轴采用相同单位长度。</desc>
+<defs><marker id="axis-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="currentColor"/></marker><clipPath id="plot-window"><rect x="50" y="35" width="380" height="417"/></clipPath></defs>
+<g class="graph-axes"><path d="M55 275H427" marker-end="url(#axis-arrow)"/><path d="M235 450V35" marker-end="url(#axis-arrow)"/></g>
+<g class="graph-guides"><path d="M235 95H343V275"/></g>
+<g class="graph-ticks"><path d="M163 271V279 M307 271V279 M343 271V279 M231 95H239 M231 419H239"/></g>
+<g class="graph-labels"><text x="438" y="282">x</text><text x="247" y="39">y</text><text x="219" y="296">0</text><text x="343" y="300" text-anchor="middle">3</text><text x="220" y="102" text-anchor="end">5</text></g>
+<path class="graph-curve" clip-path="url(#plot-window)" d="M121.1580042 59 Q235 779 348.8419958 59"/>
+<g class="graph-points"><circle data-x="-2" data-y="0" cx="163" cy="275" r="5"/><circle data-x="2" data-y="0" cx="307" cy="275" r="5"/><circle data-x="0" data-y="-4" cx="235" cy="419" r="5"/></g>
+<circle class="graph-given" data-x="3" data-y="5" cx="343" cy="95" r="5"/>
+<g class="graph-labels"><text x="150" y="256" text-anchor="end">(−2, 0)</text><text x="317" y="256">(2, 0)</text><text x="248" y="446">(0, −4)</text><text x="351" y="82">(3, 5)</text></g>
+</svg><figcaption>两个横轴交点对应 $y=0$；点 $(0,-4)$ 的函数值为负；虚线标出 $x=3$ 对应的函数值 $5$。</figcaption></figure><p>图象也显示：$x$ 从左侧靠近 $0$ 时，函数值减小；越过 $0$ 后继续增大，函数值增大。因此它在 $(-\infty,0]$ 上严格递减，在 $[0,+\infty)$ 上严格递增，最小值为 <span class="b-math-punct">$-4$。</span></p></div></section>
+<section class="section" id="complete" data-source-md="01_同一个二次式的函数方程与不等式.md#配成平方，顶点就容易找了"><h2 class="marker"><span aria-hidden="true">03</span>配方</h2><div class="section-body prose"><h2>用配方找出一般二次函数的顶点</h2><p>对一般的二次函数，配方可以把顶点找出来。先从二次项和一次项中提出 <span class="b-math-punct">$a$：</span></p><div class="b-formula">$$Q(x)=a\left(x^2+\frac ba x\right)+c.$$</div><p>用一次项系数 $b/a$ 的一半配平方，加上的项再减回：</p><div class="b-formula">$$x^2+\frac ba x=\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}.$$</div><p>代回原式，将外面的 $a$ 乘进常数项：</p><div class="b-formula">$$Q(x)=a\left(x+\frac b{2a}\right)^2+c-\frac{b^2}{4a}.$$</div><p>常数项通分后，记 <span class="b-math-punct">$h=-b/(2a)$、</span><span class="b-math-punct">$k=(4ac-b^2)/(4a)$，</span>得到顶点式：</p><div class="b-formula">$$Q(x)=a(x-h)^2+k.$$</div><p>配方改变了写法，没有改变函数值。平方部分和常数部分分开后，顶点与图象的变化就更容易判断。</p></div></section>
+<section class="section" id="properties" data-source-md="01_同一个二次式的函数方程与不等式.md#顶点、对称轴和图象平移；单调区间和最值从哪里来"><h2 class="marker"><span aria-hidden="true">04</span>图象性质</h2><div class="section-body prose"><h2>从顶点式读出图象性质</h2><h3 id="graph">顶点、对称轴与平移</h3><p>在 $Q(x)=a(x-h)^2+k$ 中，$x=h$ 时平方项为零，得到顶点 <span class="b-math-punct">$(h,k)$。</span>在 $h$ 两侧取相同距离 <span class="b-math-punct">$t$，</span>两个函数值都是 <span class="b-math-punct">$at^2+k$，</span>因此对称轴是 <span class="b-math-punct">$x=h$。</span></p><p>它可以由 $y=ax^2$ 平移得到：点 $(t,at^2)$ 移到 <span class="b-math-punct">$(t+h,at^2+k)$，</span>令新横坐标 <span class="b-math-punct">$x=t+h$，</span>纵坐标就变成 <span class="b-math-punct">$a(x-h)^2+k$。</span>$h$ 为正时右移、为负时左移，距离为 <span class="b-math-punct">$|h|$；</span>$k$ 为正时上移、为负时下移，距离为 <span class="b-math-punct">$|k|$。</span>对应位移为零时不移动。</p><h3>开口、单调区间与最值</h3><p>平方 $(x-h)^2$ 始终非负，仅在 $x=h$ 时为零。所以 $a&gt;0$ 时开口向上，<span class="b-math-punct">$Q(x)\ge k$，</span>最小值为 <span class="b-math-punct">$k$；</span>$a&lt;0$ 时开口向下，<span class="b-math-punct">$Q(x)\le k$，</span>最大值为 <span class="b-math-punct">$k$。</span></p><p>当 $x$ 在 $h$ 左侧增大时，到 $h$ 的距离减小，平方随之减小；在右侧增大时，距离和平方都增大。同乘正数保留这个方向，同乘负数则反转：</p><div class="c-cases">
+<div class="b-definition"><h3>$a&gt;0$</h3><dl>
+<div><dt>在 $(-\infty,h]$ 上</dt><dd>严格递减</dd></div>
+<div><dt>在 $[h,+\infty)$ 上</dt><dd>严格递增</dd></div>
+<div><dt>全实数范围内的最值</dt><dd>$x=h$ 时取最小值 $k$</dd></div>
+</dl></div>
+<div class="b-definition"><h3>$a&lt;0$</h3><dl>
+<div><dt>在 $(-\infty,h]$ 上</dt><dd>严格递增</dd></div>
+<div><dt>在 $[h,+\infty)$ 上</dt><dd>严格递减</dd></div>
+<div><dt>全实数范围内的最值</dt><dd>$x=h$ 时取最大值 $k$</dd></div>
+</dl></div>
+</div><p>这些最值针对整个实数定义域。若 $x$ 另有取值范围，还要检查顶点的横坐标是否在其中。</p></div></section>
+<section class="section" id="summary" data-source-md="01_同一个二次式的函数方程与不等式.md#核心理解"><h2 class="marker"><span aria-hidden="true">05</span>核心理解</h2><div class="section-body prose"><h2>把函数值与自变量联系起来</h2><div class="summary-panel"><p>函数描述 $x$ 与 $y$ 的对应；方程 $Q(x)=0$ 是已知 <span class="b-math-punct">$y=0$，</span>求 <span class="b-math-punct">$x$；</span>不等式则根据 $y$ 的正负寻找 $x$ 的范围。把它们放回同一张函数图象，三者的联系就清楚了。</p></div></div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../../C-02_基本不等式/02_基本不等式与最值/index.html">← 上一篇 · 基本不等式与最值</a>
+<a class="pager-home" href="../../index.html">返回 C 模块目录</a>
+<a class="pager-next" href="../02_判别式实根与图象交点/index.html">下一篇 · 判别式、实根与图象交点 →</a>
+</nav>
+<footer class="footer">OpenKS · C 方程不等式与成立条件 · 同一个二次式的函数、方程与不等式</footer></body></html>

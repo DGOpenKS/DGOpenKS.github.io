@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从正数、定值与等号可达性判断最值，分清最值与只能逼近的上界。">
+<title>基本不等式与最值 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+</head>
+<body>
+<!-- Source SHA256: 238698626f3ee5abf47707797637ec5b0aae0d1651ed72dc7b9e48b0353a97ef -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#bound">界与最值</a><a class="nav-link" href="#fixed-product">积定和最小</a><a class="nav-link" href="#fixed-sum">和定积最大</a><a class="nav-link" href="#example">等号核验</a><a class="nav-link" href="#unattained">等号不可达</a><a class="nav-link" href="#supremum">上确界</a></div></nav>
+<header class="hero"><span class="eyebrow">C 方程不等式与成立条件 · 05</span><h1>基本不等式与最值</h1><p class="lead">基本不等式给出了上界或下界，为什么还不能直接说是最大值或最小值？从定积求和、定和求积出发，逐项检查正数条件、定值条件和等号能否实现，就能分清“取到最值”与“只能靠近一个界”。</p></header>
+<main id="main" tabindex="-1">
+<section class="section" id="bound" data-source-md="02_基本不等式与最值.md#界能取到，才是最大值或最小值"><h2 class="marker"><span aria-hidden="true">01</span>界与最值</h2><div class="section-body prose"><h2>界能取到，才是最值</h2>
+<p class="section-intro">要说明 $F$ 的最小值是 $m$，需要两件事同时成立：所有允许取值都满足 $F\geqslant m$；并且存在允许取值使 $F=m$。最大值同理，既要有 $F\leqslant M$，也要能取到 $F=M$。</p>
+<p>对两个正数，基本不等式给出一个大小关系：</p><div class="b-formula">$$\frac{x+y}{2}\geqslant\sqrt{xy},\qquad x&gt;0,\ y&gt;0.$$</div>
+<p>等号成立当且仅当 $x=y$。不等式负责给出界，等号条件负责判断这个界能否在原范围内取到。<strong>只有一个界，还不能直接宣布最值。</strong></p>
+</div></section>
+<section class="section" id="fixed-product" data-source-md="02_基本不等式与最值.md#积为定值时，和有最小值"><h2 class="marker"><span aria-hidden="true">02</span>定积求和</h2><div class="section-body prose"><h2>积为定值时，和有最小值</h2>
+<p class="section-intro">先让积固定。设 $x&gt;0$、$y&gt;0$，并且 $xy=P$，其中 $P&gt;0$ 是定值。把乘积 $xy$ 换成 $P$，基本不等式成为：</p>
+<div class="b-formula">$$\frac{x+y}{2}\geqslant\sqrt{xy}=\sqrt P.$$</div>
+<p>两边同乘正数 $2$，不等号方向不变，得到所有允许取值都满足的下界：</p><div class="b-formula">$$x+y\geqslant2\sqrt P.$$</div>
+<p>还要检查能否取到这个下界。基本不等式取等号当且仅当 $x=y$；把它与 $xy=P$ 合起来，并利用两数为正，得到：</p><div class="b-formula">$$x=y=\sqrt P.$$</div>
+<p>因为 $P&gt;0$，这组数为正，乘积也确实是 $P$，属于原范围。因此和的最小值是 $2\sqrt P$，在 $x=y=\sqrt P$ 时取得。</p>
+</div></section>
+<section class="section" id="fixed-sum" data-source-md="02_基本不等式与最值.md#和为定值时，积有最大值"><h2 class="marker"><span aria-hidden="true">03</span>定和求积</h2><div class="section-body prose"><h2>和为定值时，积有最大值</h2>
+<p class="section-intro">再让和固定。设 $x&gt;0$、$y&gt;0$，并且 $x+y=S$，其中 $S&gt;0$ 是定值。把定和条件代入基本不等式：</p>
+<div class="b-formula">$$\sqrt{xy}\leqslant\frac{x+y}{2}=\frac S2.$$</div>
+<p>两边都是非负数，可以同时平方，大小关系保持不变：</p><div class="b-formula">$$xy\leqslant\frac{S^2}{4}.$$</div>
+<p>要取到这个上界，仍须 $x=y$。再结合 $x+y=S$，两个相等的数各占总和的一半：</p><div class="b-formula">$$x=y=\frac S2.$$</div>
+<p>因为 $S&gt;0$，这组取值为正且满足定和条件，属于原范围。因此积的最大值是 $\dfrac{S^2}{4}$，在 $x=y=\dfrac S2$ 时取得。</p>
+</div></section>
+<section class="section" id="example" data-source-md="02_基本不等式与最值.md#一个例子怎样完成三项核验"><h2 class="marker"><span aria-hidden="true">04</span>三项核验</h2><div class="section-body prose"><h2>从下界到最小值：核验等号</h2>
+<p class="section-intro">考察 $x+\dfrac4x$，其中 $x&gt;0$。这里参与比较的两个量是 $x$ 和 $\dfrac4x$，它们都为正，而且乘积恒为 $4$。</p>
+<p>因此可以使用基本不等式，把乘积换成 $4$，再算出它的平方根：</p><div class="b-formula">$$\frac{x+\frac4x}{2}\geqslant\sqrt{x\cdot\frac4x}=2.$$</div>
+<p>两边同乘正数 $2$，得到统一下界：</p><div class="b-formula">$$x+\frac4x\geqslant4.$$</div>
+<p>最后核验等号。两个量相等时取等号；在 $x&gt;0$ 的原范围内，两边同乘非零数 $x$，再取符合范围的根：</p><div class="b-formula">$$x=\frac4x\iff x^2=4\iff x=2.$$</div>
+<p>$x^2=4$ 原本有两个实数根，但 $x&gt;0$ 排除了 $x=-2$，所以这里的等价链只留下 $x=2$。这个值确实允许，故 $4$ 是最小值，而不只是下界。</p>
+</div></section>
+<section class="section" id="unattained" data-source-md="02_基本不等式与最值.md#等号无法实现时，不能把界叫作最值"><h2 class="marker"><span aria-hidden="true">05</span>等号不可达</h2><div class="section-body prose"><h2>取不到等号时，还要判断什么</h2>
+<p class="section-intro">现在仍设 $x&gt;0$、$y&gt;0$ 且 $x+y=10$，但另有限制 $x\ne5$。由前面定和求积的结论，把 $S=10$ 代入，得到：</p><div class="b-formula">$$xy\leqslant25.$$</div>
+<p>取等号要求 $x=y=5$，却与 $x\ne5$ 冲突。因此 $25$ 不能作为最大值。下面继续说明：是否存在一个更小的最大值，以及乘积究竟能靠近 $25$ 到什么程度。</p>
+<p>由 $x+y=10$，任意允许取值都能写成 $x=5+t$、$y=5-t$。正数条件和 $x\ne5$ 合起来，要求 $0&lt;|t|&lt;5$。</p>
+<p>先用平方差公式计算乘积；因为 $t\ne0$，所以 $t^2&gt;0$，乘积严格小于 $25$：</p><div class="b-formula">$$xy=(5+t)(5-t)=25-t^2&lt;25.$$</div>
+<h3>任一候选，都能再增大</h3>
+<p>任取一个允许的 $t_0$，再令 $t_1=\dfrac{t_0}{2}$。因为 $0&lt;|t_1|&lt;|t_0|&lt;5$，新的 $t_1$ 也给出一组允许取值。</p>
+<p>把 $t_1=\dfrac{t_0}{2}$ 代入乘积。由于 $t_0^2&gt;0$，减去它的四分之一，比减去它本身得到的数更大：</p><div class="b-formula">$$25-t_1^2=25-\frac{t_0^2}{4}&gt;25-t_0^2.$$</div>
+<p>因此，每个允许的乘积都有更大的允许乘积。无论选哪个候选，都还能增大，<strong>所以不存在最大值。</strong></p>
+</div></section>
+<section class="section" id="supremum" data-source-md="02_基本不等式与最值.md#等号无法实现时，不能把界叫作最值"><h2 class="marker"><span aria-hidden="true">06</span>上界可逼近</h2><div class="section-body prose"><h2>25 是上确界，但不是最大值</h2>
+<p class="section-intro">“没有最大值”还没有说明能靠近 $25$ 到什么程度。再给定任意正数 $\varepsilon$，把它看作希望与 $25$ 相差不超过的距离。</p>
+<p>可以选择一个非零的 $t$，使它的绝对值同时小于 $5$ 和 $\sqrt\varepsilon$：</p><div class="b-formula">$$0&lt;|t|&lt;\min\{5,\sqrt\varepsilon\}.$$</div>
+<p>$|t|&lt;5$ 保证 $x=5+t$、$y=5-t$ 都为正；$t\ne0$ 保证 $x\ne5$，所以仍是允许取值。又由 $|t|&lt;\sqrt\varepsilon$ 得到 $0&lt;t^2&lt;\varepsilon$。把这些关系代入 $xy=25-t^2$：</p>
+<div class="b-formula">$$25-\varepsilon&lt;25-t^2=xy&lt;25.$$</div>
+<p>无论指定的正距离 $\varepsilon$ 多小，都有允许的乘积落在 $25-\varepsilon$ 与 $25$ 之间。因此 $25$ 是可以任意逼近的上界，也就是<strong>上确界</strong>；但 $t\ne0$ 使乘积永远不能等于 $25$。</p>
+<p>两条论证各有作用：$t_1=t_0/2$ 说明任一候选都可增大，排除最大值；$\varepsilon$ 这条链说明上界可以任意逼近，确定这里的上确界为 $25$。</p>
+<div class="summary-panel"><h3>核心结论</h3><p>用基本不等式判断最值，先确认两个量为正数，再确认和或积是定值，最后把等号条件代回原范围，检查能否取到。</p><p class="b-summary-line">不等式负责给界，等号条件负责确认这个界能否成为最值。缺少任何一项，最值结论都尚未完成。</p></div>
+</div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../01_基本不等式的推导与等号条件/index.html">← 上一篇 · 基本不等式的推导与等号条件</a><a class="pager-home" href="../../index.html">返回 C 模块目录</a><a class="pager-next" href="../../C-03_二次函数与一元二次方程不等式/01_同一个二次式的函数方程与不等式/index.html">下一篇 · 同一个二次式的函数、方程与不等式 →</a></nav><footer class="footer">OpenKS · C 方程不等式与成立条件 · 基本不等式与最值</footer></body></html>

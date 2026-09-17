@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="从平方的非负性推导基本不等式，追踪等号成立条件，并说明正数、非负数与负数之间的适用边界。">
+<title>基本不等式的推导与等号条件 | OpenKS</title>
+<link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css">
+<link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css?v=20260902-1">
+</head>
+<body>
+<!-- Source SHA256: 1d769212884cef93780a8097e203d1e6256bf4fbb511ddb9049121c86682c5ed. Source Markdown is read-only. -->
+<a class="skip-link" href="#main">跳到正文</a>
+<nav class="topbar" aria-label="C 模块页面导航"><div class="topbar-inner">
+<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+<a class="nav-link" href="#square">平方非负</a>
+<a class="nav-link" href="#means">两个平均数</a>
+<a class="nav-link" href="#equality">等号条件</a>
+<a class="nav-link" href="#gap">两边的差</a>
+<a class="nav-link" href="#boundary">适用范围</a>
+</div></nav>
+<header class="hero">
+<span class="eyebrow">C 方程不等式与成立条件 · 04</span>
+<h1>基本不等式的推导与等号条件</h1>
+<p class="lead">基本不等式比较两个正数的算术平均数与几何平均数。它为什么成立，两个平均数又在什么时候相等？从一个平方不小于 $0$ 出发，沿着推导就能同时找到大小关系和等号条件。</p>
+</header>
+<main id="main" tabindex="-1">
+<section class="section" id="square" data-source-md="01_基本不等式的推导与等号条件.md#从平方的非负性出发">
+<h2 class="marker"><span aria-hidden="true">01</span>平方非负</h2>
+<div class="section-body prose">
+<h2>从平方的非负性出发</h2>
+<p class="section-intro">先取任意两个实数 $u,v$。它们的差仍是实数，而一个实数的平方不会小于 $0$，所以</p>
+<div class="b-formula">$$(u-v)^2\geqslant0.$$</div>
+<p>把左边按完全平方公式展开，三个项分别是 $u^2$、$-2uv$ 和 $v^2$，得到</p>
+<div class="b-formula">$$u^2-2uv+v^2\geqslant0.$$</div>
+<p>在两边同时加上 $2uv$，不等式方向不变。左边的 $-2uv$ 被消去，于是</p>
+<div class="b-formula">$$u^2+v^2\geqslant2uv.$$</div>
+<p>因此，这个不等式来自 $(u-v)^2\geqslant0$。它什么时候取等号，也要回到这个平方来看。</p>
+<p>$u^2+v^2=2uv$ 当且仅当 $(u-v)^2=0$；而平方为 $0$ 当且仅当被平方的数为 $0$。所以，<strong>等号成立当且仅当 $u=v$</strong>。</p>
+</div></section>
+<section class="section" id="means" data-source-md="01_基本不等式的推导与等号条件.md#换成两个正数的平均数">
+<h2 class="marker"><span aria-hidden="true">02</span>两个平均数</h2>
+<div class="section-body prose">
+<h2>换成两个正数的平均数</h2>
+<p class="section-intro">上面的不等式比较平方和与乘积。现在设 $a&gt;0,b&gt;0$，把这两个正数写成平方，就能把它改写成平均数之间的关系。</p>
+<p>因为 $a,b$ 都是正数，它们的平方根有意义，可以令</p>
+<div class="b-formula">$$u=\sqrt a,\qquad v=\sqrt b.$$</div>
+<p>把它们代入 $u^2+v^2\geqslant2uv$。利用 $(\sqrt a)^2=a$、$(\sqrt b)^2=b$ 以及正数平方根的乘法，得到</p>
+<div class="b-formula">$$a+b\geqslant2\sqrt{ab}.$$</div>
+<p>两边同时除以正数 $2$，不等式方向不变，于是得到基本不等式：</p>
+<div class="b-definition">
+<div class="b-formula">$$\frac{a+b}{2}\geqslant\sqrt{ab}.$$</div>
+<p>适用条件：$a&gt;0,b&gt;0$。</p>
+<p>$\dfrac{a+b}{2}$ 是 $a,b$ 的<strong>算术平均数</strong>，$\sqrt{ab}$ 是它们的<strong>几何平均数</strong>。</p>
+</div>
+<p>基本不等式说明：两个正数的算术平均数不小于它们的几何平均数。这个大小关系由平方非负推导而来。</p>
+</div></section>
+<section class="section" id="equality" data-source-md="01_基本不等式的推导与等号条件.md#等号条件必须沿推导追踪">
+<h2 class="marker"><span aria-hidden="true">03</span>等号条件</h2>
+<div class="section-body prose">
+<h2>等号条件必须沿推导追踪</h2>
+<p class="section-intro">写出不等式以后，还要把原来的等号条件一起带过来。原不等式取等号当且仅当 $u=v$，代入后就是</p>
+<div class="b-formula">$$u=v\iff\sqrt a=\sqrt b.$$</div>
+<p>在当前正数范围内，两个平方根相等当且仅当两个数相等，所以等号条件继续转化为</p>
+<div class="b-formula">$$\sqrt a=\sqrt b\iff a=b.$$</div>
+<p>因此，基本不等式中的<strong>等号成立当且仅当 $a=b$</strong>。这个条件从“平方取零”一路传递而来，与不等式本身出自同一个理由。</p>
+</div></section>
+<section class="section" id="gap" data-source-md="01_基本不等式的推导与等号条件.md#等号条件必须沿推导追踪">
+<h2 class="marker"><span aria-hidden="true">04</span>两边的差</h2>
+<div class="section-body prose">
+<h2>把两个平均数的差写成平方</h2>
+<p class="section-intro">还可以直接看算术平均数减去几何平均数。先把两项通分，分母统一为 $2$：</p>
+<div class="b-formula">$$\frac{a+b}{2}-\sqrt{ab}=\frac{a-2\sqrt{ab}+b}{2}.$$</div>
+<p>分子是一个完全平方：$a$、$b$ 分别是 $\sqrt a$、$\sqrt b$ 的平方，中间项是这两个平方根乘积的 $-2$ 倍。因此</p>
+<div class="b-formula">$$\frac{a-2\sqrt{ab}+b}{2}=\frac{(\sqrt a-\sqrt b)^2}{2}.$$</div>
+<p>分子是非负的平方，分母 $2$ 是正数，所以这个差不小于 $0$：</p>
+<div class="b-formula">$$\frac{(\sqrt a-\sqrt b)^2}{2}\geqslant0.$$</div>
+<p>$\lvert\sqrt a-\sqrt b\rvert$ 越大，两个平均数之间的差就越大。这个差等于 $0$，仍然当且仅当 $\sqrt a=\sqrt b$，也就是 $a=b$。</p>
+</div></section>
+<section class="section" id="boundary" data-source-md="01_基本不等式的推导与等号条件.md#正数范围与不可越过的边界">
+<h2 class="marker"><span aria-hidden="true">05</span>适用范围</h2>
+<div class="section-body prose">
+<h2>正数范围与不可越过的边界</h2>
+<p class="section-intro">这里把基本不等式陈述在 $a&gt;0,b&gt;0$ 的范围内。若延伸到 $a\geqslant0,b\geqslant0$，平方根仍有意义，上面的平方恒等式也仍然成立。</p>
+<p>但不能因此继续放宽到任意实数。只知道乘积 $ab\geqslant0$，只能保证 $\sqrt{ab}$ 有意义，不足以保证当前不等式成立。</p>
+<div class="b-boundary-note">
+<p>例如取 $a=-1,b=-4$。虽然 $ab=4$，但算术平均数是 $-\dfrac52$，而 $\sqrt{ab}=2$，于是</p>
+<div class="b-formula">$$\frac{a+b}{2}=-\frac52&lt;2=\sqrt{ab}.$$</div>
+<p>这里反而是算术平均数更小。所以，不能因为乘积的平方根有意义，就把两个负数代入当前公式。</p>
+</div>
+<p>回到约定的正数范围，推导和等号条件可以用这个差来一起理解：</p>
+<div class="b-formula">$$\frac{a+b}{2}-\sqrt{ab}=\frac{(\sqrt a-\sqrt b)^2}{2}\geqslant0.$$</div>
+<p>右边的平方保证了差非负；平方取零又要求 $a=b$。因此，同一个平方同时解释了不等式的方向与等号条件。</p>
+<div class="summary-panel"><p class="b-summary-line">两个正数的算术平均数不小于几何平均数，等号成立当且仅当两个数相等。</p></div>
+</div></section>
+</main>
+<nav class="pager" aria-label="文章导航">
+<a class="pager-prev" href="../../C-01_等式性质与不等式性质/03_不等式性质与合法变形/index.html">← 上一篇 · 不等式性质与合法变形</a>
+<a class="pager-home" href="../../index.html">返回 C 模块目录</a>
+<a class="pager-next" href="../02_基本不等式与最值/index.html">下一篇 · 基本不等式与最值 →</a>
+</nav>
+<footer class="footer">OpenKS · C 方程不等式与成立条件 · 基本不等式的推导与等号条件</footer>
+</body>
+</html>

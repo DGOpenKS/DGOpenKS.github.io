@@ -14,8 +14,9 @@
 
 <style>
 .difference-line svg{display:block;width:100%;max-width:420px;height:auto;margin:auto}
-.difference-line text{font-family:var(--font-sans);font-size:16px;fill:var(--body)}
-.difference-line .axis{stroke:var(--muted);stroke-width:1.3;fill:none}
+.difference-line text{font-family:var(--font-math);font-size:18px;fill:var(--body)}
+.difference-line .text-note{font-family:var(--font-sans);font-size:16px}
+.difference-line .axis{stroke:var(--muted);stroke-width:1.1;fill:none}
 .difference-line .point-a{fill:var(--blue-deep)}
 .difference-line .point-b{fill:var(--purple-deep)}
 .difference-line .gap{stroke:var(--blue);stroke-width:2;fill:none}
@@ -69,7 +70,7 @@
 <svg viewBox="0 0 320 280" role="img" aria-labelledby="difference-title difference-desc">
 <title id="difference-title">把参照点 5 移到 0，相对位置不变</title>
 <desc id="difference-desc">两条数轴采用同一刻度。平移前圆点a在2，方点b在5；都减5后，圆点a-b在负3，方点b-b在0。两点相隔3个单位，圆点始终在方点左边。</desc>
-<text x="20" y="23">平移前</text>
+<text class="text-note" x="20" y="23">平移前</text>
 <path class="axis" d="M28 85 H292 l-7 -4 m7 4 l-7 4 M140 80 V90"/>
 <text x="140" y="112" text-anchor="middle">0</text>
 <circle class="point-a" data-value="2" cx="188" cy="85" r="5"/>
@@ -77,8 +78,8 @@
 <text x="188" y="66" text-anchor="middle">a = 2</text>
 <text x="260" y="66" text-anchor="middle">b = 5</text>
 <path class="gap" d="M188 113 V121 H260 V113"/>
-<text x="224" y="144" text-anchor="middle">相隔 3</text>
-<text x="20" y="178">都减去 5 后</text>
+<text class="text-note" x="224" y="144" text-anchor="middle">相隔 3</text>
+<text class="text-note" x="20" y="178">都减去 5 后</text>
 <path class="axis" d="M28 222 H292 l-7 -4 m7 4 l-7 4"/>
 <circle class="point-a" data-value="-3" cx="68" cy="222" r="5"/>
 <rect class="point-b" data-value="0" x="135" y="217" width="10" height="10"/>
@@ -97,7 +98,7 @@
 <div class="b-formula">$$(x^2+x)-(x^2+3)=x-3.$$</div>
 <p>这次差的正负取决于 $x$ 与 $3$ 的关系，因此需要分清三种情况：</p>
 <div class="c-table-scroll" role="region" tabindex="0" aria-label="按 x 的范围比较两个式子，可横向滚动"><table><thead><tr><th scope="col">$x$ 的范围</th><th scope="col">差 $x-3$ 的符号</th><th scope="col">两个式子的大小关系</th></tr></thead><tbody><tr><th scope="row">$x&gt;3$</th><td>正</td><td>$x^2+x&gt;x^2+3$</td></tr><tr><th scope="row">$x=3$</th><td>零</td><td>$x^2+x=x^2+3$</td></tr><tr><th scope="row">$x&lt;3$</th><td>负</td><td>$x^2+x&lt;x^2+3$</td></tr></tbody></table></div>
-<p>得到 $x-3$ 并不意味着比较已经结束，还要判断它在什么范围内为正、为零或为负。大小关系随 $x$ 改变时，不能省略相应的条件。</p>
+<div class="a-boundary-note"><p>得到 $x-3$ 并不意味着比较已经结束，还要判断它在什么范围内为正、为零或为负。大小关系随 $x$ 改变时，不能省略相应的条件。</p></div>
 <p>若只知道差非负，就只能断定前一个数不小于后一个数。符号 $\ge$ 表示“大于或等于”，所以</p>
 <div class="b-formula">$$a\ge b\iff a-b\ge0.$$</div>
 <p>同理，$\le$ 表示“小于或等于”，对应</p>
@@ -113,7 +114,6 @@
 </main>
 
 <nav class="pager" aria-label="文章导航">
-<a class="pager-prev" href="../../index.html">← C 模块目录</a>
 <a class="pager-home" href="../../index.html">返回 C 模块目录</a>
 <a class="pager-next" href="../02_等式性质与等价变形/index.html">下一篇 · 等式性质与等价变形 →</a>
 </nav>

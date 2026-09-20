@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>任意角三角函数 | OpenKS</title><meta name="description" content="初中用直角三角形的边长比定义正弦、余弦和正切。高中把角扩展到任意实数后，需要一种对负角、钝角和超过一周的角都适用的表示。先把熟悉的直角三角形放进单位圆，就能看懂：输入一个弧度数，怎样得到一个三角函数值。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"><style>#trig-circle{max-width:490px;touch-action:none;cursor:grab}#trig-circle:active{cursor:grabbing}#trig-circle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.trig-controls{margin:1rem 0}.trig-controls p,#trig-point{font-size:.92rem;color:var(--muted)}.trig-presets{display:flex;flex-wrap:wrap;gap:.5rem}.trig-presets button{font:inherit;min-height:44px;padding:.5rem .8rem;background:var(--paper);color:var(--blue-deep);border:1px solid var(--line-strong);border-radius:8px;cursor:pointer}.trig-presets button[aria-pressed=true]{background:var(--blue-soft);border-color:var(--blue)}.trig-presets button:focus-visible{outline:3px solid var(--blue)}.trig-values{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;font-family:var(--font-math);font-size:1.2rem;color:var(--body)}.trig-values span{white-space:nowrap}.trig-values{align-items:center;row-gap:1rem}.trig-values math,#trig-point math,#trig-angle math{font-size:1em}#trig-point{padding-top:.35rem}#trig-angle{font-size:1.1rem;color:var(--body);font-weight:700}#trig-circle .projection{stroke-width:3;fill:none}#trig-circle .point-label{font-size:17px}</style><script src="../../assets/d-math.js"></script></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-03_三角函数的概念与同角基本关系/01_任意角三角函数.md; SHA256: 24fe2e8688633b7d34181883ec772a882efcc22d60f068c547e584bf999bb0ed --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">从边长比到坐标</a><a class="nav-link" href="#s2">角与函数值</a><a class="nav-link" href="#s3">定义与条件</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>任意角三角函数</h1><p class="lead">初中用直角三角形的边长比定义正弦、余弦和正切。高中把角扩展到任意实数后，需要一种对负角、钝角和超过一周的角都适用的表示。先把熟悉的直角三角形放进单位圆，就能看懂：输入一个弧度数，怎样得到一个三角函数值。</p></header><main id="main" tabindex="-1">
+<section class="section" id="s1" data-source-md="01_任意角三角函数.md#1-2"><h2 class="marker"><span aria-hidden="true">01</span>从边长比到坐标</h2><div class="section-body prose"><h2>为什么可以用坐标表示三角函数</h2>
+<p>初中学过：选定直角三角形中的锐角 $\alpha$，正弦是“对边÷斜边”，余弦是“邻边÷斜边”，正切是“对边÷邻边”。</p>
+<p>把这个角放在原点，邻边沿横轴正方向，再把三条边同时除以斜边长。三角形形状不变，边长比不变，斜边却变成了 $1$。设斜边终点是 $P(x,y)$，此时对边长是 $y$，邻边长是 $x$，所以</p>
+<div class="b-formula">$$\sin\alpha=\frac y1=y,\qquad\cos\alpha=\frac x1=x,\qquad\tan\alpha=\frac yx.$$</div>
+<p>点 $P$ 到原点的距离是 $1$，所以它在单位圆上。<strong>正弦读纵坐标，余弦读横坐标，正切读纵坐标与横坐标的比。</strong>把角转到其他象限时，仍然读坐标，就能把定义扩展到任意角；只是坐标可能为负，且正切要求 $x\ne0$。</p>
+</div></section>
+<section class="section" id="s2" data-source-md="01_任意角三角函数.md#3-4"><h2 class="marker"><span aria-hidden="true">02</span>角与函数值</h2><div class="section-body prose"><h2>角改变，点的位置与函数值跟着改变</h2>
+<p>输入的弧度数确定终边，终边与单位圆相交于点 $P$。例如 $\alpha=\frac{\pi}{6}$，就是 $30^\circ$：斜边为 $1$ 时，对边为 $\frac{1}{2}$，由勾股定理得邻边为 $\frac{\sqrt3}{2}$。因此正弦是 $\frac{1}{2}$，余弦是 $\frac{\sqrt3}{2}$，正切是两者的比 $\frac{\sqrt3}{3}$。</p>
+<figure class="b-map-figure d-figure" id="unit-explorer"><h3>从弧度数读出三角函数值</h3>
+<svg id="trig-circle" viewBox="0 0 420 405" role="img" aria-label="单位圆，角为六分之π，横坐标根号三除以二，纵坐标二分之一"><circle cx="210" cy="205" r="125" class="curve"/><path d="M30 205H390 M384 201L390 205L384 209 M210 380V30 M206 36L210 30L214 36" class="axis"/><path d="M210 205L318.253 142.5L318.253 205Z" class="curve"/><text x="237" y="194">α</text></svg>
+<div class="trig-controls" hidden><p id="trig-help">拖动圆点改变角度；点选常见角可直接比较，也可聚焦图后用方向键微调。</p><div class="trig-presets" role="group" aria-label="选择角度"><button type="button" data-angle="0">0</button><button type="button" data-angle="30">$\frac{\pi}{6}$</button><button type="button" data-angle="90">$\frac{\pi}{2}$</button><button type="button" data-angle="150">$\frac{5\pi}{6}$</button><button type="button" data-angle="300">$\frac{5\pi}{3}$</button><button type="button" id="trig-reset">恢复示例</button></div></div>
+<figcaption><p id="trig-angle">α = π/6 rad（30°）</p><div class="trig-values" aria-live="polite"><span id="trig-sin">sin α = 1/2</span><span id="trig-cos">cos α = √3/2</span><span id="trig-tan">tan α = √3/3</span></div><p id="trig-point">P = (√3/2, 1/2)</p></figcaption></figure>
+<p>点在横轴上方，正弦为正；在下方，正弦为负。点在纵轴右侧，余弦为正；在左侧，余弦为负。正切的正负则由两个坐标的比决定。</p>
+<p>分别选择 $\frac{\pi}{6}$ 和 $\frac{5\pi}{6}$：两个点一样高，所以正弦都为 $\frac{1}{2}$；横坐标却互为相反数，余弦也不同。<strong>不同角可以有相同的函数值。</strong>同终边角则落在同一个点上，三个函数值都相同（正切须有定义）。</p>
+</div></section>
+<section class="section" id="s3" data-source-md="01_任意角三角函数.md#5"><h2 class="marker"><span aria-hidden="true">03</span>定义与条件</h2><div class="section-body prose"><h2>坐标可以为负，分母不能为零</h2>
+<p>对任意实数角 $\alpha$，设终边与单位圆交于 $P(x,y)$，统一定义为</p><div class="b-formula">$$\sin\alpha=y,\qquad\cos\alpha=x,\qquad\tan\alpha=\frac yx\quad(x\ne0).$$</div>
+<div class="a-boundary-note"><p>每个实数弧度数都确定一个终边点，所以正弦和余弦的定义域都是 $\mathbb R$。正切需要除以横坐标，终边落在 $y$ 轴上时没有定义，即须排除</p></div><div class="b-formula">$$\alpha=\frac\pi2+k\pi,\qquad k\in\mathbb Z.$$</div>
+<p>例如 $\alpha=\frac{\pi}{2}$ 时，点为 $(0,1)$，正弦是 $1$，余弦是 $0$，正切却没有定义，不能写成“无穷大”。终边在 $x$ 轴上时，纵坐标为零，正弦与正切都是零。</p>
+<p>如果终边上取的是非原点 $Q(a,b)$，它到原点的距离为 $r=\sqrt{a^2+b^2}$，把坐标同时除以 $r$ 就回到单位圆。因此也可以写成</p><div class="b-formula">$$\sin\alpha=\frac br,\qquad\cos\alpha=\frac ar,\qquad\tan\alpha=\frac ba\quad(a\ne0).$$</div>
+<div class="summary-panel"><p>单位圆把斜边长度固定为 $1$，让边长比直接表现为坐标。理解了这一步，就能把弧度数与三角函数值联系起来。</p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../../D-02_任意角和弧度制/02_弧度制/index.html">← 上一篇 · 弧度制</a><a class="pager-home" href="../../index.html">返回 D 模块目录</a><a class="pager-next" href="../02_同角三角函数基本关系/index.html">下一篇 · 同角三角函数基本关系 →</a></nav><footer class="footer">OpenKS · 三角函数与周期变化</footer><script>
+(()=>{
+const svg=document.getElementById('trig-circle');let degrees=30,drag=null;
+const point=(r,d)=>[210+r*Math.cos(d*Math.PI/180),205-r*Math.sin(d*Math.PI/180)];
+const line=(pts,attrs)=>`<path d="${pts.map((p,i)=>(i?'L':'M')+p.map(v=>v.toFixed(3)).join(' ')).join(' ')}" ${attrs}/>`;
+const text=(x,y,v,anchor='middle')=>`<text x="${x}" y="${y}" text-anchor="${anchor}">${v}</text>`;
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+function radians(d){if(!d)return '0';const g=gcd(Math.abs(d),180),n=d/g,q=180/g;return (n===1?'π':n===-1?'−π':`${n}π`)+(q===1?'':`/${q}`);}
+const preciseSin={0:'0',30:'1/2',45:'√2/2',60:'√3/2',90:'1',120:'√3/2',135:'√2/2',150:'1/2',180:'0',210:'−1/2',225:'−√2/2',240:'−√3/2',270:'−1',300:'−√3/2',315:'−√2/2',330:'−1/2'};
+const preciseTan={0:'0',30:'√3/3',45:'1',60:'√3',90:null,120:'−√3',135:'−1',150:'−√3/3'};
+const decimal=v=>(Math.abs(v)<0.00005?0:v).toFixed(4).replace(/\.?0+$/,'');
+// Native MathML keeps roots and fractions properly typeset during every drag, without asynchronous re-typesetting.
+function valueMath(value){
+ const v=String(value).replace('−','-');
+ if(v.startsWith('-'))return '<mrow><mo>−</mo>'+valueMath(v.slice(1))+'</mrow>';
+ if(v.includes('/')){const [n,d]=v.split('/');return '<mfrac>'+valueMath(n)+valueMath(d)+'</mfrac>';}
+ if(v.startsWith('√'))return '<msqrt>'+valueMath(v.slice(1))+'</msqrt>';
+ if(v.includes('π'))return '<mrow>'+(v==='π'?'':'<mn>'+v.slice(0,-1)+'</mn>')+'<mi>π</mi></mrow>';
+ return '<mn>'+v+'</mn>';
+}
+function renderMath(id,body){document.getElementById(id).innerHTML=window.dMath(body);}
+function renderValue(name,exact,approx){
+ const lhs='<mi mathvariant="normal">'+name+'</mi><mo>⁡</mo><mi>α</mi>';
+ renderMath('trig-'+name,lhs+(exact===null?'<mtext> 无定义</mtext>':'<mo>'+(exact===undefined?'≈':'=')+'</mo>'+valueMath(exact===undefined?decimal(approx):exact)));
+}
+function draw(){
+ const d=((degrees%360)+360)%360,t=d*Math.PI/180;
+ let x=Math.cos(t),y=Math.sin(t);if(d%180===90)x=0;if(d%180===0)y=0;
+ const sin=preciseSin[d],cos=preciseSin[(d+90)%360],tan=preciseTan[d%180];
+ renderMath('trig-angle','<mi>α</mi><mo>=</mo>'+valueMath(radians(degrees))+'<mspace width=".3em"/><mtext>rad</mtext><mspace width=".5em"/><mo>（</mo>'+valueMath(degrees)+'<mo>°</mo><mo>）</mo>');
+ renderValue('sin',sin,y);renderValue('cos',cos,x);renderValue('tan',x===0?null:tan,y/x);
+ renderMath('trig-point','<mi>P</mi><mo>'+(sin!==undefined&&cos!==undefined?'=':'≈')+'</mo><mo>(</mo>'+valueMath(cos??decimal(x))+'<mo>,</mo>'+valueMath(sin??decimal(y))+'<mo>)</mo>');
+ for(const b of document.querySelectorAll('[data-angle]'))b.setAttribute('aria-pressed',String(Number(b.dataset.angle)===degrees));
+ let b='<title id="trig-title">拖动单位圆上的点</title><desc id="trig-desc">'+`角 ${degrees} 度；正弦 ${sin??decimal(y)}；余弦 ${cos??decimal(x)}；正切 ${x===0?'无定义':tan??decimal(y/x)}`+'</desc><defs><marker id="trig-arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="var(--purple)"/></marker></defs>';
+ for(const z of [-1,-.5,0,.5,1])b+=line([[210+125*z,45],[210+125*z,370]],'class="grid"')+line([[40,205-125*z],[380,205-125*z]],'class="grid"');
+ b+=line([[25,205],[395,205],[390,201],[395,205],[390,209]],'class="axis"')+line([[210,380],[210,25],[206,30],[210,25],[214,30]],'class="axis"');
+ b+='<circle cx="210" cy="205" r="125" class="curve"/>'+text(402,196,'x')+text(222,27,'y')+text(197,226,'O');
+ const p=[210+125*x,205-125*y];
+ b+=line([[210,205],[p[0],205]],'class="projection" stroke="var(--blue)"')+line([[210,205],[210,p[1]]],'class="projection" stroke="var(--purple)"');
+ b+=line([[p[0],205],p,[210,p[1]]],'class="guide"')+line([[210,205],p],'class="curve"');
+ if(degrees!==0){const pts=[],n=Math.max(2,Math.ceil(Math.abs(degrees)/3));for(let i=0;i<=n;i++){const a=degrees*i/n;pts.push(point(30+12*Math.abs(a)/720,a));}b+=line(pts,'class="secondary" marker-end="url(#trig-arrow)"');}
+ const alpha=point(55,(degrees>=0?1:-1)*Math.min(Math.abs(degrees)/2,60));b+=text(alpha[0],alpha[1]+5,'α');
+ b+=text(210+62.5*x,205+(y>=0?28:-16),'x = cos α');
+ b+=text(210+(x>=0?-15:15),205-62.5*y,'y = sin α',x>=0?'end':'start');
+ b+=`<circle cx="${p[0]}" cy="${p[1]}" r="10" fill="var(--paper)" stroke="var(--purple)" stroke-width="2.5"/><circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--purple)"/>`;
+ const label=point(148,d);b+=text(label[0],label[1]+5,'P');
+ svg.innerHTML=b;svg.setAttribute('aria-labelledby','trig-title trig-desc');svg.dataset.degrees=degrees;svg.dataset.x=x;svg.dataset.y=y;
+}
+function set(d){degrees=Math.max(-720,Math.min(720,Math.round(d)));draw();}
+for(const b of document.querySelectorAll('[data-angle]'))b.addEventListener('click',()=>set(Number(b.dataset.angle)));
+document.getElementById('trig-reset').addEventListener('click',()=>set(30));
+function pointer(e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return {x:p.x,y:p.y,a:Math.atan2(205-p.y,p.x-210)*180/Math.PI};}
+svg.addEventListener('pointerdown',e=>{if(drag||e.button!==0)return;const p=pointer(e),end=point(125,degrees);if(Math.hypot(p.x-end[0],p.y-end[1])>25)return;drag={id:e.pointerId,last:p.a,value:degrees};svg.setPointerCapture(e.pointerId);e.preventDefault();});
+svg.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const p=pointer(e);if(Math.hypot(p.x-210,p.y-205)<25)return;const delta=((p.a-drag.last+540)%360)-180;drag.last=p.a;drag.value=Math.max(-720,Math.min(720,drag.value+delta));set(drag.value);e.preventDefault();});
+function end(e){if(drag&&e.pointerId===drag.id){drag=null;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);}}
+for(const name of ['pointerup','pointercancel','lostpointercapture'])svg.addEventListener(name,end);
+svg.setAttribute('tabindex','0');svg.setAttribute('aria-describedby','trig-help');svg.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();set(degrees+(['ArrowUp','ArrowRight'].includes(e.key)?1:-1));}});
+draw();document.querySelector('.trig-controls').hidden=false;
+window.addEventListener('load',()=>window.MathJax?.startup?.promise.then(draw));
+})();
+</script></body></html>

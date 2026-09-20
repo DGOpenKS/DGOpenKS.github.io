@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>同角三角函数基本关系 | OpenKS</title><meta name="description" content="同一个角的正弦、余弦和正切来自同一个点，所以三个数之间有固定关系。下面从坐标推出平方关系和商数关系，再看已知一个值时，为什么还需要象限来确定符号。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"><style>#trig-circle{max-width:490px;touch-action:none;cursor:grab}#trig-circle:active{cursor:grabbing}#trig-circle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.trig-controls{margin:1rem 0}.trig-controls p,#trig-point{font-size:.92rem;color:var(--muted)}.trig-presets{display:flex;flex-wrap:wrap;gap:.5rem}.trig-presets button{font:inherit;min-height:44px;padding:.5rem .8rem;background:var(--paper);color:var(--blue-deep);border:1px solid var(--line-strong);border-radius:8px;cursor:pointer}.trig-presets button[aria-pressed=true]{background:var(--blue-soft);border-color:var(--blue)}.trig-presets button:focus-visible{outline:3px solid var(--blue)}.trig-values{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;font-family:var(--font-math);font-size:1.2rem;color:var(--body)}.trig-values span{white-space:nowrap}.trig-values{align-items:center;row-gap:1rem}.trig-values math,#trig-point math,#trig-angle math{font-size:1em}#trig-point{padding-top:.35rem}#trig-angle{font-size:1.1rem;color:var(--body);font-weight:700}#trig-circle .projection{stroke-width:3;fill:none}#trig-circle .point-label{font-size:17px}</style><script src="../../assets/d-math.js"></script></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-03_三角函数的概念与同角基本关系/02_同角三角函数基本关系.md; SHA256: bb083a1e04978f6bee2a689f02a56ddb4d4578446ecd64f2d52b35d6585ce21b --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">平方关系</a><a class="nav-link" href="#s2">商数关系</a><a class="nav-link" href="#s3">开方的正负</a><a class="nav-link" href="#s4">象限与符号</a><a class="nav-link" href="#s5">核心理解</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>同角三角函数基本关系</h1><p class="lead">同一个角的正弦、余弦和正切来自同一个点，所以三个数之间有固定关系。下面从坐标推出平方关系和商数关系，再看已知一个值时，为什么还需要象限来确定符号。</p></header><main id="main" tabindex="-1"><section class="section" id="s1" data-source-md="02_同角三角函数基本关系.md#1. 平方关系来自单位圆"><h2 class="marker"><span aria-hidden="true">01</span>平方关系</h2><div class="section-body prose"><h2>平方关系来自单位圆</h2><p>设任意角 $\alpha$ 的终边与单位圆交于点 <span class="b-math-punct">$P(x,y)$。</span>因为 $P$ 在半径为 $1$ 的圆上，所以它的坐标满足</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+x^2+y^2=1.
+$$</div>
+<p>由任意角三角函数的定义，<span class="b-math-punct">$x=\cos\alpha$，</span><span class="b-math-punct">$y=\sin\alpha$。</span>把这两个坐标代入圆的方程，得到</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos^2\alpha+\sin^2\alpha=1,
+$$</div>
+<p>也就是通常写成的</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin^2\alpha+\cos^2\alpha=1.
+$$</div>
+<p>这里只交换了加数的次序，没有增加新条件。无论终边在象限内还是坐标轴上，这个关系对每个实数 $\alpha$ 都成立。</p></div></section><section class="section" id="s2" data-source-md="02_同角三角函数基本关系.md#2. 商数关系来自正切的定义"><h2 class="marker"><span aria-hidden="true">02</span>商数关系</h2><div class="section-body prose"><h2>商数关系来自正切的定义</h2><p>仍在同一个点 $P(x,y)$ 上，正切定义为纵坐标与横坐标之比：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan\alpha=\frac{y}{x},\qquad x\ne0.
+$$</div>
+<p>再用 <span class="b-math-punct">$y=\sin\alpha$、</span>$x=\cos\alpha$ 代换，便得到</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan\alpha=\frac{\sin\alpha}{\cos\alpha},
+\qquad \cos\alpha\ne0.
+$$</div>
+<p>条件 $\cos\alpha\ne0$ 来自分母 <span class="b-math-punct">$x\ne0$，</span>等价于</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\alpha\ne\frac{\pi}{2}+k\pi,\qquad k\in\mathbb Z.
+$$</div>
+<p>所以平方关系对所有实数角都成立，商数关系却只能在正切有定义时使用。若 <span class="b-math-punct">$\cos\alpha=0$，</span>不能把商写成“无穷大”，也不能用乘法形式掩盖原式没有定义的事实。</p></div></section><section class="section" id="s3" data-source-md="02_同角三角函数基本关系.md#3. 反向使用为什么会出现正负号"><h2 class="marker"><span aria-hidden="true">03</span>开方的正负</h2><div class="section-body prose"><h2>开平方时，为什么有正负两个可能</h2><p>平方关系可以把一个三角函数值转成另一个的平方。例如已知 <span class="b-math-punct">$\sin\alpha=s$，</span>先移项得到</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos^2\alpha=1-\sin^2\alpha=1-s^2.
+$$</div>
+<p>从平方回到原数必须同时考虑两个平方根：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos\alpha=\pm\sqrt{1-s^2}.
+$$</div>
+<p>公式只确定绝对值，正负号要由角的终边所在象限或坐标轴位置决定。若缺少这些信息，任选一个符号都会丢失可能性。同理，由余弦求正弦时也要保留 <span class="b-math-punct">$\pm$。</span></p></div></section><section class="section" id="s4" data-source-md="02_同角三角函数基本关系.md#4. 象限条件怎样关闭符号分支"><h2 class="marker"><span aria-hidden="true">04</span>象限与符号</h2><div class="section-body prose"><h2>用象限确定符号</h2><p>例如，已知</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin\alpha=-\frac35,
+$$</div>
+<p>并且 $\alpha$ 是第四象限角。由平方关系逐步得到</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos^2\alpha
+=1-\sin^2\alpha
+=1-\left(-\frac35\right)^2
+=\frac{16}{25}.
+$$</div>
+<p>第四象限的横坐标为正，所以取正根，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos\alpha=\frac45.
+$$</div>
+<p>此时 <span class="b-math-punct">$\cos\alpha\ne0$，</span>商数关系可以使用：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan\alpha
+=\frac{\sin\alpha}{\cos\alpha}
+=\frac{-\frac{3}{5}}{\frac{4}{5}}
+=-\frac34.
+$$</div>
+<div class="a-boundary-note"><p>如果只知道 <span class="b-math-punct">$\sin\alpha=-\frac{3}{5}$，</span>却不知道象限，那么终边可能在第三或第四象限，余弦分别为 $-\frac{4}{5}$ 或 <span class="b-math-punct">$\frac{4}{5}$，</span>正切也分别为 $\frac{3}{4}$ 或 <span class="b-math-punct">$-\frac{3}{4}$。</span>这不是公式失效，而是已知条件不足以选择符号。</p></div><figure class="b-map-figure d-figure" id="unit-explorer"><h3>平方和不变，符号看象限</h3>
+<svg id="trig-circle" viewBox="0 0 420 405" role="img" aria-label="单位圆，角为六分之π，横坐标根号三除以二，纵坐标二分之一"><circle cx="210" cy="205" r="125" class="curve"/><path d="M30 205H390 M384 201L390 205L384 209 M210 380V30 M206 36L210 30L214 36" class="axis"/><path d="M210 205L318.253 142.5L318.253 205Z" class="curve"/><text x="237" y="194">α</text></svg>
+<div class="trig-controls" hidden><p id="trig-help">拖动圆点，观察坐标的正负与平方和；也可聚焦图后用方向键微调。</p><div class="trig-presets" role="group" aria-label="比较坐标符号"><button type="button" id="trig-reflect">关于纵轴对称</button><button type="button" id="trig-reset">恢复示例</button></div></div>
+<figcaption><p id="trig-angle">α = π/6 rad（30°）</p><div class="trig-values" aria-live="polite"><span id="trig-sin">sin α = 1/2</span><span id="trig-cos">cos α = √3/2</span><span id="trig-tan">tan α = √3/3</span></div><p id="trig-point">P = (√3/2, 1/2)</p><p id="square-relation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math></p><p id="sign-note">平方关系不能确定坐标的正负，还要看点所在的象限。</p></figcaption></figure></div></section><section class="section" id="s5" data-source-md="02_同角三角函数基本关系.md#5. 使用两个关系时保留什么"><h2 class="marker"><span aria-hidden="true">05</span>核心理解</h2><div class="section-body prose"><h2>两个关系各有什么条件</h2><div class="summary-panel"><p>平方关系来自单位圆方程，负责联系正弦、余弦的平方；商数关系来自正切定义，使用前必须确认 <span class="b-math-punct">$\cos\alpha\ne0$。</span>反向计算经过开平方时，先保留 <span class="b-math-punct">$\pm$，</span>再依据象限确定符号。基本关系能连接同一个角的函数值，却不能代替象限信息，也不能改变任何函数原有的定义域。</p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../01_任意角三角函数/index.html">← 上一篇 · 任意角三角函数</a><a class="pager-home" href="../../index.html">返回 D 模块目录</a><a class="pager-next" href="../../D-04_诱导公式/01_诱导公式/index.html">下一篇 · 诱导公式 →</a></nav><footer class="footer">OpenKS · 三角函数与周期变化</footer><script>
+(()=>{
+const svg=document.getElementById('trig-circle');const example=-Math.atan2(3,4)*180/Math.PI;let degrees=example,drag=null;
+const point=(r,d)=>[210+r*Math.cos(d*Math.PI/180),205-r*Math.sin(d*Math.PI/180)];
+const line=(pts,attrs)=>`<path d="${pts.map((p,i)=>(i?'L':'M')+p.map(v=>v.toFixed(3)).join(' ')).join(' ')}" ${attrs}/>`;
+const text=(x,y,v,anchor='middle')=>`<text x="${x}" y="${y}" text-anchor="${anchor}">${v}</text>`;
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+function radians(d){if(!Number.isInteger(d))return decimal(d*Math.PI/180);if(!d)return '0';const g=gcd(Math.abs(d),180),n=d/g,q=180/g;return (n===1?'π':n===-1?'−π':`${n}π`)+(q===1?'':`/${q}`);}
+const preciseSin={0:'0',30:'1/2',45:'√2/2',60:'√3/2',90:'1',120:'√3/2',135:'√2/2',150:'1/2',180:'0',210:'−1/2',225:'−√2/2',240:'−√3/2',270:'−1',300:'−√3/2',315:'−√2/2',330:'−1/2'};
+const preciseTan={0:'0',30:'√3/3',45:'1',60:'√3',90:null,120:'−√3',135:'−1',150:'−√3/3'};
+const decimal=v=>(Math.abs(v)<0.00005?0:v).toFixed(4).replace(/\.?0+$/,'');
+// Native MathML keeps roots and fractions properly typeset during every drag, without asynchronous re-typesetting.
+function valueMath(value){
+ const v=String(value).replace('−','-');
+ if(v.startsWith('-'))return '<mrow><mo>−</mo>'+valueMath(v.slice(1))+'</mrow>';
+ if(v.includes('/')){const [n,d]=v.split('/');return '<mfrac>'+valueMath(n)+valueMath(d)+'</mfrac>';}
+ if(v.startsWith('√'))return '<msqrt>'+valueMath(v.slice(1))+'</msqrt>';
+ if(v.includes('π'))return '<mrow>'+(v==='π'?'':'<mn>'+v.slice(0,-1)+'</mn>')+'<mi>π</mi></mrow>';
+ return '<mn>'+v+'</mn>';
+}
+function renderMath(id,body){document.getElementById(id).innerHTML=window.dMath(body);}
+function renderValue(name,exact,approx){
+ const lhs='<mi mathvariant="normal">'+name+'</mi><mo>⁡</mo><mi>α</mi>';
+ renderMath('trig-'+name,lhs+(exact===null?'<mtext> 无定义</mtext>':'<mo>'+(exact===undefined?'≈':'=')+'</mo>'+valueMath(exact===undefined?decimal(approx):exact)));
+}
+function draw(){
+ const d=((degrees%360)+360)%360,t=d*Math.PI/180;
+ let x=Math.cos(t),y=Math.sin(t);if(d%180===90)x=0;if(d%180===0)y=0;
+ let sin=preciseSin[d],cos=preciseSin[(d+90)%360],tan=preciseTan[d%180];
+ if(Math.abs(Math.abs(x)-.8)<1e-10&&Math.abs(Math.abs(y)-.6)<1e-10){sin=(y<0?'−':'')+'3/5';cos=(x<0?'−':'')+'4/5';tan=(x*y<0?'−':'')+'3/4';}
+ renderMath('trig-angle','<mi>α</mi><mo>'+(Number.isInteger(degrees)?'=':'≈')+'</mo>'+valueMath(radians(degrees))+'<mspace width=".3em"/><mtext>rad</mtext><mspace width=".5em"/><mo>（</mo>'+valueMath(Number.isInteger(degrees)?degrees:decimal(degrees))+'<mo>°</mo><mo>）</mo>');
+ renderValue('sin',sin,y);renderValue('cos',cos,x);renderValue('tan',x===0?null:tan,y/x);
+ renderMath('trig-point','<mi>P</mi><mo>'+(sin!==undefined&&cos!==undefined?'=':'≈')+'</mo><mo>(</mo>'+valueMath(cos??decimal(x))+'<mo>,</mo>'+valueMath(sin??decimal(y))+'<mo>)</mo>');
+ renderMath('square-relation','<msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi mathvariant="normal">cos</mi><mn>2</mn></msup><mi>α</mi><mo>+</mo><msup><mi mathvariant="normal">sin</mi><mn>2</mn></msup><mi>α</mi><mo>=</mo><mn>1</mn>');
+ document.getElementById('sign-note').textContent=x===0?'横坐标为 0，正切无定义；平方和仍为 1。':y===0?'纵坐标为 0，正弦和正切都是 0；平方和仍为 1。':`正弦为${y>0?'正':'负'}，余弦为${x>0?'正':'负'}。关于纵轴对称后，正弦不变，余弦变号；平方和仍为 1。`;
+ for(const b of document.querySelectorAll('[data-angle]'))b.setAttribute('aria-pressed',String(Number(b.dataset.angle)===degrees));
+ let b='<title id="trig-title">拖动单位圆上的点</title><desc id="trig-desc">'+`角 ${degrees} 度；正弦 ${sin??decimal(y)}；余弦 ${cos??decimal(x)}；正切 ${x===0?'无定义':tan??decimal(y/x)}`+'</desc><defs><marker id="trig-arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="var(--purple)"/></marker></defs>';
+ for(const z of [-1,-.5,0,.5,1])b+=line([[210+125*z,45],[210+125*z,370]],'class="grid"')+line([[40,205-125*z],[380,205-125*z]],'class="grid"');
+ b+=line([[25,205],[395,205],[390,201],[395,205],[390,209]],'class="axis"')+line([[210,380],[210,25],[206,30],[210,25],[214,30]],'class="axis"');
+ b+='<circle cx="210" cy="205" r="125" class="curve"/>'+text(402,196,'x')+text(222,27,'y')+text(197,226,'O');
+ const p=[210+125*x,205-125*y];
+ b+=line([[210,205],[p[0],205]],'class="projection" stroke="var(--blue)"')+line([[210,205],[210,p[1]]],'class="projection" stroke="var(--purple)"');
+ b+=line([[p[0],205],p,[210,p[1]]],'class="guide"')+line([[210,205],p],'class="curve"');
+ if(degrees!==0){const pts=[],n=Math.max(2,Math.ceil(Math.abs(degrees)/3));for(let i=0;i<=n;i++){const a=degrees*i/n;pts.push(point(30+12*Math.abs(a)/720,a));}b+=line(pts,'class="secondary" marker-end="url(#trig-arrow)"');}
+ const alpha=point(55,(degrees>=0?1:-1)*Math.min(Math.abs(degrees)/2,60));b+=text(alpha[0],alpha[1]+5,'α');
+ b+=text(210+62.5*x,205+(y>=0?28:-16),'x = cos α');
+ b+=text(210+(x>=0?-15:15),205-62.5*y,'y = sin α',x>=0?'end':'start');
+ b+=`<circle cx="${p[0]}" cy="${p[1]}" r="10" fill="var(--paper)" stroke="var(--purple)" stroke-width="2.5"/><circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--purple)"/>`;
+ const label=point(148,d);b+=text(label[0],label[1]+5,'P');
+ svg.innerHTML=b;svg.setAttribute('aria-labelledby','trig-title trig-desc');svg.dataset.degrees=degrees;svg.dataset.x=x;svg.dataset.y=y;
+}
+function set(d){degrees=Math.max(-720,Math.min(720,Math.round(d)));draw();}
+for(const b of document.querySelectorAll('[data-angle]'))b.addEventListener('click',()=>set(Number(b.dataset.angle)));
+document.getElementById('trig-reset').addEventListener('click',()=>{degrees=example;draw();});
+document.getElementById('trig-reflect').addEventListener('click',()=>{degrees=degrees<0?-180-degrees:180-degrees;draw();});
+function pointer(e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return {x:p.x,y:p.y,a:Math.atan2(205-p.y,p.x-210)*180/Math.PI};}
+svg.addEventListener('pointerdown',e=>{if(drag||e.button!==0)return;const p=pointer(e),end=point(125,degrees);if(Math.hypot(p.x-end[0],p.y-end[1])>25)return;drag={id:e.pointerId,last:p.a,value:degrees};svg.setPointerCapture(e.pointerId);e.preventDefault();});
+svg.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const p=pointer(e);if(Math.hypot(p.x-210,p.y-205)<25)return;const delta=((p.a-drag.last+540)%360)-180;drag.last=p.a;drag.value=Math.max(-720,Math.min(720,drag.value+delta));set(drag.value);e.preventDefault();});
+function end(e){if(drag&&e.pointerId===drag.id){drag=null;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);}}
+for(const name of ['pointerup','pointercancel','lostpointercapture'])svg.addEventListener(name,end);
+svg.setAttribute('tabindex','0');svg.setAttribute('aria-describedby','trig-help');svg.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();set(degrees+(['ArrowUp','ArrowRight'].includes(e.key)?1:-1));}});
+draw();document.querySelector('.trig-controls').hidden=false;
+window.addEventListener('load',()=>window.MathJax?.startup?.promise.then(draw));
+})();
+</script></body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>任意角 | OpenKS</title><meta name="description" content="一个角既记录转了多少，也记录向哪边转。任意角把范围扩展到负角和超过一周的角；终边相同，只说明最后指向相同，并不表示旋转过程相同。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"><style>
+#angle-comparison{touch-action:none;cursor:grab}#angle-comparison.is-dragging{cursor:grabbing}#angle-controls{margin:1rem 0}#angle-help{font-size:.95rem;color:var(--muted);margin:0 0 .8rem}.angle-select{display:flex;flex-wrap:wrap;gap:.6rem}.angle-select button{font:inherit;padding:.55rem .85rem;min-height:44px;border:1px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--body);cursor:pointer}#select-a{color:var(--blue-deep)}#select-b{color:var(--purple-deep)}#select-a[aria-pressed=true]{background:var(--blue-soft);border-color:var(--blue)}#select-b[aria-pressed=true]{background:var(--purple-soft);border-color:var(--purple)}#angle-controls :focus-visible{outline:3px solid var(--blue);outline-offset:3px}#angle-result{color:var(--muted);margin-bottom:.5rem}
+</style></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-02_任意角和弧度制/01_任意角.md; SHA256: b00de02331c522d1c6948c1eadcb8c1ba5a20c0bb5f57fa491a5fcb6e81b28bc --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">旋转与方向</a><a class="nav-link" href="#s2">象限与轴线</a><a class="nav-link" href="#s3">同终边角</a><a class="nav-link" href="#s4">终边的范围</a><a class="nav-link" href="#s5">核心理解</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>任意角</h1><p class="lead">一个角既记录转了多少，也记录向哪边转。任意角把范围扩展到负角和超过一周的角；终边相同，只说明最后指向相同，并不表示旋转过程相同。</p></header><main id="main" tabindex="-1"><section class="section" id="s1" data-source-md="01_任意角.md#1. 用旋转刻画角"><h2 class="marker"><span aria-hidden="true">01</span>旋转与方向</h2><div class="section-body prose"><h2>用旋转刻画角</h2><p>一条射线从原来的位置出发，绕端点旋转到另一个位置。出发的射线叫角的<strong>始边</strong>，停止位置的射线叫角的<strong>终边</strong>，共同的端点叫角的<strong>顶点</strong>。</p>
+<p>规定逆时针旋转形成正角，顺时针旋转形成负角；射线没有旋转时形成零角。于是角不再受一周限制：$720^\circ$ 表示逆时针转两周，$-450^\circ$ 表示顺时针转一周后再转 <span class="b-math-punct">$90^\circ$。</span>正负号记录方向，绝对值记录旋转量，二者都不能省略。</p></div></section><section class="section" id="s2" data-source-md="01_任意角.md#2. 把角放在标准位置"><h2 class="marker"><span aria-hidden="true">02</span>象限与轴线</h2><div class="section-body prose"><h2>把角放在标准位置</h2><p>为了比较不同的角，通常把顶点放在坐标原点，始边与 $x$ 轴非负半轴重合，这叫角的标准位置。此时，角的终边落在哪个象限内，就称它为第几象限角。</p>
+<p>“落在象限内”是必要条件。比如 $90^\circ$ 的终边在 $y$ 轴非负半轴上，它不属于任何一个象限，所以不能称为第二象限角。终边落在坐标轴上的角统称为轴线角。</p></div></section><section class="section" id="s3" data-source-md="01_任意角.md#3. 同终边不等于同一个角"><h2 class="marker"><span aria-hidden="true">03</span>同终边角</h2><div class="section-body prose"><h2>同终边不等于同一个角</h2><p>从同一条始边出发，旋转整周不会改变终边的位置。因此，对于用角度制度量且都放在标准位置的角，若角 $\alpha$ 已经确定，那么所有与它终边相同的角组成集合</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+S=\{\beta\mid \beta=\alpha+k\cdot360^\circ,\ k\in\mathbb Z\}.
+$$</div>
+<p>式中的 $k$ 必须是整数，因为每次增加或减少的都应是完整的一周；$k$ 可正、可负，也可以为零。这个式子既说明右边列出的角都与 $\alpha$ 同终边，也说明同终边角与 $\alpha$ 的差一定是整周。</p>
+<p>例如，$-32^\circ$ 的所有同终边角组成集合</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\{\beta\mid \beta=-32^\circ+k\cdot360^\circ,\ k\in\mathbb Z\}.
+$$</div>
+<p>取 $k=1$ 得 <span class="b-math-punct">$328^\circ$，</span>它是这组角在 $[0^\circ,360^\circ)$ 内的代表。二者终边相同，但旋转方向和旋转量不同，所以不能说它们是同一个角。</p><figure class="b-map-figure d-figure"><h3>改变两个角，对比终边</h3><svg id="angle-comparison" viewBox="0 0 360 340" role="img" aria-labelledby="figure-title"><title id="figure-title">三百二十八度与负三十二度的终边相同，箭头显示不同旋转方向</title><path class="grid" d="M75.000 35.000 L75.000 305.000" /><path class="grid" d="M127.500 35.000 L127.500 305.000" /><path class="grid" d="M180.000 35.000 L180.000 305.000" /><path class="grid" d="M232.500 35.000 L232.500 305.000" /><path class="grid" d="M285.000 35.000 L285.000 305.000" /><path class="grid" d="M35.000 65.000 L325.000 65.000" /><path class="grid" d="M35.000 117.500 L325.000 117.500" /><path class="grid" d="M35.000 170.000 L325.000 170.000" /><path class="grid" d="M35.000 222.500 L325.000 222.500" /><path class="grid" d="M35.000 275.000 L325.000 275.000" /><path class="axis" d="M25.000 170.000 L335.000 170.000 L330.000 166.000 L335.000 170.000 L330.000 174.000" /><path class="axis" d="M180.000 310.000 L180.000 25.000 L176.000 30.000 L180.000 25.000 L184.000 30.000" /><circle cx="180" cy="170" r="105" class="curve"/><text x="344.00" y="161.00" text-anchor="middle">x</text><text x="193.00" y="26.00" text-anchor="middle">y</text><text x="167.00" y="190.00" text-anchor="middle">O</text><path class="axis" d="M180.000 170.000 L311.250 170.000" /><path class="curve" d="M180.000 170.000 L291.306 239.552" /><defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="var(--purple)"/></marker></defs><path class="secondary" d="M255.000 170.000 L254.877 165.709 L254.509 161.432 L253.897 157.183 L253.042 152.976 L251.949 148.824 L250.619 144.743 L249.058 140.743 L247.271 136.840 L245.264 133.045 L243.042 129.372 L240.615 125.831 L237.988 122.436 L235.172 119.196 L232.175 116.122 L229.007 113.225 L225.678 110.514 L222.200 107.998 L218.583 105.686 L214.840 103.583 L210.983 101.699 L207.024 100.038 L202.977 98.606 L198.855 97.409 L194.670 96.449 L190.438 95.730 L186.171 95.254 L181.885 95.024 L177.592 95.039 L173.307 95.299 L169.044 95.805 L164.817 96.553 L160.639 97.542 L156.525 98.768 L152.488 100.228 L148.541 101.917 L144.697 103.828 L140.969 105.956 L137.369 108.295 L133.908 110.835 L130.598 113.569 L127.450 116.488 L124.475 119.582 L121.681 122.842 L119.078 126.256 L116.675 129.813 L114.480 133.502 L112.499 137.311 L110.739 141.226 L109.206 145.236 L107.905 149.327 L106.841 153.486 L106.016 157.699 L105.433 161.952 L105.095 166.232 L105.002 170.524 L105.155 174.814 L105.553 179.088 L106.195 183.333 L107.078 187.534 L108.201 191.677 L109.559 195.750 L111.148 199.738 L112.962 203.629 L114.996 207.409 L117.243 211.067 L119.695 214.591 L122.345 217.968 L125.184 221.188 L128.203 224.241 L131.391 227.115 L134.739 229.803 L138.234 232.295 L141.867 234.582 L145.625 236.658 L149.495 238.516 L153.465 240.149 L157.522 241.552 L161.653 242.721 L165.844 243.652 L170.081 244.341 L174.350 244.787 L178.639 244.988 L182.931 244.943 L187.214 244.652 L191.474 244.117 L195.696 243.339 L199.866 242.321 L203.972 241.066 L207.998 239.578 L211.933 237.862 L215.764 235.924 L219.477 233.770 L223.061 231.406 L226.504 228.842 L229.794 226.085 L232.922 223.144 L235.876 220.029 L238.647 216.750 L241.225 213.318 L243.604 209.744" marker-end="url(#arrow)"/><path class="secondary" d="M215.000 170.000 L214.999 170.195 L214.998 170.391 L214.995 170.586 L214.991 170.782 L214.986 170.977 L214.980 171.173 L214.973 171.368 L214.965 171.563 L214.956 171.759 L214.945 171.954 L214.934 172.149 L214.921 172.344 L214.908 172.539 L214.893 172.734 L214.877 172.929 L214.860 173.123 L214.842 173.318 L214.823 173.513 L214.803 173.707 L214.782 173.901 L214.760 174.096 L214.736 174.290 L214.712 174.484 L214.686 174.677 L214.659 174.871 L214.632 175.065 L214.603 175.258 L214.573 175.451 L214.542 175.644 L214.510 175.837 L214.477 176.030 L214.443 176.222 L214.407 176.414 L214.371 176.606 L214.333 176.798 L214.295 176.990 L214.255 177.181 L214.215 177.372 L214.173 177.563 L214.130 177.754 L214.086 177.945 L214.041 178.135 L213.996 178.325 L213.948 178.515 L213.900 178.704 L213.851 178.893 L213.801 179.082 L213.750 179.271 L213.698 179.459 L213.644 179.647 L213.590 179.835 L213.534 180.023 L213.478 180.210 L213.420 180.396 L213.362 180.583 L213.302 180.769 L213.241 180.955 L213.180 181.140 L213.117 181.326 L213.053 181.510 L212.988 181.695 L212.923 181.879 L212.856 182.063 L212.788 182.246 L212.719 182.429 L212.649 182.611 L212.578 182.793 L212.506 182.975 L212.433 183.157 L212.359 183.337 L212.284 183.518 L212.208 183.698 L212.131 183.878 L212.053 184.057 L211.974 184.236 L211.894 184.414 L211.813 184.592 L211.731 184.769 L211.648 184.946 L211.564 185.123 L211.479 185.299 L211.393 185.475 L211.306 185.650 L211.218 185.824 L211.130 185.998 L211.040 186.172 L210.949 186.345 L210.857 186.518 L210.764 186.690 L210.671 186.861 L210.576 187.032 L210.480 187.203 L210.384 187.373 L210.286 187.542 L210.188 187.711 L210.089 187.880 L209.988 188.047 L209.887 188.214 L209.785 188.381 L209.682 188.547" marker-end="url(#arrow)"/><circle class="point" cx="269.045" cy="225.642" r="4.5"/><text x="100.00" y="66.00" text-anchor="middle">328°</text><text x="255.00" y="192.00" text-anchor="middle">−32°</text></svg><div id="angle-controls" hidden>
+<p id="angle-help">选择 A 或 B，再拖动圆点改变角度；也可用方向键微调。</p>
+<div class="angle-select" role="group" aria-label="选择并调整角度">
+<button type="button" id="select-a" aria-pressed="true" aria-describedby="angle-help">A · 328°</button>
+<button type="button" id="select-b" aria-pressed="false" aria-describedby="angle-help">B · −32°</button>
+<button type="button" id="angle-reset">恢复示例</button>
+</div></div><figcaption><p id="angle-result" aria-live="polite">相差 360°，终边相同，角不相等。</p><p><strong>同终边不等于同一个角。</strong>终边只表示最后的方向，角还记录旋转方向和旋转量。</p></figcaption></figure></div></section><section class="section" id="s4" data-source-md="01_任意角.md#4. 终边落在一段范围内的角"><h2 class="marker"><span aria-hidden="true">04</span>终边的范围</h2><div class="section-body prose"><h2>终边落在一段范围内的角</h2><p>同终边角从一个确定的角出发，每次加减整周。如果终边可以在一段范围内转动，就把这整段范围一起加减整周。</p>
+<p>例如，第一象限内的终边在一周中对应 <span class="b-math-punct">$0^\circ&lt;\alpha&lt;90^\circ$。</span>加上任意整数周，所有第一象限角组成集合</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\{\alpha\mid k\cdot360^\circ&lt;\alpha&lt;90^\circ+k\cdot360^\circ,\ k\in\mathbb Z\}.
+$$</div>
+<p>两个端点必须加上同一个 <span class="b-math-punct">$k\cdot360^\circ$，</span>这样才是把原来的范围完整地移到另一周。例如取 <span class="b-math-punct">$k=-1$，</span>得到 <span class="b-math-punct">$-360^\circ&lt;\alpha&lt;-270^\circ$；</span>其中的角虽然为负，终边仍在第一象限。</p>
+<div class="a-boundary-note"><p>这里不取端点，因为坐标轴不属于象限。若描述的范围明确包含某条边界射线，对应端点就应取等号；是否包含端点，取决于终边允许落在哪里。</p></div></div></section><section class="section" id="s5" data-source-md="01_任意角.md#5. 真正要保留的信息"><h2 class="marker"><span aria-hidden="true">05</span>核心理解</h2><div class="section-body prose"><h2>真正要保留的信息</h2><div class="summary-panel"><p>任意角记录的是一次有方向、可超过一周的旋转；标准位置让终边方向便于比较；同终边角则只在相差整周时出现。判断同终边时，不看两个数“相差不多”，而要检查它们的差能否写成 <span class="b-math-punct">$k\cdot360^\circ$，</span>其中 <span class="b-math-punct">$k\in\mathbb Z$。</span></p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../../D-01_周期变化与周期函数/01_周期变化与周期函数/index.html">← 上一篇 · 周期变化与周期函数</a><a class="pager-home" href="../../index.html">返回 D 模块目录</a><a class="pager-next" href="../02_弧度制/index.html">下一篇 · 弧度制 →</a></nav><footer class="footer">OpenKS · 三角函数与周期变化</footer><script>
+(() => {
+  const svg=document.getElementById('angle-comparison');
+  const state={a:328,b:-32};
+  let active="a",drag=null;
+  const point=(r,degrees)=>{const t=degrees*Math.PI/180;return [180+r*Math.cos(t),170-r*Math.sin(t)];};
+  const line=(points,attrs)=>`<path d="${points.map((p,i)=>(i?'L':'M')+p.map(v=>v.toFixed(3)).join(' ')).join(' ')}" ${attrs}/>`;
+  const text=(x,y,value)=>`<text x="${x}" y="${y}" text-anchor="middle">${value}</text>`;
+  function draw(){
+    const delta=state.a-state.b,same=delta%360===0;
+    const result=delta===0?'两个角相等，终边重合。':`相差 ${Math.abs(delta)}°，${same?'终边相同，角不相等':'终边不同'}。`;
+    document.getElementById('angle-result').textContent=result;
+    let body='<title id="angle-live-title">两个角的旋转与终边</title><desc id="angle-live-desc">'+result+'</desc>';
+    body+='<defs><marker id="angle-arrow-a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="var(--blue)"/></marker><marker id="angle-arrow-b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="var(--purple)"/></marker></defs>';
+    for(const x of [75,127.5,180,232.5,285])body+=line([[x,35],[x,305]],'class="grid"');
+    for(const y of [65,117.5,170,222.5,275])body+=line([[35,y],[325,y]],'class="grid"');
+    body+=line([[25,170],[335,170],[330,166],[335,170],[330,174]],'class="axis"')+line([[180,310],[180,25],[176,30],[180,25],[184,30]],'class="axis"');
+    body+='<circle cx="180" cy="170" r="105" fill="none" stroke="var(--line-strong)" stroke-width="1.3"/>'+text(344,161,'x')+text(194,27,'y')+text(166,189,'O');
+    for(const key of ['a','b']){
+      const value=state[key],color=key==='a'?'var(--blue)':'var(--purple)',dash=key==='b'?'stroke-dasharray="6 4"':'';
+      document.getElementById(`select-${key}`).textContent=`${key.toUpperCase()} · ${value}°`;
+      // World origin (0,0) maps to (180,170), unit radius to 105 px; positive angles turn counterclockwise.
+      body+=line([[180,170],point(key==='a'?128:116,value)],`fill="none" stroke="${color}" stroke-width="${key==='a'?3:2.6}" ${dash}`);
+      const end=point(105,value);
+      body+=`<circle cx="${end[0]}" cy="${end[1]}" r="${key==='a'?5:3}" fill="${color}" stroke="var(--paper)" stroke-width="1.2"/>`;
+      if(value!==0){
+        const n=Math.max(2,Math.ceil(Math.abs(value)/2)),points=[];
+        // Separated spiral tracks display complete turns without hiding repeated revolutions.
+        for(let i=0;i<=n;i++){const swept=value*i/n;points.push(point((key==='a'?32:69)+25*Math.abs(swept)/720,swept));}
+        body+=line(points,`fill="none" stroke="${color}" stroke-width="2.3" ${dash} marker-end="url(#angle-arrow-${key})"`);
+      }
+    }
+    const handle=point(105,state[active]),color=active==='a'?'var(--blue)':'var(--purple)';
+    body+=`<circle cx="${handle[0]}" cy="${handle[1]}" r="11" fill="var(--paper)" stroke="${color}" stroke-width="2.6"/><circle cx="${handle[0]}" cy="${handle[1]}" r="4" fill="${color}"/>`;
+    svg.innerHTML=body;svg.setAttribute('aria-labelledby','angle-live-title angle-live-desc');
+    svg.dataset.angleA=state.a;svg.dataset.angleB=state.b;svg.dataset.sameTerminal=String(same);
+  }
+  document.getElementById('angle-reset').addEventListener('click',()=>{state.a=328;state.b=-32;select('a');});
+
+  function select(key){active=key;for(const k of ['a','b'])document.getElementById(`select-${k}`).setAttribute('aria-pressed',String(k===key));draw();}
+  for(const key of ['a','b'])document.getElementById(`select-${key}`).addEventListener('click',()=>select(key));
+  for(const key of ['a','b'])document.getElementById(`select-${key}`).addEventListener('keydown',e=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;
+    e.preventDefault();state[key]=Math.max(-720,Math.min(720,state[key]+(['ArrowRight','ArrowUp'].includes(e.key)?1:-1)));select(key);
+  });
+  function pointer(e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return {x:p.x,y:p.y,angle:Math.atan2(170-p.y,p.x-180)*180/Math.PI};}
+  svg.addEventListener('pointerdown',e=>{
+    if(drag||e.button!==0)return;
+    const p=pointer(e),distance=key=>{const q=point(105,state[key]);return Math.hypot(p.x-q[0],p.y-q[1]);};
+    if(Math.min(distance('a'),distance('b'))>24)return;
+    const other=active==='a'?'b':'a';if(distance(other)+3<distance(active))select(other);
+    drag={id:e.pointerId,last:p.angle,value:state[active]};svg.setPointerCapture(e.pointerId);svg.classList.add('is-dragging');e.preventDefault();
+  });
+  svg.addEventListener('pointermove',e=>{
+    if(!drag||drag.id!==e.pointerId)return;
+    const p=pointer(e);if(Math.hypot(p.x-180,p.y-170)<25)return;
+    const delta=((p.angle-drag.last+540)%360)-180;
+    drag.last=p.angle;drag.value=Math.max(-720,Math.min(720,drag.value+delta));
+    state[active]=Math.round(drag.value);
+    draw();e.preventDefault();
+  });
+  const finish=e=>{if(drag&&e.pointerId===drag.id){drag=null;svg.classList.remove('is-dragging');if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);}};
+  svg.addEventListener('pointerup',finish);svg.addEventListener('pointercancel',finish);svg.addEventListener('lostpointercapture',finish);
+  draw();document.getElementById('angle-controls').hidden=false;
+})();
+</script></body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>正切函数的图象与性质 | OpenKS</title><meta name="description" content="正切等于正弦除以余弦。分母为零的位置不能取值，图象因此分成一支一支。看清这些断点，就能理解它的周期、增减和值域。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"><link rel="stylesheet" href="../../assets/d-trig-pages.css"></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-05_三角函数的图象与性质/03_正切函数的图象与性质.md; SHA256: dd08a3ddb4aa8bd448d36184d1952780786b4d6f45717f90e3f8467ac8f06d9e --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">定义域与分支</a><a class="nav-link" href="#s2">从切线到曲线</a><a class="nav-link" href="#s3">周期与奇偶</a><a class="nav-link" href="#s4">逐支递增</a><a class="nav-link" href="#s5">值域与边界</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>正切函数的图象与性质</h1><p class="lead">正切等于正弦除以余弦。分母为零的位置不能取值，图象因此分成一支一支。看清这些断点，就能理解它的周期、增减和值域。</p></header><main id="main" tabindex="-1"><section class="section" id="s1" data-source-md="03_正切函数的图象与性质.md#1. 先确定定义域和分支"><h2 class="marker"><span aria-hidden="true">01</span>定义域与分支</h2><div class="section-body prose"><h2>先确定定义域和分支</h2><p>由</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan x=\frac{\sin x}{\cos x}
+$$</div>
+<p>可知，正切函数有意义的条件是 <span class="b-math-punct">$\cos x\ne0$。</span>单位圆上横坐标为零的角是 <span class="b-math-punct">$\frac{\pi}{2}+k\pi$，</span>所以定义域为</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+D=\left\{x\in\mathbb R\mid x\ne\frac{\pi}{2}+k\pi,\ k\in\mathbb Z\right\}.
+$$</div>
+<p>这些被排除的点把定义域分成开区间</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+I_k=\left(-\frac{\pi}{2}+k\pi,\frac{\pi}{2}+k\pi\right),
+\qquad k\in\mathbb Z.
+$$</div>
+<p>每个 $I_k$ 对应正切曲线的一支；端点不属于定义域，不能画成实点，也不能用曲线穿过。</p></div></section><section class="section" id="s2" data-source-md="03_正切函数的图象与性质.md#2. 从一条切线看基本分支"><h2 class="marker"><span aria-hidden="true">02</span>从切线到曲线</h2><div class="section-body prose"><h2>从一条切线看基本分支</h2><p>先看 <span class="b-math-punct">$I_0=(-\frac{\pi}{2},\frac{\pi}{2})$。</span>角 $x$ 的终边与单位圆交于 <span class="b-math-punct">$P(\cos x,\sin x)$，</span>再与过点 $(1,0)$ 的竖直切线交于 <span class="b-math-punct">$T$。</span>点 $O,P,T$ 共线；把 $P$ 的横坐标 $\cos x$ 同比放大到 <span class="b-math-punct">$1$，</span>纵坐标也要乘以 <span class="b-math-punct">$\frac{1}{\cos x}$，</span>所以</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+y_T=\frac{\sin x}{\cos x}=\tan x.
+$$</div>
+<p>当 $x$ 从 $-\frac{\pi}{2}$ 的右侧增大到 $\frac{\pi}{2}$ 的左侧时，点 $T$ 沿切线不断上移，纵坐标从负无穷不断增大，经过 $0$ 后继续趋向正无穷。这就得到穿过 $(0,0)$ 的一支正切曲线。</p><figure class="b-map-figure d-figure d-lab" data-lab="tangent"><h3>切线上的高度，对应正切值</h3><div class="lab-grid"><svg class="lab-primary" viewBox="0 0 420 370" role="img" aria-label="切线上的高度，对应正切值"><text x="30" y="80">图象加载中；公式与解释见正文。</text></svg><svg class="lab-secondary" viewBox="0 0 520 360" role="img" aria-label="对应的函数曲线"></svg></div><p class="lab-help">拖动圆上的蓝色点，观察切线交点与曲线上的点。图中只操作 $-\frac{\pi}{2}$ 与 $\frac{\pi}{2}$ 之间的基本分支。</p><div class="lab-controls"><button type="button" data-deg="-45">$-\frac{\pi}{4}$</button><button type="button" data-deg="0">0</button><button type="button" data-deg="45">$\frac{\pi}{4}$</button><button type="button" data-deg="89">接近 $\frac{\pi}{2}$</button><button type="button" data-reset>恢复示例</button></div><figcaption class="lab-output" aria-live="polite"></figcaption></figure></div></section><section class="section" id="s3" data-source-md="03_正切函数的图象与性质.md#3. 周期和奇偶性"><h2 class="marker"><span aria-hidden="true">03</span>周期与奇偶</h2><div class="section-body prose"><h2>周期和奇偶性</h2><p>诱导公式给出</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan(x+k\pi)=\tan x,\qquad k\in\mathbb Z,
+$$</div>
+<p>等式两边都只在有定义时比较。因此 $\pi$ 是周期。若 $T&gt;0$ 是正切函数的周期，则 <span class="b-math-punct">$\tan T=\tan0=0$，</span>而正切的零点是 <span class="b-math-punct">$m\pi$，</span>其中 $m$ 为正整数，所以最小正周期是 <span class="b-math-punct">$\pi$。</span></p>
+<p>定义域关于原点对称，并且</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan(-x)=-\tan x.
+$$</div>
+<p>因此正切函数是奇函数，图象关于原点中心对称。把基本分支按 $\pi$ 的整数倍左右平移，就得到定义域上的全部分支。</p></div></section><section class="section" id="s4" data-source-md="03_正切函数的图象与性质.md#4. 单调性不能跨过断点"><h2 class="marker"><span aria-hidden="true">04</span>逐支递增</h2><div class="section-body prose"><h2>单调性不能跨过断点</h2><p>基本分支中，终边转动使切线交点的纵坐标持续增大；周期平移不改变这一趋势。因此正切函数在每一个区间</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\left(-\frac{\pi}{2}+k\pi,\frac{\pi}{2}+k\pi\right),
+\qquad k\in\mathbb Z
+$$</div>
+<p>上都单调递增。</p>
+<p>这些区间不能合并。比如 <span class="b-math-punct">$\frac{\pi}{4}&lt;\frac{3\pi}{4}$，</span>却有</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\tan\frac{\pi}{4}=1&gt;-1=\tan\frac{3\pi}{4}.
+$$</div>
+<div class="a-boundary-note"><p>两数之间跨过了断点 <span class="b-math-punct">$\frac{\pi}{2}$，</span>所以“每一支都递增”不等于“在整个定义域上递增”。</p></div></div></section><section class="section" id="s5" data-source-md="03_正切函数的图象与性质.md#5. 值域、渐近线和最值"><h2 class="marker"><span aria-hidden="true">05</span>值域与边界</h2><div class="section-body prose"><h2>值域、渐近线和最值</h2><p>在任意分支 $I_k$ 上，$x$ 从左端点右侧趋近时，$\tan x$ 趋向负无穷大；从右端点左侧趋近时，$\tan x$ 趋向正无穷大。因此每一支都能取到任意实数值，正切函数的值域是 <span class="b-math-punct">$\mathbb R$。</span>直线</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+x=\frac{\pi}{2}+k\pi,\qquad k\in\mathbb Z
+$$</div>
+<p>是各分支的渐近线：曲线可以无限接近，却没有函数点落在这些直线上。</p>
+<div class="summary-panel"><p>正切函数的函数值向上、向下都没有界，所以既没有最大值，也没有最小值。理解正切曲线时，应始终先标出定义域断点，再逐支讨论图象和性质。</p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../02_正弦函数和余弦函数的性质/index.html">← 上一篇 · 正弦函数和余弦函数的性质</a><a class="pager-home" href="../../index.html">返回 D 模块目录</a></nav><footer class="footer">OpenKS · D 三角函数与周期变化</footer><script src="../../assets/d-math.js"></script><script src="../../assets/d-trig-pages.js?v=axis-arrows-20260920" defer></script></body></html>

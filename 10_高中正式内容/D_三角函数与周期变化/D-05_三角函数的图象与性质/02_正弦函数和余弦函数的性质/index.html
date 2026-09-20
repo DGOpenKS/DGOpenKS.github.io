@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>正弦函数和余弦函数的性质 | OpenKS</title><meta name="description" content="正弦、余弦的曲线会重复，也会上升、下降和出现对称。把这些图象特点对应到坐标、区间和公式，才能完整说明函数的性质。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"><link rel="stylesheet" href="../../assets/d-trig-pages.css"></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-05_三角函数的图象与性质/02_正弦函数和余弦函数的性质.md; SHA256: 26130e277cb3939b8ad3a7663e541f987d84497882b153764df86daedcc3aa2a --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">定义域与值域</a><a class="nav-link" href="#s3">周期</a><a class="nav-link" href="#s4">奇偶性</a><a class="nav-link" href="#s5">轴与中心</a><a class="nav-link" href="#s6">单调区间</a><a class="nav-link" href="#s7">最大与最小</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>正弦函数和余弦函数的性质</h1><p class="lead">正弦、余弦的曲线会重复，也会上升、下降和出现对称。把这些图象特点对应到坐标、区间和公式，才能完整说明函数的性质。</p></header><main id="main" tabindex="-1"><section class="section" id="s1" data-source-md="02_正弦函数和余弦函数的性质.md#1. 定义域" data-source-sections="1. 定义域; 2. 值域"><h2 class="marker"><span aria-hidden="true">01</span>定义域与值域</h2><div class="section-body prose"><h2>定义域与值域</h2><div class="a-definition"><p><strong>定义域：</strong>任意实数 $x$ 都能作为输入，因此正弦、余弦函数的定义域都是 <span class="b-math-punct">$\mathbb R$。</span></p><p id="s2"><strong>值域：</strong>单位圆上点的横、纵坐标都在 $[-1,1]$ 内，且这个区间中的每个值都能取到，因此两个函数的值域都是 <span class="b-math-punct">$[-1,1]$。</span></p></div></div></section><section class="section" id="s3" data-source-md="02_正弦函数和余弦函数的性质.md#3. 周期"><h2 class="marker"><span aria-hidden="true">02</span>周期</h2><div class="section-body prose"><h2>周期</h2><p>角增加一周，终边点回到原位，因此对任意 <span class="b-math-punct">$k\in\mathbb Z$，</span></p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin(x+2k\pi)=\sin x,\qquad
+\cos(x+2k\pi)=\cos x.
+$$</div>
+<p>当 $k\ne0$ 时，$2k\pi$ 都是这两个函数的周期。还要排除更小的正周期：若 $T&gt;0$ 是正弦函数的周期，由 $\sin T=\sin0=0$ 可知 <span class="b-math-punct">$T=m\pi$，</span>其中 $m$ 为正整数；当 $m$ 为奇数时，<span class="b-math-punct">$\sin(\frac{\pi}{2}+T)=-1\ne1$，</span>所以 $m$ 必为偶数。若 $T&gt;0$ 是余弦函数的周期，则 <span class="b-math-punct">$\cos T=\cos0=1$，</span>单位圆上只有 $T=2n\pi$ 才满足，其中 $n$ 为正整数。因此两个函数的最小正周期都是 <span class="b-math-punct">$2\pi$。</span></p><figure class="b-map-figure d-figure d-lab" data-lab="properties"><h3>同一条曲线，观察不同性质</h3><svg class="lab-primary" viewBox="0 0 420 370" role="img" aria-label="同一条曲线，观察不同性质"><text x="30" y="80">图象加载中；公式与解释见正文。</text></svg><p class="lab-help">选择函数与观察内容。拖动蓝色点比较对应位置；方向键也可调整。</p><div class="lab-controls"><button type="button" data-fn="sin">正弦</button><button type="button" data-fn="cos">余弦</button><button type="button" data-view="period">周期</button><button type="button" data-view="axis">轴对称</button><button type="button" data-view="center">中心对称</button><button type="button" data-view="monotone">增减</button><button type="button" data-reset>恢复示例</button></div><figcaption class="lab-output" aria-live="polite"></figcaption></figure></div></section><section class="section" id="s4" data-source-md="02_正弦函数和余弦函数的性质.md#4. 奇偶性"><h2 class="marker"><span aria-hidden="true">03</span>奇偶性</h2><div class="section-body prose"><h2>奇偶性</h2><p>定义域 $\mathbb R$ 关于原点对称。由单位圆关于 $x$ 轴的对称关系，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin(-x)=-\sin x,\qquad \cos(-x)=\cos x.
+$$</div>
+<p>因此正弦函数是奇函数，图象关于原点中心对称；余弦函数是偶函数，图象关于 $y$ 轴对称。周期性还会把这些对称关系重复到其他位置，但奇偶性的判断仍以原点为基准。</p></div></section><section class="section" id="s5" data-source-md="02_正弦函数和余弦函数的性质.md#5. 对称轴与对称中心"><h2 class="marker"><span aria-hidden="true">04</span>轴与中心</h2><div class="section-body prose"><h2>对称轴与对称中心</h2><p>轴对称是指：轴两侧距离相同的点，函数值相等。中心对称是指：绕中心旋转半周后，图象仍与原图象重合。奇偶性只说明原点或 $y$ 轴处的对称；正弦、余弦曲线还有其他对称位置。</p>
+<p>先看正弦。由诱导公式，对任意实数 <span class="b-math-punct">$t$，</span></p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin\left(\frac\pi2-t\right)=\cos t
+=\sin\left(\frac\pi2+t\right).
+$$</div>
+<p>这说明 $\frac{\pi}{2}$ 左右等距离处的函数值相同，所以直线 $x=\frac{\pi}{2}$ 是对称轴。两边的角同时加上 $k\pi$ 时，两个函数值同时乘以 <span class="b-math-punct">$(-1)^k$，</span>仍相等。因此正弦曲线的对称轴为</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+x=\frac\pi2+k\pi,\qquad k\in\mathbb Z.
+$$</div>
+<p>再由诱导公式，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin(k\pi+t)=(-1)^k\sin t,
+\qquad
+\sin(k\pi-t)=-(-1)^k\sin t.
+$$</div>
+<p>两个横坐标的中点是 <span class="b-math-punct">$k\pi$，</span>两个纵坐标互为相反数。因此这两个图象点的中点总是 <span class="b-math-punct">$(k\pi,0)$，</span>正弦曲线的对称中心为</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+(k\pi,0),\qquad k\in\mathbb Z.
+$$</div>
+<p>余弦可以同样判断。由</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos(k\pi-t)=(-1)^k\cos t=\cos(k\pi+t),
+$$</div>
+<p>可知直线 $x=k\pi$ 两侧等距离处的函数值相等，所以余弦曲线的对称轴为</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+x=k\pi,\qquad k\in\mathbb Z.
+$$</div>
+<p>而在 $\frac{\pi}{2}+k\pi$ 两侧，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos\left(\frac\pi2+k\pi+t\right)=(-1)^{k+1}\sin t,
+\qquad
+\cos\left(\frac\pi2+k\pi-t\right)=(-1)^k\sin t.
+$$</div>
+<p>两个函数值互为相反数，所以余弦曲线的对称中心为</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\left(\frac\pi2+k\pi,0\right),\qquad k\in\mathbb Z.
+$$</div>
+<p>这些位置也可以从曲线上读出：对称轴经过波峰或波谷，对称中心位于曲线与 $x$ 轴的交点。判断时仍要区分“左右同高”和“绕一点旋转半周”，不能把两种对称混为一谈。</p></div></section><section class="section" id="s6" data-source-md="02_正弦函数和余弦函数的性质.md#6. 单调区间"><h2 class="marker"><span aria-hidden="true">05</span>单调区间</h2><div class="section-body prose"><h2>单调区间</h2><p>在单位圆的一周中，纵坐标先由 $-1$ 增到 <span class="b-math-punct">$1$，</span>再由 $1$ 减到 <span class="b-math-punct">$-1$。</span>利用周期性，对每个 <span class="b-math-punct">$k\in\mathbb Z$，</span>正弦函数在</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\left[-\frac{\pi}{2}+2k\pi,\frac{\pi}{2}+2k\pi\right]
+$$</div>
+<p>上单调递增，在</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\left[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi\right]
+$$</div>
+<p>上单调递减。</p>
+<p>横坐标在一周中由 $-1$ 增到 <span class="b-math-punct">$1$、</span>再由 $1$ 减到 <span class="b-math-punct">$-1$。</span>因此余弦函数在</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+[(2k-1)\pi,2k\pi]
+$$</div>
+<p>上单调递增，在</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+[2k\pi,(2k+1)\pi]
+$$</div>
+<p>上单调递减。每个结论都只针对所写的一个闭区间，不能把彼此分开的区间合并成一个单调区间。</p></div></section><section class="section" id="s7" data-source-md="02_正弦函数和余弦函数的性质.md#7. 最大值和最小值"><h2 class="marker"><span aria-hidden="true">06</span>最大与最小</h2><div class="section-body prose"><h2>最大值和最小值</h2><p>值域已经保证所有函数值都在 $[-1,1]$ 内；单位圆轴端点又保证边界值能够取得。因此对 <span class="b-math-punct">$k\in\mathbb Z$，</span></p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\sin x=1\iff x=\frac{\pi}{2}+2k\pi,
+\qquad
+\sin x=-1\iff x=\frac{3\pi}{2}+2k\pi,
+$$</div>
+<p>而</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos x=1\iff x=2k\pi,
+\qquad
+\cos x=-1\iff x=(2k+1)\pi.
+$$</div>
+<div class="summary-panel"><p>所以两个函数的最大值都是 <span class="b-math-punct">$1$，</span>最小值都是 <span class="b-math-punct">$-1$；</span>不同的是它们取得最值的自变量位置相差四分之一周。性质必须连同定义域、区间和取等位置一起理解，不能只记住曲线的起伏外形。</p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../01_正弦函数和余弦函数的图象/index.html">← 上一篇 · 正弦函数和余弦函数的图象</a><a class="pager-home" href="../../index.html">返回 D 模块目录</a><a class="pager-next" href="../03_正切函数的图象与性质/index.html">下一篇 · 正切函数的图象与性质 →</a></nav><footer class="footer">OpenKS · D 三角函数与周期变化</footer><script src="../../assets/d-math.js"></script><script src="../../assets/d-trig-pages.js?v=axis-arrows-20260920" defer></script></body></html>

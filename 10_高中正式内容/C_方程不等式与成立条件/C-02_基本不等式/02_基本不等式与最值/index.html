@@ -46,7 +46,7 @@
 </div></section>
 <section class="section" id="unattained" data-source-md="02_基本不等式与最值.md#等号无法实现时，不能把界叫作最值"><h2 class="marker"><span aria-hidden="true">05</span>等号不可达</h2><div class="section-body prose"><h2>取不到等号时，还要判断什么</h2>
 <p class="section-intro">现在仍设 $x&gt;0$、$y&gt;0$ 且 $x+y=10$，但另有限制 $x\ne5$。由前面定和求积的结论，把 $S=10$ 代入，得到：</p><div class="b-formula">$$xy\leqslant25.$$</div>
-<p>取等号要求 $x=y=5$，却与 $x\ne5$ 冲突。因此 $25$ 不能作为最大值。下面继续说明：是否存在一个更小的最大值，以及乘积究竟能靠近 $25$ 到什么程度。</p>
+<div class="a-boundary-note"><p>取等号要求 $x=y=5$，却与 $x\ne5$ 冲突。因此 $25$ 不能作为最大值。下面继续说明：是否存在一个更小的最大值，以及乘积究竟能靠近 $25$ 到什么程度。</p></div>
 <p>由 $x+y=10$，任意允许取值都能写成 $x=5+t$、$y=5-t$。正数条件和 $x\ne5$ 合起来，要求 $0&lt;|t|&lt;5$。</p>
 <p>先用平方差公式计算乘积；因为 $t\ne0$，所以 $t^2&gt;0$，乘积严格小于 $25$：</p><div class="b-formula">$$xy=(5+t)(5-t)=25-t^2&lt;25.$$</div>
 <h3>任一候选，都能再增大</h3>
@@ -60,6 +60,6 @@
 <p>$|t|&lt;5$ 保证 $x=5+t$、$y=5-t$ 都为正；$t\ne0$ 保证 $x\ne5$，所以仍是允许取值。又由 $|t|&lt;\sqrt\varepsilon$ 得到 $0&lt;t^2&lt;\varepsilon$。把这些关系代入 $xy=25-t^2$：</p>
 <div class="b-formula">$$25-\varepsilon&lt;25-t^2=xy&lt;25.$$</div>
 <p>无论指定的正距离 $\varepsilon$ 多小，都有允许的乘积落在 $25-\varepsilon$ 与 $25$ 之间。因此 $25$ 是可以任意逼近的上界，也就是<strong>上确界</strong>；但 $t\ne0$ 使乘积永远不能等于 $25$。</p>
-<p>两条论证各有作用：$t_1=t_0/2$ 说明任一候选都可增大，排除最大值；$\varepsilon$ 这条链说明上界可以任意逼近，确定这里的上确界为 $25$。</p>
+<p>两条论证各有作用：$t_1=\frac{t_0}{2}$ 说明任一候选都可增大，排除最大值；$\varepsilon$ 这条链说明上界可以任意逼近，确定这里的上确界为 $25$。</p>
 <div class="summary-panel"><h3>核心结论</h3><p>用基本不等式判断最值，先确认两个量为正数，再确认和或积是定值，最后把等号条件代回原范围，检查能否取到。</p><p class="b-summary-line">不等式负责给界，等号条件负责确认这个界能否成为最值。缺少任何一项，最值结论都尚未完成。</p></div>
 </div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../01_基本不等式的推导与等号条件/index.html">← 上一篇 · 基本不等式的推导与等号条件</a><a class="pager-home" href="../../index.html">返回 C 模块目录</a><a class="pager-next" href="../../C-03_二次函数与一元二次方程不等式/01_同一个二次式的函数方程与不等式/index.html">下一篇 · 同一个二次式的函数、方程与不等式 →</a></nav><footer class="footer">OpenKS · C 方程不等式与成立条件 · 基本不等式与最值</footer></body></html>

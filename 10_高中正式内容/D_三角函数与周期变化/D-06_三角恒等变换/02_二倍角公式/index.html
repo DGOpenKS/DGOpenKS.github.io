@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>二倍角公式 | OpenKS</title><meta name="description" content="把和角公式里的两个角都换成同一个角，就得到二倍角公式。余弦有三种等价形式，选择与已知量相配的一种即可。"><link rel="icon" href="../../../../assets/brand/favicon.svg"><script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script><link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css"></head><body><!-- Source: 10_高中正式内容/D_三角函数与周期变化/D-06_三角恒等变换/02_二倍角公式.md; SHA256: 7f3bd95310143a260984f85cf1ae1cbefd6f740106e03e0e95524e39e504fe87 --><a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">从和角到倍角</a><a class="nav-link" href="#s2">余弦的三种形式</a><a class="nav-link" href="#s3">正切与条件</a><a class="nav-link" href="#s4">核心理解</a></div></nav><header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>二倍角公式</h1><p class="lead">把和角公式里的两个角都换成同一个角，就得到二倍角公式。余弦有三种等价形式，选择与已知量相配的一种即可。</p></header><main id="main" tabindex="-1"><section class="section" id="s1" data-source-md="02_二倍角公式.md#1. 让和角中的两个角相同"><h2 class="marker"><span aria-hidden="true">01</span>从和角到倍角</h2><div class="section-body prose"><h2>让和角中的两个角相同</h2><p>在正弦和角公式中令两个角都等于 $\alpha$：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\begin{aligned}
+\sin 2\alpha
+&amp;=\sin(\alpha+\alpha)\\
+&amp;=\sin\alpha\cos\alpha+\cos\alpha\sin\alpha\\
+&amp;=2\sin\alpha\cos\alpha
+\end{aligned}
+$$</div>
+<p>第二步使用正弦和角公式，最后把两个相同的乘积合并，得到正弦二倍角公式。</p>
+<p>同样，在余弦和角公式中令两个角相同：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\begin{aligned}
+\cos 2\alpha
+&amp;=\cos(\alpha+\alpha)\\
+&amp;=\cos\alpha\cos\alpha-\sin\alpha\sin\alpha\\
+&amp;=\cos^2\alpha-\sin^2\alpha
+\end{aligned}
+$$</div>
+<p>这里的减号来自余弦和角公式，而两个同类乘积分别写成平方。</p></div></section><section class="section" id="s2" data-source-md="02_二倍角公式.md#2. 余弦公式为什么有三种形式"><h2 class="marker"><span aria-hidden="true">02</span>余弦的三种形式</h2><div class="section-body prose"><h2>余弦公式为什么有三种形式</h2><p>由同角基本关系 $\sin^2\alpha+\cos^2\alpha=1$，可以消去其中一种三角函数。消去 $\sin^2\alpha$ 时，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\begin{aligned}
+\cos 2\alpha
+&amp;=\cos^2\alpha-(1-\cos^2\alpha)\\
+&amp;=2\cos^2\alpha-1
+\end{aligned}
+$$</div>
+<p>消去 $\cos^2\alpha$ 时，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\begin{aligned}
+\cos 2\alpha
+&amp;=(1-\sin^2\alpha)-\sin^2\alpha\\
+&amp;=1-2\sin^2\alpha
+\end{aligned}
+$$</div>
+<p>所以三个式子并非三条独立公式：第一式同时含正弦、余弦，后两式分别只含余弦或只含正弦。它们对任意实数 $\alpha$ 都成立；使用时可按已知量选择，避免先求不需要的三角函数值。</p>
+<p>例如，若 $\sin\alpha=\frac35$，要求 $\cos2\alpha$ 时直接选只含正弦的形式：</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$\begin{aligned}
+&amp;\cos2\alpha\\
+&amp;=1-2\sin^2\alpha\\
+&amp;=1-2\times\left(\frac35\right)^2\\
+&amp;=\frac7{25}
+\end{aligned}$$</div>
+<p>这一步不需要判断 $\cos\alpha$ 的符号，因为所选公式只使用 $\sin^2\alpha$。</p></div></section><section class="section" id="s3" data-source-md="02_二倍角公式.md#3. 正切二倍角要先检查定义"><h2 class="marker"><span aria-hidden="true">03</span>正切与条件</h2><div class="section-body prose"><h2>正切二倍角要先检查定义</h2><p>在正切和角公式中令两个角都等于 $\alpha$，有</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\begin{aligned}
+\tan2\alpha
+&amp;=\tan(\alpha+\alpha)\\
+&amp;=\frac{\tan\alpha+\tan\alpha}{1-\tan^2\alpha}\\
+&amp;=\frac{2\tan\alpha}{1-\tan^2\alpha}
+\end{aligned}
+$$</div>
+<p>推导中使用了 $\tan\alpha$，且最终分母不能为零。因此必须同时满足</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$
+\cos\alpha\ne0,
+\qquad
+\cos2\alpha\ne0
+$$</div>
+<p>在 $\cos\alpha\ne0$ 的前提下，</p>
+<div class="b-formula" tabindex="0" role="region" aria-label="数学公式，可横向滚动">$$\begin{aligned}
+&amp;\cos2\alpha\\
+&amp;=\cos^2\alpha-\sin^2\alpha\\
+&amp;=\cos^2\alpha(1-\tan^2\alpha)
+\end{aligned}$$</div>
+<p>此时 $\cos^2\alpha&gt;0$，所以 $\cos2\alpha\ne0$ 等价于 $1-\tan^2\alpha\ne0$。两个条件也可写成 $\alpha\ne\frac\pi2+k\pi$ 且 $\alpha\ne\frac\pi4+\frac{k\pi}{2}$，其中 $k\in\mathbb Z$。</p>
+<div class="a-boundary-note"><p>边界处不能只看等式的一边。例如 $\alpha=\frac\pi2$ 时，$\tan2\alpha=\tan\pi=0$，但 $\tan\alpha$ 无意义，不能套用正切二倍角公式。</p></div></div></section><section class="section" id="s4" data-source-md="02_二倍角公式.md#4. 抓住共同来源"><h2 class="marker"><span aria-hidden="true">04</span>核心理解</h2><div class="section-body prose"><h2>抓住共同来源</h2><div class="d-table" role="region" tabindex="0" aria-label="二倍角公式汇总"><table><caption>二倍角公式汇总</caption><thead><tr><th scope="col">函数</th><th scope="col">二倍角公式</th></tr></thead><tbody>
+<tr><th scope="row">正弦</th><td>$\sin2\alpha=2\sin\alpha\cos\alpha$</td></tr>
+</tbody><tbody>
+<tr><th scope="rowgroup" rowspan="3">余弦</th><td>$\cos2\alpha=\cos^2\alpha-\sin^2\alpha$</td></tr>
+<tr><td>$\cos2\alpha=2\cos^2\alpha-1$</td></tr>
+<tr><td>$\cos2\alpha=1-2\sin^2\alpha$</td></tr>
+</tbody><tbody>
+<tr><th scope="row">正切</th><td>$\tan2\alpha=\dfrac{2\tan\alpha}{1-\tan^2\alpha}$</td></tr>
+</tbody></table></div><p>正弦、余弦公式适用于任意实数角。正切公式要求 $\tan\alpha$ 有意义，且 $1-\tan^2\alpha\ne0$。</p><div class="d-table" role="region" tabindex="0" aria-label="同一公式，选择不同的已知量"><table><caption>同一公式，选择不同的已知量</caption><thead><tr><th scope="col">已知量</th><th scope="col">选用形式</th></tr></thead><tbody><tr><td>正弦和余弦</td><td>$\sin2\alpha=2\sin\alpha\cos\alpha$</td></tr><tr><td>只知道余弦</td><td>$\cos2\alpha=2\cos^2\alpha-1$</td></tr><tr><td>只知道正弦</td><td>$\cos2\alpha=1-2\sin^2\alpha$</td></tr><tr><td>正切（且满足条件）</td><td>$\tan2\alpha=\frac{2\tan\alpha}{1-\tan^2\alpha}$</td></tr></tbody></table></div><div class="summary-panel"><p>正弦、余弦二倍角公式对任意实数 $\alpha$ 成立；余弦的三种形式由同角基本关系互相转化。正切公式仍继承正切和角公式的定义条件。它们的共同来源只有一步：在和角公式中令两个角相同。</p></div></div></section></main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../01_两角和与差的三角函数公式/index.html">← 上一篇 · 两角和与差的三角函数公式</a><a class="pager-home" href="../../index.html#g6">返回 D 模块目录</a><a class="pager-next" href="../03_半角公式/index.html">下一篇 · 半角公式 →</a></nav><footer class="footer">OpenKS · D 三角函数与周期变化</footer></body></html>

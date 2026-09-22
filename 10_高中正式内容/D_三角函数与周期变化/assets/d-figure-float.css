@@ -1,0 +1,21 @@
+/* The teaching figure stays in its original DOM location, including all controls. */
+.d-float-placeholder[hidden]{display:none!important}
+.d-float-placeholder{box-sizing:border-box;visibility:hidden;pointer-events:none}
+@media screen{
+  [data-d-float].is-d-floating{
+    position:fixed!important;
+    top:var(--d-float-top)!important;
+    left:var(--d-float-left)!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:var(--d-float-width)!important;
+    max-width:none!important;
+    margin:0!important;
+    box-sizing:border-box;
+    z-index:20;
+    background:var(--paper,var(--bg,#fff));
+    transition:none!important;
+    animation:none!important;
+  }
+}
+@media print{.d-float-placeholder{display:none!important}}

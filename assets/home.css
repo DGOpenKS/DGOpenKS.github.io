@@ -454,6 +454,10 @@ svg {
   letter-spacing: .08em;
 }
 
+.high-school-grid .chapter-number {
+  font-size: 16px;
+}
+
 .chapter-arrow {
   color: #9ba3b3;
   font-size: 19px;

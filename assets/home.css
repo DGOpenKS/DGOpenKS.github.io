@@ -421,9 +421,8 @@ svg {
   gap: 16px;
 }
 
-.single-grid {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: calc((100% - 32px) / 3);
+.high-school-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .chapter-card {
@@ -625,10 +624,6 @@ svg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .single-grid {
-    grid-template-columns: 1fr;
-    max-width: calc((100% - 16px) / 2);
-  }
 }
 
 @media (max-width: 620px) {
@@ -762,10 +757,8 @@ svg {
     text-align: left;
   }
 
-  .chapter-grid,
-  .single-grid {
+  .chapter-grid {
     grid-template-columns: 1fr;
-    max-width: none;
     gap: 12px;
   }
 

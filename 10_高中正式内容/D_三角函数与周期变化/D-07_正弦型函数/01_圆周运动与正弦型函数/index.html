@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>圆周运动与正弦型函数 | OpenKS</title><meta name="description" content="从每单位时间转过的角出发，建立圆周运动的纵坐标函数，并用一周运动检查参数。"><link rel="icon" href="../../../../assets/brand/favicon.svg">
+<script>MathJax={chtml:{adaptiveCSS:false},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../../../A_数学语言集合与条件控制/assets/a-module.css"><link rel="stylesheet" href="../../../B_函数图像与变化关系/assets/b-module.css"><link rel="stylesheet" href="../../assets/d-module.css">
+<style>
+.calc-steps{display:grid}.calc-step{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}.calc-step:first-child{padding-top:0}.calc-step:last-child{padding-bottom:0;border:0}.formula-line{min-width:0;max-width:100%;overflow-x:auto}.step-note{margin:0;padding-left:12px;border-left:3px solid var(--blue-line);font-size:.94rem;line-height:1.8}.prose h3{margin-top:1.8rem}.orbit-figure{margin:1.5rem 0;padding:clamp(14px,3vw,28px);border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--paper)}.orbit-figure svg{max-width:440px}#orbit{touch-action:none}.orbit-handle{cursor:grab;touch-action:none}.orbit-handle:active{cursor:grabbing}#orbit-handle:focus{outline:none}#orbit-handle:focus-visible{outline:none}#orbit-handle:focus-visible .handle-ring{stroke:var(--blue);stroke-width:3}.orbit-handle .handle-hit{fill:transparent;stroke:none;pointer-events:all}.orbit-figure .angle{stroke:#9e377a;stroke-width:2.5;fill:none}.orbit-figure .radius{stroke:var(--blue);stroke-width:2.8;fill:none}.orbit-figure .rotation{stroke:var(--amber);stroke-width:2.5;fill:none}.orbit-figure .orbit-track{stroke:var(--muted);stroke-width:1.3;fill:none}.orbit-figure .projection-guide{stroke:var(--green);stroke-width:1.4;stroke-dasharray:4 4;fill:none}.orbit-figure .quantity-a{fill:var(--blue);color:var(--blue)}.orbit-figure .quantity-y{fill:var(--green);color:var(--green)}.orbit-figure .quantity-theta{fill:#9e377a;color:#9e377a}.orbit-figure .quantity-rotation{fill:var(--amber);color:var(--amber)}.orbit-figure .quantity-phi{fill:var(--muted);color:var(--muted)}.orbit-figure .point{fill:var(--ink)}.orbit-figure text{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}.orbit-figure .projection{stroke:var(--green);stroke-width:2.2}.orbit-controls{border-top:1px solid var(--line);padding-top:1rem;margin-top:.6rem}.orbit-controls button{min-height:44px;padding:.4rem .9rem;background:var(--paper);border:1px solid var(--line-strong);border-radius:8px;cursor:pointer}.orbit-controls :focus-visible{outline:3px solid var(--blue);outline-offset:3px}.orbit-values{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:center;padding:.6rem 0;color:var(--ink);font-size:1.12rem}.orbit-values math{font-family:var(--font-math)}.orbit-caption{font-size:.93rem;color:var(--muted);margin:.6rem 0 0}.summary-table{width:100%;border-collapse:collapse;margin:1.2rem 0}.summary-table td,.summary-table th{padding:12px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.summary-table thead{background:var(--blue-soft)}.summary-table th:first-child{width:30%}.summary-table p{margin:.3rem 0 0}.summary-table mjx-container{max-width:100%}.section h2{text-wrap:balance}
+@media(max-width:1023px){.calc-step{grid-template-columns:minmax(0,1fr);gap:8px}.step-note{padding:8px 0 0;border-top:1px dashed var(--line);border-left:0}}
+@media(max-width:640px){.formula-card{padding:14px}.calc-step,.calc-step:first-child,.calc-step:last-child{padding:.85rem}.formula-line{font-size:.96rem}.summary-table td,.summary-table th{padding:10px 6px}.summary-table{font-size:.94rem}.orbit-figure{padding:12px}.orbit-values{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="../../assets/d-figure-float.css"></head><body>
+<a class="skip-link" href="#main">跳到正文</a><nav class="topbar" aria-label="D 模块导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link" href="#s1">从转角到投影</a><a class="nav-link" href="#s3">一周运动</a><a class="nav-link" href="#s4">参数与条件</a></div></nav>
+<header class="hero"><span class="eyebrow">高中数学 · D 模块</span><h1>圆周运动与正弦型函数</h1><p class="lead">圆上的点匀速转动，纵坐标随时间改变。用同一张图看清：时间怎样确定转角，转角怎样确定纵坐标，从而得到一般的正弦型函数。</p></header>
+<!-- Source SHA256: 0c6acf7006f7fee4fc45adc26b8df75b0f708e9ed615030c6bfc14454ce1ab0c -->
+<main id="main" tabindex="-1">
+<section class="section" id="s1" data-source-md="01_圆周运动与正弦型函数.md#从转角得到竖直投影"><h2 class="marker"><span aria-hidden="true">01</span>从圆到函数</h2><div class="section-body prose"><h2>时间确定转角，转角确定纵坐标</h2>
+<p>点 $P$ 沿半径为 $A$ 的圆匀速转动。以圆心 $O$ 为原点，点的纵坐标是 $y$；我们要写出<strong>以时间 $t$ 为自变量的函数 $y(t)$</strong>。</p>
+<p>从 $x$ 轴正方向量角，逆时针为正。初始角是 $\varphi$，每单位时间转过 $\omega$ 弧度；经过时间 $t$，当前角就是 $\theta=\varphi+\omega t$。由圆上点与正弦的关系，$y=A\sin\theta$。</p>
+<p>下图画的是点在圆上的位置：<strong>$x$ 轴表示左右位置，不表示时间</strong>；绿色线段表示纵坐标 $y$，上方为正，下方为负。若画 $y(t)$ 的函数图象，则用横轴表示时间 $t$，纵轴表示对应的 $y$。</p>
+<figure class="orbit-figure d-figure" id="angle-projection" data-d-float data-d-float-min-width="320" data-d-float-max-width="560" data-d-float-end="#s4">
+<svg id="orbit" viewBox="40 20 350 310" role="group" aria-labelledby="orbit-title orbit-desc">
+<title id="orbit-title">拖动圆上的点 P，看转角与纵坐标的对应</title>
+<desc id="orbit-desc">半径 A 为10，初始角为负π除以2，角速度为π除以4。从最低点逆时针转一周，对应时间0到8。θ为当前角，绿色y表示点相对于圆心的纵坐标。</desc>
+<g id="orbit-drawing" aria-hidden="true"><circle cx="210" cy="175" r="100" class="orbit-track"/><path d="M80 175H344 M338 171L344 175L338 179 M210 285V40 M206 46L210 40L214 46" class="axis"/><path d="M210 175L280.711 104.289" class="radius"/><path d="M210 175V104.289" class="projection"/><path d="M210 104.289H280.711" class="projection-guide"/><text x="350" y="171">x</text><text x="220" y="40">y</text><text x="187" y="195">O</text><text x="287" y="88">P</text></g>
+<text id="radius-label" x="80" y="42" text-anchor="start" class="quantity-a">半径 A = 10</text>
+<g id="orbit-handle" class="orbit-handle" transform="translate(280.711 104.289)" tabindex="0" role="slider" aria-label="圆上的点 P，对应时间" aria-describedby="orbit-help" aria-valuemin="0" aria-valuemax="8" aria-valuenow="3" aria-valuetext="时间3，纵坐标约7.07">
+<circle class="handle-hit" r="34"/><circle class="handle-ring" r="9" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><circle r="4" fill="var(--ink)"/>
+</g></svg>
+<figcaption><p class="orbit-caption">图中：<span class="quantity-a">$A=10$</span>、$\omega=\dfrac\pi4$、<span class="quantity-phi">$\varphi=-\dfrac\pi2$</span></p>
+<div class="orbit-controls" hidden><p class="orbit-caption" id="orbit-help">直接拖动点 $P$，查看一周内对应的时间、转角和纵坐标。选中点后也可用方向键调整，Home 回到起点，End 转完一周。</p><div class="orbit-values" id="values" aria-live="off"></div><button id="reset" type="button">回到起点</button></div>
+<p class="orbit-caption">灰色虚线是初始方向；橙色弧线是转过的角 <span class="quantity-rotation">$\omega t$</span>，玫紫色弧线是当前角 <span class="quantity-theta">$\theta$</span>。拖动是在选择时刻，半径与角速度保持不变。</p></figcaption></figure>
+<p>沿着图中的对应关系，把角代入纵坐标表达式：</p>
+<div class="formula-card"><div class="calc-steps">
+<div class="calc-step"><div class="formula-line">$$\theta(t)=\varphi+\omega t$$</div><p class="step-note">初始角加上转过的角，得到当前角。</p></div>
+<div class="calc-step"><div class="formula-line">$$y=A\sin\theta$$</div><p class="step-note">半径乘以当前角的正弦，得到纵坐标。</p></div>
+<div class="calc-step"><div class="formula-line">$$y(t)=A\sin(\omega t+\varphi)$$</div><p class="step-note">代入当前角，就得到纵坐标随时间变化的函数。</p></div>
+</div></div>
+<p>这里 $A&gt;0$、$\omega&gt;0$ 且保持不变，$t\geqslant0$，角用弧度表示。$y$ 在圆心上方为正、下方为负；<strong>圆是点的运动轨迹，正弦函数描述的是它的纵坐标。</strong></p>
+</div></section>
+<section class="section" id="s3" data-source-md="01_圆周运动与正弦型函数.md#用一周运动检查模型"><h2 class="marker"><span aria-hidden="true">02</span>一周运动</h2><div class="section-body prose"><h2>用一周运动检查模型</h2>
+<p>沿用上图半径为 $10$ 的圆。点每 $8$ 个时间单位转一周，并从最低点开始逆时针运动。<strong>转完一周所需的时间叫作周期</strong>，记为 $T$；本例 $T=8$。</p>
+<div class="formula-card"><div class="calc-steps"><div class="calc-step"><div class="formula-line">$$A=10$$</div><p class="step-note">半径为 $10$，所以纵坐标在 $-10$ 与 $10$ 之间变化。</p></div><div class="calc-step"><div class="formula-line">$$\omega=\frac{2\pi}{8}=\frac\pi4$$</div><p class="step-note">一周是 $2\pi$ 弧度，用时为 $8$，所以每单位时间转过 $\frac\pi4$ 弧度。</p></div><div class="calc-step"><div class="formula-line">$$\varphi=-\frac\pi2$$</div><p class="step-note">最低点的半径竖直向下，可以用从 $x$ 轴正方向顺时针转过的 $-\frac\pi2$ 表示。</p></div><div class="calc-step"><div class="formula-line">$$y(t)=10\sin\left(\frac\pi4t-\frac\pi2\right)$$</div><p class="step-note">代入半径、角速度和初始角，得到本例的纵坐标函数。</p></div></div></div>
+<p>开始时 $t=0$，$y(0)=-10$，点在最低处；半周后 $t=4$，$y(4)=10$，点在最高处；到 $t=8$ 时，$y(8)=-10$，回到最低处，正好转完一周。</p></div></section>
+<section class="section" id="s4" data-source-md="01_圆周运动与正弦型函数.md#参数分别对应什么"><h2 class="marker"><span aria-hidden="true">03</span>参数与条件</h2><div class="section-body prose"><h2>参数分别对应什么</h2>
+<p>本例用“一周的角÷一周的时间”求角速度。一般地，一周转过 $2\pi$ 弧度，因此角速度与周期满足下面的关系。沿圆周每单位时间走过的路程，叫作<strong>线速度大小</strong>，记为 $v$。</p>
+<div class="formula-card"><div class="calc-steps"><div class="calc-step"><div class="formula-line">$$\omega T=2\pi\quad\Longrightarrow\quad T=\frac{2\pi}{\omega}$$</div><p class="step-note">每单位时间转过 $\omega$ 弧度，用 $T$ 个时间单位转完一周；$\omega&gt;0$，可以相除求出周期。</p></div><div class="calc-step"><div class="formula-line">$$v=A\omega$$</div><p class="step-note">半径乘以角速度，得到沿圆周运动的线速度大小。角速度用弧度计，时间单位须保持一致。</p></div></div></div>
+<table class="summary-table"><thead><tr><th scope="col">量</th><th scope="col">含义与关系</th></tr></thead><tbody>
+<tr><th scope="row">$A&gt;0$</th><td>半径；竖直投影偏离圆心的最大距离。</td></tr>
+<tr><th scope="row">$\omega&gt;0$</th><td>每单位时间转过的角，保持恒定。<p>$T=\dfrac{2\pi}{\omega}$，$v=A\omega$</p></td></tr>
+<tr><th scope="row">$\varphi$</th><td>初始角，决定起始方向。相差 $2k\pi$ 的初始角方向相同，$k\in\mathbb Z$。</td></tr>
+<tr><th scope="row">$t\geqslant0$</th><td>从开始计时起经过的时间；与角速度的时间单位一致。</td></tr>
+</tbody></table>
+<h3>模型的边界</h3><p>这个模型要求：<strong>圆心固定、半径不变、角速度恒定，并观察竖直投影。</strong>若转速随时间改变，转角就不再是 $\omega t+\varphi$；若圆心也移动，还要另行描述圆心的位置。</p>
+<div class="summary-panel"><p>圆周运动产生正弦型函数，是因为圆上点的纵坐标等于半径乘以转角的正弦。先由时间确定角，再由角确定纵坐标。</p></div>
+<p id="s2">若将函数图像整体上下平移，只需在 $A\sin(\omega t+\varphi)$ 后加上平移量：向上为正，向下为负。</p>
+</div></section></main>
+<nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../../D-06_三角恒等变换/06_和差化积/index.html">← 上一篇 · 和差化积</a><a class="pager-home" href="../../index.html#g7">返回 D 模块目录</a><a class="pager-next" href="../02_正弦型函数的图象与参数/index.html">下一篇 · 正弦型函数的图象与参数 →</a></nav><footer class="footer">OpenKS · D 三角函数与周期变化</footer>
+<script>
+(()=>{
+const svg=document.getElementById('orbit'),drawing=document.getElementById('orbit-drawing'),handle=document.getElementById('orbit-handle');
+const A=10,omega=Math.PI/4,phi=-Math.PI/2,period=8;
+let t=3,drag=null;
+const point=(x,y)=>[210+10*x,175-10*y];
+const path=(pts,cls)=>`<path d="${pts.map((p,i)=>(i?'L':'M')+p.join(' ')).join(' ')}" class="${cls}"/>`;
+const label=(x,y,txt,anchor='middle',cls='')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" class="${cls}">${txt}</text>`;
+function arc(radius,start,end,cls){
+ if(Math.abs(end-start)<1e-8)return '';
+ const n=Math.ceil(Math.abs(end-start)*30),pts=[];
+ for(let i=0;i<=n;i++){const a=start+(end-start)*i/n;pts.push(point(radius*Math.cos(a),radius*Math.sin(a)));}
+ const last=pts.at(-1),prev=pts.at(-2),angle=Math.atan2(last[1]-prev[1],last[0]-prev[0]);
+ return path(pts,cls)+path([[last[0]-6*Math.cos(angle-.5),last[1]-6*Math.sin(angle-.5)],last,[last[0]-6*Math.cos(angle+.5),last[1]-6*Math.sin(angle+.5)]],cls);
+}
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+function angleMath(angle){
+ const n=Math.round(angle/Math.PI*24);
+ if(Math.abs(angle-n*Math.PI/24)>1e-8)return `<mo>≈</mo><mn>${angle.toFixed(3)}</mn>`;
+ if(!n)return '<mo>=</mo><mn>0</mn>';
+ const g=gcd(Math.abs(n),24),a=Math.abs(n)/g,d=24/g,top=(a===1?'':`<mn>${a}</mn>`)+'<mi>π</mi>';
+ return '<mo>=</mo>'+(n<0?'<mo>−</mo>':'')+(d===1?top:`<mfrac><mrow>${top}</mrow><mn>${d}</mn></mfrac>`);
+}
+function draw(){
+ const theta=phi+omega*t,x=A*Math.cos(theta),rawY=A*Math.sin(theta),y=Math.abs(rawY)<1e-9?0:rawY,p=point(x,y),q=point(0,y),o=point(0,0);
+ let s='';
+ for(const z of [-10,-5,5,10])s+=path([point(z,-11),point(z,12)],'grid')+path([point(-12,z),point(12,z)],'grid');
+ s+=path([[80,175],[344,175],[338,171],[344,175],[338,179]],'axis')+path([[210,285],[210,40],[206,46],[210,40],[214,46]],'axis');
+ s+='<circle cx="210" cy="175" r="100" class="orbit-track"/>'+label(351,169,'x')+label(221,41,'y')+label(193,197,'O');
+ s+=path([o,point(0,-10)],'guide')+label(192,298,'P₀','end');
+ s+=path([o,p],'radius')+path([p,q],'projection-guide')+path([o,q],'projection');
+ s+=arc(3.2,0,phi,'guide')+label(241,204,'φ','middle','quantity-phi');
+ s+=arc(4.6,0,theta,'angle');
+ const mid=theta/2;s+=label(...point(6.2*Math.cos(mid),6.2*Math.sin(mid)),'θ','middle','quantity-theta');
+ s+=arc(11.2,phi,theta,'rotation');
+ if(t>.15){const m=(phi+theta)/2,w=point(12.8*Math.cos(m),12.8*Math.sin(m));if(Math.abs(Math.sin(m))<.18)w[1]+=26;if(Math.abs(Math.cos(m))<.18)w[0]+=40;s+=label(...w,'ωt','middle','quantity-rotation');}
+ if(Math.abs(y)>.5)s+=label(194,175-5*y,'y','middle','quantity-y');
+ if(Math.abs(x)>1){s+=`<circle cx="${q[0]}" cy="${q[1]}" r="4" class="point"/>`+label(q[0]-15,q[1]+(y>=0?-9:18),'Q');}
+ s+=label(p[0]+(x<0?-19:19),p[1]-14,'P');
+ drawing.innerHTML=s;handle.setAttribute('transform',`translate(${p[0]} ${p[1]})`);
+ Object.assign(svg.dataset,{time:t,theta,x,y});
+ handle.setAttribute('aria-valuenow',t.toFixed(3));handle.setAttribute('aria-valuetext',`时间约${t.toFixed(2)}，角约${theta.toFixed(3)}弧度，纵坐标约${y.toFixed(2)}`);
+ const numeric=(name,value)=>`<math class="${name==='y'?'quantity-y':''}" xmlns="http://www.w3.org/1998/Math/MathML"><mi>${name}</mi><mo>${Math.abs(value-Math.round(value))<1e-8?'=':'≈'}</mo><mn>${Math.abs(value-Math.round(value))<1e-8?Math.round(value):value.toFixed(2)}</mn></math>`;
+ document.getElementById('values').innerHTML=numeric('t',t)+`<math class="quantity-theta" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi>${angleMath(theta)}<mspace width=".2em"/><mtext>rad</mtext></math>`+numeric('y',y);
+}
+function setTime(value){t=Math.max(0,Math.min(period,value));draw();}
+function pointer(e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return {x:p.x,y:p.y,angle:Math.atan2(175-p.y,p.x-210)};}
+handle.addEventListener('pointerdown',e=>{if(drag||e.button!==0)return;handle.focus({preventScroll:true});drag={id:e.pointerId,last:pointer(e).angle};handle.setPointerCapture(e.pointerId);e.preventDefault();});
+handle.addEventListener('pointermove',e=>{
+ if(!drag||drag.id!==e.pointerId)return;
+ const p=pointer(e);if(Math.hypot(p.x-210,p.y-175)<25)return;
+ const delta=Math.atan2(Math.sin(p.angle-drag.last),Math.cos(p.angle-drag.last));drag.last=p.angle;
+ setTime(t+delta/omega);e.preventDefault();
+});
+function end(e){if(drag?.id!==e.pointerId)return;drag=null;if(handle.hasPointerCapture(e.pointerId))handle.releasePointerCapture(e.pointerId);}
+for(const type of ['pointerup','pointercancel','lostpointercapture'])handle.addEventListener(type,end);
+handle.addEventListener('keydown',e=>{
+ const steps={ArrowRight:.1,ArrowUp:.1,ArrowLeft:-.1,ArrowDown:-.1};
+ if(e.key in steps){e.preventDefault();setTime(t+steps[e.key]);}
+ else if(e.key==='Home'||e.key==='End'){e.preventDefault();setTime(e.key==='Home'?0:period);}
+});
+document.getElementById('reset').addEventListener('click',()=>{setTime(0);handle.focus({preventScroll:true});});
+draw();document.querySelector('.orbit-controls').hidden=false;
+})();
+</script><script src="../../assets/d-figure-float.js" defer></script></body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数列的项与前 n 项和 | DGOpenKS</title>
+<meta name="description" content="区分数列的一项与前 n 项和，从共同项的抵消理解相邻累积和作差，并说明首项为何单独处理。">
+<link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css?v=89d778df16">
+<link rel="stylesheet" href="../../../00_初高中衔接知识/assets/sequence-nav.css">
+<style>
+/* E03: local formula-step layout; public typography and page geometry are inherited. */
+.e03 .calc-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:1.25rem;padding:1.2rem;margin:1.2rem 0;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper)}
+.e03 .formula-line{min-width:0;max-width:100%;overflow-x:auto;padding:.3rem 0;font-size:1rem;letter-spacing:normal;color:var(--blue-deep)}
+.e03 .step-note{margin:0;padding:.2rem .2rem .2rem 1rem;border-left:2px solid var(--blue-line);font-size:1rem}
+.e03 .formula-line mjx-container[display="true"]{margin:.5rem 0!important}
+@media(max-width:1023px){.e03 .calc-step{grid-template-columns:minmax(0,1fr);gap:.7rem}.e03 .step-note{padding:.7rem .2rem .2rem;border-left:0;border-top:1px dashed var(--blue-line)}}
+@media(max-width:640px){.e03 .calc-step{padding:1rem}.e03 .formula-line{font-size:1rem}.e03 .step-note{font-size:1rem;padding:.7rem .2rem .2rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="e03">
+<a class="skip-link" href="#content">跳到正文</a>
+<nav class="topbar module-article-nav" aria-label="E 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html">DGOpenKS</a><a class="nav-link module-directory" href="../index.html">E 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#meaning">项与和</a><a class="nav-link" href="#accumulate">依次累加</a><a class="nav-link" href="#difference">相邻作差</a><a class="nav-link" href="#example">原例复算</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav>
+<header class="hero"><div class="eyebrow">E · 数列、递推与离散变化 / 03</div><h1>数列的项与前 $n$ 项和</h1>
+<p class="lead">前 $n$ 项和是数列从第 1 项到第 $n$ 项的总和。本篇说明前 $n$ 项和与第 $n$ 项的关系，以及如何由前 $n$ 项和求出各项。</p></header><main id="content" tabindex="-1"><section class="section" id="meaning" aria-labelledby="title-meaning"><div class="marker"><span>01</span>项与和</div><div class="section-body prose"><h2 id="title-meaning">前 $n$ 项和是一列累积结果</h2><div class="calc-step"><div class="formula-line">\[S_n=a_1+a_2+\cdots+a_n\]</div><p class="step-note">$a_n$ 表示第 $n$ 项。从第 1 项到第 $n$ 项的和称为前 $n$ 项和，记作 $S_n$。</p></div><p>这里的下标 $n$ 表示累加到第几项，前提是前 $n$ 项都存在。若数列只有 $N$ 项，其中 $N$ 是正整数，则 $n$ 只能取 $1,2,\ldots,N$；若数列有无穷多项，$n$ 可以取任意正整数。下文的 $n$ 都限于原数列允许的序号。</p><p>随着 $n$ 依次取值，这些累积结果本身也构成一个数列。即使原数列有无穷多项，$S_n$ 仍然只表示前 $n$ 项这个有限部分的和。$a_n$ 是一个位置上的项，$S_n$ 是从开头到这个位置的总和，两者不能混淆。</p></div></section><section class="section" id="accumulate" aria-labelledby="title-accumulate"><div class="marker"><span>02</span>依次累加</div><div class="section-body prose"><h2 id="title-accumulate">从数列的项得到累积和</h2><p>已知各项时，按照定义累加即可得到前 $n$ 项和。例如，无穷数列 $a_n=2n$ 的前几项是 $2,4,6,\ldots$，相应地有 $S_1=2$、$S_2=2+4=6$、$S_3=2+4+6=12$。其中 $a_3=6$ 是第 3 项，而 $S_3=12$ 是前 3 项的总和。</p><div class="calc-step"><div class="formula-line">\[S_n=S_{n-1}+a_n\]</div><p class="step-note">当 $n\geqslant2$ 时，前 $n-1$ 项的和加上第 $n$ 项，就是前 $n$ 项和。</p></div><p>这里的“加入”指加上 $a_n$，并不意味着累积和一定变大；若 $a_n$ 为负数，累积和就会变小。</p></div></section><section class="section" id="difference" aria-labelledby="title-difference"><div class="marker"><span>03</span>相邻作差</div><div class="section-body prose"><h2 id="title-difference">从前 $n$ 项和回到数列的项</h2><div class="calc-step"><div class="formula-line">\[S_n=(a_1+\cdots+a_{n-1})+a_n\]</div><p class="step-note">当 $n\geqslant2$ 时，括号内是前 $n-1$ 项，括号外是 $a_n$。</p></div><div class="calc-step"><div class="formula-line">\[S_{n-1}=a_1+\cdots+a_{n-1}\]</div><p class="step-note">$S_{n-1}$ 恰好等于上式括号内的和。</p></div><div class="calc-step"><div class="formula-line">\[\begin{aligned}S_n-S_{n-1}&amp;=(a_1+\cdots+a_{n-1})+a_n\\&amp;\quad -(a_1+\cdots+a_{n-1})\end{aligned}\]</div><p class="step-note">两式相减，减去共有的前 $n-1$ 项。</p></div><div class="calc-step"><div class="formula-line">\[a_n=S_n-S_{n-1},\qquad n\geqslant2\]</div><p class="step-note">前 $n-1$ 项逐项抵消，只剩第 $n$ 项。</p></div><p>这个推导对每个有效的 $n\geqslant2$ 都成立，并不依赖前几项的具体数值。</p><div class="calc-step"><div class="formula-line">\[a_n=
+\begin{cases}
+S_1, &amp; n=1,\\
+S_n-S_{n-1}, &amp; n\geqslant2
+\end{cases}\]</div><p class="step-note">$S_0$ 尚未定义，首项不能直接用作差公式。前 1 项和就是首项，故 $a_1=S_1$；其余各项用相邻和作差。</p></div><p>对于有穷数列，第二行还须满足 $n$ 不超过总项数；若数列只有一项，就只用第一行。</p></div></section><section class="section" id="example" aria-labelledby="title-example"><div class="marker"><span>04</span>原例复算</div><div class="section-body prose"><h2 id="title-example">一个前 $n$ 项和公式怎样确定原数列</h2><div class="calc-step"><div class="formula-line">\[S_n=n^2+n\]</div><p class="step-note">已知无穷数列满足此式（$n$ 为正整数）。</p></div><div class="calc-step"><div class="formula-line">\[a_1=S_1=1^2+1=2\]</div><p class="step-note">首项就是前 1 项和，代入 $n=1$ 即可求得。</p></div><div class="calc-step"><div class="formula-line">\[S_{n-1}=(n-1)^2+(n-1)\]</div><p class="step-note">当 $n\geqslant2$ 时，$n-1$ 也是正整数。用 $n-1$ 替换已知公式中的 $n$。</p></div><div class="calc-step"><div class="formula-line">\[S_{n-1}=n^2-2n+1+n-1\]</div><p class="step-note">展开平方，再去掉后一项的括号。</p></div><div class="calc-step"><div class="formula-line">\[S_{n-1}=n^2-n\]</div><p class="step-note">一次项合并为 $-n$，常数项抵消。</p></div><div class="calc-step"><div class="formula-line">\[\begin{aligned}a_n&amp;=S_n-S_{n-1}\\&amp;=(n^2+n)-(n^2-n)\end{aligned}\]</div><p class="step-note">将两个和的表达式代入作差公式。</p></div><div class="calc-step"><div class="formula-line">\[a_n=n^2+n-n^2+n\]</div><p class="step-note">减去整个括号，括号内两项均变号。</p></div><div class="calc-step"><div class="formula-line">\[a_n=2n,\qquad n\geqslant2\]</div><p class="step-note">平方项抵消，两个 $n$ 相加得 $2n$。</p></div><div class="calc-step"><div class="formula-line">\[a_n=2n,\qquad n\text{ 为正整数}\]</div><p class="step-note">作差结果适用于 $n\geqslant2$。当 $n=1$ 时，$2n=2$ 也与首项一致，因此通项公式可统一为 $a_n=2n$。</p></div><p>用前三项复算：$a_1=2$、$a_2=4$、$a_3=6$，累加得到 $S_1=2$、$S_2=6$、$S_3=12$，与已知公式在 $n=1,2,3$ 时的结果一致。这只是具体数值的核对；对所有正整数成立的依据，是上面的作差推导和首项验证。</p></div></section><section class="section" id="summary" aria-labelledby="title-summary"><div class="marker"><span>05</span>核心结论</div><div class="section-body prose"><h2 id="title-summary">核心理解</h2><div class="summary-panel"><p>$a_n$ 记录第 $n$ 项，$S_n$ 记录前 $n$ 项的总和。对于有效的正整数序号 $n$，首项用 $a_1=S_1$；从第 2 项起，用 $a_n=S_n-S_{n-1}$。相邻累积和恰好相差当前一项，是因为共同包含的前 $n-1$ 项全部抵消；由作差得到的通项，只有与首项相符时，才能合并为覆盖所有有效序号的公式。</p></div></div></section></main>
+<nav class="pager pager-sequential" aria-label="文章导航"><a class="pager-prev" href="02_数列的递推表示.html">← 上一篇 · 数列的递推表示</a><a class="pager-next" href="../E-02_等差数列的概念与通项公式/01_等差数列与通项公式.html">下一篇 · 等差数列与通项公式 →</a></nav>
+<footer class="footer">DGOpenKS · 数列的概念、表示与递推</footer>
+</body></html>

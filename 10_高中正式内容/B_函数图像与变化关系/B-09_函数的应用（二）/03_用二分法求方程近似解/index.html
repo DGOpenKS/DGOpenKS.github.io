@@ -8,7 +8,7 @@
 <link rel="icon" href="../../../../assets/brand/favicon.svg" type="image/svg+xml">
 <script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=20260808-2">
+<link rel="stylesheet" href="../../../../00_初高中衔接知识/assets/learning-page-system.css?v=89d778df16">
 <link rel="stylesheet" href="../../assets/b-module.css?v=20260902-1">
 <style>
 .bisection-page .table-scroll{max-width:100%;overflow-x:auto;margin:1.3rem 0}
@@ -26,14 +26,7 @@
 <body class="bisection-page">
 <!-- Source SHA256: 341abed7ab60b0f53924b695ccf61e885dde09fd0dcb8cab12fa94c38c6c0c7a -->
 <a class="skip-link" href="#main">跳到正文</a>
-<nav class="topbar" aria-label="B 模块页面导航"><div class="topbar-inner">
-<a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
-<a class="nav-link" href="#conditions">开始条件</a>
-<a class="nav-link" href="#update">更新区间</a>
-<a class="nav-link" href="#error">误差控制</a>
-<a class="nav-link" href="#example">完整例子</a>
-<a class="nav-link" href="#limits">方法边界</a>
-</div></nav>
+<nav class="topbar module-article-nav" aria-label="B 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../../index.html" aria-label="OpenKS 首页"><img src="../../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../../index.html">B 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#conditions">开始条件</a><a class="nav-link" href="#update">更新区间</a><a class="nav-link" href="#error">误差控制</a><a class="nav-link" href="#example">完整例子</a><a class="nav-link" href="#limits">方法边界</a></div></div></nav>
 <header class="hero"><span class="eyebrow">B 函数图像与变化关系 · 20</span><h1>用二分法求方程近似解</h1>
 <p class="lead">当方程 $f(x)=0$ 难以求出精确解时，可以先找到一个确定含有零点的区间，再反复把区间长度缩小一半。二分法的关键是每次都保留一个仍能保证零点存在的小区间。顺着区间的更新过程，可以说明近似值怎样得到、误差怎样控制。</p></header>
 <main id="main" tabindex="-1">
@@ -101,11 +94,7 @@
 <div class="summary-panel"><p class="b-summary-line">每次保留异号的一半，用区间长度控制误差；中点函数值恰好为零时，就已找到精确零点。</p></div>
 </div></section>
 </main>
-<nav class="pager" aria-label="文章导航">
-<a class="pager-prev" href="../02_零点存在性的判断/index.html">← 上一篇 · 零点存在性的判断</a>
-<a class="pager-home" href="../../index.html">返回 B 模块目录</a>
-<a class="pager-next" href="../04_函数模型的选择与应用/index.html">下一篇 · 函数模型的选择与应用 →</a>
-</nav>
+<nav class="pager pager-sequential" aria-label="文章导航"><a class="pager-prev" href="../02_零点存在性的判断/index.html">← 上一篇 · 零点存在性的判断</a><a class="pager-next" href="../04_函数模型的选择与应用/index.html">下一篇 · 函数模型的选择与应用 →</a></nav>
 <footer class="footer">OpenKS · B 函数图像与变化关系 · 用二分法求方程近似解</footer>
 <script>
 document.querySelector('.topbar-inner').addEventListener('focusin', event => {

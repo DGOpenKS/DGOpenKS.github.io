@@ -1,0 +1,22 @@
+/* E-module tables: shared appearance, alignment follows content. */
+table.e-learning-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper);text-align:center}
+table.e-learning-table caption{text-align:left;padding:.75rem 0;color:var(--blue-deep);background:transparent;font-weight:700}
+table.e-learning-table th,table.e-learning-table td{padding:.85rem .65rem;border:0;border-top:1px solid var(--line);text-align:center;vertical-align:middle;color:var(--body)}
+table.e-learning-table thead th{background:var(--blue-soft);font-weight:700;border-top:0}
+table.e-learning-table thead th:first-child{border-top-left-radius:var(--radius-md)}
+table.e-learning-table thead th:last-child{border-top-right-radius:var(--radius-md)}
+table.e-learning-table tbody th{background:transparent;color:var(--blue-deep);font-weight:600}
+table.e-learning-table small{display:block;margin-top:.3rem;font-size:.85rem;color:var(--muted)}
+.e01-table-wrap{border:0;background:transparent}
+table.e-learning-table.e-symbol-meaning th{width:25%}
+table.e-symbol-meaning td{text-align:left}
+table.e-symbol-meaning tbody tr:first-child>*{border-top:0}
+table.e-learning-table.e-equal-pair th{width:50%}
+table.e-learning-table.e-rule-compare th:first-child{width:44%;text-align:left}
+table.e-learning-table.e01-comparison th:first-child{width:24%}
+table.e-learning-table.e-recurrence-detail th:first-child{width:25%}
+table.e-learning-table.e05-pairs,table.e-learning-table.e05-parts{table-layout:fixed}
+table.e-learning-table.e05-pairs th:first-child,table.e-learning-table.e05-parts th:first-child{width:3.5rem}
+table.e-learning-table .e05-middle{background:var(--amber-soft)}
+table.e-learning-table .e05-result>*{color:var(--cyan-deep);font-weight:700}
+@media(max-width:640px){table.e-learning-table th,table.e-learning-table td{padding:.75rem .4rem}table.e-learning-table.e05-pairs th,table.e-learning-table.e05-pairs td,table.e-learning-table.e05-parts th,table.e-learning-table.e05-parts td{padding:.7rem .15rem}}

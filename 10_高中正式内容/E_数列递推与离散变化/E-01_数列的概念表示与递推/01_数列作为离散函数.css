@@ -1,0 +1,28 @@
+/* Page-specific representations only. Shared layout and tokens: learning-page-system.css. */
+.e01-formula{overflow-x:auto;padding-block:1rem}
+.e01-formula mjx-container[display="true"]{margin:.4rem 0!important}
+.e01-figure{margin:1.5rem 0;padding:1rem;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper)}
+.e01-figure svg{display:block;width:100%;max-width:440px;height:auto;margin:auto;overflow:visible;color:var(--ink)}
+.e01-figure svg text{fill:var(--body);font-family:var(--font-sans);font-size:16px}
+.e01-figure .e01-grid{stroke:var(--grid);stroke-width:1;fill:none}
+.e01-figure .e01-axes{stroke:var(--body);stroke-width:1.4;fill:none}
+.e01-figure .e01-point{fill:var(--blue);stroke:var(--paper);stroke-width:1.5}
+.e01-figure .e01-point-label{fill:var(--blue-deep);font-size:15px}
+.e01-figure figcaption{margin-top:1rem;color:var(--body);font-size:1rem;line-height:1.8}
+.e01-table-wrap{overflow-x:auto;margin:1.5rem 0;border:1px solid var(--purple-line);border-radius:var(--radius-md);background:var(--paper)}
+
+.e01-derivation{margin:1.5rem 0}
+.e01-derivation .calc-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;padding:1rem;border-bottom:1px solid var(--line);background:var(--paper)}
+.e01-derivation .formula-line{overflow-x:auto;padding:.5rem 0}
+.e01-derivation .step-note{margin:0;padding-left:1rem;border-left:3px solid var(--blue-line)}
+@media(max-width:1023px){.e01-derivation .calc-step{grid-template-columns:minmax(0,1fr);gap:.5rem}.e01-derivation .step-note{padding:.75rem 0 0;border-left:0}}
+.e01-index-list{padding:0;list-style:none;margin:1rem 0}
+.e01-index-list li{padding:.65rem 0;border-bottom:1px solid var(--line);color:var(--body)}
+.e01-index-list a{display:flex;align-items:center;min-height:44px;color:var(--blue-deep);text-underline-offset:.25em}
+.e01-pending{color:var(--muted);font-size:1rem}
+@media(max-width:640px){
+
+ .e01-figure{padding:.75rem}
+ .e01-formula{padding-block:.75rem}
+}
+@media print{.e01-figure{break-inside:avoid}.e01-table-wrap{overflow:visible}}

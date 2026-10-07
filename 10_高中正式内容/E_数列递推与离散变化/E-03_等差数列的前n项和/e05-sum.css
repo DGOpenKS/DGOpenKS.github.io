@@ -1,0 +1,26 @@
+/* E05: local derivation and signed symbolic pairing only. */
+.e05-derivation .calc-steps{display:grid;gap:.8rem}
+.e05-derivation .calc-step{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:1.2rem}
+.e05-derivation .formula-line,.summary-panel .formula-line{max-width:100%;min-width:0;overflow-x:auto;padding:.25rem 0}
+.e05-derivation .step-note{margin:0;padding:.65rem .75rem;border-left:3px solid var(--blue-line);font-size:1rem}
+.e05-board{margin:1.5rem 0;padding:clamp(.8rem,2vw,1.5rem);border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper)}
+.e05-board table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:1rem;text-align:center}
+.e05-board th,.e05-board td{padding:.7rem .15rem;border-bottom:1px solid var(--line)}
+.e05-board th:first-child{width:3rem}
+.e05-board thead{color:var(--muted)}
+.e05-board td{font-family:var(--font-math);font-size:1.2rem}
+.e05-original{color:var(--blue-deep)}
+.e05-reverse{color:var(--purple)}
+.e05-result{color:var(--cyan-deep);font-weight:700}
+.e05-middle{background:var(--amber-soft);border-left:1px solid var(--amber-line);border-right:1px solid var(--amber-line)}
+.e05-increments{color:var(--purple)}
+.e05-board figcaption{margin-top:1rem;line-height:1.8;color:var(--body)}
+@media(max-width:1023px){
+  .e05-derivation .calc-step{grid-template-columns:minmax(0,1fr);gap:.4rem}
+  .e05-derivation .step-note{border-left:0;border-top:1px dashed var(--blue-line);padding:.7rem .25rem .25rem}
+}
+
+@media(min-width:641px){
+  .e05-derivation .calc-step{padding:.85rem 0;border:0;border-bottom:1px solid var(--line);border-radius:0}
+  .e05-derivation .calc-step:last-child{border-bottom:0}
+}

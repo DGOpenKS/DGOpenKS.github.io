@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数列的递推表示 | DGOpenKS</title>
+<meta name="description" content="从初始条件出发，用更新规则逐项确定数列，理解递推的唯一性、下标范围与运算条件。">
+<link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css?v=89d778df16">
+<link rel="stylesheet" href="../../../00_初高中衔接知识/assets/sequence-nav.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+.formula-card.e02-equation{overflow-x:auto;padding:1rem;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper);box-shadow:var(--soft-shadow)}
+.e02-equation mjx-container[display="true"]{margin:.4rem 0!important}
+
+
+
+
+
+
+.topbar-inner a:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+
+
+
+
+
+
+
+
+
+</style>
+<link rel="stylesheet" href="../e-learning-tables.css?v=8ebaeec907">
+</head><body>
+<a class="skip-link" href="#content">跳到正文</a>
+<nav class="topbar module-article-nav" aria-label="E 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html">DGOpenKS</a><a class="nav-link module-directory" href="../index.html">E 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#rule">递推是什么</a><a class="nav-link" href="#initial">需要什么</a><a class="nav-link" href="#calculation">怎样计算</a><a class="nav-link" href="#boundary">条件边界</a><a class="nav-link" href="#comparison">两种表示</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav>
+<header class="hero"><span class="eyebrow">E · 数列、递推与离散变化 / 02</span><h1>数列的递推表示</h1><p class="lead">本篇介绍递推公式、初始条件，以及怎样逐项计算数列。</p></header>
+<main id="content"><section class="section" id="rule" aria-labelledby="rule-title"><div class="marker" aria-hidden="true"><span>01</span>递推是什么</div><div class="section-body prose"><h2 id="rule-title">递推：用前面的项求后面的项</h2><p>递推表示，是通过初始项和项与项之间的关系来确定数列的一种方法。本文讨论每一步都能由已知项唯一求出新项的情形。</p>
+<p>例如，用 $a_n$ 表示第 $n$ 项，$a_{n+1}$ 表示后一项，序号 $n$ 取正整数：</p>
+<div class="formula-card e02-equation">$$a_{n+1}=3a_n,\qquad n\geqslant1$$</div>
+<p>这个关系表示：从第 2 项起，每一项都是前一项的 $3$ 倍。给定首项后，就可以按这个关系依次求出后面的项。</p></div></section>
+<section class="section" id="initial" aria-labelledby="initial-title"><div class="marker" aria-hidden="true"><span>02</span>需要什么</div><div class="section-body prose"><h2 id="initial-title">初始项给出起点，递推公式给出规则</h2><p>递推需要足够的初始项和递推公式。初始项是计算的起点，递推公式说明怎样继续计算。</p>
+<p>数列从第 1 项开始，序号 $n$ 取正整数，$a_n$ 表示第 $n$ 项，项值为实数。当 $n\geqslant2$ 时，$a_{n-1}$ 表示前一项。给定首项为 $1$，再把“前一项乘 $3$”写成公式：</p>
+<div class="formula-card e02-equation">$$\begin{gathered}a_1=1\\a_n=3a_{n-1}\quad(n\geqslant2)\end{gathered}$$</div>
+<p>这里 $a_1=1$ 给出起点，$a_n=3a_{n-1}$ 给出规则。下标从 $2$ 开始，因为第 1 项已给定，而 $a_0$ 尚未定义。</p></div></section>
+<section class="section" id="calculation" aria-labelledby="calculation-title"><div class="marker" aria-hidden="true"><span>03</span>怎样计算</div><div class="section-body prose"><h2 id="calculation-title">把刚算出的项用于下一步</h2><p>从首项开始，每次把前一项乘 $3$：</p>
+<table class="e-learning-table e02-table e02-first-terms e-equal-pair"><caption>首项为 1 时的前四项</caption><thead><tr><th scope="col">项</th><th scope="col">计算</th></tr></thead><tbody>
+<tr><th scope="row">第 1 项</th><td>$a_1=1$<small>给定的初始项</small></td></tr>
+<tr><th scope="row">第 2 项</th><td>$a_2=3\times1=3$</td></tr>
+<tr><th scope="row">第 3 项</th><td>$a_3=3\times3=9$</td></tr>
+<tr><th scope="row">第 4 项</th><td>$a_4=3\times9=27$</td></tr>
+</tbody></table>
+<p>若只把首项改为 $2$，同一规则就得到 $2,6,18,54,\ldots$。因此，仅有这条规则还不能确定数列，初始项也必须明确。</p></div></section>
+<section class="section" id="boundary" aria-labelledby="boundary-title"><div class="marker" aria-hidden="true"><span>04</span>条件边界</div><div class="section-body prose"><h2 id="boundary-title">递推能够继续的条件</h2><h3>初始信息必须足够</h3>
+<p>需要哪些初始项，取决于具体规则，不能只数公式里出现了几项。从最早允许使用的下标开始，计算所需的项应当已经确定；算出新项后，还要能继续下一步。</p>
+<h3>每一步运算都要有意义</h3>
+<p>乘 $3$ 的运算总能继续；含有分母的规则还要保证分母不为 $0$。例如：</p>
+<div class="formula-card e02-equation">$$\begin{gathered}a_1=1\\a_n=1+\frac{1}{a_{n-1}}\quad(n\geqslant2)\end{gathered}$$</div>
+<table class="e-learning-table e02-table e-recurrence-detail"><caption>将前一项取倒数，再加 1</caption><thead><tr><th scope="col">项</th><th scope="col">计算与依据</th></tr></thead><tbody>
+<tr><th scope="row">第 2 项</th><td>$a_2=1+\dfrac{1}{1}=2$<small>代入首项 $a_1=1$</small></td></tr>
+<tr><th scope="row">第 3 项</th><td>$a_3=1+\dfrac{1}{2}=\dfrac{3}{2}$<small>代入 $a_2=2$，通分相加</small></td></tr>
+<tr><th scope="row">第 4 项</th><td>$a_4=1+\dfrac{2}{3}=\dfrac{5}{3}$<small>$a_3$ 的倒数为 $\dfrac{2}{3}$，再加 $1$</small></td></tr>
+</tbody></table>
+<p>前几项能算出，并不能保证以后都能计算。这里，首项为正；只要前一项为正，下一项就大于 $1$，所以各项始终为正，分母不会为 $0$。</p>
+<p>若改取 $a_1=-1$，则 $a_2=1+\frac{1}{-1}=0$，计算 $a_3$ 时分母为 $0$，递推便中断，无法定义一直延续下去的无穷数列。</p>
+<h3>新项必须唯一确定</h3>
+<p>运算有意义，还不等于结果唯一。若只给出 $a_1=1$ 和 $a_n^2=a_{n-1}^2$（$n\geqslant2$），则 $a_2$ 可以是 $1$，也可以是 $-1$。这种关系没有唯一选定下一项。</p>
+<p>下标范围还应覆盖所有待求项。若讨论有穷数列，应写清最后一项的序号，递推只进行到那里。</p></div></section>
+<section class="section" id="comparison" aria-labelledby="comparison-title"><div class="marker" aria-hidden="true"><span>05</span>两种表示</div><div class="section-body prose"><h2 id="comparison-title">递推公式与通项公式的区别</h2><p>通项公式直接给出序号 $n$ 与项 $a_n$ 的对应，通常代入序号即可求值。递推公式给出项与项的关系，往往要先确定前面的项，再求后面的项。</p>
+<p>即使没有简洁的通项公式，充分的初始条件和每步都有意义、结果唯一的递推规则，也能确定数列。这种确定性来自给定条件，而不是对前几项规律的猜测。</p></div></section>
+<section class="section" id="summary" aria-labelledby="summary-title"><div class="marker" aria-hidden="true"><span>06</span>核心结论</div><div class="section-body prose"><h2 id="summary-title">核心结论</h2><div class="summary-panel"><p><strong>递推从初始项出发，按公式逐项计算。</strong>算出的新项继续用于后续计算。</p><p><strong>每一步都要有意义，且结果唯一。</strong>初始信息足够、下标范围完整，并满足这些条件，才能确定规定范围内的所有后续项。</p></div></div></section></main>
+<nav class="pager pager-sequential" aria-label="文章导航"><a class="pager-prev" href="01_数列作为离散函数.html">← 上一篇 · 数列的概念与表示</a><a class="pager-next" href="03_数列的项与前n项和.html">下一篇 · 数列的项与前 n 项和 →</a></nav>
+<footer class="footer">DGOpenKS · 数列的概念、表示与递推</footer>
+</body></html>

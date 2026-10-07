@@ -1047,3 +1047,19 @@ h2.marker{
     margin-bottom:1rem;
   }
 }
+
+/* Module articles: persistent directory and separate in-page navigation. */
+.module-article-nav .topbar-inner{overflow:visible}
+.module-article-nav .brand{margin-right:.5rem;flex-shrink:0}
+.module-directory{margin-right:auto;flex-shrink:0}
+.article-sections{display:flex;min-width:0;overflow-x:auto;align-items:center;gap:.35rem}
+.article-sections .nav-link{flex-shrink:0}
+.pager.pager-sequential{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.pager-sequential a{width:auto;max-width:100%}
+.pager-sequential .pager-prev{grid-column:1;justify-self:start}
+.pager-sequential .pager-next{grid-column:2;justify-self:end}
+@media(max-width:640px){
+  .module-article-nav .topbar-inner{flex-wrap:wrap;padding:6px 14px;gap:0}
+  .module-article-nav .module-directory{margin-left:auto;margin-right:0}
+  .module-article-nav .article-sections{flex:0 0 100%;gap:.2rem}
+}

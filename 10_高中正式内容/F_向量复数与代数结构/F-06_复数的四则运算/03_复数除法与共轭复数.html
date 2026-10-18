@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>复数除法与共轭复数 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">共轭乘积</a><a class="nav-link" href="#section-2">除法步骤</a><a class="nav-link" href="#section-3">计算与核对</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的四则运算 · 14</span><h1>复数除法与共轭复数</h1><p class="lead">复数除法要把商写成 $a+bi$ 的形式。分母含有 $i$ 时，分子、分母同乘分母的共轭，就能把分母变成实数，再按熟悉的乘法计算。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>共轭乘积</div><div class="section-body prose"><h2>共轭为什么能让分母变成实数</h2><p>设除数为 $c+di\ne0$，其中 $c,d$ 是实数，它的共轭是 $c-di$。用平方差公式展开：</p>
+<div class="formula-card">$$
+(c+di)(c-di)=c^2-(di)^2.
+$$</div>
+<p>因为 $(di)^2=d^2i^2=-d^2$，减去它就变成加 $d^2$，所以</p>
+<div class="formula-card">$$
+(c+di)(c-di)=c^2+d^2.
+$$</div>
+<p>除数非零意味着 $c,d$ 不同时为零，因此 $c^2+d^2&gt;0$。共轭乘积既是实数，又不会成为零，这正是它能用来处理分母的原因。</p></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>除法步骤</div><div class="section-body prose"><h2>分子、分母同乘分母的共轭</h2><p>由上面的乘积可知，$\dfrac{c-di}{c^2+d^2}$ 与 $c+di$ 的乘积为 $1$，所以它是 $c+di$ 的倒数。除以 $c+di$，等于乘这个倒数，也就是</p>
+<div class="formula-card">$$
+\dfrac{a+bi}{c+di}
+=\dfrac{(a+bi)(c-di)}{c^2+d^2}.
+$$</div>
+<p>分子用分配律展开，得到 $ac-adi+bci-bdi^2$；再用 $i^2=-1$ 合并，分子就是 $(ac+bd)+(bc-ad)i$。分别除以实数分母：</p>
+<div class="formula-card">$$
+\dfrac{a+bi}{c+di}
+=\dfrac{ac+bd}{c^2+d^2}+\dfrac{bc-ad}{c^2+d^2}i.
+$$</div>
+<p>实际计算时不必背这条长式，记住“同乘分母的共轭”即可。共轭只改变虚部的符号，不是把整个复数变成相反数。</p></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>计算与核对</div><div class="section-body prose"><h2>算出商，再乘回去核对</h2><p>计算 $\dfrac{1+2i}{2-3i}$。分母的共轭是 $2+3i$，因此</p>
+<div class="formula-card">$$
+\dfrac{1+2i}{2-3i}
+=\dfrac{(1+2i)(2+3i)}{(2-3i)(2+3i)}.
+$$</div>
+<p>分子按上一篇的乘法展开为 $-4+7i$，分母是 $2^2+3^2=13$，所以</p>
+<div class="formula-card">$$
+\dfrac{1+2i}{2-3i}=\dfrac{-4+7i}{13}
+=-\dfrac4{13}+\dfrac7{13}i.
+$$</div>
+<p>商乘除数应该还原被除数。展开并使用 $i^2=-1$，实数项合为 $\dfrac{-8+21}{13}=1$，含 $i$ 的项合为 $\dfrac{14+12}{13}i=2i$，于是</p>
+<div class="formula-card">$$
+(2-3i)\left(-\dfrac4{13}+\dfrac7{13}i\right)=1+2i.
+$$</div>
+<p>这同时核对了结果的实部和虚部。</p></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>除数必须非零。分子、分母同乘分母的共轭后，分母成为正实数，分子按复数乘法展开。</p>
+<p>最后整理为实部加虚部乘 $i$ 的形式；商乘除数，应当还原被除数。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="02_复数乘法与i的幂.html">← 上一篇 · 复数乘法与 $i$ 的幂</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="04_复数范围内的一元二次方程.html">下一篇 · 复数范围内的一元二次方程 →</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

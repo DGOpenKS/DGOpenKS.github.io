@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>向量的基本性质 | OpenKS</title>
+  <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css">
+  <link rel="stylesheet" href="../f-module.css?v=20261010-vector-concept">
+  <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="f-article">
+  <a class="skip-link" href="#content">跳到正文</a>
+  <nav class="topbar module-article-nav" aria-label="F 模块文章导航">
+    <div class="topbar-inner">
+      <a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a>
+      <a class="nav-link module-directory" href="../index.html">F 模块目录</a>
+      <div class="article-sections" role="navigation" aria-label="本篇章节">
+        <a class="nav-link" href="#definition">向量的定义</a>
+        <a class="nav-link" href="#representation">向量的表示</a>
+        <a class="nav-link" href="#relations">向量的关系</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">F · 平面向量的基本性质与运算 · 01</span>
+    <h1>向量的基本性质</h1>
+    <p class="lead">本篇先说明向量由大小和方向共同确定，再说明怎样用有向线段表示它，最后认识零向量、相等向量和相反向量。</p>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="section" id="definition">
+      <div class="marker" aria-hidden="true"><span>01</span>向量的定义</div>
+      <div class="section-body prose">
+        <h2>大小和方向缺一不可</h2>
+        <p>向东移动 $5\ \mathrm{km}$ 与向西移动 $5\ \mathrm{km}$ 的大小相同，却不是同一个位移。既有大小又有方向的量叫作向量；只有大小、没有方向的量叫作数量。</p>
+        <p>“$5\ \mathrm{km}$”只说明大小，“向东”只说明方向；“向东移动 $5\ \mathrm{km}$”才完整地说明了一个位移。若用 $\vec{a}$ 表示一个向量，就用 $|\vec{a}|$ 表示它的大小，也叫模。</p>
+        <p>对非零向量，大小和方向共同确定它。大小相同而方向不同，或方向相同而大小不同，都不是同一个向量。</p>
+      </div>
+    </section>
+
+    <section class="section" id="representation">
+      <div class="marker" aria-hidden="true"><span>02</span>向量的表示</div>
+      <div class="section-body prose">
+        <h2>用有向线段把向量画出来</h2>
+        <p>图上常用带箭头的线段表示向量。规定 $A$ 为起点、$B$ 为终点，从 $A$ 指向 $B$ 的有向线段记作 $\overrightarrow{AB}$。按同一比例画出的线段长度表示大小，箭头的指向表示方向。</p>
+        <figure class="f-figure">
+          <svg viewBox="0 0 520 240" role="img" aria-labelledby="vector-caption">
+            <g transform="translate(425 80) rotate(-14.281096)">
+              <line class="f-vector f-vector--a" style="stroke-width:2.5;stroke-linecap:butt" x1="-340.523127" y1="0" x2="-8" y2="0"></line>
+              <path d="M-13,-5 L0,0 L-13,5 L-10,0 Z" fill="#176b9b"></path>
+            </g>
+            <circle cx="95" cy="164" r="3" fill="#176b9b"></circle>
+            <g fill="var(--ink)" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">
+              <text x="81" y="192" text-anchor="middle">A</text>
+              <text x="440" y="70" text-anchor="middle">B</text>
+            </g>
+            <text x="255" y="100" text-anchor="middle" fill="#176b9b" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="700">a</text>
+          <path d="M249.150390625 77.00000762939453 h12.69921875 m-3 -2.5 l3 2.5 -3 2.5" fill="none" stroke="#176b9b" stroke-width="1.1" stroke-linejoin="round"></path></svg>
+          <figcaption id="vector-caption">蓝色箭头表示 $\vec{a}=\overrightarrow{AB}$：长度记录大小，箭头记录方向。</figcaption>
+        </figure>
+        <p>$\overrightarrow{AB}$ 与 $\overrightarrow{BA}$ 长度相同，方向却相反，所以表示不同的向量。把一支箭头整体平移，只要长度和方向不变，它仍表示同一个向量。</p>
+      </div>
+    </section>
+
+    <section class="section" id="relations">
+      <div class="marker" aria-hidden="true"><span>03</span>向量的关系</div>
+      <div class="section-body prose">
+        <h2>先认识零、相等和相反</h2>
+        <p>模为 $0$ 的向量叫作零向量，记作 $\mathbf0$。它没有可以用来区分的唯一方向，所以判断零向量时只看它的模是否为 $0$。</p>
+        <table class="f-rule-table">
+          <tbody>
+            <tr><th scope="row">相等向量</th><td>模相等、方向相同。它们可以画在不同的位置，仍表示同一个向量。</td></tr>
+            <tr><th scope="row">相反向量</th><td>模相等、方向相反。$\vec{a}$ 的相反向量记作 $-\vec{a}$，并且 $|-\vec{a}|=|\vec{a}|$。</td></tr>
+          </tbody>
+        </table>
+        <p>这里的负号只把方向反过来，不会使模变成负数。零向量的相反向量还是它自己：$-\mathbf0=\mathbf0$。</p>
+      </div>
+    </section>
+  <section class="section" id="summary" aria-labelledby="summary-title"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2 id="summary-title">核心结论</h2><div class="summary-panel"><p>非零向量由大小和方向确定，有向线段是它的表示方法；整体平移不会改变向量。</p><p>等长同向的向量相等，等长反向的向量互为相反向量。零向量的模为 $0$，它的相反向量仍是零向量。</p></div></div></section>
+</main>
+
+  <nav class="pager" aria-label="文章导航"><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="../F-02_平面向量的线性运算/01_向量的加法.html">下一篇 · 向量的加法与减法 →</a></nav>
+  <footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer>
+</body>
+</html>

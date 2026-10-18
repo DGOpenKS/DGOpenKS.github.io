@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>三角形式下的复数乘除 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">乘法</a><a class="nav-link" href="#section-2">除法</a><a class="nav-link" href="#section-3">计算与主值</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的三角表示 · 选学 · 18</span><h1>三角形式下的复数乘除</h1><p class="lead">三角形式把复数乘除转成长度与角度的运算：乘法的模相乘、辐角相加，除法的模相除、辐角相减。这些规则来自复数乘法与三角函数的和差公式。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>乘法</div><div class="section-body prose"><h2>乘法：展开后合并角度</h2><p>设两个非零复数为 $z_1=r_1(\cos\alpha+i\sin\alpha)$、$z_2=r_2(\cos\beta+i\sin\beta)$，其中 $r_1,r_2&gt;0$。</p>
+<p>把两个括号相乘，用 $i^2=-1$ 合并。除去公共因子 $r_1r_2$ 后，实部是 $\cos\alpha\cos\beta-\sin\alpha\sin\beta$，虚部是 $\sin\alpha\cos\beta+\cos\alpha\sin\beta$。</p>
+<p>由两角和公式，这两部分分别等于 $\cos(\alpha+\beta)$ 和 $\sin(\alpha+\beta)$，因此</p>
+<div class="formula-card">$$
+z_1z_2=r_1r_2[\cos(\alpha+\beta)+i\sin(\alpha+\beta)].
+$$</div>
+<p>这就是乘积的三角形式：模是 $r_1r_2$，$\alpha+\beta$ 是一个辐角。固定乘数 $z_2$，相当于把原向量长度变为 $r_2$ 倍，再旋转 $\beta$。</p></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>除法</div><div class="section-body prose"><h2>除法：先看倒数的模与方向</h2><p>除以 $z_2$ 就是乘它的倒数。分子、分母同乘方向部分的共轭，分母利用 $\cos^2\beta+\sin^2\beta=1$ 化简，得到</p>
+<div class="formula-card">$$
+\dfrac1{z_2}=\dfrac1{r_2}(\cos\beta-i\sin\beta).
+$$</div>
+<p>余弦是偶函数，正弦是奇函数，所以括号也可写成 $\cos(-\beta)+i\sin(-\beta)$。倒数的模是 $\dfrac1{r_2}$，一个辐角是 $-\beta$。</p>
+<p>再与 $z_1$ 相乘，使用刚得到的乘法规则：</p>
+<div class="formula-card">$$
+\dfrac{z_1}{z_2}=\dfrac{r_1}{r_2}[\cos(\alpha-\beta)+i\sin(\alpha-\beta)].
+$$</div>
+<p>所以商的模是 $\dfrac{r_1}{r_2}$，$\alpha-\beta$ 是一个辐角。几何上，这是把长度变为原来的 $\dfrac1{r_2}$，再旋转 $-\beta$。</p></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>计算与主值</div><div class="section-body prose"><h2>分别计算模与角度</h2><p>设 $z_1$ 的模为 $\dfrac32$、一个辐角为 $\dfrac\pi6$，$z_2$ 的模为 $2$、一个辐角为 $\dfrac\pi3$。</p>
+<p>相乘时，模为 $\dfrac32\times2=3$，辐角为 $\dfrac\pi6+\dfrac\pi3=\dfrac\pi2$。代入正弦、余弦值：</p>
+<div class="formula-card">$$
+z_1z_2=3\left(\cos\dfrac\pi2+i\sin\dfrac\pi2\right)=3i.
+$$</div>
+<p>相除时，模为 $\dfrac32\div2=\dfrac34$，辐角为 $\dfrac\pi6-\dfrac\pi3=-\dfrac\pi6$。利用 $\cos(-\dfrac\pi6)=\dfrac{\sqrt3}{2}$、$\sin(-\dfrac\pi6)=-\dfrac12$，得到</p>
+<div class="formula-card">$$
+\dfrac{z_1}{z_2}=\dfrac34\left(\dfrac{\sqrt3}{2}-\dfrac12i\right)
+=\dfrac{3\sqrt3}{8}-\dfrac38i.
+$$</div>
+<p>若要求 $[0,2\pi)$ 内的辐角主值，商的角度要加上 $2\pi$，写成 $\dfrac{11\pi}{6}$。一般地，加减得到的角未必是主值，但加减整数个整周就能回到规定区间。</p></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>非零复数相乘，模相乘、辐角相加；相除，模相除、辐角相减。求主值时，还要把结果调整到规定区间。</p>
+<p>辐角规则以两个复数非零为前提。零参与乘法或作被除数时结果为零，不谈辐角；除数始终不能为零。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="02_复数的三角表示.html">← 上一篇 · 复数的三角表示</a><a class="pager-home" href="../index.html">F 模块目录</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

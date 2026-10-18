@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>复数范围内的一元二次方程 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">配方求根</a><a class="nav-link" href="#section-2">求根公式</a><a class="nav-link" href="#section-3">判别式</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的四则运算 · 15</span><h1>复数范围内的一元二次方程</h1><p class="lead">实系数一元二次方程在判别式小于零时没有实根，但可以有复数根。利用 $i^2=-1$，配方后出现的负数也能继续处理，得到一对共轭复根。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>配方求根</div><div class="section-body prose"><h2>先看一个没有实根的方程</h2><p>考虑 $x^2+2x+5=0$。把常数移项，再在两边加 $1$ 配成完全平方：</p>
+<div class="formula-card">$$
+x^2+2x=-5,\qquad (x+1)^2=-4.
+$$</div>
+<p>实数的平方不能等于 $-4$，但 $(2i)^2=-4$。因此把右边写成 $(2i)^2$，移项并用平方差分解：</p>
+<div class="formula-card">$$
+(x+1-2i)(x+1+2i)=0.
+$$</div>
+<p>复数中非零数都有倒数，所以乘积为零时至少有一个因子为零。分别令两个因子为零，得到</p>
+<div class="formula-card">$$
+x=-1+2i\quad\text{或}\quad x=-1-2i.
+$$</div>
+<p>两根的实部相同、虚部互为相反数，正是一对共轭复数。</p></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>求根公式</div><div class="section-body prose"><h2>从配方得到一般公式</h2><p>设 $ax^2+bx+c=0$，其中 $a,b,c$ 都是实数且 $a\ne0$。两边乘 $4a$，把常数项移到右边：</p>
+<div class="formula-card">$$
+4a^2x^2+4abx=-4ac.
+$$</div>
+<p>两边加 $b^2$，左边就能配成完全平方。记 $\Delta=b^2-4ac$，得到</p>
+<div class="formula-card">$$
+(2ax+b)^2=b^2-4ac=\Delta.
+$$</div>
+<p>当 $\Delta&lt;0$ 时，令 $m=\sqrt{-\Delta}&gt;0$，则 $\Delta=-m^2=(mi)^2$。移项后用平方差分解：</p>
+<div class="formula-card">$$
+(2ax+b-mi)(2ax+b+mi)=0.
+$$</div>
+<p>分别令两个因子为零，再除以非零实数 $2a$，得到</p>
+<div class="formula-card">$$
+x_{1,2}=\dfrac{-b\pm mi}{2a}
+=\dfrac{-b\pm i\sqrt{-\Delta}}{2a}.
+$$</div>
+<p>两个根的实部都是 $-\dfrac b{2a}$，虚部互为相反数且不为零，因此它们是两个不同的共轭复根。这个结论以方程的系数都是实数为前提。</p></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>判别式</div><div class="section-body prose"><h2>判别式的三种情形</h2><p>扩充到复数并不改变原有的实根，只是补上了 $\Delta&lt;0$ 的情形。</p>
+<table class="f-rule-table"><thead><tr><th scope="col">判别式</th><th scope="col">根的情况</th></tr></thead><tbody><tr><td>$\Delta&gt;0$</td><td>两个不同的实根</td></tr><tr><td>$\Delta=0$</td><td>两个相等的实根，即一个二重根</td></tr><tr><td>$\Delta&lt;0$</td><td>两个不同的共轭复根</td></tr></tbody></table>
+<p>例如前面的 $x^2+2x+5=0$ 有 $\Delta=-16$。代入公式：</p>
+<div class="formula-card">$$
+x=\dfrac{-2\pm4i}{2}=-1\pm2i.
+$$</div>
+<p>这与直接配方得到的结果一致。“没有实根”并不等于“在复数范围内也没有根”。</p></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>对实系数一元二次方程，当 $\Delta&lt;0$ 时，把负判别式写成 $(i\sqrt{-\Delta})^2$，仍可沿着配方、分解和求根的步骤得到解。</p>
+<p>新增的两个根互为共轭；$\Delta\ge0$ 时的实根结论保持不变。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="03_复数除法与共轭复数.html">← 上一篇 · 复数除法与共轭复数</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="../F-07_复数的三角表示/01_特殊复数乘法的伸缩与旋转.html">下一篇 · 特殊复数乘法的伸缩与旋转〔选学〕 →</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

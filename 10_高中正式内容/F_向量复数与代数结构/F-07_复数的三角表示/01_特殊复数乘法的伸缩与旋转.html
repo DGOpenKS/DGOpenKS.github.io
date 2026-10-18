@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>特殊复数乘法的伸缩与旋转 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">正数伸缩</a><a class="nav-link" href="#section-2">乘 i 旋转</a><a class="nav-link" href="#section-3">连续旋转</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的三角表示 · 选学 · 16</span><h1>特殊复数乘法的伸缩与旋转</h1><p class="lead">复数乘法也有几何意义：乘正实数改变长度，乘 $i$ 改变方向。把计算结果写成坐标，就能看见这些变化。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>正数伸缩</div><div class="section-body prose"><h2>乘正实数：沿原方向伸缩</h2><p>设 $z=a+bi$，对应向量 $(a,b)$。乘正实数 $c$，用分配律得到</p>
+<div class="formula-card">$$
+cz=ca+cbi.
+$$</div>
+<p>它对应的向量是 $(ca,cb)$，正是原向量的 $c$ 倍。因此，当 $z\ne0$ 时，方向不变，模变为原来的 $c$ 倍：</p>
+<div class="formula-card">$$
+|cz|=c|z|.
+$$</div>
+<p>例如，$2(2+i)=4+2i$，对应向量从 $(2,1)$ 变成 $(4,2)$：同向、两倍长。乘 $\dfrac12$ 则同向、一半长。</p></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>乘 i 旋转</div><div class="section-body prose"><h2>乘 $i$：逆时针旋转 $90^\circ$</h2><p>先展开，再把 $i^2$ 换成 $-1$：</p>
+<div class="formula-card">$$
+iz=i(a+bi)=ai+bi^2=-b+ai.
+$$</div>
+<p>所以坐标从 $(a,b)$ 变成 $(-b,a)$。新向量的模是 $\sqrt{b^2+a^2}$，与原来相同。</p>
+<p>为什么是逆时针旋转 $90^\circ$？看两个坐标方向：向右的 $(1,0)$ 旋转后变成向上的 $(0,1)$；向上的 $(0,1)$ 旋转后变成向左的 $(-1,0)$。因此，原向量的水平、竖直分量分别旋转后，合成</p>
+<div class="formula-card">$$
+a(0,1)+b(-1,0)=(-b,a).
+$$</div>
+<p>这正是乘 $i$ 得到的坐标。所以对非零复数，乘 $i$ 保持模不变，并逆时针旋转 $90^\circ$，也就是 $\dfrac\pi2$。</p>
+<p>例如，$i(2+i)=-1+2i$，对应向量从 $(2,1)$ 变成 $(-1,2)$。</p><figure class="f-figure"><svg viewBox="0 0 520 380" role="img" aria-labelledby="rotation-figure"><title id="rotation-figure">乘 i 把二加 i 对应的向量逆时针旋转九十度，变为负一加二 i</title><g fill="none" stroke="#85949c" stroke-width="1.2"><path d="M30 240 H465 M230 350 V30"/><path d="M459 236 l6 4 -6 4 M226 36 l4 -6 4 6"/></g><g font-size="16" fill="#53636c"><text x="470" y="262">实轴</text><text x="242" y="26">虚轴</text><text x="208" y="263">O</text></g><circle cx="230" cy="240" r="111.80339887498948" fill="none" stroke="#c3cdd1" stroke-dasharray="4 5"/><g transform="translate(230 240) rotate(-26.56505117707799)" fill="#176b9b"><path d="M0 0 H103.80339887498948" stroke="#176b9b" stroke-width="2.4" fill="none"/><path d="M111.80339887498948 0 l-10 -4 2 4 -2 4 Z"/></g><g transform="translate(230 240) rotate(-116.56505117707799)" fill="#7954aa"><path d="M0 0 H103.80339887498948" stroke="#7954aa" stroke-width="2.4" fill="none"/><path d="M111.80339887498948 0 l-10 -4 2 4 -2 4 Z"/></g><path d="M283.7 213.2 A60 60 0 0 0 207.5 184.3" stroke="#53636c" fill="none" stroke-width="1.3"/><g transform="translate(210 183.4) rotate(156.90317808183917)" fill="#53636c"><path d="M0 0 H-0.6074361686894996" stroke="#53636c" stroke-width="1.3" fill="none"/><path d="M7.3925638313105 0 l-10 -4 2 4 -2 4 Z"/></g><g font-size="19" font-family="Georgia,serif"><text x="343" y="191" fill="#176b9b">Z(2, 1)</text><text x="83" y="124" fill="#7954aa">Z′(−1, 2)</text><text x="239" y="158" fill="#53636c">90°</text></g></svg><figcaption>蓝色向量对应 $z=2+i$，紫色向量对应 $iz=-1+2i$。两终点在以原点为圆心的同一圆上，模不变，方向逆时针转过 $90^\circ$。</figcaption></figure></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>连续旋转</div><div class="section-body prose"><h2>连续乘 $i$：每次再转四分之一周</h2><p>因为 $i^2=-1$、$i^3=-i$、$i^4=1$，连续乘 $i$ 的结果可以直接读成旋转：</p>
+<table class="f-rule-table"><thead><tr><th scope="col">乘数</th><th scope="col">对非零复数的作用</th></tr></thead><tbody><tr><td>$i$</td><td>逆时针旋转 $90^\circ$</td></tr><tr><td>$-1$</td><td>旋转 $180^\circ$</td></tr><tr><td>$-i$</td><td>顺时针旋转 $90^\circ$</td></tr><tr><td>$1$</td><td>回到原位置</td></tr></tbody></table>
+<p>这些变化都不改变模。若 $z=0$，乘上述任何数仍为 $0$；原点没有确定方向，不讨论它转过了多少角度。</p></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>对非零复数，乘正实数让模成倍变化、方向不变；乘 $i$ 让模不变、方向逆时针转过 $90^\circ$。</p>
+<p>这两种作用分别是伸缩与旋转。零复数在这些运算下仍是零，不赋予它方向。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../F-06_复数的四则运算/04_复数范围内的一元二次方程.html">← 上一篇 · 复数范围内的一元二次方程</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="02_复数的三角表示.html">下一篇 · 复数的三角表示 →</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

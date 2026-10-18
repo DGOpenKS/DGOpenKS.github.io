@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>向量的数乘 | DGOpenKS</title>
+  <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css">
+  <link rel="stylesheet" href="../f-module.css?v=20261010-vector-labels-2">
+  <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="f-article">
+  <a class="skip-link" href="#content">跳到正文</a>
+  <nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#magnitude">向量的模</a><a class="nav-link" href="#effect">数乘的含义</a><a class="nav-link" href="#laws">数乘运算律</a><a class="nav-link" href="#parallel">共线向量</a></div></div></nav>
+  <header class="hero"><span class="eyebrow">F · 平面向量的基本性质与运算 · 03</span><h1>向量的数乘</h1><p class="lead">数乘就是一个实数乘一个向量，结果仍是向量：系数决定它的大小和方向。
+</p></header>
+  <main id="content" tabindex="-1"><section class="section" id="magnitude"><div class="marker" aria-hidden="true"><span>01</span>向量的模</div><div class="section-body prose"><h2>模就是向量的大小</h2><p>向量 $\vec{a}$ 的大小叫作模，记作 $|\vec{a}|$，图中用有向线段的长度表示。</p>
+<p>例如，$\vec{a}$ 表示向东移动 $3\ \mathrm m$，那么 $|\vec{a}|=3\ \mathrm m$。向量包含大小和方向，模只表示大小。模总是不小于零，只有零向量的模为零。</p></div></section>
+<section class="section" id="effect"><div class="marker" aria-hidden="true"><span>02</span>数乘的含义</div><div class="section-body prose"><h2>绝对值决定模，正负决定方向</h2><p>实数 $\lambda$ 与向量 $\vec{a}$ 的积记作 $\lambda\vec{a}$，规定</p>
+<div class="formula-card">$$
+|\lambda\vec{a}|=|\lambda|\,|\vec{a}|.
+$$</div>
+<p>这里 $|\lambda|$ 是实数的绝对值，表示模变为原来的多少倍。对非零向量，乘正数方向不变，乘负数方向相反；乘零得到零向量。零向量乘任何实数仍是零向量。</p>
+<p>例如，$2\vec{a}$ 同向、两倍长；$\dfrac12\vec{a}$ 同向、一半长；$-\vec{a}$ 等长反向，就是 $\vec{a}$ 的相反向量。</p><figure class="f-figure"><svg viewBox="0 0 550 330" role="img" aria-labelledby="scale-caption"><path d="M220 45 V289" fill="none" stroke="#b7c2c5" stroke-width="1" stroke-dasharray="4 5"/><g transform="translate(320 65) rotate(0)"><line x1="-100" y1="0" x2="-8" y2="0" stroke="#176b9b" stroke-width="2.5" stroke-linecap="butt"/><path d="M-13,-4 L0,0 L-13,4 L-10,0 Z" fill="#176b9b"/></g><circle cx="220" cy="65" r="2.5" fill="#176b9b"/><g fill="#176b9b" font-family="Georgia, serif" font-size="23"><text x="62" y="72" text-anchor="end"></text><text x="65" y="72" font-style="italic">a</text></g><path d="M65 52 h12 m-3 -2.5 l3 2.5 -3 2.5" fill="none" stroke="#176b9b" stroke-width="1.1"/><text x="444" y="71" fill="#5b6970" font-family="system-ui, sans-serif" font-size="17">原长</text><g transform="translate(420 135) rotate(0)"><line x1="-200" y1="0" x2="-8" y2="0" stroke="#176b9b" stroke-width="2.5" stroke-linecap="butt"/><path d="M-13,-4 L0,0 L-13,4 L-10,0 Z" fill="#176b9b"/></g><circle cx="220" cy="135" r="2.5" fill="#176b9b"/><g fill="#176b9b" font-family="Georgia, serif" font-size="23"><text x="62" y="142" text-anchor="end">2</text><text x="65" y="142" font-style="italic">a</text></g><path d="M65 122 h12 m-3 -2.5 l3 2.5 -3 2.5" fill="none" stroke="#176b9b" stroke-width="1.1"/><text x="444" y="141" fill="#5b6970" font-family="system-ui, sans-serif" font-size="17">两倍</text><g transform="translate(270 205) rotate(0)"><line x1="-50" y1="0" x2="-8" y2="0" stroke="#176b9b" stroke-width="2.5" stroke-linecap="butt"/><path d="M-13,-4 L0,0 L-13,4 L-10,0 Z" fill="#176b9b"/></g><circle cx="220" cy="205" r="2.5" fill="#176b9b"/><g fill="#176b9b" font-family="Georgia, serif" font-size="23"><g font-size="18" text-anchor="middle"><text x="53" y="199">1</text><path d="M45 204 H61" stroke="#176b9b" stroke-width="1.1"/><text x="53" y="222">2</text></g><text x="65" y="212" font-style="italic">a</text></g><path d="M65 192 h12 m-3 -2.5 l3 2.5 -3 2.5" fill="none" stroke="#176b9b" stroke-width="1.1"/><text x="444" y="211" fill="#5b6970" font-family="system-ui, sans-serif" font-size="17">一半</text><g transform="translate(120 275) rotate(180)"><line x1="-100" y1="0" x2="-8" y2="0" stroke="#b86335" stroke-width="2.5" stroke-linecap="butt"/><path d="M-13,-4 L0,0 L-13,4 L-10,0 Z" fill="#b86335"/></g><circle cx="220" cy="275" r="2.5" fill="#b86335"/><g fill="#b86335" font-family="Georgia, serif" font-size="23"><text x="62" y="282" text-anchor="end">−</text><text x="65" y="282" font-style="italic">a</text></g><path d="M65 262 h12 m-3 -2.5 l3 2.5 -3 2.5" fill="none" stroke="#b86335" stroke-width="1.1"/><text x="444" y="281" fill="#5b6970" font-family="system-ui, sans-serif" font-size="17">反向、等长</text></svg><figcaption id="scale-caption">四行都按同一比例绘制，起点用虚线对齐。蓝色的 $2\vec{a}$、$\dfrac12\vec{a}$ 与 $\vec{a}$ 同向，长度分别为两倍、一半；橙色的 $-\vec{a}$ 只改变方向，长度不变。</figcaption></figure></div></section>
+<section class="section" id="laws"><div class="marker" aria-hidden="true"><span>03</span>数乘运算律</div><div class="section-body prose"><h2>运算律沿用熟悉的形式</h2><p>数乘的结合律、分配律与实数运算的形式相同。$\lambda$、$\mu$ 是实数，$\vec{a}$、$\vec{b}$ 是向量：</p>
+<div class="formula-card">$$
+\lambda(\mu\vec{a})=(\lambda\mu)\vec{a}.
+$$</div>
+<p>连续数乘，把系数相乘。</p>
+<div class="formula-card">$$
+(\lambda+\mu)\vec{a}=\lambda\vec{a}+\mu\vec{a}.
+$$</div>
+<p>同一向量的倍数相加，可以合并系数，例如 $2\vec{a}+3\vec{a}=5\vec{a}$。</p>
+<div class="formula-card">$$
+\lambda(\vec{a}+\vec{b})=\lambda\vec{a}+\lambda\vec{b}.
+$$</div>
+<p>数乘可以分配到每个向量，例如 $2(\vec{a}-\vec{b})=2\vec{a}-2\vec{b}$。这里始终是数乘向量，不能把它当成两个向量相乘。</p></div></section>
+<section class="section" id="parallel"><div class="marker" aria-hidden="true"><span>04</span>共线向量</div><div class="section-body prose"><h2>共线就是倍数关系</h2><p>两个非零向量同向或反向，称为共线向量，也叫平行向量；不要求它们原来画在同一条直线上。约定零向量与任意向量共线。</p>
+<p>固定 $\vec{a}\ne\mathbf0$，与它共线的向量都能唯一写成</p>
+<div class="formula-card">$$
+\vec{b}=\lambda\vec{a}.
+$$</div>
+<p>$\vec{b}$ 非零时，系数的绝对值是模的比值 $\dfrac{|\vec{b}|}{|\vec{a}|}$，同向取正、反向取负；$\vec{b}=\mathbf0$ 时取 $\lambda=0$。例如，反向且两倍长，就是 $\vec{b}=-2\vec{a}$。</p>
+</div></section><section class="section" id="summary" aria-labelledby="summary-title"><div class="marker" aria-hidden="true"><span>05</span>小结</div><div class="section-body prose"><h2 id="summary-title">核心结论</h2><div class="summary-panel"><p>模是向量的大小。数乘时，系数的绝对值决定模变为原来的多少倍；对非零向量，乘正数同向、乘负数反向，乘零得到零向量。</p><p>数乘不会产生新的非共线方向；固定一个非零向量后，与它共线的向量都能唯一写成它的实数倍。</p></div></div></section>
+</main>
+  <nav class="pager" aria-label="文章导航"><a class="pager-prev" href="01_向量的加法.html">← 上一篇 · 向量的加法与减法</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="04_向量的数量积.html">下一篇 · 向量的数量积 →</a></nav>
+  <footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer>
+</body>
+</html>

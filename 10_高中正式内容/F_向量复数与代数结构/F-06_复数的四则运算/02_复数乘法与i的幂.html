@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>复数乘法与 i 的幂 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">乘法展开</a><a class="nav-link" href="#section-2">乘法示例</a><a class="nav-link" href="#section-3">幂的周期</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的四则运算 · 13</span><h1>复数乘法与 $i$ 的幂</h1><p class="lead">复数相乘先按多项式展开，再用 $i^2=-1$ 合并成实部与虚部。反复乘以 $i$ 时，结果每四次重复一次，因此高次幂也能很快算出。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>乘法展开</div><div class="section-body prose"><h2>先展开，再用 $i^2=-1$</h2><p>设 $a,b,c,d$ 都是实数。用分配律，把第一个括号中的每一项乘第二个括号中的每一项：</p>
+<div class="formula-card">$$
+(a+bi)(c+di)=ac+adi+bci+bdi^2.
+$$</div>
+<p>其中 $bdi^2=-bd$ 是实数，另两个含 $i$ 的项合并，得到</p>
+<div class="formula-card">$$
+(a+bi)(c+di)=(ac-bd)+(ad+bc)i.
+$$</div>
+<p>实部是 $ac-bd$，虚部是 $ad+bc$。这不是“实部分别乘、虚部分别乘”，因为两个含 $i$ 的项相乘后会进入实部。</p></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>乘法示例</div><div class="section-body prose"><h2>用一个乘积看清符号</h2><p>计算 $(1+2i)(2+3i)$，先把四个乘积写全：</p>
+<div class="formula-card">$$
+(1+2i)(2+3i)=2+3i+4i+6i^2.
+$$</div>
+<p>把 $6i^2$ 换成 $-6$，再合并实数项与含 $i$ 的项：</p>
+<div class="formula-card">$$
+2+3i+4i-6=-4+7i.
+$$</div>
+<p>负号来自 $i^2=-1$，不是在最后凭记忆补上的。</p></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>幂的周期</div><div class="section-body prose"><h2>$i$ 的幂每四次重复</h2><p>从 $i^2=-1$ 继续乘 $i$，有 $i^3=-i$；再乘一次，$i^4=(-i)i=-i^2=1$。因此最初四个结果是</p>
+<table class="f-rule-table"><thead><tr><th scope="col">指数</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th></tr></thead><tbody><tr><td>$i$ 的幂</td><td>$1$</td><td>$i$</td><td>$-1$</td><td>$-i$</td></tr></tbody></table>
+<p>每多乘四个 $i$，就是多乘一个 $i^4=1$，结果不变。对非负整数 $n$，写成 $n=4q+r$，其中 $q$ 为非负整数，$r$ 是 $0,1,2,3$ 之一，则</p>
+<div class="formula-card">$$
+i^n=(i^4)^q i^r=i^r.
+$$</div>
+<p>所以只需看指数除以 $4$ 的余数。例如 $2026=4\times506+2$，余数为 $2$，故 $i^{2026}=i^2=-1$。</p></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>复数乘法按“展开—替换 $i^2$—合并”计算，不需要另外记一套乘法规则。</p>
+<p>因为 $i^4=1$，$i$ 的非负整数次幂只由指数除以 $4$ 的余数决定，依次对应 $1,i,-1,-i$。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="01_复数加减及其几何意义.html">← 上一篇 · 复数加减及其几何意义</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="03_复数除法与共轭复数.html">下一篇 · 复数除法与共轭复数 →</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

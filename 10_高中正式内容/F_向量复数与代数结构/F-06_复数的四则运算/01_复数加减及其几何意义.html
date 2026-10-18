@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>复数加减及其几何意义 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
+<body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">加法</a><a class="nav-link" href="#section-2">减法</a><a class="nav-link" href="#section-3">差的方向</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的四则运算 · 12</span><h1>复数加减及其几何意义</h1><p class="lead">复数加减就是实部与实部、虚部与虚部分别相加减。在复平面上，这恰好对应向量的加减：相加合成位移，相减表示两点之间的位移。
+</p></header><main id="content" tabindex="-1">
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>加法</div><div class="section-body prose"><h2>对应部分分别相加</h2><p>设 $z_1=a+bi$、$z_2=c+di$，其中 $a,b,c,d$ 都是实数。把 $(a+bi)+(c+di)$ 中的实数项与含 $i$ 的项分别合并，得到</p>
+<div class="formula-card">$$
+z_1+z_2=(a+c)+(b+d)i.
+$$</div>
+<p>例如，取 $z_1=2+3i$、$z_2=-1+i$。实部相加为 $2+(-1)=1$，虚部相加为 $3+1=4$，所以</p>
+<div class="formula-card">$$
+z_1+z_2=1+4i.
+$$</div>
+<p>两个复数分别对应向量 $(2,3)$、$(-1,1)$，它们的和是 $(1,4)$，正好对应 $1+4i$。因此，复数加法可以用首尾相接或平行四边形法则表示。</p><figure class="f-figure"><svg viewBox="0 0 520 390" role="img" aria-labelledby="sum-figure"><title id="sum-figure">复数加法对应向量首尾相接，二加三 i 与负一加 i 的和是一加四 i</title><g fill="none" stroke="#85949c" stroke-width="1.2"><path d="M35 300 H475 M160 362 V30"/><path d="M469 296 l6 4 -6 4 M156 36 l4 -6 4 6"/></g><g fill="#53636c" font-family="system-ui,sans-serif" font-size="16"><text x="479" y="322">实轴</text><text x="172" y="30">虚轴</text><text x="140" y="323" font-family="Georgia,serif" font-style="italic">O</text></g><g transform="translate(160 300) rotate(-56.309932474020215)" fill="#176b9b"><path d="M0 0 H208.33307652783935" stroke="#176b9b" stroke-width="2.4" fill="none"/><path d="M216.33307652783935 0 l-10 -4 2 4 -2 4 Z"/></g><g transform="translate(160 300) rotate(-135)" fill="#087b78"><path d="M0 0 H76.8528137423857" stroke="#087b78" stroke-width="2.4" fill="none"/><path d="M84.8528137423857 0 l-10 -4 2 4 -2 4 Z"/></g><g transform="translate(280 120) rotate(-135)" fill="#087b78"><path d="M0 0 H76.8528137423857" stroke="#087b78" stroke-width="2.4" fill="none"/><path d="M84.8528137423857 0 l-10 -4 2 4 -2 4 Z"/></g><g transform="translate(160 300) rotate(-75.96375653207353)" fill="#7954aa"><path d="M0 0 H239.38633753705963" stroke="#7954aa" stroke-width="2.4" fill="none"/><path d="M247.38633753705963 0 l-10 -4 2 4 -2 4 Z"/></g><g font-family="Georgia,serif" font-size="20"><text x="298" y="124" fill="#176b9b">Z₁(2, 3)</text><text x="15" y="223" fill="#087b78">Z₂(−1, 1)</text><text x="238" y="59" fill="#7954aa">S(1, 4)</text></g></svg><figcaption>蓝色向量对应 $2+3i$，绿色向量对应 $-1+i$。把绿色向量平移到蓝色向量的末端，紫色和向量的终点就是 $S(1,4)$。</figcaption></figure></div></section>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>减法</div><div class="section-body prose"><h2>减号同时作用于两部分</h2><p>减去 $c+di$，就是加上 $-c-di$。对 $(a+bi)-(c+di)$ 去括号后，实部、虚部分别相减：</p>
+<div class="formula-card">$$
+z_1-z_2=(a-c)+(b-d)i.
+$$</div>
+<p>仍取 $z_1=2+3i$、$z_2=-1+i$。实部是 $2-(-1)=3$，虚部是 $3-1=2$，因此</p>
+<div class="formula-card">$$
+z_1-z_2=3+2i.
+$$</div>
+<p>这里减去 $-1$ 会变成加 $1$；不能只改变虚部的符号，或只减去第二个复数的实部。</p></div></section>
+<section class="section" id="section-3"><div class="marker" aria-hidden="true"><span>03</span>差的方向</div><div class="section-body prose"><h2>差对应从减数终点到被减数终点</h2><p>设 $z_1,z_2$ 对应点 $Z_1(a,b),Z_2(c,d)$。由向量减法，</p>
+<div class="formula-card">$$
+\overrightarrow{OZ_1}-\overrightarrow{OZ_2}
+=\overrightarrow{Z_2Z_1}=(a-c,b-d).
+$$</div>
+<p>所以 $z_1-z_2$ 对应从 $Z_2$ 指向 $Z_1$ 的向量。前例中，从 $Z_2(-1,1)$ 向右移动 $3$、向上移动 $2$ 到达 $Z_1(2,3)$，这就是 $3+2i$ 所对应的位移。</p>
+<p>复数与向量是不同对象，但两者的加减规则通过坐标完全对应。</p><figure class="f-figure"><svg viewBox="0 0 520 390" role="img" aria-labelledby="difference-figure"><title id="difference-figure">复数二加三 i 减去负一加 i，对应从 Z二到 Z一的位移</title><g fill="none" stroke="#85949c" stroke-width="1.2"><path d="M35 300 H475 M160 362 V30"/><path d="M469 296 l6 4 -6 4 M156 36 l4 -6 4 6"/></g><g fill="#53636c" font-family="system-ui,sans-serif" font-size="16"><text x="479" y="322">实轴</text><text x="172" y="30">虚轴</text><text x="140" y="323" font-family="Georgia,serif" font-style="italic">O</text></g><path d="M160 300 L100 240 M160 300 L280 120" fill="none" stroke="#a4b3bb" stroke-dasharray="5 5"/><g transform="translate(100 240) rotate(-33.690067525979785)" fill="#7954aa"><path d="M0 0 H208.33307652783935" stroke="#7954aa" stroke-width="2.4" fill="none"/><path d="M216.33307652783935 0 l-10 -4 2 4 -2 4 Z"/></g><g font-family="Georgia,serif" font-size="20" fill="#21313e"><text x="298" y="124">Z₁(2, 3)</text><text x="15" y="264">Z₂(−1, 1)</text></g></svg><figcaption>紫色向量从 $Z_2(-1,1)$ 指向 $Z_1(2,3)$，位移为 $(3,2)$，对应差 $3+2i$。</figcaption></figure></div></section>
+<section class="section" id="summary"><div class="marker" aria-hidden="true"><span>04</span>小结</div><div class="section-body prose"><h2>核心结论</h2><div class="summary-panel"><p>复数加减按实部、虚部分别计算；减去一个复数时，减号作用于它的两部分。</p>
+<p>和对应向量的和；$z_1-z_2$ 对应从 $Z_2$ 指向 $Z_1$ 的向量，方向不能颠倒。</p></div></div></section>
+</main><nav class="pager" aria-label="文章导航"><a class="pager-prev" href="../F-05_复数的概念与几何意义/02_复数的几何意义.html">← 上一篇 · 复数的几何意义</a><a class="pager-home" href="../index.html">F 模块目录</a><a class="pager-next" href="02_复数乘法与i的幂.html">下一篇 · 复数乘法与 $i$ 的幂 →</a></nav><footer class="footer">OpenKS · F 平面向量、复数与代数表示</footer></body></html>

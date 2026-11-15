@@ -2,14 +2,14 @@
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>三角形式下的复数乘除 | OpenKS</title><link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../00_初高中衔接知识/assets/learning-page-system.css"><link rel="stylesheet" href="../f-module.css"><script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="f-article"><a class="skip-link" href="#content">跳到正文</a><nav class="topbar module-article-nav" aria-label="F 模块文章导航"><div class="topbar-inner"><a class="brand" href="../../../index.html" aria-label="OpenKS 首页"><img src="../../../assets/brand/openks-lockup-a-primary.svg" width="2947" height="716" alt=""></a><a class="nav-link module-directory" href="../index.html">F 模块目录</a><div class="article-sections" role="navigation" aria-label="本篇章节"><a class="nav-link" href="#section-1">乘法</a><a class="nav-link" href="#section-2">除法</a><a class="nav-link" href="#section-3">计算与主值</a><a class="nav-link" href="#summary">核心结论</a></div></div></nav><header class="hero"><span class="eyebrow">F · 复数的三角表示 · 选学 · 18</span><h1>三角形式下的复数乘除</h1><p class="lead">三角形式把复数乘除转成长度与角度的运算：乘法的模相乘、辐角相加，除法的模相除、辐角相减。这些规则来自复数乘法与三角函数的和差公式。
 </p></header><main id="content" tabindex="-1">
-<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>乘法</div><div class="section-body prose"><h2>乘法：展开后合并角度</h2><p>设两个非零复数为 $z_1=r_1(\cos\alpha+i\sin\alpha)$、$z_2=r_2(\cos\beta+i\sin\beta)$，其中 $r_1,r_2&gt;0$。</p>
+<section class="section" id="section-1"><div class="marker" aria-hidden="true"><span>01</span>乘法</div><div class="section-body prose"><h2>三角形式下的复数乘法</h2><p>设两个非零复数为 $z_1=r_1(\cos\alpha+i\sin\alpha)$、$z_2=r_2(\cos\beta+i\sin\beta)$，其中 $r_1,r_2&gt;0$。</p>
 <p>把两个括号相乘，用 $i^2=-1$ 合并。除去公共因子 $r_1r_2$ 后，实部是 $\cos\alpha\cos\beta-\sin\alpha\sin\beta$，虚部是 $\sin\alpha\cos\beta+\cos\alpha\sin\beta$。</p>
 <p>由两角和公式，这两部分分别等于 $\cos(\alpha+\beta)$ 和 $\sin(\alpha+\beta)$，因此</p>
 <div class="formula-card">$$
 z_1z_2=r_1r_2[\cos(\alpha+\beta)+i\sin(\alpha+\beta)].
 $$</div>
 <p>这就是乘积的三角形式：模是 $r_1r_2$，$\alpha+\beta$ 是一个辐角。固定乘数 $z_2$，相当于把原向量长度变为 $r_2$ 倍，再旋转 $\beta$。</p></div></section>
-<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>除法</div><div class="section-body prose"><h2>除法：先看倒数的模与方向</h2><p>除以 $z_2$ 就是乘它的倒数。分子、分母同乘方向部分的共轭，分母利用 $\cos^2\beta+\sin^2\beta=1$ 化简，得到</p>
+<section class="section" id="section-2"><div class="marker" aria-hidden="true"><span>02</span>除法</div><div class="section-body prose"><h2>三角形式下的复数除法</h2><p>除以 $z_2$ 就是乘它的倒数。分子、分母同乘方向部分的共轭，分母利用 $\cos^2\beta+\sin^2\beta=1$ 化简，得到</p>
 <div class="formula-card">$$
 \dfrac1{z_2}=\dfrac1{r_2}(\cos\beta-i\sin\beta).
 $$</div>

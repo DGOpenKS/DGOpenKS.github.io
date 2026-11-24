@@ -1,5 +1,5 @@
-import {names,polyhedron,view,cross,unit,project} from './g-geometry.mjs?v=20261031-combo-labels';
-import {solidParts,wholeParts,isPolyhedron,sweepProfile,explodedParts} from './g-solid-parts.mjs?v=20261031-combo-labels';
+import {names,polyhedron,view,cross,unit,project} from './g-geometry.js?v=20261031-combo-labels';
+import {solidParts,wholeParts,isPolyhedron,sweepProfile,explodedParts} from './g-solid-parts.js?v=20261031-combo-labels';
 const runtimeURL=new URL('../../../00_初高中衔接知识/chapter_02-2_立方相关公式/assets/vendor/three-r160/three.module.min.js',import.meta.url);
 const right=unit([7,0,-5]),up=cross(view,right);
 let runtime;

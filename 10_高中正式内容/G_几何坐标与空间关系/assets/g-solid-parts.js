@@ -1,4 +1,4 @@
-import {polyhedron,profile,normal,center,sub,unit} from './g-geometry.mjs?v=20261031-combo-labels';
+import {polyhedron,profile,normal,center,sub,unit} from './g-geometry.js?v=20261031-combo-labels';
 export const isPolyhedron=k=>['prism','pyramid','frustum'].includes(k);
 export function facePart(kind,index){
   const m=polyhedron(kind),points=m.faces[index].map(i=>m.vertices[i]),base=points.every(p=>p[1]===points[0][1]);

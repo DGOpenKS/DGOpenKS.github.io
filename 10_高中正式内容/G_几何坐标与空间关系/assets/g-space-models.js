@@ -1,4 +1,4 @@
-import {sub,dot,cross,center} from './g-geometry.mjs?v=20261031-combo-labels';
+import {sub,dot,cross,center} from './g-geometry.js?v=20261031-combo-labels';
 const add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,t)=>a.map(v=>v*t);
 export const colors={a:'#176b87',b:'#28785e',point:'#79539e',alpha:'#bdd5df',beta:'#c4ddce',l:'#79539e'};
 const point=(id,p)=>({id,p,color:colors.point});

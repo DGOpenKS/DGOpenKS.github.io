@@ -1,5 +1,5 @@
-import {spaceSVG} from './g-space-models.mjs?v=20261124-distance-foot';
-import {vectorSVG,lineCoordinateExample} from './g-vector-models.mjs?v=20261125-perpendicular-conditions';
+import {spaceSVG} from './g-space-models.js?v=20261124-distance-foot';
+import {vectorSVG,lineCoordinateExample} from './g-vector-models.js?v=20261125-perpendicular-conditions';
 for(const host of document.querySelectorAll('[data-space]')){
  const view=host.querySelector('.space-view'),fallback=host.querySelector('.space-static'),controls=host.querySelector('.g-controls'),status=host.querySelector('.space-status'),range=host.querySelector('input');
  const live=document.createElement('div');live.className='space-live';live.tabIndex=0;live.setAttribute('role','group');live.setAttribute('aria-label',host.dataset.label+'；拖动或用方向键旋转');view.append(live);

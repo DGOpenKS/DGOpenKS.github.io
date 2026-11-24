@@ -1,5 +1,5 @@
-import {sphereModel} from './g-sphere-models.mjs?v=20261104-sphere';
-import {motionModel} from './g-measure-motion-models.mjs?v=20261104-unfold-r2';
+import {sphereModel} from './g-sphere-models.js?v=20261104-sphere';
+import {motionModel} from './g-measure-motion-models.js?v=20261104-unfold-r2';
 // Shared coordinates keep printable diagrams and draggable views identical.
 export const palette={side:'#80b3c3',base:'#8bb7a2',cut:'#dfaa68',ink:'#244855',purple:'#aa98be'};
 const {side,base,cut}=palette;

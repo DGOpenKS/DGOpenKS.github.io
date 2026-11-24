@@ -1,4 +1,4 @@
-import {modelSVG} from './g-measure-models.mjs?v=20261104-sphere';
+import {modelSVG} from './g-measure-models.js?v=20261104-sphere';
 for(const host of document.querySelectorAll('[data-measure]')){
  const kind=host.dataset.measure,view=host.querySelector('.measure-view'),fallback=host.querySelector('.measure-static'),controls=host.querySelector('.g-controls'),range=host.querySelector('input'),output=host.querySelector('output');
  let yaw=-.55,pitch=.4,value=Number(range?.value||0),frame=0,drag=null,frames=0,animation=0;

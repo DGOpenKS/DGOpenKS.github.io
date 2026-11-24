@@ -1,5 +1,5 @@
-import {renderSpaceScene,rightMark} from './g-space-models.mjs?v=20261124-distance-foot';
-import {cross,sub,unit} from './g-geometry.mjs?v=20261031-combo-labels';
+import {renderSpaceScene,rightMark} from './g-space-models.js?v=20261124-distance-foot';
+import {cross,sub,unit} from './g-geometry.js?v=20261031-combo-labels';
 const blue='#176b87',green='#28785e',purple='#79539e',amber='#9a6a2a',gray='#a9b4b7';
 const add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,t)=>a.map(v=>v*t);
 const line=(a,b,color=gray,id='',extra={})=>({a,b,color,id,...extra});

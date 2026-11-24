@@ -1,0 +1,36 @@
+/* Measurement lessons reuse G typography and cards; only diagram layout is scoped. */
+.measure-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;align-items:center}
+.measure-pair>div{min-width:0}.measure-pair h3{text-align:center;font:600 1rem var(--font-sans);margin:0 0 .6rem}
+.measure-view{height:320px;background:var(--soft);border-radius:var(--radius-md);position:relative;overflow:hidden}
+.measure-view svg{height:100%;max-height:none!important;width:100%}
+.measure-static,.measure-live{height:100%;width:100%}.measure-live{position:absolute;inset:0;cursor:grab;touch-action:none;user-select:none}
+.measure-live.is-dragging{cursor:grabbing}.measure-live:focus-visible{outline:3px solid var(--blue);outline-offset:-4px;border-radius:var(--radius-md)}
+.measure-model [hidden]{display:none!important}.measure-model .g-controls{justify-content:center;gap:.5rem;margin:.6rem 0 0;font-size:.85rem}
+.measure-model .g-controls input{width:130px}.measure-model output{min-width:3em}.measure-hint{font-size:.82rem!important;text-align:center;color:var(--muted);margin:.5rem 0 0!important}
+.measure-diagram{padding:.4rem}.measure-diagram svg{max-height:320px;overflow:visible;font-size:17px}
+.measure-diagram text{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}.measure-diagram .plain{stroke:none}
+.measure-process>.measure-view{height:410px}
+.measure-process .measure-status{min-height:1.7em;margin:.75rem 0 0;font-size:.93rem;text-align:center;color:var(--body)}
+.measure-pair .measure-process>.measure-view{height:320px}
+.measure-process [data-play]{border-color:var(--blue);color:var(--blue-deep);background:var(--blue-soft)}
+@media(max-width:680px){.measure-pair{grid-template-columns:1fr;gap:1.2rem}.measure-view{height:280px}.measure-diagram svg{max-height:290px;font-size:18px}.measure-model .g-controls input{width:115px}}
+@media(max-width:680px){.measure-process>.measure-view,.measure-pair .measure-process>.measure-view{height:300px}.measure-process .g-controls label{justify-content:center}.measure-process .measure-status{text-align:left}.measure-process .g-controls{row-gap:.25rem}}
+@media print{.measure-live,.measure-model .g-controls,.measure-hint{display:none!important}.measure-model .measure-static[hidden]{display:block!important}.measure-view{background:none;height:240px}.measure-pair{grid-template-columns:1fr 1fr}}
+@media print{.measure-status{display:none}}
+
+/* Surface composition: keep the same part colors as the unfolding figures. */
+.surface-components{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.surface-components>div{min-width:0;text-align:center}
+.surface-components h3{margin:0 0 .5rem;font:600 1rem var(--font-sans)}
+.surface-components .measure-view{height:235px}
+.surface-components .component-count{margin:.7rem 0 0;font-size:.92rem;line-height:1.8}
+.component-side{color:#244855}.component-base{color:#24664e}
+.surface-components .measure-hint{font-size:.75rem!important}
+@media(max-width:680px){.surface-components{grid-template-columns:1fr;gap:1.6rem}.surface-components .measure-view{height:260px}}
+
+/* The band, its meridian section and its magnified arc stay visible in reading order. */
+.sphere-band-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+.sphere-band-step{min-width:0}.sphere-band-step h3{display:flex;gap:.6rem;align-items:center;margin:0;font:600 1rem var(--font-sans)}
+.sphere-band-step h3 span{color:var(--blue);font-size:.8rem}.sphere-band-step svg{display:block;width:100%;height:auto;max-height:none}
+.sphere-band-step svg text{font-family:var(--font-sans)}.sphere-band-step p{font-size:.9rem;margin:.2rem 0 0;line-height:1.75}
+@media(max-width:860px){.sphere-band-steps{grid-template-columns:1fr;gap:1.5rem}.sphere-band-step svg{max-width:360px;margin:0 auto}}

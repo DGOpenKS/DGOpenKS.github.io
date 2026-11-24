@@ -1,0 +1,30 @@
+/* Space relations keep definitions visible; rotation only changes the viewpoint. */
+.space-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.5rem 0}
+.space-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.space-grid>.g-figure{margin:0;min-width:0;padding:.85rem}
+.space-grid h3{margin:0 0 .5rem;text-align:center;font:600 1rem var(--font-sans)}
+.space-view{height:330px;position:relative;background:var(--soft);border-radius:var(--radius-md);overflow:hidden}
+.space-grid .space-view{height:235px}
+.space-view svg{width:100%;height:100%;max-height:none;overflow:hidden}
+.space-live,.space-static{position:absolute;inset:0;width:100%;height:100%}
+.space-live{cursor:grab;touch-action:none;user-select:none}.space-live.is-dragging{cursor:grabbing}
+.space-live:focus-visible{outline:3px solid var(--blue);outline-offset:-4px;border-radius:var(--radius-md)}
+.space-model [hidden]{display:none!important}.space-model .g-controls{justify-content:center;gap:.45rem;margin:.6rem 0}
+.space-model .g-controls button{font-size:.87rem;padding:.35rem .7rem}
+.space-model .g-controls button[aria-pressed=true]{background:var(--blue-soft);border-color:var(--blue);color:var(--blue-deep)}
+.space-model .g-controls label{font-size:.9rem;justify-content:center;flex-wrap:wrap}.space-model input{width:140px!important}.space-model output{min-width:3em}
+.space-hint{font-size:.8rem!important;text-align:center;color:var(--muted);margin:.4rem 0!important}
+.space-status{font-size:.9rem!important;line-height:1.7;margin:.7rem 0 0!important}
+.line-coordinate-values{display:flex;flex-wrap:wrap;justify-content:center;column-gap:1.5rem;row-gap:.2rem;font-variant-numeric:tabular-nums}
+.line-coordinate-values>span{white-space:nowrap}
+.line-coordinate-values .component-triple{display:inline-flex;gap:.75rem}
+.component-triple>span:nth-child(1){color:#176b87}
+.component-triple>span:nth-child(2){color:#28785e}
+.component-triple>span:nth-child(3){color:#79539e}
+#line-coordinates{scroll-margin-top:78px}
+@media(max-width:680px){:is([data-space="vector-line-coordinates"],[data-space="vector-perpendicular-conditions"]) .space-view{height:clamp(205px,62vw,300px)}}
+.space-grid figcaption{font-size:.9rem}.space-formula{display:block;text-align:center;margin:.3rem 0 .5rem}
+.space-proofs h3{margin:1.5rem 0 .5rem}.space-proofs h3:first-child{margin-top:0}
+@media(max-width:1000px){.space-grid{grid-template-columns:1fr}.space-grid.two{grid-template-columns:1fr 1fr}.space-grid .space-view{height:280px}}
+@media(max-width:680px){.space-grid.two{grid-template-columns:1fr}.space-view{height:300px}.space-grid .space-view{height:275px}.space-grid .g-figure{padding:.85rem}}
+@media print{.space-live,.space-model .g-controls,.space-hint,.space-status{display:none!important}.space-static[hidden]{display:block!important}.space-view,.space-grid .space-view{height:210px}.space-grid,.space-grid.two{grid-template-columns:1fr 1fr}.space-grid>.g-figure{break-inside:avoid}}

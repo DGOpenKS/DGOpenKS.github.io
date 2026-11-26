@@ -54,6 +54,7 @@ p{margin:0 0 12px}
 .graph-axis{stroke:#98a0aa;stroke-width:1.8;vector-effect:non-scaling-stroke}
 .graph-grid{stroke:var(--grid);stroke-width:1;vector-effect:non-scaling-stroke}
 .graph-label{font-size:12px;font-weight:900;fill:var(--muted);font-family:var(--font)}
+.symmetry-formula{display:inline-flex;align-items:center;padding:2px 4px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--muted);font-size:14px;line-height:1}
 .graph-note{font-size:12px;font-weight:900;fill:var(--blue);font-family:var(--font)}
 .label-bg{fill:rgba(255,253,248,.92);stroke:var(--line);stroke-width:.8}
 .graph-dim{stroke:var(--amber);stroke-width:2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
@@ -339,7 +340,9 @@ function drawQuadratic(svgSelector, viewBox, large=false){
   roots.forEach(root=>drawPoint(svg,plot,root,0,'#a35f18',large?6:5));
   drawPoint(svg,plot,vertex.x,vertex.y,'#2f765d',large?7:6);
   drawLabel(svg,plot,vertex.x,vertex.y,large?'顶点 / 最小值':'顶点',large?18:14,large?22:18);
-  drawLabel(svg,plot,vertex.x,range.yMax,'x=-b/(2a)',large?12:10,large?18:16,'graph-label');
+  const axisLabel=makeSvgEl('foreignObject',{x:plot.sx(vertex.x)+(large?8:6),y:plot.pad.top+2,width:74,height:36});
+  axisLabel.innerHTML='<span xmlns="http://www.w3.org/1999/xhtml" class="symmetry-formula"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mo>−</mo><mfrac><mi>b</mi><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></math></span>';
+  svg.appendChild(axisLabel);
   if(large){
     drawLabel(svg,plot,roots[0],0,'根',-12,-18,'graph-label','end');
     drawLabel(svg,plot,roots[1],0,'根',12,-18,'graph-label');
